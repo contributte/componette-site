@@ -1,0 +1,10 @@
+extensions:
+    dbal: Nextras\Dbal\Bridges\NetteDI\DbalExtension
+
+dbal:
+	driver: %database.driver%
+	host: %database.host%
+	database: %database.dbname%
+	username: %database.user%
+	password: %database.password%
+	connectionTz: '+2:00'

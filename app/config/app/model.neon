@@ -1,0 +1,25 @@
+services:
+
+    # Github ===============================================
+    - App\Model\WebServices\Github\Client(%github.token%)
+    - App\Model\WebServices\Github\Service
+
+    # Composer =============================================
+    - App\Model\WebServices\Composer\Client
+    - App\Model\WebServices\Composer\Service
+
+    # Content Managing =====================================
+    #- App\Model\Packages\Content\ContentManager(Nette\Caching\Storages\FileStorage(%appDir%/cache, ...))
+
+    # Search ===============================================
+    - App\Model\Search\SearchFactory
+    search:
+        factory: @App\Model\Search\SearchFactory::create
+
+    # Model ================================================
+    - App\Model\ORM\PackagesFacade
+
+    # Tasks ================================================
+    - App\Tasks\Packages\GenerateContentTask
+    - App\Tasks\Packages\UpdateMetadataTask
+    - App\Tasks\Packages\UpdateComposerTask

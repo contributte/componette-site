@@ -1,0 +1,47 @@
+php:
+    date.timezone: Europe/Prague
+    # session.save_path: %tempDir%/session
+    # zlib.output_compression: true
+
+parameters:
+    database:
+        driver: mysqli
+
+includes:
+    - engine.neon
+
+latte:
+    xhtml: no
+
+session:
+    debugger: %debugMode%
+    expiration: 1 year
+    autoStart: smart
+
+application:
+    catchExceptions: %productionMode%
+    errorPresenter: %system.error.presenter%
+    mapping:
+        *: App\Modules\*\*Presenter
+
+di:
+    debugger: yes
+
+tracy:
+    email: %system.error.email%
+    strictMode: yes
+
+database:
+    default:
+        dsn: '%database.driver%:host=%database.host%;dbname=%database.dbname%'
+        user: %database.user%
+        password: %database.password%
+        debugger: %debugMode%
+        explain: %debugMode%
+        options:
+            lazy: yes
+
+services:
+    nette.userStorage:
+        setup:
+            - setNamespace(Nette\Packages)

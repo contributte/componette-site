@@ -1,0 +1,10 @@
+{block #title}{$package->metadata->name}{/block}
+{block #content}
+<section class="page page-package">
+    <section class="page-header">
+        {control package:header}
+    </section>
+    <section class="page-content">
+        {control package:content}
+    </section>
+</section>

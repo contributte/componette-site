@@ -1,0 +1,16 @@
+# IDE
+.idea
+
+# Nette
+app/config/config.local.neon
+log/*
+temp/*
+bin/*
+
+# Composer
+vendor/*
+composer.lock
+
+# Files
+!.gitignore
+!.htaccess

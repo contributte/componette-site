@@ -1,0 +1,26 @@
+<section class="meta">
+    <a href="{$package->metadata->linker->getOwnerUrl()}"><img src="{$package->metadata->linker->getOwnerAvatarUrl(20)}"></a>
+    <a class="link-author" href="{plink List:owner, $package->metadata->owner}">{$package->metadata->owner}</a>
+
+    <div class="pull-right">
+        <span class="github-box">
+            <span class="box-icon"><span class="octicon octicon-clock"></span></span>
+            <span class="box-count box-age box-age-{$package->metadata->changed|timeAge}"><a href="{$package->metadata->linker->getPulseUrl()}" data-toggle="tooltip" data-placement="top" title="Last change">{$package->metadata->changed|timeAgo}</a></span>
+        </span>
+        {if $package->isComposerPackage}
+            <span class="github-box">
+                <span class="box-icon"><span class="octicon octicon-cloud-download"></span></span>
+                <span class="box-count"><a href="{$package->metadata->composer->getPackageUrl()}" data-toggle="tooltip" data-placement="top" title="Total downloads over composer">{$package->metadata->downloads|count}</a></span>
+            </span>
+        {else}
+            <span class="github-box">
+                <span class="box-icon"><span class="octicon octicon-desktop-download"></span></span>
+                <span class="box-count"><a href="{$package->metadata->linker->getReleasesUrl()}" data-toggle="tooltip" data-placement="top" title="Releases on Github">{$package->metadata->releases|count}</a></span>
+            </span>
+        {/if}
+        <span class="github-box">
+            <span class="box-icon"><span class="octicon octicon-star"></span></span>
+            <span class="box-count"><a href="{$package->metadata->linker->getStarsUrl()}" data-toggle="tooltip" data-placement="top" title="Stars on Github">{$package->metadata->stars|count}</a></span>
+        </span>
+    </div>
+</section>

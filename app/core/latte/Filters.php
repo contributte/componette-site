@@ -1,0 +1,84 @@
+<?php
+
+namespace App\Core\Latte;
+
+use Nette\Utils\DateTime;
+
+final class Filters
+{
+
+    /**
+     * @param mixed $count
+     * @return mixed
+     */
+    public static function count($count)
+    {
+        if (is_numeric($count)) {
+            return $count;
+        } else {
+            return 'N/A';
+        }
+    }
+
+    /**
+     * @param mixed $time
+     * @return int
+     */
+    public static function timeDelta($time)
+    {
+        if (!$time) {
+            return FALSE;
+        } elseif (is_numeric($time)) {
+            $time = (int)$time;
+        } elseif ($time instanceof DateTime) {
+            $time = $time->format('U');
+        } else {
+            $time = strtotime($time);
+        }
+
+        return time() - $time;
+    }
+
+    /**
+     * @param mixed $time
+     * @return string
+     */
+    public static function timeAge($time)
+    {
+        $delta = self::timeDelta($time);
+        if ($delta === FALSE) return FALSE;
+
+        $delta = round($delta / 60);
+        if ($delta < 1) return 'up-to-date';
+        if ($delta < 10) return 'before-minutes';
+        if ($delta < 90) return 'before-hour';
+        if ($delta < 2880) return 'before-day';
+        if ($delta < 43200) return 'before-days';
+        if ($delta < 86400) return 'before-month';
+        if ($delta < 525960) return 'before-months';
+        if ($delta < 1051920) return 'before-year';
+        return 'before-years';
+    }
+
+    /**
+     * @param mixed $time
+     * @return string
+     */
+    public static function timeAgo($time)
+    {
+        $delta = self::timeDelta($time);
+        if ($delta === FALSE) return FALSE;
+
+        $delta = round($delta / 60);
+        if ($delta < 1) return 'up-to-date';
+        if ($delta < 10) return '< 10min';
+        if ($delta < 90) return '< 1h';
+        if ($delta < 2880) return '< 24h';
+        if ($delta < 43200) return '< ' . round($delta / 1440) . 'd';
+        if ($delta < 86400) return '< 30d';
+        if ($delta < 525960) return '< ' . round($delta / 43200) * 30 . 'd';
+        if ($delta < 1051920) return '< 1y';
+        return '< ' . round($delta / 525960) . 'y';
+    }
+
+}

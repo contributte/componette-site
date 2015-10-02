@@ -1,0 +1,13 @@
+parameters:
+
+    # Database
+    database:
+        host:
+        dbname:
+        user:
+        password:
+
+    # Error mail
+    system:
+        error:
+            email:

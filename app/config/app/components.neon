@@ -1,0 +1,4 @@
+services:
+    - App\Modules\Front\Controls\PackageList\IPackageListFactory
+    - App\Modules\Front\Controls\PackageMeta\IPackageMetaFactory
+    - App\Modules\Front\Controls\PackageDetail\IPackageDetailFactory

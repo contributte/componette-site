@@ -1,0 +1,8 @@
+services:
+
+    # Routing ==============================================
+    - App\Model\Routing\RouterFactory
+    routing.router: @App\Model\Routing\RouterFactory::create
+
+    # Portal ===============================================
+    - App\Model\Portal

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
+
+	<title>{ifset #title}{include #title|striptags} | {/ifset}Nette Packages</title>
+
+    <!-- SEO -->
+    <meta name="keywords" content="nette, packages, extension, git, github">
+    <meta name="googlebot" content="snippet,archive">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Nette Community">
+
+    <!-- FACEBOOK -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{ifset #title}{include #title|striptags} | {/ifset}Nette Packages">
+    <meta property="og:url" content="{plink //this}">
+    <meta property="og:site_name" content="Nette Packages">
+
+	<!-- STYLESHEETS -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/octicons/3.1.0/octicons.min.css">
+    <link rel="stylesheet" href="{$basePath}/assets/css/theme.css?v={$rev}">
+</head>
+<body>
+    <!-- Packages Container -->
+    <div class="container">
+
+        <div class="logo">
+            <a n:href=":Front:Home:"><img src="{$basePath}/assets/img/logo.png" alt="packages.nette.org" title="Nette Packages Central Repository"></a>
+        </div>
+
+        <div class="header">
+            <h2>Search in <strong>{$portal->getPackages()}</strong> awesome packages.</h2>
+            <form class="search-form">
+                <input data-handle="{plink :Front:Api:suggest, q => '_QUERY_'}" class="search" type="text" placeholder="Search for... datetime, captcha, curl, extension, kdyby, nextras, minetro">
+            </form>
+        </div>
+
+        <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+
+        <div class="content">
+            {include #content}
+        </div>
+
+        <div class="footer">
+            <p>Copyright © 2008 - {date('Y')} <a href="http://nettefoundation.com">Nette Foundation</a> | <a href="https://nette.org/terms-of-use">Terms of use</a> | If not stated otherwise, the contents are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/cz/">Creative Commons CC-BY-SA</a>.</p>
+        </div>
+    </div>
+
+    <!-- Nette Bar -->
+    <div class="bar">
+        <div>
+            <ul class="projects">
+                <li><a href="https://nette.org">Nette</a></li>
+                <li><a href="https://tracy.nette.org">Tracy</a></li>
+                <li><a href="https://latte.nette.org">Latte</a></li>
+                <li><a href="https://tester.nette.org">Tester</a></li>
+                <li><a href="http://ne-on.org">Neon</a></li>
+            </ul>
+            <ul class="user hidden-sm hidden-xs">
+                <li><a n:href=":Front:Home:" class="active"><span>Packages</span></a></li>
+                <li><a href="https://play.nette.org"><span>Planette</span></a></li>
+                <li><a href="https://forum.nette.org/cs/"><span>Forum</span></a></li>
+                <li><a href="https://blog.nette.org"><span>Blog</span></a></li>
+                <li><a href="https://nette.org/donate"><span>Donate</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+    {include '_parts/@ga.latte'}
+    {include '_parts/@pageinfo.latte'}
+
+    <!-- SCRIPTS -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+	<script src="{$basePath}/assets/js/nette/nette.forms.js?v={$rev}"></script>
+	<script src="{$basePath}/assets/js/nette/nette.ajax.js?v={$rev}"></script>
+	<script src="{$basePath}/assets/js/main.js?v={$rev}"></script>
+</body>
+</html>

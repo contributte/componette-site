@@ -1,0 +1,5 @@
+extensions:
+    orm: Nextras\Orm\Bridges\NetteDI\OrmExtension
+
+orm:
+    model: App\Model\ORM\Model

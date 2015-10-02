@@ -1,0 +1,13 @@
+includes:
+
+    # APPLICATION ==========================================
+    - app/components.neon
+    - app/latte.neon
+    - app/model.neon
+    - app/other.neon
+    - app/parameters.neon
+
+    # EXTENSIONS ===========================================
+    - ext/dbal.neon
+    - ext/orm.neon
+    - ext/parsedown.neon

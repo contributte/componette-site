@@ -1,0 +1,17 @@
+<div class="packages">
+    {if $packages}
+        <div class="package" n:foreach="$packages as $package">
+            <article>
+                <section class="body">
+                    <h3><a href="{plink :Front:Package:detail, $package->id}">{$package->metadata->name}</a></h3>
+
+                    <p>{$package->metadata->description|truncate:150}</p>
+                    {*<a class="tag" href="#"  n:foreach="$package->metadata->tagList as $tag">#{$tag}</a>*}
+                </section>
+                {control meta:short $package}
+            </article>
+        </div>
+    {else}
+        <p class="alert alert-danger">No package found.</p>
+    {/if}
+</div>

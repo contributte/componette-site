@@ -1,0 +1,7 @@
+parameters:
+    system:
+        error:
+            presenter: Front:Error
+
+    build:
+        rev: 1.0a

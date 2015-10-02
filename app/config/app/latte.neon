@@ -1,0 +1,8 @@
+services:
+    # Filters ==============================================
+    latte.latteFactory:
+        setup:
+            - addFilter('count', ['App\Core\Latte\Filters', 'count'])
+            - addFilter('timeDelta', ['App\Core\Latte\Filters', 'timeDelta'])
+            - addFilter('timeAgo', ['App\Core\Latte\Filters', 'timeAgo'])
+            - addFilter('timeAge', ['App\Core\Latte\Filters', 'timeAge'])
