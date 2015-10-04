@@ -7,7 +7,7 @@ use App\Modules\Front\Controls\PackageMeta\IPackageMetaFactory;
 use App\Modules\Front\Controls\PackageMeta\PackageMeta;
 use Nextras\Orm\Collection\ICollection;
 
-class PackageList extends BaseControl
+final class PackageList extends BaseControl
 {
 
     /** @var ICollection */

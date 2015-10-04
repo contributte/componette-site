@@ -2,6 +2,7 @@
 
 namespace App\Model\Routing;
 
+use App\Model\Routing\Helpers\PackagesHelper;
 use Nette\Application\IRouter;
 use Nette\Application\Routers\CliRouter;
 use Nette\Application\Routers\Route;
@@ -9,6 +10,9 @@ use Nette\Application\Routers\RouteList;
 
 class RouterFactory
 {
+
+    /** @var PackagesHelper @inject */
+    public $packagesRouterHelper;
 
     /**
      * @return IRouter
@@ -39,11 +43,29 @@ class RouterFactory
     {
         $router = new RouteList();
 
+        // FRONT ===========================================
+
         $router[] = $front = new RouteList('Front');
-        $front[] = new Route('package/<id [0-9]+>', 'Package:detail');
-        $front[] = new Route('a/<owner [a-zA-Z0-9\-]+>', 'List:owner');
-        $front[] = new Route('t/<tag [a-zA-Z0-9\-]+>', 'List:tag');
-        $front[] = new Route('<presenter>/<action>[/<id>]', 'List:default');
+        $front[] = new Route('<slug [a-zA-Z0-9\-]+/[a-zA-Z0-9\-]+>/', [
+            'presenter' => 'Package',
+            'action' => 'detail',
+            'slug' => [
+                Route::FILTER_IN => [$this->packagesRouterHelper, 'packageIn'],
+                Route::FILTER_OUT => [$this->packagesRouterHelper, 'packageOut'],
+            ],
+        ]);
+        $front[] = new Route('<slug [a-zA-Z0-9\-]+>/', [
+            'presenter' => 'List',
+            'action' => 'owner',
+            'slug' => [
+                Route::FILTER_IN => [$this->packagesRouterHelper, 'ownerIn'],
+                Route::FILTER_OUT => [$this->packagesRouterHelper, 'ownerOut'],
+            ],
+        ]);
+        $front[] = new Route('all/', 'List:default');
+        $front[] = new Route('search/', 'List:search');
+        $front[] = new Route('<presenter>/<action>', 'Home:default');
+
         return $router;
     }
 }

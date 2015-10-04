@@ -7,7 +7,7 @@ use App\Model\Exceptions\Runtime\ComposerException;
 final class Client
 {
 
-    const URL = 'https://packagist.org/';
+    const URL = 'https://packagist.org';
 
     /**
      * @param string $uri

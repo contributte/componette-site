@@ -1,0 +1,11 @@
+<div class="buttons clearfix">
+    <div class="btn-group filtering" role="group">
+        <a n:class="$control->by === 'stars' ? active, 'btn btn-warning'" n:href="this, by => stars">By stars <span class="octicon octicon-star"></span></a>
+        <a n:class="$control->by === 'downloads' ? active, 'btn btn-warning'" n:href="this, by => downloads">By downloads <span class="octicon octicon-cloud-download"></span></a>
+        <a n:class="$control->by === 'push' ? active, 'btn btn-warning'" n:href="this, by => push">By last push <span class="octicon octicon-clock"></span></a>
+    </div>
+    <div class="btn-group ordering" role="group">
+        <a n:class="$control->order === 'desc' ? active, 'btn btn-info'" n:href="this, order => desc" title="DESC"><span class="octicon octicon-arrow-up"></span></a>
+        <a n:class="$control->order === 'asc' ? active, 'btn btn-info'" n:href="this, order => asc" title="ASC"><span class="octicon octicon-arrow-down"></span></a>
+    </div>
+</div>

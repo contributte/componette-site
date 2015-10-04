@@ -3,8 +3,7 @@
 namespace App\Model\ORM;
 
 use App\Model\Packages\Composer;
-use App\Model\Packages\Content\Content;
-use App\Model\Packages\Content\ContentManager;
+use App\Model\Packages\Extra;
 use App\Model\Packages\Linker;
 use Nette\Utils\DateTime;
 
@@ -21,16 +20,15 @@ use Nette\Utils\DateTime;
  * @property int|NULL       $issues
  * @property int|NULL       $forks
  * @property int|NULL       $releases
- * @property string|NULL    $tags
+ * @property array|NULL     $tags
+ * @property string|NULL    $content
  * @property DateTime|NULL  $created
- * @property DateTime|NULL  $changed
  * @property DateTime|NULL  $pushed
  * @property DateTime|NULL  $updated
- * @property string|NULL    $content
- * @property string|NULL    $extra
+ * @property DateTime|NULL  $cronChanged
+ * @property Extra|NULL     $extra
  * @property Linker         $linker         {virtual}
  * @property Composer\Data  $composer       {virtual}
- * @property array          $tagList        {virtual}
  */
 class Metadata extends AbstractEntity
 {
@@ -41,28 +39,20 @@ class Metadata extends AbstractEntity
     /** @var Composer\Data */
     private $composer;
 
-    /** @var Content */
-    private $content;
-
-    /**
-     * @param ContentManager $manager
-     */
-    public function injectPrimary(ContentManager $manager)
-    {
-        $this->content = new Content($manager);
-    }
-
     /**
      * @param mixed $tags
      * @return array
      */
-    protected function getterTagList()
+    protected function setterTags($tags)
     {
-        if ($this->tags) {
-            return explode(',', $this->tags);
-        }
-        return [];
+        if (!$tags) return [];
+        if (is_array($tags)) return $tags;
+        return explode(',', $tags);
     }
+
+    /**
+     * VIRTUAL *****************************************************************
+     */
 
     /**
      * @return Linker
@@ -82,10 +72,34 @@ class Metadata extends AbstractEntity
     protected function getterComposer()
     {
         if (!$this->composer) {
-            $this->composer = new Composer\Data($this->extra);
+            $this->composer = new Composer\Data($this->extra->get('composer', []));
         }
 
         return $this->composer;
+    }
+
+    /**
+     * EVENTS ******************************************************************
+     */
+
+    /**
+     * @param array $data
+     */
+    protected function onLoad(array $data)
+    {
+        $data['extra'] = new Extra($data['extra'] ? json_decode($data['extra'], TRUE) : []);
+        parent::onLoad($data);
+    }
+
+    protected function onBeforePersist()
+    {
+        parent::onBeforePersist();
+        if (($extra = $this->getRawProperty('extra'))) {
+            $this->setRawValue('extra', $extra->export());
+        } else {
+            $this->setRawValue('extra', NULL);
+        }
+        $this->setRawValue('tags', $this->tags ? implode(',', $this->tags) : NULL);
     }
 
 }

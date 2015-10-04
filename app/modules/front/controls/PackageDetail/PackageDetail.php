@@ -4,11 +4,10 @@ namespace App\Modules\Front\Controls\PackageDetail;
 
 use App\Core\UI\BaseControl;
 use App\Model\ORM\Package;
-use App\Model\Packages\Content\ContentManager;
 use App\Modules\Front\Controls\PackageMeta\IPackageMetaFactory;
 use App\Modules\Front\Controls\PackageMeta\PackageMeta;
 
-class PackageDetail extends BaseControl
+final class PackageDetail extends BaseControl
 {
 
     /** @var Package */

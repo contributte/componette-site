@@ -20,7 +20,9 @@ final class PackagesMapper extends AbstractMapper
             ->orWhere("[m.owner] LIKE %s", "%$q%")
             ->orWhere("[m.name] LIKE %s", "%$q%")
             ->orWhere("[m.description] LIKE %s", "%$q%")
-            ->orWhere("[m.homepage] LIKE %s", "%$q%");
+            //->orWhere("[m.homepage] LIKE %s", "%$q%")
+            //->orWhere("[m.content] LIKE %s", "%$q%")
+            ->andWhere('[p.state] = %s', Package::STATE_ACTIVE);
     }
 
 }

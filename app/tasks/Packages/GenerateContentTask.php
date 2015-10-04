@@ -4,30 +4,22 @@ namespace App\Tasks\Packages;
 
 use App\Model\ORM\Package;
 use App\Model\ORM\PackagesRepository;
-use App\Model\Packages\Content\ContentManager;
 use App\Tasks\BaseTask;
-use Nette\Utils\Arrays;
 
-final class GenerateContentsTask extends BaseTask
+final class GenerateContentTask extends BaseTask
 {
 
     /** @var PackagesRepository */
     private $packagesRepository;
 
-    /** @var ContentManager */
-    private $contentManager;
-
     /**
      * @param PackagesRepository $packagesRepository
-     * @param ContentManager $contentManager
      */
     function __construct(
-        PackagesRepository $packagesRepository,
-        ContentManager $contentManager
+        PackagesRepository $packagesRepository
     )
     {
         $this->packagesRepository = $packagesRepository;
-        $this->contentManager = $contentManager;
     }
 
     /**
@@ -41,14 +33,13 @@ final class GenerateContentsTask extends BaseTask
         foreach ($packages as $package) {
 
             // Skip packages with bad data
-            if (($data = $package->metadata->extra)) {
-                $data = json_decode($data, TRUE);
-
-                if (($url = Arrays::get($data, ['github', 'readme', 'download_url'], NULL))) {
+            if (($extra = $package->metadata->extra)) {
+                if (($url = $extra->get(['github', 'readme', 'download_url'], NULL))) {
                     $content = @file_get_contents($url);
 
                     if ($content) {
                         $package->metadata->content = $content;
+                        $this->packagesRepository->persistAndFlush($package);
                     } else {
                         $this->log('Skip (content) [failed download content]: ' . $package->repository);
                     }
@@ -59,6 +50,7 @@ final class GenerateContentsTask extends BaseTask
                 $this->log('Skip (content) [no extra data]: ' . $package->repository);
             }
         }
+
 
         return TRUE;
     }

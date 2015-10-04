@@ -20,11 +20,11 @@ final class PackagePresenter extends BasePresenter
     protected $package;
 
     /**
-     * @param int $id
+     * @param int $slug
      */
-    public function actionDetail($id)
+    public function actionDetail($slug)
     {
-        $this->package = $this->packagesRepository->getById($id);
+        $this->package = $this->packagesRepository->getById($slug);
         if (!$this->package) {
             $this->error('Package not found');
         }

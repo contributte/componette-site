@@ -38,7 +38,7 @@ final class Service
      */
     public function repo($owner, $repo)
     {
-        return $this->call("/repos/$owner/$repo");
+        return $this->call("/packages/$owner/$repo.json");
     }
 
 }

@@ -2,25 +2,39 @@
 
 namespace App\Modules\Cli;
 
-use App\Tasks\Packages\GenerateContentsTask;
-use App\Tasks\Packages\UpdatePackagesTask;
+use App\Tasks\Packages\GenerateContentTask;
+use App\Tasks\Packages\UpdateComposerTask;
+use App\Tasks\Packages\UpdateMetadataTask;
 
 final class PackagesPresenter extends BasePresenter
 {
 
-    /** @var GenerateContentsTask @inject */
+    /** @var GenerateContentTask @inject */
     public $generateContentTask;
 
-    /** @var UpdatePackagesTask @inject */
-    public $updatePackageTask;
+    /** @var UpdateMetadataTask @inject */
+    public $updateMetadataTask;
 
-    public function actionUpdatePackages()
+    /** @var UpdateComposerTask @inject */
+    public $updateComposerTask;
+
+    public function actionUpdate()
     {
-        $this->info($this->updatePackageTask->run($this->getParameters()));
+        if ($this->getParameter('metadata', FALSE)) {
+            $this->info($this->updateMetadataTask->run($this->getParameters()));
+        } else if ($this->getParameter('composer', FALSE)) {
+            $this->info($this->updateComposerTask->run($this->getParameters()));
+        } else {
+            $this->info('Select type');
+        }
     }
 
-    public function actionGenerateContents()
+    public function actionGenerate()
     {
-        $this->info($this->generateContentTask->run($this->getParameters()));
+        if ($this->getParameter('content', FALSE)) {
+            $this->info($this->generateContentTask->run($this->getParameters()));
+        } else {
+            $this->info('Select type');
+        }
     }
 }

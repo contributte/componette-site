@@ -1,8 +1,11 @@
 services:
 
     # Routing ==============================================
-    - App\Model\Routing\RouterFactory
+    - App\Model\Routing\Helpers\PackagesHelper
+    routing.routeFactory:
+        class: App\Model\Routing\RouterFactory
+        inject: on
     routing.router: @App\Model\Routing\RouterFactory::create
 
     # Portal ===============================================
-    - App\Model\Portal
+    - App\Model\Portal(..., ..., @container::parameters)

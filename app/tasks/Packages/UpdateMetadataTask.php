@@ -8,7 +8,7 @@ use App\Model\WebServices\Github\Service;
 use App\Tasks\BaseTask;
 use Nette\Utils\DateTime;
 
-final class UpdatePackagesTask extends BaseTask
+final class UpdateMetadataTask extends BaseTask
 {
 
     /** @var PackagesRepository */
@@ -37,18 +37,13 @@ final class UpdatePackagesTask extends BaseTask
     public function run(array $args = [])
     {
         /** @var Package[] $packages */
-
-        if (isset($args['rest'])) {
-            $packages = $this->packagesRepository->findBy(['this->metadata->owner' => NULL]);
-        } else {
-            $packages = $this->packagesRepository->findAll();
-        }
+        $packages = $this->packagesRepository->findAll();
 
         foreach ($packages as $package) {
             list ($owner, $repo) = explode('/', $package->repository);
             $meta = $package->metadata;
 
-            // Process only success responses form Github
+            // Process only success responses form GitHub
 
             // Base metadata
             if (($response = $this->github->repo($owner, $repo))) {
@@ -61,6 +56,8 @@ final class UpdatePackagesTask extends BaseTask
                 $meta->watchers = $response['watchers_count'];
                 $meta->issues = $response['open_issues_count'];
                 $meta->forks = $response['forks_count'];
+                $meta->created = new DateTime($response['created_at']);
+                $meta->updated = new DateTime($response['updated_at']);
                 $meta->pushed = new DateTime($response['pushed_at']);
             } else {
                 $this->log('Skip (base): ' . $package->repository);
@@ -68,14 +65,36 @@ final class UpdatePackagesTask extends BaseTask
 
             // Readme
             if (($response = $this->github->readme($owner, $repo))) {
-                $meta->extra['github']['readme'] = $response;
+                $meta->extra->set('github', ['readme' => $response]);
             } else {
                 $this->log('Skip (readme): ' . $package->repository);
             }
+
+            // Composer
+            if (($response = $this->github->composer($owner, $repo))) {
+                $meta->extra->set('github', ['composer' => $response]);
+
+                if (($url = $meta->extra->get(['github', 'composer', 'download_url'], NULL))) {
+                    if (($content = @file_get_contents($url))) {
+                        $composer = @json_decode($content, TRUE);
+                        $meta->extra->set('composer', $composer);
+                    } else {
+                        $this->log('Skip (composer) [invalid composer.json]: ' . $package->repository);
+                    }
+                } else {
+                    $this->log('Skip (composer) [cant download composer.json]: ' . $package->repository);
+                }
+            } else {
+                $this->log('Skip (composer): ' . $package->repository);
+            }
+
+            // Set last update
+            $meta->cronChanged = new DateTime();
 
             $this->packagesRepository->persistAndFlush($package);
         }
 
         return TRUE;
     }
+
 }

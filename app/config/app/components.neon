@@ -2,3 +2,5 @@ services:
     - App\Modules\Front\Controls\PackageList\IPackageListFactory
     - App\Modules\Front\Controls\PackageMeta\IPackageMetaFactory
     - App\Modules\Front\Controls\PackageDetail\IPackageDetailFactory
+    - App\Modules\Front\Controls\PackageModal\IPackageModalFactory
+    - App\Modules\Front\Controls\Search\ISearchFactory

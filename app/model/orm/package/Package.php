@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Model\ORM;
+
 use Nette\Utils\DateTime;
 
 /**
@@ -20,6 +21,7 @@ class Package extends AbstractEntity
 
     const STATE_ACTIVE = 'ACTIVE';
     const STATE_ARCHIVED = 'ARCHIVED';
+    const STATE_QUEUED = 'QUEUED';
 
     /**
      * @return bool

@@ -3,43 +3,53 @@
 namespace App\Modules\Front;
 
 use App\Model\ORM\Package;
-use App\Model\ORM\PackagesRepository;
-use App\Modules\Front\Controls\PackageList\IPackageListFactory;
-use App\Modules\Front\Controls\PackageList\PackageList;
+use Nextras\Orm\Collection\ICollection;
 
-final class ListPresenter extends BasePresenter
+final class ListPresenter extends BasePackagesPresenter
 {
 
-    /** @var IPackageListFactory @inject */
-    public $packageListFactory;
-
-    /** @var PackagesRepository @inject */
-    public $packagesRepository;
-
-    /** @var Package[] */
+    /** @var ICollection|Package[] */
     private $packages;
 
     /**
      * DEFAULT *****************************************************************
-     * *************************************************************************
      */
 
     public function actionDefault()
     {
-        $this->packages = $this->packagesRepository
-            ->findActive()
-            ->limitBy(40);
+        $this->packages = $this->packagesFacade->findAll();
     }
 
     /**
      * BY OTHER ****************************************************************
      */
 
-    public function actionOwner($owner)
+    /**
+     * @param string $slug
+     */
+    public function actionOwner($slug)
     {
-        $this->packages = $this->packagesRepository
-            ->findActive()
-            ->limitBy(40);
+        $this->packages = $this->packagesFacade->findByOwner($slug);
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function renderOwner($slug)
+    {
+        $this->template->owner = $slug;
+    }
+
+    /**
+     * BY SEARCH ***************************************************************
+     */
+
+    /**
+     * @param string $q
+     */
+    public function actionSearch($q)
+    {
+        $this->packages = $this->packagesFacade->findByQuery($q);
     }
 
     /**
@@ -47,10 +57,10 @@ final class ListPresenter extends BasePresenter
      */
 
     /**
-     * @return PackageList
+     * @return Controls\PackageList\PackageList
      */
     protected function createComponentPackages()
     {
-        return $this->packageListFactory->create($this->packages);
+        return $this->createPackagesControl($this->packages);
     }
 }

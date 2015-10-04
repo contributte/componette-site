@@ -5,3 +5,6 @@ parameters:
 
     build:
         rev: 1.0a
+
+    github:
+        token: NULL

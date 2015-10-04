@@ -16,12 +16,18 @@ final class ApiPresenter extends BasePresenter
     public function actionSuggest($q)
     {
         $output = [];
-        $packages = $this->packagesRepository->search($q);
+        $packages = $this->packagesRepository
+            ->search($q)
+            ->orderBy('this->metadata->downloads', 'DESC');
+
         foreach ($packages as $package) {
             $output[] = [
                 'id' => $package->id,
-                'value' => $package->metadata->name,
+                'name' => $package->metadata->name,
+                'description' => $package->metadata->description,
                 'link' => $this->link(':Front:Package:detail', $package->id),
+                'stars' => $package->metadata->stars,
+                'downloads' => $package->metadata->downloads,
             ];
         }
 

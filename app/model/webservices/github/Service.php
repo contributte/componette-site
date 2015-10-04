@@ -48,7 +48,6 @@ final class Service
      */
     public function readme($owner, $repo)
     {
-
         return $this->call("/repos/$owner/$repo/readme");
     }
 
@@ -61,6 +60,16 @@ final class Service
     public function content($owner, $repo, $path)
     {
         return $this->call("/repos/$owner/$repo/contents/$path");
+    }
+
+    /**
+     * @param string $owner
+     * @param string $repo
+     * @return mixed
+     */
+    public function composer($owner, $repo)
+    {
+        return $this->content($owner, $repo, 'composer.json');
     }
 
     /**

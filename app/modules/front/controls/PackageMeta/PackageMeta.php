@@ -5,7 +5,7 @@ namespace App\Modules\Front\Controls\PackageMeta;
 use App\Core\UI\BaseControl;
 use App\Model\ORM\Package;
 
-class PackageMeta extends BaseControl
+final class PackageMeta extends BaseControl
 {
 
     /**

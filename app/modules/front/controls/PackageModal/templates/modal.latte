@@ -1,0 +1,22 @@
+<div class="modal fade" id="package-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form n:name="form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Package Form</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label n:name="package">{$form['package']->label}</label>
+                        <input n:name="package" class="form-control" placeholder="https://github.com/{l}owner{r}/{l}repo{r}">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input class="btn btn-primary" n:name="add">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

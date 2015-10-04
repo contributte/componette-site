@@ -35,13 +35,27 @@
         </div>
 
         <div class="header">
-            <h2>Search in <strong>{$portal->getPackages()}</strong> awesome packages.</h2>
-            <form class="search-form">
-                <input data-handle="{plink :Front:Api:suggest, q => '_QUERY_'}" class="search" type="text" placeholder="Search for... datetime, captcha, curl, extension, kdyby, nextras, minetro">
-            </form>
+            <div class="breadcrumb clearfix">
+                <div class="pull-left" n:block="#breadcrumbs">
+                    <a n:href=":Front:Home:">Home</a>
+                </div>
+                <div class="pull-right">
+                    <a n:href=":Front:List:">All packages</a> |
+                    <a href="#" data-toggle="modal" data-target="#package-modal"><strong>Add new package</strong></a>
+                </div>
+            </div>
+            <div class="search">
+                <h2>Search in <strong>{$portal->getPackagesCount()}</strong> awesome packages.</h2>
+                {control search}
+                {if $presenter->isLinkCurrent(':Front:List:*')}
+                    {control search:controls}
+                {/if}
+            </div>
         </div>
 
-        <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+        <div class="alerts" n:inner-foreach="$flashes as $flash">
+            <div class="alert alert-{$flash->type}">{$flash->message}</div>
+        </div>
 
         <div class="content">
             {include #content}
@@ -72,6 +86,7 @@
         </div>
     </div>
 
+    {control modal}
     {include '_parts/@ga.latte'}
     {include '_parts/@pageinfo.latte'}
 
@@ -80,6 +95,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.min.js"></script>
 	<script src="{$basePath}/assets/js/nette/nette.forms.js?v={$rev}"></script>
 	<script src="{$basePath}/assets/js/nette/nette.ajax.js?v={$rev}"></script>
 	<script src="{$basePath}/assets/js/main.js?v={$rev}"></script>

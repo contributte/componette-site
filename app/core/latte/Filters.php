@@ -7,6 +7,9 @@ use Nette\Utils\DateTime;
 final class Filters
 {
 
+    /** @var string */
+    public static $datetime = 'd.m.Y H:i';
+
     /**
      * @param mixed $count
      * @return mixed
@@ -21,10 +24,22 @@ final class Filters
     }
 
     /**
-     * @param mixed $time
-     * @return int
+     * @param mixed $date
+     * @return mixed
      */
-    public static function timeDelta($time)
+    public static function datetime($date)
+    {
+        $date = self::time($date);
+        if ($date === FALSE) return FALSE;
+
+        return date(self::$datetime, $date);
+    }
+
+    /**
+     * @param $time
+     * @return mixed
+     */
+    public static function time($time)
     {
         if (!$time) {
             return FALSE;
@@ -36,6 +51,18 @@ final class Filters
             $time = strtotime($time);
         }
 
+        return $time;
+    }
+
+    /**
+     * @param mixed $time
+     * @return int
+     */
+    public static function timeDelta($time)
+    {
+        $time = self::time($time);
+        if ($time === FALSE) return FALSE;
+
         return time() - $time;
     }
 
@@ -46,7 +73,7 @@ final class Filters
     public static function timeAge($time)
     {
         $delta = self::timeDelta($time);
-        if ($delta === FALSE) return FALSE;
+        if ($delta === FALSE) return 'uknown';
 
         $delta = round($delta / 60);
         if ($delta < 1) return 'up-to-date';
@@ -67,7 +94,7 @@ final class Filters
     public static function timeAgo($time)
     {
         $delta = self::timeDelta($time);
-        if ($delta === FALSE) return FALSE;
+        if ($delta === FALSE) return 'N/A';
 
         $delta = round($delta / 60);
         if ($delta < 1) return 'up-to-date';

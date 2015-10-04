@@ -11,3 +11,7 @@ parameters:
     system:
         error:
             email:
+
+    # Github
+    github:
+        token:
