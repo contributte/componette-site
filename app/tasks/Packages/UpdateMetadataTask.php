@@ -37,7 +37,11 @@ final class UpdateMetadataTask extends BaseTask
     public function run(array $args = [])
     {
         /** @var Package[] $packages */
-        $packages = $this->packagesRepository->findAll();
+        if (isset($args['queued']) && $args['queued'] === TRUE) {
+            $packages = $this->packagesRepository->findBy(['this->state' => Package::STATE_QUEUED]);
+        } else {
+            $packages = $this->packagesRepository->findAll();
+        }
 
         foreach ($packages as $package) {
             list ($owner, $repo) = explode('/', $package->repository);
@@ -59,7 +63,9 @@ final class UpdateMetadataTask extends BaseTask
                 $meta->created = new DateTime($response['created_at']);
                 $meta->updated = new DateTime($response['updated_at']);
                 $meta->pushed = new DateTime($response['pushed_at']);
+                $package->state = Package::STATE_ACTIVE;
             } else {
+                $package->state = Package::STATE_ARCHIVED;
                 $this->log('Skip (base): ' . $package->repository);
             }
 
