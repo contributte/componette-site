@@ -33,6 +33,16 @@ final class Extra
     }
 
     /**
+     * @param string $key
+     * @param mixed $value
+     * @return mixed
+     */
+    public function append($key, $value)
+    {
+        $this->data[$key] = array_merge(isset($this->data[$key]) ? $this->data[$key] : [], (array)$value);
+    }
+
+    /**
      * @param string|array $key
      * @param mixed $default
      * @return mixed
