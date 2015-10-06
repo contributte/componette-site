@@ -37,7 +37,8 @@ final class UpdateComposerTask extends BaseTask
     public function run(array $args = [])
     {
         /** @var Package[] $packages */
-        $packages = $this->packagesRepository->findAll();
+        $packages = $this->packagesRepository->findActive();
+
         foreach ($packages as $package) {
 
             // Skip packages with bad data

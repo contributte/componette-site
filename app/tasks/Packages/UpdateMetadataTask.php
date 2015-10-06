@@ -40,7 +40,7 @@ final class UpdateMetadataTask extends BaseTask
         if (isset($args['queued']) && $args['queued'] === TRUE) {
             $packages = $this->packagesRepository->findBy(['this->state' => Package::STATE_QUEUED]);
         } else {
-            $packages = $this->packagesRepository->findAll();
+            $packages = $this->packagesRepository->findActive();
         }
 
         foreach ($packages as $package) {
@@ -71,14 +71,14 @@ final class UpdateMetadataTask extends BaseTask
 
             // Readme
             if (($response = $this->github->readme($owner, $repo))) {
-                $meta->extra->set('github', ['readme' => $response]);
+                $meta->extra->append('github', ['readme' => $response]);
             } else {
                 $this->log('Skip (readme): ' . $package->repository);
             }
 
             // Composer
             if (($response = $this->github->composer($owner, $repo))) {
-                $meta->extra->set('github', ['composer' => $response]);
+                $meta->extra->append('github', ['composer' => $response]);
 
                 if (($url = $meta->extra->get(['github', 'composer', 'download_url'], NULL))) {
                     if (($content = @file_get_contents($url))) {

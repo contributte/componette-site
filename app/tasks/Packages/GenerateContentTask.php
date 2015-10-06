@@ -29,6 +29,13 @@ final class GenerateContentTask extends BaseTask
     public function run(array $args = [])
     {
         /** @var Package[] $packages */
+        if (isset($args['fresh']) && $args['fresh'] === TRUE) {
+            $packages = $this->packagesRepository->findActive()->findBy(['this->metadata->content' => NULL]);
+        } else {
+            $packages = $this->packagesRepository->findActive();
+        }
+
+        /** @var Package[] $packages */
         $packages = $this->packagesRepository->findAll();
         foreach ($packages as $package) {
 
