@@ -35,7 +35,7 @@ CREATE TABLE `packages` (
   `state` enum('ACTIVE','ARCHIVED','QUEUED') NOT NULL DEFAULT 'QUEUED',
   `repository` varchar(255) NOT NULL,
   `created` datetime NOT NULL,
-  `updated` datetime NOT NULL,
+  `updated` datetime DEFALT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `repository` (`repository`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
