@@ -53,11 +53,15 @@ $(function () {
                         templates: {
                             empty: 'No results',
                             suggestion: Handlebars.compile(
-                                '<div>' +
+                                '<div class="clearfix">' +
+                                '<div class="pull-left">' +
                                 '<h5><a href="{{link}}">{{name}}</a></h5>' +
                                 '<p>{{description}}</p>' +
+                                '</div>' +
+                                '<div class="pull-right">' +
                                 '<span class="octicon octicon-cloud-download"></span> {{downloads}} &nbsp;' +
                                 '<span class="octicon octicon-star"></span> {{stars}}' +
+                                '</div>' +
                                 '</div>'
                             )
                         }

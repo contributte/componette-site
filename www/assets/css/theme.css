@@ -146,13 +146,20 @@ a[href*="://"]:after {
 }
 .header .search form.search-form .tt-suggestion {
   display: block;
-  padding: 5px 15px;
+  padding: 8px 15px;
   border-bottom: 1px solid #cdcdcd;
   text-align: left;
   cursor: pointer;
 }
 .header .search form.search-form .tt-suggestion h5 {
-  margin: 2px;
+  margin: 2px 0;
+}
+.header .search form.search-form .tt-suggestion .pull-left {
+  float: left;
+}
+.header .search form.search-form .tt-suggestion .pull-right {
+  float: right;
+  vertical-align: top;
 }
 .header .search form.search-form .tt-suggestion:last-of-type {
   border-bottom: 0;
