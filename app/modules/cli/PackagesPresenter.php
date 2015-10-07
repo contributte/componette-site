@@ -77,7 +77,7 @@ final class PackagesPresenter extends BasePresenter
 
         if ($this->getParameter('content', FALSE)) {
 
-            $this->output->outln('* r [GenerateContent]');
+            $this->output->outln('* running [GenerateContent]');
             $res = $this->generateContentTask->run($this->getParameters());
             $this->output->outln('* result [GenerateContent](' . $res . ')');
 
