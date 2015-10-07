@@ -364,6 +364,12 @@ a[href*="://"]:after {
   font-weight: bold;
   padding: 1px 4px;
 }
+.page-default {
+  padding: 20px;
+}
+.page-default > h1 {
+  margin-top: 0;
+}
 .page-error {
   padding: 20px;
 }

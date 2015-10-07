@@ -1,0 +1,80 @@
+{block #title}Status{/block}
+{block #breadcrumbs}
+    <a n:href=":Front:Home:">Home</a> > Status page
+{/block}
+{block #content}
+<section class="page page-default">
+    <h1>Status page</h1>
+
+    <h2>Packages</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Status</th>
+                <th>Composer</th>
+                <th>Bower</th>
+                <th>Unknown</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Active</td>
+                <td>{$status['packages']['active']['composer']}</td>
+                <td>{$status['packages']['active']['bower']}</td>
+                <td>{$status['packages']['active']['unknown']}</td>
+                <td>{$status['packages']['active']['total']}</td>
+            </tr>
+            <tr>
+                <td>Queued</td>
+                <td>{$status['packages']['queued']['composer']}</td>
+                <td>{$status['packages']['queued']['bower']}</td>
+                <td>{$status['packages']['queued']['unknown']}</td>
+                <td>{$status['packages']['queued']['total']}</td>
+            </tr>
+            <tr>
+                <td>Archived</td>
+                <td>{$status['packages']['archived']['composer']}</td>
+                <td>{$status['packages']['archived']['bower']}</td>
+                <td>{$status['packages']['archived']['unknown']}</td>
+                <td>{$status['packages']['archived']['total']}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Total</th>
+                <th>{$status['packages']['total']['composer']}</th>
+                <th>{$status['packages']['total']['bower']}</th>
+                <th>{$status['packages']['total']['unknown']}</th>
+                <th>{$status['packages']['total']['total']}</th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <h2>GitHub</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Type</th>
+            <th>Limit</th>
+            <th>Remaining</th>
+            <th>Reset</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Core</td>
+            <td>{$status['github']['core']['limit']}</td>
+            <td>{$status['github']['core']['remaining']}</td>
+            <td>{$status['github']['core']['reset']|date:'d.m.Y H:i:s'}</td>
+        </tr>
+        <tr>
+            <td>Search</td>
+            <td>{$status['github']['search']['limit']}</td>
+            <td>{$status['github']['search']['remaining']}</td>
+            <td>{$status['github']['search']['reset']|date:'d.m.Y H:i:s'}</td>
+        </tr>
+        </tbody>
+    </table>
+
+</section>

@@ -2,7 +2,6 @@
 
 namespace App\Modules\Front;
 
-use App\Model\ORM\Package;
 use App\Model\ORM\PackagesFacade;
 use App\Model\Search\Search;
 use App\Modules\Front\Controls\PackageList\IPackageListFactory;

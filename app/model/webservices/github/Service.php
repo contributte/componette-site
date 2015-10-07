@@ -93,4 +93,14 @@ final class Service
 
         return $this->call("/repos/$owner/$repo/stargazers");
     }
+
+    /**
+     * @return mixed
+     */
+    public function limit()
+    {
+
+        return $this->call("/rate_limit");
+    }
+
 }

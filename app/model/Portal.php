@@ -5,6 +5,8 @@ namespace App\Model;
 use App\Model\ORM\PackagesRepository;
 use Nette\Caching\Cache;
 use Nette\Caching\IStorage;
+use Nette\DI\Helpers;
+use Nette\Utils\Arrays;
 use Nette\Utils\DateTime;
 
 final class Portal
@@ -14,7 +16,7 @@ final class Portal
     private $cached = [];
 
     /** @var array */
-    private $data = [];
+    private $parameters = [];
 
     /** @var Cache */
     private $cache;
@@ -36,7 +38,7 @@ final class Portal
     {
         $this->cache = new Cache($storage, 'Portal');
         $this->packagesRepository = $packagesRepository;
-        $this->data = $parameters;
+        $this->parameters = $parameters;
 
         $this->build();
     }
@@ -49,7 +51,7 @@ final class Portal
             $cached = [];
 
             // Package counts
-            $cached['packages'] = $this->packagesRepository->findActive()->count();
+            $cached['packages'] = $this->packagesRepository->findActive()->countStored();
 
             return $cached;
         });
@@ -68,15 +70,31 @@ final class Portal
      */
     public function isDebug()
     {
-        return $this->data['environment'] === 'development';
+        return $this->parameters['environment'] === 'development';
     }
 
-    /*
-     * @return int
+    /**
+     * @param string $name
+     * @param mixed $default
+     * @return mixed
      */
-    public function getRevision()
+    public function get($name, $default = NULL)
     {
-        return $this->data['build']['rev'];
+        if (func_num_args() > 1) {
+            return Arrays::get($this->parameters, $name, $default);
+        } else {
+            return Arrays::get($this->parameters, $name);
+        }
+    }
+
+    /**
+     * @param string $name
+     * @param boolean $recursive
+     * @return mixed
+     */
+    public function expand($name, $recursive = FALSE)
+    {
+        return Helpers::expand("%$name%", $this->parameters, $recursive);
     }
 
 }

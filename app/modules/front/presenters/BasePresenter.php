@@ -32,7 +32,7 @@ abstract class BasePresenter extends Presenter
         parent::beforeRender();
 
         $this->template->portal = $this->portal;
-        $this->template->rev = $this->portal->getRevision();
+        $this->template->rev = $this->portal->expand('build.rev');
         $this->template->debug = $this->portal->isDebug();
     }
 
