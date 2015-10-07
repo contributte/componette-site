@@ -30,6 +30,7 @@ final class Client
 
         $headers = [
             'Content-type: application/json',
+            'Time-Zone: Europe/Prague',
         ];
 
         if ($this->token) {
