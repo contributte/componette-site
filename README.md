@@ -23,6 +23,6 @@
 
 ## Install
 
-1. Rename app/config/config.local.sample to config.local.neon and fill parameters
+1. Rename `app/config/config.local.sample` to `config.local.neon` and fill parameters
 2. Create database and setup tables (and fixtures)
 3. Run `composer install`
