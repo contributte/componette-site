@@ -5,39 +5,39 @@
     <div class="pull-right">
         <span class="github-box github-box-icons hidden-w500 hidden-sm">
             <span class="box-icon">
-                <a href="{$package->metadata->linker->getIssuesUrl()}" data-toggle="tooltip" data-placement="top" title="Open issue"><span class="octicon octicon-diff-added"></span></a>
+                <a data-ga="1" data-event="click" data-category="meta-full" data-action="open-issue" href="{$package->metadata->linker->getIssuesUrl()}" data-toggle="tooltip" data-placement="top" title="Open issue"><span class="octicon octicon-diff-added"></span></a>
             </span>
             <span class="box-icon">
-                <a href="{$package->metadata->linker->getPullRequestsUrl()}" data-toggle="tooltip" data-placement="top" title="Send pull request"><span class="octicon octicon-git-merge"></span></a>
+                <a data-ga="1" data-event="click" data-category="meta-full" data-action="send-pull-request" href="{$package->metadata->linker->getPullRequestsUrl()}" data-toggle="tooltip" data-placement="top" title="Send pull request"><span class="octicon octicon-git-merge"></span></a>
             </span>
         </span>
         <span class="github-box">
             <span class="box-icon"><span class="octicon octicon-clock"></span></span>
-            <span class="box-count box-age"><a href="{$package->metadata->linker->getCommitsUrl()}" data-toggle="tooltip" data-placement="top" title="Last push on {$package->metadata->pushed|datetime}">{$package->metadata->pushed|timeAgo}</a></span>
+            <span class="box-count box-age"><a data-ga="1" data-event="click" data-category="meta-full" data-action="commits" href="{$package->metadata->linker->getCommitsUrl()}" data-toggle="tooltip" data-placement="top" title="Last push on {$package->metadata->pushed|datetime}">{$package->metadata->pushed|timeAgo}</a></span>
         </span>
         {if $package->isComposerPackage}
             <span class="github-box">
                 <span class="box-icon"><span class="octicon octicon-cloud-download"></span></span>
-                <span class="box-count"><a href="{$package->metadata->composer->getPackageUrl()}" data-toggle="tooltip" data-placement="top" title="Total downloads over composer">{$package->metadata->downloads|count}</a></span>
+                <span class="box-count"><a data-ga="1" data-event="click" data-category="meta-full" data-action="composer" href="{$package->metadata->composer->getPackageUrl()}" data-toggle="tooltip" data-placement="top" title="Total downloads over composer">{$package->metadata->downloads|count}</a></span>
             </span>
         {elseif $package->isBowerPackage}
             <span class="github-box">
                 <span class="box-icon"><span class="octicon octicon-cloud-download"></span></span>
-                <span class="box-count"><a href="{$package->metadata->linker->getRepoUrl()}" data-toggle="tooltip" data-placement="top" title="Total hits over bower">{$package->metadata->downloads|count}</a></span>
+                <span class="box-count"><a data-ga="1" data-event="click" data-category="meta-full" data-action="repo" href="{$package->metadata->linker->getRepoUrl()}" data-toggle="tooltip" data-placement="top" title="Total hits over bower">{$package->metadata->downloads|count}</a></span>
             </span>
         {else}
             <span class="github-box">
                 <span class="box-icon"><span class="octicon octicon-desktop-download"></span></span>
-                <span class="box-count"><a href="{$package->metadata->linker->getReleasesUrl()}" data-toggle="tooltip" data-placement="top" title="Releases on Github">{$package->metadata->releases|count}</a></span>
+                <span class="box-count"><a data-ga="1" data-event="click" data-category="meta-full" data-action="releases" href="{$package->metadata->linker->getReleasesUrl()}" data-toggle="tooltip" data-placement="top" title="Releases on Github">{$package->metadata->releases|count}</a></span>
             </span>
         {/if}
         <span class="github-box hidden-w500 hidden-sm">
             <span class="box-icon"><span class="octicon octicon-issue-opened"></span></span>
-            <span class="box-count"><a href="{$package->metadata->linker->getIssuesUrl()}" data-toggle="tooltip" data-placement="top" title="Issues on Github">{$package->metadata->issues|count}</a></span>
+            <span class="box-count"><a data-ga="1" data-event="click" data-category="meta-full" data-action="issues" href="{$package->metadata->linker->getIssuesUrl()}" data-toggle="tooltip" data-placement="top" title="Issues on Github">{$package->metadata->issues|count}</a></span>
         </span>
         <span class="github-box">
             <span class="box-icon"><span class="octicon octicon-star"></span></span>
-            <span class="box-count"><a href="{$package->metadata->linker->getStarsUrl()}" data-toggle="tooltip" data-placement="top" title="Stars on Github">{$package->metadata->stars|count}</a></span>
+            <span class="box-count"><a data-ga="1" data-event="click" data-category="meta-full" data-action="stars" href="{$package->metadata->linker->getStarsUrl()}" data-toggle="tooltip" data-placement="top" title="Stars on Github">{$package->metadata->stars|count}</a></span>
         </span>
     </div>
 </section>
