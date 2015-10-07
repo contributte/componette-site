@@ -15,7 +15,7 @@ latte:
 
 session:
     debugger: %debugMode%
-    expiration: 1 year
+    expiration: '+14 days'
     autoStart: smart
 
 application:
