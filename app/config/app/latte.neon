@@ -5,5 +5,4 @@ services:
             - addFilter('count', ['App\Core\Latte\Filters', 'count'])
             - addFilter('timeDelta', ['App\Core\Latte\Filters', 'timeDelta'])
             - addFilter('timeAgo', ['App\Core\Latte\Filters', 'timeAgo'])
-            - addFilter('timeAge', ['App\Core\Latte\Filters', 'timeAge'])
             - addFilter('datetime', ['App\Core\Latte\Filters', 'datetime'])

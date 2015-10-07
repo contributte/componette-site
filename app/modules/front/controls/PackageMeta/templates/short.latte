@@ -5,7 +5,7 @@
     <div class="pull-right">
         <span class="github-box">
             <span class="box-icon"><span class="octicon octicon-clock"></span></span>
-            <span class="box-count box-age box-age-{$package->metadata->pushed|timeAge}"><a href="{$package->metadata->linker->getCommitsUrl()}" data-toggle="tooltip" data-placement="top" title="Last push on {$package->metadata->pushed|datetime}">{$package->metadata->pushed|timeAgo}</a></span>
+            <span class="box-count box-age"><a href="{$package->metadata->linker->getCommitsUrl()}" data-toggle="tooltip" data-placement="top" title="Last push on {$package->metadata->pushed|datetime}">{$package->metadata->pushed|timeAgo}</a></span>
         </span>
         {if $package->isComposerPackage}
             <span class="github-box">

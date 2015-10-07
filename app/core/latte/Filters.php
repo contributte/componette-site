@@ -70,27 +70,6 @@ final class Filters
      * @param mixed $time
      * @return string
      */
-    public static function timeAge($time)
-    {
-        $delta = self::timeDelta($time);
-        if ($delta === FALSE) return 'uknown';
-
-        $delta = round($delta / 60);
-        if ($delta < 1) return 'up-to-date';
-        if ($delta < 10) return 'before-minutes';
-        if ($delta < 90) return 'before-hour';
-        if ($delta < 2880) return 'before-day';
-        if ($delta < 43200) return 'before-days';
-        if ($delta < 86400) return 'before-month';
-        if ($delta < 525960) return 'before-months';
-        if ($delta < 1051920) return 'before-year';
-        return 'before-years';
-    }
-
-    /**
-     * @param mixed $time
-     * @return string
-     */
     public static function timeAgo($time)
     {
         $delta = self::timeDelta($time);
