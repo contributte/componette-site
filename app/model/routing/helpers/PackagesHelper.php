@@ -5,6 +5,7 @@ namespace App\Model\Routing\Helpers;
 use App\Model\ORM\PackagesRepository;
 use Nette\Caching\Cache;
 use Nette\Caching\IStorage;
+use Nette\Utils\DateTime;
 
 final class PackagesHelper
 {
@@ -37,7 +38,8 @@ final class PackagesHelper
 
     protected function build()
     {
-        $this->data = $this->cache->load('routes', function () {
+        $this->data = $this->cache->load('routes', function (&$dependencies) {
+            $dependencies[Cache::EXPIRE] = new DateTime('+1 h');
             $data = ['packages' => [], 'owners' => []];
 
             foreach ($this->packages->findAll() as $package) {
