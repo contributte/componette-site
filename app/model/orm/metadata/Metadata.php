@@ -25,7 +25,6 @@ use Nette\Utils\DateTime;
  * @property DateTime|NULL  $created
  * @property DateTime|NULL  $pushed
  * @property DateTime|NULL  $updated
- * @property DateTime|NULL  $cronChanged
  * @property Extra|NULL     $extra
  * @property Linker         $linker         {virtual}
  * @property Composer\Data  $composer       {virtual}

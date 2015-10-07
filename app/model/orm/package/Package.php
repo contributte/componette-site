@@ -18,6 +18,7 @@ class Package extends AbstractEntity
 
     const TYPE_COMPOSER = 'COMPOSER';
     const TYPE_BOWER = 'BOWER';
+    const TYPE_UNKNOWN = 'UNKNOWN';
 
     const STATE_ACTIVE = 'ACTIVE';
     const STATE_ARCHIVED = 'ARCHIVED';

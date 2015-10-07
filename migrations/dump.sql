@@ -23,7 +23,6 @@ CREATE TABLE `metadatas` (
   `created` datetime DEFAULT NULL,
   `updated` datetime DEFAULT NULL,
   `pushed` datetime DEFAULT NULL,
-  `cron_changed` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `package` (`package`),
   CONSTRAINT `metadatas_ibfk_1` FOREIGN KEY (`package`) REFERENCES `packages` (`id`) ON DELETE CASCADE
@@ -32,7 +31,7 @@ CREATE TABLE `metadatas` (
 
 CREATE TABLE `packages` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `type` enum('COMPOSER','BOWER') NOT NULL,
+  `type` enum('COMPOSER','BOWER', 'UNKNOWN') NOT NULL DEFAULT 'UNKNOWN',
   `state` enum('ACTIVE','ARCHIVED','QUEUED') NOT NULL DEFAULT 'QUEUED',
   `repository` varchar(255) NOT NULL,
   `created` datetime NOT NULL,
