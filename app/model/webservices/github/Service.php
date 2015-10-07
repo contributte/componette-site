@@ -77,6 +77,16 @@ final class Service
      * @param string $repo
      * @return mixed
      */
+    public function bower($owner, $repo)
+    {
+        return $this->content($owner, $repo, 'bower.json');
+    }
+
+    /**
+     * @param string $owner
+     * @param string $repo
+     * @return mixed
+     */
     public function releases($owner, $repo)
     {
 

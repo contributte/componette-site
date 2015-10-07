@@ -3,6 +3,7 @@
 namespace App\Modules\Cli;
 
 use App\Tasks\Packages\GenerateContentTask;
+use App\Tasks\Packages\UpdateBowerTask;
 use App\Tasks\Packages\UpdateComposerTask;
 use App\Tasks\Packages\UpdateGithubTask;
 use App\Tasks\Packages\UpdateMetadataTask;
@@ -21,6 +22,9 @@ final class PackagesPresenter extends BasePresenter
 
     /** @var UpdateGithubTask @inject */
     public $updateGithubTask;
+
+    /** @var UpdateBowerTask @inject */
+    public $updateBowerTask;
 
     /**
      * Packages:update *********************************************************
@@ -49,8 +53,14 @@ final class PackagesPresenter extends BasePresenter
             $res = $this->updateGithubTask->run($this->getParameters());
             $this->output->outln('* result [UpdateGithub](' . $res . ')');
 
+        } else if ($this->getParameter('bower', FALSE)) {
+
+            $this->output->outln('* running [UpdateBower]');
+            $res = $this->updateBowerTask->run($this->getParameters());
+            $this->output->outln('* result [UpdateBower](' . $res . ')');
+
         } else {
-            $this->output->outln('- select type (-metadata | -composer | -github)');
+            $this->output->outln('- select type (-metadata | -github | -composer | -bower)');
         }
 
         $this->finish();

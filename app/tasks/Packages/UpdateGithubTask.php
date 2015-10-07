@@ -43,6 +43,18 @@ final class UpdateGithubTask extends BaseTask
 
         if (isset($args['rest']) && $args['rest'] === TRUE) {
             $packages = $packages->findBy(['this->metadata->extra' => NULL]);
+        } else if (isset($args['type'])) {
+            switch ($args['type']) {
+                case 'composer':
+                    $packages = $packages->findBy(['type' => Package::TYPE_COMPOSER]);
+                    break;
+                case 'bower':
+                    $packages = $packages->findBy(['type' => Package::TYPE_BOWER]);
+                    break;
+                case 'unknown':
+                    $packages = $packages->findBy(['type' => Package::TYPE_UNKNOWN]);
+                    break;
+            }
         }
 
         // DO YOUR JOB ===============================================
@@ -63,6 +75,10 @@ final class UpdateGithubTask extends BaseTask
 
             // Composer
             if (($response = $this->github->composer($owner, $repo))) {
+                if ($package->type === NULL) {
+                    $package->type = Package::TYPE_COMPOSER;
+                }
+
                 $package->metadata->extra->append('github', ['composer' => $response]);
 
                 if (($url = $package->metadata->extra->get(['github', 'composer', 'download_url'], NULL))) {
@@ -77,6 +93,28 @@ final class UpdateGithubTask extends BaseTask
                 }
             } else {
                 $this->log('Skip (composer): ' . $package->repository);
+            }
+
+            // Bower
+            if (($response = $this->github->bower($owner, $repo))) {
+                if ($package->type === NULL) {
+                    $package->type = Package::TYPE_BOWER;
+                }
+
+                $package->metadata->extra->append('github', ['bower' => $response]);
+
+                if (($url = $package->metadata->extra->get(['github', 'bower', 'download_url'], NULL))) {
+                    if (($content = @file_get_contents($url))) {
+                        $composer = @json_decode($content, TRUE);
+                        $package->metadata->extra->set('bower', $composer);
+                    } else {
+                        $this->log('Skip (bower) [invalid bower.json]: ' . $package->repository);
+                    }
+                } else {
+                    $this->log('Skip (bower) [can not download bower.json]: ' . $package->repository);
+                }
+            } else {
+                $this->log('Skip (bower): ' . $package->repository);
             }
 
             $this->packagesRepository->persistAndFlush($package);

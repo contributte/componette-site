@@ -39,7 +39,9 @@ final class PackagesHelper
     protected function build()
     {
         $this->data = $this->cache->load('routes', function (&$dependencies) {
-            $dependencies[Cache::EXPIRE] = new DateTime('+1 h');
+            $dependencies[Cache::EXPIRE] = new DateTime('+24 h');
+            $dependencies[Cache::TAGS] = ['routes'];
+
             $data = ['packages' => [], 'owners' => []];
 
             foreach ($this->packages->findAll() as $package) {

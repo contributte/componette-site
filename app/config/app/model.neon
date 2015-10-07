@@ -8,8 +8,9 @@ services:
     - App\Model\WebServices\Composer\Client
     - App\Model\WebServices\Composer\Service
 
-    # Content Managing =====================================
-    #- App\Model\Packages\Content\ContentManager(Nette\Caching\Storages\FileStorage(%appDir%/cache, ...))
+    # Bower ================================================
+    - App\Model\WebServices\Bower\Client
+    - App\Model\WebServices\Bower\Service
 
     # Search ===============================================
     - App\Model\Search\SearchFactory
@@ -24,3 +25,4 @@ services:
     - App\Tasks\Packages\UpdateMetadataTask
     - App\Tasks\Packages\UpdateComposerTask
     - App\Tasks\Packages\UpdateGithubTask
+    - App\Tasks\Packages\UpdateBowerTask

@@ -41,12 +41,25 @@ final class UpdateMetadataTask extends BaseTask
         $packages = $this->packagesRepository->findActive();
 
         if (isset($args['rest']) && $args['rest'] === TRUE) {
-            $packages = $packages->findBy(['this->state' => Package::STATE_QUEUED]);
+            $packages = $packages->findBy(['state' => Package::STATE_QUEUED]);
+        } else if (isset($args['type'])) {
+            switch ($args['type']) {
+                case 'composer':
+                    $packages = $packages->findBy(['type' => Package::TYPE_COMPOSER]);
+                    break;
+                case 'bower':
+                    $packages = $packages->findBy(['type' => Package::TYPE_BOWER]);
+                    break;
+                case 'unknown':
+                    $packages = $packages->findBy(['type' => Package::TYPE_UNKNOWN]);
+                    break;
+            }
         }
 
         // DO YOUR JOB ===============================================
 
         $counter = 0;
+        $added = 0;
         foreach ($packages as $package) {
             list ($owner, $repo) = explode('/', $package->repository);
 
@@ -57,6 +70,11 @@ final class UpdateMetadataTask extends BaseTask
 
                 // Increase counting
                 $counter++;
+
+                // Increase adding counting
+                if ($package->state == Package::STATE_QUEUED) {
+                    $added++;
+                }
 
                 $meta->owner = $response['owner']['login'];
                 $meta->name = $response['full_name'];
@@ -73,6 +91,7 @@ final class UpdateMetadataTask extends BaseTask
                 $package->updated = new DateTime();
             } else {
                 $package->state = Package::STATE_ARCHIVED;
+
                 if (isset($response['message'])) {
                     $this->log('Skip (' . $response['message'] . '): ' . $package->repository);
                 } else {
@@ -81,6 +100,10 @@ final class UpdateMetadataTask extends BaseTask
             }
 
             $this->packagesRepository->persistAndFlush($package);
+        }
+
+        if ($added > 0) {
+
         }
 
         return $counter;
