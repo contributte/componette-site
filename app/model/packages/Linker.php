@@ -48,6 +48,14 @@ final class Linker
     /**
      * @return string
      */
+    public function getRepoUrl()
+    {
+        return $this->repo;
+    }
+
+    /**
+     * @return string
+     */
     public function getIssuesUrl()
     {
         return $this->repo . '/issues';

@@ -12,6 +12,11 @@
                 <span class="box-icon"><span class="octicon octicon-cloud-download"></span></span>
                 <span class="box-count"><a href="{$package->metadata->composer->getPackageUrl()}" data-toggle="tooltip" data-placement="top" title="Total downloads over composer">{$package->metadata->downloads|count}</a></span>
             </span>
+        {elseif $package->isBowerPackage}
+            <span class="github-box">
+                <span class="box-icon"><span class="octicon octicon-cloud-download"></span></span>
+                <span class="box-count"><a href="{$package->metadata->linker->getRepoUrl()}" data-toggle="tooltip" data-placement="top" title="Total hits over bower">{$package->metadata->downloads|count}</a></span>
+            </span>
         {else}
             <span class="github-box">
                 <span class="box-icon"><span class="octicon octicon-desktop-download"></span></span>

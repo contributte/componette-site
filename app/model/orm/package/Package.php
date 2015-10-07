@@ -12,6 +12,7 @@ use Nette\Utils\DateTime;
  * @property DateTime           $created            {default now}
  * @property DateTime|NULL      $updated
  * @property string             $isComposerPackage  {virtual}
+ * @property string             $isBowerPackage     {virtual}
  */
 class Package extends AbstractEntity
 {
@@ -30,5 +31,12 @@ class Package extends AbstractEntity
     protected function getterIsComposerPackage()
     {
         return $this->type === self::TYPE_COMPOSER;
+    }
+    /**
+     * @return bool
+     */
+    protected function getterIsBowerPackage()
+    {
+        return $this->type === self::TYPE_BOWER;
     }
 }
