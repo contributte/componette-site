@@ -2,6 +2,7 @@
 
 namespace App\Modules\Cli;
 
+use App\Core\Cli\Output;
 use Nette\Application\Responses\TextResponse;
 use Nette\Application\UI\Presenter;
 
@@ -11,17 +12,43 @@ use Nette\Application\UI\Presenter;
 abstract class BasePresenter extends Presenter
 {
 
-    protected function beforeRender()
+    /** @var Output */
+    protected $output;
+
+    /**
+     * Common presenter method
+     */
+    protected function startup()
     {
-        parent::beforeRender();
-        $this->error('No rendering in CLI');
+        parent::startup();
+
+        $this->output = new Output();
     }
 
     /**
+     * Common template method
+     */
+    protected function beforeRender()
+    {
+        parent::beforeRender();
+        $this->response('No rendering in CLI');
+    }
+
+    /**
+     * Send response
+     *
      * @param string $message
      */
-    protected function info($message)
+    protected function response($message)
     {
         $this->sendResponse(new TextResponse($message));
+    }
+
+    /**
+     * Termine CLI
+     */
+    protected function finish()
+    {
+        $this->terminate();
     }
 }

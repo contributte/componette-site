@@ -5,13 +5,13 @@ namespace App\Model\ORM;
 use Nette\Utils\DateTime;
 
 /**
- * @property Metadata   $metadata           {1:1d Metadata::$package}
- * @property string     $type               {enum self::TYPE_*}
- * @property string     $state              {enum self::STATE_*}
- * @property string     $repository
- * @property DateTime   $created            {default now}
- * @property DateTime   $updated            {default now}
- * @property string     $isComposerPackage  {virtual}
+ * @property Metadata           $metadata           {1:1d Metadata::$package}
+ * @property string             $type               {enum self::TYPE_*}
+ * @property string             $state              {enum self::STATE_*}
+ * @property string             $repository
+ * @property DateTime           $created            {default now}
+ * @property DateTime|NULL      $updated
+ * @property string             $isComposerPackage  {virtual}
  */
 class Package extends AbstractEntity
 {

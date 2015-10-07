@@ -32,28 +32,33 @@ final class UpdateComposerTask extends BaseTask
 
     /**
      * @param array $args
-     * @return bool
+     * @return int
      */
     public function run(array $args = [])
     {
         /** @var Package[] $packages */
-        $packages = $this->packagesRepository->findActive();
+        $packages = $this->packagesRepository->findComposers();
 
+        // DO YOUR JOB ===============================================
+
+        $counter = 0;
         foreach ($packages as $package) {
 
             // Skip packages with bad data
             if (($extra = $package->metadata->extra)) {
                 if (($composer = $extra->get('composer', FALSE))) {
-                    $meta = $package->metadata;
                     list ($owner, $repo) = explode('/', $composer['name']);
+
+                    // Increase counting
+                    $counter++;
 
                     // Downloads
                     if (($stats = $this->composer->repo($owner, $repo))) {
-                        $meta->downloads = Arrays::get($stats, ['package', 'downloads', 'total'], 0);
+                        $package->metadata->downloads = Arrays::get($stats, ['package', 'downloads', 'total'], 0);
                     }
 
                     // Keywords
-                    $meta->tags = Arrays::get($composer, 'keywords', []);
+                    $package->metadata->tags = Arrays::get($composer, 'keywords', []);
 
                     $this->packagesRepository->persistAndFlush($package);
                 } else {
@@ -63,6 +68,6 @@ final class UpdateComposerTask extends BaseTask
                 $this->log('Skip (composer) [no extra data]: ' . $package->repository);
             }
         }
-        return TRUE;
+        return $counter;
     }
 }

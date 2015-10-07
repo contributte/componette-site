@@ -23,3 +23,4 @@ services:
     - App\Tasks\Packages\GenerateContentTask
     - App\Tasks\Packages\UpdateMetadataTask
     - App\Tasks\Packages\UpdateComposerTask
+    - App\Tasks\Packages\UpdateGithubTask

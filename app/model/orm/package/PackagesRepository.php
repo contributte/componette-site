@@ -21,9 +21,25 @@ final class PackagesRepository extends AbstractRepository
     /**
      * @return ICollection
      */
-    public function findActiveBy(array $conds)
+    public function findComposers()
     {
-        return $this->findActive()->findBy($conds);
+        return $this->findActive()->findBy(['type' => Package::TYPE_COMPOSER]);
+    }
+
+    /**
+     * @return ICollection
+     */
+    public function findBowers()
+    {
+        return $this->findActive()->findBy(['type' => Package::TYPE_BOWER]);
+    }
+
+    /**
+     * @return ICollection
+     */
+    public function findUnknowns()
+    {
+        return $this->findActive()->findBy(['type' => Package::TYPE_UNKNOWN]);
     }
 
 }

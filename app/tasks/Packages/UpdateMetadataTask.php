@@ -7,6 +7,7 @@ use App\Model\ORM\PackagesRepository;
 use App\Model\WebServices\Github\Service;
 use App\Tasks\BaseTask;
 use Nette\Utils\DateTime;
+use Nextras\Orm\Collection\ICollection;
 
 final class UpdateMetadataTask extends BaseTask
 {
@@ -32,29 +33,34 @@ final class UpdateMetadataTask extends BaseTask
 
     /**
      * @param array $args
-     * @return bool
+     * @return int
      */
     public function run(array $args = [])
     {
-        /** @var Package[] $packages */
-        if (isset($args['queued']) && $args['queued'] === TRUE) {
-            $packages = $this->packagesRepository->findBy(['this->state' => Package::STATE_QUEUED]);
-        } else {
-            $packages = $this->packagesRepository->findActive();
+        /** @var ICollection|Package[] $packages */
+        $packages = $this->packagesRepository->findActive();
+
+        if (isset($args['rest']) && $args['rest'] === TRUE) {
+            $packages = $packages->findBy(['this->state' => Package::STATE_QUEUED]);
         }
 
+        // DO YOUR JOB ===============================================
+
+        $counter = 0;
         foreach ($packages as $package) {
             list ($owner, $repo) = explode('/', $package->repository);
-            $meta = $package->metadata;
-
-            // Process only success responses form GitHub
 
             // Base metadata
-            if (($response = $this->github->repo($owner, $repo))) {
+            $response = $this->github->repo($owner, $repo);
+            if ($response && !isset($response['message'])) {
+                $meta = $package->metadata;
+
+                // Increase counting
+                $counter++;
+
                 $meta->owner = $response['owner']['login'];
                 $meta->name = $response['full_name'];
                 $meta->description = $response['description'];
-                $meta->readme = 'MARKDOWN';
                 $meta->homepage = !empty($response['homepage']) ? $response['homepage'] : NULL;
                 $meta->stars = $response['stargazers_count'];
                 $meta->watchers = $response['watchers_count'];
@@ -64,43 +70,20 @@ final class UpdateMetadataTask extends BaseTask
                 $meta->updated = new DateTime($response['updated_at']);
                 $meta->pushed = new DateTime($response['pushed_at']);
                 $package->state = Package::STATE_ACTIVE;
+                $package->updated = new DateTime();
             } else {
                 $package->state = Package::STATE_ARCHIVED;
-                $this->log('Skip (base): ' . $package->repository);
-            }
-
-            // Readme
-            if (($response = $this->github->readme($owner, $repo))) {
-                $meta->extra->append('github', ['readme' => $response]);
-            } else {
-                $this->log('Skip (readme): ' . $package->repository);
-            }
-
-            // Composer
-            if (($response = $this->github->composer($owner, $repo))) {
-                $meta->extra->append('github', ['composer' => $response]);
-
-                if (($url = $meta->extra->get(['github', 'composer', 'download_url'], NULL))) {
-                    if (($content = @file_get_contents($url))) {
-                        $composer = @json_decode($content, TRUE);
-                        $meta->extra->set('composer', $composer);
-                    } else {
-                        $this->log('Skip (composer) [invalid composer.json]: ' . $package->repository);
-                    }
+                if (isset($response['message'])) {
+                    $this->log('Skip (' . $response['message'] . '): ' . $package->repository);
                 } else {
-                    $this->log('Skip (composer) [cant download composer.json]: ' . $package->repository);
+                    $this->log('Skip (base): ' . $package->repository);
                 }
-            } else {
-                $this->log('Skip (composer): ' . $package->repository);
             }
-
-            // Set last update
-            $meta->cronChanged = new DateTime();
 
             $this->packagesRepository->persistAndFlush($package);
         }
 
-        return TRUE;
+        return $counter;
     }
 
 }

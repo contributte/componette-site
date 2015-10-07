@@ -4,6 +4,7 @@ namespace App\Modules\Cli;
 
 use App\Tasks\Packages\GenerateContentTask;
 use App\Tasks\Packages\UpdateComposerTask;
+use App\Tasks\Packages\UpdateGithubTask;
 use App\Tasks\Packages\UpdateMetadataTask;
 
 final class PackagesPresenter extends BasePresenter
@@ -18,23 +19,62 @@ final class PackagesPresenter extends BasePresenter
     /** @var UpdateComposerTask @inject */
     public $updateComposerTask;
 
+    /** @var UpdateGithubTask @inject */
+    public $updateGithubTask;
+
+    /**
+     * Packages:update *********************************************************
+     * *************************************************************************
+     */
+
     public function actionUpdate()
     {
+        $this->output->outln('Packages:update');
+
         if ($this->getParameter('metadata', FALSE)) {
-            $this->info($this->updateMetadataTask->run($this->getParameters()));
+
+            $this->output->outln('* running [UpdateMetadata]');
+            $res = $this->updateMetadataTask->run($this->getParameters());
+            $this->output->outln('* result [UpdateMetadata](' . $res . ')');
+
         } else if ($this->getParameter('composer', FALSE)) {
-            $this->info($this->updateComposerTask->run($this->getParameters()));
+
+            $this->output->outln('* running [UpdateComposer]');
+            $res = $this->updateComposerTask->run($this->getParameters());
+            $this->output->outln('* result [UpdateComposer](' . $res . ')');
+
+        } else if ($this->getParameter('github', FALSE)) {
+
+            $this->output->outln('* running [UpdateGithub]');
+            $res = $this->updateGithubTask->run($this->getParameters());
+            $this->output->outln('* result [UpdateGithub](' . $res . ')');
+
         } else {
-            $this->info('Select type');
+            $this->output->outln('- select type (-metadata | -composer | -github)');
         }
+
+        $this->finish();
     }
+
+    /**
+     * Packages:generate *******************************************************
+     * *************************************************************************
+     */
 
     public function actionGenerate()
     {
+        $this->output->outln('Packages:generate');
+
         if ($this->getParameter('content', FALSE)) {
-            $this->info($this->generateContentTask->run($this->getParameters()));
+
+            $this->output->outln('* r [GenerateContent]');
+            $res = $this->generateContentTask->run($this->getParameters());
+            $this->output->outln('* result [GenerateContent](' . $res . ')');
+
         } else {
-            $this->info('Select type');
+            $this->output->outln('- select type (-content)');
         }
+
+        $this->finish();
     }
 }

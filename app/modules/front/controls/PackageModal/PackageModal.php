@@ -56,10 +56,8 @@ final class PackageModal extends BaseControl
             $packageName = $matches[1] . '/' . $matches[2];
 
             $package = new Package();
-            $package->type = 'COMPOSER'; // @todo
             $package->state = Package::STATE_QUEUED;
             $package->created = new DateTime();
-            $package->updated = new DateTime();
             $package->repository = $packageName;
             $package->metadata = new Metadata();
 

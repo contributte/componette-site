@@ -13,6 +13,12 @@ abstract class BaseTask
      */
     protected function log($message)
     {
-        Debugger::log($message, 'tasks');
+        Debugger::log($message, 'tasks' . date('d-m-Y'));
     }
+
+    /**
+     * @param array $args
+     * @return mixed
+     */
+    abstract function run(array $args = []);
 }

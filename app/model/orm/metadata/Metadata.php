@@ -11,7 +11,7 @@ use Nette\Utils\DateTime;
  * @property Package        $package        {1:1d Package::$metadata primary}
  * @property string|NULL    $owner
  * @property string|NULL    $name
- * @property string|NULL    $readme
+ * @property string|NULL    $readme         {enum self::README_*}
  * @property string|NULL    $description
  * @property string|NULL    $homepage
  * @property int|NULL       $stars
@@ -31,6 +31,10 @@ use Nette\Utils\DateTime;
  */
 class Metadata extends AbstractEntity
 {
+
+    const README_MARKDOWN = 'MARKDOWN';
+    const README_TEXY = 'TEXY';
+    const README_RAW = 'RAW';
 
     /** @var Linker */
     private $linker;
