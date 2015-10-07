@@ -74,17 +74,15 @@ final class Filters
     {
         $delta = self::timeDelta($time);
         if ($delta === FALSE) return 'N/A';
+        if ($delta < 0) return 'N/A';
 
         $delta = round($delta / 60);
-        if ($delta < 1) return 'up-to-date';
-        if ($delta < 10) return '< 10min';
-        if ($delta < 90) return '< 1h';
-        if ($delta < 2880) return '< 24h';
-        if ($delta < 43200) return '< ' . round($delta / 1440) . 'd';
-        if ($delta < 86400) return '< 30d';
-        if ($delta < 525960) return '< ' . round($delta / 43200) * 30 . 'd';
-        if ($delta < 1051920) return '< 1y';
-        return '< ' . round($delta / 525960) . 'y';
+        if ($delta <= 60) return 'hot';
+        if ($delta <= 1440) return '~ ' . ceil($delta / 60) . 'h';
+        if ($delta < 525960) return '~ ' . ceil($delta / 1440) . 'd';
+
+        // ------
+        return '~ ' . round($delta / 525960, 1) . 'y';
     }
 
 }

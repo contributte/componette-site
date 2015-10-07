@@ -293,7 +293,7 @@ a[href*="://"]:after {
 .github-box .box-age-before-minutes {
   background: #008000;
 }
-.github-box .box-age-before-hour {
+.github-box .box-age-before-hours {
   background: rgba(0, 128, 0, 0.7);
 }
 .github-box .box-age-before-day {
