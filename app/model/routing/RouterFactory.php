@@ -46,7 +46,7 @@ class RouterFactory
         // FRONT ===========================================
 
         $router[] = $front = new RouteList('Front');
-        $front[] = new Route('<slug [a-zA-Z0-9\-]+/[a-zA-Z0-9\-]+>/', [
+        $front[] = new Route('<slug [a-zA-Z0-9\-\.]+/[a-zA-Z0-9\-\.]+>/', [
             'presenter' => 'Package',
             'action' => 'detail',
             'slug' => [
@@ -54,7 +54,7 @@ class RouterFactory
                 Route::FILTER_OUT => [$this->packagesRouterHelper, 'packageOut'],
             ],
         ]);
-        $front[] = new Route('<slug [a-zA-Z0-9\-]+>/', [
+        $front[] = new Route('<slug [a-zA-Z0-9\-\.]+>/', [
             'presenter' => 'List',
             'action' => 'owner',
             'slug' => [
