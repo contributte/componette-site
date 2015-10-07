@@ -50,7 +50,7 @@ final class UpdateMetadataTask extends BaseTask
         $packages = $this->packagesRepository->findActive();
 
         if (isset($args['rest']) && $args['rest'] === TRUE) {
-            $packages = $packages->findBy(['state' => Package::STATE_QUEUED]);
+            $packages = $this->packagesRepository->findBy(['state' => Package::STATE_QUEUED]);
         } else if (isset($args['type'])) {
             switch ($args['type']) {
                 case 'composer':
