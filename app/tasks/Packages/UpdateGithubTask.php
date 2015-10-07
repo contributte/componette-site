@@ -74,47 +74,51 @@ final class UpdateGithubTask extends BaseTask
             }
 
             // Composer
-            if (($response = $this->github->composer($owner, $repo))) {
-                if ($package->type === NULL) {
-                    $package->type = Package::TYPE_COMPOSER;
-                }
+            if ($package->type === NULL || $package->type == Package::TYPE_COMPOSER) {
+                if (($response = $this->github->composer($owner, $repo))) {
+                    if ($package->type === NULL) {
+                        $package->type = Package::TYPE_COMPOSER;
+                    }
 
-                $package->metadata->extra->append('github', ['composer' => $response]);
+                    $package->metadata->extra->append('github', ['composer' => $response]);
 
-                if (($url = $package->metadata->extra->get(['github', 'composer', 'download_url'], NULL))) {
-                    if (($content = @file_get_contents($url))) {
-                        $composer = @json_decode($content, TRUE);
-                        $package->metadata->extra->set('composer', $composer);
+                    if (($url = $package->metadata->extra->get(['github', 'composer', 'download_url'], NULL))) {
+                        if (($content = @file_get_contents($url))) {
+                            $composer = @json_decode($content, TRUE);
+                            $package->metadata->extra->set('composer', $composer);
+                        } else {
+                            $this->log('Skip (composer) [invalid composer.json]: ' . $package->repository);
+                        }
                     } else {
-                        $this->log('Skip (composer) [invalid composer.json]: ' . $package->repository);
+                        $this->log('Skip (composer) [cant download composer.json]: ' . $package->repository);
                     }
                 } else {
-                    $this->log('Skip (composer) [cant download composer.json]: ' . $package->repository);
+                    $this->log('Skip (composer): ' . $package->repository);
                 }
-            } else {
-                $this->log('Skip (composer): ' . $package->repository);
             }
 
             // Bower
-            if (($response = $this->github->bower($owner, $repo))) {
-                if ($package->type === NULL) {
-                    $package->type = Package::TYPE_BOWER;
-                }
+            if ($package->type === NULL || $package->type == Package::TYPE_BOWER) {
+                if (($response = $this->github->bower($owner, $repo))) {
+                    if ($package->type === NULL) {
+                        $package->type = Package::TYPE_BOWER;
+                    }
 
-                $package->metadata->extra->append('github', ['bower' => $response]);
+                    $package->metadata->extra->append('github', ['bower' => $response]);
 
-                if (($url = $package->metadata->extra->get(['github', 'bower', 'download_url'], NULL))) {
-                    if (($content = @file_get_contents($url))) {
-                        $composer = @json_decode($content, TRUE);
-                        $package->metadata->extra->set('bower', $composer);
+                    if (($url = $package->metadata->extra->get(['github', 'bower', 'download_url'], NULL))) {
+                        if (($content = @file_get_contents($url))) {
+                            $composer = @json_decode($content, TRUE);
+                            $package->metadata->extra->set('bower', $composer);
+                        } else {
+                            $this->log('Skip (bower) [invalid bower.json]: ' . $package->repository);
+                        }
                     } else {
-                        $this->log('Skip (bower) [invalid bower.json]: ' . $package->repository);
+                        $this->log('Skip (bower) [can not download bower.json]: ' . $package->repository);
                     }
                 } else {
-                    $this->log('Skip (bower) [can not download bower.json]: ' . $package->repository);
+                    $this->log('Skip (bower): ' . $package->repository);
                 }
-            } else {
-                $this->log('Skip (bower): ' . $package->repository);
             }
 
             $this->packagesRepository->persistAndFlush($package);
