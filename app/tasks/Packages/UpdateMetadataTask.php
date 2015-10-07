@@ -2,6 +2,7 @@
 
 namespace App\Tasks\Packages;
 
+use App\Core\Cache\Cacher;
 use App\Model\ORM\Package;
 use App\Model\ORM\PackagesRepository;
 use App\Model\WebServices\Github\Service;
@@ -18,17 +19,25 @@ final class UpdateMetadataTask extends BaseTask
     /** @var Service */
     private $github;
 
+    /** @var Cacher */
+    private $cacher;
+
     /**
+     * UpdateMetadataTask constructor.
+     *
      * @param PackagesRepository $packagesRepository
      * @param Service $github
+     * @param Cacher $cacher
      */
     function __construct(
         PackagesRepository $packagesRepository,
-        Service $github
+        Service $github,
+        Cacher $cacher
     )
     {
         $this->packagesRepository = $packagesRepository;
         $this->github = $github;
+        $this->cacher = $cacher;
     }
 
     /**
@@ -103,7 +112,7 @@ final class UpdateMetadataTask extends BaseTask
         }
 
         if ($added > 0) {
-
+            $this->cacher->cleanByTags(['routing']);
         }
 
         return $counter;

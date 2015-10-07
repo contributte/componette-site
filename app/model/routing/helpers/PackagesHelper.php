@@ -40,7 +40,7 @@ final class PackagesHelper
     {
         $this->data = $this->cache->load('routes', function (&$dependencies) {
             $dependencies[Cache::EXPIRE] = new DateTime('+24 h');
-            $dependencies[Cache::TAGS] = ['routes'];
+            $dependencies[Cache::TAGS] = ['routing', 'routes'];
 
             $data = ['packages' => [], 'owners' => []];
 

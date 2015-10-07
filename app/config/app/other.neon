@@ -9,3 +9,6 @@ services:
 
     # Portal ===============================================
     - App\Model\Portal(..., ..., @container::parameters)
+
+    # Cache ================================================
+    - App\Core\Cache\Cacher
