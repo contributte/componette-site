@@ -79,6 +79,6 @@ final class GenerateContentTask extends BaseTask
             }
         }
 
-        return TRUE;
+        return $counter;
     }
 }
