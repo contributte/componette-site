@@ -6,9 +6,9 @@ use Nette\Utils\DateTime;
 
 /**
  * @property Metadata           $metadata           {1:1d Metadata::$package}
- * @property string             $type               {enum self::TYPE_*}
- * @property string             $state              {enum self::STATE_*}
- * @property string             $repository
+ * @property string             $type               {enum self::TYPE_*}	{default self::TYPE_UNKNOWN}
+ * @property string             $state              {enum self::STATE_*} {default self::STATE_QUEUED}
+ * @property string             $repository 
  * @property DateTime           $created            {default now}
  * @property DateTime|NULL      $updated
  * @property string             $isComposerPackage  {virtual}
