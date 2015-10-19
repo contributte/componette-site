@@ -74,9 +74,9 @@ final class UpdateGithubTask extends BaseTask
             }
 
             // Composer
-            if ($package->type === NULL || $package->type == Package::TYPE_COMPOSER) {
+            if (in_array($package->type, [NULL, Package::TYPE_UNKNOWN, Package::TYPE_COMPOSER])) {
                 if (($response = $this->github->composer($owner, $repo))) {
-                    if ($package->type === NULL) {
+                    if ($package->type !== Package::TYPE_COMPOSER) {
                         $package->type = Package::TYPE_COMPOSER;
                     }
 
@@ -98,9 +98,9 @@ final class UpdateGithubTask extends BaseTask
             }
 
             // Bower
-            if ($package->type === NULL || $package->type == Package::TYPE_BOWER) {
+            if (in_array($package->type, [NULL, Package::TYPE_UNKNOWN, Package::TYPE_BOWER])) {
                 if (($response = $this->github->bower($owner, $repo))) {
-                    if ($package->type === NULL) {
+                    if ($package->type !== Package::TYPE_BOWER) {
                         $package->type = Package::TYPE_BOWER;
                     }
 
