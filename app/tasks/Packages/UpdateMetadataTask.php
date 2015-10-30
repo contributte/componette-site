@@ -86,7 +86,7 @@ final class UpdateMetadataTask extends BaseTask
                 }
 
                 $meta->owner = $response['owner']['login'];
-                $meta->name = $response['full_name'];
+                $meta->name = $response['name'];
                 $meta->description = $response['description'];
                 $meta->homepage = !empty($response['homepage']) ? $response['homepage'] : NULL;
                 $meta->stars = $response['stargazers_count'];

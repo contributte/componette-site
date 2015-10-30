@@ -60,4 +60,11 @@ final class PackageDetail extends BaseControl
         $this->template->render();
     }
 
+    public function renderSidebar()
+    {
+        $this->template->package = $this->package;
+        $this->template->setFile(__DIR__ . '/templates/sidebar.latte');
+        $this->template->render();
+    }
+
 }

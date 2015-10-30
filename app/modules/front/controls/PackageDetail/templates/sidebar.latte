@@ -1,0 +1,83 @@
+{block}
+
+<div class="title-repo">
+    <a data-ga="1" data-event="click" data-category="sidebar" data-action="repo-title" href="{$package->metadata->linker->getRepoUrl()}">
+        <span class="octicon octicon-mark-github"></span> {$package->metadata->owner}
+    </a>
+</div>
+
+<div class="title-owner">
+    <a data-ga="1" data-event="click" data-category="sidebar" data-action="owner-title" data-toggle="tooltip" data-placement="left" title="Show all addons by {$package->metadata->owner}" href="{plink List:owner, slug => $package->metadata->owner}">
+        <img src="{$package->metadata->linker->getOwnerAvatarUrl(40)}"> {$package->metadata->owner}
+    </a>
+</div>
+
+<div class="details">
+    <table>
+        <tr>
+            <td><span class="octicon octicon-cloud-download"></span></td>
+            <td data-toggle="tooltip" data-placement="left" title="Total downloads">{$package->metadata->downloads}</td>
+        </tr>
+        <tr>
+            <td><span class="octicon octicon-star"></span></td>
+            <td data-toggle="tooltip" data-placement="left" title="Total stargazers">{$package->metadata->stars}</td>
+        </tr>
+        <tr>
+            <td><span class="octicon octicon-issue-opened"></span></td>
+            <td data-toggle="tooltip" data-placement="left" title="Open issues">{$package->metadata->issues}</td>
+        </tr>
+        <tr>
+            <td><span class="octicon octicon-clock"></span></td>
+            <td data-toggle="tooltip" data-placement="left" title="Last activity">{$package->metadata->pushed|timeAgo}</td>
+        </tr>
+    </table>
+</div>
+
+<div class="badges">
+    <ul>
+        <li>
+            <img src="http://isitmaintained.com/badge/resolution/{$package->metadata->owner}/{$package->metadata->name}.svg">
+        </li>
+        <li>
+            <img src="http://isitmaintained.com/badge/open/{$package->metadata->owner}/{$package->metadata->name}.svg">
+        </li>
+        {if $package->isComposerPackage && $package->metadata->composer}
+            <li>
+                <img src="https://img.shields.io/packagist/dt/{$package->metadata->owner}/{$package->metadata->name}.svg">
+            </li>
+            <li>
+                <img src="https://img.shields.io/packagist/v/{$package->metadata->owner}/{$package->metadata->name}.svg">
+            </li>
+            <li>
+                <img src="https://img.shields.io/packagist/l/{$package->metadata->owner}/{$package->metadata->name}.svg">
+            </li>
+        {/if}
+    </ul>
+</div>
+
+{if $package->isComposerPackage}
+    {var $composer => $package->metadata->composer}
+    {if $composer}
+
+        {if ($require = $composer->getRequire())}
+            <div class="requirements">
+                <div class="title">Requirements</div>
+
+                <ul n:inner-foreach="$composer->getRequire() as $name => $version">
+                    <li>{$name} ({$version})</li>
+                </ul>
+            </div>
+        {/if}
+
+    {/if}
+{/if}
+
+<div class="tags">
+    <div class="title">Tags</div>
+    <span class="label label-primary"># tag1</span>
+    <span class="label label-primary"># tag1</span>
+    <span class="label label-primary"># tag1</span>
+    <span class="label label-primary"># tag1</span>
+    <span class="label label-primary"># tag1</span>
+    <span class="label label-primary"># tag1</span>
+</div>

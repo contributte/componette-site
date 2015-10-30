@@ -326,6 +326,7 @@ a[href*="://"]:after {
   background: #fff;
   margin-top: 10px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  vertical-align: top;
 }
 .page .page-header {
   padding: 20px;
@@ -337,9 +338,78 @@ a[href*="://"]:after {
 }
 .page .page-content {
   padding: 0 20px 20px 20px;
+  width: 75%;
+  float: left;
 }
 .page .page-content .readme {
   margin-top: 10px;
+}
+.page .page-sidebar {
+  padding: 20px;
+  width: 25%;
+  float: right;
+  border-radius: 0 0 0 6px;
+  margin: 0;
+  font-size: 16px;
+  background: linear-gradient(rgba(52, 132, 210, 0.2), #ffffff);
+  padding-bottom: 200px;
+}
+.page .page-sidebar a {
+  color: #000;
+}
+.page .page-sidebar .title-owner {
+  font-size: 20px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.page .page-sidebar .title-owner img {
+  max-width: 40px;
+}
+.page .page-sidebar .title-repo {
+  font-size: 20px;
+  overflow: hidden;
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
+.page .page-sidebar .title-repo span {
+  font-size: 40px;
+  vertical-align: middle;
+}
+.page .page-sidebar .title {
+  font-weight: 600;
+  margin: 15px 0;
+}
+.page .page-sidebar div.details {
+  margin: 10px 0;
+  font-size: 18px;
+}
+.page .page-sidebar div.details span {
+  font-size: 20px;
+}
+.page .page-sidebar div.details table td:nth-child(2n+1) {
+  padding: 0 10px;
+}
+.page .page-sidebar div.badges ul {
+  margin-left: 0;
+}
+.page .page-sidebar div.requirements {
+  overflow: hidden;
+}
+.page .page-sidebar div.requirements ul {
+  margin-left: 30px;
+}
+.page .page-sidebar div.requirements ul li {
+  list-style-type: square;
+  white-space: nowrap;
+}
+.page .page-sidebar div.tags span {
+  font-size: 80%;
+  font-weight: normal;
+}
+.page .page-sidebar ul {
+  list-style-type: none;
+  margin: 0 0 0 20px;
+  padding: 0;
 }
 .page pre {
   font-size: 14px;

@@ -29,4 +29,20 @@ final class Data
         return $url;
     }
 
+    /**
+     * @return string
+     */
+    public function getRequire()
+    {
+        return isset($this->data['require']) ? $this->data['require'] : NULL;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRequireDev()
+    {
+        return $this->data['require-dev'];
+    }
+
 }

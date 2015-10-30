@@ -3,11 +3,11 @@
     <a n:href=":Front:Home:">Home</a> > <a n:href=":Front:List:owner, $package->metadata->owner">{$package->metadata->owner}</a> > {$package->metadata->name}
 {/block}
 {block #content}
-<section class="page page-package">
-    <section class="page-header">
-        {control package:header}
-    </section>
+<section class="page page-package clearfix">
     <section class="page-content">
         {control package:content}
+    </section>
+    <section class="page-sidebar">
+        {control package:sidebar}
     </section>
 </section>
