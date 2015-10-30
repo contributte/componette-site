@@ -2,6 +2,7 @@ $(function () {
 
     // Tooltip
     $('[data-toggle="tooltip"]').tooltip();
+    $('[data-tooltip="top"]').tooltip();
 
     // Highlight.JS
     $('pre code').each(function (i, block) {
