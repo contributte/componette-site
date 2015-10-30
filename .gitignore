@@ -7,6 +7,9 @@ log/*
 temp/*
 bin/*
 
+# Assets
+/www/assets/css/*.css
+
 # Composer
 vendor/*
 composer.lock
