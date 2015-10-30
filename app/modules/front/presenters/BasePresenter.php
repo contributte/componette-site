@@ -7,6 +7,8 @@ use App\Modules\Front\Controls\PackageModal\IPackageModalFactory;
 use App\Modules\Front\Controls\PackageModal\PackageModal;
 use App\Modules\Front\Controls\Search\ISearchFactory;
 use App\Modules\Front\Controls\Search\Search;
+use App\Modules\Front\Controls\SideMenu\ISideMenuFactory;
+use App\Modules\Front\Controls\SideMenu\SideMenu;
 use Nette\Application\UI\Presenter;
 
 /**
@@ -24,6 +26,9 @@ abstract class BasePresenter extends Presenter
     /** @var IPackageModalFactory @inject */
     public $packageModalFactory;
 
+    /** @var ISideMenuFactory @inject */
+    public $sideMenuFactory;
+
     /**
      * Common template method
      */
@@ -34,6 +39,7 @@ abstract class BasePresenter extends Presenter
         $this->template->portal = $this->portal;
         $this->template->rev = $this->portal->expand('build.rev');
         $this->template->debug = $this->portal->isDebug();
+        $this->template->showSideMenu = FALSE;
     }
 
     /**
@@ -59,6 +65,15 @@ abstract class BasePresenter extends Presenter
     protected function createComponentModal()
     {
         return $this->packageModalFactory->create();
+    }
+
+
+    /**
+     * @return SideMenu
+     */
+    protected function createComponentSideMenu()
+    {
+        return $this->sideMenuFactory->create();
     }
 
 }

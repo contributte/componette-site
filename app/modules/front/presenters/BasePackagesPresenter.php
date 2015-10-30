@@ -28,6 +28,7 @@ abstract class BasePackagesPresenter extends BasePresenter
         parent::beforeRender();
 
         $this->template->search = $this->search;
+        $this->template->showSideMenu = TRUE;
     }
 
     /**

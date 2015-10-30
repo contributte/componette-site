@@ -9,4 +9,17 @@ final class TagsRepository extends AbstractRepository
     {
         return $this->findAll()->orderBy('name')->fetchPairs('id', 'name');
     }
+
+
+    public function findWithHighPriority()
+    {
+        return $this->findBy(['priority>' => 0])->orderBy('priority', 'DESC');
+    }
+
+
+    public function findWithLowPriority()
+    {
+        return $this->findBy(['priority' => 0])->orderBy('name', 'ASC');
+    }
+
 }
