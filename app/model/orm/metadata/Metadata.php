@@ -8,10 +8,10 @@ use App\Model\Packages\Linker;
 use Nette\Utils\DateTime;
 
 /**
- * @property Package $package        {1:1d Package::$metadata primary}
+ * @property Package $package               {1:1d Package::$metadata primary}
  * @property string|NULL $owner
  * @property string|NULL $name
- * @property string|NULL $readme         {enum self::README_*}
+ * @property string|NULL $readme            {enum self::README_*}
  * @property string|NULL $description
  * @property string|NULL $homepage
  * @property int|NULL $stars
@@ -26,8 +26,8 @@ use Nette\Utils\DateTime;
  * @property DateTime|NULL $pushed
  * @property DateTime|NULL $updated
  * @property Extra|NULL $extra
- * @property Linker $linker         {virtual}
- * @property Composer\Data $composer       {virtual}
+ * @property Linker $linker                 {virtual}
+ * @property Composer\Data $composer        {virtual}
  */
 class Metadata extends AbstractEntity
 {
