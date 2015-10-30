@@ -22,7 +22,7 @@
         </span>
         <span class="b-meta-info">
             <span class="box-icon"><span class="octicon octicon-clock"></span></span>
-            <span class="box-count box-age"><a data-ga="1" data-event="click" data-category="meta-short" data-action="commits" href="{$package->metadata->linker->getCommitsUrl()}" data-toggle="tooltip" data-placement="left" title="Last push on {$package->metadata->pushed|datetime}">{$package->metadata->pushed|timeAgo}</a></span>
+            <span class="box-count box-age"><a data-ga="1" data-event="click" data-category="meta-short" data-action="commits" href="{$package->metadata->linker->getCommitsUrl()}" data-toggle="tooltip" data-placement="left" title="Last activity">{$package->metadata->pushed|timeAgo}</a></span>
         </span>
     </div>
 </section>
