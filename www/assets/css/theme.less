@@ -122,7 +122,7 @@ a[href*="://"]:after {
 
   .b-search-filter {
     position: absolute;
-    top: 30px;
+    top: 28px;
     right: 10px;
   }
 
@@ -152,8 +152,29 @@ a[href*="://"]:after {
     form.search-form {
       width: 100%;
 
+      div.icon {
+        position: absolute;
+        top: 28px;
+        left: 10px;
+        z-index: 9;
+      }
+
+      div.spinner {
+        position: absolute;
+        top: 28px;
+        left: 10px;
+        background-color: #fff;
+        background-image: url('../img/spinner3.gif');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        width: 32px;
+        height: 32px;
+        z-index: 10;
+      }
+
       input.search {
-        padding: 0.4em;
+        padding: 6px 10px 6px 50px;
         font-size: 20px;
         color: #333;
         vertical-align: middle;
@@ -610,7 +631,6 @@ a[href*="://"]:after {
     padding: 8px;
   }
 }
-
 
 @media screen and (max-width: 991px) {
   .main-title {

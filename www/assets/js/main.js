@@ -1,33 +1,7 @@
-$(function () {
-
-    $(".chosen").chosen({width: '100%'});
-
-    // Tooltip
-    $('[data-toggle="tooltip"]').tooltip();
-    $('[data-tooltip="top"]').tooltip();
-
-    // Highlight.JS
-    $('pre code').each(function (i, block) {
-        hljs.highlightBlock(block);
-    });
-
-    // Nette.ajax
-    $.nette.init();
-
-    // Google Events
-    $('a[data-ga]').on('click', function (e) {
-        var event = $(this).data('ga-event');
-        var category = $(this).data('ga-category');
-        var action = $(this).data('ga-action');
-        ga('send', 'event', event, category, action);
-    });
-
-    // Search
-
-    (function () {
-
-        var $form = $('form.search-form');
-        var $el = $form.find('input.search');
+$.nette.ext('search', {
+    init: function () {
+        var $form = $(this.form);
+        var $el = $form.find(this.el);
         var interval;
 
         if ($form.length && $el.length) {
@@ -39,20 +13,67 @@ $(function () {
                     return false;
                 }
             });
-
             $form.on('keyup', function (e) {
                 var query = $el.val();
 
-                if (query.length > 2){
+                if (query.length > 2) {
                     clearTimeout(interval);
                     interval = setTimeout(function () {
                         $.nette.ajax({
-                            url: url.replace('_QUERY_', query),
+                            url: url.replace('_QUERY_', query)
                         });
                     }, 500);
                 }
             });
         }
+
+        $form.append(this.spinner);
+    },
+    before: function () {
+        this.spinner.show();
+    },
+    complete: function () {
+        this.spinner.delay(200).hide();
+    }
+}, {
+    form: 'form.search-form',
+    el: 'input.search',
+    spinner: $('<div>', {
+        class: 'spinner',
+        css: {
+            'display': 'none'
+        }
+    })
+});
+
+$(function () {
+
+    // Choosen
+    $(".chosen").chosen({width: '100%'});
+
+    // Tooltip
+    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-tooltip="top"]').tooltip();
+
+    // Highlight.JS
+    $('pre code').each(function (i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    // Google Events
+    $('a[data-ga]').on('click', function (e) {
+        var event = $(this).data('ga-event');
+        var category = $(this).data('ga-category');
+        var action = $(this).data('ga-action');
+        ga('send', 'event', event, category, action);
+    });
+
+    // Search
+    (function () {
+
+
     })();
 
+    // Nette.ajax
+    $.nette.init();
 });

@@ -3,6 +3,7 @@
     <a n:href=":Front:Home:">Home</a> > <a n:href=":Front:List:owner, $package->metadata->owner">{$package->metadata->owner}</a> > {$package->metadata->name}
 {/block}
 {block #content}
+<div n:snippet="search-result"></div>
 <section class="page page-package clearfix">
     <section class="page-content">
         {control package:content}
