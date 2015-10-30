@@ -11,9 +11,9 @@ final class PackagesMapper extends AbstractMapper
      * @param mixed $q
      * @return QueryBuilder
      */
-    public function search($q)
+    public function search($q, $orderBy)
     {
-        return $this->builder()
+        $builder = $this->builder()
             ->from('[packages]', 'p')
             ->leftJoin('p', '[metadatas]', 'm', '[m.package] = [p.id]')
             ->orWhere("[p.repository] LIKE %s", "%$q%")
@@ -27,6 +27,39 @@ final class PackagesMapper extends AbstractMapper
             //->orWhere("[m.homepage] LIKE %s", "%$q%")
             //->orWhere("[m.content] LIKE %s", "%$q%")
             ->andWhere('[p.state] = %s', Package::STATE_ACTIVE);
+        $this->applyOrder($builder, $orderBy);
+
+        return $builder;
     }
 
+    /**
+     * @param string $orderBy
+     * @return QueryBuilder
+     */
+    public function findOrdered($orderBy)
+    {
+        $builder = $this->builder();
+        $builder->from('[packages]', 'p')
+            ->leftJoin('p', '[metadatas]', 'm', '[m.package] = [p.id]');
+
+        $this->applyOrder($builder, $orderBy);
+
+        return $builder;
+    }
+
+    /**
+     * @param QueryBuilder $builder
+     * @param string $orderBy
+     */
+    private function applyOrder(QueryBuilder $builder, $orderBy)
+    {
+        switch ($orderBy) {
+            case 'push':
+                $builder->orderBy('[m.pushed] DESC');
+                break;
+            case 'popularity':
+                $builder->orderBy('IFNULL([m.stars], 0) * 1.5 + POW(IFNULL([m.downloads], 0), 0.4) DESC');
+                break;
+        }
+    }
 }

@@ -1,13 +1,10 @@
 <div class="b-search-filter buttons clearfix">
-    <div class="btn-group filtering" role="group">
-        <a data-ga="1" data-event="click" data-category="search-controls" data-action="stars" data-tooltip="top" title="Sort by stars" n:class="$control->by === 'stars' ? active, 'b-search-filter__button'" n:href="this, by => stars">
-            <span class="mega-octicon octicon-star"></span>
-        </a>
-        <a data-ga="1" data-event="click" data-category="search-controls" data-action="downloads" data-tooltip="top" title="Sort by downloads" n:class="$control->by === 'downloads' ? active, 'b-search-filter__button'" n:href="this, by => downloads">
-            <span class="mega-octicon octicon-cloud-download"></span>
-        </a>
-        <a data-ga="1" data-event="click" data-category="search-controls" data-action="update" data-tooltip="top" title="Sort by last update" n:class="$control->by === 'push' ? active, 'b-search-filter__button'" n:href="this, by => push">
-            <span class="mega-octicon octicon-clock"></span>
-        </a>
-    </div>
+	<div class="btn-group filtering" role="group">
+		<a data-ga="1" data-event="click" data-category="search-controls" data-action="stars" data-tooltip="top" data-placement="bottom" title="Sort by popularity" n:class="$control->by === 'popularity' ? active, 'b-search-filter__button'" n:href="this, by => stars">
+			<span class="mega-octicon octicon-star"></span>
+		</a>
+		<a data-ga="1" data-event="click" data-category="search-controls" data-action="update" data-tooltip="top" data-placement="bottom" title="Sort by last update" n:class="$control->by === 'push' ? active, 'b-search-filter__button'" n:href="this, by => push">
+			<span class="mega-octicon octicon-clock"></span>
+		</a>
+	</div>
 </div>

@@ -5,17 +5,25 @@ namespace App\Model\ORM;
 use Nextras\Orm\Collection\ICollection;
 
 /**
- * @method ICollection|Package[] search()
+ * @method ICollection|Package[] search($q, $orderBy)
+ * @method ICollection|Package[] findOrdered($orderBy)
  */
 final class PackagesRepository extends AbstractRepository
 {
 
     /**
+     * @param string|null $orderBy
      * @return ICollection
      */
-    public function findActive()
+    public function findActive($orderBy = NULL)
     {
-        return $this->findBy(['state' => Package::STATE_ACTIVE]);
+        if ($orderBy !== NULL) {
+            $collection = $this->findOrdered($orderBy);
+        } else {
+            $collection = $this->findAll();
+        }
+
+        return $collection->findBy(['state' => Package::STATE_ACTIVE]);
     }
 
     /**
