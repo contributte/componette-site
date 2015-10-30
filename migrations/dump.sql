@@ -3,6 +3,10 @@ SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
+DROP DATABASE IF EXISTS `packages`;
+CREATE DATABASE `packages` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_czech_ci */;
+USE `packages`;
+
 CREATE TABLE `metadatas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `package` int(10) unsigned NOT NULL,
@@ -31,14 +35,11 @@ CREATE TABLE `metadatas` (
 
 CREATE TABLE `packages` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `type` enum('COMPOSER','BOWER', 'UNKNOWN') NOT NULL DEFAULT 'UNKNOWN',
+  `type` enum('COMPOSER','BOWER','UNKNOWN') NOT NULL DEFAULT 'UNKNOWN',
   `state` enum('ACTIVE','ARCHIVED','QUEUED') NOT NULL DEFAULT 'QUEUED',
   `repository` varchar(255) NOT NULL,
   `created` datetime NOT NULL,
-  `updated` datetime DEFALT NULL,
+  `updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `repository` (`repository`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
--- 2015-10-05 10:45:01
