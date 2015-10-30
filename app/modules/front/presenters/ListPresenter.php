@@ -3,6 +3,7 @@
 namespace App\Modules\Front;
 
 use App\Model\ORM\Package;
+use App\Modules\Front\Controls\PackageList\PackageList;
 use Nextras\Orm\Collection\ICollection;
 
 final class ListPresenter extends BasePackagesPresenter
@@ -57,7 +58,7 @@ final class ListPresenter extends BasePackagesPresenter
      */
 
     /**
-     * @return Controls\PackageList\PackageList
+     * @return PackageList
      */
     protected function createComponentPackages()
     {
