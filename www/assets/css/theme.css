@@ -371,6 +371,7 @@ a[href*="://"]:after {
 }
 .page .page-sidebar div.requirements {
   overflow: hidden;
+  font-size: 15px;
 }
 .page .page-sidebar div.requirements ul {
   margin-left: 30px;
