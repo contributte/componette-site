@@ -54,6 +54,27 @@ final class ListPresenter extends BasePackagesPresenter
     }
 
     /**
+     * BY TAG *****************************************************************
+     */
+
+    /**
+     * @param string $tag
+     */
+    public function actionTag($tag)
+    {
+        $this->packages = $this->packagesFacade->findByTag($tag);
+    }
+
+
+    /**
+     * @param string $tag
+     */
+    public function renderTag($tag)
+    {
+        $this->template->tag = $tag;
+    }
+
+    /**
      * CONTROLS ****************************************************************
      */
 

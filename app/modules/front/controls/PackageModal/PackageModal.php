@@ -6,6 +6,7 @@ use App\Core\UI\BaseControl;
 use App\Model\ORM\Metadata;
 use App\Model\ORM\Package;
 use App\Model\ORM\PackagesRepository;
+use App\Model\ORM\TagsRepository;
 use Nette\Application\UI\Form;
 use Nette\Utils\DateTime;
 use Nette\Utils\Strings;
@@ -18,13 +19,19 @@ final class PackageModal extends BaseControl
     /** @var PackagesRepository */
     private $packagesRepository;
 
+    /** @var TagsRepository */
+    private $tagsRepository;
+
+
     /**
      * @param PackagesRepository $packagesRepository
+     * @param TagsRepository $tagsRepository
      */
-    function __construct(PackagesRepository $packagesRepository)
+    function __construct(PackagesRepository $packagesRepository, TagsRepository $tagsRepository)
     {
         parent::__construct();
         $this->packagesRepository = $packagesRepository;
+        $this->tagsRepository = $tagsRepository;
     }
 
     /**
@@ -41,6 +48,9 @@ final class PackageModal extends BaseControl
             ->addRule($form::REQUIRED, 'URL is required')
             ->addRule($form::URL, 'URL is not valid')
             ->addRule($form::PATTERN, 'Only GitHub urls are allowed', self::GITHUB_REGEX);
+
+        $tags = $this->tagsRepository->fetchPairs();
+        $form->addMultiSelect('tags', 'Tags', $tags);
 
         $form->addSubmit('add', 'Add package');
 
@@ -60,6 +70,9 @@ final class PackageModal extends BaseControl
             $package->created = new DateTime();
             $package->repository = $packageName;
             $package->metadata = new Metadata();
+            foreach ($this->tagsRepository->findById($form->values->tags) as $tag) {
+                $package->tags->add($tag);
+            }
 
             try {
                 $this->packagesRepository->persistAndFlush($package);
