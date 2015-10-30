@@ -93,7 +93,7 @@ final class Filters
     {
         $name = lcfirst($name);
         $name = preg_replace('#([A-Z]+)#', '-$1', $name);
-        $name = str_replace([' '], '-', $name);
+        $name = str_replace('--', '-', $name);
         return $name;
     }
 
