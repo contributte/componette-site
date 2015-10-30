@@ -19,13 +19,20 @@ final class Data
     }
 
     /**
+     * @param string|NULL $package
      * @return string
      */
-    public function getPackageUrl()
+    public function getPackageUrl($package = NULL)
     {
         $url = new Url('https://packagist.org/packages');
         $url->appendPath('/');
-        $url->appendPath(isset($this->data['name']) ? $this->data['name'] : '#');
+
+        if ($package) {
+            $url->appendPath($package);
+        } else {
+            $url->appendPath(isset($this->data['name']) ? $this->data['name'] : '#');
+        }
+
         return $url;
     }
 
