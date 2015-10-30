@@ -45,7 +45,7 @@ final class PackagesHelper
             $data = ['packages' => [], 'owners' => []];
 
             foreach ($this->packages->findAll() as $package) {
-                $data['packages'][$package->id] = strtolower($package->metadata->name);
+                $data['packages'][$package->id] = strtolower($package->metadata->owner . '/' . $package->metadata->name);
                 $data['owners'][strtolower($package->metadata->owner)] = strtolower($package->metadata->owner);
             }
 
