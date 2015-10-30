@@ -4,7 +4,7 @@
 {var $name => $package->metadata->name}
 
 <div class="title-repo">
-    <a data-ga="1" data-event="click" data-category="sidebar" data-action="repo-title" href="{$package->metadata->linker->getRepoUrl()}">
+    <a data-ga="1" data-event="click" data-category="sidebar" data-action="repo-title" data-toggle="tooltip" data-placement="bottom" title="{$name}" href="{$package->metadata->linker->getRepoUrl()}">
         <span class="octicon octicon-mark-github"></span> {$name}
     </a>
 </div>
