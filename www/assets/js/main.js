@@ -23,11 +23,16 @@ $(function () {
     });
 
     // Search
-    /*
+
     (function () {
 
         var $form = $('form.search-form');
-        if ($form.length) {
+        var $el = $form.find('input.search');
+        var interval;
+
+        if ($form.length && $el.length) {
+            var url = $el.data('handle');
+
             $form.on('keydown', function (e) {
                 if (e.keyCode == 13) {
                     $(this).submit();
@@ -35,18 +40,19 @@ $(function () {
                 }
             });
 
-            var $el = $form.find('input.search');
-            if ($el.length) {
-                var packages = new Bloodhound({
-                    datumTokenizer: Bloodhound.tokenizers.whitespace,
-                    queryTokenizer: Bloodhound.tokenizers.whitespace,
-                    remote: {
-                        url: $el.data('handle'),
-                        wildcard: '_QUERY_'
-                    }
-                });
-            }
+            $form.on('keyup', function (e) {
+                var query = $el.val();
+
+                if (query.length > 2){
+                    clearTimeout(interval);
+                    interval = setTimeout(function () {
+                        $.nette.ajax({
+                            url: url.replace('_QUERY_', query),
+                        });
+                    }, 500);
+                }
+            });
         }
     })();
-    */
+
 });
