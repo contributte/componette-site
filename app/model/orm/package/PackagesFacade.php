@@ -91,6 +91,10 @@ final class PackagesFacade
         return $builder;
     }
 
+    /**
+     * @param string $tag
+     * @return ICollection
+     */
     public function findByTag($tag)
     {
         $builder = $this->packages->findBy(['this->tags->name' => $tag, 'state' => Package::STATE_ACTIVE]);
