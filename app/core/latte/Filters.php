@@ -78,8 +78,8 @@ final class Filters
 
         $delta = round($delta / 60);
         if ($delta <= 60) return 'hot';
-        if ($delta <= 1440) return '~ ' . ceil($delta / 60) . 'h';
-        if ($delta < 525960) return '~ ' . ceil($delta / 1440) . 'd';
+        if ($delta <= 1440) return ceil($delta / 60) . 'h';
+        if ($delta < 525960) return ceil($delta / 1440) . 'd';
 
         // ------
         return '~ ' . round($delta / 525960, 1) . 'y';
