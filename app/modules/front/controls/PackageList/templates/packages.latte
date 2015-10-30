@@ -9,10 +9,11 @@
                     <section class="b-package__body">
 
                         <h3 class="b-package__title">
-                            <a href="{$package->metadata->linker->getOwnerUrl()}"><img class="b-package__avatar" src="{$package->metadata->linker->getOwnerAvatarUrl(20)}"></a>
-                            <a class="link-author" href="{plink List:owner, slug => $package->metadata->owner}">{$package->metadata->owner}</a>
+                            <a href="{plink :Front:Package:detail, slug => $package->id}"><img class="b-package__avatar" src="{$package->metadata->linker->getOwnerAvatarUrl(20)}">
+                            {$package->metadata->owner}
                             /
-                            <a href="{plink :Front:Package:detail, slug => $package->id}">{$package->metadata->name}</a></h3>
+                            {$package->metadata->name}</a>
+                        </h3>
 
                         <p>{$package->metadata->description|truncate:150}</p>
                         {*<a class="tag" href="#"  n:foreach="$package->metadata->tags as $tag">#{$tag}</a>*}
