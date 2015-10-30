@@ -12,12 +12,17 @@ final class HomePresenter extends BasePackagesPresenter
     private $newest;
 
     /** @var ICollection|Package[] */
-    private $recentlyPushed;
+    private $lastActive;
+
+    /** @var ICollection|Package[] */
+    private $mostPopular;
+
 
     public function actionDefault()
     {
         $this->newest = $this->packagesFacade->findNewests();
-        $this->recentlyPushed = $this->packagesFacade->findRecentlyPushed();
+        $this->lastActive = $this->packagesFacade->findByLastActivity();
+        $this->mostPopular = $this->packagesFacade->findMostPopular();
     }
 
     /**
@@ -35,8 +40,19 @@ final class HomePresenter extends BasePackagesPresenter
     /**
      * @return Controls\PackageList\PackageList
      */
-    protected function createComponentRecentlyPushed()
+    protected function createComponentLastActive()
     {
-        return $this->createPackagesControl($this->recentlyPushed);
+        return $this->createPackagesControl($this->lastActive);
     }
+
+
+    /**
+     * @return Controls\PackageList\PackageList
+     */
+    protected function createComponentMostPopular()
+    {
+        return $this->createPackagesControl($this->mostPopular);
+    }
+
+
 }
