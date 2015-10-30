@@ -426,8 +426,10 @@ a[href*="://"]:after {
 
     .title-owner {
       font-size: 20px;
-      overflow: hidden;
       margin-bottom: 10px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
 
       img {
         max-width: 40px;
@@ -436,8 +438,10 @@ a[href*="://"]:after {
 
     .title-repo {
       font-size: 20px;
-      overflow: hidden;
       vertical-align: middle;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
       margin-bottom: 10px;
 
       span {
