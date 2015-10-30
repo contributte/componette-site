@@ -53,7 +53,7 @@ $(function () {
 
     // Tooltip
     $('[data-toggle="tooltip"]').tooltip();
-    $('[data-tooltip="top"]').tooltip();
+    $('[data-tooltip]').tooltip();
 
     // Highlight.JS
     $('pre code').each(function (i, block) {
