@@ -30,27 +30,24 @@
     <!-- Packages Container -->
     <div class="container">
 
-        <div class="logo">
-            <a n:href=":Front:Home:"><img src="{$basePath}/assets/img/logo.png" alt="packages.nette.org" title="Nette Packages Central Repository"></a>
-        </div>
+        <div class="header row">
+            <div class="col-sm-1">
+                <a class="main-title" n:href=":Front:Home:">Addons</a>
+            </div>
+            <div class="col-sm-10">
+                <div class="b-search">
+                    {control search}
+                    {if $presenter->isLinkCurrent(':Front:List:*')}
+                        {control search:controls}
+                    {/if}
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <a href="#" title="Add new package" data-tooltip="top" data-toggle="modal" data-target="#package-modal" class="btn btn-default button--add-package"><span class="mega-octicon octicon-plus"></span></a>
+            </div>
 
-        <div class="header">
-            <div class="breadcrumb clearfix">
-                <div class="pull-left" n:block="#breadcrumbs">
-                    <a n:href=":Front:Home:">Home</a>
-                </div>
-                <div class="pull-right">
-                    <a n:href=":Front:List:">All packages</a> |
-                    <a href="#" data-toggle="modal" data-target="#package-modal"><strong>Add new package</strong></a>
-                </div>
-            </div>
-            <div class="search">
-                <h2>Search in <strong>{$portal->getPackagesCount()}</strong> awesome packages.</h2>
-                {control search}
-                {if $presenter->isLinkCurrent(':Front:List:*')}
-                    {control search:controls}
-                {/if}
-            </div>
+
+
         </div>
 
         <div class="alerts" n:inner-foreach="$flashes as $flash">

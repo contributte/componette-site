@@ -85,10 +85,44 @@ a[href*="://"]:after {
 .bar .user {
   float: right;
 }
+/*
+  Header
+  ==========
+  */
+.button--add-package {
+  margin-top: 20px;
+}
+.main-title {
+  color: black;
+  font-size: 24px;
+  padding: 4px;
+  display: block;
+  padding-top: 28px;
+}
+.b-search-filter {
+  position: absolute;
+  top: 30px;
+  right: 43px;
+}
+.b-search-filter__button {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  font-size: 17px;
+  color: silver;
+}
+.b-search-filter__button.active {
+  color: black;
+}
+@media screen and (max-width: 600px) {
+  .b-search-filter {
+    display: none !important;
+  }
+}
 .header {
   border-radius: 6px;
   background: #fff;
-  margin-top: 20px;
+  margin-top: 40px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
 }
 .header h2 {
@@ -96,14 +130,14 @@ a[href*="://"]:after {
   font-weight: normal;
   font-size: 26px;
 }
-.header .search {
+.header .b-search {
   padding: 20px;
   text-align: center;
 }
-.header .search form.search-form {
+.header .b-search form.search-form {
   width: 100%;
 }
-.header .search form.search-form input.search {
+.header .b-search form.search-form input.search {
   padding: 0.4em;
   font-size: 20px;
   color: #333;
@@ -119,61 +153,9 @@ a[href*="://"]:after {
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
   text-align: left;
 }
-.header .search form.search-form input.search:focus {
+.header .b-search form.search-form input.search:focus {
   border-color: #51a7e8;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075), 0 0 5px rgba(81, 167, 232, 0.5);
-}
-.header .search form.search-form span.twitter-typeahead {
-  width: 100%;
-}
-.header .search form.search-form .twitter-typeahead .tt-query,
-.header .search form.search-form .twitter-typeahead .tt-hint {
-  margin-bottom: 0;
-}
-.header .search form.search-form input.tt-hint {
-  display: block;
-  width: 100%;
-  color: #cdcdcd;
-}
-.header .search form.search-form .tt-menu {
-  min-width: 160px;
-  margin-top: 2px;
-  padding: 0;
-  background-color: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-}
-.header .search form.search-form .tt-suggestion {
-  display: block;
-  padding: 8px 15px;
-  border-bottom: 1px solid #cdcdcd;
-  text-align: left;
-  cursor: pointer;
-}
-.header .search form.search-form .tt-suggestion h5 {
-  margin: 2px 0;
-}
-.header .search form.search-form .tt-suggestion .pull-left {
-  float: left;
-}
-.header .search form.search-form .tt-suggestion .pull-right {
-  float: right;
-  vertical-align: top;
-}
-.header .search form.search-form .tt-suggestion:last-of-type {
-  border-bottom: 0;
-}
-.header .search form.search-form .tt-suggestion:hover,
-.header .search form.search-form .tt-cursor {
-  background: rgba(52, 132, 210, 0.2);
-}
-.header .search form.search-form .tt-suggestion p {
-  margin: 0;
-}
-.header .search .buttons {
-  margin-top: 10px;
-  text-align: right;
 }
 .alerts {
   margin-top: 10px;
@@ -430,10 +412,21 @@ a[href*="://"]:after {
   .hidden-w500 {
     display: none !important;
   }
-  .logo {
-    display: none;
+}
+@media screen and (max-width: 767px) {
+  .button--add-package {
+    display: none !important;
   }
-  .header {
-    margin-top: 50px;
+  .main-title {
+    text-align: center;
+    padding: 8px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .main-title {
+    font-size: 20px;
+  }
+  .button--add-package {
+    margin-left: -20px;
   }
 }
