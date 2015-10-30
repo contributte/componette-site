@@ -77,10 +77,7 @@
 
 <div class="tags">
     <div class="title">Tags</div>
-    <span class="label label-primary"># tag1</span>
-    <span class="label label-primary"># tag1</span>
-    <span class="label label-primary"># tag1</span>
-    <span class="label label-primary"># tag1</span>
-    <span class="label label-primary"># tag1</span>
-    <span class="label label-primary"># tag1</span>
+    {foreach $package->tags as $tag}
+        <span class="label label-primary"><a href="{plink List:tag tag => $tag->name}">#{$tag->name}</a></span>
+    {/foreach}
 </div>

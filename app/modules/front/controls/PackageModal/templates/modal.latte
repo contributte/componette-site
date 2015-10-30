@@ -11,6 +11,10 @@
                         <label n:name="package">{$form['package']->label}</label>
                         <input n:name="package" class="form-control" placeholder="https://github.com/{l}owner{r}/{l}repo{r}">
                     </div>
+                    <div class="form-group">
+                        <label n:name="tags">{$form['tags']->label}</label>
+                        {input tags class => 'form-control chosen', data-placeholder => 'Select some tags'}
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

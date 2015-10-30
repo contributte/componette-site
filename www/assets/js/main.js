@@ -1,5 +1,7 @@
 $(function () {
 
+    $(".chosen").chosen({width: '100%'});
+
     // Tooltip
     $('[data-toggle="tooltip"]').tooltip();
     $('[data-tooltip="top"]').tooltip();
