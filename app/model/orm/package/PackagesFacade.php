@@ -39,18 +39,29 @@ final class PackagesFacade
         return $this->packages
             ->findActive()
             ->orderBy('created', 'DESC')
-            ->limitBy(6);
+            ->limitBy(3);
     }
 
     /**
      * @return ICollection
      */
-    public function findRecentlyPushed()
+    public function findByLastActivity()
     {
         return $this->packages
             ->findActive()
             ->orderBy('this->metadata->pushed', 'DESC')
-            ->limitBy(6);
+            ->limitBy(3);
+    }
+
+
+    /**
+     * @return ICollection
+     */
+    public function findMostPopular()
+    {
+        return $this->packages
+            ->findOrdered('popularity')
+            ->limitBy(3);
     }
 
     /**
