@@ -53,7 +53,24 @@
         </div>
 
         <div class="content">
-            {include #content}
+            <div class="row">
+                {ifset #wrapper}
+                    {block #wrapper}
+                        <div class="col-md-3">
+                            {block #sidebar}
+                                {control sideMenu}
+                            {/block}
+                        </div>
+                        <div class="col-md-9">
+                            {include #content}
+                        </div>
+                    {/block}
+                {else}
+                    <div class="col-md-12">
+                        {include #content}
+                    </div>
+                {/ifset}
+            </div>
         </div>
 
         <div class="footer">
