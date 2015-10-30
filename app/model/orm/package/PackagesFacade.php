@@ -95,8 +95,7 @@ final class PackagesFacade
      */
     public function findByTag($tag)
     {
-        $builder = $this->packages->findBy(['this->tags->name' => $tag, 'state' => Package::STATE_ACTIVE]);
-        $builder = $this->formatOrder($builder);
+        $builder = $this->packages->findOrdered($this->search->by)->findBy(['this->tags->name' => $tag, 'state' => Package::STATE_ACTIVE]);
         $builder = $this->formatLimit($builder);
 
         return $builder;
