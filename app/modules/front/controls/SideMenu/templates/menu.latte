@@ -2,16 +2,17 @@
 
 	<ul class="nav">
 		<li n:foreach="$categories as $category">
-
 			<a href="{plink List:tag $category->name}">
 				<span class="square" style="background: {$category->color}"></span>
-				{$category->name}</a>
+				{$category->name}
+			</a>
 		</li>
 	</ul>
 
 	<div class="tags">
 		<span n:foreach="$tags as $tag" class="label label-default"><a href="{plink List:tag $tag->name}">#{$tag->name}</a></span>
 	</div>
+
 	<div class="btn-wrapper">
 		<a href="{plink List:}" class="btn btn-default btn-block">
 			<span class="square"></span>

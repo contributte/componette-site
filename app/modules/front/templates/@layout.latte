@@ -54,14 +54,22 @@
 
         <div class="content">
             <div class="row">
-                {if $showSideMenu}
-                    <div class="col-md-3">
-                        {control sideMenu}
+                {ifset #wrapper}
+                    {block #wrapper}
+                        <div class="col-md-3">
+                            {block #sidebar}
+                                {control sideMenu}
+                            {/block}
+                        </div>
+                        <div class="col-md-9">
+                            {include #content}
+                        </div>
+                    {/block}
+                {else}
+                    <div class="col-md-12">
+                        {include #content}
                     </div>
-                {/if}
-                <div class="col-md-{$showSideMenu ? 9 : 12}">
-                    {include #content}
-                </div>
+                {/ifset}
             </div>
         </div>
 

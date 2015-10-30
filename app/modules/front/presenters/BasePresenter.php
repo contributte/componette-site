@@ -39,7 +39,6 @@ abstract class BasePresenter extends Presenter
         $this->template->portal = $this->portal;
         $this->template->rev = $this->portal->expand('build.rev');
         $this->template->debug = $this->portal->isDebug();
-        $this->template->showSideMenu = FALSE;
     }
 
     /**
@@ -66,7 +65,6 @@ abstract class BasePresenter extends Presenter
     {
         return $this->packageModalFactory->create();
     }
-
 
     /**
      * @return SideMenu
