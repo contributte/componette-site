@@ -85,45 +85,39 @@ a[href*="://"]:after {
 .bar .user {
   float: right;
 }
-/*
-  Header
-  ==========
-  */
-.button--add-package {
+.header {
+  border-radius: 6px;
+  background: #fff;
+  margin-top: 40px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+.header .button--add-package {
   margin-top: 20px;
 }
-.main-title {
+.header .header-col {
+  text-align: center;
+  padding: 0;
+}
+.header .main-title {
   color: black;
   font-size: 24px;
-  padding: 4px;
   display: block;
   padding-top: 28px;
 }
-.b-search-filter {
+.header .b-search-filter {
   position: absolute;
   top: 30px;
-  right: 43px;
+  right: 10px;
 }
-.b-search-filter__button {
+.header .b-search-filter__button {
   display: inline-block;
   width: 32px;
   height: 32px;
   font-size: 17px;
   color: silver;
 }
-.b-search-filter__button.active {
+.header .b-search-filter__button.active {
   color: black;
-}
-@media screen and (max-width: 600px) {
-  .b-search-filter {
-    display: none !important;
-  }
-}
-.header {
-  border-radius: 6px;
-  background: #fff;
-  margin-top: 40px;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
 }
 .header h2 {
   margin: 0 0 20px 0;
@@ -131,7 +125,8 @@ a[href*="://"]:after {
   font-size: 26px;
 }
 .header .b-search {
-  padding: 20px;
+  padding: 20px 0;
+  position: relative;
   text-align: center;
 }
 .header .b-search form.search-form {
@@ -415,6 +410,9 @@ a[href*="://"]:after {
 }
 @media screen and (max-width: 767px) {
   .button--add-package {
+    display: none !important;
+  }
+  .b-search-filter {
     display: none !important;
   }
   .main-title {

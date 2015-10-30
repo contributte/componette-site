@@ -31,10 +31,10 @@
     <div class="container">
 
         <div class="header row">
-            <div class="col-sm-1">
-                <a class="main-title" n:href=":Front:Home:">Addons</a>
+            <div class="col-sm-1 header-col">
+                <a class="main-title" n:href=":Front:Home:"><span class="mega-octicon octicon-home"></span></a>
             </div>
-            <div class="col-sm-10">
+            <div class="col-sm-10 header-col">
                 <div class="b-search">
                     {control search}
                     {if $presenter->isLinkCurrent(':Front:List:*')}
@@ -42,12 +42,9 @@
                     {/if}
                 </div>
             </div>
-            <div class="col-sm-1">
-                <a href="#" title="Add new package" data-tooltip="top" data-toggle="modal" data-target="#package-modal" class="btn btn-default button--add-package"><span class="mega-octicon octicon-plus"></span></a>
+            <div class="col-sm-1  header-col">
+                <a href="#" title="Add new package" data-tooltip="bottom" data-toggle="modal" data-target="#package-modal" class="btn btn-default button--add-package"><span class="mega-octicon octicon-plus"></span></a>
             </div>
-
-
-
         </div>
 
         <div class="alerts" n:inner-foreach="$flashes as $flash">
