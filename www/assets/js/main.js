@@ -20,7 +20,9 @@ $(function () {
     });
 
     // Search
+    /*
     (function () {
+
         var $form = $('form.search-form');
         if ($form.length) {
             $form.on('keydown', function (e) {
@@ -40,40 +42,8 @@ $(function () {
                         wildcard: '_QUERY_'
                     }
                 });
-                $el.typeahead({
-                        hint: false,
-                        highlight: true,
-                        minLength: 3
-                    },
-                    {
-                        name: 'packages',
-                        source: packages,
-                        limit: 10,
-                        display: 'name',
-                        templates: {
-                            empty: 'No results',
-                            suggestion: Handlebars.compile(
-                                '<div class="clearfix">' +
-                                '<div class="pull-left">' +
-                                '<h5><a href="{{link}}">{{name}}</a></h5>' +
-                                '<p>{{description}}</p>' +
-                                '</div>' +
-                                '<div class="pull-right">' +
-                                '<span class="octicon octicon-cloud-download"></span> {{downloads}} &nbsp;' +
-                                '<span class="octicon octicon-star"></span> {{stars}}' +
-                                '</div>' +
-                                '</div>'
-                            )
-                        }
-                    });
-
-                $el.bind('typeahead:select', function (ev, suggestion) {
-                    top.location.href = suggestion.link;
-                });
-                $el.bind('typeahead:asyncreceive', function (ev, query, dataset) {
-                    ga('send', 'event', 'search', 'suggestion', $el.val());
-                });
             }
         }
     })();
+    */
 });
