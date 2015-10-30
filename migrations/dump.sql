@@ -3,10 +3,6 @@ SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
-DROP DATABASE IF EXISTS `packages`;
-CREATE DATABASE `packages` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_czech_ci */;
-USE `packages`;
-
 CREATE TABLE `metadatas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `package` int(10) unsigned NOT NULL,

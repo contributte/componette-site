@@ -5,7 +5,7 @@ namespace App\Modules\Front;
 use App\Model\Portal;
 use App\Modules\Front\Controls\PackageModal\IPackageModalFactory;
 use App\Modules\Front\Controls\Search\ISearchFactory;
-use App\Modules\Front\Controls\Search\PackageModal;
+use App\Modules\Front\Controls\PackageModal\PackageModal;
 use App\Modules\Front\Controls\Search\Search;
 use Nette\Application\UI\Presenter;
 
