@@ -1,14 +1,17 @@
 {block}
 
+{var $owner => $package->metadata->owner}
+{var $name => $package->metadata->name}
+
 <div class="title-repo">
     <a data-ga="1" data-event="click" data-category="sidebar" data-action="repo-title" href="{$package->metadata->linker->getRepoUrl()}">
-        <span class="octicon octicon-mark-github"></span> {$package->metadata->name}
+        <span class="octicon octicon-mark-github"></span> {$name}
     </a>
 </div>
 
 <div class="title-owner">
-    <a data-ga="1" data-event="click" data-category="sidebar" data-action="owner-title" data-toggle="tooltip" data-placement="left" title="Show all addons by {$package->metadata->owner}" href="{plink List:owner, slug => $package->metadata->owner}">
-        <img src="{$package->metadata->linker->getOwnerAvatarUrl(40)}"> {$package->metadata->owner}
+    <a data-ga="1" data-event="click" data-category="sidebar" data-action="owner-title" data-toggle="tooltip" data-placement="left" title="Show all addons by {$owner}" href="{plink List:owner, slug => $owner}">
+        <img src="{$package->metadata->linker->getOwnerAvatarUrl(40)}"> {$owner}
     </a>
 </div>
 
@@ -36,20 +39,20 @@
 <div class="badges">
     <ul>
         <li>
-            <img src="http://isitmaintained.com/badge/resolution/{$package->metadata->owner}/{$package->metadata->name}.svg">
+            <img src="http://isitmaintained.com/badge/resolution/{$owner|lower}/{$name|lower}.svg">
         </li>
         <li>
-            <img src="http://isitmaintained.com/badge/open/{$package->metadata->owner}/{$package->metadata->name}.svg">
+            <img src="http://isitmaintained.com/badge/open/{$owner|lower}/{$name|lower}.svg">
         </li>
         {if $package->isComposerPackage && $package->metadata->composer}
             <li>
-                <img src="https://img.shields.io/packagist/dt/{$package->metadata->owner}/{$package->metadata->name}.svg">
+                <img src="https://img.shields.io/packagist/dt/{$owner|lower}/{$name|shields|lower}.svg">
             </li>
             <li>
-                <img src="https://img.shields.io/packagist/v/{$package->metadata->owner}/{$package->metadata->name}.svg">
+                <img src="https://img.shields.io/packagist/v/{$owner|lower}/{$name|shields|lower}.svg">
             </li>
             <li>
-                <img src="https://img.shields.io/packagist/l/{$package->metadata->owner}/{$package->metadata->name}.svg">
+                <img src="https://img.shields.io/packagist/l/{$owner|lower}/{$name|shields|lower}.svg">
             </li>
         {/if}
     </ul>

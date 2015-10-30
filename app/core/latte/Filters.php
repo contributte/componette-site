@@ -85,4 +85,16 @@ final class Filters
         return '~ ' . round($delta / 525960, 1) . 'y';
     }
 
+    /**
+     * @param string $name
+     * @return string
+     */
+    public static function shields($name)
+    {
+        $name = lcfirst($name);
+        $name = preg_replace('#([A-Z]+)#', '-$1', $name);
+        $name = str_replace([' '], '-', $name);
+        return $name;
+    }
+
 }

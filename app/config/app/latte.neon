@@ -6,3 +6,4 @@ services:
             - addFilter('timeDelta', ['App\Core\Latte\Filters', 'timeDelta'])
             - addFilter('timeAgo', ['App\Core\Latte\Filters', 'timeAgo'])
             - addFilter('datetime', ['App\Core\Latte\Filters', 'datetime'])
+            - addFilter('shields', ['App\Core\Latte\Filters', 'shields'])
