@@ -26,8 +26,7 @@ final class SearchFactory
         $search = new Search();
 
         // Pass parameters from request
-        $search->order = $this->request->getQuery('search-order', 'desc') === 'desc';
-        $search->by = $this->request->getQuery('search-by', 'stars');
+        $search->by = $this->request->getQuery('search-by', 'popularity');
         $search->limit = $this->request->getQuery('search-limit', 80);
         $search->q = $this->request->getQuery('q', NULL);
 

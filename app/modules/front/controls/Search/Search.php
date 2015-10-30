@@ -15,9 +15,6 @@ final class Search extends BaseControl
     /** @var string @persistent */
     public $by;
 
-    /** @var string @persistent */
-    public $order;
-
     /** @var Searching */
     private $search;
 
@@ -37,9 +34,6 @@ final class Search extends BaseControl
     {
         if (!isset($params['by'])) {
             $params['by'] = $this->search->by;
-        }
-        if (!isset($params['order'])) {
-            $params['order'] = $this->search->order ? 'desc' : 'asc';
         }
 
         parent::loadState($params);

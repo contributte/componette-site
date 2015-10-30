@@ -62,8 +62,8 @@ final class PackagesFacade
      */
     public function findAll()
     {
-        $builder = $this->packages->findActive();
-        $builder = $this->formatOrder($builder);
+        $builder = $this->packages->findActive($this->search->by);
+
         return $builder;
     }
 
@@ -73,8 +73,7 @@ final class PackagesFacade
      */
     public function findByOwner($owner)
     {
-        $builder = $this->packages->findBy(['this->metadata->owner' => $owner]);
-        $builder = $this->formatOrder($builder);
+        $builder = $this->packages->findOrdered($this->search->by)->findBy(['this->metadata->owner' => $owner]);
         $builder = $this->formatLimit($builder);
         return $builder;
     }
@@ -85,8 +84,7 @@ final class PackagesFacade
      */
     public function findByQuery($q)
     {
-        $builder = $this->packages->search($q);
-        $builder = $this->formatOrder($builder);
+        $builder = $this->packages->search($q, $this->search->by);
         $builder = $this->formatLimit($builder);
         return $builder;
     }
@@ -108,27 +106,6 @@ final class PackagesFacade
      * HELPERS *****************************************************************
      */
 
-    /**
-     * @param ICollection $collection
-     * @return ICollection
-     */
-    protected function formatOrder(ICollection $collection)
-    {
-        $direction = $this->search->order ? 'DESC' : 'ASC';
-        switch ($this->search->by) {
-            case 'push':
-                $collection = $collection->orderBy('this->metadata->pushed', $direction);
-                break;
-            case 'stars':
-                $collection = $collection->orderBy('this->metadata->stars', $direction);
-                break;
-            case 'downloads':
-                $collection = $collection->orderBy('this->metadata->downloads', $direction);
-                break;
-        }
-
-        return $collection;
-    }
 
     /**
      * @param ICollection $collection
