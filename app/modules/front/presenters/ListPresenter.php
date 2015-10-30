@@ -51,6 +51,9 @@ final class ListPresenter extends BasePackagesPresenter
     public function actionSearch($q)
     {
         $this->packages = $this->packagesFacade->findByQuery($q);
+        if ($this->isAjax()){
+            $this->redrawControl('search-result');
+        }
     }
 
     /**
