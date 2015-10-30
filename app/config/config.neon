@@ -31,16 +31,6 @@ tracy:
     email: %system.error.email%
     strictMode: yes
 
-database:
-    default:
-        dsn: '%database.driver%:host=%database.host%;dbname=%database.dbname%'
-        user: %database.user%
-        password: %database.password%
-        debugger: %debugMode%
-        explain: %debugMode%
-        options:
-            lazy: yes
-
 services:
     nette.userStorage:
         setup:
