@@ -7,7 +7,6 @@
             <div class="col-md-10">
                 <article class="b-package__article">
                     <section class="b-package__body">
-
                         <h3 class="b-package__title">
                             <a href="{plink :Front:Package:detail, slug => $package->id}"><img class="b-package__avatar" src="{$package->metadata->linker->getOwnerAvatarUrl(20)}">
                             {$package->metadata->owner}
@@ -16,9 +15,7 @@
                         </h3>
 
                         <p>{$package->metadata->description|truncate:150}</p>
-                        {*<a class="tag" href="#"  n:foreach="$package->metadata->tags as $tag">#{$tag}</a>*}
                     </section>
-
                 </article>
             </div>
             <div class="col-md-2">

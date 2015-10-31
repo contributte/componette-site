@@ -11,8 +11,9 @@ body {
   line-height: 1.65;
   overflow-y: scroll;
   color: #222;
-  background: url('../img/bg.jpg') 110px bottom repeat-x #3484d2;
+  background: linear-gradient(#3484d2 80%, rgba(52, 132, 210, 0.3));
 }
+
 
 a {
   color: #006aeb;
@@ -286,15 +287,15 @@ a[href*="://"]:after {
 }
 
 .footer {
-  bottom: 0;
+  margin: 40px 0 15px 0;
   padding: 5px 0 10px;
   font-size: 84%;
   text-align: center;
-  color: #ccc;
+  color: #000;
   clear: both;
 
   a {
-    color: #FFBE10;
+    color: blue;
   }
 }
 
@@ -320,6 +321,10 @@ a[href*="://"]:after {
   line-height: 40px;
   vertical-align: top;
 
+  .pull-right {
+    width: 80px;
+  }
+
   a.link-author {
     color: #000;
     font-weight: 600;
@@ -336,6 +341,10 @@ a[href*="://"]:after {
   margin-top: 8px;
   margin-bottom: 2px;
 
+  .box-count {
+    float: right;
+  }
+
   .box-count a {
     color: #000;
   }
@@ -346,84 +355,6 @@ a[href*="://"]:after {
   .b-meta-info {
     display: inline-block;
     margin-left: 10px;
-  }
-}
-
-.github-box {
-  border: 1px solid #cdcdcd;
-  line-height: 25px;
-  display: inline-block;
-  border-radius: 4px;
-  vertical-align: middle;
-  margin: 0;
-  padding: 0;
-
-  .box-icon, .box-count {
-    display: table-cell;
-    padding: 0 6px;
-  }
-  .box-icon {
-    background: #f2f2f2;
-    border-radius: 4px 0 0 4px;
-    border-right: 1px solid #cdcdcd;
-
-    a {
-      color: #000;
-    }
-  }
-  .box-count {
-    border-radius: 0 4px 4px 0;
-    background: #fff;
-
-    a {
-      color: #000;
-      background: #fff;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  }
-  .box-age a {
-    background: none;
-  }
-  .box-age-up-to-date {
-    background: gold;
-  }
-  .box-age-before-minutes {
-    background: rgb(0, 128, 0);
-  }
-  .box-age-before-hours {
-    background: rgba(0, 128, 0, 0.7);
-  }
-  .box-age-before-day {
-    background: rgba(0, 128, 0, 0.3);
-  }
-  .box-age-before-days {
-  }
-  .box-age-before-month {
-    background: rgba(0, 0, 255, 0.3);
-  }
-  .box-age-before-months {
-    background: rgba(0, 0, 255, 0.6);
-  }
-  .box-age-before-year {
-    background: rgba(255, 0, 0, 0.3);
-  }
-  .box-age-before-years {
-    background: red;
-  }
-}
-
-.github-box-icons {
-  .box-icon {
-    border-radius: 0;
-  }
-  .box-icon:first-of-type {
-    border-radius: 4px 0 0 4px;
-  }
-  .box-icon:last-of-type {
-    border-right: none;
-    border-radius: 0 4px 4px 0;
   }
 }
 
