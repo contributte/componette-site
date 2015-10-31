@@ -81,8 +81,7 @@ final class Filters
         if ($delta <= 1440) return ceil($delta / 60) . 'h';
         if ($delta < 525960) return ceil($delta / 1440) . 'd';
 
-        // ------
-        return '~ ' . round($delta / 525960, 1) . 'y';
+        return round($delta / 525960, 1) . 'y';
     }
 
     /**
