@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,700,700italic&subset=latin,latin-ext';
+@import 'https://fonts.googleapis.com/css?family=OpenSans:400,400italic,600,700,700italic&subset=latin,latin-ext';
 @import 'chosen.less';
 
 body, html {
@@ -214,29 +214,37 @@ a[href*="://"]:after {
   }
 
   .side-menu {
-    margin-top: 64px;
     background: #fff;
     border-radius: 6px;
     padding: 10px 0;
+
     .btn-wrapper {
       padding: 0 10px;
     }
+
     .nav > li > a {
       padding: 5px 15px;
       font-size: 1.2em;
+
       span.square {
         border-radius: 2px;
         width: 18px;
         height: 18px;
-        margin-right: 5px;
         display: inline-block;
+        position: absolute;
+        top: 10px;
+      }
+
+      span.name {
+        margin-left: 25px;
       }
     }
-    .tags {
-      padding: 10px;
-      a {
-        color: #fff;
-      }
+  }
+
+  .tags {
+    padding: 10px;
+    a {
+      color: #fff;
     }
   }
 
@@ -263,6 +271,17 @@ a[href*="://"]:after {
       font-size: 20px;
 
     }
+  }
+
+  .col-md-6 .col-md-2 {
+    display: block;
+    clear: left;
+    width: 100%;
+  }
+
+  .col-md-6 .b-meta-info {
+    display: inline-block;
+    margin-left: 10px;
   }
 }
 
@@ -322,6 +341,7 @@ a[href*="://"]:after {
   }
 
 }
+
 @media screen and (max-width: 991px) {
   .b-meta-info {
     display: inline-block;
@@ -694,5 +714,11 @@ a[href*="://"]:after {
 
   .button--add-package {
     margin-left: -20px;
+  }
+
+  .side-menu {
+    ul li {
+      float: left;
+    }
   }
 }
