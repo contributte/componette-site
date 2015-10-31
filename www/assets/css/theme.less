@@ -302,6 +302,17 @@ a[href*="://"]:after {
   }
 }
 
+.col-md-6 .col-md-2 {
+  display: block;
+  clear: left;
+  width: 100%;
+}
+
+.col-md-6 .b-meta-info {
+  display: inline-block;
+  margin-left: 10px;
+}
+
 .github-box {
   border: 1px solid #cdcdcd;
   line-height: 25px;
@@ -558,12 +569,18 @@ a[href*="://"]:after {
   .nav > li > a {
     padding: 5px 15px;
     font-size: 1.2em;
+
     span.square {
       border-radius: 2px;
       width: 18px;
       height: 18px;
-      margin-right: 5px;
       display: inline-block;
+      position: absolute;
+      top: 10px;
+    }
+
+    span.name {
+      margin-left: 25px;
     }
   }
   .tags {

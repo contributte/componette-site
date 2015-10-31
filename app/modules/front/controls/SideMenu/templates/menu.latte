@@ -3,8 +3,8 @@
 	<ul class="nav">
 		<li n:foreach="$categories as $category">
 			<a href="{plink List:tag $category->name}">
-				<span class="square" style="background: {$category->color}"></span>
-				{$category->name}
+				<span class="square" style="background: {$category->color|noescape}"></span>
+				<span class="name">{$category->name}</span>
 			</a>
 		</li>
 	</ul>
