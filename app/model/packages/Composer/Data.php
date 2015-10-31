@@ -39,6 +39,14 @@ final class Data
     /**
      * @return string
      */
+    public function getName()
+    {
+        return isset($this->data['name']) ? $this->data['name'] : NULL;
+    }
+
+    /**
+     * @return string
+     */
     public function getRequire()
     {
         return isset($this->data['require']) ? $this->data['require'] : NULL;

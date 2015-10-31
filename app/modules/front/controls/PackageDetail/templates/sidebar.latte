@@ -46,10 +46,10 @@
         </li>
         {if $package->isComposerPackage && $package->metadata->composer}
             <li>
-                <img src="https://img.shields.io/packagist/v/{$owner|lower}/{$name|shields|lower}.svg">
+                <img src="https://img.shields.io/packagist/v/{$package->metadata->composer->getName()}.svg">
             </li>
             <li>
-                <img src="https://img.shields.io/packagist/l/{$owner|lower}/{$name|shields|lower}.svg">
+                <img src="https://img.shields.io/packagist/l/{$package->metadata->composer->getName()}.svg">
             </li>
         {/if}
     </ul>
