@@ -212,6 +212,58 @@ a[href*="://"]:after {
     color: #fff;
     font-weight: 500;
   }
+
+  .side-menu {
+    margin-top: 64px;
+    background: #fff;
+    border-radius: 6px;
+    padding: 10px 0;
+    .btn-wrapper {
+      padding: 0 10px;
+    }
+    .nav > li > a {
+      padding: 5px 15px;
+      font-size: 1.2em;
+      span.square {
+        border-radius: 2px;
+        width: 18px;
+        height: 18px;
+        margin-right: 5px;
+        display: inline-block;
+      }
+    }
+    .tags {
+      padding: 10px;
+      a {
+        color: #fff;
+      }
+    }
+  }
+
+  .b-package {
+    font-size: 16px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, .3);
+    border-radius: 6px;
+    background: #fff;
+    margin-bottom: 10px;
+
+    .b-package__avatar {
+      width: 20px;
+      height: 20px;
+    }
+
+    .b-package__body {
+      padding: 1.2em;
+      padding-bottom: .4em;
+    }
+
+    .b-package__title {
+      font-weight: normal;
+      margin: 0 0 10px 0;
+      font-size: 20px;
+
+    }
+  }
 }
 
 .footer {
@@ -259,30 +311,6 @@ a[href*="://"]:after {
   }
 }
 
-.b-package {
-  box-shadow: 0 2px 2px rgba(0, 0, 0, .3);
-  border-radius: 6px;
-  background: #fff;
-  margin-bottom: 10px;
-}
-
-.b-package__avatar {
-  width: 20px;
-  height: 20px;
-}
-
-.b-package__body {
-  padding: 1.2em;
-  padding-bottom: .4em;
-}
-
-.b-package__title {
-  font-weight: normal;
-  margin: 0 0 10px 0;
-  font-size: 20px;
-
-}
-
 .b-meta-info {
   display: block;
   line-height: 20px;
@@ -294,23 +322,11 @@ a[href*="://"]:after {
   }
 
 }
-
 @media screen and (max-width: 991px) {
   .b-meta-info {
     display: inline-block;
     margin-left: 10px;
   }
-}
-
-.col-md-6 .col-md-2 {
-  display: block;
-  clear: left;
-  width: 100%;
-}
-
-.col-md-6 .b-meta-info {
-  display: inline-block;
-  margin-left: 10px;
 }
 
 .github-box {
@@ -557,38 +573,6 @@ a[href*="://"]:after {
 
 .page-error {
   padding: 20px;
-}
-
-.side-menu {
-  background: #fff;
-  border-radius: 6px;
-  padding: 10px 0;
-  .btn-wrapper {
-    padding: 0 10px;
-  }
-  .nav > li > a {
-    padding: 5px 15px;
-    font-size: 1.2em;
-
-    span.square {
-      border-radius: 2px;
-      width: 18px;
-      height: 18px;
-      display: inline-block;
-      position: absolute;
-      top: 10px;
-    }
-
-    span.name {
-      margin-left: 25px;
-    }
-  }
-  .tags {
-    padding: 10px;
-    a {
-      color: #fff;
-    }
-  }
 }
 
 @media screen and (max-width: 1024px) {
