@@ -19,15 +19,15 @@
     <table>
         <tr>
             <td><span class="octicon octicon-cloud-download"></span></td>
-            <td data-toggle="tooltip" data-placement="left" title="Total downloads">{$package->metadata->downloads}</td>
+            <td data-toggle="tooltip" data-placement="left" title="Total downloads">{$package->metadata->downloads|count}</td>
         </tr>
         <tr>
             <td><span class="octicon octicon-star"></span></td>
-            <td data-toggle="tooltip" data-placement="left" title="Total stargazers">{$package->metadata->stars}</td>
+            <td data-toggle="tooltip" data-placement="left" title="Total stargazers">{$package->metadata->stars|count}</td>
         </tr>
         <tr>
             <td><span class="octicon octicon-issue-opened"></span></td>
-            <td data-toggle="tooltip" data-placement="left" title="Open issues">{$package->metadata->issues}</td>
+            <td data-toggle="tooltip" data-placement="left" title="Open issues">{$package->metadata->issues|count}</td>
         </tr>
         <tr>
             <td><span class="octicon octicon-clock"></span></td>
