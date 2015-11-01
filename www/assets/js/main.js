@@ -9,6 +9,7 @@ $.nette.ext('search', {
 
             $form.on('keydown', function (e) {
                 if (e.keyCode == 13) {
+                    ga('send', 'event', 'search', 'suggestion', $el.val());
                     $(this).submit();
                     return false;
                 }
@@ -19,6 +20,7 @@ $.nette.ext('search', {
                 if (query.length > 2) {
                     clearTimeout(interval);
                     interval = setTimeout(function () {
+                        ga('send', 'event', 'search', 'suggestion', $el.val());
                         $.nette.ajax({
                             url: url.replace('_QUERY_', query)
                         });
