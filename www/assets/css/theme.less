@@ -255,14 +255,20 @@ a[href*="://"]:after {
     background: #fff;
     margin-bottom: 10px;
 
-    .b-package__avatar {
-      width: 20px;
-      height: 20px;
+    .b-package__image {
+      display: inline-block;
+      padding: 1em 0 .4em 1em;
+      vertical-align: top;
+
+      img {
+        max-width: 60px;
+      }
     }
 
     .b-package__body {
-      padding: 1.2em;
-      padding-bottom: .4em;
+      width: 80%;
+      display: inline-block;
+      padding: 1em 1em .4em .6em;
     }
 
     .b-package__title {
@@ -320,7 +326,8 @@ a[href*="://"]:after {
   line-height: 40px;
   vertical-align: top;
 
-  .pull-right {
+  .meta-right {
+    float: right;
     width: 80px;
   }
 
@@ -525,14 +532,29 @@ a[href*="://"]:after {
   padding: 20px;
 }
 
-@media screen and (max-width: 1024px) {
-  .bar > div {
-    text-align: center;
+@media screen and (max-width: 500px) {
+  .hidden-w500 {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  form.search-form {
+    display: block;
+
+    input.search {
+      display: block;
+    }
   }
 
-  .bar .projects {
-    float: none;
+  .content {
+    .b-package {
+      .b-package__image {
+        display: none;
+      }
+    }
   }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -575,6 +597,35 @@ a[href*="://"]:after {
     }
   }
 
+  .button--add-package {
+    display: none !important;
+  }
+
+  .b-search-filter {
+    display: none !important;
+  }
+
+  .main-title {
+    text-align: center;
+    padding: 8px;
+  }
+
+  .content {
+    .b-package {
+      .b-package__body {
+        width: auto;
+      }
+    }
+  }
+  
+  .meta {
+    .meta-right {
+      float: none;
+      text-align: center;
+      width: auto;
+    }
+  }
+
   .header {
     .search {
       .buttons {
@@ -604,39 +655,6 @@ a[href*="://"]:after {
   }
 }
 
-@media screen and (max-width: 600px) {
-  form.search-form {
-    display: block;
-
-    input.search {
-      display: block;
-    }
-  }
-
-}
-
-@media screen and (max-width: 500px) {
-  .hidden-w500 {
-    display: none !important;
-  }
-
-}
-
-@media screen and (max-width: 767px) {
-  .button--add-package {
-    display: none !important;
-  }
-
-  .b-search-filter {
-    display: none !important;
-  }
-
-  .main-title {
-    text-align: center;
-    padding: 8px;
-  }
-}
-
 @media screen and (max-width: 991px) {
   .main-title {
     font-size: 20px;
@@ -653,7 +671,7 @@ a[href*="://"]:after {
   }
 
   .meta {
-    .pull-right {
+    .meta-right {
       width: auto;
     }
   }
@@ -683,5 +701,15 @@ a[href*="://"]:after {
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .bar > div {
+    text-align: center;
+  }
+
+  .bar .projects {
+    float: none;
   }
 }
