@@ -5,17 +5,18 @@
 	<meta name="viewport" content="width=device-width">
 	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
 
-	<title>{ifset #title}{include #title|striptags} | {/ifset}Addons, plugins and components | Nette Framework</title>
+	<title>{ifset #title}{include #title|striptags} | {else}Addons, plugins and components | {/ifset}Nette Framework</title>
 
     <!-- SEO -->
-    <meta name="keywords" content="nette, packages, extension, git, github">
+    <meta name="description" n:ifset="#description" content="{include #description}">
+    <meta name="keywords" content="{ifset #keywords}{include #keywords|striptags}{else}nette, addons, plugins, components, extension, forms{/ifset}">
     <meta name="googlebot" content="snippet,archive">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Nette Community">
 
     <!-- FACEBOOK -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{ifset title}{include title|striptags} | {/ifset}Addons, plugins and components | Nette Framework">
+    <meta property="og:title" content="{ifset #title}{include #title|striptags} | {else}Addons, plugins and components | {/ifset}Nette Framework">
     <meta property="og:url" content="{plink //this}">
     <meta property="og:site_name" content="Addons, plugins and components | Nette Framework">
 
