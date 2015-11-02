@@ -4,7 +4,7 @@ parameters:
             presenter: Front:Error
 
     build:
-        rev: 1.0a
+        rev: 1.1-0211
 
     github:
         token: NULL
