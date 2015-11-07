@@ -1,18 +1,26 @@
 @charset "UTF-8";
-@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,700,700italic&subset=latin,latin-ext';
 @import 'chosen.less';
 
 body, html {
   min-height: 100%;
 }
 
-body {
+html.wf-loading * {
+  color: transparent !important;
+}
+
+html.wf-active body {
   font-family: 'Open Sans', Verdana, 'Geneva CE', lucida, sans-serif;
+}
+
+body {
+  font-family: Verdana, 'Geneva CE', lucida, sans-serif;
   line-height: 1.65;
   overflow-y: scroll;
   color: #222;
   background: linear-gradient(#3484d2 80%, rgba(52, 132, 210, 0.3));
 }
+
 
 a {
   color: #006aeb;
