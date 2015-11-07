@@ -29,6 +29,9 @@ abstract class BasePresenter extends Presenter
     /** @var ISideMenuFactory @inject */
     public $sideMenuFactory;
 
+    /** @var \Nette\Http\Request @inject */
+    public $httpRequest;
+
     /**
      * Common template method
      */
@@ -39,6 +42,7 @@ abstract class BasePresenter extends Presenter
         $this->template->portal = $this->portal;
         $this->template->rev = $this->portal->expand('build.rev');
         $this->template->debug = $this->portal->isDebug();
+        $this->template->isFontLoaded = $this->httpRequest->getCookie('fontIsLoaded', FALSE);
     }
 
     /**
