@@ -42,6 +42,7 @@ class RouterFactory
     protected function createWeb()
     {
         $router = new RouteList();
+        Route::$defaultFlags = Route::SECURED;
 
         // FRONT ===========================================
 
