@@ -1,22 +1,24 @@
 {
-	"description": "Nette Packages Central Repository",
-	"homepage": "http://packages.nette.jfx.cz",
+	"description": "Nette addons portal",
+	"keywords": ["nette", "components", "addons", "extensions"],
+	"homepage": "https://componette.com",
 	"type": "project",
-	"license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+	"license": ["BSD-3-Clause"],
 	"authors": [
 		{
 			"name": "Milan Felix Sulc",
-			"homepage": "http://jfx.cz"
+			"homepage": "https://jfx.cz"
 		}
 	],
 	"require": {
-		"php": ">= 5.5.0",
+		"php": ">= 5.6.0",
+		"ext-curl": "*",
+		"ext-mbstring": "*",
+		"ext-mysqli": "*",
 		"nette/application": "~2.3.0",
 		"nette/bootstrap": "~2.3.0",
 		"nette/caching": "~2.3.0",
-		"nette/database": "~2.3.0",
 		"nette/di": "~2.3.0",
-		"nette/finder": "~2.3.0",
 		"nette/forms": "~2.3.0",
 		"nette/http": "~2.3.0",
 		"nette/mail": "~2.3.0",
@@ -30,7 +32,7 @@
 		"minetro/latte-parsedown-extra": "~1.0.0"
 	},
 	"require-dev": {
-		"nette/tester": "~1.5.0"
+		"nette/tester": "~1.6.0"
 	},
 	"autoload-dev": {
 		"psr-4": { "App\\": "app/" }
