@@ -40,7 +40,7 @@ final class Client
         curl_setopt_array($ch, [
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_URL => self::URL . '/' . trim($uri, '/'),
-            CURLOPT_USERAGENT => 'NettePackagesCentralRepositoryClient-v1',
+            CURLOPT_USERAGENT => 'ComponetteClient-v1',
             CURLOPT_HTTPHEADER => $headers,
             CURLOPT_FOLLOWLOCATION => 1,
         ]);
