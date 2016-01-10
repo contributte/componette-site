@@ -1,8 +1,11 @@
+-- Adminer 4.2.3 MySQL dump
+
 SET NAMES utf8;
 SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
+DROP TABLE IF EXISTS `metadatas`;
 CREATE TABLE `metadatas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `package` int(10) unsigned NOT NULL,
@@ -29,6 +32,7 @@ CREATE TABLE `metadatas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+DROP TABLE IF EXISTS `packages`;
 CREATE TABLE `packages` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `type` enum('COMPOSER','BOWER','UNKNOWN') NOT NULL DEFAULT 'UNKNOWN',
@@ -41,21 +45,27 @@ CREATE TABLE `packages` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE `tags` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(60) COLLATE utf8_czech_ci NOT NULL,
-  `color` varchar(20) COLLATE utf8_czech_ci DEFAULT NULL,
-  `priority` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
-
-
+DROP TABLE IF EXISTS `packages_x_tags`;
 CREATE TABLE `packages_x_tags` (
   `packages_id` int(10) unsigned NOT NULL,
   `tags_id` int(10) unsigned NOT NULL,
+  UNIQUE KEY `packages_id_tags_id` (`packages_id`,`tags_id`),
   KEY `packages_id` (`packages_id`),
   KEY `tags_id` (`tags_id`),
   CONSTRAINT `packages_x_tags_ibfk_1` FOREIGN KEY (`packages_id`) REFERENCES `packages` (`id`) ON DELETE CASCADE,
   CONSTRAINT `packages_x_tags_ibfk_2` FOREIGN KEY (`tags_id`) REFERENCES `tags` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
+
+
+DROP TABLE IF EXISTS `tags`;
+CREATE TABLE `tags` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(60) COLLATE utf8_czech_ci NOT NULL,
+  `priority` int(11) NOT NULL,
+  `color` varchar(20) COLLATE utf8_czech_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
+
+
+-- 2016-01-10 19:05:10
