@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.2-dev
+
+- Feature: added github ribbon
+
 ## 1.0.1 [13.01.2016]
 
 - Feature: Nextras\ORM 2.0@dev
