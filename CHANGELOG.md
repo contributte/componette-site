@@ -3,6 +3,10 @@
 ## 1.0.2-dev
 
 - Feature: added github ribbon
+- Fixed: cli processing
+- Feature: added links on categories at homepage
+- Feature: added new sorting by last added
+- Feature: design tables in addon detail
 
 ## 1.0.1 [13.01.2016]
 
