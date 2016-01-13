@@ -40,7 +40,7 @@ final class AddonsPresenter extends BasePresenter
             $res = $this->updateGithubTask->run($this->getParameters());
             $this->output->outln('* result [UpdateGithub](' . $res . ')');
 
-        } else if ($this->getParameter('github-files', FALSE)) {
+        } else if ($this->getParameter('githubfiles', FALSE)) {
 
             $this->output->outln('* running [UpdateGithubFiles]');
             $res = $this->updateGithubFilesTask->run($this->getParameters());
@@ -59,7 +59,7 @@ final class AddonsPresenter extends BasePresenter
             $this->output->outln('* result [UpdateBower](' . $res . ')');
 
         } else {
-            $this->output->outln('- select type (-github | -github-files | -composer | -bower)');
+            $this->output->outln('- select type (-github | -githubfiles | -composer | -bower)');
         }
 
         $this->finish();

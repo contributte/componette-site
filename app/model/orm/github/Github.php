@@ -21,7 +21,7 @@ use Nette\Utils\DateTime;
  * @property int|NULL $issues
  * @property int|NULL $forks
  * @property int|NULL $releases
- * @property int|NULL $fork
+ * @property bool|NULL $fork
  * @property string|NULL $language
  * @property Extra|NULL $extra
  * @property DateTime|NULL $createdAt

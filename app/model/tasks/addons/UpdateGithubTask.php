@@ -75,7 +75,7 @@ final class UpdateGithubTask extends BaseAddonTask
                 $github->stars = $response['stargazers_count'];
                 $github->watchers = $response['watchers_count'];
                 $github->issues = $response['open_issues_count'];
-                $github->fork = $response['fork'];
+                $github->fork = boolval($response['fork']);
                 $github->language = $response['language'];
                 $github->forks = $response['forks_count'];
                 $github->createdAt = new DateTime($response['created_at']);
