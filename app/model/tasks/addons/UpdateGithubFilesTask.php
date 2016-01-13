@@ -5,7 +5,6 @@ namespace App\Model\Tasks\Addons;
 use App\Model\ORM\Addon\Addon;
 use App\Model\ORM\Addon\AddonRepository;
 use App\Model\WebServices\Github\Service;
-use Nette\Utils\DateTime;
 use Nextras\Orm\Collection\ICollection;
 
 final class UpdateGithubFilesTask extends BaseAddonTask
@@ -108,6 +107,11 @@ final class UpdateGithubFilesTask extends BaseAddonTask
                 } else {
                     $this->log('Skip (bower): ' . $addon->fullname);
                 }
+            }
+
+            // Untype
+            if (in_array($addon->type, [NULL, Addon::TYPE_UNKNOWN])) {
+                $addon->type = Addon::TYPE_UNTYPE;
             }
 
             // Persist
