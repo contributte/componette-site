@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 1.0.1 [13.01.2016]
+
+- Feature: Nextras\ORM 2.0@dev
+- Feature: addon charts (stats)
+- Feature: footer stats
+- Improved: split entity to addon => github, composer & bower
+- Typo: package -> addon
+- Other: new domain
+- Other: docker configuration
+
 ## 1.0.0-alpha3 [7.10.2015]
 - Feature: bower packages
 - Fixed: routing with dot(.)

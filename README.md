@@ -22,7 +22,7 @@ This portal run in Docker container(s). You can see configurations in **docker**
 
 ## How to run
 
-- Clone this repo (git@github.com:componette/componette.com.git)
+- Clone this repo (`git@github.com:componette/componette.com.git`)
 - Rename `app/config/config.local.sample` to `config.local.neon` and fill parameters
 - Create database and setup tables (and fixtures)
 - Run `composer install`
