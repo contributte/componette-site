@@ -454,6 +454,26 @@ a[href*="://"]:after {
     .readme {
       margin-top: 10px;
       overflow-x: hidden;
+
+      table {
+        width: 100%;
+
+        td, th {
+          border: 1px solid #ddd;
+          padding: 4px 8px;
+        }
+
+        thead {
+          td, th {
+            font-weight: bold;
+          }
+        }
+        tbody {
+          tr:nth-of-type(odd) {
+            background-color: #f9f9f9;
+          }
+        }
+      }
     }
   }
 
