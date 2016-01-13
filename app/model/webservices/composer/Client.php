@@ -27,6 +27,7 @@ final class Client
             CURLOPT_USERAGENT => 'ComponetteClient-v1',
             CURLOPT_HTTPHEADER => $headers,
             CURLOPT_FOLLOWLOCATION => 1,
+            CURLOPT_SSL_VERIFYPEER => FALSE,
         ]);
 
         $result = curl_exec($ch);
@@ -37,7 +38,11 @@ final class Client
             throw new ComposerException('Request failed');
         }
 
-        return json_decode($result, TRUE);
+        if ($result) {
+            return @json_decode($result, TRUE);
+        } else {
+            return NULL;
+        }
     }
 
 }

@@ -7,6 +7,9 @@ use App\Model\Exceptions\Runtime\GithubException;
 final class Service
 {
 
+    /** @var array */
+    public $onException = [];
+
     /** @var Client */
     private $client;
 
@@ -20,14 +23,20 @@ final class Service
 
     /**
      * @param string $uri
-     * @return array|NULL
+     * @return mixed
      */
     protected function call($uri)
     {
         try {
             return $this->client->makeRequest($uri);
         } catch (GithubException $e) {
-            return NULL;
+            // Trigger events
+            foreach ($this->onException as $cb) {
+                call_user_func($cb, $e);
+            }
+
+            // Return FALSE
+            return FALSE;
         }
     }
 
@@ -89,7 +98,6 @@ final class Service
      */
     public function releases($owner, $repo)
     {
-
         return $this->call("/repos/$owner/$repo/releases");
     }
 
@@ -100,7 +108,6 @@ final class Service
      */
     public function stargazers($owner, $repo)
     {
-
         return $this->call("/repos/$owner/$repo/stargazers");
     }
 
@@ -109,7 +116,6 @@ final class Service
      */
     public function limit()
     {
-
         return $this->call("/rate_limit");
     }
 

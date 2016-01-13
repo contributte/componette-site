@@ -49,7 +49,6 @@ $.nette.ext('search', {
 });
 
 $(function () {
-
     // Choosen
     $(".chosen").chosen({width: '100%'});
 
@@ -70,10 +69,44 @@ $(function () {
         ga('send', 'event', event, category, action);
     });
 
-    // Search
     (function () {
-
-
+        var $addon = $('#addon-stats');
+        if ($addon.length) {
+            var $totaldownloads = $addon.find('#addon-total-downloads');
+            var $stats = $totaldownloads.data('stats');
+            $stats.forEach(function (entry) {
+                entry.x = new Date(Date.parse(entry.x));
+            });
+            if ($stats) {
+                var chart = new CanvasJS.Chart($totaldownloads.get(0), {
+                    title: {
+                        text: "Total downloads"
+                    },
+                    animationEnabled: true,
+                    zoomEnabled: true,
+                    axisX: {
+                        valueFormatString: "DD.MM.YY",
+                        interval: 3,
+                        intervalType: "month",
+                        labelAngle: -50,
+                        labelFontColor: "rgb(52,132,210)"
+                    },
+                    axisY: {
+                        title: "Downloads",
+                        interlacedColor: "rgba(52,132,210,0.1)"
+                    },
+                    data: [{
+                        name: 'total-downloads',
+                        type: 'column',
+                        color: "rgba(52,132,210,0.7)",
+                        markerSize: 8,
+                        xValueFormatString: "DD.MM.YYYY",
+                        dataPoints: $stats
+                    }]
+                });
+                chart.render();
+            }
+        }
     })();
 
     // Nette.ajax

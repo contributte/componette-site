@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/octicons/3.1.0/octicons.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.min.css">
     <link rel="stylesheet" href="{$basePath}/assets/css/theme.css?v={$rev}">
+    {block #head}{/block}
 </head>
 <body>
     <!-- Packages Container -->
@@ -74,9 +75,18 @@
                 {/ifset}
             </div>
         </div>
+    </div>
 
-        <div class="footer">
-            <p>Copyright © 2008 - {date('Y')} <a href="http://nettefoundation.com">Nette Foundation</a> | <a href="https://nette.org/terms-of-use">Terms of use</a> | If not stated otherwise, the contents are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/cz/">Creative Commons CC-BY-SA</a>.</p>
+    <div class="footer">
+        <div class="statistics">
+            <div class="container">
+                {control statistics:footer}
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <p>Copyright © 2015 - {date('Y')} <a href="http://github.com/componette">Componette</a></p>
+            </div>
         </div>
     </div>
 
@@ -111,6 +121,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"></script>
     <script src="{$basePath}/assets/js/nette/nette.forms.js?v={$rev}"></script>
     <script src="{$basePath}/assets/js/nette/nette.ajax.js?v={$rev}"></script>
     <script src="{$basePath}/assets/js/main.js?v={$rev}"></script>

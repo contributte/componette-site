@@ -49,11 +49,15 @@ final class Search extends BaseControl
     protected function createComponentForm()
     {
         $form = new Form();
+
         $form->addText('q')
             ->setDefaultValue($this->search->q);
+
         $form->onSuccess[] = function (Form $form) {
+            $this->search->q = $form->values->q;
             $this->onSearch($form->values->q);
         };
+
         return $form;
     }
 

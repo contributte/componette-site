@@ -1,9 +1,0 @@
-<div class="readme">
-    {var $content = $package->metadata->content}
-
-    {if $content}
-        {$content|parsedown|noescape}
-    {else}
-        <p class="alert alert-warning">No content at this moment.</p>
-    {/if}
-</div>

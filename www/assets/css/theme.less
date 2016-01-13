@@ -2,6 +2,8 @@
 @import 'https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,700,700italic&subset=latin,latin-ext';
 @import 'chosen.less';
 
+@bgcolor: #3484d2;
+
 body, html {
   min-height: 100%;
 }
@@ -11,7 +13,7 @@ body {
   line-height: 1.65;
   overflow-y: scroll;
   color: #222;
-  background: linear-gradient(#3484d2 80%, rgba(52, 132, 210, 0.3));
+  background: @bgcolor;
 }
 
 a {
@@ -40,7 +42,7 @@ a[href*="://"]:after {
   top: 0;
   left: 0;
   height: 30px;
-  background: url(data:image/gif;base64,R0lGODlhAQAyAMQAAB1GbSxUezBYgBpCaR9HbiZPdiRNdBxEayJKc…AAAAAAACH5BAAAAAAALAAAAAABADIAAAUcYCaOZGkOj3MwAEFFyGRIBdRYVqAsiYD9l0slBAA7) bottom repeat-x #2c547b;
+  background: #2c547b;
   text-shadow: 0 0 3px #000;
   -webkit-text-size-adjust: 100%;
   z-index: 20;
@@ -248,14 +250,14 @@ a[href*="://"]:after {
     }
   }
 
-  .b-package {
+  .b-addon {
     font-size: 16px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, .3);
     border-radius: 6px;
     background: #fff;
     margin-bottom: 10px;
 
-    .b-package__image {
+    .b-addon__image {
       display: inline-block;
       padding: 1em 0 .4em 1em;
       vertical-align: top;
@@ -265,13 +267,13 @@ a[href*="://"]:after {
       }
     }
 
-    .b-package__body {
+    .b-addon__body {
       width: 80%;
       display: inline-block;
       padding: 1em 1em .4em .6em;
     }
 
-    .b-package__title {
+    .b-addon__title {
       font-weight: normal;
       margin: 0 0 10px 0;
       font-size: 20px;
@@ -292,15 +294,59 @@ a[href*="://"]:after {
 }
 
 .footer {
-  margin: 40px 0 15px 0;
-  padding: 5px 0 10px;
-  font-size: 84%;
-  text-align: center;
-  color: #000;
-  clear: both;
+  margin: 40px 0 0 0;
+  color: #fff;
 
-  a {
-    color: blue;
+  .statistics {
+    padding: 40px 0;
+    background: darken(@bgcolor, 11%);
+
+    section {
+      strong {
+        color: gold;
+      }
+
+      h4 {
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+      ul {
+        margin: 0 0 0 30px;
+        padding: 0;
+
+        a {
+          color: gold;
+        }
+        a:hover {
+        }
+      }
+
+      ul.unstyled {
+        margin: 0 0 0 5px;
+        li {
+          list-style-type: none;
+        }
+      }
+    }
+
+    h4 {
+      margin: 0;
+    }
+  }
+
+  .copyright {
+    padding: 30px 0;
+    background: darken(@bgcolor, 20%);
+    text-align: center;
+    clear: both;
+
+    p {
+      margin: 0;
+    }
+
+    a {
+      color: gold;
+    }
   }
 }
 
@@ -493,6 +539,18 @@ a[href*="://"]:after {
     }
   }
 
+  .page-stats {
+    margin-top: 30px;
+    border-top: 1px dashed #cdcdcd;
+    padding: 30px;
+    clear: both;
+
+    #addon-total-downloads {
+      height: 300px;
+      width: 100%;
+    }
+  }
+
   pre {
     font-size: 14px;
     font-weight: 400;
@@ -549,8 +607,8 @@ a[href*="://"]:after {
   }
 
   .content {
-    .b-package {
-      .b-package__image {
+    .b-addon {
+      .b-addon__image {
         display: none;
       }
     }
@@ -584,8 +642,8 @@ a[href*="://"]:after {
     text-align: center;
   }
 
-  .packages {
-    .package {
+  .addons {
+    .addon {
       width: 100%;
       float: none;
       article {
@@ -612,8 +670,8 @@ a[href*="://"]:after {
   }
 
   .content {
-    .b-package {
-      .b-package__body {
+    .b-addon {
+      .b-addon__body {
         width: auto;
       }
     }

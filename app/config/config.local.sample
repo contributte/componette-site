@@ -2,16 +2,16 @@ parameters:
 
     # Database
     database:
-        host:
-        dbname:
-        user:
-        password:
+        host: <fill me>
+        dbname: <fill me>
+        user: <fill me>
+        password: <fill me>
 
     # Error mail
     system:
         error:
-            email:
+            email: <fill me>
 
     # Github
     github:
-        token:
+        token: null

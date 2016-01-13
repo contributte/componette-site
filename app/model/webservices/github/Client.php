@@ -22,7 +22,7 @@ final class Client
 
     /**
      * @param string $uri
-     * @return array
+     * @return mixed (array|NULL)
      */
     public function makeRequest($uri)
     {
@@ -37,23 +37,30 @@ final class Client
             $headers[] = 'Authorization: token ' . $this->token;
         }
 
+        $url = self::URL . '/' . trim($uri, '/');
+
         curl_setopt_array($ch, [
             CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_URL => self::URL . '/' . trim($uri, '/'),
+            CURLOPT_URL => $url,
             CURLOPT_USERAGENT => 'ComponetteClient-v1',
             CURLOPT_HTTPHEADER => $headers,
             CURLOPT_FOLLOWLOCATION => 1,
+            CURLOPT_SSL_VERIFYPEER => FALSE,
         ]);
 
         $result = curl_exec($ch);
         $info = curl_getinfo($ch);
         curl_close($ch);
 
-        if ($info['http_code'] !== 200) {
-            throw new GithubException('Request failed');
+        if ($info['http_code'] > 300) {
+            throw new GithubException($uri, $headers, [], $info, $result);
         }
 
-        return json_decode($result, TRUE);
+        if ($result) {
+            return @json_decode($result, TRUE);
+        } else {
+            return NULL;
+        }
     }
 
 }

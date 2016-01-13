@@ -2,15 +2,19 @@
 
 namespace App\Modules\Front;
 
-use App\Model\ORM\Package;
-use App\Modules\Front\Controls\PackageList\PackageList;
+use App\Model\Facade\SearchFacade;
+use App\Model\ORM\Addon\Addon;
+use App\Modules\Front\Controls\AddonList\AddonList;
 use Nextras\Orm\Collection\ICollection;
 
-final class ListPresenter extends BasePackagesPresenter
+final class ListPresenter extends BaseAddonPresenter
 {
 
-    /** @var ICollection|Package[] */
-    private $packages;
+    /** @var SearchFacade @inject */
+    public $searchFacade;
+
+    /** @var ICollection|Addon[] */
+    private $addons;
 
     /**
      * DEFAULT *****************************************************************
@@ -18,7 +22,7 @@ final class ListPresenter extends BasePackagesPresenter
 
     public function actionDefault()
     {
-        $this->packages = $this->packagesFacade->findAll();
+        $this->addons = $this->searchFacade->findAll();
     }
 
     /**
@@ -30,7 +34,7 @@ final class ListPresenter extends BasePackagesPresenter
      */
     public function actionOwner($slug)
     {
-        $this->packages = $this->packagesFacade->findByOwner($slug);
+        $this->addons = $this->searchFacade->findByOwner($slug);
     }
 
     /**
@@ -50,13 +54,10 @@ final class ListPresenter extends BasePackagesPresenter
      */
     public function actionSearch($q)
     {
-        $this->packages = $this->packagesFacade->findByQuery($q);
+        $this->addons = $this->searchFacade->findByQuery($q);
     }
 
-    /**
-     * @param string $q
-     */
-    public function renderSearch($q)
+    public function renderSearch()
     {
         if ($this->isAjax()) {
             $this->redrawControl('search-result');
@@ -72,9 +73,8 @@ final class ListPresenter extends BasePackagesPresenter
      */
     public function actionTag($tag)
     {
-        $this->packages = $this->packagesFacade->findByTag($tag);
+        $this->addons = $this->searchFacade->findByTag($tag);
     }
-
 
     /**
      * @param string $tag
@@ -89,10 +89,10 @@ final class ListPresenter extends BasePackagesPresenter
      */
 
     /**
-     * @return PackageList
+     * @return AddonList
      */
-    protected function createComponentPackages()
+    protected function createComponentAddons()
     {
-        return $this->createPackagesControl($this->packages);
+        return $this->createAddonListControl($this->addons);
     }
 }

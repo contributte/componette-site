@@ -2,17 +2,21 @@
 
 namespace App\Model\Routing;
 
-use App\Model\Routing\Helpers\PackagesHelper;
+use App\Model\Routing\Helpers\AddonsHelper;
 use Nette\Application\IRouter;
 use Nette\Application\Routers\CliRouter;
 use Nette\Application\Routers\Route;
 use Nette\Application\Routers\RouteList;
+use Nette\Http\Request;
 
 class RouterFactory
 {
 
-    /** @var PackagesHelper @inject */
-    public $packagesRouterHelper;
+    /** @var AddonsHelper @inject */
+    public $addonsHelper;
+
+    /** @var Request @inject */
+    public $httpRequest;
 
     /**
      * @return IRouter
@@ -42,25 +46,28 @@ class RouterFactory
     protected function createWeb()
     {
         $router = new RouteList();
-        Route::$defaultFlags = Route::SECURED;
+
+        if ($this->httpRequest->isSecured()) {
+            Route::$defaultFlags = Route::SECURED;
+        }
 
         // FRONT ===========================================
 
         $router[] = $front = new RouteList('Front');
         $front[] = new Route('<slug [a-zA-Z0-9\-\.]+/[a-zA-Z0-9\-\.]+>/', [
-            'presenter' => 'Package',
+            'presenter' => 'Addon',
             'action' => 'detail',
             'slug' => [
-                Route::FILTER_IN => [$this->packagesRouterHelper, 'packageIn'],
-                Route::FILTER_OUT => [$this->packagesRouterHelper, 'packageOut'],
+                Route::FILTER_IN => [$this->addonsHelper, 'addonIn'],
+                Route::FILTER_OUT => [$this->addonsHelper, 'addonOut'],
             ],
         ]);
         $front[] = new Route('<slug [a-zA-Z0-9\-\.]+>/', [
             'presenter' => 'List',
             'action' => 'owner',
             'slug' => [
-                Route::FILTER_IN => [$this->packagesRouterHelper, 'ownerIn'],
-                Route::FILTER_OUT => [$this->packagesRouterHelper, 'ownerOut'],
+                Route::FILTER_IN => [$this->addonsHelper, 'ownerIn'],
+                Route::FILTER_OUT => [$this->addonsHelper, 'ownerOut'],
             ],
         ]);
         $front[] = new Route('all/', 'List:default');

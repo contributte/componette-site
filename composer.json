@@ -28,12 +28,17 @@
 		"nette/utils": "~2.3.0",
 		"latte/latte": "~2.3.0",
 		"tracy/tracy": "~2.3.0",
-		"nextras/orm": "1.1.3",
+		"nextras/orm": "~2.0.0",
 		"minetro/latte-parsedown-extra": "~1.0.0"
 	},
+	"minimum-stability": "dev",
+	"prefer-stable": true,
 	"require-dev": {
 		"nette/tester": "~1.6.0"
 	},
+	"autoload": {
+		"files": ["app/shortcuts.php"]
+    },
 	"autoload-dev": {
 		"psr-4": { "App\\": "app/" }
 	}

@@ -1,0 +1,23 @@
+{block}
+<div class="row">
+    <section class="col-md-offset-2 col-md-2">
+        <h4>Statistics</h4>
+        <ul class="unstyled">
+            <li>Addons: <strong>{$addons}</strong></li>
+            <li>Owners: <strong>{$owners}</strong></li>
+            <li>Tags: <strong>{$tags}</strong></li>
+        </ul>
+    </section>
+    <section class="col-md-offset-1 col-md-3">
+        <h4>Most popular</h4>
+        <ul n:foreach="$popular as $addon">
+            <li><a href="{plink :Front:Addon:detail, slug => $addon->id}">{$addon->fullname}</a></li>
+        </ul>
+    </section>
+    <section class="col-md-offset-1 col-md-3">
+        <h4>Newest</h4>
+        <ul n:foreach="$newests as $addon">
+            <li><a href="{plink :Front:Addon:detail, slug => $addon->id}">{$addon->fullname}</a></li>
+        </ul>
+    </section>
+</div>

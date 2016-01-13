@@ -18,11 +18,14 @@ services:
         factory: @App\Model\Search\SearchFactory::create
 
     # Model ================================================
-    - App\Model\ORM\PackagesFacade
+    - App\Model\Facade\AddonFacade
+    - App\Model\Facade\SearchFacade
+    - App\Model\Facade\StatisticsFacade
 
     # Tasks ================================================
-    - App\Tasks\Packages\GenerateContentTask
-    - App\Tasks\Packages\UpdateMetadataTask
-    - App\Tasks\Packages\UpdateComposerTask
-    - App\Tasks\Packages\UpdateGithubTask
-    - App\Tasks\Packages\UpdateBowerTask
+    - App\Model\Tasks\Addons\GenerateContentTask
+    - App\Model\Tasks\Addons\UpdateGithubTask
+    - App\Model\Tasks\Addons\UpdateGithubFilesTask
+    - App\Model\Tasks\Addons\UpdateComposerTask
+    - App\Model\Tasks\Addons\UpdateBowerTask
+    - App\Model\Tasks\Addons\StatsComposerTask

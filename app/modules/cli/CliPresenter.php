@@ -7,6 +7,7 @@ final class CliPresenter extends BasePresenter
 
     public function actionHi()
     {
-        $this->info('Hello!');
+        $this->output->outln('Hello!');
     }
+
 }

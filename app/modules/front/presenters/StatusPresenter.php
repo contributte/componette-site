@@ -2,8 +2,8 @@
 
 namespace App\Modules\Front;
 
-use App\Model\ORM\Package;
-use App\Model\ORM\PackagesRepository;
+use App\Model\ORM\Addon\Addon;
+use App\Model\ORM\Addon\AddonRepository;
 use App\Model\WebServices\Github\Service;
 use Nette\Caching\Cache;
 use Nette\Caching\IStorage;
@@ -12,8 +12,8 @@ use Nette\Utils\DateTime;
 final class StatusPresenter extends BasePresenter
 {
 
-    /** @var PackagesRepository @inject */
-    public $packagesRepository;
+    /** @var AddonRepository @inject */
+    public $addonRepository;
 
     /** @var Service @inject */
     public $github;
@@ -37,29 +37,30 @@ final class StatusPresenter extends BasePresenter
 
             $status = [];
 
-            // Build packages status ===========================================
+            // Build addons status ===========================================
+            $status['addons']['active']['composer'] = $this->addonRepository->findBy(['state' => Addon::STATE_ACTIVE, 'type' => Addon::TYPE_COMPOSER])->countStored();
+            $status['addons']['active']['bower'] = $this->addonRepository->findBy(['state' => Addon::STATE_ACTIVE, 'type' => Addon::TYPE_BOWER])->countStored();
+            $status['addons']['active']['untype'] = $this->addonRepository->findBy(['state' => Addon::STATE_ACTIVE, 'type' => Addon::TYPE_UNTYPE])->countStored();
+            $status['addons']['active']['unknown'] = $this->addonRepository->findBy(['state' => Addon::STATE_ACTIVE, 'type' => Addon::TYPE_UNKNOWN])->countStored();
+            $status['addons']['active']['total'] = $this->addonRepository->findBy(['state' => Addon::STATE_ACTIVE])->countStored();
 
-            if (($response = $this->github->limit())) {
-                $status['packages']['active']['composer'] = $this->packagesRepository->findBy(['state' => Package::STATE_ACTIVE, 'type' => Package::TYPE_COMPOSER])->countStored();
-                $status['packages']['active']['bower'] = $this->packagesRepository->findBy(['state' => Package::STATE_ACTIVE, 'type' => Package::TYPE_BOWER])->countStored();
-                $status['packages']['active']['unknown'] = $this->packagesRepository->findBy(['state' => Package::STATE_ACTIVE, 'type' => Package::TYPE_UNKNOWN])->countStored();
-                $status['packages']['active']['total'] = $this->packagesRepository->findBy(['state' => Package::STATE_ACTIVE])->countStored();
+            $status['addons']['queued']['composer'] = $this->addonRepository->findBy(['state' => Addon::STATE_QUEUED, 'type' => Addon::TYPE_COMPOSER])->countStored();
+            $status['addons']['queued']['bower'] = $this->addonRepository->findBy(['state' => Addon::STATE_QUEUED, 'type' => Addon::TYPE_BOWER])->countStored();
+            $status['addons']['queued']['untype'] = $this->addonRepository->findBy(['state' => Addon::STATE_QUEUED, 'type' => Addon::TYPE_UNTYPE])->countStored();
+            $status['addons']['queued']['unknown'] = $this->addonRepository->findBy(['state' => Addon::STATE_QUEUED, 'type' => Addon::TYPE_UNKNOWN])->countStored();
+            $status['addons']['queued']['total'] = $this->addonRepository->findBy(['state' => Addon::STATE_QUEUED])->countStored();
 
-                $status['packages']['queued']['composer'] = $this->packagesRepository->findBy(['state' => Package::STATE_QUEUED, 'type' => Package::TYPE_COMPOSER])->countStored();
-                $status['packages']['queued']['bower'] = $this->packagesRepository->findBy(['state' => Package::STATE_QUEUED, 'type' => Package::TYPE_BOWER])->countStored();
-                $status['packages']['queued']['unknown'] = $this->packagesRepository->findBy(['state' => Package::STATE_QUEUED, 'type' => Package::TYPE_UNKNOWN])->countStored();
-                $status['packages']['queued']['total'] = $this->packagesRepository->findBy(['state' => Package::STATE_QUEUED])->countStored();
+            $status['addons']['archived']['composer'] = $this->addonRepository->findBy(['state' => Addon::STATE_ARCHIVED, 'type' => Addon::TYPE_COMPOSER])->countStored();
+            $status['addons']['archived']['bower'] = $this->addonRepository->findBy(['state' => Addon::STATE_ARCHIVED, 'type' => Addon::TYPE_BOWER])->countStored();
+            $status['addons']['archived']['untype'] = $this->addonRepository->findBy(['state' => Addon::STATE_ARCHIVED, 'type' => Addon::TYPE_UNTYPE])->countStored();
+            $status['addons']['archived']['unknown'] = $this->addonRepository->findBy(['state' => Addon::STATE_ARCHIVED, 'type' => Addon::TYPE_UNKNOWN])->countStored();
+            $status['addons']['archived']['total'] = $this->addonRepository->findBy(['state' => Addon::STATE_ARCHIVED])->countStored();
 
-                $status['packages']['archived']['composer'] = $this->packagesRepository->findBy(['state' => Package::STATE_ARCHIVED, 'type' => Package::TYPE_COMPOSER])->countStored();
-                $status['packages']['archived']['bower'] = $this->packagesRepository->findBy(['state' => Package::STATE_ARCHIVED, 'type' => Package::TYPE_BOWER])->countStored();
-                $status['packages']['archived']['unknown'] = $this->packagesRepository->findBy(['state' => Package::STATE_ARCHIVED, 'type' => Package::TYPE_UNKNOWN])->countStored();
-                $status['packages']['archived']['total'] = $this->packagesRepository->findBy(['state' => Package::STATE_ARCHIVED])->countStored();
-
-                $status['packages']['total']['composer'] = $this->packagesRepository->findBy(['type' => Package::TYPE_COMPOSER])->countStored();
-                $status['packages']['total']['bower'] = $this->packagesRepository->findBy(['type' => Package::TYPE_BOWER])->countStored();
-                $status['packages']['total']['unknown'] = $this->packagesRepository->findBy(['type' => Package::TYPE_UNKNOWN])->countStored();
-                $status['packages']['total']['total'] = $this->packagesRepository->findAll()->countStored();
-            }
+            $status['addons']['total']['composer'] = $this->addonRepository->findBy(['type' => Addon::TYPE_COMPOSER])->countStored();
+            $status['addons']['total']['bower'] = $this->addonRepository->findBy(['type' => Addon::TYPE_BOWER])->countStored();
+            $status['addons']['total']['untype'] = $this->addonRepository->findBy(['type' => Addon::TYPE_UNTYPE])->countStored();
+            $status['addons']['total']['unknown'] = $this->addonRepository->findBy(['type' => Addon::TYPE_UNKNOWN])->countStored();
+            $status['addons']['total']['total'] = $this->addonRepository->findAll()->countStored();
 
             // Build github status =============================================
 
@@ -75,6 +76,7 @@ final class StatusPresenter extends BasePresenter
 
             return $status;
         });
+
 
         // Fill template
         $this->template->status = $status;

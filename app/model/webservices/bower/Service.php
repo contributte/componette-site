@@ -7,6 +7,9 @@ use App\Model\Exceptions\Runtime\ComposerException;
 final class Service
 {
 
+    /** @var array */
+    public $onException = [];
+
     /** @var Client */
     private $client;
 
@@ -20,14 +23,20 @@ final class Service
 
     /**
      * @param string $uri
-     * @return array|NULL
+     * @return mixed
      */
     protected function call($uri)
     {
         try {
             return $this->client->makeRequest($uri);
         } catch (ComposerException $e) {
-            return NULL;
+            // Trigger events
+            foreach ($this->onException as $cb) {
+                call_user_func($cb, $e);
+            }
+
+            // Return FALSE
+            return FALSE;
         }
     }
 

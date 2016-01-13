@@ -1,14 +1,15 @@
 services:
 
     # Routing ==============================================
-    - App\Model\Routing\Helpers\PackagesHelper
+    - App\Model\Routing\Helpers\AddonsHelper
     routing.routeFactory:
         class: App\Model\Routing\RouterFactory
         inject: on
     routing.router: @App\Model\Routing\RouterFactory::create
 
     # Portal ===============================================
-    - App\Model\Portal(..., ..., @container::parameters)
+    - App\Model\Portal(@container::parameters)
+    - App\Model\Statistics
 
     # Cache ================================================
     - App\Core\Cache\Cacher

@@ -2,22 +2,22 @@
 
 namespace App\Modules\Front\Controls\SideMenu;
 
-use App\Model\ORM\TagsRepository;
+use App\Model\ORM\Tag\TagRepository;
 use Nette\Application\UI\Control;
 
 class SideMenu extends Control
 {
 
-    /** @var TagsRepository */
-    private $tagsRepository;
+    /** @var TagRepository */
+    private $tagRepository;
 
     /**
-     * @param TagsRepository $tagsRepository
+     * @param TagRepository $tagRepository
      */
-    public function __construct(TagsRepository $tagsRepository)
+    public function __construct(TagRepository $tagRepository)
     {
         parent::__construct();
-        $this->tagsRepository = $tagsRepository;
+        $this->tagRepository = $tagRepository;
     }
 
     /**
@@ -26,8 +26,8 @@ class SideMenu extends Control
 
     public function render()
     {
-        $this->template->categories = $this->tagsRepository->findWithHighPriority();
-        $this->template->tags = $this->tagsRepository->findWithLowPriority();
+        $this->template->categories = $this->tagRepository->findWithHighPriority();
+        $this->template->tags = $this->tagRepository->findWithLowPriority();
 
         $this->template->setFile(__DIR__ . '/templates/menu.latte');
         $this->template->render();

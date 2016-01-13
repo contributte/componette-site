@@ -2,13 +2,13 @@
 
 namespace App\Modules\Front;
 
-use App\Model\ORM\PackagesRepository;
+use App\Model\Facade\SearchFacade;
 
 final class ApiPresenter extends BasePresenter
 {
 
-    /** @var PackagesRepository @inject */
-    public $packagesRepository;
+    /** @var SearchFacade @inject */
+    public $searchFacade;
 
     /**
      * @param string $q
@@ -16,18 +16,18 @@ final class ApiPresenter extends BasePresenter
     public function actionSuggest($q)
     {
         $output = [];
-        $packages = $this->packagesRepository
-            ->search($q)
-            ->orderBy('this->metadata->downloads', 'DESC');
+        $addons = $this->searchFacade
+            ->findByQuery($q)
+            ->orderBy('this->github->downloads', 'DESC');
 
-        foreach ($packages as $package) {
+        foreach ($addons as $addon) {
             $output[] = [
-                'id' => $package->id,
-                'name' => $package->metadata->name,
-                'description' => $package->metadata->description,
-                'link' => $this->link(':Front:Package:detail', $package->id),
-                'stars' => $package->metadata->stars,
-                'downloads' => $package->metadata->downloads,
+                'id' => $addon->id,
+                'name' => $addon->github->name,
+                'description' => $addon->github->description,
+                'link' => $this->link(':Front:Addon:detail', $addon->id),
+                'stars' => $addon->github->stars,
+                'downloads' => $addon->github->downloads,
             ];
         }
 

@@ -2,27 +2,29 @@
 
 namespace App\Modules\Front;
 
-use App\Model\ORM\Package;
+use App\Model\ORM\Addon\Addon;
 use Nextras\Orm\Collection\ICollection;
 
-final class HomePresenter extends BasePackagesPresenter
+final class HomePresenter extends BaseAddonPresenter
 {
 
-    /** @var ICollection|Package[] */
+    /** @var ICollection|Addon[] */
     private $newest;
 
-    /** @var ICollection|Package[] */
+    /** @var ICollection|Addon[] */
     private $lastActive;
 
-    /** @var ICollection|Package[] */
+    /** @var ICollection|Addon[] */
     private $mostPopular;
 
-
+    /**
+     * Find addons by criteria
+     */
     public function actionDefault()
     {
-        $this->newest = $this->packagesFacade->findNewests();
-        $this->lastActive = $this->packagesFacade->findByLastActivity();
-        $this->mostPopular = $this->packagesFacade->findMostPopular();
+        $this->newest = $this->addonFacade->findNewests();
+        $this->lastActive = $this->addonFacade->findByLastActivity();
+        $this->mostPopular = $this->addonFacade->findMostPopular();
     }
 
     /**
@@ -30,29 +32,27 @@ final class HomePresenter extends BasePackagesPresenter
      */
 
     /**
-     * @return Controls\PackageList\PackageList
+     * @return Controls\AddonList\AddonList
      */
     protected function createComponentNewest()
     {
-        return $this->createPackagesControl($this->newest);
+        return $this->createAddonListControl($this->newest);
     }
 
     /**
-     * @return Controls\PackageList\PackageList
+     * @return Controls\AddonList\AddonList
      */
     protected function createComponentLastActive()
     {
-        return $this->createPackagesControl($this->lastActive);
+        return $this->createAddonListControl($this->lastActive);
     }
 
-
     /**
-     * @return Controls\PackageList\PackageList
+     * @return Controls\AddonList\AddonList
      */
     protected function createComponentMostPopular()
     {
-        return $this->createPackagesControl($this->mostPopular);
+        return $this->createAddonListControl($this->mostPopular);
     }
-
 
 }

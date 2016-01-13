@@ -3,12 +3,14 @@
 namespace App\Modules\Front;
 
 use App\Model\Portal;
-use App\Modules\Front\Controls\PackageModal\IPackageModalFactory;
-use App\Modules\Front\Controls\PackageModal\PackageModal;
+use App\Modules\Front\Controls\AddonModal\AddonModal;
+use App\Modules\Front\Controls\AddonModal\IAddonModalFactory;
 use App\Modules\Front\Controls\Search\ISearchFactory;
 use App\Modules\Front\Controls\Search\Search;
 use App\Modules\Front\Controls\SideMenu\ISideMenuFactory;
 use App\Modules\Front\Controls\SideMenu\SideMenu;
+use App\Modules\Front\Controls\Statistics\IStatisticsFactory;
+use App\Modules\Front\Controls\Statistics\Statistics;
 use Nette\Application\UI\Presenter;
 
 /**
@@ -23,11 +25,14 @@ abstract class BasePresenter extends Presenter
     /** @var ISearchFactory @inject */
     public $searchFactory;
 
-    /** @var IPackageModalFactory @inject */
-    public $packageModalFactory;
+    /** @var IAddonModalFactory @inject */
+    public $addonModalFactory;
 
     /** @var ISideMenuFactory @inject */
     public $sideMenuFactory;
+
+    /** @var IStatisticsFactory @inject */
+    public $statisticsFactory;
 
     /**
      * Common template method
@@ -51,6 +56,11 @@ abstract class BasePresenter extends Presenter
     protected function createComponentSearch()
     {
         $search = $this->searchFactory->create();
+
+        $search['form']['q']
+            ->controlPrototype
+            ->data('handle', $this->link(':Front:List:search', ['q' => '_QUERY_']));
+
         $search->onSearch[] = function ($q) {
             $this->redirect(':Front:List:search', $q);
         };
@@ -59,11 +69,11 @@ abstract class BasePresenter extends Presenter
     }
 
     /**
-     * @return PackageModal
+     * @return AddonModal
      */
     protected function createComponentModal()
     {
-        return $this->packageModalFactory->create();
+        return $this->addonModalFactory->create();
     }
 
     /**
@@ -72,6 +82,14 @@ abstract class BasePresenter extends Presenter
     protected function createComponentSideMenu()
     {
         return $this->sideMenuFactory->create();
+    }
+
+    /**
+     * @return Statistics
+     */
+    protected function createComponentStatistics()
+    {
+        return $this->statisticsFactory->create();
     }
 
 }

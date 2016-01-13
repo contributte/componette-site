@@ -7,6 +7,9 @@ use App\Model\Exceptions\Runtime\ComposerException;
 final class Service
 {
 
+    /** @var array */
+    public $onException = [];
+
     /** @var Client */
     private $client;
 
@@ -20,14 +23,20 @@ final class Service
 
     /**
      * @param string $uri
-     * @return array|NULL
+     * @return mixed
      */
     protected function call($uri)
     {
         try {
             return $this->client->makeRequest($uri);
         } catch (ComposerException $e) {
-            return NULL;
+            // Trigger events
+            foreach ($this->onException as $cb) {
+                call_user_func($cb, $e);
+            }
+
+            // Return FALSE
+            return FALSE;
         }
     }
 
@@ -39,6 +48,21 @@ final class Service
     public function repo($owner, $repo)
     {
         return $this->call("/packages/$owner/$repo.json");
+    }
+
+    /**
+     * @param string $owner
+     * @param string $repo
+     * @param string $version
+     * @return mixed
+     */
+    public function stats($owner, $repo, $version = NULL)
+    {
+        if ($version) {
+            return $this->call("/packages/$owner/$repo/stats/$version.json");
+        } else {
+            return $this->call("/packages/$owner/$repo/stats/all.json");
+        }
     }
 
 }
