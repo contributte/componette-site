@@ -104,6 +104,8 @@ class Github extends AbstractEntity
         } else {
             $this->setRawValue('extra', NULL);
         }
+
+        $this->crawledAt = new DateTime();
     }
 
 }

@@ -72,7 +72,6 @@ final class UpdateComposerTask extends BaseAddonTask
                         $addon->composer->keywords = $keywords ? implode(',', $keywords) : NULL;
 
                         // Persist
-                        $addon->composer->crawledAt = new DateTime();
                         $this->addonRepository->persistAndFlush($addon);
 
                         // Increase counting

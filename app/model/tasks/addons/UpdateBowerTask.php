@@ -58,7 +58,6 @@ final class UpdateBowerTask extends BaseAddonTask
                     $addon->bower->keywords = $keywords ? implode(',', $keywords) : NULL;
 
                     // Persist
-                    $addon->bower->crawledAt = new DateTime();
                     $this->addonRepository->persistAndFlush($addon);
 
                     // Increase counting

@@ -111,7 +111,6 @@ final class UpdateGithubFilesTask extends BaseAddonTask
             }
 
             // Persist
-            $addon->github->crawledAt = new DateTime();
             $this->addonRepository->persistAndFlush($addon);
 
             // Increase counting

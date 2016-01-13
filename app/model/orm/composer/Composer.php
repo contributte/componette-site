@@ -19,4 +19,16 @@ use Nette\Utils\DateTime;
 class Composer extends AbstractEntity
 {
 
+    /**
+     * Called before persist to storage
+     *
+     * @return void
+     */
+    protected function onBeforePersist()
+    {
+        parent::onBeforePersist();
+
+        $this->crawledAt = new DateTime();
+    }
+
 }
