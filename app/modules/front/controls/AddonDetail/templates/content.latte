@@ -2,7 +2,9 @@
     {var $content = $addon->github->content}
 
     {if $content}
-        {$content|parsedown|noescape}
+        {cache $addon->id . '/content', expire => '+1 hour'}
+            {$content|parsedown|noescape}
+        {/cache}
     {else}
         <p class="alert alert-warning">No content at this moment.</p>
     {/if}
