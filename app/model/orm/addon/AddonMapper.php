@@ -35,7 +35,8 @@ final class AddonMapper extends AbstractMapper
     {
         $builder = $this->builder();
         $builder->from('[addon]', 'a')
-            ->leftJoin('a', '[github]', 'g', '[g.addon_id] = [a.id]');
+            ->leftJoin('a', '[github]', 'g', '[g.addon_id] = [a.id]')
+            ->andWhere('[a.state] = %s', Addon::STATE_ACTIVE);
 
         $this->applyOrder($builder, $orderBy);
 
@@ -51,6 +52,9 @@ final class AddonMapper extends AbstractMapper
         switch ($orderBy) {
             case 'push':
                 $builder->orderBy('[g.pushed_at] DESC');
+                break;
+            case 'newest':
+                $builder->orderBy('[a.created_at] DESC');
                 break;
             case 'popularity':
                 $builder->orderBy('IFNULL([g.stars], 0) * 2 + IFNULL([g.watchers], 0) + IFNULL([g.forks], 0) DESC');

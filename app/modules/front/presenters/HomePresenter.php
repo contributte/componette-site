@@ -22,7 +22,7 @@ final class HomePresenter extends BaseAddonPresenter
      */
     public function actionDefault()
     {
-        $this->newest = $this->addonFacade->findNewests();
+        $this->newest = $this->addonFacade->findNewest();
         $this->lastActive = $this->addonFacade->findByLastActivity();
         $this->mostPopular = $this->addonFacade->findMostPopular();
     }
