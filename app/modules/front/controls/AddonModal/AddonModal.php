@@ -73,9 +73,9 @@ final class AddonModal extends BaseControl
             $addon->owner = $owner;
             $addon->name = $name;
             $addon->github = new Github();
-            $addon->tags->add($form->values->tags);
-
-            dd($addon);
+            if ($form->values->tags) {
+                $addon->tags->add($form->values->tags);
+            }
 
             try {
                 $this->addonRepository->persistAndFlush($addon);
