@@ -79,7 +79,7 @@ final class AddonModal extends BaseControl
 
             try {
                 $this->addonRepository->persistAndFlush($addon);
-                $this->presenter->flashMessage('Addon successful added to the process queue. Thank you.', 'info');
+                $this->presenter->flashMessage('Addon successful added to the cron process queue. Thank you.', 'info');
             } catch (UniqueConstraintViolationException $e) {
                 $this->presenter->flashMessage('There is already addon "' . ($owner . '/' . $name) . '" in our database.', 'warning');
             } catch (PDOException $e) {
