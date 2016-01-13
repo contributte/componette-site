@@ -2,6 +2,7 @@
 
 namespace App\Model\Facade;
 
+use App\Model\ORM\Addon\Addon;
 use App\Model\ORM\Addon\AddonRepository;
 use App\Model\ORM\Tag\TagRepository;
 use Nextras\Orm\Collection\ICollection;
@@ -32,6 +33,16 @@ final class StatisticsFacade
     {
         return $this->addonRepository
             ->findActive()
+            ->countStored();
+    }
+
+    /**
+     * @return int
+     */
+    public function countQueued()
+    {
+        return $this->addonRepository
+            ->findBy(['state' => Addon::STATE_QUEUED])
             ->countStored();
     }
 

@@ -27,6 +27,7 @@ class Statistics extends Control
     public function renderFooter()
     {
         $this->template->addons = $this->facade->countAddons();
+        $this->template->queued = $this->facade->countQueued();
         $this->template->owners = $this->facade->countOwners();
         $this->template->tags = $this->facade->countTags();
 
