@@ -22,7 +22,7 @@ final class GenerateContentTask extends BaseAddonTask
         // FILTER PACKAGES ===========================================
 
         if (isset($args['rest']) && $args['rest'] === TRUE) {
-            $addons = $addons->findBy(['this->metadata->content' => NULL]);
+            $addons = $addons->findBy(['this->github->content' => NULL]);
         }
 
         // DO YOUR JOB ===============================================
