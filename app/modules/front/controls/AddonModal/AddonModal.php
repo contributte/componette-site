@@ -63,7 +63,7 @@ final class AddonModal extends BaseControl
                 return;
             }
 
-            list ($owner, $name) = $matches;
+            list ($all, $owner, $name) = $matches;
 
             $addon = new Addon();
             $this->addonRepository->attach($addon);
@@ -74,6 +74,8 @@ final class AddonModal extends BaseControl
             $addon->name = $name;
             $addon->github = new Github();
             $addon->tags->add($form->values->tags);
+
+            dd($addon);
 
             try {
                 $this->addonRepository->persistAndFlush($addon);
