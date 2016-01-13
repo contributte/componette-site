@@ -60,7 +60,7 @@ final class StatisticsFacade
     /**
      * @return ICollection
      */
-    public function findNewests()
+    public function findNewest()
     {
         return $this->addonRepository
             ->findActive()

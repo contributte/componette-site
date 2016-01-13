@@ -47,7 +47,7 @@ final class AddonFacade
     /**
      * @return ICollection
      */
-    public function findNewests()
+    public function findNewest()
     {
         return $this->addonRepository
             ->findActive()

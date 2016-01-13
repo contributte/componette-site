@@ -16,7 +16,7 @@
     </section>
     <section class="col-md-offset-1 col-md-3">
         <h4>Newest</h4>
-        <ul n:foreach="$newests as $addon">
+        <ul n:foreach="$newest as $addon">
             <li><a href="{plink :Front:Addon:detail, slug => $addon->id}">{$addon->fullname}</a></li>
         </ul>
     </section>

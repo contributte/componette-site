@@ -31,7 +31,7 @@ class Statistics extends Control
         $this->template->tags = $this->facade->countTags();
 
         $this->template->popular = $this->facade->findMostPopular();
-        $this->template->newests = $this->facade->findNewests();
+        $this->template->newest = $this->facade->findNewest();
 
         $this->template->setFile(__DIR__ . '/templates/footer.latte');
         $this->template->render();
