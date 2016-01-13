@@ -34,4 +34,4 @@ tracy:
 services:
     nette.userStorage:
         setup:
-            - setNamespace(Nette\Packages)
+            - setNamespace(Componette)
