@@ -9,6 +9,10 @@
 - Feature: design tables in addon detail [#20]
 - Fixed: layout on ipad2 and all others [#24]
 - Feature: count queued addons in footer statistics
+- Improvement: added google validation meta tag
+- Improvement: mobile layouts [#25] [#26]
+- Feature: sitemap generator [#27]
+- Improvement: markdown relative link overriding [#22]
 
 ## 1.0.1 [13.01.2016]
 
