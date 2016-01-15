@@ -117,4 +117,14 @@ final class Linker
         return $this->repo . '/network';
     }
 
+    /**
+     * @param string $uri
+     * @param string $branch
+     * @return string
+     */
+    public function getBlobUrl($uri, $branch = 'master')
+    {
+        return $this->repo . "/blob/$branch/$uri";
+    }
+
 }

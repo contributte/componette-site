@@ -5,6 +5,7 @@ namespace App\Model\Tasks\Addons;
 use App\Model\ORM\Addon\Addon;
 use App\Model\ORM\Github\Github;
 use Nette\Utils\Strings;
+use Nette\Utils\Validators;
 use Nextras\Orm\Collection\ICollection;
 
 final class GenerateContentTask extends BaseAddonTask
@@ -49,6 +50,12 @@ final class GenerateContentTask extends BaseAddonTask
                                 $addon->github->readme = Github::README_RAW;
                             }
                         }
+
+                        // Replace relative links
+                        if ($addon->github->readme === Github::README_MARKDOWN) {
+                            $this->reformatMarkdownLinks($addon->github);
+                        }
+
                         // Persist
                         $this->addonRepository->persistAndFlush($addon);
 
@@ -67,4 +74,21 @@ final class GenerateContentTask extends BaseAddonTask
 
         return $counter;
     }
+
+    /**
+     * @param Github $github
+     */
+    protected function reformatMarkdownLinks(Github $github)
+    {
+        $github->content = Strings::replace($github->content, '#\[(.*)\]\((.+)\)#', function ($matches) use ($github) {
+            list ($all, $title, $url) = $matches;
+
+            if (!Validators::isUrl($url)) {
+                $url = $github->linker->getBlobUrl($matches[2]);
+            }
+
+            return sprintf('[%s](%s)', $title, $url);
+        });
+    }
+
 }
