@@ -1,0 +1,31 @@
+language: php
+php:
+    - 5.6
+    - 7.0
+    - hhvm
+    - hhvm-nightly
+
+matrix:
+    allow_failures:
+        - php: hhvm-nightly
+
+before_script:
+    # Update Composer
+    - travis_retry composer self-update
+
+    # Install Nette Tester
+    - travis_retry composer install --no-interaction --prefer-source
+
+script:
+    - vendor/bin/tester tests/cases -s -p php -i
+    - vendor/bin/tester tests/cases -s -p php
+
+after_failure:
+    # Print *.actual content
+    - 'for i in $(find tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done'
+
+sudo: false
+
+cache:
+    directories:
+        - $HOME/.composer/cache
