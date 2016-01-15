@@ -1,6 +1,8 @@
 # Componette
 
-New #nette addons portal. 
+Modern useful #nette addons portal.
+
+[![Gitter](https://img.shields.io/gitter/room/componette.svg)](https://gitter.im/componette)
 
 ## Requirements
 
