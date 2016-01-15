@@ -1,0 +1,11 @@
+#!/bin/bash
+
+DATE=`date +%Y-%m-%d`
+echo $DATE
+
+php ../www/index.php Addons:update -github
+php ../www/index.php Addons:update -githubfiles
+php ../www/index.php Addons:generate -content
+php ../www/index.php Addons:update -composer
+php ../www/index.php Addons:update -bower
+php ../www/index.php Addons:stats -composer
