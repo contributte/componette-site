@@ -14,6 +14,7 @@ body {
   overflow-y: scroll;
   color: #222;
   background: @bgcolor;
+  font-size: 14px;
 }
 
 a {
@@ -300,6 +301,7 @@ a[href*="://"]:after {
 .footer {
   margin: 40px 0 0 0;
   color: #fff;
+  font-size: 1.2em;
 
   .statistics {
     padding: 40px 0;
@@ -358,6 +360,7 @@ a[href*="://"]:after {
     background: darken(@bgcolor, 20%);
     text-align: center;
     clear: both;
+    font-size: .9em;
 
     p {
       margin: 0;
@@ -754,6 +757,14 @@ a[href*="://"]:after {
 }
 
 @media screen and (max-width: 991px) {
+  .bar > div {
+    text-align: center;
+  }
+
+  .bar .projects {
+    float: none;
+  }
+
   .main-title {
     font-size: 20px;
   }
@@ -800,14 +811,25 @@ a[href*="://"]:after {
       }
     }
   }
-}
 
-@media screen and (max-width: 991px) {
-  .bar > div {
-    text-align: center;
-  }
+  .footer {
+    .statistics {
+      text-align: center;
 
-  .bar .projects {
-    float: none;
+      section {
+        margin-bottom: 35px;
+
+        ul {
+          margin: 0;
+
+          li {
+            list-style-type: none;
+          }
+        }
+      }
+      section:last-of-type {
+        margin-bottom: 0;
+      }
+    }
   }
 }
