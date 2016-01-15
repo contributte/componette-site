@@ -27,7 +27,7 @@ final class SearchFacade
     }
 
     /**
-     * @return ICollection
+     * @return ICollection|Addon[]
      */
     public function findAll()
     {
@@ -41,7 +41,7 @@ final class SearchFacade
 
     /**
      * @param string $owner
-     * @return ICollection
+     * @return ICollection|Addon[]
      */
     public function findByOwner($owner)
     {
@@ -56,7 +56,7 @@ final class SearchFacade
 
     /**
      * @param string $q
-     * @return ICollection
+     * @return ICollection|Addon[]
      */
     public function findByQuery($q)
     {
@@ -70,7 +70,7 @@ final class SearchFacade
 
     /**
      * @param string $tag
-     * @return ICollection
+     * @return ICollection|Addon[]
      */
     public function findByTag($tag)
     {

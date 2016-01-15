@@ -36,16 +36,25 @@ final class AddonFacade
     }
 
     /**
-     * @return ICollection
+     * @return ICollection|Addon[]
      */
-    public function findAll()
+    public function findActive()
     {
         return $this->addonRepository
             ->findActive();
     }
 
     /**
-     * @return ICollection
+     * @return ICollection|Addon[]
+     */
+    public function findActiveOwners()
+    {
+        return $this->findActive()
+            ->fetchPairs('owner');
+    }
+
+    /**
+     * @return ICollection|Addon[]
      */
     public function findNewest()
     {
@@ -56,7 +65,7 @@ final class AddonFacade
     }
 
     /**
-     * @return ICollection
+     * @return ICollection|Addon[]
      */
     public function findByLastActivity()
     {
@@ -67,7 +76,7 @@ final class AddonFacade
     }
 
     /**
-     * @return ICollection
+     * @return ICollection|Addon[]
      */
     public function findMostPopular()
     {

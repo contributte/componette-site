@@ -69,7 +69,7 @@ final class StatisticsFacade
     }
 
     /**
-     * @return ICollection
+     * @return ICollection|Addon[]
      */
     public function findNewest()
     {
@@ -80,7 +80,7 @@ final class StatisticsFacade
     }
 
     /**
-     * @return ICollection
+     * @return ICollection|Addon[]
      */
     public function findMostPopular()
     {
