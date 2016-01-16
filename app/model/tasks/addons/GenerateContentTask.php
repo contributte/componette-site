@@ -80,7 +80,7 @@ final class GenerateContentTask extends BaseAddonTask
      */
     protected function reformatMarkdownLinks(Github $github)
     {
-        $github->content = Strings::replace($github->content, '#\[(.*)\]\((.+)\)#', function ($matches) use ($github) {
+        $github->content = Strings::replace($github->content, '#\[(.*)\]\((.+)\)#iU', function ($matches) use ($github) {
             list ($all, $title, $url) = $matches;
 
             if (!Validators::isUrl($url)) {
