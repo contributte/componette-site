@@ -56,6 +56,13 @@ gulp.task('js-remote', function () {
         .pipe(gulp.dest('www/dist/'));
 });
 
+gulp.task('deploy', [
+    'css',
+    'css-remote',
+    'js',
+    'js-remote'
+]);
+
 gulp.task('watch', function () {
     gulp.watch(['www/assets/css/**/*.css'], ['css']);
     gulp.watch(['www/assets/js/**/*.js'], ['js']);

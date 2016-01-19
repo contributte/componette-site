@@ -2,6 +2,7 @@
 
 ## 1.0.2-dev
 
+- Feature: click & copy composer require in addon detail
 - Feature: added gulp
 - Improvement: templates optimization (seo, alt, title, microformat, twitter)
 - Feature: added github ribbon

@@ -27,7 +27,16 @@ This portal run in Docker container(s). You can see configurations in **docker**
 
 ## How to run
 
+### Backend
+
 - Clone this repo (`git@github.com:componette/componette.com.git`)
 - Rename `app/config/config.local.sample` to `config.local.neon` and fill parameters
 - Create database and setup tables (and fixtures)
 - Run `composer install`
+
+### Frontend
+
+- Run `npm install`
+- Run `gulp deploy`
+
+For developing you can use `gulp watch`, it's monitor every **CSS** and **JS** files in `www/assets`.

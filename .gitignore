@@ -9,6 +9,7 @@
 
 # Assets
 /www/assets/css/*.css
+/www/dist
 
 # Composer
 /vendor/*
@@ -20,4 +21,3 @@
 # Files
 !.gitignore
 !.htaccess
-/www/dist
