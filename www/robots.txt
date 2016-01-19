@@ -1,0 +1,2 @@
+# Componette
+Sitemap: https://componette.com/sitemap.xml
