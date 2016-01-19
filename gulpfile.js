@@ -46,7 +46,8 @@ gulp.task('js-remote', function () {
         'typeahead.js/0.11.1/typeahead.bundle.min.js',
         'handlebars.js/4.0.3/handlebars.min.js',
         'chosen/1.4.2/chosen.jquery.min.js',
-        'canvasjs/1.7.0/canvasjs.min.js'
+        'canvasjs/1.7.0/canvasjs.min.js',
+        'clipboard.js/1.5.5/clipboard.min.js'
     ], {
         base: 'https://cdnjs.cloudflare.com/ajax/libs/'
     })

@@ -19,6 +19,10 @@
     <table>
         {if $addon->isComposer && $addon->composer}
         <tr>
+            <td><span class="octicon octicon-gift composer-clipboard" data-toggle="tooltip" data-placement="left" title="Click & copy" data-composer="composer require {$addon->github->composer->getName()}"></span></td>
+            <td>{$addon->github->composer->getName()}</td>
+        </tr>
+        <tr>
             <td><span class="octicon octicon-cloud-download"></span></td>
             <td data-toggle="tooltip" data-placement="left" title="Total downloads">{$addon->composer->downloads|count}</td>
         </tr>

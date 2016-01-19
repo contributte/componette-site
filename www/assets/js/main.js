@@ -69,6 +69,16 @@ $(function () {
         ga('send', 'event', event, category, action);
     });
 
+    // Composer clipboard
+    $('span.composer-clipboard').on('click', function () {
+        var clipboard = new Clipboard('span.composer-clipboard', {
+            text: function (trigger) {
+                return trigger.getAttribute('data-composer');
+            }
+        });
+    });
+
+    // Stats
     (function () {
         var $addon = $('#addon-stats');
         if ($addon.length) {
