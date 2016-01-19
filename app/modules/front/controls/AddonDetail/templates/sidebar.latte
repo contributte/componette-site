@@ -11,7 +11,7 @@
 
 <div class="title-owner">
     <a data-ga="1" data-event="click" data-category="sidebar" data-action="owner-title" data-toggle="tooltip" data-placement="left" title="Show all addons by {$owner}" href="{plink List:owner, slug => $owner}">
-        <img src="{$addon->github->linker->getOwnerAvatarUrl(40)}"> {$owner}
+        <img alt="" title="{$owner}" src="{$addon->github->linker->getOwnerAvatarUrl(40)}"> {$owner}
     </a>
 </div>
 
@@ -46,17 +46,17 @@
 <div class="badges">
     <ul>
         <li>
-            <img src="http://isitmaintained.com/badge/resolution/{$owner|lower}/{$name|lower}.svg">
+            <img alt="" title="isitmaintained" src="http://isitmaintained.com/badge/resolution/{$owner|lower}/{$name|lower}.svg">
         </li>
         <li>
-            <img src="http://isitmaintained.com/badge/open/{$owner|lower}/{$name|lower}.svg">
+            <img alt="" title="isitmaintained" src="http://isitmaintained.com/badge/open/{$owner|lower}/{$name|lower}.svg">
         </li>
         {if $addon->isComposer && $addon->github->composer}
             <li>
-                <a href="{$addon->github->composer->getPackageUrl()}"><img src="https://img.shields.io/packagist/v/{$addon->github->composer->getName()}.svg"></a>
+                <a href="{$addon->github->composer->getPackageUrl()}"><img alt="" title="{$addon->github->composer->getName()}" src="https://img.shields.io/packagist/v/{$addon->github->composer->getName()}.svg"></a>
             </li>
             <li>
-                <img src="https://img.shields.io/packagist/l/{$addon->github->composer->getName()}.svg">
+                <img alt="" title="{$addon->github->composer->getName()}" src="https://img.shields.io/packagist/l/{$addon->github->composer->getName()}.svg">
             </li>
         {/if}
     </ul>
