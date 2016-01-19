@@ -21,7 +21,7 @@ use Nextras\Orm\Relationships\ManyHasMany;
  *
  * @property string $fullname           {virtual}
  * @property string $isComposer         {virtual}
- * @property string $isBower             {virtual}
+ * @property string $isBower            {virtual}
  *
  * @property Github $github             {1:1 Github::$addon}
  * @property Bower|NULL $bower          {1:1 Bower::$addon}
@@ -45,7 +45,7 @@ class Addon extends AbstractEntity
      */
     protected function getterFullname()
     {
-        return $this->owner . '/' . $this->name;
+        return $this->owner . '\\' . $this->name;
     }
 
     /**
