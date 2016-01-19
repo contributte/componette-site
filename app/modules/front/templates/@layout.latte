@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
     <meta name="google-site-verification" content="wIeHv7ZRzLxLQy7wrS9tjxHGFXVVUCtZQMPDYeMAriQ">
-	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
+    <link rel="shortcut icon" href="{$baseUri}/favicon.ico">
 
-	<title>{ifset #title}{include #title|striptags} | {else}Addons, plugins and components | {/ifset}Nette Framework</title>
+    <title>{ifset #title}{include #title|striptags}{else}Addons, plugins and components{/ifset} | Componette</title>
 
     <!-- SEO -->
     <meta name="description" n:ifset="#description" content="{include #description}">
@@ -17,11 +17,11 @@
 
     <!-- FACEBOOK -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{ifset #title}{include #title|striptags} | {else}Addons, plugins and components | {/ifset}Nette Framework">
+    <meta property="og:title" content="{ifset #title}{include #title|striptags}{else}Addons, plugins and components{/ifset} | Componette">
     <meta property="og:url" content="{plink //this}">
-    <meta property="og:site_name" content="Addons, plugins and components | Nette Framework">
+    <meta property="og:site_name" content="Componette">
 
-	<!-- STYLESHEETS -->
+    <!-- STYLESHEETS -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
