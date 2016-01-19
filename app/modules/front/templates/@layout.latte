@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width">
     <meta name="google-site-verification" content="wIeHv7ZRzLxLQy7wrS9tjxHGFXVVUCtZQMPDYeMAriQ">
     <link rel="shortcut icon" href="{$baseUri}/favicon.ico">
+    <link rel="canonical" href="{plink this}">
 
     <title>{ifset #title}{include #title|striptags}{else}Addons, plugins and components{/ifset} | Componette</title>
 
     <!-- SEO -->
-    <meta name="description" n:ifset="#description" content="{include #description}">
+    <meta name="description" content="{ifset #description}{include #description|striptags}{else}New and modern addons portal for Nette Framework.{/ifset}">
     <meta name="keywords" content="{ifset #keywords}{include #keywords|striptags}{else}nette, addons, plugins, components, extension, forms{/ifset}">
     <meta name="googlebot" content="snippet,archive">
     <meta name="robots" content="index, follow">
@@ -20,6 +21,15 @@
     <meta property="og:title" content="{ifset #title}{include #title|striptags}{else}Addons, plugins and components{/ifset} | Componette">
     <meta property="og:url" content="{plink //this}">
     <meta property="og:site_name" content="Componette">
+    {*<meta property="og:image" content="">*}
+
+    <!-- TWITTER -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@componette">
+    <meta name="twitter:url" content="{plink //this}">
+    <meta name="twitter:title" content="{ifset #title}{include #title|striptags}{else}Addons, plugins and components{/ifset} | Componette">
+    <meta name="twitter:description" content="{ifset #description}{include #description|striptags}{else}New and modern addons portal for Nette Framework.{/ifset}">
+    {*<meta name="twitter:image" content="">*}
 
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
@@ -112,6 +122,13 @@
                 <li><a href="https://nette.org/donate"><span>Donate</span></a></li>
             </ul>
         </div>
+    </div>
+
+    <!-- Microdata -->
+    <div class="microdata" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Componette</span>
+        <span itemprop="company">Componette</span>
+        <a itemprop="email" href="mailto:admin@componette.com">admin@componette.com</a>
     </div>
 
     <!-- ADDON MODAL -->
