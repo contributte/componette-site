@@ -2,6 +2,8 @@
 
 ## 1.0.2-dev
 
+- Feature: added gulp
+- Improvement: templates optimization (seo, alt, title, microformat, twitter)
 - Feature: added github ribbon
 - Fixed: cli processing
 - Feature: added links on categories at homepage

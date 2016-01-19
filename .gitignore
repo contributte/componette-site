@@ -14,6 +14,9 @@
 /vendor/*
 /composer.lock
 
+# NPM
+/node_modules
+
 # Files
 !.gitignore
 !.htaccess
