@@ -20,3 +20,4 @@
 # Files
 !.gitignore
 !.htaccess
+/www/dist
