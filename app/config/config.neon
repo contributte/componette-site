@@ -24,6 +24,11 @@ application:
     mapping:
         *: App\Modules\*\*Presenter
 
+http:
+    headers:
+        X-XSS-Protection: "1; mode=block"
+        X-Powered-By: "componette"
+
 di:
     debugger: yes
 
