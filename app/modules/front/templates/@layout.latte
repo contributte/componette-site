@@ -7,39 +7,43 @@
     <link rel="shortcut icon" href="{$baseUri}/favicon.ico">
     <link rel="canonical" href="{plink this}">
 
+    <!-- Title -->
     <title>{ifset #title}{include #title|striptags}{else}Addons, plugins and components{/ifset} | Componette</title>
 
-    <!-- SEO -->
+    <!-- Seo -->
     <meta name="description" content="{ifset #description}{include #description|striptags}{else}New and modern addons portal for Nette Framework.{/ifset}">
     <meta name="keywords" content="{ifset #keywords}{include #keywords|striptags}{else}nette, addons, plugins, components, extension, forms{/ifset}">
     <meta name="googlebot" content="snippet,archive">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Nette Community">
 
-    <!-- FACEBOOK -->
+    <!-- Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="{ifset #title}{include #title|striptags}{else}Addons, plugins and components{/ifset} | Componette">
     <meta property="og:url" content="{plink //this}">
     <meta property="og:site_name" content="Componette">
-    {*<meta property="og:image" content="">*}
+    <!--<meta property="og:image" content="">-->
 
-    <!-- TWITTER -->
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@componette">
     <meta name="twitter:url" content="{plink //this}">
     <meta name="twitter:title" content="{ifset #title}{include #title|striptags}{else}Addons, plugins and components{/ifset} | Componette">
     <meta name="twitter:description" content="{ifset #description}{include #description|striptags}{else}New and modern addons portal for Nette Framework.{/ifset}">
-    {*<meta name="twitter:image" content="">*}
+    <!--<meta name="twitter:image" content="">-->
 
-    <!-- STYLESHEETS -->
+    <!-- Styles -->
     <link rel="stylesheet" href="{$basePath}/dist/external.css">
     <link rel="stylesheet" href="{$basePath}/dist/bundle.css?v={$rev}">
+
+    <!-- Extra head-->
     {block #head}{/block}
 </head>
 <body>
-    <!-- Packages Container -->
+    <!-- Container -->
     <div class="container">
 
+        <!-- Header -->
         <div class="header row">
             <div class="col-xs-1 header-col">
                 <a class="main-title" n:href=":Front:Home:"><span class="mega-octicon octicon-home"></span></a>
@@ -56,34 +60,48 @@
                 <a href="#" title="Add new package" data-tooltip="bottom" data-toggle="modal" data-target="#package-modal" class="btn btn-default button--add-package"><span class="mega-octicon octicon-plus"></span></a>
             </div>
         </div>
+        <!-- /Header -->
 
+        <!-- Flashes -->
         <div class="alerts" n:inner-foreach="$flashes as $flash">
             <div class="alert alert-{$flash->type}">{$flash->message}</div>
         </div>
+        <!-- /Flashes -->
 
+        <!-- Content -->
         <div class="content">
             <div class="row">
                 {ifset #wrapper}
                     {block #wrapper}
+                        <!-- Sidebar(3) -->
                         <div class="col-md-3">
                             <h2 class="category"><span class="mega-octicon octicon-tag"></span> Tags</h2>
                             {block #sidebar}
                                 {control sideMenu}
                             {/block}
                         </div>
+                        <!-- /Sidebar(3) -->
+
+                        <!-- Content(9) -->
                         <div class="col-md-9">
                             {include #content}
                         </div>
+                        <!-- /Content(9) -->
                     {/block}
                 {else}
+                    <!-- Content(12) -->
                     <div class="col-md-12">
                         {include #content}
                     </div>
+                    <!-- Content(12) -->
                 {/ifset}
             </div>
         </div>
+        <!-- /Content -->
     </div>
+    <!-- /Container -->
 
+    <!-- Footer -->
     <div class="footer">
         <div class="testing">
             <p>This is testing version. Please report all issues or ideas on <a href="https://github.com/componette/componette.com/issues">Github</a>.</p>
@@ -99,6 +117,7 @@
             </div>
         </div>
     </div>
+    <!-- /Footer -->
 
     <!-- Nette Bar -->
     <div class="bar">
@@ -119,6 +138,7 @@
             </ul>
         </div>
     </div>
+    <!-- /Nette Bar -->
 
     <!-- Microdata -->
     <div class="microdata" itemscope itemtype="http://schema.org/Person">
@@ -126,16 +146,20 @@
         <span itemprop="company">Componette</span>
         <a itemprop="email" href="mailto:admin@componette.com">admin@componette.com</a>
     </div>
+    <!-- /Microdata -->
 
-    <!-- ADDON MODAL -->
+    <!-- Add addon -->
     {control modal}
+    <!-- /Add addon -->
 
-    <!-- TRACKING -->
+    <!-- Tracking -->
     {include '_parts/@ga.latte'}
     {include '_parts/@pageinfo.latte'}
+    <!-- /Tracking -->
 
-    <!-- SCRIPTS -->
+    <!-- Scripts -->
     <script src="{$basePath}/dist/external.js"></script>
     <script src="{$basePath}/dist/bundle.js?v={$rev}"></script>
+    <!-- /Scripts -->
 </body>
 </html>
