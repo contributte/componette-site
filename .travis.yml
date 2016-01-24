@@ -1,4 +1,5 @@
 language: php
+
 php:
     - 5.6
     - 7.0
@@ -9,7 +10,7 @@ matrix:
     allow_failures:
         - php: hhvm-nightly
 
-before_script:
+install:
     # Update Composer
     - travis_retry composer self-update
 
@@ -17,7 +18,16 @@ before_script:
     - travis_retry composer install --no-interaction --prefer-source -o
 
 script:
+	# Run linter
+	- vendor/bin/parallel-lint app tests
+
+	# Run Code Sniffer
+	- vendor/bin/phpcs --standard=ruleset.xml --extensions=php --encoding=utf-8 -sp app tests
+
+    # Show Nette Tester environment
     - vendor/bin/tester tests/cases -s -p php -i
+
+    # Run Nette Tester
     - vendor/bin/tester tests/cases -s -p php
 
 after_failure:
