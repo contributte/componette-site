@@ -15,7 +15,7 @@ final class Client
     /**
      * @param string $token
      */
-    function __construct($token = NULL)
+    public function __construct($token = NULL)
     {
         $this->token = $token;
     }

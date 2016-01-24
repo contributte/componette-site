@@ -16,7 +16,7 @@ final class Service
     /**
      * @param Client $client
      */
-    function __construct(Client $client)
+    public function __construct(Client $client)
     {
         $this->client = $client;
     }

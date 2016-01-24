@@ -20,6 +20,6 @@ abstract class BaseTask
      * @param array $args
      * @return mixed
      */
-    abstract function run(array $args = []);
+    abstract public function run(array $args = []);
 
 }
