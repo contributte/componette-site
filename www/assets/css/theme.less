@@ -4,6 +4,7 @@
 @import 'octoicons/octicons.less';
 
 @bgcolor: #3484d2;
+@global-min-width: 450px;
 
 body, html {
   min-height: 100%;
@@ -36,6 +37,10 @@ a[href*="://"]:after {
 .logo {
   margin-top: 50px;
   text-align: center;
+}
+
+.main-container {
+  min-width: @global-min-width;
 }
 
 .bar {
