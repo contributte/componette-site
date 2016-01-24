@@ -54,35 +54,38 @@ final class AddonFacade
     }
 
     /**
+     * @param int $count
      * @return ICollection|Addon[]
      */
-    public function findNewest()
+    public function findNewest($count)
     {
         return $this->addonRepository
             ->findActive()
             ->orderBy('createdAt', 'DESC')
-            ->limitBy(3);
+            ->limitBy($count);
     }
 
     /**
+     * @param int $count
      * @return ICollection|Addon[]
      */
-    public function findByLastActivity()
+    public function findByLastActivity($count)
     {
         return $this->addonRepository
             ->findActive()
             ->orderBy('this->github->pushedAt', 'DESC')
-            ->limitBy(3);
+            ->limitBy($count);
     }
 
     /**
+     * @param int $count
      * @return ICollection|Addon[]
      */
-    public function findMostPopular()
+    public function findMostPopular($count)
     {
         return $this->addonRepository
             ->findOrdered('popularity')
-            ->limitBy(3);
+            ->limitBy($count);
     }
 
 }

@@ -22,9 +22,8 @@ final class HomePresenter extends BaseAddonPresenter
      */
     public function actionDefault()
     {
-        $this->newest = $this->addonFacade->findNewest();
-        $this->lastActive = $this->addonFacade->findByLastActivity();
-        $this->mostPopular = $this->addonFacade->findMostPopular();
+        $this->newest = $this->addonFacade->findNewest(5);
+        $this->lastActive = $this->addonFacade->findByLastActivity(5);
     }
 
     /**
@@ -45,14 +44,6 @@ final class HomePresenter extends BaseAddonPresenter
     protected function createComponentLastActive()
     {
         return $this->createAddonListControl($this->lastActive);
-    }
-
-    /**
-     * @return Controls\AddonList\AddonList
-     */
-    protected function createComponentMostPopular()
-    {
-        return $this->createAddonListControl($this->mostPopular);
     }
 
 }
