@@ -27,6 +27,7 @@ final class ErrorPresenter extends BasePresenter
             $this->setView('500'); // load template 500.latte
             $this->logger->log($exception, ILogger::EXCEPTION); // and log exception
         }
+
         if ($this->isAjax()) { // AJAX request? Note this error in payload.
             $this->payload->error = TRUE;
             $this->terminate();

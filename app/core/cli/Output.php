@@ -14,7 +14,10 @@ final class Output
     /** @var StdBuffer */
     private $buffer;
 
-    function __construct()
+    /**
+     * Create default streams
+     */
+    public function __construct()
     {
         $this->out = new StdOut();
         $this->err = new StdOut();

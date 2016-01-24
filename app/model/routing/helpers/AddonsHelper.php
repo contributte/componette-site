@@ -77,6 +77,7 @@ final class AddonsHelper
         if (isset($this->data['addons'][$id])) {
             return strtolower($this->data['addons'][$id]);
         }
+
         return NULL;
     }
 
@@ -94,6 +95,7 @@ final class AddonsHelper
         if (isset($this->data['owners'][$slug])) {
             return strtolower($this->data['owners'][$slug]);
         }
+
         return NULL;
     }
 
@@ -107,6 +109,7 @@ final class AddonsHelper
         if (isset($this->data['owners'][$slug])) {
             return strtolower($this->data['owners'][$slug]);
         }
+
         return NULL;
     }
 

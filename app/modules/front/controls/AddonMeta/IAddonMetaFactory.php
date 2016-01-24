@@ -8,5 +8,6 @@ interface IAddonMetaFactory
     /**
      * @return AddonMeta
      */
-    function create();
+    public function create();
+
 }

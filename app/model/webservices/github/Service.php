@@ -116,7 +116,7 @@ final class Service
      */
     public function limit()
     {
-        return $this->call("/rate_limit");
+        return $this->call('/rate_limit');
     }
 
 }

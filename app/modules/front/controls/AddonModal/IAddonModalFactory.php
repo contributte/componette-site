@@ -8,5 +8,6 @@ interface IAddonModalFactory
     /**
      * @return AddonModal
      */
-    function create();
+    public function create();
+
 }

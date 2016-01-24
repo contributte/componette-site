@@ -13,7 +13,7 @@ final class Extra
     /**
      * @param mixed $data
      */
-    function __construct($data)
+    public function __construct($data)
     {
         if (is_array($data)) {
             $this->data = $data;
@@ -39,7 +39,7 @@ final class Extra
      */
     public function append($key, $value)
     {
-        $this->data[$key] = array_merge(isset($this->data[$key]) ? $this->data[$key] : [], (array)$value);
+        $this->data[$key] = array_merge(isset($this->data[$key]) ? $this->data[$key] : [], (array) $value);
     }
 
     /**

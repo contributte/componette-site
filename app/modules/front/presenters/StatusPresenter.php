@@ -77,7 +77,6 @@ final class StatusPresenter extends BasePresenter
             return $status;
         });
 
-
         // Fill template
         $this->template->status = $status;
     }

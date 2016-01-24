@@ -14,7 +14,7 @@ final class Cacher
     /**
      * @param IStorage $storage
      */
-    function __construct(IStorage $storage)
+    public function __construct(IStorage $storage)
     {
         $this->storage = $storage;
     }

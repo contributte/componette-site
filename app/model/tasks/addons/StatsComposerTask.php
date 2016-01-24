@@ -48,6 +48,7 @@ final class StatsComposerTask extends BaseAddonTask
                         if (!isset($composer['name'])) {
                             throw new InvalidStateException('No composer name at ' . $addon->fullname);
                         }
+
                         list ($owner, $repo) = explode('/', $composer['name']);
 
                         if (($stats = $this->composer->stats($owner, $repo))) {

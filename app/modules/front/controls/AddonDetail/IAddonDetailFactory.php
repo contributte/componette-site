@@ -11,5 +11,6 @@ interface IAddonDetailFactory
      * @param Addon $addon
      * @return AddonDetail
      */
-    function create(Addon $addon);
+    public function create(Addon $addon);
+
 }

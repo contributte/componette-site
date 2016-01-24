@@ -56,7 +56,6 @@ class RouterFactory
         $router[] = $front = new RouteList('Front');
         $front[] = new Route('sitemap.xml', 'Generator:sitemap');
 
-
         $front[] = new Route('<slug [a-zA-Z0-9\-\.]+/[a-zA-Z0-9\-\.]+>/', [
             'presenter' => 'Addon',
             'action' => 'detail',

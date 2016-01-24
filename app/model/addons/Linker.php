@@ -17,7 +17,7 @@ final class Linker
      * @param string $owner
      * @param string $repository
      */
-    function __construct($owner, $repository)
+    public function __construct($owner, $repository)
     {
         $this->repo = new Url('https://github.com');
         $this->repo->appendPath($owner . '/' . $repository);

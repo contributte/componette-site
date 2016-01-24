@@ -8,5 +8,6 @@ interface ISearchFactory
     /**
      * @return Search
      */
-    function create();
+    public function create();
+
 }

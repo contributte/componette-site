@@ -44,7 +44,7 @@ final class Filters
         if (!$time) {
             return FALSE;
         } elseif (is_numeric($time)) {
-            $time = (int)$time;
+            $time = (int) $time;
         } elseif ($time instanceof DateTime) {
             $time = $time->format('U');
         } else {

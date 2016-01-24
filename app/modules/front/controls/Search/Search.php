@@ -21,7 +21,7 @@ final class Search extends BaseControl
     /**
      * @param Searching $search
      */
-    function __construct(Searching $search)
+    public function __construct(Searching $search)
     {
         parent::__construct();
         $this->search = $search;

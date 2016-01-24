@@ -50,6 +50,7 @@ final class UpdateComposerTask extends BaseAddonTask
                         if (!isset($composer['name'])) {
                             throw new InvalidStateException('No composer name at ' . $addon->fullname);
                         }
+
                         list ($owner, $repo) = explode('/', $composer['name']);
 
                         // Create composer entity if not exist

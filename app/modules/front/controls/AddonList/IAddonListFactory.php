@@ -11,5 +11,6 @@ interface IAddonListFactory
      * @param ICollection $addons
      * @return AddonList
      */
-    function create(ICollection $addons);
+    public function create(ICollection $addons);
+
 }

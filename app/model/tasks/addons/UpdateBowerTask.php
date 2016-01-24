@@ -69,6 +69,7 @@ final class UpdateBowerTask extends BaseAddonTask
                 $this->log('Skip (bower) [no extra data]: ' . $addon->fullname);
             }
         }
+
         return $counter;
     }
 }

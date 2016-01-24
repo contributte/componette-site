@@ -20,6 +20,7 @@ function dd()
     foreach (func_get_args() as $var) {
         Debugger::dump($var);
     }
+
     die;
 }
 
@@ -31,6 +32,7 @@ function bd()
     foreach (func_get_args() as $var) {
         Debugger::barDump($var);
     }
+
     die;
 }
 
@@ -42,5 +44,6 @@ function bdd()
     foreach (func_get_args() as $var) {
         Debugger::barDump($var);
     }
+
     die;
 }
