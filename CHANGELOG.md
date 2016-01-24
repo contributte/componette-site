@@ -2,6 +2,8 @@
 
 ## 1.0.2-dev
 
+- Improvement: rename choosen -> chosen, fix chosen sprite
+- Feature: added less task to gulp [#31]
 - Feature: click & copy composer require in addon detail
 - Feature: added gulp
 - Improvement: templates optimization (seo, alt, title, microformat, twitter)
