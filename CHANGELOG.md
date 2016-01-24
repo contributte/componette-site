@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.3-dev
+
+- Improvement: use latests hightligh.js (yaml plugin)
+
 ## 1.0.2 [24.01.2016]
 
 - Improvement: rename choosen -> chosen, fix chosen sprite

@@ -44,7 +44,7 @@ gulp.task('js-remote', function () {
         'jquery/2.1.4/jquery.min.js',
         'twitter-bootstrap/3.3.6/js/bootstrap.min.js',
         'highlight.js/9.1.0/highlight.min.js',
-        'highlight.js/9.0.0/languages/yaml.min.js',
+        'highlight.js/9.1.0/languages/yaml.min.js',
         'typeahead.js/0.11.1/typeahead.bundle.min.js',
         'handlebars.js/4.0.3/handlebars.min.js',
         'chosen/1.4.2/chosen.jquery.min.js',
