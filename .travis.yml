@@ -18,11 +18,11 @@ install:
     - travis_retry composer install --no-interaction --prefer-source -o
 
 script:
-	# Run linter
-	- vendor/bin/parallel-lint app tests
+    # Run linter
+    - vendor/bin/parallel-lint app tests
 
-	# Run Code Sniffer
-	- vendor/bin/phpcs --standard=ruleset.xml --extensions=php --encoding=utf-8 -sp app tests
+    # Run Code Sniffer
+    - vendor/bin/phpcs --standard=ruleset.xml --extensions=php --encoding=utf-8 -sp app tests
 
     # Show Nette Tester environment
     - vendor/bin/tester tests/cases -s -p php -i
