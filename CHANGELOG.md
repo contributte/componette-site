@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 1.0.2-dev
+## 1.0.2 [24.01.2016]
 
 - Improvement: rename choosen -> chosen, fix chosen sprite
 - Feature: added less task to gulp [#31]
