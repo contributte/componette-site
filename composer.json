@@ -28,7 +28,7 @@
 		"nette/utils": "~2.3.0",
 		"latte/latte": "~2.3.0",
 		"tracy/tracy": "~2.3.0",
-		"nextras/orm": "~2.0.0",
+		"nextras/orm": "2.0.0-beta2",
 		"minetro/latte-parsedown-extra": "~1.0.0"
 	},
 	"require-dev": {
