@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var less = require('gulp-less');
 var minifyCss = require('gulp-minify-css');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
@@ -6,7 +7,8 @@ var order = require('gulp-order');
 var remoteSrc = require('gulp-remote-src');
 
 gulp.task('css', function () {
-    gulp.src('www/assets/css/theme.css')
+    gulp.src('www/assets/css/theme.less')
+        .pipe(less())
         .pipe(minifyCss({compatibility: 'ie8'}))
         .pipe(concat('bundle.css'))
         .pipe(gulp.dest('www/dist'));
@@ -41,7 +43,8 @@ gulp.task('js-remote', function () {
     remoteSrc([
         'jquery/2.1.4/jquery.min.js',
         'twitter-bootstrap/3.3.6/js/bootstrap.min.js',
-        'highlight.js/9.0.0/highlight.min.js',
+        'highlight.js/9.1.0/highlight.min.js',
+        'highlight.js/9.0.0/languages/yaml.min.js',
         'typeahead.js/0.11.1/typeahead.bundle.min.js',
         'handlebars.js/4.0.3/handlebars.min.js',
         'chosen/1.4.2/chosen.jquery.min.js',
@@ -63,6 +66,6 @@ gulp.task('deploy', [
 ]);
 
 gulp.task('watch', function () {
-    gulp.watch(['www/assets/css/**/*.css'], ['css']);
+    gulp.watch(['www/assets/css/**/*.css', 'www/assets/css/**/*.less'], ['css']);
     gulp.watch(['www/assets/js/**/*.js'], ['js']);
 });
