@@ -14,10 +14,9 @@ gulp.task('css', function () {
 
 gulp.task('css-remote', function () {
     remoteSrc([
-        'twitter-bootstrap/3.3.5/css/bootstrap.min.css',
-        'highlight.js/8.8.0/styles/github.min.css',
-        'font-awesome/4.4.0/css/font-awesome.min.css',
-        'chosen/1.4.2/chosen.min.css'
+        'twitter-bootstrap/3.3.6/css/bootstrap.min.css',
+        'highlight.js/9.1.0/styles/github.min.css',
+        'font-awesome/4.5.0/css/font-awesome.min.css'
     ], {
         base: 'https://cdnjs.cloudflare.com/ajax/libs/'
     })
@@ -41,8 +40,8 @@ gulp.task('js', function () {
 gulp.task('js-remote', function () {
     remoteSrc([
         'jquery/2.1.4/jquery.min.js',
-        'twitter-bootstrap/3.3.5/js/bootstrap.min.js',
-        'highlight.js/8.8.0/highlight.min.js',
+        'twitter-bootstrap/3.3.6/js/bootstrap.min.js',
+        'highlight.js/9.0.0/highlight.min.js',
         'typeahead.js/0.11.1/typeahead.bundle.min.js',
         'handlebars.js/4.0.3/handlebars.min.js',
         'chosen/1.4.2/chosen.jquery.min.js',
