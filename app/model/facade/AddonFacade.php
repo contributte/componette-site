@@ -57,7 +57,7 @@ final class AddonFacade
      * @param int $count
      * @return ICollection|Addon[]
      */
-    public function findNewest($count = 3)
+    public function findNewest($count)
     {
         return $this->addonRepository
             ->findActive()
