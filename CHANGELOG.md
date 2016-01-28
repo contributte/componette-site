@@ -3,6 +3,9 @@
 ## 1.0.3-dev
 
 - Improvement: use latests hightligh.js (yaml plugin)
+- Improvement: use https at badges
+- Feature: added rss [#30]
+- Docker/Nginx: provide HSTS [#33]
 
 ## 1.0.2 [24.01.2016]
 
