@@ -29,7 +29,7 @@ class RssFeed extends Control
     {
         $items = [];
         foreach ($this->addons as $addon) {
-            $items[] = (object)[
+            $items[] = (object) [
                 'guid' => "$addon->id@componette.com",
                 'title' => "[$addon->type] $addon->fullname",
                 'link' => $this->presenter->link('//:Front:Addon:detail', ['slug' => $addon->id]),
