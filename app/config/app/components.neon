@@ -7,4 +7,5 @@ services:
     - App\Modules\Front\Controls\SideMenu\ISideMenuFactory
     - App\Modules\Front\Controls\Statistics\IStatisticsFactory
     - App\Modules\Front\Controls\RssFeed\IRssFeedFactory
+    - App\Modules\Front\Controls\RssFeed\RssFeedFactory
     - App\Modules\Front\Controls\Sitemap\ISitemapFactory

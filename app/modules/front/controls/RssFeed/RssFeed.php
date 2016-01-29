@@ -2,7 +2,7 @@
 
 namespace App\Modules\Front\Controls\RssFeed;
 
-use App\Model\Facade\AddonFacade;
+use App\Model\ORM\Addon\Addon;
 use DateTimeZone;
 use Nette\Application\UI\Control;
 use Nette\Utils\DateTime;
@@ -10,16 +10,16 @@ use Nette\Utils\DateTime;
 class RssFeed extends Control
 {
 
-    /** @var AddonFacade */
-    private $facade;
+    /** @var Addon[] */
+    private $addons;
 
     /**
-     * @param AddonFacade $facade
+     * @param Addon[] $addons
      */
-    public function __construct(AddonFacade $facade)
+    public function __construct(array $addons)
     {
         parent::__construct();
-        $this->facade = $facade;
+        $this->addons = $addons;
     }
 
     /**
@@ -28,8 +28,8 @@ class RssFeed extends Control
     private function getItems()
     {
         $items = [];
-        foreach ($this->facade->findNewest(25) as $addon) {
-            $items[] = (object) [
+        foreach ($this->addons as $addon) {
+            $items[] = (object)[
                 'guid' => "$addon->id@componette.com",
                 'title' => "[$addon->type] $addon->fullname",
                 'link' => $this->presenter->link('//:Front:Addon:detail', ['slug' => $addon->id]),

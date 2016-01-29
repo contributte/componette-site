@@ -56,7 +56,7 @@ class RouterFactory
         $router[] = $front = new RouteList('Front');
         $front[] = new Route('sitemap.xml', 'Generator:sitemap');
         $front[] = new Route('opensearch.xml', 'Generator:opensearch');
-        $front[] = new Route('rss/new.xml', 'Generator:rssFeed');
+        $front[] = new Route('rss/new.xml', 'Rss:newest');
 
         $front[] = new Route('<slug [a-zA-Z0-9\-\.]+/[a-zA-Z0-9\-\.]+>/', [
             'presenter' => 'Addon',

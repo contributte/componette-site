@@ -1,4 +1,4 @@
-{contentType application/rss+xml; charset=utf-8}
+{contentType text/xml; charset=utf-8}
 {cache rss, expire => '+ 1 week'}
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
     <ShortName>Componette</ShortName>
@@ -7,6 +7,7 @@
     <Contact>admin@componette.com</Contact>
     <InputEncoding>UTF-8</InputEncoding>
     <OutputEncoding>UTF-8</OutputEncoding>
+    <SyndicationRight>open</SyndicationRight>
     <Image type="image/x-icon" height="16" width="16">{$baseUri}/favicon.ico</Image>
     <Url type="text/html" method="GET" template="{link //List:search}?q={l}searchTerms{r}"></Url>
     <Query role="example" searchTerms="ajax" />
