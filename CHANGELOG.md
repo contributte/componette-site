@@ -1,6 +1,8 @@
 # CHANGELOG
 
-## 1.0.3-dev
+## 1.0.4-dev
+
+## 1.0.3 [29.01.2016]
 
 - Feature: added new relic monitoring
 - Improvement: added tooltip in addon requirements [#28]
