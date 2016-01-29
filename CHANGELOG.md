@@ -2,6 +2,7 @@
 
 ## 1.0.3-dev
 
+- Feature: added new relic monitoring
 - Improvement: added tooltip in addon requirements [#28]
 - Improvement: use latests hightligh.js (yaml plugin)
 - Improvement: use https at badges
