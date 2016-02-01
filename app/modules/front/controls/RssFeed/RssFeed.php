@@ -5,6 +5,7 @@ namespace App\Modules\Front\Controls\RssFeed;
 use App\Model\ORM\Addon\Addon;
 use DateTimeZone;
 use Nette\Application\UI\Control;
+use Nette\Application\UI\Link;
 use Nette\Utils\DateTime;
 
 class RssFeed extends Control
@@ -12,6 +13,18 @@ class RssFeed extends Control
 
     /** @var Addon[] */
     private $addons;
+
+    /** @var string */
+    private $title;
+
+    /** @var string|Link */
+    private $link;
+
+    /** @var string */
+    private $description;
+
+    /** @var string|int|DateTime */
+    private $time;
 
     /**
      * @param Addon[] $addons
@@ -23,9 +36,41 @@ class RssFeed extends Control
     }
 
     /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @param string|Link $link
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @param mixed $time
+     */
+    public function setTime($time)
+    {
+        $this->time = $time;
+    }
+
+    /**
      * @return array
      */
-    private function getItems()
+    public function getItems()
     {
         $items = [];
         foreach ($this->addons as $addon) {
@@ -48,13 +93,13 @@ class RssFeed extends Control
 
     public function render()
     {
-        $this->template->title = 'Componette - new addons';
-        $this->template->link = $this->presenter->link('//:Front:Home:default');
-        $this->template->description = 'List of new addons as added by users on Componette.';
-        $this->template->time = (new DateTime)->setTimezone(new DateTimeZone('UTC'));
-
+        $this->template->title = $this->title;
+        $this->template->link = (string) $this->link;
+        $this->template->description = $this->description;
+        $this->template->time = DateTime::from($this->time)->setTimezone(new DateTimeZone('UTC'));
         $this->template->items = $this->getItems();
-        $this->template->setFile(__DIR__ . '/templates/rss-feed.latte');
+
+        $this->template->setFile(__DIR__ . '/templates/rss.latte');
         $this->template->render();
     }
 

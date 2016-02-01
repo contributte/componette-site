@@ -28,7 +28,12 @@ final class RssFeedFactory
      */
     public function createNewest()
     {
-        return $this->rssFeedFactory->create($this->facade->findNewest(25)->fetchAll());
+        $control = $this->rssFeedFactory->create($this->facade->findNewest(25)->fetchAll());
+
+        $control->setTitle('Componette - new addons');
+        $control->setDescription('List of new addons as added by users on Componette.');
+
+        return $control;
     }
 
 }

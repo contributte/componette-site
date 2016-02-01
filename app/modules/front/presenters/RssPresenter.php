@@ -16,7 +16,10 @@ final class RssPresenter extends BasePresenter
      */
     protected function createComponentNewest()
     {
-        return $this->rssFeedFactory->createNewest();
+        $control = $this->rssFeedFactory->createNewest();
+        $control->setLink($this->link('//:Front:Home:default'));
+
+        return $control;
     }
 
 }
