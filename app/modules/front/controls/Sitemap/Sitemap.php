@@ -5,7 +5,7 @@ namespace App\Modules\Front\Controls\Sitemap;
 use App\Model\Facade\AddonFacade;
 use Nette\Application\UI\Control;
 
-class Sitemap extends Control
+final class Sitemap extends Control
 {
 
     /** @var AddonFacade */

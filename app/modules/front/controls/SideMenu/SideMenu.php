@@ -5,7 +5,7 @@ namespace App\Modules\Front\Controls\SideMenu;
 use App\Model\ORM\Tag\TagRepository;
 use Nette\Application\UI\Control;
 
-class SideMenu extends Control
+final class SideMenu extends Control
 {
 
     /** @var TagRepository */

@@ -8,7 +8,7 @@ use Nette\Application\UI\Control;
 use Nette\Application\UI\Link;
 use Nette\Utils\DateTime;
 
-class RssFeed extends Control
+final class RssFeed extends Control
 {
 
     /** @var Addon[] */

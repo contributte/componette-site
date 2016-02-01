@@ -9,7 +9,7 @@ use Nette\Application\Routers\Route;
 use Nette\Application\Routers\RouteList;
 use Nette\Http\Request;
 
-class RouterFactory
+final class RouterFactory
 {
 
     /** @var AddonsHelper @inject */
