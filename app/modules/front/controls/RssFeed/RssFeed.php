@@ -77,7 +77,7 @@ class RssFeed extends Control
             $items[] = (object) [
                 'guid' => "$addon->id@componette.com",
                 'title' => "[$addon->type] $addon->fullname",
-                'link' => $this->presenter->link('//:Front:Addon:detail', ['slug' => $addon->id]),
+                'link' => $this->presenter->link('//:Front:Addon:detail', ['slug' => $addon->id, 'utm_source' => 'rss', 'utm_medium' => 'rss', 'utm_campaign' => 'rss']),
                 'time' => $addon->createdAt->setTimezone(new DateTimeZone('UTC')),
                 'author' => "noreply@componette.com ($addon->owner)",
                 'content' => $addon->github->content,
