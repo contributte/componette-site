@@ -2,6 +2,10 @@
 
 ## 1.0.4-dev
 
+- Improvement: added final to classes
+- Feature: added google analytics campaigns (rss + opensearch)
+- Improvement: simplify RSS (move logic to RssFactory)
+
 ## 1.0.3 [29.01.2016]
 
 - Feature: added new relic monitoring
