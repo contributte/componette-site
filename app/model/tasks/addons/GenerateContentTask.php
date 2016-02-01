@@ -3,13 +3,28 @@
 namespace App\Model\Tasks\Addons;
 
 use App\Model\ORM\Addon\Addon;
+use App\Model\ORM\Addon\AddonRepository;
 use App\Model\ORM\Github\Github;
+use App\Model\WebServices\Github\Service;
 use Nette\Utils\Strings;
 use Nette\Utils\Validators;
 use Nextras\Orm\Collection\ICollection;
 
 final class GenerateContentTask extends BaseAddonTask
 {
+
+    /** @var Service */
+    private $github;
+
+    /**
+     * @param AddonRepository $addonRepository
+     * @param Service $github
+     */
+    public function __construct(AddonRepository $addonRepository, Service $github)
+    {
+        parent::__construct($addonRepository);
+        $this->github = $github;
+    }
 
     /**
      * @param array $args
@@ -30,46 +45,34 @@ final class GenerateContentTask extends BaseAddonTask
 
         $counter = 0;
         foreach ($addons as $addon) {
-            // Skip packages with bad data
-            if (($extra = $addon->github->extra)) {
-                if (($url = $extra->get(['github', 'readme', 'download_url'], NULL))) {
-                    $content = @file_get_contents($url);
-
-                    if ($content) {
-                        // Content
-                        $addon->github->content = $content;
-
-                        // Readme type
-                        if ($addon->github->readme === NULL) {
-                            $url = strtolower($url);
-                            if (Strings::endsWith($url, 'md')) {
-                                $addon->github->readme = Github::README_MARKDOWN;
-                            } else if (Strings::endsWith($url, 'texy')) {
-                                $addon->github->readme = Github::README_TEXY;
-                            } else {
-                                $addon->github->readme = Github::README_RAW;
-                            }
-                        }
-
-                        // Replace relative links
-                        if ($addon->github->readme === Github::README_MARKDOWN) {
-                            $this->reformatMarkdownLinks($addon->github);
-                        }
-
-                        // Persist
-                        $this->addonRepository->persistAndFlush($addon);
-
-                        // Increase counting
-                        $counter++;
-                    } else {
-                        $this->log('Skip (content) [failed download content]: ' . $addon->fullname);
-                    }
-                } else {
-                    $this->log('Skip (content) [no github readme data]: ' . $addon->fullname);
-                }
+            // Raw
+            $content = $this->github->readme($addon->owner, $addon->name, 'raw');
+            if ($content) {
+                // Content
+                $addon->github->contentRaw = $content;
             } else {
-                $this->log('Skip (content) [no extra data]: ' . $addon->fullname);
+                $addon->github->contentRaw = '';
+                $this->log('Skip (content) [failed download raw content]: ' . $addon->fullname);
             }
+
+            // HTML
+            $content = $this->github->readme($addon->owner, $addon->name, 'html');
+            if ($content) {
+                // Content
+                $addon->github->contentHtml = $content;
+                $this->reformatLinks($addon->github);
+            } else {
+                $addon->github->contentHtml = '';
+                $this->log('Skip (content) [failed download html content]: ' . $addon->fullname);
+            }
+
+            // Persist
+            if ($addon->github->isModified()) {
+                $this->addonRepository->persistAndFlush($addon);
+            }
+
+            // Increase counting
+            $counter++;
         }
 
         return $counter;
@@ -77,17 +80,18 @@ final class GenerateContentTask extends BaseAddonTask
 
     /**
      * @param Github $github
+     * @return void
      */
-    protected function reformatMarkdownLinks(Github $github)
+    protected function reformatLinks(Github $github)
     {
-        $github->content = Strings::replace($github->content, '#\[(.*)\]\((.+)\)#iU', function ($matches) use ($github) {
-            list ($all, $title, $url) = $matches;
+        $github->contentHtml = Strings::replace($github->contentHtml, '#href=\"(.*)\"#iU', function ($matches) use ($github) {
+            list ($all, $url) = $matches;
 
             if (!Validators::isUrl($url)) {
-                $url = $github->linker->getBlobUrl($matches[2]);
+                $url = $github->linker->getBlobUrl($url);
             }
 
-            return sprintf('[%s](%s)', $title, $url);
+            return sprintf('href="%s"', $url);
         });
     }
 

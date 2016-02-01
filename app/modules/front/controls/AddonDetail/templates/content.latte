@@ -1,9 +1,9 @@
 <div class="readme">
-    {var $content = $addon->github->content}
+    {var $content = $addon->github->contentHtml}
 
     {if $content}
         {cache $addon->id . '/content', expire => '+1 hour'}
-            {$content|parsedown|noescape}
+            {$content|noescape}
         {/cache}
     {else}
         <p class="alert alert-warning">No content at this moment.</p>

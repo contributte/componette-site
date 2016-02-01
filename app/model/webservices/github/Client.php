@@ -7,6 +7,7 @@ use App\Model\Exceptions\Runtime\GithubException;
 final class Client
 {
 
+    const VERSION = 'v3';
     const URL = 'https://api.github.com';
 
     /** @var string */
@@ -22,19 +23,20 @@ final class Client
 
     /**
      * @param string $uri
+     * @param array $headers
      * @return mixed (array|NULL)
      */
-    public function makeRequest($uri)
+    public function makeRequest($uri, array $headers = [])
     {
         $ch = curl_init();
 
-        $headers = [
+        $_headers = array_merge([
             'Content-type: application/json',
             'Time-Zone: Europe/Prague',
-        ];
+        ], $headers);
 
         if ($this->token) {
-            $headers[] = 'Authorization: token ' . $this->token;
+            $_headers[] = 'Authorization: token ' . $this->token;
         }
 
         $url = self::URL . '/' . trim($uri, '/');
@@ -43,7 +45,7 @@ final class Client
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_URL => $url,
             CURLOPT_USERAGENT => 'ComponetteClient-v1',
-            CURLOPT_HTTPHEADER => $headers,
+            CURLOPT_HTTPHEADER => $_headers,
             CURLOPT_FOLLOWLOCATION => 1,
             CURLOPT_SSL_VERIFYPEER => FALSE,
         ]);
@@ -56,6 +58,12 @@ final class Client
             throw new GithubException($uri, $headers, [], $info, $result);
         }
 
+        // Pure result
+        if (strpos($info['content_type'], 'application/json') === FALSE) {
+            return $result;
+        }
+
+        // Parse result from json
         if ($result) {
             return @json_decode($result, TRUE);
         } else {

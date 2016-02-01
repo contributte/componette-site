@@ -1,2 +1,0 @@
-extensions:
-    parsedown: Minetro\Parsedown\DI\ParsedownExtraExtension

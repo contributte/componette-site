@@ -9,16 +9,13 @@
 		<description>{$description}</description>
 		<pubDate>{$time|date:\DateTime::RSS}</pubDate>
 		<item n:foreach="$items as $item">
-			{capture $html}{$item->content|parsedown|noescape}{/}
 			<guid isPermaLink="false">{$item->guid}</guid>
 			<title>{$item->title}</title>
 			<link>{$item->link}</link>
 			<pubDate>{$item->time|date:\DateTime::RSS}</pubDate>
 			<author>{$item->author}</author>
 			<description>{$html|striptags}</description>
-			<content:encoded><![CDATA[
-				{$html|noescape}
-			]]></content:encoded>
+			<content:encoded><![CDATA[{$item->contentHtml|noescape}]]></content:encoded>
 		</item>
 	</channel>
 </rss>

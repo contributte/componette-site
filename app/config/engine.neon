@@ -10,4 +10,3 @@ includes:
     # EXTENSIONS ===========================================
     - ext/dbal.neon
     - ext/orm.neon
-    - ext/parsedown.neon

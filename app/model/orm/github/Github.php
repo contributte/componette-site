@@ -13,8 +13,8 @@ use Nette\Utils\DateTime;
  * @property int $id                        {primary}
  * @property Addon $addon                   {1:1 Addon::$github, isMain=true}
  * @property string|NULL $description
- * @property string|NULL $readme            {enum self::README_*}
- * @property string|NULL $content
+ * @property string|NULL $contentRaw
+ * @property string|NULL $contentHtml
  * @property string|NULL $homepage
  * @property int|NULL $stars
  * @property int|NULL $watchers
@@ -34,10 +34,6 @@ use Nette\Utils\DateTime;
  */
 class Github extends AbstractEntity
 {
-
-    const README_MARKDOWN = 'MARKDOWN';
-    const README_TEXY = 'TEXY';
-    const README_RAW = 'RAW';
 
     /** @var Linker */
     private $linker;

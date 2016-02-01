@@ -23,12 +23,13 @@ final class Service
 
     /**
      * @param string $uri
+     * @param array $headers
      * @return mixed
      */
-    protected function call($uri)
+    protected function call($uri, array $headers = [])
     {
         try {
-            return $this->client->makeRequest($uri);
+            return $this->client->makeRequest($uri, $headers);
         } catch (GithubException $e) {
             // Trigger events
             foreach ($this->onException as $cb) {
@@ -55,9 +56,26 @@ final class Service
      * @param string $repo
      * @return mixed
      */
-    public function readme($owner, $repo)
+    public function readme($owner, $repo, $type = NULL)
     {
-        return $this->call("/repos/$owner/$repo/readme");
+        switch ($type) {
+            case 'html':
+                $headers = ['Accept: application/vnd.github.' . Client::VERSION . '.html'];
+                break;
+
+            case 'html+json':
+                $headers = ['Accept: application/vnd.github.' . Client::VERSION . '.html+json'];
+                break;
+
+            case 'raw':
+                $headers = ['Accept: application/vnd.github.' . Client::VERSION . '.raw'];
+                break;
+
+            default:
+                $headers = [];
+        }
+
+        return $this->call("/repos/$owner/$repo/readme", $headers);
     }
 
     /**
@@ -66,9 +84,26 @@ final class Service
      * @param string $path
      * @return mixed
      */
-    public function content($owner, $repo, $path)
+    public function content($owner, $repo, $path, $type = NULL)
     {
-        return $this->call("/repos/$owner/$repo/contents/$path");
+        switch ($type) {
+            case 'html':
+                $headers = ['Accept: application/vnd.github.' . Client::VERSION . '.html'];
+                break;
+
+            case 'html+json':
+                $headers = ['Accept: application/vnd.github.' . Client::VERSION . '.html+json'];
+                break;
+
+            case 'raw':
+                $headers = ['Accept: application/vnd.github.' . Client::VERSION . '.raw'];
+                break;
+
+            default:
+                $headers = [];
+        }
+
+        return $this->call("/repos/$owner/$repo/contents/$path", $headers);
     }
 
     /**

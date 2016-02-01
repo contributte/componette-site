@@ -54,13 +54,6 @@ final class UpdateGithubFilesTask extends BaseAddonTask
 
         $counter = 0;
         foreach ($addons as $addon) {
-            // Readme
-            if (($response = $this->github->readme($addon->owner, $addon->name))) {
-                $addon->github->extra->append('github', ['readme' => $response]);
-            } else {
-                $this->log('Skip (readme): ' . $addon->fullname);
-            }
-
             // Composer
             if (in_array($addon->type, [NULL, Addon::TYPE_UNKNOWN, Addon::TYPE_COMPOSER])) {
                 if (($response = $this->github->composer($addon->owner, $addon->name))) {
