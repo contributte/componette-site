@@ -57,6 +57,7 @@ final class ListPresenter extends BaseAddonPresenter
         if (strlen($q) > 100) {
             $this->redirect('this', ['q' => substr($q, 0, 100)]);
         }
+
         $this->addons = $this->searchFacade->findByQuery($q);
     }
 
