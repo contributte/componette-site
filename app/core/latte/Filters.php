@@ -104,8 +104,8 @@ final class Filters
     public static function isPhpDependency($name)
     {
         $blacklist = [
-            'php',
-            'ext-\w',
+            '^php$',
+            '^ext-\w',
         ];
 
         foreach ($blacklist as $regex) {
