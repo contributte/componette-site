@@ -1,5 +1,6 @@
+{block}
+{cache menu, expire => '+1 day'}
 <div class="side-menu">
-
 	<ul class="nav">
 		<li n:foreach="$categories as $category">
 			<a href="{plink List:tag $category->name}">
@@ -20,3 +21,4 @@
 		</a>
 	</div>
 </div>
+{/cache}
