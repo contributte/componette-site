@@ -77,12 +77,14 @@ final class UpdateGithubTask extends BaseAddonTask
                     $this->log('Skip (invalid addon name): ' . $response['full_name']);
                     continue;
                 }
+
                 list ($all, $owner, $name) = $matches;
 
                 // Update owner & repo name if it is not same
                 if ($addon->owner !== $owner) {
                     $addon->owner = $owner;
                 }
+
                 if ($addon->name !== $name) {
                     $addon->name = $name;
                 }
