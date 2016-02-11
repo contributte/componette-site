@@ -16,8 +16,6 @@ use PDOException;
 final class AddonModal extends BaseControl
 {
 
-    const GITHUB_REGEX = '^(?:https?:\/\/)?(?:www\.)?github\.com\/([\w\d-]+)\/([\w\d-]+)$';
-
     /** @var AddonRepository */
     private $addonRepository;
 
@@ -48,7 +46,7 @@ final class AddonModal extends BaseControl
         $form->addText('addon', 'Addon URL')
             ->addRule($form::REQUIRED, 'URL is required')
             ->addRule($form::URL, 'URL is not valid')
-            ->addRule($form::PATTERN, 'Only GitHub urls are allowed', self::GITHUB_REGEX);
+            ->addRule($form::PATTERN, 'Only GitHub urls are allowed', Addon::GITHUB_REGEX);
 
         $tags = $this->tagRepository->fetchPairs();
         $form->addMultiSelect('tags', 'Tags', $tags);
@@ -56,7 +54,7 @@ final class AddonModal extends BaseControl
         $form->addSubmit('add', 'Add addon');
 
         $form->onSuccess[] = function (Form $form) {
-            $matches = Strings::match($form->values->addon, '#' . self::GITHUB_REGEX . '#');
+            $matches = Strings::match($form->values->addon, '#' . Addon::GITHUB_REGEX . '#');
             if (!$matches) {
                 $this->presenter->flashMessage('Invalid addon name.', 'warning');
                 $this->presenter->redirect('this');
