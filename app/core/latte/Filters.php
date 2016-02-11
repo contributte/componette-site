@@ -105,7 +105,7 @@ final class Filters
     {
         $blacklist = [
             'php',
-            'ext-\w'
+            'ext-\w',
         ];
 
         foreach ($blacklist as $regex) {
