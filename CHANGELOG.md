@@ -2,6 +2,14 @@
 
 ## 1.0.4-dev
 
+- Fix: change gitter link
+- Improvement: update links at github readmes
+- Improvement: don't link php-ext dependencies in addon detail to packagist [#42]
+- Feature: change menu structure (show connected addons at badge, added highlighted items) [#43]
+- Feature: download readme in HTML format from Github, use github design for addon detail, change syntax highlighter
+- Feature: added theme for chrome on mobile
+- Improvement: revert addon fullname to `owner/name` [#41]
+- Improvement: layout
 - Improvement: added final to classes
 - Feature: added google analytics campaigns (rss + opensearch)
 - Improvement: simplify RSS (move logic to RssFactory)
