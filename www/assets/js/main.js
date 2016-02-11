@@ -56,11 +56,6 @@ $(function () {
     $('[data-toggle="tooltip"]').tooltip();
     $('[data-tooltip]').tooltip();
 
-    // Highlight.JS
-    $('pre code').each(function (i, block) {
-        hljs.highlightBlock(block);
-    });
-
     // Google Events
     $('a[data-ga]').on('click', function (e) {
         var event = $(this).data('ga-event');
