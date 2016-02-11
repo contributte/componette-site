@@ -73,7 +73,12 @@
             <div class="title">Requirements</div>
 
             <ul n:inner-foreach="$composer->getRequire() as $name => $version">
-                <li><a title="{$name} ({$version})" data-toggle="tooltip" data-placement="left" data-ga="1" data-event="click" data-category="requirements" data-action="{$name}" href="{$addon->github->composer->getPackageUrl($name)}">{$name}</a> ({$version})</li>
+                <li>
+                    <a n:tag-if="!$template->isPhpDependency($name)" title="{$name} ({$version})" data-toggle="tooltip" data-placement="left" data-ga="1" data-event="click" data-category="requirements" data-action="{$name}" href="{$addon->github->composer->getPackageUrl($name)}">
+                        {$name}
+                    </a>
+                    ({$version})
+                </li>
             </ul>
         </div>
     {/if}

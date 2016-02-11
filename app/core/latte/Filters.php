@@ -3,6 +3,7 @@
 namespace App\Core\Latte;
 
 use Nette\Utils\DateTime;
+use Nette\Utils\Strings;
 
 final class Filters
 {
@@ -94,6 +95,26 @@ final class Filters
         $name = preg_replace('#([A-Z]+)#', '-$1', $name);
         $name = str_replace('--', '-', $name);
         return $name;
+    }
+
+    /**
+     * @param string $name
+     * @return bool
+     */
+    public static function isPhpDependency($name)
+    {
+        $blacklist = [
+            'php',
+            'ext-\w'
+        ];
+
+        foreach ($blacklist as $regex) {
+            if (Strings::match($name, "#$regex#")) {
+                return TRUE;
+            }
+        }
+
+        return FALSE;
     }
 
 }
