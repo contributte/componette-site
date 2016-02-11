@@ -2,12 +2,12 @@
 
 namespace App\Model\Tasks\Addons;
 
+use App\Core\Utils\Validators;
 use App\Model\ORM\Addon\Addon;
 use App\Model\ORM\Addon\AddonRepository;
 use App\Model\ORM\Github\Github;
 use App\Model\WebServices\Github\Service;
 use Nette\Utils\Strings;
-use Nette\Utils\Validators;
 use Nextras\Orm\Collection\ICollection;
 
 final class GenerateContentTask extends BaseAddonTask
@@ -88,7 +88,11 @@ final class GenerateContentTask extends BaseAddonTask
             list ($all, $url) = $matches;
 
             if (!Validators::isUrl($url)) {
-                $url = $github->linker->getBlobUrl($url);
+                if (Validators::isUrlFragment($url)) {
+                    $url = $github->linker->getFileUrl(NULL, $url);
+                } else {
+                    $url = $github->linker->getBlobUrl($url);
+                }
             }
 
             return sprintf('href="%s"', $url);

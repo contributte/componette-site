@@ -127,4 +127,14 @@ final class Linker
         return $this->repo . "/blob/$branch/$uri";
     }
 
+    /**
+     * @param string $file
+     * @param string $fragment
+     * @return string
+     */
+    public function getFileUrl($file, $fragment = NULL)
+    {
+        return $this->repo . $file . '/' . $fragment;
+    }
+
 }
