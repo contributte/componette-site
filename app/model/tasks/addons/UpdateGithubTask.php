@@ -7,6 +7,7 @@ use App\Model\ORM\Addon\Addon;
 use App\Model\ORM\Addon\AddonRepository;
 use App\Model\WebServices\Github\Service;
 use Nette\Utils\DateTime;
+use Nette\Utils\Strings;
 use Nextras\Orm\Collection\ICollection;
 
 final class UpdateGithubTask extends BaseAddonTask
@@ -70,6 +71,23 @@ final class UpdateGithubTask extends BaseAddonTask
                     $added++;
                 }
 
+                // Parse owner & repo name
+                $matches = Strings::match($response['full_name'], '#' . Addon::GITHUB_REGEX . '#');
+                if (!$matches) {
+                    $this->log('Skip (invalid addon name): ' . $response['full_name']);
+                    continue;
+                }
+                list ($all, $owner, $name) = $matches;
+
+                // Update owner & repo name if it is not same
+                if ($addon->owner !== $owner) {
+                    $addon->owner = $owner;
+                }
+                if ($addon->name !== $name) {
+                    $addon->name = $name;
+                }
+
+                // Update basic information
                 $github->description = $response['description'];
                 $github->homepage = !empty($response['homepage']) ? $response['homepage'] : NULL;
                 $github->stars = $response['stargazers_count'];
