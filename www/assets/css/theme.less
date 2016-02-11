@@ -234,27 +234,43 @@ a[href*="://"]:after {
     background: #fff;
     border-radius: 6px;
     padding: 10px 0;
-    box-shadow: 0 2px 2px rgba(0,0,0,.3);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, .3);
 
     .btn-wrapper {
       padding: 0 10px;
     }
 
     .nav > li > a {
-      padding: 5px 15px;
+      padding: 0 15px;
       font-size: 1.2em;
 
       span.square {
         border-radius: 2px;
-        width: 18px;
-        height: 18px;
+        width: 20px;
+        height: 20px;
         display: inline-block;
-        position: absolute;
-        top: 10px;
+        margin: 4px 0;
+        vertical-align: middle;
+        color: #fff;
+        padding: 0;
+        font-size: 12px;
+        text-align: center;
+        font-weight: bold;
+        text-shadow: #000 1px 1px 0;
       }
 
       span.name {
-        margin-left: 25px;
+        margin: 4px 0 4px 10px;
+        height: 28px;
+        vertical-align: middle;
+        display: inline-block;
+      }
+
+      span.highlighted {
+        font-weight: bold;
+        text-decoration: underline;
+        font-size: 1.1em;
+        margin-bottom: 6px;
       }
     }
   }
@@ -783,9 +799,17 @@ a[href*="://"]:after {
     margin-left: -20px;
   }
 
-  .side-menu {
-    ul li {
-      float: left;
+  .content {
+    .side-menu {
+      .nav > li {
+        float: left;
+
+        & > a {
+          span.highlighted {
+            margin-bottom: 4px;
+          }
+        }
+      }
     }
   }
 

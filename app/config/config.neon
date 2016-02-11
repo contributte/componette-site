@@ -29,6 +29,9 @@ http:
         X-XSS-Protection: "1; mode=block"
         X-Powered-By: "componette"
 
+routing:
+    debugger: yes
+
 di:
     debugger: yes
 

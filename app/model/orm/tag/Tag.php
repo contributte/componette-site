@@ -11,6 +11,7 @@ use Nextras\Orm\Relationships\ManyHasMany;
  * @property string $name
  * @property string|NULL $color
  * @property int $priority
+ * @property bool $highlighted
  *
  * @property ManyHasMany|Addon[] $addons    {m:n Addon::$tags}
  */
