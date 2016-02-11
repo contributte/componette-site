@@ -17,7 +17,7 @@
 		"ext-mysqli": "*",
 		"nette/application": "~2.3.0",
 		"nette/bootstrap": "~2.3.0",
-		"nette/caching": "~2.3.0",
+		"nette/caching": "~2.4.0",
 		"nette/di": "~2.3.0",
 		"nette/forms": "~2.3.0",
 		"nette/http": "~2.3.0",
@@ -28,8 +28,8 @@
 		"nette/utils": "~2.3.0",
 		"latte/latte": "~2.3.0",
 		"tracy/tracy": "~2.3.0",
-		"nextras/orm": "~2.0.0",
-		"nextras/dbal": "dev-master"
+		"nextras/orm": "~2.0.0-rc1",
+		"nextras/dbal": "~2.0.0-beta3"
 	},
 	"require-dev": {
 		"nette/tester": "~1.6.0",
