@@ -80,7 +80,7 @@ final class RssFeed extends Control
                 'link' => $this->presenter->link('//:Front:Addon:detail', ['slug' => $addon->id, 'utm_source' => 'rss', 'utm_medium' => 'rss', 'utm_campaign' => 'rss']),
                 'time' => $addon->createdAt->setTimezone(new DateTimeZone('UTC')),
                 'author' => "noreply@componette.com ($addon->owner)",
-                'content' => $addon->github->content,
+                'content' => $addon->github->contentHtml,
             ];
         }
 
