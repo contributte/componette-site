@@ -1,6 +1,8 @@
 # CHANGELOG
 
-## 1.0.4-dev
+## 1.0.5-dev
+
+## 1.0.4 [12.02.2016]
 
 - Fix: change gitter link
 - Improvement: update links at github readmes
