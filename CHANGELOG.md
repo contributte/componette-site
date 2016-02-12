@@ -2,6 +2,10 @@
 
 ## 1.0.5-dev
 
+- Fix: replace & with &amp; at opensearch
+- Fix: RSS feed 
+- Fix: gitter link
+
 ## 1.0.4 [12.02.2016]
 
 - Fix: change gitter link
