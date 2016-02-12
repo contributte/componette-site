@@ -1,4 +1,4 @@
--- Adminer 4.2.3 MySQL dump
+-- Adminer 4.2.4 MySQL dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -66,8 +66,8 @@ CREATE TABLE `github` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `addon_id` int(11) unsigned NOT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `readme` enum('MARKDOWN','TEXY','RAW') DEFAULT NULL,
-  `content` text,
+  `content_raw` text,
+  `content_html` mediumtext,
   `homepage` varchar(255) DEFAULT NULL,
   `stars` int(11) unsigned DEFAULT NULL,
   `watchers` int(11) unsigned DEFAULT NULL,
@@ -93,9 +93,10 @@ CREATE TABLE `tag` (
   `name` varchar(60) COLLATE utf8_czech_ci NOT NULL,
   `priority` int(11) unsigned NOT NULL,
   `color` varchar(20) COLLATE utf8_czech_ci DEFAULT NULL,
+  `highlighted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 
--- 2016-01-15 11:29:43
+-- 2016-02-12 12:59:11
