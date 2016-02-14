@@ -157,7 +157,9 @@
     <!-- /Microdata -->
 
     <!-- Add addon -->
-    {control modal}
+    {cache 'addon/modal', expire => '+1 day'}
+        {control modal}
+    {/cache}
     <!-- /Add addon -->
 
     <!-- Tracking -->

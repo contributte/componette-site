@@ -44,8 +44,12 @@ final class SideMenu extends Control
 
     public function render()
     {
-        $this->template->categories = $this->tagRepository->findWithHighPriority();
-        $this->template->tags = $this->ensure($this->tagRepository->findWithLowPriority());
+        $this->template->_categories = function () {
+            return $this->tagRepository->findWithHighPriority();
+        };
+        $this->template->_tags = function () {
+            return $this->ensure($this->tagRepository->findWithLowPriority());
+        };
 
         $this->template->setFile(__DIR__ . '/templates/menu.latte');
         $this->template->render();

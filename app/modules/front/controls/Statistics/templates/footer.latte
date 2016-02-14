@@ -1,18 +1,20 @@
 {block}
 <div class="row">
     {cache "statistics/statistics", expire => '+1 hour'}
+    {var $stats => $_stats()}
     <section class="col-md-offset-1 col-md-3">
         <h4>Statistics</h4>
         <ul class="unstyled">
-            <li>Addons: <strong>{$addons}</strong></li>
-            <li>Queued: <strong>{$queued}</strong></li>
-            <li>Owners: <strong>{$owners}</strong></li>
-            <li>Tags: <strong>{$tags}</strong></li>
+            <li>Addons: <strong>{$stats->addons}</strong></li>
+            <li>Queued: <strong>{$stats->queued}</strong></li>
+            <li>Owners: <strong>{$stats->owners}</strong></li>
+            <li>Tags: <strong>{$stats->tags}</strong></li>
         </ul>
     </section>
     {/cache}
 
     {cache "statistics/popular", expire => '+1 day'}
+    {var $popular => $_popular()}
     <section class="col-md-4">
         <h4>Most popular</h4>
         <ul n:foreach="$popular as $addon">
@@ -22,6 +24,7 @@
     {/cache}
 
     {cache "statistics/newest", expire => '+1 hour'}
+    {var $newest => $_newest()}
     <section class="col-md-4">
         <h4>Newest</h4>
         <ul n:foreach="$newest as $addon">

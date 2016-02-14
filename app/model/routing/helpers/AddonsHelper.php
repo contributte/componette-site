@@ -40,7 +40,7 @@ final class AddonsHelper
     protected function build()
     {
         $this->data = $this->cache->load('routes', function (&$dependencies) {
-            $dependencies[Cache::EXPIRE] = new DateTime('+24 h');
+            $dependencies[Cache::EXPIRE] = '+1 day';
             $dependencies[Cache::TAGS] = ['routing', 'routes'];
 
             $data = ['addons' => [], 'owners' => []];

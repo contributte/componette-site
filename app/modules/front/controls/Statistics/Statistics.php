@@ -26,13 +26,26 @@ final class Statistics extends Control
 
     public function renderFooter()
     {
-        $this->template->addons = $this->facade->countAddons();
-        $this->template->queued = $this->facade->countQueued();
-        $this->template->owners = $this->facade->countOwners();
-        $this->template->tags = $this->facade->countTags();
+        // Stats
+        $this->template->_stats = function () {
+            $data = [];
+            $data['addons'] = $this->facade->countAddons();
+            $data['queued'] = $this->facade->countQueued();
+            $data['owners'] = $this->facade->countOwners();
+            $data['tags'] = $this->facade->countTags();
 
-        $this->template->popular = $this->facade->findMostPopular();
-        $this->template->newest = $this->facade->findNewest();
+            return (object) $data;
+        };
+
+        // List of popular
+        $this->template->_popular = function () {
+            return $this->facade->findMostPopular();
+        };
+
+        // List of newest
+        $this->template->_newest = function () {
+            return $this->facade->findNewest();
+        };
 
         $this->template->setFile(__DIR__ . '/templates/footer.latte');
         $this->template->render();

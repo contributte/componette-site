@@ -1,5 +1,9 @@
 {block}
 {cache menu, expire => '+1 day'}
+
+{var $categories => $_categories()}
+{var $tags => $_tags()}
+
 <div class="side-menu">
 	<ul class="nav">
 		<li n:foreach="$categories as $category">
