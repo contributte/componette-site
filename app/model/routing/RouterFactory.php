@@ -83,6 +83,22 @@ final class RouterFactory
         $front[] = new Route('search/', 'List:search');
         $front[] = new Route('search/<tag>', 'List:tag');
         $front[] = new Route('status/', 'Status:default');
+
+        // FRONT.IMAGES ====================================
+        $front[] = new Route('imgs/<action>/<owner [\w\-\/]+>.[!<ext=png>]', [
+            'presenter' => 'WebImage',
+            'action' => 'default',
+            'owner' => [
+                Route::FILTER_OUT => function ($owner) {
+                    return strtolower($owner);
+                },
+                Route::FILTER_IN => function ($owner) {
+                    return strtolower($owner);
+                }
+            ]
+        ]);
+
+        // COMMON SCHEME
         $front[] = new Route('<presenter>/<action>', 'Home:default');
 
         return $router;

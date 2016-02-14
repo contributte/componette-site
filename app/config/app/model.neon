@@ -25,6 +25,9 @@ services:
     # [back-end]
     - App\Model\Facade\Admin\AddonFacade
 
+    # Images ===============================================
+    - App\Model\WebImages\GithubImages(%wwwDir%/imgs)
+
     # Tasks ================================================
     - App\Model\Tasks\Addons\GenerateContentTask
     - App\Model\Tasks\Addons\UpdateGithubTask

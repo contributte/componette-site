@@ -11,6 +11,9 @@
 /www/assets/css/*.css
 /www/dist
 
+# Front-end
+/www/imgs
+
 # Composer
 /vendor/*
 /composer.lock

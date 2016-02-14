@@ -11,7 +11,7 @@
 
 <div class="title-owner">
     <a data-ga="1" data-event="click" data-category="sidebar" data-action="owner-title" data-toggle="tooltip" data-placement="left" title="Show all addons by {$owner}" href="{plink List:owner, slug => $owner}">
-        <img alt="" title="{$owner}" src="{$addon->github->linker->getOwnerAvatarUrl(40)}"> {$owner}
+        <img alt="" title="{$owner}" src="{plink WebImage:avatar, $addon->owner}"> {$owner}
     </a>
 </div>
 
