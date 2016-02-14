@@ -51,6 +51,11 @@ final class RouterFactory
             Route::$defaultFlags = Route::SECURED;
         }
 
+        // ADMIN ===========================================
+
+        $router[] = $admin = new RouteList('Admin');
+        $admin[] = new Route('admin/<presenter>/<action>[/<id>]', 'Home:default');
+
         // FRONT ===========================================
 
         $router[] = $front = new RouteList('Front');

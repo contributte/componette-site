@@ -3,6 +3,7 @@
 namespace App\Modules\Front;
 
 use App\Model\Portal;
+use App\Modules\Base\AbstractPresenter;
 use App\Modules\Front\Controls\AddonModal\AddonModal;
 use App\Modules\Front\Controls\AddonModal\IAddonModalFactory;
 use App\Modules\Front\Controls\Search\ISearchFactory;
@@ -11,12 +12,11 @@ use App\Modules\Front\Controls\SideMenu\ISideMenuFactory;
 use App\Modules\Front\Controls\SideMenu\SideMenu;
 use App\Modules\Front\Controls\Statistics\IStatisticsFactory;
 use App\Modules\Front\Controls\Statistics\Statistics;
-use Nette\Application\UI\Presenter;
 
 /**
- * Base presenter for all application presenters.
+ * Base presenter for all front-end presenters.
  */
-abstract class BasePresenter extends Presenter
+abstract class BasePresenter extends AbstractPresenter
 {
 
     /** @var Portal @inject */

@@ -1,4 +1,8 @@
 services:
+    # [back-end]
+    - App\Modules\Admin\Controls\Login\ILoginFactory
+
+    # [front-end]
     - App\Modules\Front\Controls\AddonList\IAddonListFactory
     - App\Modules\Front\Controls\AddonMeta\IAddonMetaFactory
     - App\Modules\Front\Controls\AddonDetail\IAddonDetailFactory

@@ -1,9 +1,10 @@
 @charset "UTF-8";
 @import 'https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,700,700italic&subset=latin,latin-ext';
-@import 'chosen/chosen.less';
-@import 'octoicons/octicons.less';
+@import '../../vendor/chosen/chosen.less';
+@import '../../vendor/octoicons/octicons.less';
 @import 'readme/github.less';
 
+@image-path: "./../assets/front/img";
 @bgcolor: #3484d2;
 @global-min-width: 450px;
 
@@ -178,7 +179,7 @@ a[href*="://"]:after {
         top: 28px;
         left: 10px;
         background-color: #fff;
-        background-image: url('../assets/img/spinner3.gif');
+        background-image: url('@{image-path}/spinner3.gif');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;

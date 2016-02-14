@@ -18,9 +18,12 @@ services:
         factory: @App\Model\Search\SearchFactory::create
 
     # Model ================================================
+    # [front-end]
     - App\Model\Facade\AddonFacade
     - App\Model\Facade\SearchFacade
     - App\Model\Facade\StatisticsFacade
+    # [back-end]
+    - App\Model\Facade\Admin\AddonFacade
 
     # Tasks ================================================
     - App\Model\Tasks\Addons\GenerateContentTask

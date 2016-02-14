@@ -1,0 +1,45 @@
+@charset "UTF-8";
+@import '../../vendor/chosen/chosen.less';
+@import '../../vendor/octoicons/octicons.less';
+
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#sign-in {
+  max-width: 500px;
+  margin: 0 auto;
+
+  a.logo {
+    display: block;
+    text-align: center;
+    img {
+      max-width: 150px;
+    }
+  }
+
+  .form {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+
+    .heading {
+      color: #333;
+      background-color: #f5f5f5;
+      border-color: #ddd;
+      padding: 10px 15px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+    }
+
+    form {
+      margin: 20px;
+
+      input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 1000px #f5f5f5 inset;
+      }
+    }
+  }
+}

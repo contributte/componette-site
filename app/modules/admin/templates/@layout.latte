@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{$baseUri}/favicon.ico">
+    <link rel="canonical" href="{plink this}">
+
+    <!-- Title -->
+    <title>Admin</title>
+
+    <!-- Seo -->
+    <meta name="googlebot" content="snippet,archive">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Nette Community">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{$basePath}/dist/admin.external.css?v={$rev}">
+    <link rel="stylesheet" href="{$basePath}/dist/admin.bundle.css?v={$rev}">
+</head>
+<body>
+<div class="container">
+    <!-- Header -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" n:href="Home:">Componette</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li n:class="$presenter->isLinkCurrent('Addon:*') ? active"><a n:href="Addon:">Addons</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a n:href="Sign:out">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- /Header -->
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Flashes -->
+        <div n:foreach="$flashes as $flash" class="alert alert-{$flash->type}">{$flash->message}</div>
+        <!-- /Flashes -->
+
+        {include #content}
+    </div>
+    <!-- /Content -->
+
+    <hr>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2015-{=date('Y')} Componette</p>
+    </footer>
+    <!-- /Footer -->
+
+    <!-- Scripts -->
+    <script src="{$basePath}/dist/admin.external.js?v={$rev}"></script>
+    <script src="{$basePath}/dist/admin.bundle.js?v={$rev}"></script>
+    <!-- /Scripts -->
+</div>
+</body>
+</html>

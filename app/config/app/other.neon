@@ -11,5 +11,8 @@ services:
     - App\Model\Portal(@container::parameters)
     - App\Model\Statistics
 
+    # Security =============================================
+    authenticator: App\Model\Security\SimpleAuthenticator(%security.users%)
+
     # Cache ================================================
     - App\Core\Cache\Cacher
