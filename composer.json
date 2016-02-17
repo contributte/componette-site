@@ -28,7 +28,7 @@
 		"nette/utils": "~2.3.0",
 		"latte/latte": "~2.3.0",
 		"tracy/tracy": "~2.3.0",
-		"nextras/orm": "~2.0.0-rc1",
+		"nextras/orm": "~2.0.0-RC2",
 		"nextras/dbal": "~2.0.0-beta3"
 	},
 	"require-dev": {
