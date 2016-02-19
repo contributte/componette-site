@@ -21,6 +21,9 @@ final class AddonsHelper
         'owners' => [],
     ];
 
+    /** @var bool */
+    private $build;
+
     /**
      * @param AddonRepository $repository
      * @param IStorage $storage
@@ -36,7 +39,7 @@ final class AddonsHelper
      */
     protected function build()
     {
-        if (!$this->data) {
+        if (!$this->build) {
             $this->data = $this->cache->load('routes', function (&$dependencies) {
                 $dependencies[Cache::EXPIRE] = '+1 day';
                 $dependencies[Cache::TAGS] = ['routing', 'routes'];
@@ -50,6 +53,7 @@ final class AddonsHelper
 
                 return $data;
             });
+            $this->build = TRUE;
         }
     }
 
