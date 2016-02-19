@@ -14,7 +14,7 @@
 			<link>{$item->link}</link>
 			<pubDate>{$item->time|date:\DateTime::RSS}</pubDate>
 			<author>{$item->author}</author>
-			<description>{$html|striptags}</description>
+			<description>{$item->content|striptags}</description>
 			<content:encoded><![CDATA[{$item->content|noescape}]]></content:encoded>
 		</item>
 	</channel>
