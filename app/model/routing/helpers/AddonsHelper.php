@@ -5,7 +5,6 @@ namespace App\Model\Routing\Helpers;
 use App\Model\ORM\Addon\AddonRepository;
 use Nette\Caching\Cache;
 use Nette\Caching\IStorage;
-use Nette\Utils\DateTime;
 
 final class AddonsHelper
 {
@@ -30,8 +29,6 @@ final class AddonsHelper
     {
         $this->repository = $repository;
         $this->cache = new Cache($storage, 'Router');
-
-        $this->build();
     }
 
     /**
@@ -39,19 +36,21 @@ final class AddonsHelper
      */
     protected function build()
     {
-        $this->data = $this->cache->load('routes', function (&$dependencies) {
-            $dependencies[Cache::EXPIRE] = '+1 day';
-            $dependencies[Cache::TAGS] = ['routing', 'routes'];
+        if (!$this->data) {
+            $this->data = $this->cache->load('routes', function (&$dependencies) {
+                $dependencies[Cache::EXPIRE] = '+1 day';
+                $dependencies[Cache::TAGS] = ['routing', 'routes'];
 
-            $data = ['addons' => [], 'owners' => []];
+                $data = ['addons' => [], 'owners' => []];
 
-            foreach ($this->repository->findAll() as $addon) {
-                $data['addons'][$addon->id] = strtolower($addon->owner . '/' . $addon->name);
-                $data['owners'][strtolower($addon->owner)] = strtolower($addon->owner);
-            }
+                foreach ($this->repository->findAll() as $addon) {
+                    $data['addons'][$addon->id] = strtolower($addon->owner . '/' . $addon->name);
+                    $data['owners'][strtolower($addon->owner)] = strtolower($addon->owner);
+                }
 
-            return $data;
-        });
+                return $data;
+            });
+        }
     }
 
     /**
@@ -64,6 +63,7 @@ final class AddonsHelper
      */
     public function addonIn($slug)
     {
+        $this->build();
         $addon = array_search(strtolower($slug), $this->data['addons']);
         return $addon ? $addon : NULL;
     }
@@ -74,6 +74,7 @@ final class AddonsHelper
      */
     public function addonOut($id)
     {
+        $this->build();
         if (isset($this->data['addons'][$id])) {
             return strtolower($this->data['addons'][$id]);
         }
@@ -91,6 +92,7 @@ final class AddonsHelper
      */
     public function ownerIn($slug)
     {
+        $this->build();
         $slug = strtolower($slug);
         if (isset($this->data['owners'][$slug])) {
             return strtolower($this->data['owners'][$slug]);
@@ -105,6 +107,7 @@ final class AddonsHelper
      */
     public function ownerOut($slug)
     {
+        $this->build();
         $slug = strtolower($slug);
         if (isset($this->data['owners'][$slug])) {
             return strtolower($this->data['owners'][$slug]);
