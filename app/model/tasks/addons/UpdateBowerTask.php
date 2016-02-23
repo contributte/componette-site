@@ -7,7 +7,6 @@ use App\Model\ORM\Addon\AddonRepository;
 use App\Model\ORM\Bower\Bower;
 use App\Model\WebServices\Bower\Service;
 use Nette\Utils\Arrays;
-use Nette\Utils\DateTime;
 use Nextras\Orm\Collection\ICollection;
 
 final class UpdateBowerTask extends BaseAddonTask
@@ -52,6 +51,9 @@ final class UpdateBowerTask extends BaseAddonTask
                     if (($stats = $this->bower->repo($bower['name']))) {
                         $addon->bower->downloads = Arrays::get($stats, ['hits'], 0);
                     }
+
+                    // Name
+                    $addon->bower->name = Arrays::get($bower, 'name', NULL);
 
                     // Keywords
                     $keywords = Arrays::get($bower, 'keywords', []);

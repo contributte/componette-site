@@ -9,6 +9,7 @@ use Nette\Utils\DateTime;
 /**
  * @property int $id                {primary}
  * @property Addon $addon           {1:1 Addon::$bower, isMain=true}
+ * @property string|NULL $name
  * @property int|NULL $downloads
  * @property string|NULL $keywords
  * @property DateTime $crawledAt    {default now}
