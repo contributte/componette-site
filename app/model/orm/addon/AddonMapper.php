@@ -18,9 +18,15 @@ final class AddonMapper extends AbstractMapper
         $builder = $this->builder()
             ->from('[addon]', 'a')
             ->leftJoin('a', '[github]', 'g', '[g.addon_id] = [a.id]')
+            ->leftJoin('a', '[composer]', 'c', '[c.addon_id] = [a.id]')
+            ->leftJoin('a', '[bower]', 'b', '[b.addon_id] = [a.id]')
             ->orWhere('[a.owner] LIKE %s', "%$q%")
             ->orWhere('[a.name] LIKE %s', "%$q%")
             ->orWhere('[g.description] LIKE %s', "%$q%")
+            // Composer
+            ->orWhere('[c.name] LIKE %s', "%$q%")
+            // Bower
+            ->orWhere('[b.name] LIKE %s', "%$q%")
             ->groupBy('[a.id]')
             ->andWhere('[a.state] = %s', Addon::STATE_ACTIVE);
 
