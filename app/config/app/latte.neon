@@ -8,3 +8,4 @@ services:
             - addFilter('datetime', ['App\Core\Latte\Filters', 'datetime'])
             - addFilter('shields', ['App\Core\Latte\Filters', 'shields'])
             - addFilter('isPhpDependency', ['App\Core\Latte\Filters', 'isPhpDependency'])
+            - addFilter('ucfirst', ['App\Core\Latte\Filters', 'ucfirst'])

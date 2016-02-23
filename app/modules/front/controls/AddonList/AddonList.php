@@ -5,27 +5,21 @@ namespace App\Modules\Front\Controls\AddonList;
 use App\Core\UI\BaseControl;
 use App\Model\ORM\Addon\Addon;
 use App\Modules\Front\Controls\AddonMeta\AddonMeta;
-use App\Modules\Front\Controls\AddonMeta\IAddonMetaFactory;
 use Nextras\Orm\Collection\ICollection;
 
-final class AddonList extends BaseControl
+class AddonList extends BaseControl
 {
 
     /** @var ICollection|Addon[] */
-    private $addons;
-
-    /** @var IAddonMetaFactory */
-    private $addonMetaFactory;
+    protected $addons;
 
     /**
      * @param ICollection $addons
-     * @param IAddonMetaFactory $addonMetaFactory
      */
-    public function __construct(ICollection $addons, IAddonMetaFactory $addonMetaFactory)
+    public function __construct($addons)
     {
         parent::__construct();
         $this->addons = $addons;
-        $this->addonMetaFactory = $addonMetaFactory;
     }
 
     /**
@@ -37,7 +31,7 @@ final class AddonList extends BaseControl
      */
     protected function createComponentMeta()
     {
-        return $this->addonMetaFactory->create();
+        return new AddonMeta();
     }
 
     /**

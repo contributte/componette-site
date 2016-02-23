@@ -5,7 +5,6 @@ namespace App\Modules\Front\Controls\AddonDetail;
 use App\Core\UI\BaseControl;
 use App\Model\ORM\Addon\Addon;
 use App\Modules\Front\Controls\AddonMeta\AddonMeta;
-use App\Modules\Front\Controls\AddonMeta\IAddonMetaFactory;
 use Nette\Utils\DateTime;
 
 final class AddonDetail extends BaseControl
@@ -14,18 +13,13 @@ final class AddonDetail extends BaseControl
     /** @var Addon */
     private $addon;
 
-    /** @var IAddonMetaFactory */
-    private $addonMetaFactory;
-
     /**
      * @param Addon $addon
-     * @param IAddonMetaFactory $addonMetaFactory
      */
-    public function __construct(Addon $addon, IAddonMetaFactory $addonMetaFactory)
+    public function __construct(Addon $addon)
     {
         parent::__construct();
         $this->addon = $addon;
-        $this->addonMetaFactory = $addonMetaFactory;
     }
 
     /**
@@ -37,7 +31,7 @@ final class AddonDetail extends BaseControl
      */
     protected function createComponentMeta()
     {
-        return $this->addonMetaFactory->create();
+        return new AddonMeta();
     }
 
     /**

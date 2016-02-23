@@ -12,9 +12,6 @@ final class Search extends BaseControl
     /** @var array */
     public $onSearch = [];
 
-    /** @var string @persistent */
-    public $by;
-
     /** @var Searching */
     private $search;
 
@@ -73,6 +70,7 @@ final class Search extends BaseControl
 
     public function renderControls()
     {
+        $this->template->search = $this->search;
         $this->template->setFile(__DIR__ . '/templates/controls.latte');
         $this->template->render();
     }

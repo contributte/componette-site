@@ -117,4 +117,13 @@ final class Filters
         return FALSE;
     }
 
+    /**
+     * @param string $str
+     * @return string
+     */
+    public static function ucfirst($str)
+    {
+        return ucfirst($str);
+    }
+
 }

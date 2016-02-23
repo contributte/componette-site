@@ -4,7 +4,6 @@ namespace App\Model\Facade;
 
 use App\Model\ORM\Addon\Addon;
 use App\Model\ORM\Addon\AddonRepository;
-use App\Model\Search\Search;
 use Nextras\Orm\Collection\ICollection;
 
 final class AddonFacade
@@ -13,17 +12,12 @@ final class AddonFacade
     /** @var AddonRepository */
     private $addonRepository;
 
-    /** @var Search */
-    private $search;
-
     /**
      * @param AddonRepository $addonRepository
-     * @param Search $search
      */
-    public function __construct(AddonRepository $addonRepository, Search $search)
+    public function __construct(AddonRepository $addonRepository)
     {
         $this->addonRepository = $addonRepository;
-        $this->search = $search;
     }
 
     /**

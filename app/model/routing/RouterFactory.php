@@ -80,6 +80,7 @@ final class RouterFactory
             ],
         ]);
         $front[] = new Route('all/', 'List:default');
+        $front[] = new Route('all/<by>/', 'List:sorted');
         $front[] = new Route('search/', 'List:search');
         $front[] = new Route('search/<tag>', 'List:tag');
         $front[] = new Route('status/', 'Status:default');

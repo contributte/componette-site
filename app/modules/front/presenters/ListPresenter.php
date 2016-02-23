@@ -4,7 +4,10 @@ namespace App\Modules\Front;
 
 use App\Model\Facade\SearchFacade;
 use App\Model\ORM\Addon\Addon;
+use App\Model\ORM\Tag\Tag;
 use App\Modules\Front\Controls\AddonList\AddonList;
+use App\Modules\Front\Controls\AddonList\CategorizedAddonList;
+use App\Modules\Front\Controls\AddonList\ICategorizedAddonListFactory;
 use Nextras\Orm\Collection\ICollection;
 
 final class ListPresenter extends BaseAddonPresenter
@@ -13,8 +16,14 @@ final class ListPresenter extends BaseAddonPresenter
     /** @var SearchFacade @inject */
     public $searchFacade;
 
+    /** @var ICategorizedAddonListFactory @inject */
+    public $categorizedAddonsListFactory;
+
     /** @var ICollection|Addon[] */
     private $addons;
+
+    /** @var ICollection|Tag[] */
+    private $categories;
 
     /**
      * DEFAULT *****************************************************************
@@ -23,6 +32,19 @@ final class ListPresenter extends BaseAddonPresenter
     public function actionDefault()
     {
         $this->addons = $this->searchFacade->findAll();
+        $this->categories = $this->searchFacade->findCategories();
+    }
+
+    /**
+     * SORTED ******************************************************************
+     */
+
+    /**
+     * @param string $by
+     */
+    public function actionSorted($by)
+    {
+        $this->addons = $this->searchFacade->findSorted($by);
     }
 
     /**
@@ -99,4 +121,13 @@ final class ListPresenter extends BaseAddonPresenter
     {
         return $this->createAddonListControl($this->addons);
     }
+
+    /**
+     * @return CategorizedAddonList
+     */
+    protected function createComponentCategorizedAddons()
+    {
+        return $this->categorizedAddonsListFactory->create($this->addons, $this->categories);
+    }
+
 }

@@ -4,6 +4,7 @@ namespace App\Model\Facade;
 
 use App\Model\ORM\Addon\Addon;
 use App\Model\ORM\Addon\AddonRepository;
+use App\Model\ORM\Tag\TagRepository;
 use App\Model\Search\Search;
 use Nextras\Orm\Collection\ICollection;
 
@@ -13,16 +14,21 @@ final class SearchFacade
     /** @var AddonRepository */
     private $addonRepository;
 
+    /** @var TagRepository */
+    private $tagRepository;
+
     /** @var Search */
     private $search;
 
     /**
      * @param AddonRepository $addonRepository
+     * @param TagRepository $tagRepository
      * @param Search $search
      */
-    public function __construct(AddonRepository $addonRepository, Search $search)
+    public function __construct(AddonRepository $addonRepository, TagRepository $tagRepository, Search $search)
     {
         $this->addonRepository = $addonRepository;
+        $this->tagRepository = $tagRepository;
         $this->search = $search;
     }
 
@@ -31,6 +37,27 @@ final class SearchFacade
      */
     public function findAll()
     {
+        $collection = $this->addonRepository->findActive();
+        $collection = $this->formatLimit($collection);
+
+        return $collection;
+    }
+
+    /**
+     * @return ICollection|Addon[]
+     */
+    public function findCategories()
+    {
+        return $this->tagRepository->findAll();
+    }
+
+    /**
+     * @return ICollection|Addon[]
+     */
+    public function findSorted($by)
+    {
+        $this->search->by = $by;
+
         $collection = $this->addonRepository
             ->findOrdered($this->search->by);
 
