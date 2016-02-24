@@ -43,8 +43,9 @@ final class GithubImages implements ImageProvider
             $image = Image::fromFile($filename);
             $image->send(Image::PNG);
             exit;
+        } else {
+            throw new InvalidArgumentException('No data downloaded');
         }
-
     }
 
     /**
