@@ -57,13 +57,12 @@ abstract class BasePresenter extends BaseFrontPresenter
     {
         $search = $this->searchFactory->create();
 
+        $search['form']->setMethod('GET');
+        $search['form']->setAction($this->link(':Front:Portal:List:search'));
+
         $search['form']['q']
             ->controlPrototype
             ->data('handle', $this->link(':Front:Portal:List:search', ['q' => '_QUERY_']));
-
-        $search->onSearch[] = function ($q) {
-            $this->redirect(':Front:Portal:List:search', $q);
-        };
 
         return $search;
     }
