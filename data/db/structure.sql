@@ -1,15 +1,13 @@
--- Adminer 4.2.4 MySQL dump
-
 SET NAMES utf8;
-SET time_zone = '+00:00';
+SET time_zone = ''+00:00'';
 SET foreign_key_checks = 0;
-SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
+SET sql_mode = ''NO_AUTO_VALUE_ON_ZERO'';
 
 DROP TABLE IF EXISTS `addon`;
 CREATE TABLE `addon` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `type` enum('COMPOSER','BOWER','UNKNOWN','UNTYPE') NOT NULL DEFAULT 'UNKNOWN',
-  `state` enum('ACTIVE','ARCHIVED','QUEUED') NOT NULL DEFAULT 'QUEUED',
+  `type` enum(''COMPOSER'',''BOWER'',''UNKNOWN'',''UNTYPE'') NOT NULL DEFAULT ''UNKNOWN'',
+  `state` enum(''ACTIVE'',''ARCHIVED'',''QUEUED'') NOT NULL DEFAULT ''QUEUED'',
   `owner` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL,
   `created_at` datetime NOT NULL,
@@ -36,6 +34,7 @@ DROP TABLE IF EXISTS `bower`;
 CREATE TABLE `bower` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `addon_id` int(11) unsigned NOT NULL,
+  `name` varchar(255) NOT NULL,
   `downloads` int(11) unsigned DEFAULT NULL,
   `keywords` varchar(255) DEFAULT NULL,
   `crawled_at` datetime NOT NULL,
@@ -93,10 +92,7 @@ CREATE TABLE `tag` (
   `name` varchar(60) COLLATE utf8_czech_ci NOT NULL,
   `priority` int(11) unsigned NOT NULL,
   `color` varchar(20) COLLATE utf8_czech_ci DEFAULT NULL,
-  `highlighted` tinyint(1) NOT NULL DEFAULT '0',
+  `highlighted` tinyint(1) NOT NULL DEFAULT ''0'',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
-
-
--- 2016-02-12 12:59:11
