@@ -3,14 +3,14 @@ services:
     - App\Modules\Admin\Controls\Login\ILoginFactory
 
     # [front-end]
-    - App\Modules\Front\Controls\AddonList\IAddonListFactory
-    - App\Modules\Front\Controls\AddonList\ICategorizedAddonListFactory
-    - App\Modules\Front\Controls\AddonMeta\IAddonMetaFactory
-    - App\Modules\Front\Controls\AddonDetail\IAddonDetailFactory
-    - App\Modules\Front\Controls\AddonModal\IAddonModalFactory
-    - App\Modules\Front\Controls\Search\ISearchFactory
-    - App\Modules\Front\Controls\SideMenu\ISideMenuFactory
-    - App\Modules\Front\Controls\Statistics\IStatisticsFactory
-    - App\Modules\Front\Controls\RssFeed\IRssFeedFactory
-    - App\Modules\Front\Controls\RssFeed\RssFeedFactory
-    - App\Modules\Front\Controls\Sitemap\ISitemapFactory
+    - App\Modules\Front\Portal\Controls\AddonList\IAddonListFactory
+    - App\Modules\Front\Portal\Controls\AddonList\ICategorizedAddonListFactory
+    - App\Modules\Front\Portal\Controls\AddonMeta\IAddonMetaFactory
+    - App\Modules\Front\Portal\Controls\AddonDetail\IAddonDetailFactory
+    - App\Modules\Front\Portal\Controls\AddonModal\IAddonModalFactory
+    - App\Modules\Front\Portal\Controls\Search\ISearchFactory
+    - App\Modules\Front\Portal\Controls\SideMenu\ISideMenuFactory
+    - App\Modules\Front\Portal\Controls\Statistics\IStatisticsFactory
+    - App\Modules\Front\Portal\Controls\RssFeed\IRssFeedFactory
+    - App\Modules\Front\Portal\Controls\RssFeed\RssFeedFactory
+    - App\Modules\Front\Portal\Controls\Sitemap\ISitemapFactory

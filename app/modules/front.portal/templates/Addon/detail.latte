@@ -1,0 +1,19 @@
+{block #title}{$addon->fullname}{/block}
+{block #description}{$addon->github->description}{/block}
+{block #breadcrumbs}
+    <a n:href=":Front:Home:">Home</a> > <a n:href=":Front:Portal:List:owner, $addon->github->owner">{$addon->owner}</a> > {$addon->name}
+{/block}
+
+{block #wrapper}
+<div n:snippet="search-result"></div>
+<section class="page page-package clearfix">
+    <section class="page-sidebar">
+        {control addon:sidebar}
+    </section>
+    <section class="page-content">
+        {control addon:content}
+    </section>
+    <section n:if="$addon->isComposer && $addon->github->extra->get('composer-stats')" class="page-stats">
+        {control addon:stats}
+    </section>
+</section>
