@@ -60,6 +60,11 @@ final class RouterFactory
 
         $router[] = $front = new RouteList('Front');
 
+        // FRONT.API =======================================
+
+        $front[] = $api = new RouteList('Api');
+        $api[] = new Route('api/v1/opensearch/suggest', 'OpenSearch:suggest');
+
         // FRONT.PORTAL ====================================
 
         $front[] = $portal = new RouteList('Portal');
