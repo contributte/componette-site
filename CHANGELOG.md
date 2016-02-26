@@ -1,7 +1,14 @@
 # CHANGELOG
 
-## 1.0.5-dev
+## 1.0.6-dev
 
+## 1.0.5 [26.02.2016]
+
+- Feature: opensearch suggestion
+- Feature: display all addons byt categories
+- Feature: split front modules to Api & Portal
+- Improvement: added some addon tags
+- Feature: added simple admin module
 - Fix: replace & with &amp; at opensearch
 - Fix: RSS feed 
 - Fix: gitter link
