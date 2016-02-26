@@ -1,7 +1,7 @@
 parameters:
     system:
         error:
-            presenter: Front:Error
+            presenter: Front:Portal:Error
 
     build:
         rev: 120106
