@@ -3,6 +3,7 @@
 namespace App\Modules\Front\Portal;
 
 use App\Model\ORM\Addon\Addon;
+use App\Modules\Front\Portal\Controls\AddonList\AddonList;
 use Nextras\Orm\Collection\ICollection;
 
 final class HomePresenter extends BaseAddonPresenter
@@ -28,7 +29,7 @@ final class HomePresenter extends BaseAddonPresenter
      */
 
     /**
-     * @return Controls\AddonList\AddonList
+     * @return AddonList
      */
     protected function createComponentNewest()
     {
@@ -36,7 +37,7 @@ final class HomePresenter extends BaseAddonPresenter
     }
 
     /**
-     * @return Controls\AddonList\AddonList
+     * @return AddonList
      */
     protected function createComponentLastActive()
     {

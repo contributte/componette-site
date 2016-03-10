@@ -48,6 +48,21 @@ $.nette.ext('search', {
     })
 });
 
+var Componette = {};
+
+Componette.selectable = function ($el) {
+    if (document.selection) {
+        var div = document.body.createTextRange();
+        div.moveToElementText($el[0]);
+        div.select();
+    } else {
+        var div = document.createRange();
+        div.setStartBefore($el[0]);
+        div.setEndAfter($el[0]);
+        window.getSelection().addRange(div);
+    }
+};
+
 $(function () {
     // Choosen
     $(".chosen").chosen({width: '100%'});
@@ -71,6 +86,11 @@ $(function () {
                 return trigger.getAttribute('data-composer');
             }
         });
+    });
+
+    // Composer code
+    $('span.composer-code').on('click', function () {
+        Componette.selectable($(this));
     });
 
     // Stats

@@ -3,25 +3,10 @@
 {var $owner => $addon->owner}
 {var $name => $addon->name}
 
-<div class="title-repo">
-    <a data-ga="1" data-event="click" data-category="sidebar" data-action="repo-title" data-toggle="tooltip" data-placement="bottom" title="{$name}" href="{$addon->github->linker->getRepoUrl()}">
-        <span class="octicon octicon-mark-github"></span> {$name}
-    </a>
-</div>
-
-<div class="title-owner">
-    <a data-ga="1" data-event="click" data-category="sidebar" data-action="owner-title" data-toggle="tooltip" data-placement="left" title="Show all addons by {$owner}" href="{plink List:owner, slug => $owner}">
-        <img alt="" title="{$owner}" src="{plink WebImage:avatar, $addon->owner}"> {$owner}
-    </a>
-</div>
-
 <div class="details">
+    <div class="title">Statistics</div>
     <table>
         {if $addon->isComposer && $addon->composer}
-        <tr>
-            <td><span class="octicon octicon-gift composer-clipboard" data-toggle="tooltip" data-placement="left" title="Click & copy" data-composer="composer require {$addon->github->composer->getName()}"></span></td>
-            <td>{$addon->github->composer->getName()}</td>
-        </tr>
         <tr>
             <td><span class="octicon octicon-cloud-download"></span></td>
             <td data-toggle="tooltip" data-placement="left" title="Total downloads">{$addon->composer->downloads|count}</td>
@@ -48,6 +33,7 @@
 </div>
 
 <div class="badges">
+    <div class="title">Badges</div>
     <ul>
         <li>
             <img alt="" title="isitmaintained" src="https://isitmaintained.com/badge/resolution/{$owner|lower}/{$name|lower}.svg">

@@ -8,6 +8,7 @@ use App\Model\ORM\Tag\Tag;
 use App\Modules\Front\Portal\Controls\AddonList\AddonList;
 use App\Modules\Front\Portal\Controls\AddonList\CategorizedAddonList;
 use App\Modules\Front\Portal\Controls\AddonList\ICategorizedAddonListFactory;
+use App\Modules\Front\Portal\Controls\Search\Search;
 use Nextras\Orm\Collection\ICollection;
 
 final class ListPresenter extends BaseAddonPresenter
@@ -113,6 +114,17 @@ final class ListPresenter extends BaseAddonPresenter
     /**
      * CONTROLS ****************************************************************
      */
+
+    /**
+     * @return Search
+     */
+    protected function createComponentSearch()
+    {
+        $search = parent::createComponentSearch();
+        $search['form']['q']->controlPrototype->autofocus = TRUE;
+
+        return $search;
+    }
 
     /**
      * @return AddonList

@@ -1,3 +1,20 @@
-<h1><a data-ga="1" data-event="click" data-category="h1" data-action="repo" href="{$addon->github->linker->getRepoUrl()}">{$addon->github->name}</a></h1>
+{block}
+<div class="title-repo">
+    <a data-ga="1" data-event="click" data-category="header" data-action="repo-image" href="{$addon->github->linker->getRepoUrl()}">
+        <img alt="" title="{$addon->owner}" src="{plink WebImage:avatar, $addon->owner}">
+    </a>
+    <a data-ga="1" data-event="click" data-category="header" data-action="repo-owner" data-toggle="tooltip" data-placement="bottom" title="Show all addons by {$addon->owner}" href="{plink List:owner, slug => $addon->owner}">
+        {$addon->owner}
+    </a>
+    /
+    <a data-ga="1" data-event="click" data-category="header" data-action="repo-name" data-toggle="tooltip" data-placement="bottom" title="See {$addon->name} Github profile" href="{$addon->github->linker->getRepoUrl()}">
+        {$addon->name}
+    </a>
+</div>
 
-{control meta $addon}
+<div class="title-composer" n:if="$addon->isComposer && $addon->composer">
+    <span class="composer-clipboard octicon octicon octicon-desktop-download" data-toggle="tooltip" data-placement="left" title="Click & copy" data-composer="composer require {$addon->github->composer->getName()}"></span>
+    <span class="composer-code">composer require {$addon->github->composer->getName()}</span>
+</div>
+
+<div class="clearfix"></div>

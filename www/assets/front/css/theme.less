@@ -7,6 +7,7 @@
 @image-path: "./../assets/front/img";
 @bgcolor: #3484d2;
 @global-min-width: 450px;
+@border-radius: 6px;
 
 body, html {
   min-height: 100%;
@@ -337,7 +338,7 @@ a[href*="://"]:after {
   .addons-all {
     .b-addon {
       .b-addon__body {
-        width: 93%;
+        display: inline-block;
         padding-left: 0;
 
         h3 {
@@ -445,7 +446,7 @@ a[href*="://"]:after {
 }
 
 .meta {
-  border-radius: 0 0 6px 6px;
+  border-radius: 0 0 @border-radius @border-radius;
   padding: 0 1.2em;
   line-height: 40px;
   vertical-align: top;
@@ -489,7 +490,7 @@ a[href*="://"]:after {
 }
 
 .page {
-  border-radius: 6px;
+  border-radius: @border-radius;
   background: #fff;
   margin-top: 10px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, .3);
@@ -498,10 +499,42 @@ a[href*="://"]:after {
   .page-header {
     padding: 20px;
     margin: 0;
-    background: rgba(52, 132, 210, 0.2);
+    border-radius: @border-radius @border-radius 0 0;
+    background: #fafafa;
 
-    h1 {
-      margin: 0 0 20px 0;
+    img {
+      max-width: 30px;
+      max-height: 30px;
+    }
+
+    .title-repo {
+      float: left;
+      line-height: 30px;
+      font-size: 20px;
+      vertical-align: bottom;
+
+      a {
+        line-height: 30px;
+        display: inline-block;
+      }
+
+      span {
+        font-size: 40px;
+        vertical-align: middle;
+      }
+    }
+
+    .title-composer {
+      float: right;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      padding: 5px 10px;
+
+      .composer-clipboard {
+        cursor: pointer;
+        padding-right: 10px;
+      }
     }
   }
 
@@ -552,63 +585,37 @@ a[href*="://"]:after {
     padding: 20px;
     width: 25%;
     float: right;
-    border-radius: 0 0 0 6px;
     margin: 0;
     font-size: 16px;
-    background: linear-gradient(rgba(52, 132, 210, .3), #fff);
     padding-bottom: 200px;
 
     a {
       color: #000;
     }
 
-    .title-owner {
-      font-size: 20px;
-      margin-bottom: 10px;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-
-      img {
-        max-width: 40px;
-      }
-    }
-
-    .title-repo {
-      font-size: 20px;
-      vertical-align: middle;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      margin-bottom: 10px;
-
-      span {
-        font-size: 40px;
-        vertical-align: middle;
-      }
-    }
-
     .title {
       font-weight: 600;
       margin: 15px 0;
+      padding-bottom: 7px;
+      border-bottom: 1px dashed #eee;
     }
 
     div.details {
-      margin: 10px 0;
+      margin: 0 0 10px 0;
       font-size: 18px;
 
       span {
         font-size: 20px;
       }
 
-      span.composer-clipboard {
-        cursor: pointer;
-      }
-
       table {
         td:nth-child(2n+1) {
           padding: 0 10px;
         }
+      }
+
+      .title {
+        margin-top: 0;
       }
     }
 
@@ -670,7 +677,7 @@ a[href*="://"]:after {
     font-weight: 400;
     line-height: 1.4;
     background: #f8f8f8;
-    border-radius: 3px;
+    border-radius: @border-radius;
     box-shadow: none;
     padding: 5px;
     margin: 1.5em 0;
@@ -789,7 +796,7 @@ a[href*="://"]:after {
           display: block;
 
           & > .btn {
-            border-radius: 4px;
+            border-radius: 2px;
             display: block;
             width: 100%;
             margin-bottom: 2px;
@@ -806,6 +813,22 @@ a[href*="://"]:after {
             float: right;
           }
         }
+      }
+    }
+  }
+
+  .page {
+    border-radius: 0;
+
+    .page-header {
+      .title-repo,
+      .title-composer {
+        float: none;
+        text-align: center;
+      }
+
+      .title-repo {
+        margin-bottom: 15px;
       }
     }
   }

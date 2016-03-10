@@ -7,4 +7,6 @@
 <div n:snippet="search-result"></div>
 
 <h2 class="category"><span class="mega-octicon octicon-list-unordered"></span> All packages</h2>
-{control categorizedAddons}
+{cache 'addons/all', expire => '+1 hour'}
+    {control categorizedAddons}
+{/cache}
