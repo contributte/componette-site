@@ -25,7 +25,7 @@ final class GithubImages implements ImageProvider
     }
 
     /**
-     * FACTORIES ***************************************************************
+     * AVATAR ******************************************************************
      */
 
     /**
@@ -49,6 +49,14 @@ final class GithubImages implements ImageProvider
     }
 
     /**
+     * @param string $owner
+     */
+    protected function removeAvatar($owner)
+    {
+        FileSystem::delete($this->imageDir . '/avatar/' . $owner);
+    }
+
+    /**
      * API *********************************************************************
      */
 
@@ -64,6 +72,25 @@ final class GithubImages implements ImageProvider
         switch ($args['type']) {
             case 'avatar':
                 $this->createAvatar($this->normalize($args['owner']));
+                break;
+
+            default:
+                throw new InvalidArgumentException('Unknown type "' . $args['type'] . '"given');
+        }
+    }
+
+    /**
+     * @param array $args
+     */
+    public function remove(array $args)
+    {
+        if (!isset($args['type'])) {
+            throw new InvalidArgumentException('No type given');
+        }
+
+        switch ($args['type']) {
+            case 'avatar':
+                $this->removeAvatar($this->normalize($args['owner']));
                 break;
 
             default:

@@ -22,14 +22,15 @@ final class Service
     }
 
     /**
-     * @param string $uri
+     * @param string $url
      * @param array $headers
-     * @return mixed
+     * @param array $opts
+     * @return array
      */
-    protected function call($uri, array $headers = [])
+    protected function makeRequest($url, array $headers = [], array $opts = [])
     {
         try {
-            return $this->client->makeRequest($uri, $headers);
+            return $this->client->makeRequest($url, $headers, $opts);
         } catch (GithubException $e) {
             // Trigger events
             foreach ($this->onException as $cb) {
@@ -39,6 +40,18 @@ final class Service
             // Return FALSE
             return FALSE;
         }
+    }
+
+    /**
+     * @param string $uri
+     * @param array $headers
+     * @param array $opts
+     * @return mixed
+     */
+    protected function call($uri, array $headers = [], array $opts = [])
+    {
+        list($info, $result) = $this->makeRequest($this->client->getApiUrl($uri), $headers, $opts);
+        return $result;
     }
 
     /**
@@ -144,6 +157,28 @@ final class Service
     public function stargazers($owner, $repo)
     {
         return $this->call("/repos/$owner/$repo/stargazers");
+    }
+
+    /**
+     * @param string $owner
+     * @return mixed
+     */
+    public function user($owner)
+    {
+        return $this->call("/users/$owner");
+    }
+
+    /**
+     * @param string $username
+     * @return array
+     */
+    public function avatar($username)
+    {
+        return $this->makeRequest(
+            $this->client->getAvatarUrl($username),
+            [],
+            [CURLOPT_FILETIME => TRUE, CURLOPT_NOBODY => TRUE]
+        );
     }
 
     /**

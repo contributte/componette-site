@@ -35,3 +35,4 @@ services:
     - App\Model\Tasks\Addons\UpdateComposerTask
     - App\Model\Tasks\Addons\UpdateBowerTask
     - App\Model\Tasks\Addons\StatsComposerTask
+    - App\Model\Tasks\Avatars\UpdateAvatarTask
