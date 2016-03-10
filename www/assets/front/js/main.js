@@ -93,6 +93,16 @@ $(function () {
         Componette.selectable($(this));
     });
 
+    // Embedded images in README
+    $('.readme').find('img').each(function (i, e) {
+        var $img = $(e).closest('a');
+        if ($img.attr('href').match(/\.(jpeg|jpg|gif|png)$/) != null) {
+            $img.magnificPopup({
+                type: 'image'
+            });
+        }
+    });
+
     // Stats
     (function () {
         var $addon = $('#addon-stats');

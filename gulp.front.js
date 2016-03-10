@@ -17,7 +17,8 @@ module.exports = function () {
 
     gulp.task('front-css-remote', function () {
         remoteSrc([
-            'twitter-bootstrap/3.3.6/css/bootstrap.min.css'
+            'twitter-bootstrap/3.3.6/css/bootstrap.min.css',
+            'magnific-popup.js/1.1.0/magnific-popup.min.css'
         ], {
             base: 'https://cdnjs.cloudflare.com/ajax/libs/'
         })
@@ -49,7 +50,8 @@ module.exports = function () {
             'handlebars.js/4.0.3/handlebars.min.js',
             'chosen/1.4.2/chosen.jquery.min.js',
             'canvasjs/1.7.0/canvasjs.min.js',
-            'clipboard.js/1.5.5/clipboard.min.js'
+            'clipboard.js/1.5.5/clipboard.min.js',
+            'magnific-popup.js/1.1.0/jquery.magnific-popup.min.js'
         ], {
             base: 'https://cdnjs.cloudflare.com/ajax/libs/'
         })
