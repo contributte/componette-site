@@ -10,7 +10,6 @@ final class AddonMapper extends AbstractMapper
 
     /**
      * @param mixed $q
-     * @param string $q
      * @return QueryBuilder
      */
     public function findByQuery($q)
@@ -28,6 +27,22 @@ final class AddonMapper extends AbstractMapper
             // Bower
             ->orWhere('[b.name] LIKE %s', "%$q%")
             ->groupBy('[a.id]')
+            ->andWhere('[a.state] = %s', Addon::STATE_ACTIVE);
+
+        return $builder;
+    }
+
+    /**
+     * @param mixed $q
+     * @return QueryBuilder
+     */
+    public function findByOwnerOrName($q)
+    {
+        $builder = $this->builder()
+            ->from('[addon]', 'a')
+            ->leftJoin('a', '[github]', 'g', '[g.addon_id] = [a.id]')
+            ->orWhere('[a.owner] LIKE %s', "%$q%")
+            ->orWhere('[a.name] LIKE %s', "%$q%")
             ->andWhere('[a.state] = %s', Addon::STATE_ACTIVE);
 
         return $builder;

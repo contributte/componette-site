@@ -17,7 +17,7 @@ final class OpenSearchPresenter extends BasePresenter
      */
     public function actionSuggest($q)
     {
-        $addons = $this->searchFacade->findByQuery($q);
+        $addons = $this->searchFacade->findByOwnerOrName($q);
 
         $output = [];
         $terms = [];

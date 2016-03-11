@@ -34,6 +34,21 @@ final class AddonRepository extends AbstractRepository
 
         return $this->mapper->toCollection($result);
     }
+    /**
+     * @param string $q
+     * @param string|NULL $orderBy
+     * @return ICollection|Addon[]
+     */
+    public function findByOwnerOrName($q, $orderBy = NULL)
+    {
+        $result = $this->mapper->findByOwnerOrName($q);
+
+        if ($orderBy) {
+            $this->mapper->applyOrder($result, $orderBy);
+        }
+
+        return $this->mapper->toCollection($result);
+    }
 
     /**
      * @return ICollection|Addon[]

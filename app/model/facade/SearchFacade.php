@@ -85,6 +85,20 @@ final class SearchFacade
      * @param string $q
      * @return ICollection|Addon[]
      */
+    public function findByOwnerOrName($q)
+    {
+        $collection = $this->addonRepository
+            ->findByOwnerOrName($q, 'popularity');
+
+        $collection = $this->formatLimit($collection);
+
+        return $collection;
+    }
+
+    /**
+     * @param string $q
+     * @return ICollection|Addon[]
+     */
     public function findByQuery($q)
     {
         $collection = $this->addonRepository
