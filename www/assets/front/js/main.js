@@ -90,6 +90,7 @@ $(function () {
 
     // Composer code
     $('span.composer-code').on('click', function () {
+        ga('send', 'event', 'click', 'composer-code', $(this).text());
         Componette.selectable($(this));
     });
 
@@ -98,7 +99,12 @@ $(function () {
         var $img = $(e).closest('a');
         if ($img.attr('href').match(/\.(jpeg|jpg|gif|png)$/) != null) {
             $img.magnificPopup({
-                type: 'image'
+                type: 'image',
+                callbacks: {
+                    open: function () {
+                        ga('send', 'event', 'click', 'embbeded-image', $img.attr('href'));
+                    }
+                }
             });
         }
     });
