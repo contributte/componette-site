@@ -4,6 +4,7 @@ namespace App\Modules\Front\Portal;
 
 use App\Model\ORM\Addon\Addon;
 use App\Modules\Front\Portal\Controls\AddonList\AddonList;
+use App\Modules\Front\Portal\Controls\Search\Search;
 use Nextras\Orm\Collection\ICollection;
 
 final class HomePresenter extends BaseAddonPresenter
@@ -27,6 +28,17 @@ final class HomePresenter extends BaseAddonPresenter
     /**
      * CONTROLS ****************************************************************
      */
+
+    /**
+     * @return Search
+     */
+    protected function createComponentSearch()
+    {
+        $search = parent::createComponentSearch();
+        $search['form']['q']->controlPrototype->autofocus = TRUE;
+
+        return $search;
+    }
 
     /**
      * @return AddonList

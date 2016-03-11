@@ -2,6 +2,7 @@
 
 ## 1.0.7-dev
 
+- Fix: autofocus search form on Homepage
 - Feature: change opensearch suggestion
 - Fix: default ordering by owner / tag [closes #52]
 - Monitoring: monitor composer clipboard && opening embedded images
