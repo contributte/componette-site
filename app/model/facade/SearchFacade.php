@@ -73,7 +73,7 @@ final class SearchFacade
     public function findByOwner($owner)
     {
         $collection = $this->addonRepository
-            ->findOrdered($this->search->by)
+            ->findOrdered('popularity')
             ->findBy(['owner' => $owner]);
 
         $collection = $this->formatLimit($collection);
@@ -102,7 +102,7 @@ final class SearchFacade
     public function findByTag($tag)
     {
         $collection = $this->addonRepository
-            ->findOrdered($this->search->by)
+            ->findOrdered('popularity')
             ->findBy([
                 'this->tags->name' => $tag,
                 'state' => Addon::STATE_ACTIVE
