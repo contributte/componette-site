@@ -1,0 +1,6 @@
+#!/bin/bash
+
+DATE=`date +%Y-%m-%d`
+echo $DATE
+
+php ../www/index.php Avatars:update
