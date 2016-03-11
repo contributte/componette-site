@@ -1,5 +1,7 @@
 # CHANGELOG
 
+## 1.0.7-dev
+
 ## 1.0.6 [11.03.2016]
 
 - Cron: weekly tasks
