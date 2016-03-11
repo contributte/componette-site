@@ -1,6 +1,13 @@
 # CHANGELOG
 
-## 1.0.6-dev
+## 1.0.6 [11.03.2016]
+
+- Cron: weekly tasks
+- Improvement: added simple lightbox [#49]
+- Improvement: cache page all [#51]
+- Improvement: fixed too long package name overflows [#47]
+- Improvement: search autofocus only on homepage [#48]
+- Feature: cleaning avatars over CLI
 
 ## 1.0.5 [26.02.2016]
 
