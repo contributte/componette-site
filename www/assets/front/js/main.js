@@ -80,13 +80,18 @@ $(function () {
     });
 
     // Composer clipboard
-    $('span.composer-clipboard').on('click', function () {
-        var clipboard = new Clipboard('span.composer-clipboard', {
-            text: function (trigger) {
-                return trigger.getAttribute('data-composer');
-            }
-        });
+    var clipboard = new Clipboard('span.composer-clipboard', {
+        text: function (trigger) {
+            return trigger.getAttribute('data-composer');
+        }
     });
+    clipboard.on('success', function(e) {
+        $(e.trigger).attr('title', 'Copied!').tooltip('fixTitle').tooltip('show');
+    });
+    $('span.composer-clipboard').on('mouseleave', function (e) {
+        $(e.currentTarget).attr('title', 'Click & copy').tooltip('fixTitle');
+    });
+
 
     // Composer code
     $('span.composer-code').on('click', function () {
