@@ -12,9 +12,14 @@
     </a>
 </div>
 
-<div class="title-composer" n:if="$addon->isComposer && $addon->composer">
+<div class="title-code title-composer" n:if="$addon->isComposer && $addon->composer">
     <span class="composer-clipboard octicon octicon octicon-desktop-download" data-toggle="tooltip" data-placement="left" title="Click & copy" data-composer="composer require {$addon->github->composer->getName()}"></span>
     <span class="composer-code">composer require {$addon->github->composer->getName()}</span>
+</div>
+
+<div class="title-code title-bower" n:if="$addon->isBower && $addon->bower">
+    <span class="composer-clipboard octicon octicon octicon-desktop-download" data-toggle="tooltip" data-placement="left" title="Click & copy" data-composer="bower install {$addon->bower->name}"></span>
+    <span class="composer-code">bower install {$addon->bower->name}</span>
 </div>
 
 <div class="clearfix"></div>
