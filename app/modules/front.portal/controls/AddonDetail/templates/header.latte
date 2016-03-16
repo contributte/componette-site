@@ -1,6 +1,6 @@
 {block}
 <div class="title-repo">
-    <a data-ga="1" data-event="click" data-category="header" data-action="repo-image" href="{$addon->github->linker->getRepoUrl()}">
+    <a data-ga="1" data-event="click" data-category="header" data-action="repo-image" href="{plink List:owner, slug => $addon->owner}">
         <img alt="" title="{$addon->owner}" src="{plink WebImage:avatar, $addon->owner}">
     </a>
     <a data-ga="1" data-event="click" data-category="header" data-action="repo-owner" data-toggle="tooltip" data-placement="bottom" title="Show all addons by {$addon->owner}" href="{plink List:owner, slug => $addon->owner}">
