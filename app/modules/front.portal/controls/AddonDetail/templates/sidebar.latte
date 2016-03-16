@@ -3,7 +3,17 @@
 {var $owner => $addon->owner}
 {var $name => $addon->name}
 
-<div class="details">
+<div class="github">
+    <div class="title">Github</div>
+    <div>
+        <span class="octicon octicon-mark-github"></span>
+        <a data-ga="1" data-event="click" data-category="sidebar" data-action="github" href="{$addon->github->linker->getRepoUrl()}">
+            {$addon->owner} / {$addon->name}
+        </a>
+    </div>
+</div>
+
+<div class="statistics">
     <div class="title">Statistics</div>
     <table>
         {if $addon->isComposer && $addon->composer}

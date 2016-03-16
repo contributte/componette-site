@@ -3,6 +3,7 @@
 @import '../../vendor/chosen/chosen.less';
 @import '../../vendor/octoicons/octicons.less';
 @import 'readme/github.less';
+@import 'github/buttons.less';
 
 @image-path: "./../assets/front/img";
 @bgcolor: #3484d2;
@@ -275,13 +276,6 @@ a[href*="://"]:after {
         font-size: 1.1em;
         margin-bottom: 6px;
       }
-    }
-  }
-
-  .tags {
-    padding: 10px;
-    a {
-      color: #fff;
     }
   }
 
@@ -600,8 +594,20 @@ a[href*="://"]:after {
       border-bottom: 1px dashed #eee;
     }
 
-    div.details {
-      margin: 0 0 10px 0;
+    .github, .statistics, .badges, .requirements, .tags {
+      margin: 0 0 15px 0;
+
+    }
+
+    .github {
+      a {
+        color: #18446e;
+        font-size: 14px;
+        text-decoration: underline;
+      }
+    }
+
+    .statistics {
       font-size: 18px;
 
       span {
@@ -619,13 +625,13 @@ a[href*="://"]:after {
       }
     }
 
-    div.badges {
+    .badges {
       ul {
         margin-left: 0;
       }
     }
 
-    div.requirements {
+    .requirements {
       overflow: hidden;
       font-size: 15px;
 
@@ -634,7 +640,8 @@ a[href*="://"]:after {
       }
 
       ul {
-        margin-left: 30px;
+        padding: 0;
+        margin: 0 0 0 30px;
 
         li {
           list-style-type: square;
@@ -643,7 +650,7 @@ a[href*="://"]:after {
       }
     }
 
-    div.tags {
+    .tags {
       span {
         font-size: 80%;
         font-weight: normal;
