@@ -2,6 +2,10 @@
 
 ## 1.0.7-dev
 
+- Improvement: added github-like buttons
+- Improvement: addon detail - added link to github [#55]
+- Feature: added bower install (same as composer require)
+- Improvement: github-like copy & paste title
 - Fix: autofocus search form on Homepage
 - Feature: change opensearch suggestion
 - Fix: default ordering by owner / tag [closes #52]
