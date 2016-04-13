@@ -2,6 +2,7 @@
 
 ## 1.0.7-dev
 
+- Improvement: added waffle badge to Readme
 - Improvement: added github-like buttons
 - Improvement: addon detail - added link to github [#55]
 - Feature: added bower install (same as composer require)
