@@ -84,7 +84,7 @@ final class GenerateContentTask extends BaseAddonTask
      */
     protected function reformatLinks(Github $github)
     {
-        $github->contentHtml = Strings::replace($github->contentHtml, '#href=\"(.*)\"#iU', function ($matches) use ($github) {
+        $github->contentHtml = Strings::replace($github->contentHtml, '#(?:href|src)=\"(.*)\"#iU', function ($matches) use ($github) {
             list ($all, $url) = $matches;
 
             if (!Validators::isUrl($url)) {
