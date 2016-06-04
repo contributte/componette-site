@@ -27,7 +27,7 @@ final class Client
             CURLOPT_USERAGENT => 'ComponetteClient-v1',
             CURLOPT_HTTPHEADER => $headers,
             CURLOPT_FOLLOWLOCATION => 1,
-            CURLOPT_SSL_VERIFYPEER => FALSE,
+            CURLOPT_SSL_VERIFYPEER => TRUE,
         ]);
 
         $result = curl_exec($ch);

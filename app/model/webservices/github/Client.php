@@ -65,7 +65,7 @@ final class Client
             CURLOPT_USERAGENT => 'ComponetteClient-v1',
             CURLOPT_HTTPHEADER => $_headers,
             CURLOPT_FOLLOWLOCATION => 1,
-            CURLOPT_SSL_VERIFYPEER => FALSE,
+            CURLOPT_SSL_VERIFYPEER => TRUE,
         ];
         curl_setopt_array($ch, $opts + $_opts);
 
