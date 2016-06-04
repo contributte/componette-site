@@ -28,7 +28,7 @@ Modern useful #nette addons portal.
 * PHP + Composer
 * Nginx
 * MariaDB/MySQL
-* [**Docker**](https://github.com/componette/componette.com/tree/docker)
+* [**Docker**](https://github.com/componette/dockerfiles)
 
 ## Docker
 
