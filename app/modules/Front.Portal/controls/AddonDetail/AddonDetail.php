@@ -76,4 +76,10 @@ final class AddonDetail extends BaseControl
         $this->template->render();
     }
 
+    public function renderReport()
+    {
+        $this->template->setFile(__DIR__ . '/templates/report.latte');
+        $this->template->render();
+    }
+
 }

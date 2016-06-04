@@ -79,8 +79,3 @@
         </div>
     {/if}
 {/if}
-
-<div class="tags" n:if="count($addon->tags) > 0">
-    <div class="title">Tags</div>
-    <span n:foreach="$addon->tags as $tag" class="label label-primary"><a href="{plink List:tag tag => $tag->name}">#{$tag->name}</a></span>
-</div>
