@@ -38,12 +38,9 @@
 		"jakub-onderka/php-parallel-lint": "~0.9.0",
 		"squizlabs/php_codesniffer": "~2.5.0"
 	},
-	"autoload": {
-		"classmap": ["app/"],
-		"files": ["app/shortcuts.php"]
-	},
 	"autoload-dev": {
-		"classmap": ["tests/"]
+		"classmap": ["app/", "tests/"],
+		"files": ["app/shortcuts.php"]
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true
