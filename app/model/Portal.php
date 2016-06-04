@@ -24,7 +24,7 @@ final class Portal
      */
     public function isDebug()
     {
-        return $this->parameters['environment'] === 'development';
+        return $this->parameters['debugMode'] === TRUE;
     }
 
     /**

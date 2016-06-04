@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Core\Latte;
+namespace App\Core\Latte\Filters;
 
 use Nette\Utils\DateTime;
-use Nette\Utils\Strings;
 
 final class Filters
 {
@@ -94,27 +93,8 @@ final class Filters
         $name = lcfirst($name);
         $name = preg_replace('#([A-Z]+)#', '-$1', $name);
         $name = str_replace('--', '-', $name);
+
         return $name;
-    }
-
-    /**
-     * @param string $name
-     * @return bool
-     */
-    public static function isPhpDependency($name)
-    {
-        $blacklist = [
-            '^php$',
-            '^ext-\w',
-        ];
-
-        foreach ($blacklist as $regex) {
-            if (Strings::match($name, "#$regex#")) {
-                return TRUE;
-            }
-        }
-
-        return FALSE;
     }
 
     /**

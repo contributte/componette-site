@@ -1,11 +1,17 @@
 services:
     # Filters ==============================================
+    latte.templateFactory:
+        class: App\Core\Latte\TemplateFactory
+
     latte.latteFactory:
         setup:
-            - addFilter('count', ['App\Core\Latte\Filters', 'count'])
-            - addFilter('timeDelta', ['App\Core\Latte\Filters', 'timeDelta'])
-            - addFilter('timeAgo', ['App\Core\Latte\Filters', 'timeAgo'])
-            - addFilter('datetime', ['App\Core\Latte\Filters', 'datetime'])
-            - addFilter('shields', ['App\Core\Latte\Filters', 'shields'])
-            - addFilter('isPhpDependency', ['App\Core\Latte\Filters', 'isPhpDependency'])
+            # Common
+            - addFilter('count', ['App\Core\Latte\Filters\Filters', 'count'])
+            - addFilter('timeDelta', ['App\Core\Latte\Filters\Filters', 'timeDelta'])
+            - addFilter('timeAgo', ['App\Core\Latte\Filters\Filters', 'timeAgo'])
+            - addFilter('datetime', ['App\Core\Latte\Filters\Filters', 'datetime'])
+            - addFilter('shields', ['App\Core\Latte\Filters\Filters', 'shields'])
             - addFilter('ucfirst', ['App\Core\Latte\Filters', 'ucfirst'])
+
+            # Composer
+            - addFilter('isPhpDependency', ['App\Core\Latte\Filters\ComposerHelper', 'isPhpDependency'])
