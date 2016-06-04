@@ -2,12 +2,12 @@
 
 <div n:snippet="search-result"></div>
 
-<h2 class="category"><span class="mega-octicon octicon-clock"></span> <a n:href=":Front:Portal:List:, search-by => push">Last activity</a></h2>
+<h2 class="category"><span class="mega-octicon octicon-clock"></span> <a n:href=":Front:Portal:List:sorted, by => push">Last activity</a></h2>
 {cache 'addons/last-active', expire => '+1 hour'}
     {control lastActive}
 {/cache}
 
-<h2 class="category"><span class="mega-octicon octicon-cloud-download"></span> <a n:href=":Front:Portal:List:, search-by => newest">Newest</a></h2>
+<h2 class="category"><span class="mega-octicon octicon-cloud-download"></span> <a n:href=":Front:Portal:List:sorted, by => newest">Newest</a></h2>
 {cache 'addons/newest', expire => '+1 hour'}
     {control newest}
 {/cache}
