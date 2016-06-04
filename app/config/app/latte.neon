@@ -11,7 +11,7 @@ services:
             - addFilter('timeAgo', ['App\Core\Latte\Filters\Filters', 'timeAgo'])
             - addFilter('datetime', ['App\Core\Latte\Filters\Filters', 'datetime'])
             - addFilter('shields', ['App\Core\Latte\Filters\Filters', 'shields'])
-            - addFilter('ucfirst', ['App\Core\Latte\Filters', 'ucfirst'])
+            - addFilter('ucfirst', ['App\Core\Latte\Filters\Filters', 'ucfirst'])
 
             # Composer
             - addFilter('isPhpDependency', ['App\Core\Latte\Filters\ComposerHelper', 'isPhpDependency'])
