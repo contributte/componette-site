@@ -34,13 +34,16 @@
 		"nextras/dbal": "~2.0.0"
 	},
 	"require-dev": {
-		"nette/tester": "~1.6.0",
+		"nette/tester": "~2.0.0",
 		"jakub-onderka/php-parallel-lint": "~0.9.0",
 		"squizlabs/php_codesniffer": "~2.5.0"
 	},
 	"autoload": {
-		"psr-4": { "App\\": "app/" },
+		"classmap": ["app/"],
 		"files": ["app/shortcuts.php"]
+	},
+	"autoload-dev": {
+		"classmap": ["tests/"]
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true
