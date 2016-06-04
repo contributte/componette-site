@@ -6,4 +6,5 @@ use App\Model\Exceptions\LogicException;
 
 class InvalidArgumentException extends LogicException
 {
+
 }

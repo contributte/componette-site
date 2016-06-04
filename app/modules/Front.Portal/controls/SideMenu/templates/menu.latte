@@ -1,0 +1,29 @@
+{block}
+{cache menu, expire => '+1 day'}
+
+{var $categories => $_categories()}
+{var $tags => $_tags()}
+
+<div class="side-menu">
+	<ul class="nav">
+		<li n:foreach="$categories as $category">
+		    {continueIf $category->addons->count() <= 0}
+			<a href="{plink List:tag $category->name}">
+				<span class="square" style="background: {$category->color|noescape}">{$category->addons->count()}</span>
+				<span n:class="$category->highlighted ? highlighted, name">{$category->name}</span>
+			</a>
+		</li>
+	</ul>
+
+	<div class="tags">
+		<span n:foreach="$tags as $tag" class="label label-default"><a href="{plink List:tag $tag->name}">#{$tag->name}</a></span>
+	</div>
+
+	<div class="btn-wrapper">
+		<a href="{plink List:}" class="btn btn-default btn-block">
+			<span class="octicon octicon-list-unordered"></span>
+			<strong>show all packages</strong>
+		</a>
+	</div>
+</div>
+{/cache}

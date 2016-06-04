@@ -23,6 +23,7 @@ final class StdBuffer
     {
         $tmp = $this->str;
         $this->clean();
+
         return $tmp;
     }
 

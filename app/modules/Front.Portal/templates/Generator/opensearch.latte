@@ -1,0 +1,16 @@
+{contentType text/xml; charset=utf-8}
+{cache rss, expire => '+ 1 week'}
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+    <ShortName>Componette</ShortName>
+    <LongName>Componette: Search for an addon</LongName>
+    <Description>Componette: Search for an addon</Description>
+    <Contact>admin@componette.com</Contact>
+    <InputEncoding>UTF-8</InputEncoding>
+    <OutputEncoding>UTF-8</OutputEncoding>
+    <SyndicationRight>open</SyndicationRight>
+    <Image type="image/x-icon" height="16" width="16">{$baseUri}/favicon.ico</Image>
+    <Url type="application/x-suggestions+json" method="GET" template="{link //:Front:Api:OpenSearch:suggest}?q={l}searchTerms{r}"></Url>
+    <Url type="text/html" method="GET" template="{link //:Front:Portal:List:search}?q={l}searchTerms{r}&amp;utm_source=google&amp;utm_medium=opensearch&amp;utm_campaign=search"></Url>
+    <Query role="example" searchTerms="ajax" />
+</OpenSearchDescription>
+{/cache}

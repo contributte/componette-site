@@ -69,6 +69,7 @@ final class AddonsHelper
     {
         $this->build();
         $addon = array_search(strtolower($slug), $this->data['addons']);
+
         return $addon ? $addon : NULL;
     }
 

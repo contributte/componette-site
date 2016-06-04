@@ -6,4 +6,5 @@ use App\Model\Exceptions\RuntimeException;
 
 class ComposerException extends RuntimeException
 {
+
 }

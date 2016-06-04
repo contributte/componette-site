@@ -119,7 +119,7 @@ final class SearchFacade
             ->findOrdered('popularity')
             ->findBy([
                 'this->tags->name' => $tag,
-                'state' => Addon::STATE_ACTIVE
+                'state' => Addon::STATE_ACTIVE,
             ]);
 
         $collection = $this->formatLimit($collection);

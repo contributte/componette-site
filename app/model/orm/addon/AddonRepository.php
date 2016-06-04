@@ -34,6 +34,7 @@ final class AddonRepository extends AbstractRepository
 
         return $this->mapper->toCollection($result);
     }
+
     /**
      * @param string $q
      * @param string|NULL $orderBy
@@ -65,6 +66,7 @@ final class AddonRepository extends AbstractRepository
     public function findOrdered($orderBy)
     {
         $result = $this->mapper->findOrdered($orderBy);
+
         return $this->mapper->toCollection($result);
     }
 

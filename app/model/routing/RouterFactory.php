@@ -37,6 +37,7 @@ final class RouterFactory
     {
         $router = new RouteList('Cli');
         $router[] = new CliRouter(['action' => 'Cli:hi']);
+
         return $router;
     }
 
@@ -104,8 +105,8 @@ final class RouterFactory
                 },
                 Route::FILTER_IN => function ($owner) {
                     return strtolower($owner);
-                }
-            ]
+                },
+            ],
         ]);
 
         // COMMON SCHEME

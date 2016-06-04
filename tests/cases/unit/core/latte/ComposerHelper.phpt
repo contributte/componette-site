@@ -6,7 +6,7 @@
 
 require __DIR__ . '/../../../../bootstrap.php';
 
-use App\Core\Latte\ComposerHelper;
+use App\Core\Latte\Filters\ComposerHelper;
 use Tester\Assert;
 
 // Truthy

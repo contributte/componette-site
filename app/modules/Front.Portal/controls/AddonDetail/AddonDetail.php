@@ -2,9 +2,10 @@
 
 namespace App\Modules\Front\Portal\Controls\AddonDetail;
 
+use App\Core\Latte\ComposerHelper;
 use App\Core\UI\BaseControl;
 use App\Model\ORM\Addon\Addon;
-use App\Modules\Front\Controls\AddonMeta\AddonMeta;
+use App\Modules\Front\Portal\Controls\AddonMeta\AddonMeta;
 use Nette\Utils\DateTime;
 
 final class AddonDetail extends BaseControl

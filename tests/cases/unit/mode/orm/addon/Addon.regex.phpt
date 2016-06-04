@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Test: App\Model\ORM\Addon\Addon.Regex
+ * Test: App\Model\ORM\Addon\Addon.regex
  */
 
 require __DIR__ . '/../../../../../bootstrap.php';

@@ -51,6 +51,7 @@ final class Service
     protected function call($uri, array $headers = [], array $opts = [])
     {
         list($info, $result) = $this->makeRequest($this->client->getApiUrl($uri), $headers, $opts);
+
         return $result;
     }
 

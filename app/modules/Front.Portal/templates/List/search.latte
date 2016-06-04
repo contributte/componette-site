@@ -1,0 +1,10 @@
+{block #title}By {$search->q}{/block}
+{block #breadcrumbs}
+    <a n:href=":Front:Home:">Home</a> > By search
+{/block}
+
+{block #content}
+{snippet #search-result}
+    <h2 class="category"><span class="mega-octicon octicon-search"></span> Searched for #<strong>{$search->q}</strong></h2>
+    {control addons}
+{/snippet}

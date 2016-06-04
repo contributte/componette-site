@@ -1,0 +1,11 @@
+<div class="readme">
+    {var $content = $addon->github->contentHtml}
+
+    {if $content}
+        {cache $addon->id . '/content', expire => '+1 hour'}
+            {$content|noescape}
+        {/cache}
+    {else}
+        <p class="alert alert-warning">No content at this moment.</p>
+    {/if}
+</div>

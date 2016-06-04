@@ -18,4 +18,5 @@ use Nextras\Orm\Model\Model as NextrasModel;
  */
 final class Model extends NextrasModel
 {
+
 }

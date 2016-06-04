@@ -6,7 +6,7 @@
 
 require __DIR__ . '/../../../../bootstrap.php';
 
-use App\Core\Latte\Filters;
+use App\Core\Latte\Filters\Filters;
 use Tester\Assert;
 
 // N/A

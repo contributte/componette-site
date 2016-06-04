@@ -14,6 +14,7 @@ final class Url extends NUrl
     public function appendPath($path)
     {
         $this->setPath($this->getPath() . $path);
+
         return $this;
     }
 }
