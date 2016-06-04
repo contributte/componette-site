@@ -1,6 +1,18 @@
 # CHANGELOG
 
-## 1.0.7-dev
+## 1.1.0-dev
+
+- Fix: do not disable curl ssl verify [#60]
+- Feature: added report page/link [#29]
+- Fix: image resolving also over src [#64]
+- Improvement: sync homepage headline links 
+- Improvement: convert EOF to unix style [#57]
+- Improvement: update composer.json (autoloading, classmap, etc) 
+- Feature: added editorconfig [#57]
+- Feature: track composer.json [#59]
+- Feature: update to Nette 2.4, Nette\Tester 2.0
+
+## 1.0.7 [04.06.2016]
 
 - Improvement: added waffle badge to Readme
 - Improvement: added github-like buttons
