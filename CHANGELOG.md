@@ -9,7 +9,7 @@
 - Improvement: github-like copy & paste title
 - Fix: autofocus search form on Homepage
 - Feature: change opensearch suggestion
-- Fix: default ordering by owner / tag [closes #52]
+- Fix: default ordering by owner / tag [#52]
 - Monitoring: monitor composer clipboard && opening embedded images
 
 ## 1.0.6 [11.03.2016]
