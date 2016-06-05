@@ -13,6 +13,9 @@ final class Linker
     /** @var Url */
     private $owner;
 
+    /** @var Url */
+    private $raw;
+
     /**
      * @param string $owner
      * @param string $repository
@@ -23,6 +26,8 @@ final class Linker
         $this->repo->appendPath($owner . '/' . $repository);
         $this->owner = new Url('https://github.com');
         $this->owner->appendPath($owner);
+        $this->raw = new Url('https://raw.github.com');
+        $this->raw->appendPath($owner . '/' . $repository);
     }
 
     /**
@@ -135,6 +140,15 @@ final class Linker
     public function getFileUrl($file, $fragment = NULL)
     {
         return $this->repo . $file . '/' . $fragment;
+    }
+
+    /**
+     * @param string $file
+     * @return string
+     */
+    public function getRawUrl($file)
+    {
+        return $this->raw . '/HEAD/' . $file;
     }
 
 }
