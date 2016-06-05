@@ -32,7 +32,7 @@ Modern useful #nette addons portal.
 
 ## Docker
 
-This portal run in Docker container(s). You can see configurations in **docker** branch.
+This portal run in Docker container(s). You can see configurations in [**dockerfiles**](https://github.com/componette/dockerfiles) repository.
 
 ## How to run
 
