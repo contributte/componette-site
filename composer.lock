@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ac56b33701f75091c474be2905839923",
+    "hash": "cab804945c82c53cd71ada4a65de76fd",
     "content-hash": "b780c9903ef846d54b74e9394a00fea2",
     "packages": [
         {
@@ -13,17 +13,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/latte.git",
-                "reference": "e723fedea1a2c14dd11d58dc5d36a00cd038a82b"
+                "reference": "68ab1f24665e076f521dbfc61f90bb413e8b32ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/latte/zipball/e723fedea1a2c14dd11d58dc5d36a00cd038a82b",
-                "reference": "e723fedea1a2c14dd11d58dc5d36a00cd038a82b",
+                "url": "https://api.github.com/repos/nette/latte/zipball/68ab1f24665e076f521dbfc61f90bb413e8b32ff",
+                "reference": "68ab1f24665e076f521dbfc61f90bb413e8b32ff",
                 "shasum": ""
             },
             "require": {
                 "ext-tokenizer": "*",
                 "php": ">=5.4.4"
+            },
+            "conflict": {
+                "nette/application": "<2.4"
             },
             "require-dev": {
                 "nette/tester": "~2.0",
@@ -66,7 +69,7 @@
                 "templating",
                 "twig"
             ],
-            "time": "2016-06-01 18:26:35"
+            "time": "2016-06-17 12:21:04"
         },
         {
             "name": "nette/application",
@@ -74,12 +77,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/application.git",
-                "reference": "38a7ad0e380d937b79a0b19e7c1000842d0f7d79"
+                "reference": "8ff194f5e94fd53b96d90ab696dd42b083b017b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/application/zipball/38a7ad0e380d937b79a0b19e7c1000842d0f7d79",
-                "reference": "38a7ad0e380d937b79a0b19e7c1000842d0f7d79",
+                "url": "https://api.github.com/repos/nette/application/zipball/8ff194f5e94fd53b96d90ab696dd42b083b017b9",
+                "reference": "8ff194f5e94fd53b96d90ab696dd42b083b017b9",
                 "shasum": ""
             },
             "require": {
@@ -90,16 +93,19 @@
                 "php": ">=5.6.0"
             },
             "conflict": {
+                "nette/di": "<2.4",
+                "nette/forms": "<2.4",
+                "nette/latte": "<2.4",
                 "nette/nette": "<2.2"
             },
             "require-dev": {
                 "latte/latte": "~2.4",
-                "nette/di": "~2.3",
-                "nette/forms": "~2.2",
-                "nette/robot-loader": "~2.2",
-                "nette/security": "~2.2",
+                "nette/di": "~2.4",
+                "nette/forms": "~2.4",
+                "nette/robot-loader": "~2.4",
+                "nette/security": "~2.4",
                 "nette/tester": "~2.0",
-                "tracy/tracy": "^2.3"
+                "tracy/tracy": "^2.4"
             },
             "suggest": {
                 "latte/latte": "Allows using Latte in templates",
@@ -134,7 +140,7 @@
             ],
             "description": "Nette Application MVC Component",
             "homepage": "https://nette.org",
-            "time": "2016-06-02 15:38:07"
+            "time": "2016-06-16 14:56:56"
         },
         {
             "name": "nette/bootstrap",
@@ -213,12 +219,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/caching.git",
-                "reference": "bf6ab29769bbffac699bef2d6417db5afed4eca0"
+                "reference": "e07955ba3e8b70c9db600dd088d4669b0dab1230"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/caching/zipball/bf6ab29769bbffac699bef2d6417db5afed4eca0",
-                "reference": "bf6ab29769bbffac699bef2d6417db5afed4eca0",
+                "url": "https://api.github.com/repos/nette/caching/zipball/e07955ba3e8b70c9db600dd088d4669b0dab1230",
+                "reference": "e07955ba3e8b70c9db600dd088d4669b0dab1230",
                 "shasum": ""
             },
             "require": {
@@ -264,7 +270,7 @@
             ],
             "description": "Nette Caching Component",
             "homepage": "https://nette.org",
-            "time": "2016-06-01 18:20:20"
+            "time": "2016-06-14 14:24:06"
         },
         {
             "name": "nette/component-model",
@@ -324,16 +330,16 @@
         },
         {
             "name": "nette/di",
-            "version": "v2.4.0-RC1",
+            "version": "v2.4.0-RC2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/di.git",
-                "reference": "a096ee806488db81f41ebed0a4371337e7d36789"
+                "reference": "5a200a5eb9411f1b93a2205a2aa96c67f6db42e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/di/zipball/a096ee806488db81f41ebed0a4371337e7d36789",
-                "reference": "a096ee806488db81f41ebed0a4371337e7d36789",
+                "url": "https://api.github.com/repos/nette/di/zipball/5a200a5eb9411f1b93a2205a2aa96c67f6db42e4",
+                "reference": "5a200a5eb9411f1b93a2205a2aa96c67f6db42e4",
                 "shasum": ""
             },
             "require": {
@@ -378,7 +384,7 @@
             ],
             "description": "Nette Dependency Injection Component",
             "homepage": "https://nette.org",
-            "time": "2016-05-23 09:21:52"
+            "time": "2016-06-07 14:42:37"
         },
         {
             "name": "nette/finder",
@@ -432,16 +438,16 @@
         },
         {
             "name": "nette/forms",
-            "version": "v2.4.0-RC3",
+            "version": "v2.4.0-RC4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/forms.git",
-                "reference": "daccca942fea5fae372ca9a0b4107ba8e0a1e034"
+                "reference": "98832d3d79fdda0583c2fc90abeb89c371b97644"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/forms/zipball/daccca942fea5fae372ca9a0b4107ba8e0a1e034",
-                "reference": "daccca942fea5fae372ca9a0b4107ba8e0a1e034",
+                "url": "https://api.github.com/repos/nette/forms/zipball/98832d3d79fdda0583c2fc90abeb89c371b97644",
+                "reference": "98832d3d79fdda0583c2fc90abeb89c371b97644",
                 "shasum": ""
             },
             "require": {
@@ -488,7 +494,7 @@
             ],
             "description": "Nette Forms: greatly facilitates web forms",
             "homepage": "https://nette.org",
-            "time": "2016-06-01 08:54:59"
+            "time": "2016-06-07 11:42:50"
         },
         {
             "name": "nette/http",
@@ -599,16 +605,16 @@
         },
         {
             "name": "nette/php-generator",
-            "version": "v2.4.0-RC1",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/php-generator.git",
-                "reference": "bf60eaad18cd1a2ab372cc9637a509c38daa4252"
+                "reference": "2cd0d0e922e4fad2fc58ccac6af8c9753d2b88c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/php-generator/zipball/bf60eaad18cd1a2ab372cc9637a509c38daa4252",
-                "reference": "bf60eaad18cd1a2ab372cc9637a509c38daa4252",
+                "url": "https://api.github.com/repos/nette/php-generator/zipball/2cd0d0e922e4fad2fc58ccac6af8c9753d2b88c8",
+                "reference": "2cd0d0e922e4fad2fc58ccac6af8c9753d2b88c8",
                 "shasum": ""
             },
             "require": {
@@ -619,7 +625,7 @@
                 "nette/nette": "<2.2"
             },
             "require-dev": {
-                "nette/tester": "~1.4",
+                "nette/tester": "~2.0",
                 "tracy/tracy": "^2.3"
             },
             "type": "library",
@@ -651,36 +657,42 @@
             ],
             "description": "Nette PHP Generator",
             "homepage": "https://nette.org",
-            "time": "2016-04-20 14:00:36"
+            "time": "2016-06-17 15:18:56"
         },
         {
             "name": "nette/reflection",
-            "version": "v2.3.2",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/reflection.git",
-                "reference": "6c39adc4661f5f7b64be7ee161b8f67d8174da4d"
+                "reference": "1922f2502e5d2bf6be51859721855e8e72ebde96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/reflection/zipball/6c39adc4661f5f7b64be7ee161b8f67d8174da4d",
-                "reference": "6c39adc4661f5f7b64be7ee161b8f67d8174da4d",
+                "url": "https://api.github.com/repos/nette/reflection/zipball/1922f2502e5d2bf6be51859721855e8e72ebde96",
+                "reference": "1922f2502e5d2bf6be51859721855e8e72ebde96",
                 "shasum": ""
             },
             "require": {
                 "ext-tokenizer": "*",
                 "nette/caching": "~2.2",
-                "nette/utils": "~2.2",
-                "php": ">=5.3.1"
+                "nette/utils": "~2.4",
+                "php": ">=5.6.0"
             },
             "conflict": {
                 "nette/nette": "<2.2"
             },
             "require-dev": {
                 "nette/di": "~2.3",
-                "nette/tester": "~1.4"
+                "nette/tester": "~2.0",
+                "tracy/tracy": "^2.3"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4-dev"
+                }
+            },
             "autoload": {
                 "classmap": [
                     "src/"
@@ -704,20 +716,20 @@
             ],
             "description": "Nette PHP Reflection Component",
             "homepage": "https://nette.org",
-            "time": "2016-03-12 14:57:07"
+            "time": "2016-05-17 15:49:34"
         },
         {
             "name": "nette/robot-loader",
-            "version": "v2.4.0-RC1",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/robot-loader.git",
-                "reference": "acce0e33b60dc2e8fa6f69827784de4c8cfb1747"
+                "reference": "e5c86ce8b53c7d4be84244624c67485ee4c92dbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/robot-loader/zipball/acce0e33b60dc2e8fa6f69827784de4c8cfb1747",
-                "reference": "acce0e33b60dc2e8fa6f69827784de4c8cfb1747",
+                "url": "https://api.github.com/repos/nette/robot-loader/zipball/e5c86ce8b53c7d4be84244624c67485ee4c92dbc",
+                "reference": "e5c86ce8b53c7d4be84244624c67485ee4c92dbc",
                 "shasum": ""
             },
             "require": {
@@ -730,7 +742,7 @@
                 "nette/nette": "<2.2"
             },
             "require-dev": {
-                "nette/tester": "~1.4",
+                "nette/tester": "~2.0",
                 "tracy/tracy": "^2.3"
             },
             "type": "library",
@@ -762,20 +774,20 @@
             ],
             "description": "Nette RobotLoader: comfortable autoloading",
             "homepage": "https://nette.org",
-            "time": "2016-04-11 00:27:38"
+            "time": "2016-05-17 15:49:40"
         },
         {
             "name": "nette/security",
-            "version": "v2.4.0-RC1",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/security.git",
-                "reference": "b8894b54e10d0d4a1fc40e956d80e00f61d13a8f"
+                "reference": "5aeaa40d478d60216cfba8ae94187f2b3cfbdfcb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/security/zipball/b8894b54e10d0d4a1fc40e956d80e00f61d13a8f",
-                "reference": "b8894b54e10d0d4a1fc40e956d80e00f61d13a8f",
+                "url": "https://api.github.com/repos/nette/security/zipball/5aeaa40d478d60216cfba8ae94187f2b3cfbdfcb",
+                "reference": "5aeaa40d478d60216cfba8ae94187f2b3cfbdfcb",
                 "shasum": ""
             },
             "require": {
@@ -788,7 +800,7 @@
             "require-dev": {
                 "nette/di": "~2.3",
                 "nette/http": "~2.3",
-                "nette/tester": "~1.4",
+                "nette/tester": "~2.0",
                 "tracy/tracy": "^2.3"
             },
             "type": "library",
@@ -820,7 +832,7 @@
             ],
             "description": "Nette Security: Access Control Component",
             "homepage": "https://nette.org",
-            "time": "2016-05-03 14:57:28"
+            "time": "2016-05-17 15:49:45"
         },
         {
             "name": "nette/tokenizer",
@@ -873,16 +885,16 @@
         },
         {
             "name": "nette/utils",
-            "version": "v2.4.0-RC2",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/utils.git",
-                "reference": "69684ba1fdbe7a6a72cdb9ccb303344adb068156"
+                "reference": "c455ade9f24a1f99aa81772516764045296b8ca0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/utils/zipball/69684ba1fdbe7a6a72cdb9ccb303344adb068156",
-                "reference": "69684ba1fdbe7a6a72cdb9ccb303344adb068156",
+                "url": "https://api.github.com/repos/nette/utils/zipball/c455ade9f24a1f99aa81772516764045296b8ca0",
+                "reference": "c455ade9f24a1f99aa81772516764045296b8ca0",
                 "shasum": ""
             },
             "require": {
@@ -892,7 +904,7 @@
                 "nette/nette": "<2.2"
             },
             "require-dev": {
-                "nette/tester": "~1.7",
+                "nette/tester": "~2.0",
                 "tracy/tracy": "^2.3"
             },
             "suggest": {
@@ -930,7 +942,7 @@
             ],
             "description": "Nette Utility Classes",
             "homepage": "https://nette.org",
-            "time": "2016-05-03 07:27:48"
+            "time": "2016-06-17 13:15:10"
         },
         {
             "name": "nextras/dbal",
@@ -1052,16 +1064,16 @@
         },
         {
             "name": "tracy/tracy",
-            "version": "v2.4.0-RC2",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tracy.git",
-                "reference": "2ffbfc57a430d64a29a73651e100218c15119633"
+                "reference": "4c8b64f135d0b38ed0b9c47a1d2e8d7ef1941fb1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tracy/zipball/2ffbfc57a430d64a29a73651e100218c15119633",
-                "reference": "2ffbfc57a430d64a29a73651e100218c15119633",
+                "url": "https://api.github.com/repos/nette/tracy/zipball/4c8b64f135d0b38ed0b9c47a1d2e8d7ef1941fb1",
+                "reference": "4c8b64f135d0b38ed0b9c47a1d2e8d7ef1941fb1",
                 "shasum": ""
             },
             "require": {
@@ -1108,7 +1120,7 @@
                 "debugger",
                 "nette"
             ],
-            "time": "2016-05-22 11:14:12"
+            "time": "2016-06-17 14:56:13"
         }
     ],
     "packages-dev": [
