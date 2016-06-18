@@ -30,7 +30,7 @@
 		"nette/utils": "~2.4.0",
 		"latte/latte": "dev-master",
 		"tracy/tracy": "~2.4.0",
-		"nextras/orm": "~2.0.0",
+		"nextras/orm": "dev-master",
 		"nextras/dbal": "~2.0.0"
 	},
 	"require-dev": {
