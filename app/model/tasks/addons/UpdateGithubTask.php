@@ -5,6 +5,7 @@ namespace App\Model\Tasks\Addons;
 use App\Core\Cache\Cacher;
 use App\Model\ORM\Addon\Addon;
 use App\Model\ORM\Addon\AddonRepository;
+use App\Model\ORM\Github\Github;
 use App\Model\WebServices\Github\Service;
 use Nette\Utils\DateTime;
 use Nette\Utils\Strings;
@@ -65,7 +66,12 @@ final class UpdateGithubTask extends BaseAddonTask
             // Base metadata
             $response = $this->github->repo($addon->owner, $addon->name);
             if ($response && !isset($response['message'])) {
-                $github = $addon->github;
+
+                // Create github entity if not exist
+                if (!$addon->github) {
+                    $addon->github = new Github();
+                }
+
                 // Increase adding counting
                 if ($addon->state == Addon::STATE_QUEUED) {
                     $added++;

@@ -71,7 +71,6 @@ final class AddonModal extends BaseControl
             $addon->createdAt = new DateTime();
             $addon->owner = $owner;
             $addon->name = $name;
-            $addon->github = new Github();
             if ($form->values->tags) {
                 $addon->tags->add($form->values->tags);
             }
