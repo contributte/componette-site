@@ -58,9 +58,9 @@ final class UpdateComposerTask extends BaseAddonTask
                         }
 
                         // Basic info
-                        $addon->composer->name = Arrays::get($composer, 'name', NULL);
-                        $addon->composer->description = Arrays::get($composer, 'description', NULL);
-                        $addon->composer->type = Arrays::get($composer, 'type', NULL);
+                        $addon->composer->name = !empty($name = Arrays::get($composer, 'name', NULL)) ? $name : NULL;
+                        $addon->composer->description = !empty($description = Arrays::get($composer, 'description', NULL)) ? $description : NULL;
+                        $addon->composer->type = !empty($type = Arrays::get($composer, 'type', NULL)) ? $type : NULL;
 
                         // Downloads
                         if (($stats = $this->composer->repo($owner, $repo))) {
