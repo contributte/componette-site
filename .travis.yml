@@ -19,20 +19,16 @@ install:
 
 script:
     # Run linter
-    - vendor/bin/parallel-lint app tests
+    - bin/linter
 
     # Run Code Sniffer
-    #
-    # n => Do not print warnings (shortcut for --warning-severity=0)
-    # s => Show sniff codes in all reports
-    # p => Show progress of the run
-    - vendor/bin/phpcs --standard=ruleset.xml --extensions=php --encoding=utf-8 -nsp app tests
+    - bin/phpcs
 
     # Show Nette Tester environment
-    - vendor/bin/tester tests/cases -s -p php -i
+    - bin/tester-info
 
     # Run Nette Tester
-    - vendor/bin/tester tests/cases -s -p php
+    - bin/tester
 
 after_failure:
     # Print *.actual content
