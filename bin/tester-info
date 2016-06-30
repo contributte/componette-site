@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+# p => Specify PHP interpreter
+# i => Show test environment
+vendor/bin/tester tests/cases -p php -i

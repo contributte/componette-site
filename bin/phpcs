@@ -1,2 +1,6 @@
 #!/usr/bin/env sh
+
+# n => Do not print warnings (shortcut for --warning-severity=0)
+# s => Show sniff codes in all reports
+# p => Show progress of the run
 vendor/bin/phpcs --standard=ruleset.xml --extensions=php --encoding=utf-8 -nsp app tests

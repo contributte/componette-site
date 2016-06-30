@@ -1,2 +1,5 @@
 #!/usr/bin/env sh
+
+# s => Show skipped files
+# p => Specify PHP interpreter
 vendor/bin/tester tests/cases -s -p php
