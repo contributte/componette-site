@@ -44,7 +44,7 @@ module.exports = function () {
 
     gulp.task('front-js-remote', function () {
         remoteSrc([
-            'jquery/2.1.4/jquery.min.js',
+            'jquery/2.2.4/jquery.min.js',
             'twitter-bootstrap/3.3.6/js/bootstrap.min.js',
             'typeahead.js/0.11.1/typeahead.bundle.min.js',
             'handlebars.js/4.0.3/handlebars.min.js',

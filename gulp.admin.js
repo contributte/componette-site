@@ -43,7 +43,7 @@ module.exports = function () {
 
     gulp.task('admin-js-remote', function () {
         remoteSrc([
-            'jquery/2.1.4/jquery.min.js',
+            'jquery/2.2.4/jquery.min.js',
             'twitter-bootstrap/3.3.6/js/bootstrap.min.js',
             'chosen/1.4.2/chosen.jquery.min.js'
         ], {
