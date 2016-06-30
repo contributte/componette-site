@@ -4,12 +4,12 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3beaec7407f31a524106a3849b1753f5",
-    "content-hash": "4696c028c16b1a4998c32f1c08ab9ff0",
+    "hash": "c2eee74437a46e4d3bc78679c0e0518d",
+    "content-hash": "75a7710c9942db3d3dd063294df0c1eb",
     "packages": [
         {
             "name": "latte/latte",
-            "version": "dev-master",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/latte.git",
@@ -73,7 +73,7 @@
         },
         {
             "name": "nette/application",
-            "version": "dev-master",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/application.git",
@@ -218,16 +218,16 @@
         },
         {
             "name": "nette/caching",
-            "version": "dev-master",
+            "version": "v2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/caching.git",
-                "reference": "9a41df412418eebea718a75f67b869f3dfa2baa0"
+                "reference": "e07955ba3e8b70c9db600dd088d4669b0dab1230"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/caching/zipball/9a41df412418eebea718a75f67b869f3dfa2baa0",
-                "reference": "9a41df412418eebea718a75f67b869f3dfa2baa0",
+                "url": "https://api.github.com/repos/nette/caching/zipball/e07955ba3e8b70c9db600dd088d4669b0dab1230",
+                "reference": "e07955ba3e8b70c9db600dd088d4669b0dab1230",
                 "shasum": ""
             },
             "require": {
@@ -240,9 +240,9 @@
             },
             "require-dev": {
                 "latte/latte": "~2.4",
-                "nette/di": "~2.4",
+                "nette/di": "~2.3",
                 "nette/tester": "~2.0",
-                "tracy/tracy": "^2.4"
+                "tracy/tracy": "^2.3"
             },
             "type": "library",
             "extra": {
@@ -273,7 +273,7 @@
             ],
             "description": "Nette Caching Component",
             "homepage": "https://nette.org",
-            "time": "2016-06-27 19:13:25"
+            "time": "2016-06-14 14:24:06"
         },
         {
             "name": "nette/component-model",
@@ -1326,9 +1326,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "nette/application": 20,
-        "nette/caching": 20,
-        "latte/latte": 20,
         "nextras/orm": 20
     },
     "prefer-stable": true,
