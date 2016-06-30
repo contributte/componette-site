@@ -32,8 +32,6 @@ function bd()
     foreach (func_get_args() as $var) {
         Debugger::barDump($var);
     }
-
-    die;
 }
 
 /**
