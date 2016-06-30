@@ -23,7 +23,7 @@ use Nextras\Orm\Relationships\ManyHasMany;
  * @property string $isComposer         {virtual}
  * @property string $isBower            {virtual}
  *
- * @property Github $github             {1:1 Github::$addon}
+ * @property Github|NULL $github        {1:1 Github::$addon}
  * @property Bower|NULL $bower          {1:1 Bower::$addon}
  * @property Composer|NULL $composer    {1:1 Composer::$addon}
  * @property ManyHasMany|Tag[] $tags    {m:n Tag::$addons, isMain=true}
