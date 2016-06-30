@@ -5,7 +5,6 @@
 /app/config/config.local.neon
 /log
 /temp
-/bin
 
 # Assets
 /www/assets/css/*.css

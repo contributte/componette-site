@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+vendor/bin/tester tests/cases -s -p php

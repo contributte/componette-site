@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+vendor/bin/phpcs --standard=ruleset.xml --extensions=php --encoding=utf-8 -nsp app tests
