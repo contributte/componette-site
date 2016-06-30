@@ -4,6 +4,9 @@ services:
 
     # [front-end]
     - App\Modules\Front\Portal\Controls\AddonList\IAddonListFactory
+    - App\Modules\Front\Portal\Controls\AddonModal\AddonModalModel
+
+    - App\Modules\Front\Portal\Controls\Status\IStatusFactory
     - App\Modules\Front\Portal\Controls\AddonList\ICategorizedAddonListFactory
     - App\Modules\Front\Portal\Controls\AddonMeta\IAddonMetaFactory
     - App\Modules\Front\Portal\Controls\AddonDetail\IAddonDetailFactory

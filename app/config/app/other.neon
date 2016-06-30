@@ -2,9 +2,7 @@ services:
 
     # Routing ==============================================
     - App\Model\Routing\Helpers\AddonsHelper
-    routing.routeFactory:
-        class: App\Model\Routing\RouterFactory
-        inject: on
+    - {class: App\Model\Routing\RouterFactory, inject: on}
     routing.router: @App\Model\Routing\RouterFactory::create
 
     # Portal ===============================================

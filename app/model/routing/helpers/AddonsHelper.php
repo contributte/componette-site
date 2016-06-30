@@ -2,9 +2,10 @@
 
 namespace App\Model\Routing\Helpers;
 
+use App\Core\Cache\CacheProvider;
+use App\Model\Cache\CacheKeys;
 use App\Model\ORM\Addon\AddonRepository;
 use Nette\Caching\Cache;
-use Nette\Caching\IStorage;
 
 final class AddonsHelper
 {
@@ -26,12 +27,12 @@ final class AddonsHelper
 
     /**
      * @param AddonRepository $repository
-     * @param IStorage $storage
+     * @param CacheProvider $cacheProvider
      */
-    public function __construct(AddonRepository $repository, IStorage $storage)
+    public function __construct(AddonRepository $repository, CacheProvider $cacheProvider)
     {
         $this->repository = $repository;
-        $this->cache = new Cache($storage, 'Router');
+        $this->cache = $cacheProvider->create(CacheKeys::ROUTING);
     }
 
     /**

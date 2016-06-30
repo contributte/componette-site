@@ -4,9 +4,6 @@ namespace App\Modules\Front\Portal\Controls\AddonModal;
 
 use App\Core\UI\BaseControl;
 use App\Model\ORM\Addon\Addon;
-use App\Model\ORM\Addon\AddonRepository;
-use App\Model\ORM\Github\Github;
-use App\Model\ORM\Tag\TagRepository;
 use Nette\Application\UI\Form;
 use Nette\Utils\DateTime;
 use Nette\Utils\Strings;
@@ -16,21 +13,16 @@ use PDOException;
 final class AddonModal extends BaseControl
 {
 
-    /** @var AddonRepository */
-    private $addonRepository;
-
-    /** @var TagRepository */
-    private $tagRepository;
+    /** @var AddonModalModel */
+    private $model;
 
     /**
-     * @param AddonRepository $addonRepository
-     * @param TagRepository $tagRepository
+     * @param AddonModalModel $model
      */
-    public function __construct(AddonRepository $addonRepository, TagRepository $tagRepository)
+    public function __construct(AddonModalModel $model)
     {
         parent::__construct();
-        $this->addonRepository = $addonRepository;
-        $this->tagRepository = $tagRepository;
+        $this->model = $model;
     }
 
     /**
@@ -48,7 +40,7 @@ final class AddonModal extends BaseControl
             ->addRule($form::URL, 'URL is not valid')
             ->addRule($form::PATTERN, 'Only GitHub urls are allowed', Addon::GITHUB_REGEX);
 
-        $tags = $this->tagRepository->fetchPairs();
+        $tags = $this->model->getTags();
         $form->addMultiSelect('tags', 'Tags', $tags);
 
         $form->addSubmit('add', 'Add addon');
@@ -64,9 +56,7 @@ final class AddonModal extends BaseControl
 
             list ($all, $owner, $name) = $matches;
 
-            $addon = new Addon();
-            $this->addonRepository->attach($addon);
-
+            $addon = $this->model->createAddon();
             $addon->state = Addon::STATE_QUEUED;
             $addon->createdAt = new DateTime();
             $addon->owner = $owner;
@@ -76,7 +66,7 @@ final class AddonModal extends BaseControl
             }
 
             try {
-                $this->addonRepository->persistAndFlush($addon);
+                $this->model->persist($addon);
                 $this->presenter->flashMessage('Addon successful added to the cron process queue. Thank you.', 'info');
             } catch (UniqueConstraintViolationException $e) {
                 $this->presenter->flashMessage('There is already addon "' . ($owner . '/' . $name) . '" in our database.', 'warning');

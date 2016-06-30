@@ -2,9 +2,10 @@
 
 namespace App\Model;
 
+use App\Core\Cache\CacheProvider;
+use App\Model\Cache\CacheKeys;
 use App\Model\ORM\Addon\AddonRepository;
 use Nette\Caching\Cache;
-use Nette\Caching\IStorage;
 use Nette\Utils\DateTime;
 
 final class Statistics
@@ -13,21 +14,20 @@ final class Statistics
     /** @var array */
     private $cached = [];
 
-    /** @var Cache */
-    private $cache;
-
     /** @var AddonRepository */
     private $addonRepository;
 
-    /**
-     * @param IStorage $storage
-     * @param AddonRepository $addonRepository
-     */
-    public function __construct(IStorage $storage, AddonRepository $addonRepository)
-    {
-        $this->cache = new Cache($storage, 'Portal');
-        $this->addonRepository = $addonRepository;
+    /** @var Cache */
+    private $cache;
 
+    /**
+     * @param AddonRepository $addonRepository
+     * @param CacheProvider $cacheProvider
+     */
+    public function __construct(AddonRepository $addonRepository, CacheProvider $cacheProvider)
+    {
+        $this->addonRepository = $addonRepository;
+        $this->cache = $cacheProvider->create(CacheKeys::FRONT_CONTROLS_STATISTICS);
         $this->build();
     }
 
