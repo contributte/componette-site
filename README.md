@@ -49,3 +49,48 @@ This portal run in Docker container(s). You can see configurations in [**dockerf
 - Run `gulp deploy`
 
 For developing you can use `gulp watch`, it's monitor every **CSS** and **JS** files in `www/assets`.
+
+## How to contribute
+
+I very appreciate you contributing work, these tools keep on eye and help me to keep a high code standard.
+
+### Linter
+
+```sh
+$ sh bin/linter
+
+PHP 7.0.7 | 10 parallel jobs
+............................................................  60/123 (48 %)
+............................................................ 120/123 (97 %)
+...                                                          123/123 (100 %)
+```
+
+### CodeSniffer
+
+
+```sh
+$ sh bin/linter
+
+............................................................  60 / 123 (49%)
+............................................................ 120 / 123 (98%)
+...
+
+Time: 1.64 secs; Memory: 12Mb
+```
+
+### Tests
+
+```sh
+$ sh bin/tester
+
+|_   _/ __)( __/_   _/ __)| _ )
+  |_| \___ /___) |_| \___ |_|_\  v2.0.x
+
+Note: No php.ini is used.
+PHP 7.0.7-1~dotdeb+8.1 (cli) | php -n  | 8 threads
+
+...
+
+
+OK (x tests, 0.0 seconds)
+```
