@@ -1,17 +1,23 @@
 <?php
 
-namespace App\Model\Tasks\Addons;
+namespace App\Model\Commands\Addons\Composer;
 
+use App\Model\Commands\BaseCommand;
 use App\Model\ORM\Addon\Addon;
 use App\Model\ORM\Addon\AddonRepository;
 use App\Model\WebServices\Composer\Service;
 use Exception;
 use Nette\InvalidStateException;
 use Nextras\Orm\Collection\ICollection;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 use Tracy\Debugger;
 
-final class StatsComposerTask extends BaseAddonTask
+final class CollectStatsCommand extends BaseCommand
 {
+
+    /** @var AddonRepository */
+    private $addonRepository;
 
     /** @var Service */
     private $composer;
@@ -22,15 +28,27 @@ final class StatsComposerTask extends BaseAddonTask
      */
     public function __construct(AddonRepository $addonRepository, Service $composer)
     {
-        parent::__construct($addonRepository);
+        parent::__construct();
+        $this->addonRepository = $addonRepository;
         $this->composer = $composer;
     }
 
     /**
-     * @param array $args
-     * @return bool
+     * Configure command
      */
-    public function run(array $args = [])
+    protected function configure()
+    {
+        $this
+            ->setName('app:addons:composer:collect')
+            ->setDescription('Update composer stats');
+    }
+
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return void
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
         /** @var ICollection|Addon[] $addons */
         $addons = $this->addonRepository->findComposers();
@@ -53,7 +71,7 @@ final class StatsComposerTask extends BaseAddonTask
                         if (($stats = $this->composer->stats($owner, $repo))) {
                             $extra->set('composer-stats', ['all' => $stats]);
                         } else {
-                            $this->log('Skip (composer stats) [no stats data]: ' . $addon->fullname);
+                            $output->writeln('Skip (composer stats) [no stats data]: ' . $addon->fullname);
                         }
 
                         // Persist
@@ -62,17 +80,17 @@ final class StatsComposerTask extends BaseAddonTask
                         // Increase counting
                         $counter++;
                     } else {
-                        $this->log('Skip (composer stats) [no composer data]: ' . $addon->fullname);
+                        $output->writeln('Skip (composer stats) [no composer data]: ' . $addon->fullname);
                     }
                 } else {
-                    $this->log('Skip (composer stats) [no extra data]: ' . $addon->fullname);
+                    $output->writeln('Skip (composer stats) [no extra data]: ' . $addon->fullname);
                 }
             } catch (Exception $e) {
                 Debugger::log($e, Debugger::EXCEPTION);
-                $this->log('Skip (composer stats) [exception]: ' . $e->getMessage());
+                $output->writeln('Skip (composer stats) [exception]: ' . $e->getMessage());
             }
         }
 
-        return $counter;
+        $output->writeln(sprintf('Updated %s packages', $counter));
     }
 }

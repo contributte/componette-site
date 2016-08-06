@@ -2,6 +2,7 @@ includes:
 
     # APPLICATION ==========================================
     - app/components.neon
+    - app/console.neon
     - app/latte.neon
     - app/model.neon
     - app/other.neon

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Model\Tasks\Addons;
+namespace App\Model\Commands\Addons\Sync;
 
+use App\Model\Commands\BaseCommand;
 use App\Model\ORM\Addon\Addon;
 use App\Model\ORM\Addon\AddonRepository;
 use App\Model\ORM\Composer\Composer;
@@ -10,10 +11,15 @@ use Exception;
 use Nette\InvalidStateException;
 use Nette\Utils\Arrays;
 use Nextras\Orm\Collection\ICollection;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 use Tracy\Debugger;
 
-final class UpdateComposerTask extends BaseAddonTask
+final class SynchronizeComposerCommand extends BaseCommand
 {
+
+    /** @var AddonRepository */
+    private $addonRepository;
 
     /** @var Service */
     private $composer;
@@ -24,15 +30,27 @@ final class UpdateComposerTask extends BaseAddonTask
      */
     public function __construct(AddonRepository $addonRepository, Service $composer)
     {
-        parent::__construct($addonRepository);
+        parent::__construct();
+        $this->addonRepository = $addonRepository;
         $this->composer = $composer;
     }
 
     /**
-     * @param array $args
-     * @return int
+     * Configure command
      */
-    public function run(array $args = [])
+    protected function configure()
+    {
+        $this
+            ->setName('app:addons:sync:composer')
+            ->setDescription('Synchronize composer detailed information');
+    }
+
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return void
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
         /** @var ICollection|Addon[] $addons */
         $addons = $this->addonRepository->findComposers();
@@ -77,17 +95,17 @@ final class UpdateComposerTask extends BaseAddonTask
                         // Increase counting
                         $counter++;
                     } else {
-                        $this->log('Skip (composer) [no composer data]: ' . $addon->fullname);
+                        $output->writeln('Skip (composer) [no composer data]: ' . $addon->fullname);
                     }
                 } else {
-                    $this->log('Skip (composer) [no extra data]: ' . $addon->fullname);
+                    $output->writeln('Skip (composer) [no extra data]: ' . $addon->fullname);
                 }
             } catch (Exception $e) {
                 Debugger::log($e, Debugger::EXCEPTION);
-                $this->log('Skip (composer) [exception]: ' . $e->getMessage());
+                $output->writeln('Skip (composer) [exception]: ' . $e->getMessage());
             }
         }
 
-        return $counter;
+        $output->writeln(sprintf('Updated %s composer addons', $counter));
     }
 }

@@ -1,14 +1,22 @@
 <?php
 
-namespace App\Model\Tasks\Addons;
+namespace App\Model\Commands\Addons\Sync;
 
+use App\Model\Commands\BaseCommand;
+use App\Model\Exceptions\RuntimeException;
 use App\Model\ORM\Addon\Addon;
 use App\Model\ORM\Addon\AddonRepository;
 use App\Model\WebServices\Github\Service;
 use Nextras\Orm\Collection\ICollection;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
 
-final class UpdateGithubFilesTask extends BaseAddonTask
+final class SynchronizeGithubFilesCommand extends BaseCommand
 {
+
+    /** @var AddonRepository */
+    private $addonRepository;
 
     /** @var Service */
     private $github;
@@ -19,35 +27,64 @@ final class UpdateGithubFilesTask extends BaseAddonTask
      */
     public function __construct(AddonRepository $addonRepository, Service $github)
     {
-        parent::__construct($addonRepository);
+        parent::__construct();
+        $this->addonRepository = $addonRepository;
         $this->github = $github;
     }
 
     /**
-     * @param array $args
-     * @return int
+     * Configure command
      */
-    public function run(array $args = [])
+    protected function configure()
     {
+        $this
+            ->setName('app:addons:sync:github-files')
+            ->setDescription('Synchronize github files (composer.json, bower.json)');
+
+        $this->addArgument(
+            'type',
+            InputOption::VALUE_REQUIRED,
+            'What type should be synchronized'
+        );
+
+        $this->addOption(
+            'rest',
+            NULL,
+            InputOption::VALUE_NONE,
+            'Should synchronize only queued addons?'
+        );
+    }
+
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return void
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        if (!$input->getArgument('type')) {
+            throw new RuntimeException('Argument type is required');
+        }
+
         /** @var ICollection|Addon[] $addons */
         $addons = $this->addonRepository->findActive();
 
         // FILTER ADDONS =============================================
 
-        if (isset($args['rest']) && $args['rest'] === TRUE) {
+        if ($input->hasOption('rest')) {
             $addons = $addons->findBy(['this->github->extra' => NULL]);
-        } else if (isset($args['type'])) {
-            switch ($args['type']) {
-                case 'composer':
-                    $addons = $addons->findBy(['type' => Addon::TYPE_COMPOSER]);
-                    break;
-                case 'bower':
-                    $addons = $addons->findBy(['type' => Addon::TYPE_BOWER]);
-                    break;
-                case 'unknown':
-                    $addons = $addons->findBy(['type' => Addon::TYPE_UNKNOWN]);
-                    break;
-            }
+        }
+
+        switch ($input->getArgument('type')) {
+            case 'composer':
+                $addons = $addons->findBy(['type' => Addon::TYPE_COMPOSER]);
+                break;
+            case 'bower':
+                $addons = $addons->findBy(['type' => Addon::TYPE_BOWER]);
+                break;
+            case 'unknown':
+                $addons = $addons->findBy(['type' => Addon::TYPE_UNKNOWN]);
+                break;
         }
 
         // DO YOUR JOB ===============================================
@@ -68,13 +105,13 @@ final class UpdateGithubFilesTask extends BaseAddonTask
                             $composer = @json_decode($content, TRUE);
                             $addon->github->extra->set('composer', $composer);
                         } else {
-                            $this->log('Skip (composer) [invalid composer.json]: ' . $addon->fullname);
+                            $output->writeln('Skip (composer) [invalid composer.json]: ' . $addon->fullname);
                         }
                     } else {
-                        $this->log('Skip (composer) [can not download composer.json]: ' . $addon->fullname);
+                        $output->writeln('Skip (composer) [can not download composer.json]: ' . $addon->fullname);
                     }
                 } else {
-                    $this->log('Skip (composer): ' . $addon->fullname);
+                    $output->writeln('Skip (composer): ' . $addon->fullname);
                 }
             }
 
@@ -92,13 +129,13 @@ final class UpdateGithubFilesTask extends BaseAddonTask
                             $composer = @json_decode($content, TRUE);
                             $addon->github->extra->set('bower', $composer);
                         } else {
-                            $this->log('Skip (bower) [invalid bower.json]: ' . $addon->fullname);
+                            $output->writeln('Skip (bower) [invalid bower.json]: ' . $addon->fullname);
                         }
                     } else {
-                        $this->log('Skip (bower) [can not download bower.json]: ' . $addon->fullname);
+                        $output->writeln('Skip (bower) [can not download bower.json]: ' . $addon->fullname);
                     }
                 } else {
-                    $this->log('Skip (bower): ' . $addon->fullname);
+                    $output->writeln('Skip (bower): ' . $addon->fullname);
                 }
             }
 
@@ -114,7 +151,7 @@ final class UpdateGithubFilesTask extends BaseAddonTask
             $counter++;
         }
 
-        return $counter;
+        $output->writeln(sprintf('Updated %s addons files', $counter));
     }
 
 }

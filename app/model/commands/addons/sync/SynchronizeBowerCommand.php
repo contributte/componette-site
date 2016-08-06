@@ -1,16 +1,22 @@
 <?php
 
-namespace App\Model\Tasks\Addons;
+namespace App\Model\Commands\Addons\Sync;
 
+use App\Model\Commands\BaseCommand;
 use App\Model\ORM\Addon\Addon;
 use App\Model\ORM\Addon\AddonRepository;
 use App\Model\ORM\Bower\Bower;
 use App\Model\WebServices\Bower\Service;
 use Nette\Utils\Arrays;
 use Nextras\Orm\Collection\ICollection;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
-final class UpdateBowerTask extends BaseAddonTask
+final class SynchronizeBowerCommand extends BaseCommand
 {
+
+    /** @var AddonRepository */
+    private $addonRepository;
 
     /** @var Service */
     private $bower;
@@ -21,15 +27,27 @@ final class UpdateBowerTask extends BaseAddonTask
      */
     public function __construct(AddonRepository $addonRepository, Service $bower)
     {
-        parent::__construct($addonRepository);
+        parent::__construct();
+        $this->addonRepository = $addonRepository;
         $this->bower = $bower;
     }
 
     /**
-     * @param array $args
-     * @return int
+     * Configure command
      */
-    public function run(array $args = [])
+    protected function configure()
+    {
+        $this
+            ->setName('app:addons:sync:bower')
+            ->setDescription('Synchronize bower detailed information');
+    }
+
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return void
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
         /** @var ICollection|Addon[] $addons */
         $addons = $this->addonRepository->findBowers();
@@ -65,13 +83,13 @@ final class UpdateBowerTask extends BaseAddonTask
                     // Increase counting
                     $counter++;
                 } else {
-                    $this->log('Skip (bower) [no bower data]: ' . $addon->fullname);
+                    $output->writeln('Skip (bower) [no bower data]: ' . $addon->fullname);
                 }
             } else {
-                $this->log('Skip (bower) [no extra data]: ' . $addon->fullname);
+                $output->writeln('Skip (bower) [no extra data]: ' . $addon->fullname);
             }
         }
 
-        return $counter;
+        $output->writeln(sprintf('Updated %s bower addons', $counter));
     }
 }

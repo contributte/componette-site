@@ -32,12 +32,3 @@ services:
 
     # Images ===============================================
     - App\Model\WebImages\GithubImages(%wwwDir%/imgs)
-
-    # Tasks ================================================
-    - App\Model\Tasks\Addons\GenerateContentTask
-    - App\Model\Tasks\Addons\UpdateGithubTask
-    - App\Model\Tasks\Addons\UpdateGithubFilesTask
-    - App\Model\Tasks\Addons\UpdateComposerTask
-    - App\Model\Tasks\Addons\UpdateBowerTask
-    - App\Model\Tasks\Addons\StatsComposerTask
-    - App\Model\Tasks\Avatars\UpdateAvatarTask

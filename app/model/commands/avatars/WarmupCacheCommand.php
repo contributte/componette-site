@@ -1,16 +1,22 @@
 <?php
 
-namespace App\Model\Tasks\Avatars;
+namespace App\Model\Commands\Avatars;
 
+use App\Model\Commands\BaseCommand;
 use App\Model\ORM\Addon\Addon;
 use App\Model\ORM\Addon\AddonRepository;
 use App\Model\WebImages\GithubImages;
 use App\Model\WebServices\Github\Service;
 use Nette\Utils\DateTime;
 use Nextras\Orm\Collection\ICollection;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
-final class UpdateAvatarTask extends BaseAvatarTask
+final class WarmupCacheCommand extends BaseCommand
 {
+
+    /** @var AddonRepository */
+    private $addonRepository;
 
     /** @var Service */
     private $github;
@@ -25,16 +31,28 @@ final class UpdateAvatarTask extends BaseAvatarTask
      */
     public function __construct(AddonRepository $addonRepository, Service $github, GithubImages $githubImages)
     {
-        parent::__construct($addonRepository);
+        parent::__construct();
+        $this->addonRepository = $addonRepository;
         $this->github = $github;
         $this->githubImages = $githubImages;
     }
 
     /**
-     * @param array $args
-     * @return int
+     * Configure command
      */
-    public function run(array $args = [])
+    protected function configure()
+    {
+        $this
+            ->setName('app:avatars:warmup')
+            ->setDescription('Synchronize avatars cache');
+    }
+
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return void
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
         /** @var ICollection|Addon[] $addons */
         $addons = $this->addonRepository->findActive();
@@ -55,7 +73,7 @@ final class UpdateAvatarTask extends BaseAvatarTask
             }
         }
 
-        return $counter;
+        $output->writeln(sprintf('Updated %s avatars', $counter));
     }
 
 }

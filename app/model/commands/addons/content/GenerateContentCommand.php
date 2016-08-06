@@ -1,17 +1,24 @@
 <?php
 
-namespace App\Model\Tasks\Addons;
+namespace App\Model\Commands\Addons\Content;
 
 use App\Core\Utils\Validators;
+use App\Model\Commands\BaseCommand;
 use App\Model\ORM\Addon\Addon;
 use App\Model\ORM\Addon\AddonRepository;
 use App\Model\ORM\Github\Github;
 use App\Model\WebServices\Github\Service;
 use Nette\Utils\Strings;
 use Nextras\Orm\Collection\ICollection;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
 
-final class GenerateContentTask extends BaseAddonTask
+final class GenerateContentCommand extends BaseCommand
 {
+
+    /** @var AddonRepository */
+    private $addonRepository;
 
     /** @var Service */
     private $github;
@@ -22,22 +29,41 @@ final class GenerateContentTask extends BaseAddonTask
      */
     public function __construct(AddonRepository $addonRepository, Service $github)
     {
-        parent::__construct($addonRepository);
+        parent::__construct();
+        $this->addonRepository = $addonRepository;
         $this->github = $github;
     }
 
     /**
-     * @param array $args
-     * @return bool
+     * Configure command
      */
-    public function run(array $args = [])
+    protected function configure()
+    {
+        $this
+            ->setName('app:addons:content:generate')
+            ->setDescription('Generate addons contents');
+
+        $this->addOption(
+            'rest',
+            NULL,
+            InputOption::VALUE_NONE,
+            'Should synchronize only queued addons?'
+        );
+    }
+
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return void
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
         /** @var ICollection|Addon[] $addons */
         $addons = $this->addonRepository->findActive();
 
         // FILTER PACKAGES ===========================================
 
-        if (isset($args['rest']) && $args['rest'] === TRUE) {
+        if ($input->hasOption('rest')) {
             $addons = $addons->findBy(['this->github->contentHtml' => NULL]);
         }
 
@@ -52,7 +78,7 @@ final class GenerateContentTask extends BaseAddonTask
                 $addon->github->contentRaw = $content;
             } else {
                 $addon->github->contentRaw = '';
-                $this->log('Skip (content) [failed download raw content]: ' . $addon->fullname);
+                $output->writeln('Skip (content) [failed download raw content]: ' . $addon->fullname);
             }
 
             // HTML
@@ -63,7 +89,7 @@ final class GenerateContentTask extends BaseAddonTask
                 $this->reformatLinks($addon->github);
             } else {
                 $addon->github->contentHtml = '';
-                $this->log('Skip (content) [failed download html content]: ' . $addon->fullname);
+                $output->writeln('Skip (content) [failed download html content]: ' . $addon->fullname);
             }
 
             // Persist
@@ -75,7 +101,7 @@ final class GenerateContentTask extends BaseAddonTask
             $counter++;
         }
 
-        return $counter;
+        $output->writeln(sprintf('Updated %s addons contents', $counter));
     }
 
     /**

@@ -3,9 +3,9 @@
 DATE=`date +%Y-%m-%d`
 echo $DATE
 
-php ../www/index.php Addons:update -github
-php ../www/index.php Addons:update -githubfiles
-php ../www/index.php Addons:generate -content
-php ../www/index.php Addons:update -composer
-php ../www/index.php Addons:update -bower
-php ../www/index.php Addons:stats -composer
+../bin/console app:addons:sync:github all
+../bin/console app:addons:sync:github-files all
+../bin/console app:addons:generate:content
+../bin/console app:addons:sync:composer
+../bin/console app:addons:sync:bower
+../bin/console app:addons:composer:collect

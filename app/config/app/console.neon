@@ -1,0 +1,23 @@
+services:
+    console.application:
+        class: App\Core\Console\Application
+        setup:
+            # Configuration
+            - setName('Componette CLI')
+            - setVersion('1.0')
+            # Commands
+            - add(@App\Model\Commands\Addons\Composer\CollectStatsCommand)
+            - add(@App\Model\Commands\Addons\Content\GenerateContentCommand)
+            - add(@App\Model\Commands\Addons\Sync\SynchronizeBowerCommand)
+            - add(@App\Model\Commands\Addons\Sync\SynchronizeComposerCommand)
+            - add(@App\Model\Commands\Addons\Sync\SynchronizeGithubCommand)
+            - add(@App\Model\Commands\Addons\Sync\SynchronizeGithubFilesCommand)
+            - add(@App\Model\Commands\Avatars\WarmupCacheCommand)
+
+    - App\Model\Commands\Addons\Composer\CollectStatsCommand
+    - App\Model\Commands\Addons\Content\GenerateContentCommand
+    - App\Model\Commands\Addons\Sync\SynchronizeBowerCommand
+    - App\Model\Commands\Addons\Sync\SynchronizeComposerCommand
+    - App\Model\Commands\Addons\Sync\SynchronizeGithubCommand
+    - App\Model\Commands\Addons\Sync\SynchronizeGithubFilesCommand
+    - App\Model\Commands\Avatars\WarmupCacheCommand
