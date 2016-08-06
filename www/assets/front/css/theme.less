@@ -877,8 +877,18 @@ a[href*="://"]:after {
       }
 
       .title-repo {
-        margin-bottom: 15px;
+        ul {
+          li {
+            display: inline;
+            float: none;
+          }
+          li.title-tags {
+            margin-top: 10px;
+            display: block;
+          }
+        }
       }
+
     }
   }
 }
