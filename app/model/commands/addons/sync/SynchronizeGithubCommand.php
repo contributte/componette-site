@@ -78,7 +78,7 @@ final class SynchronizeGithubCommand extends BaseCommand
         /** @var ICollection|Addon[] $addons */
         $addons = $this->addonRepository->findActive();
 
-        if ($input->hasOption('rest')) {
+        if ($input->getOption('rest') == TRUE) {
             $addons = $this->addonRepository->findBy(['state' => Addon::STATE_QUEUED]);
         }
 

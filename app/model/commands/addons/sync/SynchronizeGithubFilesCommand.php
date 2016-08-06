@@ -71,7 +71,7 @@ final class SynchronizeGithubFilesCommand extends BaseCommand
 
         // FILTER ADDONS =============================================
 
-        if ($input->hasOption('rest')) {
+        if ($input->getOption('rest') == TRUE) {
             $addons = $addons->findBy(['this->github->extra' => NULL]);
         }
 
