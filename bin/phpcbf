@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# n => Do not fix warnings (shortcut for --warning-severity=0)
+vendor/bin/phpcbf --standard=ruleset.xml --extensions=php --encoding=utf-8 --no-patch -n app tests
