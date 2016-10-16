@@ -1,31 +1,31 @@
 <?php
 
-namespace App\Model\Commands\Addons\Sync;
+namespace App\Model\Commands\Addons\Bower;
 
 use App\Model\Commands\BaseCommand;
 use App\Model\ORM\Addon\Addon;
 use App\Model\ORM\Addon\AddonRepository;
 use App\Model\ORM\Bower\Bower;
-use App\Model\WebServices\Bower\Service;
+use App\Model\WebServices\Bower\BowerService;
 use Nette\Utils\Arrays;
 use Nextras\Orm\Collection\ICollection;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-final class SynchronizeBowerCommand extends BaseCommand
+final class SynchronizeCommand extends BaseCommand
 {
 
     /** @var AddonRepository */
     private $addonRepository;
 
-    /** @var Service */
+    /** @var BowerService */
     private $bower;
 
     /**
      * @param AddonRepository $addonRepository
-     * @param Service $bower
+     * @param BowerService $bower
      */
-    public function __construct(AddonRepository $addonRepository, Service $bower)
+    public function __construct(AddonRepository $addonRepository, BowerService $bower)
     {
         parent::__construct();
         $this->addonRepository = $addonRepository;
@@ -38,7 +38,7 @@ final class SynchronizeBowerCommand extends BaseCommand
     protected function configure()
     {
         $this
-            ->setName('app:addons:sync:bower')
+            ->setName('addons:bower:sync')
             ->setDescription('Synchronize bower detailed information');
     }
 
@@ -66,8 +66,9 @@ final class SynchronizeBowerCommand extends BaseCommand
                     }
 
                     // Downloads
-                    if (($stats = $this->bower->repo($bower['name']))) {
-                        $addon->bower->downloads = Arrays::get($stats, ['hits'], 0);
+                    $response = $this->bower->repo($bower['name']);
+                    if ($response->isOk()) {
+                        $addon->bower->downloads = Arrays::get($response->getJsonBody(), ['hits'], 0);
                     }
 
                     // Name

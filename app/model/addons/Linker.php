@@ -3,9 +3,13 @@
 namespace App\Model\Addons;
 
 use App\Core\Http\Url;
+use App\Model\ORM\Github\Github;
 
 final class Linker
 {
+
+    /** @var Github */
+    private $github;
 
     /** @var Url */
     private $repo;
@@ -17,17 +21,17 @@ final class Linker
     private $raw;
 
     /**
-     * @param string $owner
-     * @param string $repository
+     * @param Github $github
      */
-    public function __construct($owner, $repository)
+    public function __construct(Github $github)
     {
+        $this->github = $github;
         $this->repo = new Url('https://github.com');
-        $this->repo->appendPath($owner . '/' . $repository);
+        $this->repo->appendPath($github->addon->owner . '/' . $github->addon->name);
         $this->owner = new Url('https://github.com');
-        $this->owner->appendPath($owner);
+        $this->owner->appendPath($github->addon->owner);
         $this->raw = new Url('https://raw.github.com');
-        $this->raw->appendPath($owner . '/' . $repository);
+        $this->raw->appendPath($github->addon->owner . '/' . $github->addon->name);
     }
 
     /**
@@ -101,9 +105,26 @@ final class Linker
     /**
      * @return string
      */
+    public function getNewReleaseUrl()
+    {
+        return $this->repo . '/releases/new';
+    }
+
+    /**
+     * @return string
+     */
     public function getReleasesUrl()
     {
         return $this->repo . '/releases';
+    }
+
+    /**
+     * @param string $tag
+     * @return string
+     */
+    public function getReleaseUrl($tag)
+    {
+        return $this->repo . '/releases/tag/' . $tag;
     }
 
     /**

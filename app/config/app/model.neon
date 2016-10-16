@@ -1,16 +1,19 @@
 services:
 
+    # Curl =================================================
+    - App\Core\Http\Curl\Client
+
     # Github ===============================================
-    - App\Model\WebServices\Github\Client(%github.token%)
-    - App\Model\WebServices\Github\Service
+    - App\Model\WebServices\Github\GithubClient(token: %github.token%)
+    - App\Model\WebServices\Github\GithubService
 
     # Composer =============================================
-    - App\Model\WebServices\Composer\Client
-    - App\Model\WebServices\Composer\Service
+    - App\Model\WebServices\Composer\ComposerClient
+    - App\Model\WebServices\Composer\ComposerService
 
     # Bower ================================================
-    - App\Model\WebServices\Bower\Client
-    - App\Model\WebServices\Bower\Service
+    - App\Model\WebServices\Bower\BowerClient
+    - App\Model\WebServices\Bower\BowerService
 
     # Search ===============================================
     - App\Model\Search\SearchFactory
@@ -18,7 +21,6 @@ services:
 
     # Cache ================================================
     - App\Core\Cache\CacheProvider
-
 
     # Model ================================================
 

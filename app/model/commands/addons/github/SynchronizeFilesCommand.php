@@ -1,31 +1,31 @@
 <?php
 
-namespace App\Model\Commands\Addons\Sync;
+namespace App\Model\Commands\Addons\Github;
 
 use App\Model\Commands\BaseCommand;
 use App\Model\Exceptions\RuntimeException;
 use App\Model\ORM\Addon\Addon;
 use App\Model\ORM\Addon\AddonRepository;
-use App\Model\WebServices\Github\Service;
+use App\Model\WebServices\Github\GithubService;
 use Nextras\Orm\Collection\ICollection;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-final class SynchronizeGithubFilesCommand extends BaseCommand
+final class SynchronizeFilesCommand extends BaseCommand
 {
 
     /** @var AddonRepository */
     private $addonRepository;
 
-    /** @var Service */
+    /** @var GithubService */
     private $github;
 
     /**
      * @param AddonRepository $addonRepository
-     * @param Service $github
+     * @param GithubService $github
      */
-    public function __construct(AddonRepository $addonRepository, Service $github)
+    public function __construct(AddonRepository $addonRepository, GithubService $github)
     {
         parent::__construct();
         $this->addonRepository = $addonRepository;
@@ -38,7 +38,7 @@ final class SynchronizeGithubFilesCommand extends BaseCommand
     protected function configure()
     {
         $this
-            ->setName('app:addons:sync:github-files')
+            ->setName('addons:github:sync:files')
             ->setDescription('Synchronize github files (composer.json, bower.json)');
 
         $this->addArgument(
@@ -93,12 +93,15 @@ final class SynchronizeGithubFilesCommand extends BaseCommand
         foreach ($addons as $addon) {
             // Composer
             if (in_array($addon->type, [NULL, Addon::TYPE_UNKNOWN, Addon::TYPE_COMPOSER])) {
-                if (($response = $this->github->composer($addon->owner, $addon->name))) {
+                $response = $this->github->composer($addon->owner, $addon->name);
+                $body = $response->getJsonBody();
+
+                if ($body) {
                     if ($addon->type !== Addon::TYPE_COMPOSER) {
                         $addon->type = Addon::TYPE_COMPOSER;
                     }
 
-                    $addon->github->extra->append('github', ['composer' => $response]);
+                    $addon->github->extra->append('github', ['composer' => $body]);
 
                     if (($url = $addon->github->extra->get(['github', 'composer', 'download_url'], NULL))) {
                         if (($content = @file_get_contents($url))) {
@@ -117,12 +120,15 @@ final class SynchronizeGithubFilesCommand extends BaseCommand
 
             // Bower
             if (in_array($addon->type, [NULL, Addon::TYPE_UNKNOWN, Addon::TYPE_BOWER])) {
-                if (($response = $this->github->bower($addon->owner, $addon->name))) {
+                $response = $this->github->bower($addon->owner, $addon->name);
+                $body = $response->getJsonBody();
+
+                if ($body) {
                     if ($addon->type !== Addon::TYPE_BOWER) {
                         $addon->type = Addon::TYPE_BOWER;
                     }
 
-                    $addon->github->extra->append('github', ['bower' => $response]);
+                    $addon->github->extra->append('github', ['bower' => $body]);
 
                     if (($url = $addon->github->extra->get(['github', 'bower', 'download_url'], NULL))) {
                         if (($content = @file_get_contents($url))) {

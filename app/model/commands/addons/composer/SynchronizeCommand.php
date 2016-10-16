@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Model\Commands\Addons\Sync;
+namespace App\Model\Commands\Addons\Composer;
 
 use App\Model\Commands\BaseCommand;
 use App\Model\ORM\Addon\Addon;
 use App\Model\ORM\Addon\AddonRepository;
 use App\Model\ORM\Composer\Composer;
-use App\Model\WebServices\Composer\Service;
+use App\Model\WebServices\Composer\ComposerService;
 use Exception;
 use Nette\InvalidStateException;
 use Nette\Utils\Arrays;
@@ -15,20 +15,20 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Tracy\Debugger;
 
-final class SynchronizeComposerCommand extends BaseCommand
+final class SynchronizeCommand extends BaseCommand
 {
 
     /** @var AddonRepository */
     private $addonRepository;
 
-    /** @var Service */
+    /** @var ComposerService */
     private $composer;
 
     /**
      * @param AddonRepository $addonRepository
-     * @param Service $composer
+     * @param ComposerService $composer
      */
-    public function __construct(AddonRepository $addonRepository, Service $composer)
+    public function __construct(AddonRepository $addonRepository, ComposerService $composer)
     {
         parent::__construct();
         $this->addonRepository = $addonRepository;
@@ -41,7 +41,7 @@ final class SynchronizeComposerCommand extends BaseCommand
     protected function configure()
     {
         $this
-            ->setName('app:addons:sync:composer')
+            ->setName('addons:composer:sync')
             ->setDescription('Synchronize composer detailed information');
     }
 
@@ -81,8 +81,9 @@ final class SynchronizeComposerCommand extends BaseCommand
                         $addon->composer->type = !empty($type = Arrays::get($composer, 'type', NULL)) ? $type : NULL;
 
                         // Downloads
-                        if (($stats = $this->composer->repo($owner, $repo))) {
-                            $addon->composer->downloads = Arrays::get($stats, ['package', 'downloads', 'total'], 0);
+                        $response = $this->composer->repo($owner, $repo);
+                        if ($response->isOk()) {
+                            $addon->composer->downloads = Arrays::get($response->getJsonBody(), ['package', 'downloads', 'total'], 0);
                         }
 
                         // Keywords

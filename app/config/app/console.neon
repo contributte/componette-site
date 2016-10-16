@@ -5,19 +5,28 @@ services:
             # Configuration
             - setName('Componette CLI')
             - setVersion('1.0')
-            # Commands
+
+            # Componette
             - add(@App\Model\Commands\Addons\Composer\CollectStatsCommand)
             - add(@App\Model\Commands\Addons\Content\GenerateContentCommand)
-            - add(@App\Model\Commands\Addons\Sync\SynchronizeBowerCommand)
-            - add(@App\Model\Commands\Addons\Sync\SynchronizeComposerCommand)
-            - add(@App\Model\Commands\Addons\Sync\SynchronizeGithubCommand)
-            - add(@App\Model\Commands\Addons\Sync\SynchronizeGithubFilesCommand)
+            - add(@App\Model\Commands\Addons\Bower\SynchronizeCommand)
+            - add(@App\Model\Commands\Addons\Composer\SynchronizeCommand)
+            - add(@App\Model\Commands\Addons\Github\SynchronizeCommand)
+            - add(@App\Model\Commands\Addons\Github\SynchronizeFilesCommand)
+            - add(@App\Model\Commands\Addons\Github\SynchronizeReleasesCommand)
             - add(@App\Model\Commands\Avatars\WarmupCacheCommand)
 
+            # Nextras migration
+            - add(@Nextras\Migrations\Bridges\SymfonyConsole\CreateCommand)
+            - add(@Nextras\Migrations\Bridges\SymfonyConsole\ResetCommand)
+            - add(@Nextras\Migrations\Bridges\SymfonyConsole\ContinueCommand)
+
+    # Componette
     - App\Model\Commands\Addons\Composer\CollectStatsCommand
     - App\Model\Commands\Addons\Content\GenerateContentCommand
-    - App\Model\Commands\Addons\Sync\SynchronizeBowerCommand
-    - App\Model\Commands\Addons\Sync\SynchronizeComposerCommand
-    - App\Model\Commands\Addons\Sync\SynchronizeGithubCommand
-    - App\Model\Commands\Addons\Sync\SynchronizeGithubFilesCommand
+    - App\Model\Commands\Addons\Bower\SynchronizeCommand
+    - App\Model\Commands\Addons\Composer\SynchronizeCommand
+    - App\Model\Commands\Addons\Github\SynchronizeCommand
+    - App\Model\Commands\Addons\Github\SynchronizeFilesCommand
+    - App\Model\Commands\Addons\Github\SynchronizeReleasesCommand
     - App\Model\Commands\Avatars\WarmupCacheCommand

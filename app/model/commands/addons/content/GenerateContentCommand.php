@@ -7,7 +7,7 @@ use App\Model\Commands\BaseCommand;
 use App\Model\ORM\Addon\Addon;
 use App\Model\ORM\Addon\AddonRepository;
 use App\Model\ORM\Github\Github;
-use App\Model\WebServices\Github\Service;
+use App\Model\WebServices\Github\GithubService;
 use Nette\Utils\Strings;
 use Nextras\Orm\Collection\ICollection;
 use Symfony\Component\Console\Input\InputInterface;
@@ -20,14 +20,14 @@ final class GenerateContentCommand extends BaseCommand
     /** @var AddonRepository */
     private $addonRepository;
 
-    /** @var Service */
+    /** @var GithubService */
     private $github;
 
     /**
      * @param AddonRepository $addonRepository
-     * @param Service $github
+     * @param GithubService $github
      */
-    public function __construct(AddonRepository $addonRepository, Service $github)
+    public function __construct(AddonRepository $addonRepository, GithubService $github)
     {
         parent::__construct();
         $this->addonRepository = $addonRepository;
@@ -40,7 +40,7 @@ final class GenerateContentCommand extends BaseCommand
     protected function configure()
     {
         $this
-            ->setName('app:addons:content:generate')
+            ->setName('addons:content:generate')
             ->setDescription('Generate addons contents');
 
         $this->addOption(
@@ -63,7 +63,7 @@ final class GenerateContentCommand extends BaseCommand
 
         // FILTER PACKAGES ===========================================
 
-        if ($input->hasOption('rest')) {
+        if ($input->getOption('rest') == TRUE) {
             $addons = $addons->findBy(['this->github->contentHtml' => NULL]);
         }
 
@@ -72,20 +72,20 @@ final class GenerateContentCommand extends BaseCommand
         $counter = 0;
         foreach ($addons as $addon) {
             // Raw
-            $content = $this->github->readme($addon->owner, $addon->name, 'raw');
-            if ($content) {
+            $response = $this->github->readme($addon->owner, $addon->name, 'raw');
+            if ($response->isOk()) {
                 // Content
-                $addon->github->contentRaw = $content;
+                $addon->github->contentRaw = $response->getBody();
             } else {
                 $addon->github->contentRaw = '';
                 $output->writeln('Skip (content) [failed download raw content]: ' . $addon->fullname);
             }
 
             // HTML
-            $content = $this->github->readme($addon->owner, $addon->name, 'html');
-            if ($content) {
+            $response = $this->github->readme($addon->owner, $addon->name, 'html');
+            if ($response->isOk()) {
                 // Content
-                $addon->github->contentHtml = $content;
+                $addon->github->contentHtml = $response->getBody();
                 $this->reformatLinks($addon->github);
             } else {
                 $addon->github->contentHtml = '';

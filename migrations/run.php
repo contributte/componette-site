@@ -4,6 +4,7 @@ use Nette\DI\Container;
 use Nextras\Dbal\Connection;
 use Nextras\Migrations\Bridges;
 use Nextras\Migrations\Bridges\NextrasDbal\NextrasAdapter;
+use Nextras\Migrations\Controllers\ConsoleController;
 use Nextras\Migrations\Controllers\HttpController;
 use Nextras\Migrations\Drivers\MySqlDriver;
 use Nextras\Migrations\Extensions\SqlHandler;
@@ -15,7 +16,11 @@ $connection = $container->getByType(Connection::class);
 $dbal = new NextrasAdapter($connection);
 $driver = new MySqlDriver($dbal);
 
-$controller = new HttpController($driver);
+if (PHP_SAPI === 'cli') {
+    $controller = new ConsoleController($driver);
+} else {
+    $controller = new HttpController($driver);
+}
 
 $baseDir = __DIR__;
 $controller->addGroup('structures', "$baseDir/structures");

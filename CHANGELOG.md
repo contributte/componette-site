@@ -2,6 +2,11 @@
 
 ## 1.1.0-dev
 
+
+- Improvement: addon sidebar [#77]
+- Feature: added addon releases
+- Improvement: common curl client
+- Improvement: finalize symfony commands
 - Fix: do not disable curl ssl verify [#60]
 - Feature: added report page/link [#29]
 - Fix: image resolving also over src [#64]

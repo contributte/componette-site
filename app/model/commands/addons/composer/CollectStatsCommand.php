@@ -5,7 +5,7 @@ namespace App\Model\Commands\Addons\Composer;
 use App\Model\Commands\BaseCommand;
 use App\Model\ORM\Addon\Addon;
 use App\Model\ORM\Addon\AddonRepository;
-use App\Model\WebServices\Composer\Service;
+use App\Model\WebServices\Composer\ComposerService;
 use Exception;
 use Nette\InvalidStateException;
 use Nextras\Orm\Collection\ICollection;
@@ -19,14 +19,14 @@ final class CollectStatsCommand extends BaseCommand
     /** @var AddonRepository */
     private $addonRepository;
 
-    /** @var Service */
+    /** @var ComposerService */
     private $composer;
 
     /**
      * @param AddonRepository $addonRepository
-     * @param Service $composer
+     * @param ComposerService $composer
      */
-    public function __construct(AddonRepository $addonRepository, Service $composer)
+    public function __construct(AddonRepository $addonRepository, ComposerService $composer)
     {
         parent::__construct();
         $this->addonRepository = $addonRepository;
@@ -39,7 +39,7 @@ final class CollectStatsCommand extends BaseCommand
     protected function configure()
     {
         $this
-            ->setName('app:addons:composer:collect')
+            ->setName('addons:composer:collect')
             ->setDescription('Update composer stats');
     }
 
@@ -68,8 +68,9 @@ final class CollectStatsCommand extends BaseCommand
 
                         list ($owner, $repo) = explode('/', $composer['name']);
 
-                        if (($stats = $this->composer->stats($owner, $repo))) {
-                            $extra->set('composer-stats', ['all' => $stats]);
+                        $response = $this->composer->stats($owner, $repo);
+                        if ($response->isOk()) {
+                            $extra->set('composer-stats', ['all' => $response->getJsonBody()]);
                         } else {
                             $output->writeln('Skip (composer stats) [no stats data]: ' . $addon->fullname);
                         }

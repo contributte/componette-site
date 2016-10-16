@@ -7,7 +7,7 @@ use App\Core\UI\BaseControl;
 use App\Model\Cache\CacheKeys;
 use App\Model\ORM\Addon\Addon;
 use App\Model\ORM\Addon\AddonRepository;
-use App\Model\WebServices\Github\Service;
+use App\Model\WebServices\Github\GithubService;
 use Nette\Caching\Cache;
 use Nette\Utils\DateTime;
 
@@ -17,7 +17,7 @@ final class Status extends BaseControl
     /** @var AddonRepository */
     private $addonRepository;
 
-    /** @var Service */
+    /** @var GithubService */
     private $github;
 
     /** @var Cache */
@@ -25,12 +25,12 @@ final class Status extends BaseControl
 
     /**
      * @param AddonRepository $addonRepository
-     * @param Service $github
+     * @param GithubService $github
      * @param Cache $cache
      */
     public function __construct(
         AddonRepository $addonRepository,
-        Service $github,
+        GithubService $github,
         CacheProvider $cacheProvider
     )
     {

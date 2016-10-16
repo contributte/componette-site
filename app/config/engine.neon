@@ -10,4 +10,5 @@ includes:
 
     # EXTENSIONS ===========================================
     - ext/dbal.neon
+    - ext/migration.neon
     - ext/orm.neon

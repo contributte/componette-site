@@ -3,9 +3,10 @@
 DATE=`date +%Y-%m-%d`
 echo $DATE
 
-../bin/console app:addons:sync:github all
-../bin/console app:addons:sync:github-files all
-../bin/console app:addons:generate:content
-../bin/console app:addons:sync:composer
-../bin/console app:addons:sync:bower
-../bin/console app:addons:composer:collect
+../bin/console addons:github:sync all
+../bin/console addons:github:sync:files all
+../bin/console addons:github:sync:releases all
+../bin/console addons:content:generate
+../bin/console addons:composer:sync
+../bin/console addons:composer:collect
+../bin/console addons:bower:sync

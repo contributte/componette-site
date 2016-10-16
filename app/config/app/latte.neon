@@ -15,3 +15,8 @@ services:
 
             # Composer
             - addFilter('isPhpDependency', ['App\Core\Latte\Filters\ComposerHelper', 'isPhpDependency'])
+
+            # Parsedown / Markdown
+            - addFilter('parsedown', [@latte.parsedown, 'process'])
+
+    latte.parsedown: Minetro\Parsedown\ParsedownExtraAdapter

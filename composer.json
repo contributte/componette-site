@@ -33,7 +33,8 @@
 		"nextras/orm": "dev-master",
 		"nextras/dbal": "^2.0.0",
 		"nextras/migrations": "~3.0.4",
-		"symfony/console": "~3.1.3"
+		"symfony/console": "~3.1.3",
+		"minetro/latte-parsedown-extra": "~1.1.0"
 	},
 	"require-dev": {
 		"nette/tester": "~1.7.0",

@@ -7,11 +7,13 @@ use App\Model\Addons\ExtraComposer;
 use App\Model\Addons\Linker;
 use App\Model\ORM\AbstractEntity;
 use App\Model\ORM\Addon\Addon;
+use App\Model\ORM\GithubRelease\GithubRelease;
 use Nette\Utils\DateTime;
+use Nextras\Orm\Relationships\OneHasMany;
 
 /**
- * @property int $id                        {primary}
- * @property Addon $addon                   {1:1 Addon::$github, isMain=true}
+ * @property int $id                                    {primary}
+ * @property Addon $addon                               {1:1 Addon::$github, isMain=true}
  * @property string|NULL $description
  * @property string|NULL $contentRaw
  * @property string|NULL $contentHtml
@@ -20,17 +22,18 @@ use Nette\Utils\DateTime;
  * @property int|NULL $watchers
  * @property int|NULL $issues
  * @property int|NULL $forks
- * @property int|NULL $releases
  * @property bool|NULL $fork
  * @property string|NULL $language
  * @property Extra|NULL $extra
  * @property DateTime|NULL $createdAt
  * @property DateTime|NULL $pushedAt
  * @property DateTime|NULL $updatedAt
- * @property DateTime $crawledAt            {default now}
+ * @property DateTime $crawledAt                        {default now}
  *
- * @property Linker $linker                 {virtual}
- * @property ExtraComposer $composer        {virtual}
+ * @property GithubRelease[]|OneHasMany $releases       {1:m GithubRelease::$github, orderBy=[tag, DESC]}
+ *
+ * @property Linker $linker                             {virtual}
+ * @property ExtraComposer $composer                    {virtual}
  */
 class Github extends AbstractEntity
 {
@@ -51,7 +54,7 @@ class Github extends AbstractEntity
     protected function getterLinker()
     {
         if (!$this->linker) {
-            $this->linker = new Linker($this->addon->owner, $this->addon->name);
+            $this->linker = new Linker($this);
         }
 
         return $this->linker;

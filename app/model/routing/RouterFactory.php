@@ -48,10 +48,6 @@ final class RouterFactory
     {
         $router = new RouteList();
 
-        if ($this->httpRequest->isSecured()) {
-            Route::$defaultFlags = Route::SECURED;
-        }
-
         // ADMIN ===========================================
 
         $router[] = $admin = new RouteList('Admin');

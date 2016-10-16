@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model\Commands\Addons\Sync;
+namespace App\Model\Commands\Addons\Github;
 
 use App\Core\Cache\Cacher;
 use App\Model\Commands\BaseCommand;
@@ -8,7 +8,7 @@ use App\Model\Exceptions\RuntimeException;
 use App\Model\ORM\Addon\Addon;
 use App\Model\ORM\Addon\AddonRepository;
 use App\Model\ORM\Github\Github;
-use App\Model\WebServices\Github\Service;
+use App\Model\WebServices\Github\GithubService;
 use Nette\Utils\DateTime;
 use Nette\Utils\Strings;
 use Nextras\Orm\Collection\ICollection;
@@ -16,13 +16,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-final class SynchronizeGithubCommand extends BaseCommand
+final class SynchronizeCommand extends BaseCommand
 {
 
     /** @var AddonRepository */
     private $addonRepository;
 
-    /** @var Service */
+    /** @var GithubService */
     private $github;
 
     /** @var Cacher */
@@ -30,10 +30,10 @@ final class SynchronizeGithubCommand extends BaseCommand
 
     /**
      * @param AddonRepository $addonRepository
-     * @param Service $github
+     * @param GithubService $github
      * @param Cacher $cacher
      */
-    public function __construct(AddonRepository $addonRepository, Service $github, Cacher $cacher)
+    public function __construct(AddonRepository $addonRepository, GithubService $github, Cacher $cacher)
     {
         parent::__construct();
         $this->addonRepository = $addonRepository;
@@ -47,7 +47,7 @@ final class SynchronizeGithubCommand extends BaseCommand
     protected function configure()
     {
         $this
-            ->setName('app:addons:sync:github')
+            ->setName('addons:github:sync')
             ->setDescription('Synchronize github detailed information');
 
         $this->addArgument(
@@ -102,7 +102,9 @@ final class SynchronizeGithubCommand extends BaseCommand
 
             // Base metadata
             $response = $this->github->repo($addon->owner, $addon->name);
-            if ($response && !isset($response['message'])) {
+            $body = $response->getJsonBody();
+
+            if ($body && !isset($body['message'])) {
 
                 // Create github entity if not exist
                 if (!$addon->github) {
@@ -115,9 +117,9 @@ final class SynchronizeGithubCommand extends BaseCommand
                 }
 
                 // Parse owner & repo name
-                $matches = Strings::match($response['full_name'], '#' . Addon::GITHUB_REGEX . '#');
+                $matches = Strings::match($body['full_name'], '#' . Addon::GITHUB_REGEX . '#');
                 if (!$matches) {
-                    $output->writeln('Skip (invalid addon name): ' . $response['full_name']);
+                    $output->writeln('Skip (invalid addon name): ' . $body['full_name']);
                     continue;
                 }
 
@@ -133,21 +135,19 @@ final class SynchronizeGithubCommand extends BaseCommand
                 }
 
                 // Update basic information
-                $addon->github->description = $response['description'];
-                $addon->github->homepage = !empty($response['homepage']) ? $response['homepage'] : NULL;
-                $addon->github->stars = $response['stargazers_count'];
-                $addon->github->watchers = $response['watchers_count'];
-                $addon->github->issues = $response['open_issues_count'];
-                $addon->github->fork = boolval($response['fork']);
-                $addon->github->language = $response['language'];
-                $addon->github->forks = $response['forks_count'];
-                $addon->github->createdAt = new DateTime($response['created_at']);
-                $addon->github->updatedAt = new DateTime($response['updated_at']);
-                $addon->github->pushedAt = new DateTime($response['pushed_at']);
+                $addon->github->description = $body['description'];
+                $addon->github->homepage = !empty($body['homepage']) ? $body['homepage'] : NULL;
+                $addon->github->stars = $body['stargazers_count'];
+                $addon->github->watchers = $body['watchers_count'];
+                $addon->github->issues = $body['open_issues_count'];
+                $addon->github->fork = boolval($body['fork']);
+                $addon->github->language = $body['language'];
+                $addon->github->forks = $body['forks_count'];
+                $addon->github->createdAt = new DateTime($body['created_at']);
+                $addon->github->updatedAt = new DateTime($body['updated_at']);
+                $addon->github->pushedAt = new DateTime($body['pushed_at']);
                 $addon->state = Addon::STATE_ACTIVE;
             } else {
-                $addon->state = Addon::STATE_ARCHIVED;
-
                 if (isset($response['message'])) {
                     $output->writeln('Skip (' . $response['message'] . '): ' . $addon->fullname);
                 } else {

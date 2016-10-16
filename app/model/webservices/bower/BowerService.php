@@ -2,47 +2,40 @@
 
 namespace App\Model\WebServices\Bower;
 
-use App\Model\Exceptions\Runtime\ComposerException;
+use App\Core\Http\Curl\ExceptionResponse;
+use App\Core\Http\Curl\Response;
+use App\Model\Exceptions\Runtime\WebServices\ComposerException;
 
-final class Service
+final class BowerService
 {
 
-    /** @var array */
-    public $onException = [];
-
-    /** @var Client */
+    /** @var BowerClient */
     private $client;
 
     /**
-     * @param Client $client
+     * @param BowerClient $client
      */
-    public function __construct(Client $client)
+    public function __construct(BowerClient $client)
     {
         $this->client = $client;
     }
 
     /**
      * @param string $uri
-     * @return mixed
+     * @return Response
      */
     protected function call($uri)
     {
         try {
             return $this->client->makeRequest($uri);
         } catch (ComposerException $e) {
-            // Trigger events
-            foreach ($this->onException as $cb) {
-                call_user_func($cb, $e);
-            }
-
-            // Return FALSE
-            return FALSE;
+            return new ExceptionResponse($e);
         }
     }
 
     /**
      * @param string $name
-     * @return mixed
+     * @return Response
      */
     public function repo($name)
     {
@@ -51,7 +44,7 @@ final class Service
 
     /**
      * @param string $name
-     * @return mixed
+     * @return Response
      */
     public function search($name)
     {

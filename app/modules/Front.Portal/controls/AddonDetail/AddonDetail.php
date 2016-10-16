@@ -82,4 +82,11 @@ final class AddonDetail extends BaseControl
         $this->template->render();
     }
 
+    public function renderReleases()
+    {
+        $this->template->addon = $this->addon;
+        $this->template->setFile(__DIR__ . '/templates/releases.latte');
+        $this->template->render();
+    }
+
 }

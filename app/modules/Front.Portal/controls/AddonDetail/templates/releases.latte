@@ -1,0 +1,16 @@
+{block}
+<div class="releases">
+    <ul n:inner-foreach="$addon->github->releases as $release">
+        <li>
+            <h3>
+                <a href="{$addon->github->linker->getReleaseUrl($release->tag)}">{$release->tag}</a>
+                <small>{$release->name}</small>
+            </h3>
+
+            <section>
+                {$release->body|escape|parsedown|noescape}
+            </section>
+        </li>
+    </ul>
+    <p class="alert alert-warning">No release at this moment. <a href="{$addon->github->linker->getNewReleaseUrl()}">Try to create first one</a>.</p>
+</div>

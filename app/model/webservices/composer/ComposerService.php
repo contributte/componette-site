@@ -2,48 +2,41 @@
 
 namespace App\Model\WebServices\Composer;
 
-use App\Model\Exceptions\Runtime\ComposerException;
+use App\Core\Http\Curl\ExceptionResponse;
+use App\Core\Http\Curl\Response;
+use App\Model\Exceptions\Runtime\WebServices\ComposerException;
 
-final class Service
+final class ComposerService
 {
 
-    /** @var array */
-    public $onException = [];
-
-    /** @var Client */
+    /** @var ComposerClient */
     private $client;
 
     /**
-     * @param Client $client
+     * @param ComposerClient $client
      */
-    public function __construct(Client $client)
+    public function __construct(ComposerClient $client)
     {
         $this->client = $client;
     }
 
     /**
      * @param string $uri
-     * @return mixed
+     * @return Response
      */
     protected function call($uri)
     {
         try {
             return $this->client->makeRequest($uri);
         } catch (ComposerException $e) {
-            // Trigger events
-            foreach ($this->onException as $cb) {
-                call_user_func($cb, $e);
-            }
-
-            // Return FALSE
-            return FALSE;
+            return new ExceptionResponse($e);
         }
     }
 
     /**
      * @param string $owner
      * @param string $repo
-     * @return mixed
+     * @return Response
      */
     public function repo($owner, $repo)
     {
@@ -54,7 +47,7 @@ final class Service
      * @param string $owner
      * @param string $repo
      * @param string $version
-     * @return mixed
+     * @return Response
      */
     public function stats($owner, $repo, $version = NULL)
     {
