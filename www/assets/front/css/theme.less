@@ -485,7 +485,7 @@ a[href*="://"]:after {
   vertical-align: top;
 
   .page-header {
-    padding: 20px;
+    padding: 20px 20px 0 20px;
     margin: 0;
     border-radius: @border-radius @border-radius 0 0;
     background: #fafafa;
@@ -555,6 +555,11 @@ a[href*="://"]:after {
         padding-right: 10px;
       }
     }
+
+    .nav {
+      margin-top: 20px;
+      border-bottom: 0;
+    }
   }
 
   .page-content {
@@ -595,6 +600,36 @@ a[href*="://"]:after {
           tr:nth-of-type(odd) {
             background-color: #f9f9f9;
           }
+        }
+      }
+    }
+
+    .releases {
+      & > ul {
+        padding: 0 0 0 10px;
+
+        & > li:first-of-type {
+          margin-top: 30px;
+        }
+
+        & > li {
+          list-style-type: none;
+          margin-bottom: 40px;
+          font-size: 15px;
+
+          h3 {
+            margin: 0 0 10px 0;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+
+            a {
+              color: #18446e;
+              font-weight: bold;
+            }
+          }
+        }
+
+        & > li:last-of-type {
         }
       }
     }
@@ -669,11 +704,10 @@ a[href*="://"]:after {
 
       ul {
         padding: 0;
-        margin: 0 0 0 30px;
+        margin: 0 0 0 0;
 
         li {
-          list-style-type: square;
-          white-space: nowrap;
+          list-style-type: none;
         }
       }
     }
