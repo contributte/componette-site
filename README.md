@@ -64,7 +64,7 @@ This project has a few tasks you should fired before you prepare PR.
     ```
 - CodeSniffer - checks codestyle
     ```bash
-    bin/linter
+    bin/codesniffer
     ```
 
 - Tests - checks code integrity

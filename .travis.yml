@@ -29,11 +29,11 @@ install:
     - travis_retry composer update ${COMPOSER_GLOBAL_FLAGS} ${COMPOSER_MATRIX_FLAGS}
 
 script:
-    # Run linter
+    # Run PHP linter
     - bin/linter
 
-    # Run Code Sniffer
-    - bin/phpcs
+    # Run CodeSniffer
+    - bin/codesniffer
 
     # Show Nette Tester environment
     - bin/tester-info
