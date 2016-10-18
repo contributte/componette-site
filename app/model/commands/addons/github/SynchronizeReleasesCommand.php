@@ -75,7 +75,7 @@ final class SynchronizeReleasesCommand extends BaseCommand
             $storedReleases = $addon->github->releases->get()->fetchPairs('gid');
 
             // Get all releases
-            $responses = $this->github->allReleases($addon->owner, $addon->name);
+            $responses = $this->github->allReleases($addon->owner, $addon->name, GithubService::MEDIATYPE_HTML);
             if ($responses) {
 
                 foreach ((array) $responses as $response) {
@@ -103,8 +103,9 @@ final class SynchronizeReleasesCommand extends BaseCommand
                             $githubRelease->draft = (bool) $release['draft'];
                             $githubRelease->prerelease = (bool) $release['prerelease'];
                             $githubRelease->createdAt = new DateTime($release['created_at']);
+                            $githubRelease->crawledAt = new DateTime();
                             $githubRelease->publishedAt = new DateTime($release['published_at']);
-                            $githubRelease->body = $release['body'];
+                            $githubRelease->body = $release['body_html'];
 
                             // If its new one
                             if (!$githubRelease->isPersisted()) {

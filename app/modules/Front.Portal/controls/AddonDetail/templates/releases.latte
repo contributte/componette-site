@@ -8,9 +8,9 @@
             </h3>
 
             <section>
-                {$release->body|escape|parsedown|noescape}
+                {$release->body|noescape}
             </section>
         </li>
     </ul>
-    <p class="alert alert-warning">No release at this moment. <a href="{$addon->github->linker->getNewReleaseUrl()}">Try to create first one</a>.</p>
+    <p class="alert alert-warning" n:if="$addon->github->releases->count() <= 0">No release at this moment. <a href="{$addon->github->linker->getNewReleaseUrl()}">Try to create first one</a>.</p>
 </div>

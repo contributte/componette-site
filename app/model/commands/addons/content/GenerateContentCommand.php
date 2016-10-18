@@ -72,7 +72,7 @@ final class GenerateContentCommand extends BaseCommand
         $counter = 0;
         foreach ($addons as $addon) {
             // Raw
-            $response = $this->github->readme($addon->owner, $addon->name, 'raw');
+            $response = $this->github->readme($addon->owner, $addon->name, GithubService::MEDIATYPE_HTML);
             if ($response->isOk()) {
                 // Content
                 $addon->github->contentRaw = $response->getBody();
@@ -82,7 +82,7 @@ final class GenerateContentCommand extends BaseCommand
             }
 
             // HTML
-            $response = $this->github->readme($addon->owner, $addon->name, 'html');
+            $response = $this->github->readme($addon->owner, $addon->name, GithubService::MEDIATYPE_HTML);
             if ($response->isOk()) {
                 // Content
                 $addon->github->contentHtml = $response->getBody();

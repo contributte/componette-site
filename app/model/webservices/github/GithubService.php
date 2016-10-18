@@ -9,6 +9,10 @@ use App\Model\Exceptions\Runtime\WebServices\GithubException;
 final class GithubService
 {
 
+    const MEDIATYPE_HTML = 'html';
+    const MEDIATYPE_HTML_JSON = 'html+json';
+    const MEDIATYPE_RAW = 'raw';
+
     /** @var GithubClient */
     private $client;
 
@@ -103,6 +107,31 @@ final class GithubService
         return $pages;
     }
 
+
+    /**
+     * @param string $mediatype
+     * @return array
+     */
+    protected function mediatype($mediatype)
+    {
+        switch ($mediatype) {
+            case self::MEDIATYPE_HTML:
+                return ['Accept' => 'application/vnd.github.' . GithubClient::VERSION . '.html'];
+                break;
+
+            case self::MEDIATYPE_HTML_JSON:
+                return ['Accept' => 'application/vnd.github.' . GithubClient::VERSION . '.html+json'];
+                break;
+
+            case self::MEDIATYPE_RAW:
+                return ['Accept' => 'application/vnd.github.' . GithubClient::VERSION . '.raw'];
+                break;
+
+            default:
+                return [];
+        }
+    }
+
     /**
      * API *********************************************************************
      */
@@ -120,26 +149,12 @@ final class GithubService
     /**
      * @param string $owner
      * @param string $repo
+     * @param string $mediatype
      * @return Response
      */
-    public function readme($owner, $repo, $type = NULL)
+    public function readme($owner, $repo, $mediatype = NULL)
     {
-        switch ($type) {
-            case 'html':
-                $headers = ['Accept' => 'application/vnd.github.' . GithubClient::VERSION . '.html'];
-                break;
-
-            case 'html+json':
-                $headers = ['Accept' => 'application/vnd.github.' . GithubClient::VERSION . '.html+json'];
-                break;
-
-            case 'raw':
-                $headers = ['Accept' => 'application/vnd.github.' . GithubClient::VERSION . '.raw'];
-                break;
-
-            default:
-                $headers = [];
-        }
+        $headers = $this->mediatype($mediatype);
 
         return $this->call("/repos/$owner/$repo/readme", $headers);
     }
@@ -148,26 +163,12 @@ final class GithubService
      * @param string $owner
      * @param string $repo
      * @param string $path
+     * @param string $mediatype
      * @return Response
      */
-    public function content($owner, $repo, $path, $type = NULL)
+    public function content($owner, $repo, $path, $mediatype = NULL)
     {
-        switch ($type) {
-            case 'html':
-                $headers = ['Accept' => 'application/vnd.github.' . GithubClient::VERSION . '.html'];
-                break;
-
-            case 'html+json':
-                $headers = ['Accept' => 'application/vnd.github.' . GithubClient::VERSION . '.html+json'];
-                break;
-
-            case 'raw':
-                $headers = ['Accept' => 'application/vnd.github.' . GithubClient::VERSION . '.raw'];
-                break;
-
-            default:
-                $headers = [];
-        }
+        $headers = $this->mediatype($mediatype);
 
         return $this->call("/repos/$owner/$repo/contents/$path", $headers);
     }
@@ -195,6 +196,7 @@ final class GithubService
     /**
      * @param string $owner
      * @param string $repo
+     * @param int $page
      * @return Response
      */
     public function releases($owner, $repo, $page = NULL)
@@ -209,11 +211,17 @@ final class GithubService
     /**
      * @param string $owner
      * @param string $repo
+     * @param string $mediatype
      * @return Response[]
      */
-    public function allReleases($owner, $repo)
+    public function allReleases($owner, $repo, $mediatype = NULL)
     {
-        return $this->aggregate($this->client->getApiUrl("/repos/$owner/$repo/releases"));
+        $headers = $this->mediatype($mediatype);
+
+        return $this->aggregate(
+            $this->client->getApiUrl("/repos/$owner/$repo/releases"),
+            $headers
+        );
     }
 
     /**

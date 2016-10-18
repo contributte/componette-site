@@ -4,92 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5e4961922ead913cf80525c5389af3a1",
-    "content-hash": "9239fb319d153da71393f8554087f3ce",
+    "hash": "33b332e6f4d99189104d693d0b6ffa8d",
+    "content-hash": "e45914ec0c6902604f5a058965fcb50b",
     "packages": [
-        {
-            "name": "erusev/parsedown",
-            "version": "1.6.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/erusev/parsedown.git",
-                "reference": "3ebbd730b5c2cf5ce78bc1bf64071407fc6674b7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/erusev/parsedown/zipball/3ebbd730b5c2cf5ce78bc1bf64071407fc6674b7",
-                "reference": "3ebbd730b5c2cf5ce78bc1bf64071407fc6674b7",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Parsedown": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Emanuil Rusev",
-                    "email": "hello@erusev.com",
-                    "homepage": "http://erusev.com"
-                }
-            ],
-            "description": "Parser for Markdown.",
-            "homepage": "http://parsedown.org",
-            "keywords": [
-                "markdown",
-                "parser"
-            ],
-            "time": "2015-10-04 16:44:32"
-        },
-        {
-            "name": "erusev/parsedown-extra",
-            "version": "0.7.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/erusev/parsedown-extra.git",
-                "reference": "0db5cce7354e4b76f155d092ab5eb3981c21258c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/erusev/parsedown-extra/zipball/0db5cce7354e4b76f155d092ab5eb3981c21258c",
-                "reference": "0db5cce7354e4b76f155d092ab5eb3981c21258c",
-                "shasum": ""
-            },
-            "require": {
-                "erusev/parsedown": "~1.4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "ParsedownExtra": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Emanuil Rusev",
-                    "email": "hello@erusev.com",
-                    "homepage": "http://erusev.com"
-                }
-            ],
-            "description": "An extension of Parsedown that adds support for Markdown Extra.",
-            "homepage": "https://github.com/erusev/parsedown-extra",
-            "keywords": [
-                "markdown",
-                "markdown extra",
-                "parsedown",
-                "parser"
-            ],
-            "time": "2015-11-01 10:19:22"
-        },
         {
             "name": "latte/latte",
             "version": "v2.4.2",
@@ -155,50 +72,6 @@
                 "twig"
             ],
             "time": "2016-09-27 13:10:19"
-        },
-        {
-            "name": "minetro/latte-parsedown-extra",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/minetro/latte-parsedown-extra.git",
-                "reference": "715ace1167b1b803fbb7a3db64a87b9e48404b2c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/minetro/latte-parsedown-extra/zipball/715ace1167b1b803fbb7a3db64a87b9e48404b2c",
-                "reference": "715ace1167b1b803fbb7a3db64a87b9e48404b2c",
-                "shasum": ""
-            },
-            "require": {
-                "erusev/parsedown": "^1.6.0",
-                "erusev/parsedown-extra": "^0.7.1",
-                "nette/di": "~2.4.0",
-                "nette/utils": "~2.4.0",
-                "php": ">=5.6.0"
-            },
-            "require-dev": {
-                "nette/tester": "~1.7.0"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Milan Felix Sulc",
-                    "homepage": "http://jfx.cz"
-                }
-            ],
-            "description": "ParsedownExtra parser for Latte",
-            "homepage": "https://github.com/minetro/latte-parsedown-extra",
-            "time": "2016-08-07 10:14:11"
         },
         {
             "name": "nette/application",
