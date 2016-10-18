@@ -5,6 +5,7 @@ namespace App\Model\Commands\Addons\Github;
 use App\Model\Commands\BaseCommand;
 use App\Model\ORM\Addon\Addon;
 use App\Model\ORM\Addon\AddonRepository;
+use App\Model\ORM\Github\GithubRepository;
 use App\Model\ORM\GithubRelease\GithubRelease;
 use App\Model\ORM\GithubRelease\GithubReleaseRepository;
 use App\Model\WebServices\Github\GithubService;
@@ -18,26 +19,31 @@ final class SynchronizeReleasesCommand extends BaseCommand
     /** @var AddonRepository */
     private $addonRepository;
 
+    /** @var GithubRepository */
+    private $githubRepository;
+
     /** @var GithubReleaseRepository */
     private $githubReleaseRepository;
 
     /** @var GithubService */
     private $github;
 
-
     /**
      * @param AddonRepository $addonRepository
+     * @param GithubRepository $githubRepository
      * @param GithubReleaseRepository $githubReleaseRepository
      * @param GithubService $github
      */
     public function __construct(
         AddonRepository $addonRepository,
+        GithubRepository $githubRepository,
         GithubReleaseRepository $githubReleaseRepository,
         GithubService $github
     )
     {
         parent::__construct();
         $this->addonRepository = $addonRepository;
+        $this->githubRepository = $githubRepository;
         $this->githubReleaseRepository = $githubReleaseRepository;
         $this->github = $github;
     }
@@ -66,11 +72,12 @@ final class SynchronizeReleasesCommand extends BaseCommand
         /** @var Addon[] $addons */
         foreach ($addons as $addon) {
             // Fetch all already saved github releases
-            $githubReleases = $addon->github->releases->get()->fetchPairs('gid');
+            $storedReleases = $addon->github->releases->get()->fetchPairs('gid');
 
             // Get all releases
             $responses = $this->github->allReleases($addon->owner, $addon->name);
             if ($responses) {
+
                 foreach ((array) $responses as $response) {
 
                     // Get response body as releases
@@ -82,9 +89,9 @@ final class SynchronizeReleasesCommand extends BaseCommand
                             $releaseId = $release['id'];
 
                             // Try find release by ID
-                            if (isset($githubReleases[$releaseId])) {
+                            if (isset($storedReleases[$releaseId])) {
                                 // Use already added
-                                $githubRelease = $githubReleases[$releaseId];
+                                $githubRelease = $storedReleases[$releaseId];
                             } else {
                                 // Create new one
                                 $githubRelease = new GithubRelease();
@@ -105,26 +112,24 @@ final class SynchronizeReleasesCommand extends BaseCommand
                             }
 
                             // Unset from array
-                            unset($githubReleases[$releaseId]);
+                            unset($storedReleases[$releaseId]);
                         }
                     } else {
-                        $output->writeln('Skip (no release): ' . $addon->fullname);
+                        $output->writeln('Skip (no releases): ' . $addon->fullname);
+                    }
+                }
+
+                // Save new or updated releases
+                $this->githubRepository->persistAndFlush($addon->github);
+
+                // If there are some left releases, remove them
+                if (count($storedReleases) > 0) {
+                    foreach ($storedReleases as $release) {
+                        $this->githubReleaseRepository->remove($release);
                     }
                 }
             } else {
                 $output->writeln('Skip (no response): ' . $addon->fullname);
-            }
-
-            // Save new or updated releasese
-            $this->addonRepository->persistAndFlush($addon);
-
-            // If there are some left releases, remove them
-            if (count($githubReleases) > 0) {
-                foreach ($githubReleases as $release) {
-                    $this->githubReleaseRepository->remove($release);
-                }
-
-                $this->githubReleaseRepository->flush();
             }
 
             $counter++;

@@ -1,4 +1,4 @@
-SET NAMES utf8;
+SET NAMES utf8mb4;
 SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
@@ -8,13 +8,13 @@ CREATE TABLE `github_release` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `github_id` int(11) NOT NULL,
   `gid` int(11) unsigned NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `tag` varchar(50) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `tag` varchar(255) NOT NULL,
   `draft` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `prerelease` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `published_at` datetime NOT NULL,
-  `body` text NOT NULL,
+  `body` text CHARACTER SET utf8mb4 NOT NULL,
   `crawled_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `github_id` (`github_id`),
