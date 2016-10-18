@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.2.0-dev
+
+- Improvement: load github images via GithubService
+- Improvement: synchronize Github commands
+- Fix: fix status page
+
 ## 1.1.0 [18.10.2016]
 
 - Improvement: download github releases in html mode
