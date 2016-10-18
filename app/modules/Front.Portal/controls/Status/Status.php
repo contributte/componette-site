@@ -83,14 +83,17 @@ final class Status extends BaseControl
 
             // Build github status =============================================
 
-            if (($response = $this->github->limit())) {
-                $status['github']['core']['limit'] = $response['resources']['core']['limit'];
-                $status['github']['core']['remaining'] = $response['resources']['core']['remaining'];
-                $status['github']['core']['reset'] = DateTime::from($response['resources']['core']['reset']);
+            $response = $this->github->limit();
+            if ($response->isOk()) {
+                $limit = $response->getJsonBody();
 
-                $status['github']['search']['limit'] = $response['resources']['search']['limit'];
-                $status['github']['search']['remaining'] = $response['resources']['search']['remaining'];
-                $status['github']['search']['reset'] = DateTime::from($response['resources']['search']['reset']);
+                $status['github']['core']['limit'] = $limit['resources']['core']['limit'];
+                $status['github']['core']['remaining'] = $limit['resources']['core']['remaining'];
+                $status['github']['core']['reset'] = DateTime::from($limit['resources']['core']['reset']);
+
+                $status['github']['search']['limit'] = $limit['resources']['search']['limit'];
+                $status['github']['search']['remaining'] = $limit['resources']['search']['remaining'];
+                $status['github']['search']['reset'] = DateTime::from($limit['resources']['search']['reset']);
             }
 
             return $status;
