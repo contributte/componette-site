@@ -3,25 +3,27 @@
 namespace App\Model\WebImages;
 
 use App\Model\Exceptions\Runtime\InvalidArgumentException;
+use App\Model\WebServices\Github\GithubService;
 use Nette\Utils\FileSystem;
 use Nette\Utils\Image;
 
 final class GithubImages implements ImageProvider
 {
 
-    // Github URL's
-    const URL_AVATAR = 'https://github.com/%s';
+    /** @var GithubService */
+    private $github;
 
     /** @var string */
     private $imageDir;
 
     /**
+     * @param GithubService $github
      * @param string $imageDir
      */
-    public function __construct($imageDir)
+    public function __construct(GithubService $github, $imageDir)
     {
+        $this->github = $github;
         $this->imageDir = $imageDir;
-        FileSystem::createDir($imageDir);
     }
 
     /**
@@ -33,11 +35,11 @@ final class GithubImages implements ImageProvider
      */
     protected function createAvatar($owner)
     {
-        $image = @file_get_contents(sprintf(self::URL_AVATAR, $owner));
-        if ($image) {
+        $response = $this->github->avatar($owner);
+        if ($response->isOk()) {
             // Save Github avatar to our FS
             $filename = $this->imageDir . '/avatar/' . $owner;
-            FileSystem::write($filename, $image);
+            FileSystem::write($filename, $response->getBody());
 
             // Send image for first request
             $image = Image::fromFile($filename);

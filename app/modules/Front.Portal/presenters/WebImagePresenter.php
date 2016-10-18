@@ -20,7 +20,7 @@ final class WebImagePresenter extends BasePresenter
     {
         $this->githubImages->create([
             'type' => 'avatar',
-            'owner' => "$owner.$ext",
+            'owner' => $owner,
         ]);
     }
 

@@ -61,7 +61,7 @@ final class WarmupCacheCommand extends BaseCommand
         foreach ($addons as $addon) {
 
             // User avatar
-            $response = $this->github->avatar($addon->owner);
+            $response = $this->github->avatar($addon->owner, FALSE);
 
             if ($response->isOk() && $response->hasInfo('filetime')) {
                 // If avatar was update before less then a week, remove it from filesystem

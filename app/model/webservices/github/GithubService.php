@@ -9,6 +9,7 @@ use App\Model\Exceptions\Runtime\WebServices\GithubException;
 final class GithubService
 {
 
+    // Mediatypes
     const MEDIATYPE_HTML = 'html';
     const MEDIATYPE_HTML_JSON = 'html+json';
     const MEDIATYPE_RAW = 'raw';
@@ -245,15 +246,19 @@ final class GithubService
 
     /**
      * @param string $owner
+     * @param bool $content
      * @return Response
      */
-    public function avatar($owner)
+    public function avatar($owner, $content = TRUE)
     {
-        return $this->makeRequest(
-            $this->client->getAvatarUrl($owner),
-            [],
-            [CURLOPT_FILETIME => TRUE, CURLOPT_NOBODY => TRUE]
-        );
+        $opts = [];
+
+        if (!$content) {
+            $opts[CURLOPT_FILETIME] = TRUE;
+            $opts[CURLOPT_NOBODY] = TRUE;
+        }
+
+        return $this->makeRequest($this->client->getAvatarUrl($owner), [], $opts);
     }
 
     /**

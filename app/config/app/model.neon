@@ -36,4 +36,4 @@ services:
     - App\Model\Facade\Cli\Commands\AddonFacade
 
     # Images ===============================================
-    - App\Model\WebImages\GithubImages(%wwwDir%/imgs)
+    - App\Model\WebImages\GithubImages(imageDir: %wwwDir%/imgs)
