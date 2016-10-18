@@ -2,6 +2,7 @@
 
 ## 1.2.0-dev
 
+- Feature: added smartlook
 - Improvement: load github images via GithubService
 - Improvement: synchronize Github commands
 - Fix: fix status page
