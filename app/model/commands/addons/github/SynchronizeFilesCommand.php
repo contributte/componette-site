@@ -3,11 +3,9 @@
 namespace App\Model\Commands\Addons\Github;
 
 use App\Model\Commands\BaseCommand;
-use App\Model\Exceptions\RuntimeException;
+use App\Model\Facade\Cli\Commands\AddonFacade;
 use App\Model\ORM\Addon\Addon;
-use App\Model\ORM\Addon\AddonRepository;
 use App\Model\WebServices\Github\GithubService;
-use Nextras\Orm\Collection\ICollection;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -15,20 +13,20 @@ use Symfony\Component\Console\Output\OutputInterface;
 final class SynchronizeFilesCommand extends BaseCommand
 {
 
-    /** @var AddonRepository */
-    private $addonRepository;
+    /** @var AddonFacade */
+    private $addonFacade;
 
     /** @var GithubService */
     private $github;
 
     /**
-     * @param AddonRepository $addonRepository
+     * @param AddonFacade $addonFacade
      * @param GithubService $github
      */
-    public function __construct(AddonRepository $addonRepository, GithubService $github)
+    public function __construct(AddonFacade $addonFacade, GithubService $github)
     {
         parent::__construct();
-        $this->addonRepository = $addonRepository;
+        $this->addonFacade = $addonFacade;
         $this->github = $github;
     }
 
@@ -44,7 +42,8 @@ final class SynchronizeFilesCommand extends BaseCommand
         $this->addArgument(
             'type',
             InputOption::VALUE_REQUIRED,
-            'What type should be synchronized'
+            'What type should be synchronized',
+            'all'
         );
 
         $this->addOption(
@@ -62,30 +61,7 @@ final class SynchronizeFilesCommand extends BaseCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        if (!$input->getArgument('type')) {
-            throw new RuntimeException('Argument type is required');
-        }
-
-        /** @var ICollection|Addon[] $addons */
-        $addons = $this->addonRepository->findActive();
-
-        // FILTER ADDONS =============================================
-
-        if ($input->getOption('rest') == TRUE) {
-            $addons = $addons->findBy(['this->github->extra' => NULL]);
-        }
-
-        switch ($input->getArgument('type')) {
-            case 'composer':
-                $addons = $addons->findBy(['type' => Addon::TYPE_COMPOSER]);
-                break;
-            case 'bower':
-                $addons = $addons->findBy(['type' => Addon::TYPE_BOWER]);
-                break;
-            case 'unknown':
-                $addons = $addons->findBy(['type' => Addon::TYPE_UNKNOWN]);
-                break;
-        }
+        $addons = $this->addonFacade->find($input);
 
         // DO YOUR JOB ===============================================
 
@@ -151,7 +127,7 @@ final class SynchronizeFilesCommand extends BaseCommand
             }
 
             // Persist
-            $this->addonRepository->persistAndFlush($addon);
+            $this->addonFacade->save($addon);
 
             // Increase counting
             $counter++;

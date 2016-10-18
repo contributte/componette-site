@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 DATE=`date +%Y-%m-%d`
 echo $DATE

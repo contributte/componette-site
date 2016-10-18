@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
-DATE=`date +%Y-%m-%d`
+DATE=`date +%Y-%m-%d-%T`
 echo $DATE
 
 ../bin/console addons:github:sync all

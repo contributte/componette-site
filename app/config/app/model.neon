@@ -32,5 +32,8 @@ services:
     # [back-end]
     - App\Model\Facade\Admin\AddonFacade
 
+    # [cli]
+    - App\Model\Facade\Cli\Commands\AddonFacade
+
     # Images ===============================================
     - App\Model\WebImages\GithubImages(%wwwDir%/imgs)

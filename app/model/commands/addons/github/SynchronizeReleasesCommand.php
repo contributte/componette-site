@@ -3,21 +3,21 @@
 namespace App\Model\Commands\Addons\Github;
 
 use App\Model\Commands\BaseCommand;
-use App\Model\ORM\Addon\Addon;
-use App\Model\ORM\Addon\AddonRepository;
+use App\Model\Facade\Cli\Commands\AddonFacade;
 use App\Model\ORM\Github\GithubRepository;
 use App\Model\ORM\GithubRelease\GithubRelease;
 use App\Model\ORM\GithubRelease\GithubReleaseRepository;
 use App\Model\WebServices\Github\GithubService;
 use Nette\Utils\DateTime;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 final class SynchronizeReleasesCommand extends BaseCommand
 {
 
-    /** @var AddonRepository */
-    private $addonRepository;
+    /** @var AddonFacade */
+    private $addonFacade;
 
     /** @var GithubRepository */
     private $githubRepository;
@@ -29,20 +29,20 @@ final class SynchronizeReleasesCommand extends BaseCommand
     private $github;
 
     /**
-     * @param AddonRepository $addonRepository
+     * @param AddonFacade $addonFacade
      * @param GithubRepository $githubRepository
      * @param GithubReleaseRepository $githubReleaseRepository
      * @param GithubService $github
      */
     public function __construct(
-        AddonRepository $addonRepository,
+        AddonFacade $addonFacade,
         GithubRepository $githubRepository,
         GithubReleaseRepository $githubReleaseRepository,
         GithubService $github
     )
     {
         parent::__construct();
-        $this->addonRepository = $addonRepository;
+        $this->addonFacade = $addonFacade;
         $this->githubRepository = $githubRepository;
         $this->githubReleaseRepository = $githubReleaseRepository;
         $this->github = $github;
@@ -56,6 +56,20 @@ final class SynchronizeReleasesCommand extends BaseCommand
         $this
             ->setName('addons:github:sync:releases')
             ->setDescription('Synchronize addon releases');
+
+        $this->addArgument(
+            'type',
+            InputOption::VALUE_REQUIRED,
+            'What type should be synchronized',
+            'all'
+        );
+
+        $this->addOption(
+            'rest',
+            NULL,
+            InputOption::VALUE_NONE,
+            'Should synchronize only queued addons?'
+        );
     }
 
     /**
@@ -65,11 +79,11 @@ final class SynchronizeReleasesCommand extends BaseCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $addons = $this->addonRepository->findActive();
+        $addons = $this->addonFacade->find($input);
+
+        // DO YOUR JOB ===============================================
 
         $counter = 0;
-
-        /** @var Addon[] $addons */
         foreach ($addons as $addon) {
             // Fetch all already saved github releases
             $storedReleases = $addon->github->releases->get()->fetchPairs('gid');

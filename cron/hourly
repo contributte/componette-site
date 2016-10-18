@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 DATE=`date +%Y-%m-%d`
 echo $DATE
 
 ../bin/console addons:github:sync --rest
 ../bin/console addons:github:sync:files --rest
-../bin/console addons:generate:content --rest
+../bin/console addons:content:generate --rest
