@@ -2,6 +2,7 @@
 
 ## 1.2.0-dev
 
+- Fix: Bower/Composer URL in http client
 - Feature: added smartlook
 - Improvement: load github images via GithubService
 - Improvement: synchronize Github commands

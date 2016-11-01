@@ -23,14 +23,15 @@ final class ComposerClient
     }
 
     /**
-     * @param string $url
+     * @param string $uri
      * @param array $headers
      * @param array $opts
      * @return Response
      */
-    public function makeRequest($url, array $headers = [], array $opts = [])
+    public function makeRequest($uri, array $headers = [], array $opts = [])
     {
-        $response = $this->curl->makeRequest($url, $headers, $opts);
+        $uri = self::URL . '/' . ltrim($uri, '/');
+        $response = $this->curl->makeRequest($uri, $headers, $opts);
 
         if ($response->getStatusCode() > 300) {
             throw new ComposerException($response);

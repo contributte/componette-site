@@ -23,13 +23,14 @@ final class BowerClient
     }
 
     /**
-     * @param string $url
+     * @param string $uri
      * @param array $headers
      * @param array $opts
      * @return Response
      */
-    public function makeRequest($url, array $headers = [], array $opts = [])
+    public function makeRequest($uri, array $headers = [], array $opts = [])
     {
+        $url = self::URL . '/' . ltrim($uri, '/');
         $response = $this->curl->makeRequest($url, $headers, $opts);
 
         if ($response->getStatusCode() > 300) {
