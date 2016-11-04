@@ -46,17 +46,25 @@
     <div class="title">Badges</div>
     <ul>
         <li>
-            <img alt="" title="isitmaintained" src="https://isitmaintained.com/badge/resolution/{$owner|lower}/{$name|lower}.svg">
+            <a href="{$addon->github->linker->getRepoUrl()}">
+                <img alt="" title="isitmaintained" src="https://isitmaintained.com/badge/resolution/{$owner|lower}/{$name|lower}.svg">
+            </a>
         </li>
         <li>
-            <img alt="" title="isitmaintained" src="https://isitmaintained.com/badge/open/{$owner|lower}/{$name|lower}.svg">
+            <a href="{$addon->github->linker->getRepoUrl()}">
+                <img alt="" title="isitmaintained" src="https://isitmaintained.com/badge/open/{$owner|lower}/{$name|lower}.svg">
+            </a>
         </li>
         {if $addon->isComposer && $addon->github->composer}
             <li>
-                <a href="{$addon->github->composer->getPackageUrl()}"><img alt="" title="{$addon->github->composer->getName()}" src="https://img.shields.io/packagist/v/{$addon->github->composer->getName()}.svg"></a>
+                <a href="{$addon->github->composer->getPackageUrl()}">
+                    <img alt="" title="{$addon->github->composer->getName()}" src="https://img.shields.io/packagist/v/{$addon->github->composer->getName()}.svg">
+                </a>
             </li>
             <li>
-                <img alt="" title="{$addon->github->composer->getName()}" src="https://img.shields.io/packagist/l/{$addon->github->composer->getName()}.svg">
+                <a href="{$addon->github->linker->getRepoUrl()}">
+                    <img alt="" title="{$addon->github->composer->getName()}" src="https://img.shields.io/packagist/l/{$addon->github->composer->getName()}.svg">
+                </a>
             </li>
         {/if}
     </ul>
