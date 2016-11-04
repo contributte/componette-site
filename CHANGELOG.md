@@ -2,6 +2,8 @@
 
 ## 1.2.0-dev
 
+- Feature: improve search (thanks @artemevsin)[#81][#67]
+- Composer: update dependencies
 - Fix: Bower/Composer URL in http client
 - Feature: added smartlook
 - Improvement: load github images via GithubService
