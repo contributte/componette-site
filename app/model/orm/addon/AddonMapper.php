@@ -14,19 +14,22 @@ final class AddonMapper extends AbstractMapper
      */
     public function findByQuery($q)
     {
+        $tokens = $this->getTokens($q);
         $builder = $this->builder()
             ->from('[addon]', 'a')
             ->leftJoin('a', '[github]', 'g', '[g.addon_id] = [a.id]')
             ->leftJoin('a', '[composer]', 'c', '[c.addon_id] = [a.id]')
-            ->leftJoin('a', '[bower]', 'b', '[b.addon_id] = [a.id]')
-            ->orWhere('[a.owner] LIKE %s', "%$q%")
-            ->orWhere('[a.name] LIKE %s', "%$q%")
-            ->orWhere('[g.description] LIKE %s', "%$q%")
-            // Composer
-            ->orWhere('[c.name] LIKE %s', "%$q%")
-            // Bower
-            ->orWhere('[b.name] LIKE %s', "%$q%")
-            ->groupBy('[a.id]')
+            ->leftJoin('a', '[bower]', 'b', '[b.addon_id] = [a.id]');
+        foreach ($tokens as $token) {
+            $builder->andWhere('[a.owner] LIKE %s', "%$token%")
+                ->orWhere('[a.name] LIKE %s', "%$token%")
+                ->orWhere('[g.description] LIKE %s', "%$token%")
+                // Composer
+                ->orWhere('[c.name] LIKE %s', "%$token%")
+                // Bower
+                ->orWhere('[b.name] LIKE %s', "%$token%");
+        }
+        $builder->groupBy('[a.id]')
             ->andWhere('[a.state] = %s', Addon::STATE_ACTIVE);
 
         return $builder;
@@ -81,5 +84,14 @@ final class AddonMapper extends AbstractMapper
                 $builder->orderBy('IFNULL([g.stars], 0) * 2 + IFNULL([g.watchers], 0) + IFNULL([g.forks], 0) DESC');
                 break;
         }
+    }
+
+    /**
+     * @param string $q
+     * @return array
+     */
+    private function getTokens($q)
+    {
+        return explode(' ', $q);
     }
 }
