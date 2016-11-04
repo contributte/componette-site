@@ -14,12 +14,14 @@ final class AddonMapper extends AbstractMapper
      */
     public function findByQuery($q)
     {
-        $tokens = $this->getTokens($q);
+        $tokens = explode(' ', $q);
+
         $builder = $this->builder()
             ->from('[addon]', 'a')
             ->leftJoin('a', '[github]', 'g', '[g.addon_id] = [a.id]')
             ->leftJoin('a', '[composer]', 'c', '[c.addon_id] = [a.id]')
             ->leftJoin('a', '[bower]', 'b', '[b.addon_id] = [a.id]');
+
         foreach ($tokens as $token) {
             $builder->andWhere('[a.owner] LIKE %s', "%$token%")
                 ->orWhere('[a.name] LIKE %s', "%$token%")
@@ -29,6 +31,7 @@ final class AddonMapper extends AbstractMapper
                 // Bower
                 ->orWhere('[b.name] LIKE %s', "%$token%");
         }
+
         $builder->groupBy('[a.id]')
             ->andWhere('[a.state] = %s', Addon::STATE_ACTIVE);
 
@@ -86,12 +89,4 @@ final class AddonMapper extends AbstractMapper
         }
     }
 
-    /**
-     * @param string $q
-     * @return array
-     */
-    private function getTokens($q)
-    {
-        return explode(' ', $q);
-    }
 }
