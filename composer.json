@@ -33,7 +33,7 @@
 		"nextras/orm": "dev-master#183b25621152b07c62bd5a1cce3dddec79c507be",
 		"nextras/dbal": "dev-master#da7b591bfca1095e991cbbe1645adc21ecfbf6ee",
 		"nextras/migrations": "~3.0.4",
-		"symfony/console": "~3.1.5"
+		"contributte/console": "dev-master#20228a4e152d77a1a4f17d06e25a42a0bbf4f511"
 	},
 	"require-dev": {
 		"nette/tester": "^1.7.1",

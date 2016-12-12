@@ -9,6 +9,7 @@ includes:
     - app/parameters.neon
 
     # EXTENSIONS ===========================================
+    - ext/console.neon
     - ext/dbal.neon
     - ext/migration.neon
     - ext/orm.neon
