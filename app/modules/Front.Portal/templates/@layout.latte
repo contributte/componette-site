@@ -36,6 +36,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{$basePath}/dist/front.external.css?v={$rev}">
     <link rel="stylesheet" href="{$basePath}/dist/front.bundle.css?v={$rev}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
     <!-- Feeds -->
     <link rel="alternate" type="application/rss+xml" title="RSS" n:href="//:Front:Portal:Rss:newest">
@@ -52,20 +53,32 @@
     <div class="main-container container">
 
         <!-- Header -->
-        <div class="header row">
-            <div class="col-xs-1 header-col">
-                <a class="main-title" n:href=":Front:Home:"><span class="mega-octicon octicon-home"></span></a>
-            </div>
-            <div class="col-xs-10 header-col">
-                <div class="b-search">
-                    {control search}
-                    {if $presenter->isLinkCurrent(':Front:Portal:List:*')}
-                        {control search:controls}
-                    {/if}
+        <div class="header">
+            <div class="row">
+                <div class="col-xs-1 header-col">
+                    <a class="main-title" n:href=":Front:Home:"><span class="mega-octicon octicon-home"></span></a>
+                </div>
+                <div class="col-xs-10 header-col">
+                    <div class="b-search">
+                        {control search}
+                        {if $presenter->isLinkCurrent(':Front:Portal:List:*')}
+                            {control search:controls}
+                        {/if}
+                    </div>
+                </div>
+                <div class="col-sm-1  header-col">
+                    <a href="#" title="Add new package" data-tooltip="bottom" data-toggle="modal" data-target="#package-modal" class="btn btn-default button--add-package"><span class="mega-octicon octicon-plus"></span></a>
                 </div>
             </div>
-            <div class="col-sm-1  header-col">
-                <a href="#" title="Add new package" data-tooltip="bottom" data-toggle="modal" data-target="#package-modal" class="btn btn-default button--add-package"><span class="mega-octicon octicon-plus"></span></a>
+        </div>
+        <div class="xmas">
+            <div class="row">
+                <div class="col-md-1 col-xs-1">
+                    <img class="animated flash" src="https://cdn4.iconfinder.com/data/icons/free-color-christmas-icons/24/Christmas_Tree-64.png" title="Merry Christmas 2016" alt="">
+                </div>
+                <div class="col-md-11 col-xs-11 text-center message">
+                    Merry Christmas to <strong>all</strong> contributors, addons makers, <a href="https://nette.org">Nette Framework</a> enthusiasts and <a href="http://php.net/">PHP lovers</a>. PF 2017 guys!.
+                </div>
             </div>
         </div>
         <!-- /Header -->
@@ -78,9 +91,9 @@
 
         <!-- Content -->
         <div class="content">
-            <div class="row">
-                {ifset #wrapper}
-                    {block #wrapper}
+            {ifset #wrapper}
+                {block #wrapper}
+                    <div class="row">
                         <!-- Sidebar(3) -->
                         <div class="col-md-3">
                             <h2 class="category"><span class="mega-octicon octicon-tag"></span> Tags</h2>
@@ -95,15 +108,15 @@
                             {include #content}
                         </div>
                         <!-- /Content(9) -->
-                    {/block}
-                {else}
-                    <!-- Content(12) -->
-                    <div class="col-md-12">
-                        {include #content}
                     </div>
-                    <!-- Content(12) -->
-                {/ifset}
-            </div>
+                {/block}
+            {else}
+                <!-- Content(12) -->
+                <div class="col-md-12">
+                    {include #content}
+                </div>
+                <!-- Content(12) -->
+            {/ifset}
         </div>
         <!-- /Content -->
     </div>
