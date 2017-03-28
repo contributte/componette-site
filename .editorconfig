@@ -1,6 +1,7 @@
 # EditorConfig is awesome: http://EditorConfig.org
+# https://github.com/f3l1x/editorconfig
 
-# top-most EditorConfig file
+# Top-most EditorConfig file
 root = true
 
 # Unix-style newlines with a newline ending every file
@@ -8,14 +9,24 @@ root = true
 end_of_line = lf
 insert_final_newline = true
 
-# Matches multiple files with brace expansion notation
-# Set default charset
-[*.{js,php,neon}]
+# JS / PHP
+[*.{js,php,phpt}]
 charset = utf-8
-indent_style = space
+indent_style = tab
 indent_size = 4
 
-# Matches the exact files either package.json or .travis.yml
-[{package.json,.travis.yml}]
+# NEON
+[*.neon]
+charset = utf-8
+indent_style = tab
+indent_size = 4
+
+# YAML
+[*.yml]
 indent_style = space
+indent_size = 2
+
+# JSON
+[*.json]
+indent_style = tab
 indent_size = 2
