@@ -1,0 +1,27 @@
+{block}
+{*{cache menu, expire => '+1 day'}*}
+
+{var $categories => $_categories()}
+{var $tags => $_tags()}
+
+<div class="sidebar">
+    <ul>
+        <li n:foreach="$categories as $category">
+            {continueIf $category->addons->count() <= 0}
+            <a href="{plink List:tag $category->name}">
+                <span class="square" style="background: {$category->color|noescape}">{$category->addons->count()}</span>
+                <span n:class="$category->highlighted ? highlighted, name">{$category->name}</span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="tags" n:inner-foreach="$tags as $tag">
+        <div class="btn-group" role="group">
+            <a href="{plink List:tag $tag->name}">
+                <span class="label label-default">{$tag->name}</span>
+                <span class="label label-info">{$tag->addons->count()}</span>
+            </a>
+        </div>
+    </div>
+</div>
+{*{/cache}*}

@@ -248,126 +248,55 @@ a[href*="://"]:after {
     }
   }
 
-  .side-menu {
+  .box {
     background: #fff;
-    border-radius: 6px;
-    padding: 10px 0;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, .3);
-
-    .btn-wrapper {
-      padding: 0 10px;
+    .col-box {
+      padding: 15px 15px 15px 30px;
     }
-
-    .nav > li > a {
-      padding: 0 15px;
-      font-size: 1.2em;
-
-      span.square {
-        border-radius: 2px;
-        width: 20px;
-        height: 20px;
-        display: inline-block;
-        margin: 4px 0;
-        vertical-align: middle;
-        color: #fff;
-        padding: 0;
-        font-size: 12px;
-        text-align: center;
-        font-weight: bold;
-        text-shadow: #000 1px 1px 0;
-      }
-
-      span.name {
-        margin: 4px 0 4px 10px;
-        height: 28px;
-        vertical-align: middle;
-        display: inline-block;
-      }
-
-      span.highlighted {
-        font-weight: bold;
-        text-decoration: underline;
-        font-size: 1.1em;
-        margin-bottom: 6px;
-      }
+    .col-aside {
+      padding-left: 0;
     }
   }
+}
 
-  .side-menu {
-    .tags {
-      padding: 10px;
-      a {
-        color: #fff;
+.sidebar {
+  background: #fafafa;
+  border-left: 1px solid #eee;
+}
+
+.addons {
+  .addon {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+
+    .addon__box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .addon__image {
+      flex: 1;
+      flex-grow: 0;
+      vertical-align: middle;
+      padding-right: 10px;
+
+      img {
+        max-width: 60px;
+        max-height: 60px;
       }
     }
-  }
-
-  .addons {
-    h2.category {
-      span {
-        font-size: 23px;
+    .addon__body {
+      flex: 1;
+      h3 {
+        margin: 0 0 5px 0;
+        font-size: 18px;
+        font-weight: 600;
       }
     }
-
-    .b-addon {
-      font-size: 16px;
-      box-shadow: 0 2px 2px rgba(0, 0, 0, .3);
-      border-radius: 6px;
-      background: #fff;
-      margin-bottom: 10px;
-
-      .b-addon__image {
-        display: inline-block;
-        padding: 1em 0 .4em 1em;
-        vertical-align: top;
-
-        img {
-          max-width: 60px;
-        }
-      }
-
-      .b-addon__body {
-        width: 80%;
-        display: inline-block;
-        padding: 1em 1em .4em .6em;
-      }
-
-      .b-addon__title {
-        font-weight: normal;
-        margin: 0 0 10px 0;
-        font-size: 20px;
-
-      }
-    }
-
-    .col-md-6 .col-md-2 {
-      display: block;
-      clear: left;
-      width: 100%;
-    }
-
-    .col-md-6 .b-meta-info {
-      display: inline-block;
-      margin-left: 10px;
-    }
-  }
-
-  .addons-all {
-    .b-addon {
-      .b-addon__body {
-        display: inline-block;
-        padding-left: 0;
-
-        h3 {
-          margin: 0;
-        }
-      }
-      .b-addon__image {
-        padding: 0.8em 0.5em 0.8em 0.8em;
-        img {
-          max-width: 30px;
-        }
-      }
+    .addon__meta {
+      flex: 1;
+      flex-grow: 0;
     }
   }
 }

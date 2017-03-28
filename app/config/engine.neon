@@ -1,15 +1,12 @@
 includes:
 
-    # APPLICATION ==========================================
-    - app/components.neon
-    - app/console.neon
-    - app/latte.neon
-    - app/model.neon
-    - app/other.neon
-    - app/parameters.neon
+	# APPLICATION ==
+	- app/components.neon
+	- app/console.neon
+	- app/latte.neon
+	- app/model.neon
+	- app/parameters.neon
 
-    # EXTENSIONS ===========================================
-    - ext/console.neon
-    - ext/dbal.neon
-    - ext/migration.neon
-    - ext/orm.neon
+	# EXTENSIONS ===
+	- ext/contributte.neon
+	- ext/nextras.neon

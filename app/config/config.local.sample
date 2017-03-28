@@ -1,29 +1,29 @@
 parameters:
 
-    # Database
-    database:
-        host: <fill me>
-        dbname: <fill me>
-        user: <fill me>
-        password: <fill me>
+	# Database
+	database:
+		host: <fill me>
+		dbname: <fill me>
+		user: <fill me>
+		password: <fill me>
 
-    # Error mail
-    system:
-        error:
-            email: <fill me>
+	# Error mail
+	system:
+		error:
+			email: <fill me>
 
-    # Github
-    github:
-        token: null
+	# Github
+	github:
+		token: null
 
-    # Users for Authenticator
-    security:
-        users:
-            # <name> : <bcrypt password>
-            # defaults => componette / componette!
-            componette: $2y$10$0mIpEBxjCeokVZhg.EdJNO7XS1.6t2P.Demj6PGc2yYDLipW8clwy
+	# Users for Authenticator
+	security:
+		users:
+			# <name> : <bcrypt password>
+			# defaults => componette / componette!
+			componette: $2y$10$0mIpEBxjCeokVZhg.EdJNO7XS1.6t2P.Demj6PGc2yYDLipW8clwy
 
 services:
 
-    # Disable cache
-    cache.storage: Nette\Caching\Storages\DevNullStorage
+	# Disable cache
+	cache.storage: Nette\Caching\Storages\DevNullStorage

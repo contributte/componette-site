@@ -1,0 +1,39 @@
+<?php
+
+namespace App\Model\Templating;
+
+use App\Model\Portal;
+use App\Model\Templating\Filters\Helpers;
+use App\Model\Templating\Filters\HelpersExecutor;
+use Nette\Application\UI\Control;
+use Nette\Bridges\ApplicationLatte\Template;
+use Nette\Bridges\ApplicationLatte\TemplateFactory as NTemplateFactory;
+
+final class TemplateFactory extends NTemplateFactory
+{
+
+	/** @var Portal @inject */
+	public $portal;
+
+	/** @var Portal @inject */
+	public $rawgit;
+
+	/**
+	 * @param Control $control
+	 * @return Template
+	 */
+	public function createTemplate(Control $control = NULL)
+	{
+		$template = parent::createTemplate($control);
+
+		// Template tweaks!
+		$template->_helpers = $helpers = new HelpersExecutor();
+		$helpers->addHelper('isPhp', [Helpers::class, 'isPhp']);
+
+		// Common variables
+		$template->_debug = $this->portal->isDebug();
+
+		return $template;
+	}
+
+}

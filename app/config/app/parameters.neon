@@ -1,7 +1,4 @@
 parameters:
-    system:
-        error:
-            presenter: Front:Portal:Error
-
-    build:
-        rev: v17102016
+	system:
+		error:
+			presenter: Front:Portal:Error

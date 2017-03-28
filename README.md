@@ -20,12 +20,8 @@ Modern useful #nette addons portal.
 
 ### Application
 
-* PHP >= 5.6.0 (prefer ^7.0)
-* Nette packages (prefer ^2.4)
-
-### Server
-
-* PHP + Composer + NodeJS
+* PHP >= 7.1.0
+* NodeJS
 * WebServer (Nginx / Apache)
 * MariaDB / MySQL
 * [**Docker**](https://github.com/componette/dockerfiles) [optionally]

@@ -1,45 +1,45 @@
 php:
-    date.timezone: Europe/Prague
-    # session.save_path: %tempDir%/session
-    # zlib.output_compression: true
+	date.timezone: Europe/Prague
+	# session.save_path: %tempDir%/session
+	# zlib.output_compression: true
 
 parameters:
-    database:
-        driver: mysqli
+	database:
+		driver: mysqli
 
 includes:
-    - engine.neon
+	- engine.neon
 
 latte:
-    xhtml: no
+	xhtml: no
 
 session:
-    debugger: %debugMode%
-    expiration: '+14 days'
-    autoStart: smart
+	debugger: %debugMode%
+	expiration: '+14 days'
+	autoStart: smart
 
 application:
-    catchExceptions: %productionMode%
-    errorPresenter: %system.error.presenter%
-    mapping:
-        *: App\Modules\*\*Presenter
+	catchExceptions: %productionMode%
+	errorPresenter: %system.error.presenter%
+	mapping:
+		*: App\Modules\*\*Presenter
 
 http:
-    headers:
-        X-XSS-Protection: "1; mode=block"
-        X-Powered-By: "componette"
+	headers:
+		X-XSS-Protection: "1; mode=block"
+		X-Powered-By: "componette"
 
 routing:
-    debugger: yes
+	debugger: %debugMode%
 
 di:
-    debugger: yes
+	debugger: %debugMode%
 
 tracy:
-    email: %system.error.email%
-    strictMode: yes
+	email: %system.error.email%
+	strictMode: yes
 
 services:
-    nette.userStorage:
-        setup:
-            - setNamespace(Componette)
+	nette.userStorage:
+		setup:
+			- setNamespace(Componette)

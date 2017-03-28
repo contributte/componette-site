@@ -1,9 +1,8 @@
 services:
-    - App\Model\Commands\Addons\Composer\CollectStatsCommand
-    - App\Model\Commands\Addons\Content\GenerateContentCommand
-    - App\Model\Commands\Addons\Bower\SynchronizeCommand
-    - App\Model\Commands\Addons\Composer\SynchronizeCommand
-    - App\Model\Commands\Addons\Github\SynchronizeCommand
-    - App\Model\Commands\Addons\Github\SynchronizeFilesCommand
-    - App\Model\Commands\Addons\Github\SynchronizeReleasesCommand
-    - App\Model\Commands\Avatars\WarmupCacheCommand
+	- App\Model\Commands\Addons\Composer\CollectStatsCommand
+	- App\Model\Commands\Addons\Content\GenerateContentCommand
+	- App\Model\Commands\Addons\Bower\SynchronizeCommand
+	- App\Model\Commands\Addons\Composer\SynchronizeCommand
+	- App\Model\Commands\Addons\Github\SynchronizeCommand
+	- App\Model\Commands\Addons\Github\SynchronizeFilesCommand
+	- App\Model\Commands\Addons\Github\SynchronizeReleasesCommand

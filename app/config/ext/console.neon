@@ -1,6 +1,0 @@
-extensions:
-    console: Contributte\Console\DI\ConsoleExtension
-
-console:
-    name: "Componette"
-    version: "1.1.0"

@@ -1,0 +1,12 @@
+{block}
+<script n:syntax="double">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/{{if $_debug}}analytics_debug.js{{else}}analytics.js{{/if}}','ga');
+
+    ga('create', 'UA-28123999-15', 'auto');
+    ga('require', 'ec');
+    ga('require', 'linkid');
+    ga('send', 'pageview');
+</script>

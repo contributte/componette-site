@@ -27,14 +27,10 @@
 		"ext-mbstring": "*",
 		"ext-mysqli": "*",
 		"nette/application": "^2.4.5",
-		"nette/caching": "^2.5.3",
 		"nette/di": "^2.4.8",
 		"nette/forms": "^2.4.3",
-		"nette/http": "^2.4.5",
 		"nette/robot-loader": "^2.4.2",
 		"nette/security": "^2.4.1",
-		"nette/utils": "^2.4.4",
-		"latte/latte": "^3.0.0",
 		"tracy/tracy": "^2.4.6",
 
 		"nextras/orm": "^2.2.3",
@@ -42,20 +38,17 @@
 		"nextras/migrations": "~3.0.4",
 
 		"contributte/console": "^0.1.1",
-		"contributte/bootstrap": "^0.1.2"
+		"contributte/latte": "^0.1.0",
+		"contributte/bootstrap": "^0.1.2",
+		"contributte/http": "^0.1.0",
+		"contributte/cache": "^0.1.0",
+		"contributte/utils": "^0.1.0"
 	},
 	"require-dev": {
 		"ninjify/qa": "^0.3.3",
-		"ninjify/nunjuck": "^0.1.4"
-	},
-	"autoload-dev": {
-		"classmap": [
-			"app/",
-			"tests/"
-		],
-		"files": [
-			"app/shortcuts.php"
-		]
+		"ninjify/nunjuck": "^0.1.4",
+
+		"contributte/dev": "^0.1.0"
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true

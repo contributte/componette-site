@@ -1,39 +1,47 @@
 services:
 
-    # Curl =================================================
-    - App\Core\Http\Curl\Client
+	# WebServices ==========================================
 
-    # Github ===============================================
-    - App\Model\WebServices\Github\GithubClient(token: %github.token%)
-    - App\Model\WebServices\Github\GithubService
+	# [github]
+	- App\Model\WebServices\Github\GithubClient(token: %github.token%)
+	- App\Model\WebServices\Github\GithubService
 
-    # Composer =============================================
-    - App\Model\WebServices\Composer\ComposerClient
-    - App\Model\WebServices\Composer\ComposerService
+	# [composer]
+	- App\Model\WebServices\Composer\ComposerClient
+	- App\Model\WebServices\Composer\ComposerService
 
-    # Bower ================================================
-    - App\Model\WebServices\Bower\BowerClient
-    - App\Model\WebServices\Bower\BowerService
+	# [bower]
+	- App\Model\WebServices\Bower\BowerClient
+	- App\Model\WebServices\Bower\BowerService
 
-    # Search ===============================================
-    - App\Model\Search\SearchFactory
-    - {factory: @App\Model\Search\SearchFactory::create}
+	# Search ===============================================
+	- App\Model\Search\SearchFactory
+	- {factory: @App\Model\Search\SearchFactory::create}
 
-    # Cache ================================================
-    - App\Core\Cache\CacheProvider
+	# Facade ===============================================
 
-    # Model ================================================
+	# [front-end]
+	- App\Model\Facade\AddonFacade
+	- App\Model\Facade\SearchFacade
+	- App\Model\Facade\StatisticsFacade
 
-    # [front-end]
-    - App\Model\Facade\AddonFacade
-    - App\Model\Facade\SearchFacade
-    - App\Model\Facade\StatisticsFacade
+	# [back-end]
+	- App\Model\Facade\Admin\AddonFacade
 
-    # [back-end]
-    - App\Model\Facade\Admin\AddonFacade
+	# [cli]
+	- App\Model\Facade\Cli\Commands\AddonFacade
 
-    # [cli]
-    - App\Model\Facade\Cli\Commands\AddonFacade
+	# Cache ================================================
+	- App\Core\Cache\CacheCleaner
 
-    # Images ===============================================
-    - App\Model\WebImages\GithubImages(imageDir: %wwwDir%/imgs)
+	# Routing ==============================================
+	- App\Model\Routing\Helpers\AddonsHelper
+	- {class: App\Model\Routing\RouterFactory, inject: on}
+	routing.router: @App\Model\Routing\RouterFactory::create
+
+	# Portal ===============================================
+	- App\Model\Portal(@container::parameters)
+	- App\Model\Statistics
+
+	# Security =============================================
+	authenticator: App\Model\Security\SimpleAuthenticator(%security.users%)

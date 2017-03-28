@@ -2,57 +2,57 @@
 
 namespace App\Model;
 
-use App\Core\Cache\CacheProvider;
-use App\Model\Cache\CacheKeys;
-use App\Model\ORM\Addon\AddonRepository;
+use App\Model\Caching\CacheKeys;
+use App\Model\Database\ORM\Addon\AddonRepository;
+use Contributte\Cache\CacheFactory;
 use Nette\Caching\Cache;
 use Nette\Utils\DateTime;
 
 final class Statistics
 {
 
-    /** @var array */
-    private $cached = [];
+	/** @var array */
+	private $cached = [];
 
-    /** @var AddonRepository */
-    private $addonRepository;
+	/** @var AddonRepository */
+	private $addonRepository;
 
-    /** @var Cache */
-    private $cache;
+	/** @var Cache */
+	private $cache;
 
-    /**
-     * @param AddonRepository $addonRepository
-     * @param CacheProvider $cacheProvider
-     */
-    public function __construct(AddonRepository $addonRepository, CacheProvider $cacheProvider)
-    {
-        $this->addonRepository = $addonRepository;
-        $this->cache = $cacheProvider->create(CacheKeys::FRONT_CONTROLS_STATISTICS);
-        $this->build();
-    }
+	/**
+	 * @param AddonRepository $addonRepository
+	 * @param CacheFactory $cacheFactory
+	 */
+	public function __construct(AddonRepository $addonRepository, CacheFactory $cacheFactory)
+	{
+		$this->addonRepository = $addonRepository;
+		$this->cache = $cacheFactory->create(CacheKeys::FRONT_CONTROLS_STATISTICS);
+		$this->build();
+	}
 
-    /**
-     * Build cache
-     */
-    protected function build()
-    {
-        $this->cached = $this->cache->load('cached', function (&$dependencies) {
-            $dependencies[Cache::EXPIRE] = new DateTime('+1 day');
-            $cached = [];
+	/**
+	 * Build cache
+	 */
+	protected function build()
+	{
+		$this->cached = $this->cache->load('cached', function (&$dependencies) {
+			$dependencies[Cache::EXPIRE] = new DateTime('+1 day');
+			$cached = [];
 
-            // Addons counts
-            $cached['addons'] = $this->addonRepository->findActive()->countStored();
+			// Addons counts
+			$cached['addons'] = $this->addonRepository->findActive()->countStored();
 
-            return $cached;
-        });
-    }
+			return $cached;
+		});
+	}
 
-    /*
+	/*
      * @return int
      */
-    public function getAddonsCount()
-    {
-        return $this->cached['addons'];
-    }
+	public function getAddonsCount()
+	{
+		return $this->cached['addons'];
+	}
 
 }
