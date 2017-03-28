@@ -12,6 +12,7 @@ use Nextras\Migrations\Extensions\SqlHandler;
 /** @var Container $container */
 $container = require_once __DIR__ . '/../app/bootstrap.php';
 
+/** @var Connection $connection */
 $connection = $container->getByType(Connection::class);
 $dbal = new NextrasAdapter($connection);
 $driver = new MySqlDriver($dbal);
