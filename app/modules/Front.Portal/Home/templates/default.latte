@@ -1,0 +1,11 @@
+{block #content}
+
+<h2 class="category"><span class="mega-octicon octicon-clock"></span> <a n:href=":Front:Portal:Index:activity">Latest activity</a></h2>
+{*{cache 'addons/last-active', expire => '+1 hour'}*}
+    {control latestActivity}
+{*{/cache}*}
+
+<h2 class="category"><span class="mega-octicon octicon-cloud-download"></span> <a n:href=":Front:Portal:Index:latest">Latest added</a></h2>
+{*{cache 'addons/newest', expire => '+1 hour'}*}
+    {control latestAdded}
+{*{/cache}*}

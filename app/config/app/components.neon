@@ -16,3 +16,4 @@ services:
 	- App\Modules\Front\Portal\Controls\RssFeed\IRssFeedFactory
 	- App\Modules\Front\Portal\Controls\RssFeed\RssFeedFactory
 	- App\Modules\Front\Portal\Controls\Sitemap\ISitemapFactory
+	- App\Modules\Front\Portal\Base\Controls\Componetters\IComponettersFactory

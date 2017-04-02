@@ -39,7 +39,7 @@ $.nette.ext('search', {
     }
 }, {
     form: 'form.search-form',
-    el: 'input.search',
+    el: 'input.search-input',
     spinner: $('<div>', {
         class: 'spinner',
         css: {

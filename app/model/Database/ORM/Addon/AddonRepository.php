@@ -7,6 +7,8 @@ use Nextras\Orm\Collection\ICollection;
 
 /**
  * @property-read AddonMapper $mapper
+ *
+ * @method Addon[] findAll()
  */
 final class AddonRepository extends AbstractRepository
 {
@@ -17,38 +19,6 @@ final class AddonRepository extends AbstractRepository
 	public static function getEntityClassNames()
 	{
 		return [Addon::class];
-	}
-
-	/**
-	 * @param string $q
-	 * @param string|NULL $orderBy
-	 * @return ICollection|Addon[]
-	 */
-	public function findByQuery($q, $orderBy = NULL)
-	{
-		$result = $this->mapper->findByQuery($q);
-
-		if ($orderBy) {
-			$this->mapper->applyOrder($result, $orderBy);
-		}
-
-		return $this->mapper->toCollection($result);
-	}
-
-	/**
-	 * @param string $q
-	 * @param string|NULL $orderBy
-	 * @return ICollection|Addon[]
-	 */
-	public function findByOwnerOrName($q, $orderBy = NULL)
-	{
-		$result = $this->mapper->findByOwnerOrName($q);
-
-		if ($orderBy) {
-			$this->mapper->applyOrder($result, $orderBy);
-		}
-
-		return $this->mapper->toCollection($result);
 	}
 
 	/**

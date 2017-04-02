@@ -19,7 +19,7 @@ final class AddonsHelper
 	/** @var array */
 	private $data = [
 		'addons' => [],
-		'owners' => [],
+		'authors' => [],
 	];
 
 	/** @var bool */
@@ -47,11 +47,11 @@ final class AddonsHelper
 				$dependencies[Cache::EXPIRE] = '+1 day';
 				$dependencies[Cache::TAGS] = ['routing', 'routes'];
 
-				$data = ['addons' => [], 'owners' => []];
+				$data = ['addons' => [], 'authors' => []];
 
 				foreach ($this->repository->findAll() as $addon) {
-					$data['addons'][$addon->id] = strtolower($addon->owner . '/' . $addon->name);
-					$data['owners'][strtolower($addon->owner)] = strtolower($addon->owner);
+					$data['addons'][$addon->id] = strtolower($addon->author . '/' . $addon->name);
+					$data['authors'][strtolower($addon->author)] = strtolower($addon->author);
 				}
 
 				return $data;
@@ -98,12 +98,12 @@ final class AddonsHelper
 	 * @param string $slug
 	 * @return string|NULL
 	 */
-	public function ownerIn($slug): ?string
+	public function authorIn($slug): ?string
 	{
 		$this->build();
 		$slug = strtolower($slug);
-		if (isset($this->data['owners'][$slug])) {
-			return strtolower($this->data['owners'][$slug]);
+		if (isset($this->data['authors'][$slug])) {
+			return strtolower($this->data['authors'][$slug]);
 		}
 
 		return NULL;
@@ -113,12 +113,12 @@ final class AddonsHelper
 	 * @param string $string
 	 * @return string
 	 */
-	public function ownerOut($slug): ?string
+	public function authorOut($slug): ?string
 	{
 		$this->build();
 		$slug = strtolower($slug);
-		if (isset($this->data['owners'][$slug])) {
-			return strtolower($this->data['owners'][$slug]);
+		if (isset($this->data['authors'][$slug])) {
+			return strtolower($this->data['authors'][$slug]);
 		}
 
 		return NULL;

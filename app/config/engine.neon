@@ -9,4 +9,5 @@ includes:
 
 	# EXTENSIONS ===
 	- ext/contributte.neon
+	- ext/minetro.neon
 	- ext/nextras.neon

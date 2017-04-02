@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "acb985ff1f1cada955357ebb296c94f9",
+    "content-hash": "802ae9b15d56f474835375d5cda941dd",
     "packages": [
         {
             "name": "contributte/bootstrap",
@@ -537,6 +537,75 @@
             "time": "2017-01-19T11:06:59+00:00"
         },
         {
+            "name": "minetro/nextras-orm-query-object",
+            "version": "0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/minetro/nextras-orm-query-object.git",
+                "reference": "c872e0201b3ac7ae1af33bcd86e4dbaf96cfa040"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/minetro/nextras-orm-query-object/zipball/c872e0201b3ac7ae1af33bcd86e4dbaf96cfa040",
+                "reference": "c872e0201b3ac7ae1af33bcd86e4dbaf96cfa040",
+                "shasum": ""
+            },
+            "require": {
+                "nextras/dbal": "^2.0.0",
+                "php": ">= 5.6"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.5",
+                "nette/di": "^2.4.4",
+                "nette/tester": "^1.7.1",
+                "nextras/orm": "^2.2.0",
+                "ninjify/qa": "^0.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "ninjify": {
+                    "qa": {
+                        "codesniffer": {
+                            "folders": [
+                                "src",
+                                "tests"
+                            ]
+                        },
+                        "codefixer": {
+                            "folders": [
+                                "src",
+                                "tests"
+                            ]
+                        },
+                        "linter": {
+                            "folders": [
+                                "src",
+                                "tests"
+                            ]
+                        }
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Minetro\\Nextras\\Orm\\QueryObject\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Milan Felix Sulc",
+                    "homepage": "https://jfx.cz"
+                }
+            ],
+            "description": "QueryObjects for Nextras ORM",
+            "homepage": "https://github.com/minetro/nextras-orm-query-object",
+            "time": "2016-11-18T11:58:35+00:00"
+        },
+        {
             "name": "nette/application",
             "version": "v2.4.5",
             "source": {
@@ -919,16 +988,16 @@
         },
         {
             "name": "nette/forms",
-            "version": "v2.4.3",
+            "version": "v2.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/forms.git",
-                "reference": "c2618a144a7cd0a1f41143e18387d9c48cef91cb"
+                "reference": "8a76e69dd2725bed3bf3c24f6fed1c6d60945f04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/forms/zipball/c2618a144a7cd0a1f41143e18387d9c48cef91cb",
-                "reference": "c2618a144a7cd0a1f41143e18387d9c48cef91cb",
+                "url": "https://api.github.com/repos/nette/forms/zipball/8a76e69dd2725bed3bf3c24f6fed1c6d60945f04",
+                "reference": "8a76e69dd2725bed3bf3c24f6fed1c6d60945f04",
                 "shasum": ""
             },
             "require": {
@@ -975,7 +1044,7 @@
             ],
             "description": "Nette Forms: greatly facilitates web forms",
             "homepage": "https://nette.org",
-            "time": "2016-12-20T23:49:37+00:00"
+            "time": "2017-03-29T16:51:07+00:00"
         },
         {
             "name": "nette/http",
@@ -1382,16 +1451,16 @@
         },
         {
             "name": "nette/utils",
-            "version": "v2.4.4",
+            "version": "v2.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/utils.git",
-                "reference": "714afb64d0da07d0da7178cbf5680008e4b0180b"
+                "reference": "28ad4e2a6dcf143c23bde969a825f10a5d513602"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/utils/zipball/714afb64d0da07d0da7178cbf5680008e4b0180b",
-                "reference": "714afb64d0da07d0da7178cbf5680008e4b0180b",
+                "url": "https://api.github.com/repos/nette/utils/zipball/28ad4e2a6dcf143c23bde969a825f10a5d513602",
+                "reference": "28ad4e2a6dcf143c23bde969a825f10a5d513602",
                 "shasum": ""
             },
             "require": {
@@ -1410,7 +1479,8 @@
                 "ext-intl": "for script transliteration in Strings::webalize() and toAscii()",
                 "ext-json": "to use Nette\\Utils\\Json",
                 "ext-mbstring": "to use Strings::lower() etc...",
-                "ext-xml": "to use Strings::length() etc. when mbstring is not available"
+                "ext-xml": "to use Strings::length() etc. when mbstring is not available",
+                "https://nette.org/donate": "\u001b[1;37;42m Please consider supporting Nette via a donation \u001b[0m"
             },
             "type": "library",
             "extra": {
@@ -1441,7 +1511,7 @@
             ],
             "description": "Nette Utility Classes",
             "homepage": "https://nette.org",
-            "time": "2017-01-16T12:30:14+00:00"
+            "time": "2017-03-29T16:55:54+00:00"
         },
         {
             "name": "nextras/dbal",

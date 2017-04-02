@@ -53,7 +53,7 @@ final class StatisticsFacade
 	{
 		$collection = $this->addonRepository
 			->findActive()
-			->fetchPairs('owner');
+			->fetchPairs('author');
 
 		return count($collection);
 	}

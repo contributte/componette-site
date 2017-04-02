@@ -1,0 +1,43 @@
+<section class="meta">
+    <a href="{$addon->github->linker->getOwnerUrl()}"><img alt="" title="{$addon->owner}" src="{avatar $addon->author}"></a>
+    <a class="link-author" href="{plink Index:author, slug => $addon->github->author}">{$addon->github->author}</a>
+
+    <div class="meta-right">
+        <span class="github-box github-box-icons hidden-w500 hidden-sm">
+            <span class="box-icon">
+                <a data-ga="1" data-event="click" data-category="meta-full" data-action="open-issue" href="{$addon->github->linker->getIssuesUrl()}" data-toggle="tooltip" data-placement="top" title="Open issue"><span class="octicon octicon-diff-added"></span></a>
+            </span>
+            <span class="box-icon">
+                <a data-ga="1" data-event="click" data-category="meta-full" data-action="send-pull-request" href="{$addon->github->linker->getPullRequestsUrl()}" data-toggle="tooltip" data-placement="top" title="Send pull request"><span class="octicon octicon-git-merge"></span></a>
+            </span>
+        </span>
+        <span class="github-box">
+            <span class="box-icon"><span class="octicon octicon-clock"></span></span>
+            <span class="box-count box-age"><a data-ga="1" data-event="click" data-category="meta-full" data-action="commits" href="{$addon->github->linker->getCommitsUrl()}" data-toggle="tooltip" data-placement="top" title="Last activity">{$addon->github->pushed|timeAgo}</a></span>
+        </span>
+        {if $addon->isComposerPackage}
+            <span class="github-box">
+                <span class="box-icon"><span class="octicon octicon-cloud-download"></span></span>
+                <span class="box-count"><a data-ga="1" data-event="click" data-category="meta-full" data-action="composer" href="{$addon->composer->linker->getPackageUrl()}" data-toggle="tooltip" data-placement="top" title="Total downloads over composer">{$addon->github->downloads|count}</a></span>
+            </span>
+        {elseif $addon->isBowerPackage}
+            <span class="github-box">
+                <span class="box-icon"><span class="octicon octicon-cloud-download"></span></span>
+                <span class="box-count"><a data-ga="1" data-event="click" data-category="meta-full" data-action="repo" href="{$addon->github->linker->getRepoUrl()}" data-toggle="tooltip" data-placement="top" title="Total hits over bower">{$addon->github->downloads|count}</a></span>
+            </span>
+        {else}
+            <span class="github-box">
+                <span class="box-icon"><span class="octicon octicon-desktop-download"></span></span>
+                <span class="box-count"><a data-ga="1" data-event="click" data-category="meta-full" data-action="releases" href="{$addon->github->linker->getReleasesUrl()}" data-toggle="tooltip" data-placement="top" title="Releases on Github">{$addon->github->releases|count}</a></span>
+            </span>
+        {/if}
+        <span class="github-box hidden-w500 hidden-sm">
+            <span class="box-icon"><span class="octicon octicon-issue-opened"></span></span>
+            <span class="box-count"><a data-ga="1" data-event="click" data-category="meta-full" data-action="issues" href="{$addon->github->linker->getIssuesUrl()}" data-toggle="tooltip" data-placement="top" title="Issues on Github">{$addon->github->issues|count}</a></span>
+        </span>
+        <span class="github-box">
+            <span class="box-icon"><span class="octicon octicon-star"></span></span>
+            <span class="box-count"><a data-ga="1" data-event="click" data-category="meta-full" data-action="stars" href="{$addon->github->linker->getStarsUrl()}" data-toggle="tooltip" data-placement="top" title="Stars on Github">{$addon->github->stars|count}</a></span>
+        </span>
+    </div>
+</section>

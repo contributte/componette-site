@@ -2,9 +2,9 @@
 
 namespace App\Model\WebServices\Bower;
 
-use App\Core\Http\Curl\ExceptionResponse;
-use App\Core\Http\Curl\Response;
 use App\Model\Exceptions\Runtime\WebServices\ComposerException;
+use Contributte\Http\Curl\ExceptionResponse;
+use Contributte\Http\Curl\Response;
 
 final class BowerService
 {

@@ -56,6 +56,8 @@ final class RouterFactory
 		// FRONT ===========================================
 
 		$router[] = $front = new RouteList('Front');
+		$front[] = new Route('sitemap.xml', 'Generator:sitemap');
+		$front[] = new Route('opensearch.xml', 'Generator:opensearch');
 
 		// FRONT.API =======================================
 
@@ -65,8 +67,6 @@ final class RouterFactory
 		// FRONT.PORTAL ====================================
 
 		$front[] = $portal = new RouteList('Portal');
-		$portal[] = new Route('sitemap.xml', 'Generator:sitemap');
-		$portal[] = new Route('opensearch.xml', 'Generator:opensearch');
 		$portal[] = new Route('rss/new.xml', 'Rss:newest');
 
 		$portal[] = new Route('<slug [a-zA-Z0-9\-\.]+/[a-zA-Z0-9\-\.]+>/', [
@@ -78,32 +78,19 @@ final class RouterFactory
 			],
 		]);
 		$portal[] = new Route('<slug [a-zA-Z0-9\-\.]+>/', [
-			'presenter' => 'List',
-			'action' => 'owner',
+			'presenter' => 'Index',
+			'action' => 'author',
 			'slug' => [
-				Route::FILTER_IN => [$this->addonsHelper, 'ownerIn'],
-				Route::FILTER_OUT => [$this->addonsHelper, 'ownerOut'],
+				Route::FILTER_IN => [$this->addonsHelper, 'authorIn'],
+				Route::FILTER_OUT => [$this->addonsHelper, 'authorOut'],
 			],
 		]);
 		$portal[] = new Route('', 'Home:default');
-		$portal[] = new Route('all/', 'List:default');
-		$portal[] = new Route('all/<by>/', 'List:sorted');
-		$portal[] = new Route('search/', 'List:search');
-		$portal[] = new Route('search/<tag>', 'List:tag');
-		$portal[] = new Route('status/', 'Status:default');
-
-		$portal[] = new Route('imgs/<action>/<owner [\w\-\/]+>.[!<ext=png>]', [
-			'presenter' => 'WebImage',
-			'action' => 'default',
-			'owner' => [
-				Route::FILTER_OUT => function ($owner) {
-					return strtolower($owner);
-				},
-				Route::FILTER_IN => function ($owner) {
-					return strtolower($owner);
-				},
-			],
-		]);
+		$portal[] = new Route('all/latest/', 'Index:all');
+		$portal[] = new Route('all/latest/', 'Index:latest');
+		$portal[] = new Route('all/stared/', 'Index:stared');
+		$portal[] = new Route('search/', 'Index:search');
+		$portal[] = new Route('search/<tag>', 'Index:tag');
 
 		// COMMON SCHEME
 		$front[] = new Route('<presenter>/<action>', 'Home:default');

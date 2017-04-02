@@ -5,28 +5,33 @@ namespace App\Model\Database\ORM\Addon;
 use App\Model\Database\ORM\AbstractEntity;
 use App\Model\Database\ORM\Bower\Bower;
 use App\Model\Database\ORM\Composer\Composer;
+use App\Model\Database\ORM\ComposerStatistics\ComposerStatistics;
 use App\Model\Database\ORM\Github\Github;
 use App\Model\Database\ORM\Tag\Tag;
 use Nette\Utils\DateTime;
 use Nextras\Orm\Relationships\ManyHasMany;
+use Nextras\Orm\Relationships\OneHasMany;
 
 /**
  * @property int $id                    {primary}
  * @property string $type               {enum self::TYPE_*} {default self::TYPE_UNKNOWN}
  * @property string $state              {enum self::STATE_*} {default self::STATE_QUEUED}
- * @property string $owner
+ * @property string $author
  * @property string $name
  * @property DateTime $createdAt        {default now}
  * @property DateTime|NULL $updatedAt
  *
- * @property string $fullname           {virtual}
- * @property string $isComposer         {virtual}
- * @property string $isBower            {virtual}
+ * @property string $fullname                                     {virtual}
+ * @property string $isComposer                                   {virtual}
+ * @property string $isBower                                      {virtual}
+ * @property ComposerStatistics|NULL $composerLatestStatistics    {virtual}
  *
- * @property Github|NULL $github        {1:1 Github::$addon}
- * @property Bower|NULL $bower          {1:1 Bower::$addon}
- * @property Composer|NULL $composer    {1:1 Composer::$addon}
- * @property ManyHasMany|Tag[] $tags    {m:n Tag::$addons, isMain=true}
+ * @property Github|NULL $github                                    {1:1 Github::$addon}
+ * @property Bower|NULL $bower                                      {1:1 Bower::$addon}
+ * @property Composer|NULL $composer                                {1:1 Composer::$addon}
+ * @property ComposerStatistics[]|OneHasMany $composerStatistics    {1:m ComposerStatistics::$addon, orderBy=[id=DESC]}
+ * @property ManyHasMany|Tag[] $tags                                {m:n Tag::$addons, isMain=true}
+ *
  */
 class Addon extends AbstractEntity
 {
@@ -50,7 +55,7 @@ class Addon extends AbstractEntity
 	 */
 	protected function getterFullname()
 	{
-		return $this->owner . '/' . $this->name;
+		return $this->author . '/' . $this->name;
 	}
 
 	/**
@@ -68,4 +73,13 @@ class Addon extends AbstractEntity
 	{
 		return $this->type === self::TYPE_BOWER;
 	}
+
+	/**
+	 * @return ComposerStatistics
+	 */
+	protected function getterComposerLatestStatistics()
+	{
+		return $this->composerStatistics->get()->fetch();
+	}
+
 }

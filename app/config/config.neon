@@ -22,7 +22,7 @@ application:
 	catchExceptions: %productionMode%
 	errorPresenter: %system.error.presenter%
 	mapping:
-		*: App\Modules\*\*Presenter
+		*: [App\Modules, *, *\*Presenter]
 
 http:
 	headers:

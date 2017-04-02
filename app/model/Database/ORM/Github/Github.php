@@ -2,11 +2,10 @@
 
 namespace App\Model\Database\ORM\Github;
 
-use App\Model\Addons\Extra;
-use App\Model\Addons\ExtraComposer;
-use App\Model\Addons\Linker;
+use App\Model\Database\Helpers\GithubLinker;
 use App\Model\Database\ORM\AbstractEntity;
 use App\Model\Database\ORM\Addon\Addon;
+use App\Model\Database\ORM\GithubComposer\GithubComposer;
 use App\Model\Database\ORM\GithubRelease\GithubRelease;
 use Nette\Utils\DateTime;
 use Nextras\Orm\Relationships\OneHasMany;
@@ -24,87 +23,36 @@ use Nextras\Orm\Relationships\OneHasMany;
  * @property int|NULL $forks
  * @property bool|NULL $fork
  * @property string|NULL $language
- * @property Extra|NULL $extra
  * @property DateTime|NULL $createdAt
  * @property DateTime|NULL $pushedAt
  * @property DateTime|NULL $updatedAt
  * @property DateTime $crawledAt                        {default now}
  *
- * @property GithubRelease[]|OneHasMany $releases       {1:m GithubRelease::$github, orderBy=[tag, DESC]}
+ * @property GithubRelease[]|OneHasMany $releases       {1:m GithubRelease::$github, orderBy=[publishedAt=DESC, tag=DESC]}
+ * @property GithubComposer[]|OneHasMany $composers     {1:m GithubComposer::$github}
  *
- * @property Linker $linker                             {virtual}
- * @property ExtraComposer $composer                    {virtual}
+ * @property GithubLinker $linker                       {virtual}
  */
 class Github extends AbstractEntity
 {
 
-	/** @var Linker */
+	/** @var GithubLinker */
 	private $linker;
-
-	/** @var ExtraComposer */
-	private $composer;
 
 	/**
 	 * VIRTUAL *****************************************************************
 	 */
 
 	/**
-	 * @return Linker
+	 * @return GithubLinker
 	 */
 	protected function getterLinker()
 	{
 		if (!$this->linker) {
-			$this->linker = new Linker($this);
+			$this->linker = new GithubLinker($this);
 		}
 
 		return $this->linker;
-	}
-
-	/**
-	 * @return ExtraComposer
-	 */
-	protected function getterComposer()
-	{
-		if (!$this->composer) {
-			$this->composer = new ExtraComposer($this->extra->get('composer', []));
-		}
-
-		return $this->composer;
-	}
-
-	/**
-	 * EVENTS ******************************************************************
-	 */
-
-	/**
-	 * Called on load entity from storage
-	 *
-	 * @param array $data
-	 * @return void
-	 */
-	protected function onLoad(array $data)
-	{
-		$data['extra'] = new Extra($data['extra'] ? json_decode($data['extra'], TRUE) : []);
-
-		parent::onLoad($data);
-	}
-
-	/**
-	 * Called before persist to storage
-	 *
-	 * @return void
-	 */
-	protected function onBeforePersist()
-	{
-		parent::onBeforePersist();
-
-		if (($extra = $this->getRawProperty('extra'))) {
-			$this->setRawValue('extra', $extra->export());
-		} else {
-			$this->setRawValue('extra', NULL);
-		}
-
-		$this->crawledAt = new DateTime();
 	}
 
 }

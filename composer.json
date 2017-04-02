@@ -26,16 +26,20 @@
 		"ext-curl": "*",
 		"ext-mbstring": "*",
 		"ext-mysqli": "*",
+
 		"nette/application": "^2.4.5",
 		"nette/di": "^2.4.8",
-		"nette/forms": "^2.4.3",
+		"nette/forms": "^2.4.4",
 		"nette/robot-loader": "^2.4.2",
 		"nette/security": "^2.4.1",
+
 		"tracy/tracy": "^2.4.6",
 
 		"nextras/orm": "^2.2.3",
 		"nextras/dbal": "^2.1.0",
 		"nextras/migrations": "~3.0.4",
+
+		"minetro/nextras-orm-query-object": "0.1",
 
 		"contributte/console": "^0.1.1",
 		"contributte/latte": "^0.1.0",
