@@ -13,6 +13,7 @@ final class Macros extends MacroSet
 
 	/**
 	 * @param Compiler $compiler
+	 * @return void
 	 */
 	public static function install(Compiler $compiler)
 	{

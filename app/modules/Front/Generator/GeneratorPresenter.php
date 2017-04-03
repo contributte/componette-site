@@ -3,8 +3,8 @@
 namespace App\Modules\Front\Generator;
 
 use App\Modules\Front\Base\BasePresenter;
-use App\Modules\Front\Portal\Controls\Sitemap\ISitemapFactory;
-use App\Modules\Front\Portal\Controls\Sitemap\Sitemap;
+use App\Modules\Front\Generator\Controls\Sitemap\ISitemapFactory;
+use App\Modules\Front\Generator\Controls\Sitemap\Sitemap;
 
 final class GeneratorPresenter extends BasePresenter
 {

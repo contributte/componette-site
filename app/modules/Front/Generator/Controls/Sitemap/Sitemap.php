@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Front\Portal\Controls\Sitemap;
+namespace App\Modules\Front\Generator\Controls\Sitemap;
 
 use App\Model\Facade\AddonFacade;
 use Nette\Application\UI\Control;
@@ -64,6 +64,11 @@ final class Sitemap extends Control
 	 * RENDER ******************************************************************
 	 */
 
+	/**
+	 * Render component
+	 *
+	 * @return void
+	 */
 	public function render()
 	{
 		$this->template->urls = $this->getUrls();

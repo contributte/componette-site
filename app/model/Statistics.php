@@ -33,6 +33,8 @@ final class Statistics
 
 	/**
 	 * Build cache
+	 *
+	 * @return void
 	 */
 	protected function build()
 	{
@@ -47,9 +49,9 @@ final class Statistics
 		});
 	}
 
-	/*
-     * @return int
-     */
+	/**
+	 * @return int
+	 */
 	public function getAddonsCount()
 	{
 		return $this->cached['addons'];

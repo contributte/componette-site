@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Front\Portal\Controls\AddonModal;
+namespace App\Modules\Front\Portal\Base\Controls\AddonModal;
 
 interface IAddonModalFactory
 {

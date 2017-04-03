@@ -1,3 +1,5 @@
 #!/usr/bin/env sh
 
-vendor/bin/parallel-lint app tests
+DIR=${1:-"app tests"}
+
+vendor/bin/parallel-lint ${DIR}

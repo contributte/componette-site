@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Front\Portal\Controls\AddonMeta;
+namespace App\Modules\Front\Portal\Base\Controls\AddonMeta;
 
 use App\Model\Database\ORM\Addon\Addon;
 use App\Model\UI\BaseControl;
@@ -14,6 +14,7 @@ final class AddonMeta extends BaseControl
 
 	/**
 	 * @param Addon $addon
+	 * @return void
 	 */
 	public function render(Addon $addon)
 	{
@@ -24,6 +25,7 @@ final class AddonMeta extends BaseControl
 
 	/**
 	 * @param Addon $addon
+	 * @return void
 	 */
 	public function renderShort(Addon $addon)
 	{

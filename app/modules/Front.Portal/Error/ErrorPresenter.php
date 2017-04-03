@@ -3,6 +3,7 @@
 namespace App\Modules\Front\Portal\Error;
 
 use App\Modules\Front\Portal\Base\BasePresenter;
+use Exception;
 use Nette\Application\BadRequestException;
 use Tracy\ILogger;
 
@@ -13,7 +14,7 @@ final class ErrorPresenter extends BasePresenter
 	public $logger;
 
 	/**
-	 * @param  Exception
+	 * @param Exception $exception
 	 * @return void
 	 */
 	public function renderDefault($exception)
@@ -23,7 +24,13 @@ final class ErrorPresenter extends BasePresenter
 			// load template 403.latte or 404.latte or ... 4xx.latte
 			$this->setView(in_array($code, [403, 404, 405, 410, 500]) ? $code : '4xx');
 			// log to access.log
-			$this->logger->log("HTTP code $code: {$exception->getMessage()} in {$exception->getFile()}:{$exception->getLine()}", 'access');
+			$this->logger->log(sprintf(
+				'HTTP code %s: %s in %s:%s',
+				$code,
+				$exception->getMessage(),
+				$exception->getFile(),
+				$exception->getLine()
+			), 'access');
 		} else {
 			$this->setView('500'); // load template 500.latte
 			$this->logger->log($exception, ILogger::EXCEPTION); // and log exception

@@ -2,11 +2,11 @@
 
 namespace App\Modules\Front\Portal\Addon;
 
-use App\Modules\Front\Portal\Base\BasePresenter;
 use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Facade\AddonFacade;
-use App\Modules\Front\Portal\Controls\AddonDetail\AddonDetail;
-use App\Modules\Front\Portal\Controls\AddonDetail\IAddonDetailFactory;
+use App\Modules\Front\Portal\Addon\Controls\AddonDetail\AddonDetail;
+use App\Modules\Front\Portal\Addon\Controls\AddonDetail\IAddonDetailFactory;
+use App\Modules\Front\Portal\Base\BasePresenter;
 
 final class AddonPresenter extends BasePresenter
 {

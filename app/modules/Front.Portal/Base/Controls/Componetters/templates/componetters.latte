@@ -2,8 +2,9 @@
 <h2>Componetters</h2>
 <p><q>Thank you guys.</q></p>
 {cache componetters, expire => '+1 day'}
+{var $_componetters => $componetters()}
 <div class="componetters">
-    <div n:foreach="$componetters as $componetter => $addon">
+    <div n:foreach="$_componetters as $componetter => $addon">
         <a n:tag-if="$addon->github" data-toggle="tooltip" data-placement="top" data-original-title="{$addon->author} (since {$addon->createdAt|date})" href="{$addon->github->linker->getAuthorUrl()}">
             <img src="{avatar $componetter, ['s' => 30]}">
         </a>

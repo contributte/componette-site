@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Front\Portal\Controls\AddonModal;
+namespace App\Modules\Front\Portal\Base\Controls\AddonModal;
 
 use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\EntityModel;
@@ -91,6 +91,11 @@ final class AddonModal extends BaseControl
 	 * RENDER ******************************************************************
 	 */
 
+	/**
+	 * Render component
+	 *
+	 * @return void
+	 */
 	public function render()
 	{
 		$this->template->setFile(__DIR__ . '/templates/modal.latte');

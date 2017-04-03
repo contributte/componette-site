@@ -36,6 +36,8 @@ final class GenerateContentCommand extends BaseCommand
 
 	/**
 	 * Configure command
+	 *
+	 * @return void
 	 */
 	protected function configure()
 	{
@@ -59,7 +61,7 @@ final class GenerateContentCommand extends BaseCommand
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
 		/** @var ICollection|Addon[] $addons */
-		$addons = $this->addonRepository->findActive();
+		$addons = $this->addonRepository->findBy(['state' => Addon::STATE_ACTIVE]);
 
 		// FILTER PACKAGES ===========================================
 
@@ -72,7 +74,7 @@ final class GenerateContentCommand extends BaseCommand
 		$counter = 0;
 		foreach ($addons as $addon) {
 			// Raw
-			$response = $this->github->readme($addon->owner, $addon->name, GithubService::MEDIATYPE_HTML);
+			$response = $this->github->readme($addon->author, $addon->name, GithubService::MEDIATYPE_HTML);
 			if ($response->isOk()) {
 				// Content
 				$addon->github->contentRaw = $response->getBody();
@@ -82,7 +84,7 @@ final class GenerateContentCommand extends BaseCommand
 			}
 
 			// HTML
-			$response = $this->github->readme($addon->owner, $addon->name, GithubService::MEDIATYPE_HTML);
+			$response = $this->github->readme($addon->author, $addon->name, GithubService::MEDIATYPE_HTML);
 			if ($response->isOk()) {
 				// Content
 				$addon->github->contentHtml = $response->getBody();

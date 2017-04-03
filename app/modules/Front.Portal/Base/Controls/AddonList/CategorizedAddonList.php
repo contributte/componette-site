@@ -1,41 +1,79 @@
 <?php
 
-namespace App\Modules\Front\Portal\Controls\AddonList;
+namespace App\Modules\Front\Portal\Base\Controls\AddonList;
 
 use App\Model\Database\ORM\Addon\Addon;
+use App\Model\Database\ORM\EntityModel;
 use App\Model\Database\ORM\Tag\Tag;
+use App\Model\UI\BaseControl;
+use App\Modules\Front\Portal\Base\Controls\AddonMeta\AddonMeta;
 use Nextras\Orm\Collection\ICollection;
 
-final class CategorizedAddonList extends AddonList
+final class CategorizedAddonList extends BaseControl
 {
 
-	/** @var ICollection|Tag[] */
-	private $categories;
+	/** @var EntityModel */
+	private $em;
 
 	/**
-	 * @param ICollection $addons
-	 * @param ICollection $categories
+	 * @param EntityModel $em
 	 */
-	public function __construct($addons, $categories)
+	public function __construct(EntityModel $em)
 	{
-		parent::__construct($addons);
-		$this->categories = $categories;
+		parent::__construct();
+		$this->em = $em;
+	}
+
+	/**
+	 * CONTROLS ****************************************************************
+	 */
+
+	/**
+	 * @return AddonMeta
+	 */
+	protected function createComponentMeta()
+	{
+		return new AddonMeta();
+	}
+
+	/**
+	 * DATA ********************************************************************
+	 */
+
+	/**
+	 * @return Tag[]
+	 */
+	protected function getTags()
+	{
+		return $this->em->getRepositoryForEntity(Tag::class)
+			->findAll()
+			->orderBy(['name' => 'ASC'])
+			->fetchPairs('id');
+	}
+
+	/**
+	 * @return ICollection|Addon[]
+	 */
+	protected function getAddons()
+	{
+		return $this->em->getRepositoryForEntity(Addon::class)
+			->findBy(['state' => Addon::STATE_ACTIVE])
+			->orderBy(['author' => 'ASC', 'name' => 'ASC']);
 	}
 
 	/**
 	 * RENDER ******************************************************************
 	 */
 
+	/**
+	 * Render component
+	 *
+	 * @return void
+	 */
 	public function render()
 	{
-		/** @var Tag[] $categories */
-		$categories = $this->categories
-			->orderBy(['priority' => 'DESC', 'name' => 'ASC'])
-			->fetchPairs('id');
-
-		/** @var Addon[] $addons */
-		$addons = $this->addons
-			->orderBy(['owner' => 'ASC', 'name' => 'ASC']);
+		$categories = $this->getTags();
+		$addons = $this->getAddons();
 
 		// Arrange addons
 		$tmplist = [];

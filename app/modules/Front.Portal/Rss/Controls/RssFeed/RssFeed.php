@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Front\Portal\Controls\RssFeed;
+namespace App\Modules\Front\Portal\Rss\Controls\RssFeed;
 
 use App\Model\Database\ORM\Addon\Addon;
 use DateTimeZone;
@@ -29,7 +29,7 @@ final class RssFeed extends Control
 	/**
 	 * @param Addon[] $addons
 	 */
-	public function __construct(array $addons)
+	public function __construct($addons)
 	{
 		parent::__construct();
 		$this->addons = $addons;
@@ -37,6 +37,7 @@ final class RssFeed extends Control
 
 	/**
 	 * @param string $title
+	 * @return void
 	 */
 	public function setTitle($title)
 	{
@@ -45,6 +46,7 @@ final class RssFeed extends Control
 
 	/**
 	 * @param string|Link $link
+	 * @return void
 	 */
 	public function setLink($link)
 	{
@@ -53,6 +55,7 @@ final class RssFeed extends Control
 
 	/**
 	 * @param string $description
+	 * @return void
 	 */
 	public function setDescription($description)
 	{
@@ -61,6 +64,7 @@ final class RssFeed extends Control
 
 	/**
 	 * @param mixed $time
+	 * @return void
 	 */
 	public function setTime($time)
 	{
@@ -75,11 +79,11 @@ final class RssFeed extends Control
 		$items = [];
 		foreach ($this->addons as $addon) {
 			$items[] = (object) [
-				'guid' => "$addon->id@componette.com",
-				'title' => "[$addon->type] $addon->fullname",
+				'guid' => sprintf('%s@componette.com', $addon->id),
+				'title' => sprintf('[%s] - ', $addon->fullname, $addon->github->description),
 				'link' => $this->presenter->link('//:Front:Portal:Addon:detail', ['slug' => $addon->id, 'utm_source' => 'rss', 'utm_medium' => 'rss', 'utm_campaign' => 'rss']),
 				'time' => $addon->createdAt->setTimezone(new DateTimeZone('UTC')),
-				'author' => "noreply@componette.com ($addon->owner)",
+				'author' => sprintf('noreply@componette.com (%s)', $addon->author),
 				'content' => $addon->github->contentHtml,
 			];
 		}
@@ -91,6 +95,11 @@ final class RssFeed extends Control
 	 * RENDER ******************************************************************
 	 */
 
+	/**
+	 * Render component
+	 *
+	 * @return void
+	 */
 	public function render()
 	{
 		$this->template->title = $this->title;

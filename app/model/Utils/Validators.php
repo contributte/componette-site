@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\Utils;
+namespace App\Model\Utils;
 
 use Nette\Utils\Strings;
 use Nette\Utils\Validators as NValidators;

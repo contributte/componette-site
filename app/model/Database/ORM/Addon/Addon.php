@@ -3,7 +3,6 @@
 namespace App\Model\Database\ORM\Addon;
 
 use App\Model\Database\ORM\AbstractEntity;
-use App\Model\Database\ORM\Bower\Bower;
 use App\Model\Database\ORM\Composer\Composer;
 use App\Model\Database\ORM\ComposerStatistics\ComposerStatistics;
 use App\Model\Database\ORM\Github\Github;
@@ -18,6 +17,7 @@ use Nextras\Orm\Relationships\OneHasMany;
  * @property string $state              {enum self::STATE_*} {default self::STATE_QUEUED}
  * @property string $author
  * @property string $name
+ * @property int|NULL $rating
  * @property DateTime $createdAt        {default now}
  * @property DateTime|NULL $updatedAt
  *
@@ -27,11 +27,9 @@ use Nextras\Orm\Relationships\OneHasMany;
  * @property ComposerStatistics|NULL $composerLatestStatistics    {virtual}
  *
  * @property Github|NULL $github                                    {1:1 Github::$addon}
- * @property Bower|NULL $bower                                      {1:1 Bower::$addon}
  * @property Composer|NULL $composer                                {1:1 Composer::$addon}
  * @property ComposerStatistics[]|OneHasMany $composerStatistics    {1:m ComposerStatistics::$addon, orderBy=[id=DESC]}
  * @property ManyHasMany|Tag[] $tags                                {m:n Tag::$addons, isMain=true}
- *
  */
 class Addon extends AbstractEntity
 {
@@ -79,7 +77,7 @@ class Addon extends AbstractEntity
 	 */
 	protected function getterComposerLatestStatistics()
 	{
-		return $this->composerStatistics->get()->fetch();
+		return $this->composerStatistics->get()->limitBy(1)->fetch();
 	}
 
 }

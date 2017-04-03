@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Front\Portal\Controls\AddonDetail;
+namespace App\Modules\Front\Portal\Addon\Controls\AddonDetail;
 
 use App\Model\Database\ORM\Addon\Addon;
 

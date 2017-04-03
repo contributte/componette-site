@@ -67,7 +67,9 @@ final class RouterFactory
 		// FRONT.PORTAL ====================================
 
 		$front[] = $portal = new RouteList('Portal');
-		$portal[] = new Route('rss/new.xml', 'Rss:newest');
+		$portal[] = new Route('rss/new.xml', 'Rss:newest', Route::ONE_WAY);
+		$portal[] = new Route('rss/latest[!.xml]', 'Rss:newest');
+		$portal[] = new Route('rss/<author [a-zA-Z0-9\-\.]+>[!.xml]', 'Rss:author');
 
 		$portal[] = new Route('<slug [a-zA-Z0-9\-\.]+/[a-zA-Z0-9\-\.]+>/', [
 			'presenter' => 'Addon',
@@ -86,9 +88,7 @@ final class RouterFactory
 			],
 		]);
 		$portal[] = new Route('', 'Home:default');
-		$portal[] = new Route('all/latest/', 'Index:all');
-		$portal[] = new Route('all/latest/', 'Index:latest');
-		$portal[] = new Route('all/stared/', 'Index:stared');
+		$portal[] = new Route('all/', 'Index:all');
 		$portal[] = new Route('search/', 'Index:search');
 		$portal[] = new Route('search/<tag>', 'Index:tag');
 
@@ -97,4 +97,5 @@ final class RouterFactory
 
 		return $router;
 	}
+
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Front\Portal\Controls\Search;
+namespace App\Modules\Front\Portal\Base\Controls\Search;
 
 interface ISearchFactory
 {

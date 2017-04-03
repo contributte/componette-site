@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+# s => Show skipped files
 # p => Specify PHP interpreter
-# i => Show test environment
-vendor/bin/tester tests/cases -p php -i
+# c => php.ini file
+vendor/bin/tester tests/cases -s -c tests/php-unix.ini -p php -i

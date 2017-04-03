@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Front\Portal\Controls\SideMenu;
+namespace App\Modules\Front\Portal\Base\Controls\SideMenu;
 
 use App\Model\Database\ORM\EntityModel;
 use App\Model\Database\ORM\Tag\Tag;
@@ -32,11 +32,14 @@ final class SideMenu extends Control
 	 */
 	public function render(): void
 	{
-		$items = $this->em->getRepositoryForEntity(Tag::class)->findAll()->fetchAll();
-		usort($items, function($a, $b) {
-			return $a->addons->countStored() < $b->addons->countStored();
-		});
-		$this->template->items = $items;
+		$this->template->items = function () {
+			$items = $this->em->getRepositoryForEntity(Tag::class)->findAll()->fetchAll();
+			usort($items, function ($a, $b) {
+				return $a->addons->countStored() < $b->addons->countStored();
+			});
+
+			return $items;
+		};
 		$this->template->setFile(__DIR__ . '/templates/menu.latte');
 		$this->template->render();
 	}

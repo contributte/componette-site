@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Modules\Front\Portal\Controls\Search;
+namespace App\Modules\Front\Portal\Base\Controls\Search;
 
-use App\Model\Search\Search as Searching;
+use App\Model\Services\Search\Search as Searching;
 use App\Model\UI\BaseControl;
 use Nette\Application\UI\Form;
 
@@ -26,6 +26,7 @@ final class Search extends BaseControl
 
 	/**
 	 * @param array $params
+	 * @return void
 	 */
 	public function loadState(array $params)
 	{
@@ -72,6 +73,5 @@ final class Search extends BaseControl
 		$this->template->setFile(__DIR__ . '/templates/search.latte');
 		$this->template->render();
 	}
-
 
 }

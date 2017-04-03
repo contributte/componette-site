@@ -4,8 +4,10 @@ namespace App\Model\Commands\Addons\Github;
 
 use App\Model\Commands\BaseCommand;
 use App\Model\Database\ORM\Addon\Addon;
+use App\Model\Database\ORM\GithubComposer\GithubComposer;
 use App\Model\Facade\Cli\Commands\AddonFacade;
 use App\Model\WebServices\Github\GithubService;
+use Nette\Utils\DateTime;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -32,6 +34,8 @@ final class SynchronizeFilesCommand extends BaseCommand
 
 	/**
 	 * Configure command
+	 *
+	 * @return void
 	 */
 	protected function configure()
 	{
@@ -70,26 +74,30 @@ final class SynchronizeFilesCommand extends BaseCommand
 		foreach ($addons as $addon) {
 			// Composer
 			if (in_array($addon->type, [NULL, Addon::TYPE_UNKNOWN, Addon::TYPE_COMPOSER])) {
-				$response = $this->github->composer($addon->owner, $addon->name);
-				$body = $response->getJsonBody();
+				$response = $this->github->composer($addon->author, $addon->name);
 
-				if ($body) {
+				if ($response->isOk()) {
 					if ($addon->type !== Addon::TYPE_COMPOSER) {
 						$addon->type = Addon::TYPE_COMPOSER;
 					}
 
-					$addon->github->extra->append('github', ['composer' => $body]);
+					$body = $response->getJsonBody();
 
-					if (($url = $addon->github->extra->get(['github', 'composer', 'download_url'], NULL))) {
-						if (($content = @file_get_contents($url))) {
-							$composer = @json_decode($content, TRUE);
-							$addon->github->extra->set('composer', $composer);
-						} else {
-							$output->writeln('Skip (composer) [invalid composer.json]: ' . $addon->fullname);
-						}
+					/** @var GithubComposer $composer */
+					$composer = $addon->github->masterComposer;
+
+					if (!$composer) {
+						$composer = new GithubComposer();
+						$composer->custom = GithubComposer::BRANCH_MASTER;
+						$composer->type = GithubComposer::TYPE_BRANCH;
+						$composer->json = $body;
+						$addon->github->composers->add($composer);
 					} else {
-						$output->writeln('Skip (composer) [can not download composer.json]: ' . $addon->fullname);
+						$composer->json = $body;
+						$composer->updatedAt = new DateTime();
 					}
+
+					$this->addonFacade->persist($composer);
 				} else {
 					$output->writeln('Skip (composer): ' . $addon->fullname);
 				}
@@ -101,7 +109,8 @@ final class SynchronizeFilesCommand extends BaseCommand
 			}
 
 			// Persist
-			$this->addonFacade->save($addon);
+			$this->addonFacade->persist($addon);
+			$this->addonFacade->flush();
 
 			// Increase counting
 			$counter++;

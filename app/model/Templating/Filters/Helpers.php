@@ -19,7 +19,7 @@ final class Helpers
 		];
 
 		foreach ($blacklist as $regex) {
-			if (Strings::match($name, "#$regex#")) {
+			if (Strings::match($name, sprintf('#%s#', $regex))) {
 				return TRUE;
 			}
 		}

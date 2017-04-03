@@ -1,0 +1,8 @@
+parameters:
+
+	# Database (just for testing)
+	database:
+		host: locahost
+		dbname: foobar
+		user: foobar
+		password: foobar

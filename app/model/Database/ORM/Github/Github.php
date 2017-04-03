@@ -32,6 +32,7 @@ use Nextras\Orm\Relationships\OneHasMany;
  * @property GithubComposer[]|OneHasMany $composers     {1:m GithubComposer::$github}
  *
  * @property GithubLinker $linker                       {virtual}
+ * @property GithubComposer|NULL $masterComposer        {virtual}
  */
 class Github extends AbstractEntity
 {
@@ -53,6 +54,17 @@ class Github extends AbstractEntity
 		}
 
 		return $this->linker;
+	}
+
+	/**
+	 * @return GithubComposer
+	 */
+	protected function getterMasterComposer()
+	{
+		return $this->composers->get()->getBy([
+			'type' => GithubComposer::TYPE_BRANCH,
+			'custom' => GithubComposer::BRANCH_MASTER,
+		]);
 	}
 
 }

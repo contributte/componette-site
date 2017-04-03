@@ -1,8 +1,10 @@
 <?php
 
+use Contributte\Bootstrap\Configurator;
+
 require __DIR__ . '/../vendor/autoload.php';
 
-$configurator = new Contributte\Bootstrap\Configurator();
+$configurator = new Configurator();
 
 $configurator->autoDebugMode();
 $configurator->enableDebugger(__DIR__ . '/../log');

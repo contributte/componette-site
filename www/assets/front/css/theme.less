@@ -133,20 +133,18 @@ q:after {
   padding: 0 15px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, .3);
 
-  .button--add-package {
-    margin-top: 20px;
-  }
-
   .header-col {
     text-align: center;
-    padding: 0;
+    padding: 20px 0;
   }
 
   .main-title {
     color: black;
     font-size: 24px;
-    display: block;
-    padding-top: 28px;
+    position: relative;
+    img {
+      width: 50px;
+    }
   }
 
   .b-search-filter {
@@ -174,7 +172,6 @@ q:after {
   }
 
   .b-search {
-    padding: 20px 0;
     position: relative;
     text-align: center;
 
@@ -184,7 +181,10 @@ q:after {
 
       .icon {
         position: absolute;
-        top: 28px;
+        top: 0;
+        bottom: 0;
+        height: 32px;
+        margin: auto;
         right: 15px;
         z-index: 9;
         color: #000;
@@ -192,7 +192,9 @@ q:after {
 
       .spinner {
         position: absolute;
-        top: 28px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
         right: 15px;
         background-color: #fff;
         background-image: url('@{image-path}/spinner3.gif');
@@ -248,11 +250,6 @@ q:after {
 
 .content {
   margin-top: 10px;
-
-  .row-flex {
-    display: flex;
-    display: -webkit-flex;
-  }
 
   a {
     text-decoration: none;
@@ -416,6 +413,7 @@ q:after {
     .addon__meta {
       flex: 1;
       flex-grow: 0;
+      min-width: 100px;
     }
   }
 }
@@ -529,17 +527,9 @@ q:after {
 
 }
 
-@media screen and (max-width: 991px) {
-  .b-meta-info {
-    display: inline-block;
-    margin-left: 10px;
-  }
-}
-
 .page {
   background: #fff;
   margin-top: 10px;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, .3);
   vertical-align: top;
 
   .page-header {
@@ -848,7 +838,6 @@ q:after {
 }
 
 .page-error {
-  padding: 20px;
 }
 
 @media screen and (max-width: 500px) {
@@ -957,6 +946,15 @@ q:after {
   }
 }
 
+@media screen and (min-width: 991px) {
+  .content {
+    .row-flex {
+      display: flex;
+      display: -webkit-flex;
+    }
+  }
+}
+
 @media screen and (max-width: 991px) {
   .bar > div {
     text-align: center;
@@ -975,6 +973,11 @@ q:after {
   }
 
   .content {
+    .box {
+      .col-aside {
+        padding-left: 15px;
+      }
+    }
     .side-menu {
       .nav > li {
         float: left;
@@ -984,6 +987,14 @@ q:after {
             margin-bottom: 4px;
           }
         }
+      }
+    }
+  }
+
+  .addons {
+    .meta {
+      .b-meta-info {
+        margin: 0 10px 0 0;
       }
     }
   }

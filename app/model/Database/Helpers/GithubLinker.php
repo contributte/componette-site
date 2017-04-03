@@ -2,14 +2,11 @@
 
 namespace App\Model\Database\Helpers;
 
-use Contributte\Http\Url;
 use App\Model\Database\ORM\Github\Github;
+use Contributte\Http\Url;
 
 final class GithubLinker
 {
-
-	/** @var Github */
-	private $github;
 
 	/** @var Url */
 	private $repo;
@@ -25,7 +22,6 @@ final class GithubLinker
 	 */
 	public function __construct(Github $github)
 	{
-		$this->github = $github;
 		$this->repo = new Url('https://github.com');
 		$this->repo->appendPath($github->addon->author . '/' . $github->addon->name);
 		$this->author = new Url('https://github.com');
@@ -43,9 +39,10 @@ final class GithubLinker
 	}
 
 	/**
+	 * @param int $size
 	 * @return string
 	 */
-	public function getAuthorAvatarUrl($size = NULL)
+	public function getAuthorAvatarUrl(int $size = NULL)
 	{
 		if ($size) {
 			return $this->author . '.png?size=' . intval($size);
@@ -150,7 +147,7 @@ final class GithubLinker
 	 */
 	public function getBlobUrl($uri, $branch = 'master')
 	{
-		return $this->repo . "/blob/$branch/$uri";
+		return $this->repo . '/blob/' . $branch / $uri;
 	}
 
 	/**

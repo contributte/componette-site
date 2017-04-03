@@ -7,27 +7,27 @@
         {$categories[$category]->name|ucfirst}
         ({=count($addons)})
     </h2>
-    <div class="b-addon" n:foreach="$addons as $addon">
-        <div class="row">
-            <div class="col-md-12">
-                <article class="b-addon__article">
-                    <section class="b-addon__image">
-                        <a href="{plink Addon:detail, slug => $addon->id}">
-                            <img alt="" title="{$addon->author}" src="{avatar $addon->author}">
-                        </a>
-                    </section>
-                    <section class="b-addon__body">
-                        <h3 class="b-addon__title">
-                            <a href="{plink Addon:detail, slug => $addon->id}">
-                            {$addon->author}
-                            /
-                            {$addon->name}</a>
-                            <small>{$addon->github->description|truncate:150}</small>
-                        </h3>
-                    </section>
-                </article>
-            </div>
-        </div>
+    <div class="addon" n:foreach="$addons as $addon">
+        <article class="addon__box">
+            <section class="addon__image">
+                <a href="{plink Addon:detail, slug => $addon->id}">
+                    <img alt="" title="{$addon->author}" src="{avatar $addon->author}">
+                </a>
+            </section>
+            <section class="addon__body">
+                <h3 class="addon__title">
+                    <a href="{plink Addon:detail, slug => $addon->id}">
+                        {$addon->author}
+                        /
+                        {$addon->name}</a>
+                </h3>
+
+                <p>{$addon->github->description|truncate:150}</p>
+            </section>
+            <section class="addon__meta">
+                {control meta:short $addon}
+            </section>
+        </article>
     </div>
 </div>
 {else}

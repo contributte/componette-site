@@ -4,6 +4,7 @@ namespace App\Model\Database\ORM\ComposerStatistics;
 
 use App\Model\Database\ORM\AbstractEntity;
 use App\Model\Database\ORM\Addon\Addon;
+use Nette\Utils\ArrayHash;
 use Nette\Utils\DateTime;
 
 /**
@@ -11,21 +12,29 @@ use Nette\Utils\DateTime;
  * @property Addon $addon                   {m:1 Addon::$composerStatistics}
  * @property string $type                   {enum self::TYPE*}
  * @property string $custom
- * @property array $data
- * @property DateTime $createdAt
- * @property DateTime $publishedAt
+ * @property-read string $data
+ * @property DateTime $createdAt            {default now}
+ * @property DateTime|NULL $updatedAt
  *
- * @property array $json                    {virtual}
+ * @property ArrayHash|array $json                    {virtual}
  */
 class ComposerStatistics extends AbstractEntity
 {
 
+	// Types
 	const TYPE_ALL = 'ALL';
 	const TYPE_BRANCH = 'BRANCH';
 	const TYPE_TAG = 'TAG';
 
+	// Customs
+	const CUSTOM_ALL = 'ALL';
+
 	/** @var array */
 	protected $json = [];
+
+	/**
+	 * VIRTUAL *****************************************************************
+	 */
 
 	/**
 	 * @return array
@@ -48,7 +57,20 @@ class ComposerStatistics extends AbstractEntity
 		parent::onLoad($data);
 
 		if (isset($data['data'])) {
-			$this->json = json_decode($data['data']);
+			$this->json = ArrayHash::from(json_decode($data['data']));
+		}
+	}
+
+	/**
+	 * @return void
+	 */
+	protected function onBeforeInsert()
+	{
+		parent::onBeforeInsert();
+
+		$json = $this->getRawProperty('json');
+		if ($json) {
+			$this->setRawValue('data', json_encode($json));
 		}
 	}
 

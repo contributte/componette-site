@@ -1,4 +1,11 @@
 parameters:
 	system:
 		error:
+			email: admin@componette.com
 			presenter: Front:Portal:Error
+
+	security:
+		users: []
+
+	github:
+		token: null

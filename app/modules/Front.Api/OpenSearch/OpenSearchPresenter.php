@@ -2,14 +2,17 @@
 
 namespace App\Modules\Front\Api\OpenSearch;
 
-use App\Model\Facade\SearchFacade;
+use App\Model\Database\ORM\Addon\Addon;
+use App\Model\Database\ORM\EntityModel;
+use App\Model\Database\Query\OpenSearchQuery;
 use App\Modules\Front\Api\Base\BasePresenter;
+use Minetro\Nextras\Orm\QueryObject\Queryable;
 
 final class OpenSearchPresenter extends BasePresenter
 {
 
-	/** @var SearchFacade @inject */
-	public $searchFacade;
+	/** @var EntityModel @inject */
+	public $em;
 
 	/**
 	 * @param string $q
@@ -18,7 +21,9 @@ final class OpenSearchPresenter extends BasePresenter
 	 */
 	public function actionSuggest($q)
 	{
-		$addons = $this->searchFacade->findByOwnerOrName($q);
+		$query = new OpenSearchQuery();
+		$query->byQuery($q);
+		$addons = $this->em->getRepositoryForEntity(Addon::class)->fetch($query, Queryable::HYDRATION_ENTITY);
 
 		$output = [];
 		$terms = [];
@@ -46,4 +51,5 @@ final class OpenSearchPresenter extends BasePresenter
 
 		$this->sendJson($output);
 	}
+
 }

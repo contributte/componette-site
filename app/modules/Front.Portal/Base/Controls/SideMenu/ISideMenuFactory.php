@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Front\Portal\Controls\SideMenu;
+namespace App\Modules\Front\Portal\Base\Controls\SideMenu;
 
 interface ISideMenuFactory
 {

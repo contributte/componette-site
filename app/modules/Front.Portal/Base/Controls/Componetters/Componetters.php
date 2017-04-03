@@ -25,12 +25,19 @@ final class Componetters extends BaseControl
 	 * RENDER ******************************************************************
 	 */
 
+	/**
+	 * Render component
+	 *
+	 * @return void
+	 */
 	public function render()
 	{
-		$this->template->componetters = $this->em->getRepositoryForEntity(Addon::class)
-			->findBy(['state' => Addon::STATE_ACTIVE])
-			->orderBy(['id' => 'DESC'])
-			->fetchPairs('author');
+		$this->template->componetters = function () {
+			return $this->em->getRepositoryForEntity(Addon::class)
+				->findBy(['state' => Addon::STATE_ACTIVE])
+				->orderBy(['id' => 'DESC'])
+				->fetchPairs('author');
+		};
 
 		$this->template->setFile(__DIR__ . '/templates/componetters.latte');
 		$this->template->render();

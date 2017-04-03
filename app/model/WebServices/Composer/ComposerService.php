@@ -34,27 +34,27 @@ final class ComposerService
 	}
 
 	/**
-	 * @param string $owner
+	 * @param string $vendor
 	 * @param string $repo
 	 * @return Response
 	 */
-	public function repo($owner, $repo)
+	public function repo($vendor, $repo)
 	{
-		return $this->call("/packages/$owner/$repo.json");
+		return $this->call(sprintf('/packages/%s/%s.json', $vendor, $repo));
 	}
 
 	/**
-	 * @param string $owner
+	 * @param string $vendor
 	 * @param string $repo
 	 * @param string $version
 	 * @return Response
 	 */
-	public function stats($owner, $repo, $version = NULL)
+	public function stats($vendor, $repo, $version = NULL)
 	{
 		if ($version) {
-			return $this->call("/packages/$owner/$repo/stats/$version.json");
+			return $this->call(sprintf('/packages/%s/%s/stats/%s.json', $vendor, $repo, $version));
 		} else {
-			return $this->call("/packages/$owner/$repo/stats/all.json");
+			return $this->call(sprintf('/packages/%s/%s/stats/all.json', $vendor, $repo));
 		}
 	}
 

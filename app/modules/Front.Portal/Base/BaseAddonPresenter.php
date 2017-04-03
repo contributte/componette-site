@@ -2,9 +2,9 @@
 
 namespace App\Modules\Front\Portal\Base;
 
-use App\Model\Search\Search;
-use App\Modules\Front\Portal\Controls\AddonList\AddonList;
-use App\Modules\Front\Portal\Controls\AddonList\IAddonListFactory;
+use App\Model\Services\Search\Search;
+use App\Modules\Front\Portal\Base\Controls\AddonList\AddonList;
+use App\Modules\Front\Portal\Base\Controls\AddonList\IAddonListFactory;
 use Nextras\Orm\Collection\ICollection;
 
 abstract class BaseAddonPresenter extends BasePresenter
@@ -18,6 +18,8 @@ abstract class BaseAddonPresenter extends BasePresenter
 
 	/**
 	 * Common render method
+	 *
+	 * @return void
 	 */
 	protected function beforeRender()
 	{

@@ -110,7 +110,7 @@ final class AddonsHelper
 	}
 
 	/**
-	 * @param string $string
+	 * @param string $slug
 	 * @return string
 	 */
 	public function authorOut($slug): ?string

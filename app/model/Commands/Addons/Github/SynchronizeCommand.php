@@ -2,7 +2,7 @@
 
 namespace App\Model\Commands\Addons\Github;
 
-use App\Core\Cache\CacheCleaner;
+use App\Model\Caching\CacheCleaner;
 use App\Model\Commands\BaseCommand;
 use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\Github\Github;
@@ -39,9 +39,10 @@ final class SynchronizeCommand extends BaseCommand
 		$this->cacher = $cacher;
 	}
 
-
 	/**
 	 * Configure command
+	 *
+	 * @return void
 	 */
 	protected function configure()
 	{
@@ -77,10 +78,12 @@ final class SynchronizeCommand extends BaseCommand
 
 		$counter = 0;
 		$added = 0;
+
+		/** @var Addon $addon */
 		foreach ($addons as $addon) {
 
 			// Base metadata
-			$response = $this->github->repo($addon->owner, $addon->name);
+			$response = $this->github->repo($addon->author, $addon->name);
 			$body = $response->getJsonBody();
 
 			if ($body && !isset($body['message'])) {
@@ -95,18 +98,18 @@ final class SynchronizeCommand extends BaseCommand
 					$added++;
 				}
 
-				// Parse owner & repo name
+				// Parse author & repo name
 				$matches = Strings::match($body['full_name'], '#' . Addon::GITHUB_REGEX . '#');
 				if (!$matches) {
 					$output->writeln('Skip (invalid addon name): ' . $body['full_name']);
 					continue;
 				}
 
-				list ($all, $owner, $name) = $matches;
+				list ($all, $author, $name) = $matches;
 
-				// Update owner & repo name if it is not same
-				if ($addon->owner !== $owner) {
-					$addon->owner = $owner;
+				// Update author & repo name if it is not same
+				if ($addon->author !== $author) {
+					$addon->author = $author;
 				}
 
 				if ($addon->name !== $name) {
@@ -126,6 +129,8 @@ final class SynchronizeCommand extends BaseCommand
 				$addon->github->updatedAt = new DateTime($body['updated_at']);
 				$addon->github->pushedAt = new DateTime($body['pushed_at']);
 				$addon->state = Addon::STATE_ACTIVE;
+				// Calculate rating
+				$addon->rating = $addon->github->stars * 2 + $addon->github->watchers * 3 + $addon->github->forks;
 			} else {
 				if (isset($response['message'])) {
 					$output->writeln('Skip (' . $response['message'] . '): ' . $addon->fullname);
@@ -135,7 +140,8 @@ final class SynchronizeCommand extends BaseCommand
 			}
 
 			$addon->updatedAt = new DateTime();
-			$this->addonFacade->save($addon);
+			$this->addonFacade->persist($addon);
+			$this->addonFacade->flush();
 
 			// Increase counting
 			$counter++;

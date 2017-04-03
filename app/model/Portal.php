@@ -19,9 +19,9 @@ final class Portal
 		$this->parameters = $parameters;
 	}
 
-	/*
-     * @return int
-     */
+	/**
+	 * @return int
+	 */
 	public function isDebug()
 	{
 		return $this->parameters['debugMode'] === TRUE;
@@ -48,7 +48,7 @@ final class Portal
 	 */
 	public function expand($name, $recursive = FALSE)
 	{
-		return Helpers::expand("%$name%", $this->parameters, $recursive);
+		return Helpers::expand('%' . $name . '%', $this->parameters, $recursive);
 	}
 
 }

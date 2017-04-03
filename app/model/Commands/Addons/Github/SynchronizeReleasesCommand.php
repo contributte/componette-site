@@ -50,6 +50,8 @@ final class SynchronizeReleasesCommand extends BaseCommand
 
 	/**
 	 * Configure command
+	 *
+	 * @return void
 	 */
 	protected function configure()
 	{
@@ -89,9 +91,8 @@ final class SynchronizeReleasesCommand extends BaseCommand
 			$storedReleases = $addon->github->releases->get()->fetchPairs('gid');
 
 			// Get all releases
-			$responses = $this->github->allReleases($addon->owner, $addon->name, GithubService::MEDIATYPE_HTML);
+			$responses = $this->github->allReleases($addon->author, $addon->name, GithubService::MEDIATYPE_HTML);
 			if ($responses) {
-
 				foreach ((array) $responses as $response) {
 
 					// Get response body as releases
@@ -99,7 +100,6 @@ final class SynchronizeReleasesCommand extends BaseCommand
 					if ($releases) {
 						// Iterate over all releases
 						foreach ($releases as $release) {
-
 							$releaseId = $release['id'];
 
 							// Try find release by ID

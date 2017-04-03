@@ -7,6 +7,10 @@
 		<properties>
 			<property name="rootNamespaces" type="array" value="
                 app/model=>App\Model,
+                app/modules/Admin=>App\Modules\Admin,
+                app/modules/Front=>App\Modules\Front,
+                app/modules/Front.Api=>App\Modules\Front\Api,
+                app/modules/Front.Portal=>App\Modules\Front\Portal,
                 tests=>Tests
             "/>
 		</properties>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Front\Portal\Controls\AddonList;
+namespace App\Modules\Front\Portal\Base\Controls\AddonList;
 
 use Nextras\Orm\Collection\ICollection;
 

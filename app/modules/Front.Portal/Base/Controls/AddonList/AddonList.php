@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Front\Portal\Controls\AddonList;
+namespace App\Modules\Front\Portal\Base\Controls\AddonList;
 
 use App\Model\Database\ORM\Addon\Addon;
 use App\Model\UI\BaseControl;
-use App\Modules\Front\Portal\Controls\AddonMeta\AddonMeta;
+use App\Modules\Front\Portal\Base\Controls\AddonMeta\AddonMeta;
 use Nextras\Orm\Collection\ICollection;
 
 class AddonList extends BaseControl
@@ -38,6 +38,11 @@ class AddonList extends BaseControl
 	 * RENDER ******************************************************************
 	 */
 
+	/**
+	 * Render component
+	 *
+	 * @return void
+	 */
 	public function render()
 	{
 		$this->template->addons = $this->addons;

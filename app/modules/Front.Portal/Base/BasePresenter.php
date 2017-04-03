@@ -4,15 +4,14 @@ namespace App\Modules\Front\Portal\Base;
 
 use App\Model\UI\Destination;
 use App\Modules\Front\Base\BasePresenter as BaseFrontPresenter;
+use App\Modules\Front\Portal\Base\Controls\AddonModal\AddonModal;
+use App\Modules\Front\Portal\Base\Controls\AddonModal\IAddonModalFactory;
 use App\Modules\Front\Portal\Base\Controls\Componetters\Componetters;
 use App\Modules\Front\Portal\Base\Controls\Componetters\IComponettersFactory;
-use App\Modules\Front\Portal\Controls\AddonModal\AddonModal;
-use App\Modules\Front\Portal\Controls\AddonModal\IAddonModalFactory;
-use App\Modules\Front\Portal\Controls\Search\ISearchFactory;
-use App\Modules\Front\Portal\Controls\Search\Search;
-use App\Modules\Front\Portal\Controls\SideMenu\ISideMenuFactory;
-use App\Modules\Front\Portal\Controls\SideMenu\SideMenu;
-use Nette\Application\UI\ComponentReflection;
+use App\Modules\Front\Portal\Base\Controls\Search\ISearchFactory;
+use App\Modules\Front\Portal\Base\Controls\Search\Search;
+use App\Modules\Front\Portal\Base\Controls\SideMenu\ISideMenuFactory;
+use App\Modules\Front\Portal\Base\Controls\SideMenu\SideMenu;
 
 /**
  * Base presenter for all portal presenters.
@@ -75,42 +74,6 @@ abstract class BasePresenter extends BaseFrontPresenter
 	protected function createComponentComponetters()
 	{
 		return $this->componettersFactory->create();
-	}
-
-
-	/**
-	 * TEMPLATES ***************************************************************
-	 * *************************************************************************
-	 */
-
-	/**
-	 * @return array
-	 */
-	public function formatTemplateFiles()
-	{
-		$dir = dirname($this->getReflection()->getFileName());
-
-		return [
-			$dir . '/templates/' . $this->view . '.latte',
-		];
-	}
-
-	/**
-	 * @return array
-	 */
-	public function formatLayoutTemplateFiles()
-	{
-		$list = [];
-
-		$rf1 = new ComponentReflection(get_called_class());
-		$dir1 = dirname($rf1->getFileName());
-		$list[] = $dir1 . '/templates/@layout.latte';
-
-		$rf2 = new ComponentReflection(self::class);
-		$dir2 = dirname($rf2->getFileName());
-		$list[] = $dir2 . '/templates/@layout.latte';
-
-		return $list;
 	}
 
 }

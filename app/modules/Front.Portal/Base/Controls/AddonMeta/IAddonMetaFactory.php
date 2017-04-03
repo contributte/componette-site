@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Front\Portal\Controls\AddonMeta;
+namespace App\Modules\Front\Portal\Base\Controls\AddonMeta;
 
 interface IAddonMetaFactory
 {

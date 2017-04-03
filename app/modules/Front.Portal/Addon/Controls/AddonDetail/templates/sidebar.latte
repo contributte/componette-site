@@ -17,15 +17,15 @@
     <div class="title">Statistics</div>
     <table>
         {if $addon->isComposer && $addon->composer}
-        <tr>
-            <td><span class="octicon octicon-cloud-download"></span></td>
-            <td data-toggle="tooltip" data-placement="left" title="Total downloads">{$addon->composer->downloads|count}</td>
-        </tr>
+            <tr>
+                <td><span class="octicon octicon-cloud-download"></span></td>
+                <td data-toggle="tooltip" data-placement="left" title="Total downloads">{$addon->composer->downloads|count}</td>
+            </tr>
         {elseif $addon->isBower && $addon->bower}
-        <tr>
-            <td><span class="octicon octicon-cloud-download"></span></td>
-            <td data-toggle="tooltip" data-placement="left" title="Total hits">{$addon->bower->downloads|count}</td>
-        </tr>
+            <tr>
+                <td><span class="octicon octicon-cloud-download"></span></td>
+                <td data-toggle="tooltip" data-placement="left" title="Total hits">{$addon->bower->downloads|count}</td>
+            </tr>
         {/if}
         <tr>
             <td><span class="octicon octicon-star"></span></td>
@@ -55,36 +55,43 @@
                 <img alt="" title="isitmaintained" src="https://isitmaintained.com/badge/open/{$author|lower}/{$name|lower}.svg">
             </a>
         </li>
-        {* @todo *}
-        {*{if $addon->isComposer && $addon->github->composer}*}
-            {*<li>*}
-                {*<a href="{$addon->github->composer->getPackageUrl()}">*}
-                    {*<img alt="" title="{$addon->github->composer->getName()}" src="https://img.shields.io/packagist/v/{$addon->github->composer->getName()}.svg">*}
-                {*</a>*}
-            {*</li>*}
-            {*<li>*}
-                {*<a href="{$addon->github->linker->getRepoUrl()}">*}
-                    {*<img alt="" title="{$addon->github->composer->getName()}" src="https://img.shields.io/packagist/l/{$addon->github->composer->getName()}.svg">*}
-                {*</a>*}
-            {*</li>*}
-        {*{/if}*}
+        {if $addon->isComposer && $addon->github->masterComposer}
+            <li>
+                <a href="{$addon->composer->linker->getPackageUrl()}">
+                    <img alt="" title="{$addon->github->masterComposer->name}" src="https://img.shields.io/packagist/v/{$addon->github->masterComposer->name}.svg">
+                </a>
+            </li>
+            <li>
+                <a href="{$addon->github->linker->getRepoUrl()}">
+                    <img alt="" title="{$addon->github->masterComposer->name}" src="https://img.shields.io/packagist/l/{$addon->github->masterComposer->name}.svg">
+                </a>
+            </li>
+        {/if}
     </ul>
 </div>
 
-{if false && $addon->isComposer && $addon->github->composer}
-    {var $composer => $addon->github->composer}
-    {if ($require = $composer->getRequire())}
+{if $addon->isComposer && $addon->github->masterComposer}
+    {var $composer => $addon->github->masterComposer}
+    {if ($require = $composer->get('require'))}
         <div class="requirements">
             <div class="title">Dependencies</div>
 
-            <ul n:inner-foreach="$composer->getRequire() as $name => $version">
+            <ul n:inner-foreach="$require as $name => $version">
                 <li>
-                    <a n:tag-if="!$_helpers->isPhp($name)" title="{$name} ({$version})" data-toggle="tooltip" data-placement="left" data-ga="1" data-event="click" data-category="requirements" data-action="{$name}" href="{$addon->github->composer->getPackageUrl($name)}">
+                    <a n:tag-if="!$_helpers->isPhp($name)" data-ga="1" data-event="click" data-category="requirements" data-action="{$name}" href="{$addon->composer->linker->getPackageUrl($name)}">
                         {$name}
                     </a>
                     ({$version})
                 </li>
             </ul>
+        </div>
+    {/if}
+    {if ($keywords = $composer->get('keywords'))}
+        <div class="requirements">
+            <div class="title">Keywords</div>
+            <a n:foreach="$keywords as $name" data-ga="1" data-event="click" data-category="keywords" data-action="{$name}" href="{$addon->composer->linker->getTagUrl($name)}">
+                <span class="label label-default"><i class="octicon octicon-tag"></i> {$name}</span>
+            </a>
         </div>
     {/if}
 {/if}

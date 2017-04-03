@@ -4,14 +4,12 @@ namespace App\Modules\Front\Portal\Index;
 
 use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\Addon\AddonRepository;
-use App\Model\Database\ORM\Tag\Tag;
 use App\Model\Database\Query\SearchAddonsQuery;
-use App\Model\Facade\SearchFacade;
 use App\Modules\Front\Portal\Base\BaseAddonPresenter;
-use App\Modules\Front\Portal\Controls\AddonList\AddonList;
-use App\Modules\Front\Portal\Controls\AddonList\CategorizedAddonList;
-use App\Modules\Front\Portal\Controls\AddonList\ICategorizedAddonListFactory;
-use App\Modules\Front\Portal\Controls\Search\Search;
+use App\Modules\Front\Portal\Base\Controls\AddonList\AddonList;
+use App\Modules\Front\Portal\Base\Controls\AddonList\CategorizedAddonList;
+use App\Modules\Front\Portal\Base\Controls\AddonList\ICategorizedAddonListFactory;
+use App\Modules\Front\Portal\Base\Controls\Search\Search;
 use Minetro\Nextras\Orm\QueryObject\Queryable;
 use Nextras\Orm\Collection\ICollection;
 
@@ -21,38 +19,21 @@ final class IndexPresenter extends BaseAddonPresenter
 	/** @var AddonRepository @inject */
 	public $addonRepository;
 
-	/** @var SearchFacade @inject */
-	public $searchFacade;
-
 	/** @var ICategorizedAddonListFactory @inject */
 	public $categorizedAddonsListFactory;
 
 	/** @var ICollection|Addon[] */
 	private $addons;
 
-	/** @var ICollection|Tag[] */
-	private $categories;
-
 	/**
-	 * DEFAULT *****************************************************************
+	 * ALL *********************************************************************
 	 */
 
-	public function actionDefault()
+	/**
+	 * @return void
+	 */
+	public function actionAll()
 	{
-		$this->addons = $this->searchFacade->findAll();
-		$this->categories = $this->searchFacade->findCategories();
-	}
-
-	/**
-	 * SORTED ******************************************************************
-	 */
-
-	/**
-	 * @param string $by
-	 */
-	public function actionSorted($by)
-	{
-		$this->addons = $this->searchFacade->findSorted($by);
 	}
 
 	/**
@@ -61,6 +42,7 @@ final class IndexPresenter extends BaseAddonPresenter
 
 	/**
 	 * @param string $slug
+	 * @return void
 	 */
 	public function actionAuthor($slug)
 	{
@@ -72,6 +54,7 @@ final class IndexPresenter extends BaseAddonPresenter
 
 	/**
 	 * @param string $slug
+	 * @return void
 	 */
 	public function renderAuthor($slug)
 	{
@@ -84,6 +67,7 @@ final class IndexPresenter extends BaseAddonPresenter
 
 	/**
 	 * @param string $q
+	 * @return void
 	 */
 	public function actionSearch($q)
 	{
@@ -97,6 +81,9 @@ final class IndexPresenter extends BaseAddonPresenter
 		$this->addons = $this->addonRepository->fetch($query, Queryable::HYDRATION_ENTITY);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function renderSearch()
 	{
 		if ($this->isAjax()) {
@@ -112,6 +99,7 @@ final class IndexPresenter extends BaseAddonPresenter
 
 	/**
 	 * @param string $tag
+	 * @return void
 	 */
 	public function actionTag($tag)
 	{
@@ -123,6 +111,7 @@ final class IndexPresenter extends BaseAddonPresenter
 
 	/**
 	 * @param string $tag
+	 * @return void
 	 */
 	public function renderTag($tag)
 	{
@@ -157,7 +146,7 @@ final class IndexPresenter extends BaseAddonPresenter
 	 */
 	protected function createComponentCategorizedAddons()
 	{
-		return $this->categorizedAddonsListFactory->create($this->addons, $this->categories);
+		return $this->categorizedAddonsListFactory->create();
 	}
 
 }

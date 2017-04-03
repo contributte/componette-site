@@ -36,7 +36,7 @@ final class Filters
 	}
 
 	/**
-	 * @param $time
+	 * @param mixed $time
 	 * @return mixed
 	 */
 	public static function time($time)

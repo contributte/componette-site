@@ -37,6 +37,8 @@ final class SynchronizeCommand extends BaseCommand
 
 	/**
 	 * Configure command
+	 *
+	 * @return void
 	 */
 	protected function configure()
 	{
@@ -53,54 +55,49 @@ final class SynchronizeCommand extends BaseCommand
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
 		/** @var ICollection|Addon[] $addons */
-		$addons = $this->addonRepository->findComposers();
+		$addons = $this->addonRepository->findBy(['state' => Addon::STATE_ACTIVE, 'type' => Addon::TYPE_COMPOSER]);
 
 		// DO YOUR JOB ===============================================
 
 		$counter = 0;
 		foreach ($addons as $addon) {
 			try {
-				// Skip addon with bad data
-				if (($extra = $addon->github->extra)) {
-					if (($composer = $extra->get('composer', FALSE))) {
-
-						if (!isset($composer['name'])) {
-							throw new InvalidStateException('No composer name at ' . $addon->fullname);
-						}
-
-						list ($owner, $repo) = explode('/', $composer['name']);
-
-						// Create composer entity if not exist
-						if (!$addon->composer) {
-							$addon->composer = new Composer();
-						}
-
-						// Basic info
-						// @todo own getEnsure
-						$addon->composer->name = !empty($name = Arrays::get($composer, 'name', NULL)) ? $name : NULL;
-						$addon->composer->description = !empty($description = Arrays::get($composer, 'description', NULL)) ? $description : NULL;
-						$addon->composer->type = !empty($type = Arrays::get($composer, 'type', NULL)) ? $type : NULL;
-
-						// Downloads
-						$response = $this->composer->repo($owner, $repo);
-						if ($response->isOk()) {
-							$addon->composer->downloads = Arrays::get($response->getJsonBody(), ['package', 'downloads', 'total'], 0);
-						}
-
-						// Keywords
-						$keywords = Arrays::get($composer, 'keywords', []);
-						$addon->composer->keywords = $keywords ? implode(',', $keywords) : NULL;
-
-						// Persist
-						$this->addonRepository->persistAndFlush($addon);
-
-						// Increase counting
-						$counter++;
-					} else {
-						$output->writeln('Skip (composer) [no composer data]: ' . $addon->fullname);
+				// Skip addon without data
+				$composer = $addon->github->masterComposer;
+				if ($composer) {
+					if (!isset($composer->name)) {
+						throw new InvalidStateException('No composer name at ' . $addon->fullname);
 					}
+
+					list ($author, $repo) = explode('/', $composer->name);
+
+					// Create composer entity if not exist
+					if (!$addon->composer) {
+						$addon->composer = new Composer();
+					}
+
+					// Basic info
+					$addon->composer->name = $composer->get('name', NULL);
+					$addon->composer->description = $composer->get('description', NULL);
+					$addon->composer->type = $composer->get('type', NULL);
+
+					// Keywords
+					$keywords = (array) $composer->get('keywords', []);
+					$addon->composer->keywords = $keywords ? implode(',', $keywords) : NULL;
+
+					// Downloads
+					$response = $this->composer->repo($author, $repo);
+					if ($response->isOk()) {
+						$addon->composer->downloads = Arrays::get($response->getJsonBody(), ['package', 'downloads', 'total'], 0);
+					}
+
+					// Persist
+					$this->addonRepository->persistAndFlush($addon);
+
+					// Increase counting
+					$counter++;
 				} else {
-					$output->writeln('Skip (composer) [no extra data]: ' . $addon->fullname);
+					$output->writeln('Skip (composer) [no composer data]: ' . $addon->fullname);
 				}
 			} catch (Exception $e) {
 				Debugger::log($e, Debugger::EXCEPTION);
@@ -110,4 +107,5 @@ final class SynchronizeCommand extends BaseCommand
 
 		$output->writeln(sprintf('Updated %s composer addons', $counter));
 	}
+
 }

@@ -26,9 +26,9 @@
     </ul>
 </div>
 
-<div class="title-code title-composer hidden-sm hidden-xs" n:if="$addon->isComposer && $addon->composer">
-    {*<span class="composer-clipboard octicon octicon octicon-desktop-download" data-toggle="tooltip" data-placement="left" title="Click & copy" data-composer="composer require {$addon->github->composer->getName()}"></span>*}
-    {*<span class="composer-code">composer require {$addon->github->composer->getName()}</span>*}
+<div class="title-code title-composer hidden-sm hidden-xs" n:if="$addon->isComposer && $addon->github->masterComposer">
+    <span class="composer-clipboard octicon octicon octicon-desktop-download" data-toggle="tooltip" data-placement="left" title="Click & copy" data-composer="composer require {$addon->github->masterComposer->name}"></span>
+    <span class="composer-code">composer require {$addon->github->masterComposer->name}</span>
 </div>
 
 <div class="clearfix"></div>

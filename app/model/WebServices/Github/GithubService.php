@@ -69,8 +69,8 @@ final class GithubService
 		$responses = [$response];
 
 		// Do we have any link in headers?
-		if (($link = $response->getHeader('Link'))) {
-
+		$link = $response->getHeader('Link');
+		if ($link) {
 			// Parse Github style pages
 			$pages = $this->parsePages($link);
 			foreach ($pages as $page) {
@@ -138,118 +138,127 @@ final class GithubService
 	 */
 
 	/**
-	 * @param string $owner
+	 * @param string $author
 	 * @param string $repo
 	 * @return Response
 	 */
-	public function repo($owner, $repo)
+	public function repo($author, $repo)
 	{
-		return $this->call("/repos/$owner/$repo");
+		return $this->call(sprintf('/repos/%s/%s', $author, $repo));
 	}
 
 	/**
-	 * @param string $owner
+	 * @param string $author
 	 * @param string $repo
 	 * @param string $mediatype
 	 * @return Response
 	 */
-	public function readme($owner, $repo, $mediatype = NULL)
+	public function readme($author, $repo, $mediatype = NULL)
 	{
 		$headers = $this->mediatype($mediatype);
 
-		return $this->call("/repos/$owner/$repo/readme", $headers);
+		return $this->call(sprintf('/repos/%s/%s/readme', $author, $repo), $headers);
 	}
 
 	/**
-	 * @param string $owner
+	 * @param string $author
 	 * @param string $repo
 	 * @param string $path
 	 * @param string $mediatype
 	 * @return Response
 	 */
-	public function content($owner, $repo, $path, $mediatype = NULL)
+	public function content($author, $repo, $path, $mediatype = NULL)
 	{
 		$headers = $this->mediatype($mediatype);
 
-		return $this->call("/repos/$owner/$repo/contents/$path", $headers);
+		return $this->call(sprintf('/repos/%s/%s/contents/%s', $author, $repo, $path), $headers);
 	}
 
 	/**
-	 * @param string $owner
+	 * @param string $filename
+	 * @return Response
+	 */
+	public function download($filename)
+	{
+		return $this->makeRequest($this->client->getContentUrl($filename));
+	}
+
+	/**
+	 * @param string $author
 	 * @param string $repo
 	 * @return Response
 	 */
-	public function composer($owner, $repo)
+	public function composer($author, $repo)
 	{
-		return $this->content($owner, $repo, 'composer.json');
+		return $this->download(sprintf('%s/%s/master/%s', $author, $repo, 'composer.json'));
 	}
 
 	/**
-	 * @param string $owner
+	 * @param string $author
 	 * @param string $repo
 	 * @return Response
 	 */
-	public function bower($owner, $repo)
+	public function bower($author, $repo)
 	{
-		return $this->content($owner, $repo, 'bower.json');
+		return $this->content($author, $repo, 'bower.json');
 	}
 
 	/**
-	 * @param string $owner
+	 * @param string $author
 	 * @param string $repo
 	 * @param int $page
 	 * @return Response
 	 */
-	public function releases($owner, $repo, $page = NULL)
+	public function releases($author, $repo, $page = NULL)
 	{
 		if ($page) {
-			return $this->call("/repos/$owner/$repo/releases?page=$page");
+			return $this->call(sprintf('/repos/%s/%s/releases?page=%s', $author, $repo, $page));
 		}
 
-		return $this->call("/repos/$owner/$repo/releases");
+		return $this->call(sprintf('/repos/%s/%s/releases', $author, $repo));
 	}
 
 	/**
-	 * @param string $owner
+	 * @param string $author
 	 * @param string $repo
 	 * @param string $mediatype
 	 * @return Response[]
 	 */
-	public function allReleases($owner, $repo, $mediatype = NULL)
+	public function allReleases($author, $repo, $mediatype = NULL)
 	{
 		$headers = $this->mediatype($mediatype);
 
 		return $this->aggregate(
-			$this->client->getApiUrl("/repos/$owner/$repo/releases"),
+			$this->client->getApiUrl(sprintf('/repos/%s/%s/releases', $author, $repo)),
 			$headers
 		);
 	}
 
 	/**
-	 * @param string $owner
+	 * @param string $author
 	 * @param string $repo
 	 * @return Response
 	 */
-	public function stargazers($owner, $repo)
+	public function stargazers($author, $repo)
 	{
-		return $this->call("/repos/$owner/$repo/stargazers");
+		return $this->call(sprintf('/repos/%s/%s/stargazers', $author, $repo));
 	}
 
 	/**
-	 * @param string $owner
+	 * @param string $author
 	 * @return Response
 	 */
-	public function user($owner)
+	public function user($author)
 	{
-		return $this->call("/users/$owner");
+		return $this->call(sprintf('/users/%s', $author));
 	}
 
 	/**
-	 * @param string $owner
+	 * @param string $author
 	 * @param bool $content
 	 * @return Response
 	 */
-	public function avatar($owner, $content = TRUE)
+	public function avatar($author, $content = TRUE)
 	{
 		$opts = [];
 
@@ -258,7 +267,7 @@ final class GithubService
 			$opts[CURLOPT_NOBODY] = TRUE;
 		}
 
-		return $this->makeRequest($this->client->getAvatarUrl($owner), [], $opts);
+		return $this->makeRequest($this->client->getAvatarUrl($author), [], $opts);
 	}
 
 	/**

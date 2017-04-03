@@ -12,6 +12,7 @@ final class GithubClient
 	const VERSION = 'v3';
 	const URL_API = 'https://api.github.com';
 	const URL_AVATAR = 'https://avatars.githubusercontent.com';
+	const URL_CONTENT = 'https://raw.githubusercontent.com';
 
 	/** @var CurlClient */
 	private $curl;
@@ -21,7 +22,7 @@ final class GithubClient
 
 	/**
 	 * @param CurlClient $curl
-	 * @param $token
+	 * @param string $token
 	 */
 	public function __construct(CurlClient $curl, $token)
 	{
@@ -33,7 +34,7 @@ final class GithubClient
 	 * @param string $uri
 	 * @return string
 	 */
-	public function getApiUrl($uri)
+	public function getApiUrl(string $uri): string
 	{
 		return self::URL_API . '/' . trim($uri, '/');
 	}
@@ -42,9 +43,18 @@ final class GithubClient
 	 * @param string $username
 	 * @return string
 	 */
-	public function getAvatarUrl($username)
+	public function getAvatarUrl(string $username): string
 	{
 		return self::URL_AVATAR . '/' . trim($username, '/');
+	}
+
+	/**
+	 * @param string $uri
+	 * @return string
+	 */
+	public function getContentUrl(string $uri): string
+	{
+		return self::URL_CONTENT . '/' . trim($uri, '/');
 	}
 
 	/**

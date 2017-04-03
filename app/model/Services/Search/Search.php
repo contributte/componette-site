@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model\Search;
+namespace App\Model\Services\Search;
 
 final class Search
 {

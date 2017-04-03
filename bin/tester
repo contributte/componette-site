@@ -2,4 +2,6 @@
 
 # s => Show skipped files
 # p => Specify PHP interpreter
-vendor/bin/tester tests/cases -s -p php
+# j => Threads (default 8)
+# c => php.ini file
+vendor/bin/tester tests/cases -s -c tests/php-unix.ini -p php -j 40 $@

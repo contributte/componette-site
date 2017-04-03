@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\Cache;
+namespace App\Model\Caching;
 
 use Nette\Caching\Cache;
 use Nette\Caching\IStorage;

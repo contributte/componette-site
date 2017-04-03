@@ -5,6 +5,7 @@ namespace App\Model\Commands\Addons\Composer;
 use App\Model\Commands\BaseCommand;
 use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\Addon\AddonRepository;
+use App\Model\Database\ORM\ComposerStatistics\ComposerStatistics;
 use App\Model\WebServices\Composer\ComposerService;
 use Exception;
 use Nette\InvalidStateException;
@@ -35,6 +36,8 @@ final class CollectStatsCommand extends BaseCommand
 
 	/**
 	 * Configure command
+	 *
+	 * @return void
 	 */
 	protected function configure()
 	{
@@ -51,40 +54,42 @@ final class CollectStatsCommand extends BaseCommand
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
 		/** @var ICollection|Addon[] $addons */
-		$addons = $this->addonRepository->findComposers();
+		$addons = $this->addonRepository->findBy(['state' => Addon::STATE_ACTIVE, 'type' => Addon::TYPE_COMPOSER]);
 
 		// DO YOUR JOB ===============================================
 
 		$counter = 0;
 		foreach ($addons as $addon) {
 			try {
-				// Skip addon with bad data
-				if (($extra = $addon->github->extra)) {
-					if (($composer = $extra->get('composer', FALSE))) {
+				// Skip addon without data
+				$composer = $addon->github->masterComposer;
+				if ($composer) {
 
-						if (!isset($composer['name'])) {
-							throw new InvalidStateException('No composer name at ' . $addon->fullname);
-						}
-
-						list ($owner, $repo) = explode('/', $composer['name']);
-
-						$response = $this->composer->stats($owner, $repo);
-						if ($response->isOk()) {
-							$extra->set('composer-stats', ['all' => $response->getJsonBody()]);
-						} else {
-							$output->writeln('Skip (composer stats) [no stats data]: ' . $addon->fullname);
-						}
-
-						// Persist
-						$this->addonRepository->persistAndFlush($addon);
-
-						// Increase counting
-						$counter++;
-					} else {
-						$output->writeln('Skip (composer stats) [no composer data]: ' . $addon->fullname);
+					if (!$composer->name) {
+						throw new InvalidStateException('No composer name at ' . $addon->fullname);
 					}
+
+					list ($vendor, $repo) = explode('/', $composer->name);
+
+					$response = $this->composer->stats($vendor, $repo);
+					if ($response->isOk()) {
+						$stats = new ComposerStatistics();
+						$stats->addon = $addon;
+						$stats->type = ComposerStatistics::TYPE_ALL;
+						$stats->custom = ComposerStatistics::CUSTOM_ALL;
+						$stats->json = $response->getJsonBody();
+						$addon->composerStatistics->add($stats);
+					} else {
+						$output->writeln('Skip (composer stats) [no stats data]: ' . $addon->fullname);
+					}
+
+					// Persist
+					$this->addonRepository->persistAndFlush($addon);
+
+					// Increase counting
+					$counter++;
 				} else {
-					$output->writeln('Skip (composer stats) [no extra data]: ' . $addon->fullname);
+					$output->writeln('Skip (composer stats) [no composer data]: ' . $addon->fullname);
 				}
 			} catch (Exception $e) {
 				Debugger::log($e, Debugger::EXCEPTION);
@@ -94,4 +99,5 @@ final class CollectStatsCommand extends BaseCommand
 
 		$output->writeln(sprintf('Updated %s packages', $counter));
 	}
+
 }

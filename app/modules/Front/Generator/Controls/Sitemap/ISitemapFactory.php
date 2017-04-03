@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Front\Portal\Controls\Sitemap;
+namespace App\Modules\Front\Generator\Controls\Sitemap;
 
 interface ISitemapFactory
 {

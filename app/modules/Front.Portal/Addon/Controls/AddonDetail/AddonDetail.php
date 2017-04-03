@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Front\Portal\Controls\AddonDetail;
+namespace App\Modules\Front\Portal\Addon\Controls\AddonDetail;
 
 use App\Model\Database\ORM\Addon\Addon;
 use App\Model\UI\BaseControl;
@@ -38,6 +38,11 @@ final class AddonDetail extends BaseControl
 	 * RENDER ******************************************************************
 	 */
 
+	/**
+	 * Render header
+	 *
+	 * @return void
+	 */
 	public function renderHeader()
 	{
 		$this->template->addon = $this->addon;
@@ -45,6 +50,11 @@ final class AddonDetail extends BaseControl
 		$this->template->render();
 	}
 
+	/**
+	 * Render content
+	 *
+	 * @return void
+	 */
 	public function renderContent()
 	{
 		$this->template->addon = $this->addon;
@@ -52,6 +62,11 @@ final class AddonDetail extends BaseControl
 		$this->template->render();
 	}
 
+	/**
+	 * Render sidebar
+	 *
+	 * @return void
+	 */
 	public function renderSidebar()
 	{
 		$this->template->addon = $this->addon;
@@ -59,6 +74,11 @@ final class AddonDetail extends BaseControl
 		$this->template->render();
 	}
 
+	/**
+	 * Render statistics
+	 *
+	 * @return void
+	 */
 	public function renderStats()
 	{
 		$totalDownloads = [];
@@ -66,8 +86,8 @@ final class AddonDetail extends BaseControl
 		// Calculate total downloads
 		$stats = $this->addon->composerLatestStatistics;
 		if ($stats && $stats->json) {
-			foreach ($stats->json['all']['labels'] as $key => $label) {
-				$totalDownloads[] = ['x' => DateTime::from($label)->format('c'), 'y' => $stats->json['all']['values'][$key]];
+			foreach ($stats->json['labels'] as $key => $label) {
+				$totalDownloads[] = ['x' => DateTime::from($label)->format('c'), 'y' => $stats->json['values'][$key]];
 			}
 			$this->template->totalDownloads = json_encode($totalDownloads);
 		} else {
@@ -78,12 +98,22 @@ final class AddonDetail extends BaseControl
 		$this->template->render();
 	}
 
+	/**
+	 * Render report
+	 *
+	 * @return void
+	 */
 	public function renderReport()
 	{
 		$this->template->setFile(__DIR__ . '/templates/report.latte');
 		$this->template->render();
 	}
 
+	/**
+	 * Render releases
+	 *
+	 * @return void
+	 */
 	public function renderReleases()
 	{
 		$this->template->addon = $this->addon;

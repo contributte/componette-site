@@ -7,8 +7,8 @@ use App\Model\Database\ORM\Addon\AddonRepository;
 use App\Model\Database\Query\LatestActivityAddonsQuery;
 use App\Model\Database\Query\LatestAddedAddonsQuery;
 use App\Modules\Front\Portal\Base\BaseAddonPresenter;
-use App\Modules\Front\Portal\Controls\AddonList\AddonList;
-use App\Modules\Front\Portal\Controls\Search\Search;
+use App\Modules\Front\Portal\Base\Controls\AddonList\AddonList;
+use App\Modules\Front\Portal\Base\Controls\Search\Search;
 use Minetro\Nextras\Orm\QueryObject\Queryable;
 use Nextras\Orm\Collection\ICollection;
 
@@ -26,6 +26,8 @@ final class HomePresenter extends BaseAddonPresenter
 
 	/**
 	 * Find addons by criteria
+	 *
+	 * @return void
 	 */
 	public function actionDefault()
 	{

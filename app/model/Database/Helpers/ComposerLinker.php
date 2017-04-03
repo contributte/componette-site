@@ -8,6 +8,8 @@ use Contributte\Http\Url;
 final class ComposerLinker
 {
 
+	private const PACKAGIST = 'https://packagist.org';
+
 	/** @var Composer */
 	private $composer;
 
@@ -23,9 +25,9 @@ final class ComposerLinker
 	 * @param string|NULL $package
 	 * @return string
 	 */
-	public function getPackageUrl($package = NULL)
+	public function getPackageUrl(string $package = NULL): string
 	{
-		$url = new Url('https://packagist.org/packages');
+		$url = new Url(self::PACKAGIST . '/packages');
 		$url->appendPath('/');
 
 		if ($package) {
@@ -34,7 +36,16 @@ final class ComposerLinker
 			$url->appendPath($this->composer->name);
 		}
 
-		return $url;
+		return (string) $url;
+	}
+
+	/**
+	 * @param string $tag
+	 * @return string
+	 */
+	public function getTagUrl(string $tag): string
+	{
+		return self::PACKAGIST . '/search/?tags=' . $tag;
 	}
 
 	/**
@@ -44,6 +55,5 @@ final class ComposerLinker
 	{
 		return $this->composer->name;
 	}
-
 
 }

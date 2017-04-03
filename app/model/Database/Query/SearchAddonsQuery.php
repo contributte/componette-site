@@ -64,6 +64,16 @@ final class SearchAddonsQuery extends QueryObject
 			$qb->andWhere('[a.author] = %s', $this->author);
 		}
 
+		/*
+		 *
+		$builder = $this->builder()
+			->from('[addon]', 'a')
+			->leftJoin('a', '[github]', 'g', '[g.addon_id] = [a.id]')
+			->orWhere('[a.owner] LIKE %s', "%$q%")
+			->orWhere('[a.name] LIKE %s', "%$q%")
+			->andWhere('[a.state] = %s', Addon::STATE_ACTIVE);
+		 */
+
 		if ($this->tag) {
 			$qb->leftJoin('a', '[addon_x_tag]', 'axt', '[axt.addon_id] = [a.id]')
 				->leftJoin('t', '[tag]', 't', '[t.id] = [axt.tag_id]')
@@ -76,11 +86,11 @@ final class SearchAddonsQuery extends QueryObject
 				->leftJoin('a', '[composer]', 'c', '[c.addon_id] = [a.id]');
 
 			foreach ($this->tokens as $token) {
-				$builder->andWhere('[a.author] LIKE %s', "%$token%")
-					->orWhere('[a.name] LIKE %s', "%$token%")
-					->orWhere('[g.description] LIKE %s', "%$token%")
+				$builder->andWhere('[a.author] LIKE %s', '%' . $token . '%')
+					->orWhere('[a.name] LIKE %s', '%' . $token . '%')
+					->orWhere('[g.description] LIKE %s', '%' . $token . '%')
 					// Composer
-					->orWhere('[c.name] LIKE %s', "%$token%");
+					->orWhere('[c.name] LIKE %s', '%' . $token . '%');
 			}
 			$qb->groupBy('[a.id]');
 		}

@@ -3,30 +3,23 @@ language: php
 sudo: false
 
 php:
-    - 5.6
-    - 7.0
+    - 7.1
     - hhvm
-    - hhvm-nightly
 
 env:
     global:
      - COMPOSER_GLOBAL_FLAGS=--no-interaction --prefer-source -o
 
-    matrix:
-     - COMPOSER_MATRIX_FLAGS=--prefer-lowest
-     - COMPOSER_MATRIX_FLAGS=--prefer-stable
-
 matrix:
     allow_failures:
         - php: hhvm
-        - php: hhvm-nightly
 
 install:
     # Update Composer
     - travis_retry composer self-update
 
     # Install Nette Tester
-    - travis_retry composer update ${COMPOSER_GLOBAL_FLAGS} ${COMPOSER_MATRIX_FLAGS}
+    - travis_retry composer update ${COMPOSER_GLOBAL_FLAGS}
 
 script:
     # Run PHP linter

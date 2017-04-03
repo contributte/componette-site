@@ -15,6 +15,7 @@ abstract class QueryObject extends NQueryObject
 
 	/**
 	 * @param int $limit
+	 * @return void
 	 */
 	public function setLimit(int $limit)
 	{
@@ -23,6 +24,7 @@ abstract class QueryObject extends NQueryObject
 
 	/**
 	 * @param int $offset
+	 * @return void
 	 */
 	public function setOffset(int $offset)
 	{
