@@ -1,7 +1,16 @@
 # CHANGELOG
 
-## 1.2.0-dev
+## 1.3.0-dev
 
+## 1.2.0 [06.04.2017]
+
+- Feature: PHP 7.1
+- Feature: layout 2.0
+- Feature: strict coding standard
+- Feature: PSR4
+- Drop: support bower
+- Fix: order addons releases
+- Fix: addons tabs URL 
 - Feature: improve search (thanks @artemevsin)[#81][#67]
 - Composer: update dependencies
 - Fix: Bower/Composer URL in http client
