@@ -72,7 +72,7 @@
 
 {if $addon->isComposer && $addon->github->masterComposer}
     {var $composer => $addon->github->masterComposer}
-    {if ($require = $composer->get('require'))}
+    {if ($require = $composer->get('require', []))}
         <div class="requirements">
             <div class="title">Dependencies</div>
 
