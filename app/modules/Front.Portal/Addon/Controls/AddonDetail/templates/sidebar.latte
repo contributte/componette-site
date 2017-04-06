@@ -86,7 +86,7 @@
             </ul>
         </div>
     {/if}
-    {if ($keywords = $composer->get('keywords'))}
+    {if ($keywords = $composer->get('keywords', []))}
         <div class="requirements">
             <div class="title">Keywords</div>
             <a n:foreach="$keywords as $name" data-ga="1" data-event="click" data-category="keywords" data-action="{$name}" href="{$addon->composer->linker->getTagUrl($name)}">
