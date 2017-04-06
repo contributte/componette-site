@@ -78,14 +78,19 @@ final class RssFeed extends Control
 	{
 		$items = [];
 		foreach ($this->addons as $addon) {
-			$items[] = (object) [
+			$items[] = $item = (object) [
 				'guid' => sprintf('%s@componette.com', $addon->id),
-				'title' => sprintf('[%s] - ', $addon->fullname, $addon->github->description),
 				'link' => $this->presenter->link('//:Front:Portal:Addon:detail', ['slug' => $addon->id, 'utm_source' => 'rss', 'utm_medium' => 'rss', 'utm_campaign' => 'rss']),
 				'time' => $addon->createdAt->setTimezone(new DateTimeZone('UTC')),
 				'author' => sprintf('noreply@componette.com (%s)', $addon->author),
 				'content' => $addon->github->contentHtml,
 			];
+
+			if ($addon->github->description) {
+				$item->title = sprintf('%s - %s', $addon->fullname, $addon->github->description);
+			} else {
+				$item->title = sprintf('%s', $addon->fullname);
+			}
 		}
 
 		return $items;
