@@ -5,6 +5,7 @@ namespace App\Modules\Front\Portal\Index;
 use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\Addon\AddonRepository;
 use App\Model\Database\Query\SearchAddonsQuery;
+use App\Model\UI\Destination;
 use App\Modules\Front\Portal\Base\BaseAddonPresenter;
 use App\Modules\Front\Portal\Base\Controls\AddonList\AddonList;
 use App\Modules\Front\Portal\Base\Controls\AddonList\CategorizedAddonList;
@@ -73,6 +74,10 @@ final class IndexPresenter extends BaseAddonPresenter
 	{
 		if (strlen($q) > 100) {
 			$this->redirect('this', ['q' => substr($q, 0, 100)]);
+		}
+
+		if (empty($q)) {
+			$this->redirect(Destination::FRONT_PORTAL_HOMEPAGE);
 		}
 
 		$query = new SearchAddonsQuery();
