@@ -2,6 +2,9 @@
 
 ## 1.3.0-dev
 
+- Fix: after deploy errors
+- Fix: invalid links on homepage [#88]
+
 ## 1.2.0 [06.04.2017]
 
 - Feature: PHP 7.1
