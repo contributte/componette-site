@@ -46,7 +46,7 @@
 		"contributte/bootstrap": "^0.1.2",
 		"contributte/http": "^0.1.0",
 		"contributte/cache": "^0.1.0",
-		"contributte/utils": "^0.1.0"
+		"contributte/utils": "^0.1.1"
 	},
 	"require-dev": {
 		"ninjify/qa": "^0.3.3",
