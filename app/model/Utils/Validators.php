@@ -2,19 +2,9 @@
 
 namespace App\Model\Utils;
 
-use Nette\Utils\Strings;
-use Nette\Utils\Validators as NValidators;
+use Contributte\Utils\Validators as CValidators;
 
-final class Validators extends NValidators
+final class Validators extends CValidators
 {
-
-	/**
-	 * @param string $url
-	 * @return bool
-	 */
-	public static function isUrlFragment($url)
-	{
-		return Strings::startsWith($url, '#');
-	}
 
 }

@@ -8,6 +8,7 @@ use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\Addon\AddonRepository;
 use App\Model\Database\ORM\Github\Github;
 use App\Model\WebServices\Github\GithubService;
+use Contributte\Utils\Urls;
 use Nette\Utils\Strings;
 use Nextras\Orm\Collection\ICollection;
 use Symfony\Component\Console\Input\InputInterface;
@@ -117,7 +118,7 @@ final class GenerateContentCommand extends BaseCommand
 			list ($all, $url) = $matches;
 
 			if (!Validators::isUrl($url)) {
-				if (Validators::isUrlFragment($url)) {
+				if (Urls::hasFragment($url)) {
 					$url = $github->linker->getFileUrl(NULL, $url);
 				} else {
 					$url = $github->linker->getBlobUrl($url);
