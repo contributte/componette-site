@@ -2,11 +2,11 @@
 
 namespace App\Model\Commands\Addons\Content;
 
-use App\Core\Utils\Validators;
 use App\Model\Commands\BaseCommand;
 use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\Addon\AddonRepository;
 use App\Model\Database\ORM\Github\Github;
+use App\Model\Utils\Validators;
 use App\Model\WebServices\Github\GithubService;
 use Contributte\Utils\Urls;
 use Nette\Utils\Strings;
@@ -75,20 +75,20 @@ final class GenerateContentCommand extends BaseCommand
 		$counter = 0;
 		foreach ($addons as $addon) {
 			// Raw
-			$response = $this->github->readme($addon->author, $addon->name, GithubService::MEDIATYPE_HTML);
-			if ($response->isOk()) {
+			$response1 = $this->github->readme($addon->author, $addon->name, GithubService::MEDIATYPE_HTML);
+			if ($response1->isOk()) {
 				// Content
-				$addon->github->contentRaw = $response->getBody();
+				$addon->github->contentRaw = $response1->getBody();
 			} else {
 				$addon->github->contentRaw = '';
 				$output->writeln('Skip (content) [failed download raw content]: ' . $addon->fullname);
 			}
 
 			// HTML
-			$response = $this->github->readme($addon->author, $addon->name, GithubService::MEDIATYPE_HTML);
-			if ($response->isOk()) {
+			$response2 = $this->github->readme($addon->author, $addon->name, GithubService::MEDIATYPE_HTML);
+			if ($response2->isOk()) {
 				// Content
-				$addon->github->contentHtml = $response->getBody();
+				$addon->github->contentHtml = $response2->getBody();
 				$this->reformatLinks($addon->github);
 			} else {
 				$addon->github->contentHtml = '';
