@@ -9,4 +9,3 @@ echo $DATE
 ../bin/console addons:content:generate
 ../bin/console addons:composer:sync
 ../bin/console addons:composer:collect
-../bin/console addons:bower:sync
