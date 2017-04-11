@@ -2,6 +2,9 @@
 
 ## 1.3.0-dev
 
+- Feature: accurate authors sorting in the footer
+- Command: addon content has utf8mb4_general_ci collate
+- Fix: syntax typo in GithubLinker
 - Fix: after deploy errors
 - Fix: invalid links on homepage [#88]
 
