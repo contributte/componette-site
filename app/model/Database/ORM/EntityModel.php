@@ -22,6 +22,7 @@ use Nextras\Orm\Model\Model as NextrasModel;
  * @property-read TagRepository $tag
  *
  * @method AbstractEntity persist(IEntity $entity, $withCascade = TRUE)
+ * @method AbstractRepository getRepositoryForEntity($entity)
  */
 final class EntityModel extends NextrasModel
 {
