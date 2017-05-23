@@ -27,3 +27,7 @@ services:
 
 	# Disable cache
 	#cache.storage: Nette\Caching\Storages\DevNullStorage
+
+#http:
+#	proxy:
+#		- 192.168.0.1/1
