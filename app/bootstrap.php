@@ -1,7 +1,7 @@
 <?php
 
-use Nette\Configurator;
 use Contributte\Bootstrap\ExtraConfigurator;
+use Nette\Configurator;
 
 require __DIR__ . '/../vendor/autoload.php';
 

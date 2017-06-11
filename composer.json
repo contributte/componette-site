@@ -59,6 +59,10 @@
 			"App\\Model\\": "app/model"
 		}
 	},
-	"minimum-stability": "dev",
-	"prefer-stable": true
+	"scripts": {
+		"linter": "linter app tests",
+		"codesniffer": "phpcs --standard=ruleset.xml --extensions=php,phpt --encoding=utf-8 --colors -nsp app tests",
+		"codefixer": "phpcbf --standard=ruleset.xml --extensions=php,phpt --encoding=utf-8 --no-patch -n app tests",
+		"tester": "vendor/bin/tester -s -c tests/php-unix.ini -p php -j 40 tests/cases"
+	}
 }
