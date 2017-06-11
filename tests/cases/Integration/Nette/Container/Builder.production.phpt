@@ -6,12 +6,13 @@
 
 require_once __DIR__ . '/../../../../bootstrap.php';
 
-use Contributte\Bootstrap\Configurator;
+use Contributte\Bootstrap\ExtraConfigurator;
+use Nette\Configurator;
 use Nette\DI\Container;
 use Tester\Assert;
 
 /**
- * DEBUG
+ * PRODUCTION
  */
 test(function () {
 	$configurator = new Configurator();
@@ -23,6 +24,8 @@ test(function () {
 
 	$configurator->addConfig(APP_DIR . '/config/config.neon');
 	$configurator->addConfig(APP_DIR . '/config/config.test.neon');
+
+	ExtraConfigurator::wrap($configurator);
 
 	try {
 		$configurator->setDebugMode(FALSE);
