@@ -127,5 +127,4 @@ final class Sitemap extends Control
 		$this->template->render();
 	}
 
-
 }
