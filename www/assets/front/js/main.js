@@ -97,9 +97,9 @@ $(function () {
 
 	// Window fragment
 	if (window.location.hash) {
-		var el = $('a[href="#tab-releases"]');
+		console.log(window.location);
+		var el = $('a[href="' + window.location.hash + '"]');
 		if (el.length > 0) {
-			console.log('x');
 			el.tab('show');
 		} else {
 			$('a[data-toggle="tab"]:first').tab('show');
