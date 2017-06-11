@@ -15,24 +15,18 @@ matrix:
         - php: hhvm
 
 install:
-    # Update Composer
-    - travis_retry composer self-update
-
     # Install Nette Tester
     - travis_retry composer update ${COMPOSER_GLOBAL_FLAGS}
 
 script:
     # Run PHP linter
-    - bin/linter
+    - composer linter
 
     # Run CodeSniffer
-    - bin/codesniffer
-
-    # Show Nette Tester environment
-    - bin/tester-info
+    - composer codesniffer
 
     # Run Nette Tester
-    - bin/tester
+    - composer tester
 
 after_failure:
     # Print *.actual content
