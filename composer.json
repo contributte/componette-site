@@ -52,17 +52,24 @@
 		"ninjify/qa": "^0.3.3",
 		"ninjify/nunjuck": "^0.1.4",
 
-		"contributte/dev": "^0.1.0"
+		"contributte/dev": "^0.1.0",
+
+		"phpstan/phpstan": "^0.6.4",
+		"phpstan/phpstan-nette": "^0.6.3"
 	},
 	"autoload": {
 		"psr-4": {
 			"App\\Model\\": "app/model"
 		}
 	},
+	"autoload-dev": {
+		"classmap": ["app", "tests/cases"]
+	},
 	"scripts": {
 		"linter": "linter app tests",
 		"codesniffer": "phpcs --standard=ruleset.xml --extensions=php,phpt --encoding=utf-8 --colors -nsp app tests",
 		"codefixer": "phpcbf --standard=ruleset.xml --extensions=php,phpt --encoding=utf-8 --no-patch -n app tests",
-		"tester": "vendor/bin/tester -s -c tests/php-unix.ini -p php -j 40 tests/cases"
+		"tester": "vendor/bin/tester -s -c tests/php-unix.ini -p php -j 40 tests/cases",
+		"phpstan": "phpstan analyse -l 1 -c phpstan.neon app"
 	}
 }

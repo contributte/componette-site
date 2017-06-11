@@ -4,7 +4,7 @@ namespace App\Modules\Front\Portal\Addon\Controls\AddonDetail;
 
 use App\Model\Database\ORM\Addon\Addon;
 use App\Model\UI\BaseControl;
-use App\Modules\Front\Portal\Controls\AddonMeta\AddonMeta;
+use App\Modules\Front\Portal\Base\Controls\AddonMeta\AddonMeta;
 use Nette\Utils\DateTime;
 
 final class AddonDetail extends BaseControl

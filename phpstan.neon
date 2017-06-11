@@ -1,0 +1,19 @@
+parameters:
+	excludes_analyse:
+		- */tests/tmp/*
+
+	fileExtensions:
+		- php
+		- phpt
+
+	ignoreErrors:
+		# Nextras ORM
+		- '#Class App\\Model\\Database\\ORM\\[a-zA-Z]+Repository extends Nette\\Object#'
+		- '#Class App\\Model\\Database\\ORM\\[a-zA-Z]+Mapper extends Nette\\Object#'
+		- '#Class App\\Model\\Database\\ORM\\[a-zA-Z]+\\[a-zA-Z]+Repository extends Nette\\Object#'
+		- '#Class App\\Model\\Database\\ORM\\[a-zA-Z]+\\[a-zA-Z]+Mapper extends Nette\\Object#'
+		- '#Class App\\Model\\Database\\ORM\\EntityModel extends Nette\\Object#'
+
+includes:
+	- vendor/phpstan/phpstan-nette/extension.neon
+	- vendor/phpstan/phpstan-nette/rules.neon
