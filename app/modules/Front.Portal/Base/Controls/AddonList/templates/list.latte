@@ -15,7 +15,7 @@
                             {$addon->name}</a>
                     </h3>
 
-                    <p>{$addon->github->description|truncate:150}</p>
+                    <p>{$addon->github->description|truncate:150|striptags|emojify|noescape}</p>
                 </section>
                 <section class="addon__meta">
                     {control meta:short $addon}

@@ -11,6 +11,7 @@ services:
 			- addFilter('timeAgo', ['App\Model\Templating\Filters\Filters', 'timeAgo'])
 			- addFilter('datetime', ['App\Model\Templating\Filters\Filters', 'datetime'])
 			- addFilter('ucfirst', ['App\Model\Templating\Filters\Filters', 'ucfirst'])
+			- addFilter('emojify', ['App\Model\Templating\Filters\Filters', 'emojify'])
 
 			# Composer
 			- addFilter('isPhpDependency', ['App\Model\Templating\Filters\ComposerHelper', 'isPhpDependency'])

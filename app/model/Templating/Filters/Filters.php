@@ -3,9 +3,12 @@
 namespace App\Model\Templating\Filters;
 
 use Nette\Utils\DateTime;
+use Nette\Utils\Strings;
 
 final class Filters
 {
+
+	private const EMOJI_CND = 'https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/images/basic/%s.png';
 
 	/** @var string */
 	public static $datetime = 'd.m.Y H:i';
@@ -104,6 +107,17 @@ final class Filters
 	public static function ucfirst($str)
 	{
 		return ucfirst($str);
+	}
+
+	/**
+	 * @param string $str
+	 * @return string
+	 */
+	public static function emojify($str): string
+	{
+		return Strings::replace(htmlspecialchars($str), '#:([a-z0-9+-]+):#', function (array $emoji) {
+			return sprintf('<img class="emoji" src="%s" title="%s">', sprintf(self::EMOJI_CND, $emoji[1]), $emoji[1]);
+		});
 	}
 
 }
