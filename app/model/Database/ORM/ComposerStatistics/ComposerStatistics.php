@@ -16,7 +16,7 @@ use Nette\Utils\DateTime;
  * @property DateTime $createdAt            {default now}
  * @property DateTime|NULL $updatedAt
  *
- * @property ArrayHash|array $json                    {virtual}
+ * @property ArrayHash|array $json          {virtual}
  */
 class ComposerStatistics extends AbstractEntity
 {
@@ -29,7 +29,7 @@ class ComposerStatistics extends AbstractEntity
 	// Customs
 	const CUSTOM_ALL = 'ALL';
 
-	/** @var array */
+	/** @var ArrayHash|array */
 	protected $json = [];
 
 	/**
@@ -37,7 +37,7 @@ class ComposerStatistics extends AbstractEntity
 	 */
 
 	/**
-	 * @return array
+	 * @return ArrayHash|array
 	 */
 	protected function getterJson()
 	{

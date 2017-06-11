@@ -89,7 +89,7 @@ final class CategorizedAddonList extends BaseControl
 			}
 		}
 
-		// Sort addons by categeries priority
+		// Sort addons by categories priority
 		$list = [];
 		foreach ($categories as $category) {
 			if (isset($tmplist[$category->id])) {
@@ -100,7 +100,10 @@ final class CategorizedAddonList extends BaseControl
 		// Append no tags addons
 		if (isset($tmplist[-1])) {
 			$list[-1] = $tmplist[-1];
-			$categories[-1] = (object) ['id' => -1, 'name' => 'other'];
+			$other = new Tag();
+			$other->id = -1;
+			$other->name = 'other';
+			$categories[-1] = $other;
 		}
 
 		// Fill template

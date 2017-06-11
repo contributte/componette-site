@@ -61,7 +61,7 @@ final class Filters
 	public static function timeDelta($time)
 	{
 		$time = self::time($time);
-		if ($time === FALSE) return FALSE;
+		if ($time === FALSE) return 0;
 
 		return time() - $time;
 	}

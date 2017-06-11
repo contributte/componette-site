@@ -31,9 +31,9 @@ final class GithubLinker
 	}
 
 	/**
-	 * @return string
+	 * @return Url
 	 */
-	public function getAuthorUrl()
+	public function getAuthorUrl(): Url
 	{
 		return $this->author;
 	}
@@ -52,9 +52,9 @@ final class GithubLinker
 	}
 
 	/**
-	 * @return string
+	 * @return Url
 	 */
-	public function getRepoUrl()
+	public function getRepoUrl(): Url
 	{
 		return $this->repo;
 	}
