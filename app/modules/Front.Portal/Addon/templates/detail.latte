@@ -12,6 +12,7 @@
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#tab-readme" role="tab" data-toggle="tab">Readme</a></li>
             <li role="presentation"><a href="#tab-releases" role="tab" data-toggle="tab">Releases <span class="badge">{$addon->github->releases->countStored()}</span></a></li>
+            <li role="presentation"><a href="#tab-comments" role="tab" data-toggle="tab">Comments <span class="badge disqus-comment-count" data-disqus-url="{plink //this}">0</span></a></li>
         </ul>
     </section>
     <section class="page-sidebar">
@@ -25,6 +26,9 @@
             <div role="tabpanel" class="tab-pane" id="tab-releases">
                 {control addon:releases}
             </div>
+            <div role="tabpanel" class="tab-pane" id="tab-comments">
+                {control addon:comments}
+            </div>
         </div>
     </section>
     <section n:if="$addon->isComposer && $addon->composerLatestStatistics" class="page-stats">
@@ -34,3 +38,9 @@
         {control addon:report}
     </section>
 </section>
+{/block}
+
+{block #scripts}
+<script id="dsq-count-scr" src="//componette.disqus.com/count.js" async defer></script>
+<script src="//componette.disqus.com/embed.js" async defer></script>
+{/block}

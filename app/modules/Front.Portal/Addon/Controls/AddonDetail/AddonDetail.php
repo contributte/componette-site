@@ -121,4 +121,15 @@ final class AddonDetail extends BaseControl
 		$this->template->render();
 	}
 
+	/**
+	 * Render comments
+	 *
+	 * @return void
+	 */
+	public function renderComments()
+	{
+		$this->template->setFile(__DIR__ . '/templates/comments.latte');
+		$this->template->render();
+	}
+
 }
