@@ -73,7 +73,7 @@ final class Filters
 	public static function timeAgo($time)
 	{
 		$delta = self::timeDelta($time);
-		if ($delta === FALSE) return 'N/A';
+		if ($delta === 0) return 'N/A';
 		if ($delta < 0) return 'N/A';
 
 		$delta = round($delta / 60);

@@ -224,7 +224,7 @@ final class GithubService
 	 * @param string $mediatype
 	 * @return Response[]
 	 */
-	public function allReleases($author, $repo, $mediatype = NULL)
+	public function allReleases($author, $repo, $mediatype = NULL): array
 	{
 		$headers = $this->mediatype($mediatype);
 

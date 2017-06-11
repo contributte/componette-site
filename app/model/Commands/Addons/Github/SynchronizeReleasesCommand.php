@@ -93,7 +93,7 @@ final class SynchronizeReleasesCommand extends BaseCommand
 			// Get all releases
 			$responses = $this->github->allReleases($addon->author, $addon->name, GithubService::MEDIATYPE_HTML);
 			if ($responses) {
-				foreach ((array) $responses as $response) {
+				foreach ($responses as $response) {
 
 					// Get response body as releases
 					$releases = $response->getJsonBody();
