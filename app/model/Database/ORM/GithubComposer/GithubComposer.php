@@ -30,7 +30,7 @@ class GithubComposer extends AbstractEntity
 	// Branches
 	const BRANCH_MASTER = 'master';
 
-	/** @var array */
+	/** @var ArrayHash|array */
 	protected $json = [];
 
 	/**
@@ -38,17 +38,17 @@ class GithubComposer extends AbstractEntity
 	 */
 
 	/**
-	 * @return array
+	 * @return ArrayHash
 	 */
-	protected function getterJson()
+	protected function getterJson(): ArrayHash
 	{
 		return $this->json;
 	}
 
 	/**
-	 * @return array
+	 * @return mixed
 	 */
-	protected function getterName()
+	protected function getterName():?string
 	{
 		return $this->json->name;
 	}

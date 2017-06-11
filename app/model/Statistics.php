@@ -43,7 +43,7 @@ final class Statistics
 			$cached = [];
 
 			// Addons counts
-			$cached['addons'] = $this->addonRepository->findActive()->countStored();
+			$cached['addons'] = $this->addonRepository->findAll()->countStored();
 
 			return $cached;
 		});

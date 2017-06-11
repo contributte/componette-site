@@ -32,7 +32,7 @@ final class StatisticsFacade
 	public function countAddons()
 	{
 		return $this->addonRepository
-			->findActive()
+			->findAll()
 			->countStored();
 	}
 
@@ -52,7 +52,7 @@ final class StatisticsFacade
 	public function countOwners()
 	{
 		$collection = $this->addonRepository
-			->findActive()
+			->findAll()
 			->fetchPairs('author');
 
 		return count($collection);
@@ -74,7 +74,7 @@ final class StatisticsFacade
 	public function findNewest()
 	{
 		return $this->addonRepository
-			->findActive()
+			->findAll()
 			->orderBy('createdAt', 'DESC')
 			->limitBy(5);
 	}
@@ -85,7 +85,8 @@ final class StatisticsFacade
 	public function findMostPopular()
 	{
 		return $this->addonRepository
-			->findOrdered('popularity')
+			->findAll()
+			->orderBy('popularity DESC')
 			->limitBy(5);
 	}
 

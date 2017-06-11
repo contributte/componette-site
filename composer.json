@@ -70,6 +70,6 @@
 		"codesniffer": "phpcs --standard=ruleset.xml --extensions=php,phpt --encoding=utf-8 --colors -nsp app tests",
 		"codefixer": "phpcbf --standard=ruleset.xml --extensions=php,phpt --encoding=utf-8 --no-patch -n app tests",
 		"tester": "vendor/bin/tester -s -c tests/php-unix.ini -p php -j 40 tests/cases",
-		"phpstan": "phpstan analyse -l 1 -c phpstan.neon app"
+		"phpstan": "phpstan analyse -l 2 -c phpstan.neon app"
 	}
 }
