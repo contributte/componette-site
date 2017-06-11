@@ -151,7 +151,7 @@ final class GithubLinker
 	}
 
 	/**
-	 * @param string $file
+	 * @param string|null $file
 	 * @param string $fragment
 	 * @return string
 	 */
