@@ -26,7 +26,7 @@ final class AddonPresenter extends SecuredPresenter
 	{
 		$this->template->addons = $this->addonFacade
 			->findAll()
-			->orderBy('owner', 'ASC');
+			->orderBy('author', 'ASC');
 	}
 
 	/**
@@ -41,7 +41,7 @@ final class AddonPresenter extends SecuredPresenter
 		}
 
 		$this['addonForm']->setDefaults([
-			'owner' => $addon->owner,
+			'author' => $addon->author,
 			'name' => $addon->name,
 			'tags' => (array) array_keys($this->addon->tags->get()->fetchPairs('id', 'id')),
 		]);
@@ -62,7 +62,7 @@ final class AddonPresenter extends SecuredPresenter
 	{
 		$form = new Form();
 
-		$form->addText('owner', 'Owner')
+		$form->addText('author', 'Owner')
 			->setRequired();
 
 		$form->addText('name', 'Repository')
@@ -88,7 +88,7 @@ final class AddonPresenter extends SecuredPresenter
 		$values = $form->getValues();
 
 		// Update basic data
-		$this->addon->owner = $values->owner;
+		$this->addon->author = $values->author;
 		$this->addon->name = $values->name;
 
 		// Update tags

@@ -13,7 +13,7 @@
     <tr n:foreach="$addons as $addon">
         <td>{$addon->id}</td>
         <td>{$addon->fullname}</td>
-        <td>{$addon->github->description}</td>
+        <td>{if $addon->github}{$addon->github->description}{/if}</td>
         <td>
             <span n:foreach="$addon->tags as $tag" class="label label-success">{$tag->name}</span>
         </td>
