@@ -86,8 +86,21 @@ final class SynchronizeCommand extends BaseCommand
 			$response = $this->github->repo($addon->author, $addon->name);
 			$body = $response->getJsonBody();
 
-			if ($body && !isset($body['message'])) {
+			if (!$response->isOk()) {
+				// Create github entity if not exist
+				if (!$addon->github) {
+					$addon->github = new Github();
+				}
+				$addon->state = Addon::STATE_ARCHIVED;
 
+				$output->writeln('Skip (archived): ' . $addon->fullname);
+			} else if (!$body || isset($body['message'])) {
+				if (isset($response['message'])) {
+					$output->writeln('Skip (' . $response['message'] . '): ' . $addon->fullname);
+				} else {
+					$output->writeln('Skip (base): ' . $addon->fullname);
+				}
+			} else {
 				// Create github entity if not exist
 				if (!$addon->github) {
 					$addon->github = new Github();
@@ -131,12 +144,6 @@ final class SynchronizeCommand extends BaseCommand
 				$addon->state = Addon::STATE_ACTIVE;
 				// Calculate rating
 				$addon->rating = $addon->github->stars * 2 + $addon->github->watchers * 3 + $addon->github->forks;
-			} else {
-				if (isset($response['message'])) {
-					$output->writeln('Skip (' . $response['message'] . '): ' . $addon->fullname);
-				} else {
-					$output->writeln('Skip (base): ' . $addon->fullname);
-				}
 			}
 
 			$addon->updatedAt = new DateTime();
