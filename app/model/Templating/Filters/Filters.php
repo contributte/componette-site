@@ -115,7 +115,7 @@ final class Filters
 	 */
 	public static function emojify($str): string
 	{
-		return Strings::replace(htmlspecialchars($str), '#:([a-z0-9+-]+):#', function (array $emoji) {
+		return Strings::replace(htmlspecialchars($str), '#:([a-z0-9+-_]+):#', function (array $emoji) {
 			return sprintf('<img class="emoji" src="%s" title="%s">', sprintf(self::EMOJI_CND, $emoji[1]), $emoji[1]);
 		});
 	}
