@@ -70,6 +70,15 @@
     </ul>
 </div>
 
+<div class="requirements tags">
+    <div class="title">Tags</div>
+    <span n:foreach="$addon->tags as $tag" class="label label-success">
+        <a href="{plink Index:tag tag => $tag->name}">
+            <i class="octicon octicon-tag"></i> {$tag->name}
+        </a>
+    </span>
+</div>
+
 {if $addon->isComposer && $addon->github->masterComposer}
     {var $composer => $addon->github->masterComposer}
     {if ($require = $composer->get('require', []))}
@@ -90,7 +99,7 @@
         <div class="requirements">
             <div class="title">Keywords</div>
             <a n:foreach="$keywords as $name" data-ga="1" data-event="click" data-category="keywords" data-action="{$name}" href="{$addon->composer->linker->getTagUrl($name)}">
-                <span class="label label-default"><i class="octicon octicon-tag"></i> {$name}</span>
+                <span class="label label-default">{$name}</span>
             </a>
         </div>
     {/if}
