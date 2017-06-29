@@ -6,6 +6,7 @@ parameters:
 		dbname: <fill me>
 		user: <fill me>
 		password: <fill me>
+		port: 3306
 
 	# Error mail
 	#system:

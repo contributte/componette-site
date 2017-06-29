@@ -10,6 +10,7 @@ dbal:
 	username: %database.user%
 	password: %database.password%
 	connectionTz: '+2:00'
+	port: %database.port%
 
 orm:
 	model: App\Model\Database\ORM\EntityModel
