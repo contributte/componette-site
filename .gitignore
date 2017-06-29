@@ -3,8 +3,6 @@
 
 # Nette
 /app/config/config.local.neon
-/log
-/temp
 
 # Assets
 /www/assets/css/*.css
