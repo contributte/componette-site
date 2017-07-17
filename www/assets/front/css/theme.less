@@ -8,7 +8,7 @@
 @image-path: "./../assets/front/img";
 @bgcolor: #3484d2;
 @global-min-width: 450px;
-@border-radius: 6px;
+@border-radius: 1px;
 
 body, html {
   min-height: 100%;
@@ -796,12 +796,14 @@ q:after {
     font-size: 14px;
     font-weight: 400;
     line-height: 1.4;
+    font-weight: normal;
     background: #f8f8f8;
     border-radius: @border-radius;
     box-shadow: none;
     padding: 5px;
     margin: 1.5em 0;
     overflow: auto;
+    border: none;
 
     code {
       background: #f8f8f8;
@@ -815,7 +817,7 @@ q:after {
   }
 
   code {
-    font-weight: bold;
+    font-weight: normal;
     padding: 1px 4px;
   }
 }
