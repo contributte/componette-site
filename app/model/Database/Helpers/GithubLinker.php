@@ -147,7 +147,7 @@ final class GithubLinker
 	 */
 	public function getBlobUrl($uri, $branch = 'master')
 	{
-		return $this->repo . '/blob/' . $branch . ' /' . $uri;
+		return $this->repo . '/blob/' . $branch . '/' . $uri;
 	}
 
 	/**
