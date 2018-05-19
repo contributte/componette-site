@@ -1,10 +1,10 @@
-var gulp = require('gulp');
-var less = require('gulp-less');
-var minifyCss = require('gulp-minify-css');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var order = require('gulp-order');
-var remoteSrc = require('gulp-remote-src');
+const gulp = require('gulp');
+const less = require('gulp-less');
+const minifyCss = require('gulp-clean-css');
+const concat = require('gulp-concat');
+const uglify = require('gulp-uglify');
+const order = require('gulp-order');
+const remoteSrc = require('gulp-remote-src');
 
 module.exports = function () {
     gulp.task('front-css', function () {
