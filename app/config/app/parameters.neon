@@ -1,4 +1,7 @@
 parameters:
+	database:
+		port: 3306
+
 	system:
 		error:
 			email: admin@componette.com
