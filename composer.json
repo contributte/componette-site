@@ -86,7 +86,7 @@
 			"composer require -d temp/phpstan phpstan/phpstan-nette:0.9"
 		],
 		"phpstan": [
-			"temp/phpstan/vendor/bin/phpstan analyse -l max -c phpstan.neon src"
+			"temp/phpstan/vendor/bin/phpstan analyse -l max -c phpstan.neon app"
 		]
 	}
 }

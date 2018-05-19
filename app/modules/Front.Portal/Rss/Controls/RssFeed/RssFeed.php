@@ -3,12 +3,12 @@
 namespace App\Modules\Front\Portal\Rss\Controls\RssFeed;
 
 use App\Model\Database\ORM\Addon\Addon;
+use App\Model\UI\BaseControl;
 use DateTimeZone;
-use Nette\Application\UI\Control;
 use Nette\Application\UI\Link;
 use Nette\Utils\DateTime;
 
-final class RssFeed extends Control
+final class RssFeed extends BaseControl
 {
 
 	/** @var Addon[] */
@@ -73,10 +73,10 @@ final class RssFeed extends Control
 				'link' => $this->presenter->link('//:Front:Portal:Addon:detail', ['slug' => $addon->id, 'utm_source' => 'rss', 'utm_medium' => 'rss', 'utm_campaign' => 'rss']),
 				'time' => $addon->createdAt->setTimezone(new DateTimeZone('UTC')),
 				'author' => sprintf('noreply@componette.com (%s)', $addon->author),
-				'content' => $addon->github->contentHtml,
+				'content' => $addon->github && $addon->github->contentHtml,
 			];
 
-			if ($addon->github->description) {
+			if ($addon->github && $addon->github->description) {
 				$item->title = sprintf('%s - %s', $addon->fullname, $addon->github->description);
 			} else {
 				$item->title = sprintf('%s', $addon->fullname);

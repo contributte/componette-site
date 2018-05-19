@@ -5,10 +5,10 @@ namespace App\Modules\Front\Generator\Controls\Sitemap;
 use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\EntityModel;
 use App\Model\Database\ORM\Tag\Tag;
-use Nette\Application\UI\Control;
+use App\Model\UI\BaseControl;
 use Nextras\Orm\Collection\ICollection;
 
-final class Sitemap extends Control
+final class Sitemap extends BaseControl
 {
 
 	/** @var EntityModel */

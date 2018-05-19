@@ -23,6 +23,14 @@
 		</properties>
 	</rule>
 
+	<rule ref="SlevomatCodingStandard.Commenting.DocCommentSpacing.IncorrectLinesCountAfterLastContent">
+		<exclude-pattern>/app/model/Database/ORM</exclude-pattern>
+	</rule>
+
+	<rule ref="SlevomatCodingStandard.Commenting.DocCommentSpacing.IncorrectLinesCountBetweenDifferentAnnotationsTypes">
+		<exclude-pattern>/app/model/Database/ORM</exclude-pattern>
+	</rule>
+
 	<!--<rule ref="SlevomatCodingStandard.ControlStructures.AssignmentInCondition">-->
 		<!--<exclude name="SlevomatCodingStandard.ControlStructures.AssignmentInCondition.assignmentInCondition"/>-->
 	<!--</rule>-->

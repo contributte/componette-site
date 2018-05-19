@@ -74,6 +74,10 @@ final class SynchronizeReleasesCommand extends BaseCommand
 
 		$counter = 0;
 		foreach ($addons as $addon) {
+
+			// Skip non-github reference
+			if (!$addon->github) continue;
+
 			// Fetch all already saved github releases
 			$storedReleases = $addon->github->releases->get()->fetchPairs('gid');
 

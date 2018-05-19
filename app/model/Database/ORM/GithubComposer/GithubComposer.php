@@ -13,8 +13,8 @@ use Nette\Utils\ArrayHash;
  * @property string $type                   {enum self::TYPE*}
  * @property string $custom
  * @property-read string $data
- *
  * @property string $name                   {virtual}
+ * @property ArrayHash $json                {virtual}
  */
 class GithubComposer extends AbstractEntity
 {
@@ -26,8 +26,8 @@ class GithubComposer extends AbstractEntity
 	// Branches
 	public const BRANCH_MASTER = 'master';
 
-	/** @var ArrayHash|string[] */
-	protected $json = [];
+	/** @var ArrayHash */
+	protected $json;
 
 	/**
 	 * VIRTUAL *****************************************************************
@@ -39,8 +39,13 @@ class GithubComposer extends AbstractEntity
 	}
 
 	/**
-	 * @return mixed
+	 * @param mixed[] $data
 	 */
+	protected function setterJson(array $data): void
+	{
+		$this->json = ArrayHash::from($data);
+	}
+
 	protected function getterName(): ?string
 	{
 		return $this->json->name;
@@ -77,17 +82,15 @@ class GithubComposer extends AbstractEntity
 
 		if (isset($data['data'])) {
 			$this->json = ArrayHash::from(json_decode($data['data']));
+		} else {
+			$this->json = new ArrayHash();
 		}
 	}
 
 	public function onBeforeInsert(): void
 	{
 		parent::onBeforeInsert();
-
-		$json = $this->getRawProperty('json');
-		if ($json) {
-			$this->setRawValue('data', json_encode($json));
-		}
+		$this->setRawValue('data', (array) $this->json);
 	}
 
 }

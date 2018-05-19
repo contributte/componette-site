@@ -7,9 +7,9 @@ use App\Model\Database\ORM\EntityModel;
 use App\Model\Database\ORM\Tag\Tag;
 use App\Model\UI\BaseControl;
 use Nette\Application\UI\Form;
-use Nette\Utils\DateTime;
 use Nette\Utils\Strings;
 use Nextras\Dbal\UniqueConstraintViolationException;
+use Nextras\Dbal\Utils\DateTimeImmutable;
 use PDOException;
 
 final class AddonModal extends BaseControl
@@ -53,13 +53,13 @@ final class AddonModal extends BaseControl
 				return;
 			}
 
-			 [$all, $owner, $name] = $matches;
+			[$all, $owner, $name] = $matches;
 
 			$addonRepository = $this->em->getRepositoryForEntity(Addon::class);
 			$addon = new Addon();
 			$addonRepository->attach($addon);
 			$addon->state = Addon::STATE_QUEUED;
-			$addon->createdAt = new DateTime();
+			$addon->createdAt = new DateTimeImmutable();
 			$addon->author = $owner;
 			$addon->name = $name;
 			if ($form->values->tags) {

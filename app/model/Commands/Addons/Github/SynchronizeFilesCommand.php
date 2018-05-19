@@ -7,7 +7,6 @@ use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\GithubComposer\GithubComposer;
 use App\Model\Facade\Cli\Commands\AddonFacade;
 use App\Model\WebServices\Github\GithubService;
-use Nette\Utils\DateTime;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -63,6 +62,10 @@ final class SynchronizeFilesCommand extends BaseCommand
 		foreach ($addons as $addon) {
 			// Composer
 			if (in_array($addon->type, [null, Addon::TYPE_UNKNOWN, Addon::TYPE_COMPOSER])) {
+
+				// Skip non-github reference
+				if (!$addon->github) continue;
+
 				$response = $this->github->composer($addon->author, $addon->name);
 
 				if ($response->isOk()) {
@@ -71,8 +74,6 @@ final class SynchronizeFilesCommand extends BaseCommand
 					}
 
 					$body = $response->getJsonBody();
-
-					/** @var GithubComposer $composer */
 					$composer = $addon->github->masterComposer;
 
 					if (!$composer) {
@@ -83,7 +84,6 @@ final class SynchronizeFilesCommand extends BaseCommand
 						$addon->github->composers->add($composer);
 					} else {
 						$composer->json = $body;
-						$composer->updatedAt = new DateTime();
 					}
 
 					$this->addonFacade->persist($composer);

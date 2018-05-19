@@ -3,9 +3,9 @@
 namespace App\Modules\Front\Base\Controls\Statistics;
 
 use App\Model\Facade\StatisticsFacade;
-use Nette\Application\UI\Control;
+use App\Model\UI\BaseControl;
 
-final class Statistics extends Control
+final class Statistics extends BaseControl
 {
 
 	/** @var StatisticsFacade */

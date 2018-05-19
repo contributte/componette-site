@@ -8,8 +8,8 @@ use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\Github\Github;
 use App\Model\Facade\Cli\Commands\AddonFacade;
 use App\Model\WebServices\Github\GithubService;
-use Nette\Utils\DateTime;
 use Nette\Utils\Strings;
+use Nextras\Dbal\Utils\DateTimeImmutable;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -106,7 +106,7 @@ final class SynchronizeCommand extends BaseCommand
 					continue;
 				}
 
-				 [$all, $author, $name] = $matches;
+				[$all, $author, $name] = $matches;
 
 				// Update author & repo name if it is not same
 				if ($addon->author !== $author) {
@@ -126,15 +126,15 @@ final class SynchronizeCommand extends BaseCommand
 				$addon->github->fork = boolval($body['fork']);
 				$addon->github->language = $body['language'];
 				$addon->github->forks = $body['forks_count'];
-				$addon->github->createdAt = new DateTime($body['created_at']);
-				$addon->github->updatedAt = new DateTime($body['updated_at']);
-				$addon->github->pushedAt = new DateTime($body['pushed_at']);
+				$addon->github->createdAt = new DateTimeImmutable($body['created_at']);
+				$addon->github->updatedAt = new DateTimeImmutable($body['updated_at']);
+				$addon->github->pushedAt = new DateTimeImmutable($body['pushed_at']);
 				$addon->state = Addon::STATE_ACTIVE;
 				// Calculate rating
 				$addon->rating = $addon->github->stars * 2 + $addon->github->watchers * 3 + $addon->github->forks;
 			}
 
-			$addon->updatedAt = new DateTime();
+			$addon->updatedAt = new DateTimeImmutable();
 			$this->addonFacade->persist($addon);
 			$this->addonFacade->flush();
 

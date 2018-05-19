@@ -49,6 +49,9 @@ final class CollectStatsCommand extends BaseCommand
 
 		$counter = 0;
 		foreach ($addons as $addon) {
+			// Skip non-github reference
+			if (!$addon->github) continue;
+
 			try {
 				// Skip addon without data
 				$composer = $addon->github->masterComposer;
@@ -58,7 +61,7 @@ final class CollectStatsCommand extends BaseCommand
 						throw new InvalidStateException('No composer name at ' . $addon->fullname);
 					}
 
-					 [$vendor, $repo] = explode('/', $composer->name);
+					[$vendor, $repo] = explode('/', $composer->name);
 
 					$response = $this->composer->stats($vendor, $repo);
 					if ($response->isOk()) {

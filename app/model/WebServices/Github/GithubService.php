@@ -103,7 +103,7 @@ final class GithubService
 	/**
 	 * @return string[]
 	 */
-	protected function mediatype(string $mediatype): array
+	protected function mediatype(?string $mediatype): array
 	{
 		switch ($mediatype) {
 			case self::MEDIATYPE_HTML:

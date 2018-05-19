@@ -13,7 +13,7 @@ use Nette\Utils\ArrayHash;
  * @property string $custom
  * @property-read string $data
  *
- * @property ArrayHash|string[]  $json      {virtual}
+ * @property ArrayHash $json               {virtual}
  */
 class ComposerStatistics extends AbstractEntity
 {
@@ -26,19 +26,24 @@ class ComposerStatistics extends AbstractEntity
 	// Customs
 	public const CUSTOM_ALL = 'ALL';
 
-	/** @var ArrayHash|string[] */
-	protected $json = [];
+	/** @var ArrayHash */
+	protected $json;
 
 	/**
 	 * VIRTUAL *****************************************************************
 	 */
 
-	/**
-	 * @return ArrayHash|string[]
-	 */
-	protected function getterJson()
+	protected function getterJson(): ArrayHash
 	{
 		return $this->json;
+	}
+
+	/**
+	 * @param mixed[] $data
+	 */
+	protected function setterJson(array $data): void
+	{
+		$this->json = ArrayHash::from($data);
 	}
 
 	/**
@@ -54,17 +59,15 @@ class ComposerStatistics extends AbstractEntity
 
 		if (isset($data['data'])) {
 			$this->json = ArrayHash::from(json_decode($data['data']));
+		} else {
+			$this->json = new ArrayHash();
 		}
 	}
 
 	public function onBeforeInsert(): void
 	{
 		parent::onBeforeInsert();
-
-		$json = $this->getRawProperty('json');
-		if ($json) {
-			$this->setRawValue('data', json_encode($json));
-		}
+		$this->setRawValue('data', json_encode((array) $this->json));
 	}
 
 }

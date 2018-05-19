@@ -7,13 +7,8 @@ parameters:
 		- phpt
 
 	ignoreErrors:
-		# Nextras ORM
-		- '#Class App\\Model\\Database\\ORM\\[a-zA-Z]+Repository extends Nette\\Object#'
-		- '#Class App\\Model\\Database\\ORM\\[a-zA-Z]+Mapper extends Nette\\Object#'
-		- '#Class App\\Model\\Database\\ORM\\[a-zA-Z]+\\[a-zA-Z]+Repository extends Nette\\Object#'
-		- '#Class App\\Model\\Database\\ORM\\[a-zA-Z]+\\[a-zA-Z]+Mapper extends Nette\\Object#'
-		- '#Class App\\Model\\Database\\ORM\\EntityModel extends Nette\\Object#'
+		- "#Method App\\\\Model\\\\Database\\\\ORM\\\\[a-zA-Z]+\\\\[a-zA-Z]+::[a-zA-Z]+\\\\(\\\\) should return App\\\\Model\\\\Database\\\\ORM\\\\[a-zA-Z]+\\\\[a-zA-Z]+\\\\|null but returns Nextras\\\\Orm\\\\Entity\\\\IEntity\\\\|null.#"
 
 includes:
-	- vendor/phpstan/phpstan-nette/extension.neon
-	- vendor/phpstan/phpstan-nette/rules.neon
+	- temp/phpstan/vendor/phpstan/phpstan-nette/extension.neon
+	- temp/phpstan/vendor/phpstan/phpstan-nette/rules.neon

@@ -4,9 +4,9 @@ namespace App\Modules\Front\Portal\Base\Controls\SideMenu;
 
 use App\Model\Database\ORM\EntityModel;
 use App\Model\Database\ORM\Tag\Tag;
-use Nette\Application\UI\Control;
+use App\Model\UI\BaseControl;
 
-final class SideMenu extends Control
+final class SideMenu extends BaseControl
 {
 
 	/** @var EntityModel */

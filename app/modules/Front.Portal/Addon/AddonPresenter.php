@@ -22,15 +22,9 @@ final class AddonPresenter extends BasePresenter
 
 	public function actionDetail(int $slug): void
 	{
-		$this->addon = $this->addonFacade->getDetail($slug);
-		if (!$this->addon) {
-			$this->error('Addon not found');
-		}
+		$this->addon = $this->getAddon($slug);
 	}
 
-	/**
-	 * Display addon detail
-	 */
 	public function renderDetail(): void
 	{
 		$this->template->addon = $this->addon;
@@ -39,6 +33,15 @@ final class AddonPresenter extends BasePresenter
 	protected function createComponentAddon(): AddonDetail
 	{
 		return $this->addonDetailFactory->create($this->addon);
+	}
+
+	private function getAddon(int $id): Addon
+	{
+		if (!($addon = $this->addonFacade->getDetail($id))) {
+			$this->error('Addon not found');
+		};
+
+		return $addon;
 	}
 
 }

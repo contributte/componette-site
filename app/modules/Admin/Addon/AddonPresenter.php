@@ -29,14 +29,11 @@ final class AddonPresenter extends SecuredPresenter
 
 	public function actionDetail(int $id): void
 	{
-		$this->addon = $addon = $this->addonFacade->getById($id);
-		if (!$this->addon) {
-			$this->error('No addon');
-		}
+		$this->addon = $this->getAddon($id);
 
 		$this['addonForm']->setDefaults([
-			'author' => $addon->author,
-			'name' => $addon->name,
+			'author' => $this->addon->author,
+			'name' => $this->addon->name,
 			'tags' => (array) array_keys($this->addon->tags->get()->fetchPairs('id', 'id')),
 		]);
 	}
@@ -86,6 +83,15 @@ final class AddonPresenter extends SecuredPresenter
 		} catch (PDOException $e) {
 			$this->flashMessage(sprintf('Updating addon failed (%s).', $e->getMessage()), 'danger');
 		}
+	}
+
+	private function getAddon(int $id): Addon
+	{
+		if (!($addon = $this->addonFacade->getById($id))) {
+			$this->error('Addon not found');
+		};
+
+		return $addon;
 	}
 
 }
