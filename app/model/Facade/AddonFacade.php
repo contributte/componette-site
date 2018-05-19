@@ -21,4 +21,12 @@ final class AddonFacade
 		return $this->addonRepository->getById($id);
 	}
 
+	public function getDetail(int $id): ?Addon
+	{
+		return $this->addonRepository->getBy([
+			'state' => Addon::STATE_ACTIVE,
+			'id' => $id,
+		]);
+	}
+
 }

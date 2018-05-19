@@ -22,7 +22,7 @@ final class AddonPresenter extends BasePresenter
 
 	public function actionDetail(int $slug): void
 	{
-		$this->addon = $this->addonFacade->getById($slug);
+		$this->addon = $this->addonFacade->getDetail($slug);
 		if (!$this->addon) {
 			$this->error('Addon not found');
 		}
