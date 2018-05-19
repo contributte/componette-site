@@ -6,3 +6,4 @@ parameters:
 		dbname: foobar
 		user: foobar
 		password: foobar
+		port: 1234
