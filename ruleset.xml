@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ruleset name="Componette">
 	<!-- Extending ruleset -->
-	<rule ref="vendor/ninjify/coding-standard/ruleset.xml"/>
+	<rule ref="vendor/ninjify/coding-standard/contributte.xml">
+		<exclude name="SlevomatCodingStandard.ControlStructures.EarlyExit"/>
+		<exclude name="SlevomatCodingStandard.ControlStructures.DisallowShortTernaryOperator.DisallowedShortTernaryOperator"/>
+		<exclude name="SlevomatCodingStandard.ControlStructures.DisallowEmpty.DisallowedEmpty"/>
+		<exclude name="SlevomatCodingStandard.Operators.DisallowIncrementAndDecrementOperators.DisallowedPostIncrementOperator"/>
+		<exclude name="Squiz.Commenting.FunctionComment.SpacingAfter"/>
+	</rule>
+
 	<!-- Project rules -->
 	<rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
 		<properties>
@@ -15,6 +22,11 @@
             "/>
 		</properties>
 	</rule>
+
+	<!--<rule ref="SlevomatCodingStandard.ControlStructures.AssignmentInCondition">-->
+		<!--<exclude name="SlevomatCodingStandard.ControlStructures.AssignmentInCondition.assignmentInCondition"/>-->
+	<!--</rule>-->
+
 	<!-- Exclude folders -->
 	<exclude-pattern>/tests/tmp</exclude-pattern>
 </ruleset>
