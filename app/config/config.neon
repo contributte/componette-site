@@ -8,7 +8,16 @@ parameters:
 		driver: mysqli
 
 includes:
-	- engine.neon
+	# APPLICATION ==
+	- app/components.neon
+	- app/console.neon
+	- app/latte.neon
+	- app/model.neon
+	- app/parameters.neon
+
+	# EXTENSIONS ===
+	- ext/contributte.neon
+	- ext/nextras.neon
 
 latte:
 	xhtml: no
