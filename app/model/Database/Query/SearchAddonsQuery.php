@@ -70,11 +70,15 @@ final class SearchAddonsQuery extends QueryObject
 				->leftJoin('a', '[composer]', 'c', '[c.addon_id] = [a.id]');
 
 			foreach ($this->tokens as $token) {
-				$builder->andWhere('[a.author] LIKE %s', '%' . $token . '%')
-					->orWhere('[a.name] LIKE %s', '%' . $token . '%')
-					->orWhere('[g.description] LIKE %s', '%' . $token . '%')
-					// Composer
-					->orWhere('[c.name] LIKE %s', '%' . $token . '%');
+				$builder->andWhere(
+					'[a.author] LIKE %s '
+					. 'OR [a.name] LIKE %s '
+					. 'OR [g.description] LIKE %s '
+					. 'OR [c.name] LIKE %s',
+					'%' . $token . '%',
+					'%' . $token . '%',
+					'%' . $token . '%',
+					'%' . $token . '%');
 			}
 			$qb->groupBy('[a.id]');
 		}
