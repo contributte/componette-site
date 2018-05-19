@@ -7,11 +7,12 @@ use App\Model\UI\BaseControl;
 use DateTimeZone;
 use Nette\Application\UI\Link;
 use Nette\Utils\DateTime;
+use Nextras\Orm\Collection\ICollection;
 
 final class RssFeed extends BaseControl
 {
 
-	/** @var Addon[] */
+	/** @var ICollection|Addon[] */
 	private $addons;
 
 	/** @var string */
@@ -27,9 +28,9 @@ final class RssFeed extends BaseControl
 	private $time;
 
 	/**
-	 * @param Addon[] $addons
+	 * @param ICollection|Addon[] $addons
 	 */
-	public function __construct(array $addons)
+	public function __construct($addons)
 	{
 		parent::__construct();
 		$this->addons = $addons;

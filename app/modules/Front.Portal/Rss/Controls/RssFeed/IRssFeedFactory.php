@@ -3,13 +3,14 @@
 namespace App\Modules\Front\Portal\Rss\Controls\RssFeed;
 
 use App\Model\Database\ORM\Addon\Addon;
+use Nextras\Orm\Collection\ICollection;
 
 interface IRssFeedFactory
 {
 
 	/**
-	 * @param Addon[] $addons
+	 * @param ICollection|Addon[] $addons
 	 */
-	public function create(array $addons): RssFeed;
+	public function create($addons): RssFeed;
 
 }
