@@ -4,7 +4,7 @@ namespace App\Model\Database\ORM\GithubRelease;
 
 use App\Model\Database\ORM\AbstractEntity;
 use App\Model\Database\ORM\Github\Github;
-use Nette\Utils\DateTime;
+use Nextras\Dbal\Utils\DateTimeImmutable;
 
 /**
  * @property int $id                        {primary}
@@ -15,9 +15,9 @@ use Nette\Utils\DateTime;
  * @property bool $draft
  * @property bool $prerelease
  * @property string $body
- * @property DateTime $createdAt
- * @property DateTime $publishedAt
- * @property DateTime $crawledAt            {default now}
+ * @property DateTimeImmutable $createdAt
+ * @property DateTimeImmutable $publishedAt
+ * @property DateTimeImmutable $crawledAt            {default now}
  */
 class GithubRelease extends AbstractEntity
 {

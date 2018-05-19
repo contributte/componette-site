@@ -7,7 +7,7 @@ use App\Model\Database\ORM\AbstractEntity;
 use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\GithubComposer\GithubComposer;
 use App\Model\Database\ORM\GithubRelease\GithubRelease;
-use Nette\Utils\DateTime;
+use Nextras\Dbal\Utils\DateTimeImmutable;
 use Nextras\Orm\Relationships\OneHasMany;
 
 /**
@@ -23,10 +23,10 @@ use Nextras\Orm\Relationships\OneHasMany;
  * @property int|NULL $forks
  * @property bool|NULL $fork
  * @property string|NULL $language
- * @property DateTime|NULL $createdAt
- * @property DateTime|NULL $pushedAt
- * @property DateTime|NULL $updatedAt
- * @property DateTime $crawledAt                        {default now}
+ * @property DateTimeImmutable|NULL $createdAt
+ * @property DateTimeImmutable|NULL $pushedAt
+ * @property DateTimeImmutable|NULL $updatedAt
+ * @property DateTimeImmutable $crawledAt               {default now}
  *
  * @property GithubRelease[]|OneHasMany $releases       {1:m GithubRelease::$github, orderBy=[publishedAt=DESC, tag=DESC]}
  * @property GithubComposer[]|OneHasMany $composers     {1:m GithubComposer::$github}
@@ -53,7 +53,7 @@ class Github extends AbstractEntity
 		return $this->linker;
 	}
 
-	protected function getterMasterComposer(): GithubComposer
+	protected function getterMasterComposer(): ?GithubComposer
 	{
 		return $this->composers->get()->getBy([
 			'type' => GithubComposer::TYPE_BRANCH,

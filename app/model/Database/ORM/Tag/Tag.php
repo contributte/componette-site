@@ -13,7 +13,7 @@ use Nextras\Orm\Relationships\ManyHasMany;
  * @property int $priority
  * @property bool $highlighted
  *
- * @property ManyHasMany|Addon[] $addons    {m:n Addon::$tags}
+ * @property ManyHasMany|Addon[] $addons    {m:m Addon::$tags}
  */
 class Tag extends AbstractEntity
 {

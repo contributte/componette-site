@@ -5,7 +5,7 @@ namespace App\Model\Database\ORM\Composer;
 use App\Model\Database\Helpers\ComposerLinker;
 use App\Model\Database\ORM\AbstractEntity;
 use App\Model\Database\ORM\Addon\Addon;
-use Nette\Utils\DateTime;
+use Nextras\Dbal\Utils\DateTimeImmutable;
 
 /**
  * @property int $id                            {primary}
@@ -15,7 +15,7 @@ use Nette\Utils\DateTime;
  * @property string|NULL $type
  * @property int|NULL $downloads
  * @property string|NULL $keywords
- * @property DateTime $crawledAt                {default now}
+ * @property DateTimeImmutable $crawledAt                {default now}
  *
  * @property ComposerLinker $linker             {virtual}
  */
@@ -41,11 +41,11 @@ class Composer extends AbstractEntity
 	/**
 	 * Called before persist to storage
 	 */
-	protected function onBeforePersist(): void
+	public function onBeforePersist(): void
 	{
 		parent::onBeforePersist();
 
-		$this->crawledAt = new DateTime();
+		$this->crawledAt = new DateTimeImmutable();
 	}
 
 }

@@ -7,7 +7,7 @@ use App\Model\Database\ORM\Composer\Composer;
 use App\Model\Database\ORM\ComposerStatistics\ComposerStatistics;
 use App\Model\Database\ORM\Github\Github;
 use App\Model\Database\ORM\Tag\Tag;
-use Nette\Utils\DateTime;
+use Nextras\Dbal\Utils\DateTimeImmutable;
 use Nextras\Orm\Relationships\ManyHasMany;
 use Nextras\Orm\Relationships\OneHasMany;
 
@@ -18,8 +18,8 @@ use Nextras\Orm\Relationships\OneHasMany;
  * @property string $author
  * @property string $name
  * @property int|NULL $rating
- * @property DateTime $createdAt        {default now}
- * @property DateTime|NULL $updatedAt
+ * @property DateTimeImmutable $createdAt        {default now}
+ * @property DateTimeImmutable|NULL $updatedAt
  *
  * @property string $fullname                                     {virtual}
  * @property string $isComposer                                   {virtual}
@@ -29,7 +29,7 @@ use Nextras\Orm\Relationships\OneHasMany;
  * @property Github|NULL $github                                    {1:1 Github::$addon}
  * @property Composer|NULL $composer                                {1:1 Composer::$addon}
  * @property ComposerStatistics[]|OneHasMany $composerStatistics    {1:m ComposerStatistics::$addon, orderBy=[id=DESC]}
- * @property ManyHasMany|Tag[] $tags                                {m:n Tag::$addons, isMain=true}
+ * @property ManyHasMany|Tag[] $tags                                {m:m Tag::$addons, isMain=true}
  */
 class Addon extends AbstractEntity
 {
@@ -63,7 +63,7 @@ class Addon extends AbstractEntity
 		return $this->type === self::TYPE_BOWER;
 	}
 
-	protected function getterComposerLatestStatistics(): ComposerStatistics
+	protected function getterComposerLatestStatistics(): ?ComposerStatistics
 	{
 		return $this->composerStatistics->get()->limitBy(1)->fetch();
 	}

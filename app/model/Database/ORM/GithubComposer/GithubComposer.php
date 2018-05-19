@@ -13,6 +13,8 @@ use Nette\Utils\ArrayHash;
  * @property string $type                   {enum self::TYPE*}
  * @property string $custom
  * @property-read string $data
+ *
+ * @property string $name                   {virtual}
  */
 class GithubComposer extends AbstractEntity
 {
@@ -69,7 +71,7 @@ class GithubComposer extends AbstractEntity
 	/**
 	 * @param string[] $data
 	 */
-	protected function onLoad(array $data): void
+	public function onLoad(array $data): void
 	{
 		parent::onLoad($data);
 
@@ -78,7 +80,7 @@ class GithubComposer extends AbstractEntity
 		}
 	}
 
-	protected function onBeforeInsert(): void
+	public function onBeforeInsert(): void
 	{
 		parent::onBeforeInsert();
 

@@ -55,14 +55,14 @@ final class IndexPresenter extends BaseAddonPresenter
 	 * BY SEARCH ***************************************************************
 	 */
 
-	public function actionSearch(string $q): void
+	public function actionSearch(?string $q): void
 	{
-		if (strlen($q) > 100) {
-			$this->redirect('this', ['q' => substr($q, 0, 100)]);
+		if (!$q) {
+			$this->redirect(Destination::FRONT_PORTAL_HOMEPAGE);
 		}
 
-		if (empty($q)) {
-			$this->redirect(Destination::FRONT_PORTAL_HOMEPAGE);
+		if (strlen($q) > 100) {
+			$this->redirect('this', ['q' => substr($q, 0, 100)]);
 		}
 
 		$query = new SearchAddonsQuery();

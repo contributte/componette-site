@@ -12,6 +12,8 @@ use Nette\Utils\ArrayHash;
  * @property string $type                   {enum self::TYPE*}
  * @property string $custom
  * @property-read string $data
+ *
+ * @property ArrayHash|string[]  $json      {virtual}
  */
 class ComposerStatistics extends AbstractEntity
 {
@@ -46,7 +48,7 @@ class ComposerStatistics extends AbstractEntity
 	/**
 	 * @param string[] $data
 	 */
-	protected function onLoad(array $data): void
+	public function onLoad(array $data): void
 	{
 		parent::onLoad($data);
 
@@ -55,7 +57,7 @@ class ComposerStatistics extends AbstractEntity
 		}
 	}
 
-	protected function onBeforeInsert(): void
+	public function onBeforeInsert(): void
 	{
 		parent::onBeforeInsert();
 
