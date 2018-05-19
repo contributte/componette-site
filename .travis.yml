@@ -4,7 +4,7 @@ sudo: false
 
 php:
     - 7.1
-    - hhvm
+    - 7.2
 
 env:
     global:
@@ -19,16 +19,14 @@ install:
     - travis_retry composer update ${COMPOSER_GLOBAL_FLAGS}
 
 script:
-    # Run PHP linter
-    - composer linter
-
-    # Run CodeSniffer
-    - composer codesniffer
+    # Run QA
+    - composer qa
 
     # Run Nette Tester
     - composer tester
 
     # Run Phpstan
+    - composer phpstan-install
     - composer phpstan
 
 after_failure:
