@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Database\Helpers;
 
@@ -17,9 +17,6 @@ final class GithubLinker
 	/** @var Url */
 	private $raw;
 
-	/**
-	 * @param Github $github
-	 */
 	public function __construct(Github $github)
 	{
 		$this->repo = new Url('https://github.com');
@@ -30,19 +27,12 @@ final class GithubLinker
 		$this->raw->appendPath($github->addon->author . '/' . $github->addon->name);
 	}
 
-	/**
-	 * @return Url
-	 */
 	public function getAuthorUrl(): Url
 	{
 		return $this->author;
 	}
 
-	/**
-	 * @param int $size
-	 * @return string
-	 */
-	public function getAuthorAvatarUrl(int $size = NULL)
+	public function getAuthorAvatarUrl(?int $size = null): string
 	{
 		if ($size) {
 			return $this->author . '.png?size=' . intval($size);
@@ -51,120 +41,72 @@ final class GithubLinker
 		}
 	}
 
-	/**
-	 * @return Url
-	 */
 	public function getRepoUrl(): Url
 	{
 		return $this->repo;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getIssuesUrl()
+	public function getIssuesUrl(): string
 	{
 		return $this->repo . '/issues';
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getPullRequestsUrl()
+	public function getPullRequestsUrl(): string
 	{
 		return $this->repo . '/pulls';
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getCommitsUrl()
+	public function getCommitsUrl(): string
 	{
 		return $this->repo . '/commits/master';
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getPulseUrl()
+	public function getPulseUrl(): string
 	{
 		return $this->repo . '/pulse';
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getStarsUrl()
+	public function getStarsUrl(): string
 	{
 		return $this->repo . '/stargazers';
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getNewReleaseUrl()
+	public function getNewReleaseUrl(): string
 	{
 		return $this->repo . '/releases/new';
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getReleasesUrl()
+	public function getReleasesUrl(): string
 	{
 		return $this->repo . '/releases';
 	}
 
-	/**
-	 * @param string $tag
-	 * @return string
-	 */
-	public function getReleaseUrl($tag)
+	public function getReleaseUrl(string $tag): string
 	{
 		return $this->repo . '/releases/tag/' . $tag;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getWatchersUrl()
+	public function getWatchersUrl(): string
 	{
 		return $this->repo . '/watchers';
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getForksUrl()
+	public function getForksUrl(): string
 	{
 		return $this->repo . '/network';
 	}
 
-	/**
-	 * @param string $uri
-	 * @param string $branch
-	 * @return string
-	 */
-	public function getBlobUrl($uri, $branch = 'master')
+	public function getBlobUrl(string $uri, string $branch = 'master'): string
 	{
 		return $this->repo . '/blob/' . $branch . '/' . $uri;
 	}
 
-	/**
-	 * @param string|null $file
-	 * @param string $fragment
-	 * @return string
-	 */
-	public function getFileUrl($file, $fragment = NULL)
+	public function getFileUrl(?string $file, ?string $fragment = null): string
 	{
 		return $this->repo . $file . '/' . $fragment;
 	}
 
-	/**
-	 * @param string $file
-	 * @return string
-	 */
-	public function getRawUrl($file)
+	public function getRawUrl(string $file): string
 	{
 		return $this->raw . '/HEAD/' . $file;
 	}

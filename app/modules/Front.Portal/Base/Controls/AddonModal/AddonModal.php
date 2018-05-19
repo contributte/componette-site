@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Portal\Base\Controls\AddonModal;
 
@@ -18,9 +18,6 @@ final class AddonModal extends BaseControl
 	/** @var EntityModel */
 	private $em;
 
-	/**
-	 * @param EntityModel $em
-	 */
 	public function __construct(EntityModel $em)
 	{
 		parent::__construct();
@@ -31,10 +28,7 @@ final class AddonModal extends BaseControl
 	 * FORMS *******************************************************************
 	 */
 
-	/**
-	 * @return Form
-	 */
-	protected function createComponentForm()
+	protected function createComponentForm(): Form
 	{
 		$form = new Form();
 		$form->addText('addon', 'Component URL')
@@ -50,7 +44,7 @@ final class AddonModal extends BaseControl
 
 		$form->addSubmit('add', 'Add addon');
 
-		$form->onSuccess[] = function (Form $form) {
+		$form->onSuccess[] = function (Form $form): void {
 			$matches = Strings::match($form->values->addon, '#' . Addon::GITHUB_REGEX . '#');
 			if (!$matches) {
 				$this->presenter->flashMessage('Invalid addon name.', 'warning');
@@ -59,7 +53,7 @@ final class AddonModal extends BaseControl
 				return;
 			}
 
-			list ($all, $owner, $name) = $matches;
+			 [$all, $owner, $name] = $matches;
 
 			$addonRepository = $this->em->getRepositoryForEntity(Addon::class);
 			$addon = new Addon();
@@ -93,10 +87,8 @@ final class AddonModal extends BaseControl
 
 	/**
 	 * Render component
-	 *
-	 * @return void
 	 */
-	public function render()
+	public function render(): void
 	{
 		$this->template->setFile(__DIR__ . '/templates/modal.latte');
 		$this->template->render();

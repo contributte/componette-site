@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Database\ORM\Composer;
 
@@ -29,10 +29,7 @@ class Composer extends AbstractEntity
 	 * VIRTUAL *****************************************************************
 	 */
 
-	/**
-	 * @return ComposerLinker
-	 */
-	protected function getterLinker()
+	protected function getterLinker(): ComposerLinker
 	{
 		if (!$this->linker) {
 			$this->linker = new ComposerLinker($this);
@@ -43,10 +40,8 @@ class Composer extends AbstractEntity
 
 	/**
 	 * Called before persist to storage
-	 *
-	 * @return void
 	 */
-	protected function onBeforePersist()
+	protected function onBeforePersist(): void
 	{
 		parent::onBeforePersist();
 

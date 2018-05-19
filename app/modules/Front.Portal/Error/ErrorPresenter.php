@@ -1,10 +1,10 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Portal\Error;
 
 use App\Modules\Front\Portal\Base\BasePresenter;
-use Exception;
 use Nette\Application\BadRequestException;
+use Throwable;
 use Tracy\ILogger;
 
 final class ErrorPresenter extends BasePresenter
@@ -13,11 +13,7 @@ final class ErrorPresenter extends BasePresenter
 	/** @var ILogger @inject */
 	public $logger;
 
-	/**
-	 * @param Exception $exception
-	 * @return void
-	 */
-	public function renderDefault($exception)
+	public function renderDefault(Throwable $exception): void
 	{
 		if ($exception instanceof BadRequestException) {
 			$code = $exception->getCode();
@@ -37,7 +33,7 @@ final class ErrorPresenter extends BasePresenter
 		}
 
 		if ($this->isAjax()) { // AJAX request? Note this error in payload.
-			$this->payload->error = TRUE;
+			$this->payload->error = true;
 			$this->terminate();
 		}
 	}

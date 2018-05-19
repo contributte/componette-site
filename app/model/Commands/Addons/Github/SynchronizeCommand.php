@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Commands\Addons\Github;
 
@@ -26,11 +26,6 @@ final class SynchronizeCommand extends BaseCommand
 	/** @var CacheCleaner */
 	private $cacher;
 
-	/**
-	 * @param AddonFacade $addonFacade
-	 * @param GithubService $github
-	 * @param CacheCleaner $cacher
-	 */
 	public function __construct(AddonFacade $addonFacade, GithubService $github, CacheCleaner $cacher)
 	{
 		parent::__construct();
@@ -41,10 +36,8 @@ final class SynchronizeCommand extends BaseCommand
 
 	/**
 	 * Configure command
-	 *
-	 * @return void
 	 */
-	protected function configure()
+	protected function configure(): void
 	{
 		$this
 			->setName('addons:github:sync')
@@ -59,18 +52,13 @@ final class SynchronizeCommand extends BaseCommand
 
 		$this->addOption(
 			'rest',
-			NULL,
+			null,
 			InputOption::VALUE_NONE,
 			'Should synchronize only queued addons?'
 		);
 	}
 
-	/**
-	 * @param InputInterface $input
-	 * @param OutputInterface $output
-	 * @return void
-	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
+	protected function execute(InputInterface $input, OutputInterface $output): void
 	{
 		$addons = $this->addonFacade->find($input);
 
@@ -94,7 +82,7 @@ final class SynchronizeCommand extends BaseCommand
 				$addon->state = Addon::STATE_ARCHIVED;
 
 				$output->writeln('Skip (archived): ' . $addon->fullname);
-			} else if (!$body || isset($body['message'])) {
+			} elseif (!$body || isset($body['message'])) {
 				if (isset($response['message'])) {
 					$output->writeln('Skip (' . $response['message'] . '): ' . $addon->fullname);
 				} else {
@@ -107,7 +95,7 @@ final class SynchronizeCommand extends BaseCommand
 				}
 
 				// Increase adding counting
-				if ($addon->state == Addon::STATE_QUEUED) {
+				if ($addon->state === Addon::STATE_QUEUED) {
 					$added++;
 				}
 
@@ -118,7 +106,7 @@ final class SynchronizeCommand extends BaseCommand
 					continue;
 				}
 
-				list ($all, $author, $name) = $matches;
+				 [$all, $author, $name] = $matches;
 
 				// Update author & repo name if it is not same
 				if ($addon->author !== $author) {
@@ -131,7 +119,7 @@ final class SynchronizeCommand extends BaseCommand
 
 				// Update basic information
 				$addon->github->description = $body['description'];
-				$addon->github->homepage = !empty($body['homepage']) ? $body['homepage'] : NULL;
+				$addon->github->homepage = !empty($body['homepage']) ? $body['homepage'] : null;
 				$addon->github->stars = $body['stargazers_count'];
 				$addon->github->watchers = $body['watchers_count'];
 				$addon->github->issues = $body['open_issues_count'];

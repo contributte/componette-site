@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Database\ORM\Tag;
 
@@ -7,7 +7,6 @@ use Nextras\Orm\Collection\ICollection;
 
 /**
  * @property-read TagMapper $mapper
- *
  * @method ICollection|Tag[] findAll()
  * @method ICollection|Tag[] findBy(array $conds)
  * @method Tag|NULL getBy(array $conds)
@@ -16,9 +15,9 @@ final class TagRepository extends AbstractRepository
 {
 
 	/**
-	 * @return array
+	 * @return string[]
 	 */
-	public static function getEntityClassNames()
+	public static function getEntityClassNames(): array
 	{
 		return [Tag::class];
 	}

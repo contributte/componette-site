@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Admin\Sign;
 
@@ -14,10 +14,8 @@ final class SignPresenter extends BasePresenter
 
 	/**
 	 * Sign user in
-	 *
-	 * @return void
 	 */
-	public function actionIn()
+	public function actionIn(): void
 	{
 		if ($this->user->isLoggedIn()) {
 			$this->redirect('Home:');
@@ -26,23 +24,18 @@ final class SignPresenter extends BasePresenter
 
 	/**
 	 * Sign user out
-	 *
-	 * @return void
 	 */
-	public function actionOut()
+	public function actionOut(): void
 	{
 		$this->user->logout();
 		$this->redirect('in');
 	}
 
-	/**
-	 * @return Login
-	 */
-	protected function createComponentLogin()
+	protected function createComponentLogin(): Login
 	{
 		$control = $this->loginFactory->create();
 
-		$control->onLoggedIn[] = function () {
+		$control->onLoggedIn[] = function (): void {
 			$this->redirect('Home:');
 		};
 

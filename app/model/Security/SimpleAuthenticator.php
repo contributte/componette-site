@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Security;
 
@@ -12,7 +12,7 @@ final class SimpleAuthenticator implements IAuthenticator
 {
 
 	// Roles
-	const ROLE_ADMIN = 'admin';
+	public const ROLE_ADMIN = 'admin';
 
 	/** @var string[] */
 	private $userlist;
@@ -26,13 +26,12 @@ final class SimpleAuthenticator implements IAuthenticator
 	}
 
 	/**
-	 * @param array $credentials
+	 * @param string[] $credentials
 	 * @throws AuthenticationException
-	 * @return IIdentity
 	 */
-	public function authenticate(array $credentials)
+	public function authenticate(array $credentials): IIdentity
 	{
-		list($username, $password) = $credentials;
+		[$username, $password] = $credentials;
 		foreach ($this->userlist as $_name => $_pass) {
 			if (strcasecmp($_name, $username) === 0) {
 				if (Passwords::verify((string) $password, $_pass)) {

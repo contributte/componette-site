@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Database\Query;
 
@@ -15,32 +15,20 @@ final class SearchAddonsQuery extends QueryObject
 	/** @var string */
 	private $tag;
 
-	/** @var array */
+	/** @var string[] */
 	private $tokens = [];
 
-	/**
-	 * @param string $author
-	 * @return void
-	 */
-	public function byAuthor(string $author)
+	public function byAuthor(string $author): void
 	{
 		$this->author = $author;
 	}
 
-	/**
-	 * @param string $tag
-	 * @return void
-	 */
-	public function byTag(string $tag)
+	public function byTag(string $tag): void
 	{
 		$this->tag = $tag;
 	}
 
-	/**
-	 * @param string $query
-	 * @return void
-	 */
-	public function byQuery(string $query)
+	public function byQuery(string $query): void
 	{
 		$query = Strings::replace($query, '#[.\-]#', ' ');
 		$tokens = explode(' ', $query);
@@ -48,11 +36,7 @@ final class SearchAddonsQuery extends QueryObject
 		$this->tokens = $tokens;
 	}
 
-	/**
-	 * @param QueryBuilder $builder
-	 * @return QueryBuilder
-	 */
-	public function doQuery(QueryBuilder $builder)
+	public function doQuery(QueryBuilder $builder): QueryBuilder
 	{
 		$qb = $builder->select('*')
 			->from('[addon]', 'a')

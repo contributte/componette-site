@@ -1,13 +1,10 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Generator\Controls\Sitemap;
 
 interface ISitemapFactory
 {
 
-	/**
-	 * @return Sitemap
-	 */
-	public function create();
+	public function create(): Sitemap;
 
 }

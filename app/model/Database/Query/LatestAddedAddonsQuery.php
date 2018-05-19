@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Database\Query;
 
@@ -8,13 +8,9 @@ use Nextras\Dbal\QueryBuilder\QueryBuilder;
 final class LatestAddedAddonsQuery extends QueryObject
 {
 
-	const DEFAULT_LIMIT = 8;
+	public const DEFAULT_LIMIT = 8;
 
-	/**
-	 * @param QueryBuilder $builder
-	 * @return QueryBuilder
-	 */
-	public function doQuery(QueryBuilder $builder)
+	public function doQuery(QueryBuilder $builder): QueryBuilder
 	{
 		$qb = $builder->select('*')
 			->from('[addon]', 'a')

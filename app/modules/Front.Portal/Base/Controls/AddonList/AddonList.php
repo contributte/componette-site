@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Portal\Base\Controls\AddonList;
 
@@ -13,10 +13,7 @@ class AddonList extends BaseControl
 	/** @var ICollection|Addon[] */
 	protected $addons;
 
-	/**
-	 * @param ICollection $addons
-	 */
-	public function __construct($addons)
+	public function __construct(ICollection $addons)
 	{
 		parent::__construct();
 		$this->addons = $addons;
@@ -26,10 +23,7 @@ class AddonList extends BaseControl
 	 * CONTROLS ****************************************************************
 	 */
 
-	/**
-	 * @return AddonMeta
-	 */
-	protected function createComponentMeta()
+	protected function createComponentMeta(): AddonMeta
 	{
 		return new AddonMeta();
 	}
@@ -38,12 +32,7 @@ class AddonList extends BaseControl
 	 * RENDER ******************************************************************
 	 */
 
-	/**
-	 * Render component
-	 *
-	 * @return void
-	 */
-	public function render()
+	public function render(): void
 	{
 		$this->template->addons = $this->addons;
 

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Commands\Addons\Github;
 
@@ -28,12 +28,6 @@ final class SynchronizeReleasesCommand extends BaseCommand
 	/** @var GithubService */
 	private $github;
 
-	/**
-	 * @param AddonFacade $addonFacade
-	 * @param GithubRepository $githubRepository
-	 * @param GithubReleaseRepository $githubReleaseRepository
-	 * @param GithubService $github
-	 */
 	public function __construct(
 		AddonFacade $addonFacade,
 		GithubRepository $githubRepository,
@@ -50,10 +44,8 @@ final class SynchronizeReleasesCommand extends BaseCommand
 
 	/**
 	 * Configure command
-	 *
-	 * @return void
 	 */
-	protected function configure()
+	protected function configure(): void
 	{
 		$this
 			->setName('addons:github:sync:releases')
@@ -68,18 +60,13 @@ final class SynchronizeReleasesCommand extends BaseCommand
 
 		$this->addOption(
 			'rest',
-			NULL,
+			null,
 			InputOption::VALUE_NONE,
 			'Should synchronize only queued addons?'
 		);
 	}
 
-	/**
-	 * @param InputInterface $input
-	 * @param OutputInterface $output
-	 * @return void
-	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
+	protected function execute(InputInterface $input, OutputInterface $output): void
 	{
 		$addons = $this->addonFacade->find($input);
 

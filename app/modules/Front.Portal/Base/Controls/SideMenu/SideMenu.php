@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Portal\Base\Controls\SideMenu;
 
@@ -12,9 +12,6 @@ final class SideMenu extends Control
 	/** @var EntityModel */
 	private $em;
 
-	/**
-	 * @param EntityModel $em
-	 */
 	public function __construct(EntityModel $em)
 	{
 		parent::__construct();
@@ -27,8 +24,6 @@ final class SideMenu extends Control
 
 	/**
 	 * Render siderbar
-	 *
-	 * @return void
 	 */
 	public function render(): void
 	{

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Database\Query;
 
@@ -8,11 +8,7 @@ use Nextras\Dbal\QueryBuilder\QueryBuilder;
 final class ComponettersQuery extends QueryObject
 {
 
-	/**
-	 * @param QueryBuilder $builder
-	 * @return QueryBuilder
-	 */
-	public function doQuery(QueryBuilder $builder)
+	public function doQuery(QueryBuilder $builder): QueryBuilder
 	{
 		$qb = $builder->select('*')
 			->from('[addon]', 'a')

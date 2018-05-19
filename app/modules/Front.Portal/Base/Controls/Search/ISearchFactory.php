@@ -1,13 +1,10 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Portal\Base\Controls\Search;
 
 interface ISearchFactory
 {
 
-	/**
-	 * @return Search
-	 */
-	public function create();
+	public function create(): Search;
 
 }

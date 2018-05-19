@@ -1,13 +1,14 @@
 extensions:
-	console: Contributte\Console\DI\ConsoleExtension
+	console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
 	version: Contributte\Latte\DI\VersionExtension
 	xcache: Contributte\Cache\DI\CacheFactoryExtension
 	curl: Contributte\Http\Curl\DI\CurlExtension
+	nextras.queryobject: Contributte\Nextras\Orm\QueryObject\DI\NextrasQueryObjectExtension
 
 console:
 	name: "Componette"
-	version: "1.1.0"
+	version: "1.2.0"
 
 version:
-	rev: 06022017
+	rev: 201801
 	build: 1

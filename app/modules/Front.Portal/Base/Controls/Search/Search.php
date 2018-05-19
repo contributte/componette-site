@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Portal\Base\Controls\Search;
 
@@ -9,15 +9,12 @@ use Nette\Application\UI\Form;
 final class Search extends BaseControl
 {
 
-	/** @var array */
+	/** @var callable[] */
 	public $onSearch = [];
 
 	/** @var Searching */
 	private $search;
 
-	/**
-	 * @param Searching $search
-	 */
 	public function __construct(Searching $search)
 	{
 		parent::__construct();
@@ -25,10 +22,9 @@ final class Search extends BaseControl
 	}
 
 	/**
-	 * @param array $params
-	 * @return void
+	 * @param string[] $params
 	 */
-	public function loadState(array $params)
+	public function loadState(array $params): void
 	{
 		if (!isset($params['by'])) {
 			$params['by'] = $this->search->by;
@@ -41,17 +37,14 @@ final class Search extends BaseControl
 	 * FORMS *******************************************************************
 	 */
 
-	/**
-	 * @return Form
-	 */
-	protected function createComponentForm()
+	protected function createComponentForm(): Form
 	{
 		$form = new Form();
 
 		$form->addText('q')
 			->setDefaultValue($this->search->q);
 
-		$form->onSuccess[] = function (Form $form) {
+		$form->onSuccess[] = function (Form $form): void {
 			$this->search->q = $form->values->q;
 			$this->onSearch($form->values->q);
 		};
@@ -63,11 +56,6 @@ final class Search extends BaseControl
 	 * RENDER ******************************************************************
 	 */
 
-	/**
-	 * Render component
-	 *
-	 * @return void
-	 */
 	public function render(): void
 	{
 		$this->template->setFile(__DIR__ . '/templates/search.latte');

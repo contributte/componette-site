@@ -1,13 +1,10 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Portal\Base\Controls\AddonMeta;
 
 interface IAddonMetaFactory
 {
 
-	/**
-	 * @return AddonMeta
-	 */
-	public function create();
+	public function create(): AddonMeta;
 
 }

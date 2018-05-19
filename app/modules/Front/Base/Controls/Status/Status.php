@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Base\Controls\Status;
 
@@ -23,11 +23,6 @@ final class Status extends BaseControl
 	/** @var Cache */
 	private $cache;
 
-	/**
-	 * @param AddonRepository $addonRepository
-	 * @param GithubService $github
-	 * @param CacheFactory $cacheFactory
-	 */
 	public function __construct(
 		AddonRepository $addonRepository,
 		GithubService $github,
@@ -46,10 +41,8 @@ final class Status extends BaseControl
 
 	/**
 	 * Render status fragments
-	 *
-	 * @return void
 	 */
-	public function render()
+	public function render(): void
 	{
 		// Load data
 		$status = $this->cache->load('data', function (&$dependencies) {

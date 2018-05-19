@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Commands\Addons\Composer;
 
@@ -7,11 +7,11 @@ use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\Addon\AddonRepository;
 use App\Model\Database\ORM\ComposerStatistics\ComposerStatistics;
 use App\Model\WebServices\Composer\ComposerService;
-use Exception;
 use Nette\InvalidStateException;
 use Nextras\Orm\Collection\ICollection;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Throwable;
 use Tracy\Debugger;
 
 final class CollectStatsCommand extends BaseCommand
@@ -23,10 +23,6 @@ final class CollectStatsCommand extends BaseCommand
 	/** @var ComposerService */
 	private $composer;
 
-	/**
-	 * @param AddonRepository $addonRepository
-	 * @param ComposerService $composer
-	 */
 	public function __construct(AddonRepository $addonRepository, ComposerService $composer)
 	{
 		parent::__construct();
@@ -36,22 +32,15 @@ final class CollectStatsCommand extends BaseCommand
 
 	/**
 	 * Configure command
-	 *
-	 * @return void
 	 */
-	protected function configure()
+	protected function configure(): void
 	{
 		$this
 			->setName('addons:composer:collect')
 			->setDescription('Update composer stats');
 	}
 
-	/**
-	 * @param InputInterface $input
-	 * @param OutputInterface $output
-	 * @return void
-	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
+	protected function execute(InputInterface $input, OutputInterface $output): void
 	{
 		/** @var ICollection|Addon[] $addons */
 		$addons = $this->addonRepository->findBy(['state' => Addon::STATE_ACTIVE, 'type' => Addon::TYPE_COMPOSER]);
@@ -69,7 +58,7 @@ final class CollectStatsCommand extends BaseCommand
 						throw new InvalidStateException('No composer name at ' . $addon->fullname);
 					}
 
-					list ($vendor, $repo) = explode('/', $composer->name);
+					 [$vendor, $repo] = explode('/', $composer->name);
 
 					$response = $this->composer->stats($vendor, $repo);
 					if ($response->isOk()) {
@@ -91,7 +80,7 @@ final class CollectStatsCommand extends BaseCommand
 				} else {
 					$output->writeln('Skip (composer stats) [no composer data]: ' . $addon->fullname);
 				}
-			} catch (Exception $e) {
+			} catch (Throwable $e) {
 				Debugger::log($e, Debugger::EXCEPTION);
 				$output->writeln('Skip (composer stats) [exception]: ' . $e->getMessage());
 			}

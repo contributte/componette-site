@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Admin\Secured;
 
@@ -10,10 +10,9 @@ abstract class SecuredPresenter extends BasePresenter
 
 	/**
 	 * @param mixed $element
-	 * @return void
 	 * @throws ForbiddenRequestException
 	 */
-	public function checkRequirements($element)
+	public function checkRequirements($element): void
 	{
 		parent::checkRequirements($element);
 

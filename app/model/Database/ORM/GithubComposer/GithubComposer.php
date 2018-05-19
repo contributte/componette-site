@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Database\ORM\GithubComposer;
 
@@ -6,7 +6,6 @@ use App\Model\Database\ORM\AbstractEntity;
 use App\Model\Database\ORM\Github\Github;
 use App\Model\Exceptions\Logical\InvalidArgumentException;
 use Nette\Utils\ArrayHash;
-use Nette\Utils\DateTime;
 
 /**
  * @property int $id                        {primary}
@@ -14,32 +13,24 @@ use Nette\Utils\DateTime;
  * @property string $type                   {enum self::TYPE*}
  * @property string $custom
  * @property-read string $data
- * @property DateTime $createdAt            {default now}
- * @property DateTime|NULL $updatedAt
- *
- * @property ArrayHash|array $json          {virtual}
- * @property string $name                   {virtual}
  */
 class GithubComposer extends AbstractEntity
 {
 
 	// Types
-	const TYPE_BRANCH = 'BRANCH';
-	const TYPE_TAG = 'TAG';
+	public const TYPE_BRANCH = 'BRANCH';
+	public const TYPE_TAG = 'TAG';
 
 	// Branches
-	const BRANCH_MASTER = 'master';
+	public const BRANCH_MASTER = 'master';
 
-	/** @var ArrayHash|array */
+	/** @var ArrayHash|string[] */
 	protected $json = [];
 
 	/**
 	 * VIRTUAL *****************************************************************
 	 */
 
-	/**
-	 * @return ArrayHash
-	 */
 	protected function getterJson(): ArrayHash
 	{
 		return $this->json;
@@ -48,7 +39,7 @@ class GithubComposer extends AbstractEntity
 	/**
 	 * @return mixed
 	 */
-	protected function getterName():?string
+	protected function getterName(): ?string
 	{
 		return $this->json->name;
 	}
@@ -58,11 +49,10 @@ class GithubComposer extends AbstractEntity
 	 */
 
 	/**
-	 * @param string $key
-	 * @param mixed $default
+	 * @param mixed|null $default
 	 * @return mixed
 	 */
-	public function get(string $key, $default = NULL)
+	public function get(string $key, $default = null)
 	{
 		if (!isset($this->json->{$key})) {
 			if (func_num_args() > 1) return $default;
@@ -77,10 +67,9 @@ class GithubComposer extends AbstractEntity
 	 */
 
 	/**
-	 * @param array $data
-	 * @return void
+	 * @param string[] $data
 	 */
-	protected function onLoad(array $data)
+	protected function onLoad(array $data): void
 	{
 		parent::onLoad($data);
 
@@ -89,10 +78,7 @@ class GithubComposer extends AbstractEntity
 		}
 	}
 
-	/**
-	 * @return void
-	 */
-	protected function onBeforeInsert()
+	protected function onBeforeInsert(): void
 	{
 		parent::onBeforeInsert();
 

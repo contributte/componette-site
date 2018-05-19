@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Database\ORM;
 
@@ -20,7 +20,6 @@ use Nextras\Orm\Model\Model as NextrasModel;
  * @property-read GithubComposerRepository $githubComposer
  * @property-read GithubReleaseRepository $githubRelease
  * @property-read TagRepository $tag
- *
  * @method AbstractEntity persist(IEntity $entity, $withCascade = TRUE)
  * @method AbstractRepository getRepositoryForEntity($entity)
  */

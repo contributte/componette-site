@@ -1,13 +1,10 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Portal\Base\Controls\Componetters;
 
 interface IComponettersFactory
 {
 
-	/**
-	 * @return Componetters
-	 */
 	public function create(): Componetters;
 
 }

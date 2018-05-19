@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Database\Query;
 
@@ -10,11 +10,11 @@ final class RssFeedQuery extends QueryObject
 {
 
 	// Types
-	const TYPE_LATEST = 1;
-	const TYPE_AUTHOR = 2;
+	public const TYPE_LATEST = 1;
+	public const TYPE_AUTHOR = 2;
 
 	// Limits
-	const DEFAULT_LIMIT = 25;
+	public const DEFAULT_LIMIT = 25;
 
 	/** @var int */
 	private $type;
@@ -22,29 +22,18 @@ final class RssFeedQuery extends QueryObject
 	/** @var string */
 	private $author;
 
-	/**
-	 * @return void
-	 */
 	public function byLatest(): void
 	{
 		$this->type = self::TYPE_LATEST;
 	}
 
-	/**
-	 * @param string $author
-	 * @return void
-	 */
 	public function byAuthor(string $author): void
 	{
 		$this->type = self::TYPE_AUTHOR;
 		$this->author = $author;
 	}
 
-	/**
-	 * @param QueryBuilder $builder
-	 * @return QueryBuilder
-	 */
-	public function doQuery(QueryBuilder $builder)
+	public function doQuery(QueryBuilder $builder): QueryBuilder
 	{
 		$qb = $builder->select('*')
 			->from('[addon]', 'a')

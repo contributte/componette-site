@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Facade;
 
@@ -11,19 +11,12 @@ final class AddonFacade
 	/** @var AddonRepository */
 	private $addonRepository;
 
-	/**
-	 * @param AddonRepository $addonRepository
-	 */
 	public function __construct(AddonRepository $addonRepository)
 	{
 		$this->addonRepository = $addonRepository;
 	}
 
-	/**
-	 * @param int $id
-	 * @return Addon|NULL
-	 */
-	public function getById($id)
+	public function getById(int $id): ?Addon
 	{
 		return $this->addonRepository->getById($id);
 	}

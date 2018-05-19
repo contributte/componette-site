@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Facade\Admin;
 
@@ -17,30 +17,18 @@ final class AddonFacade
 	/** @var TagRepository */
 	private $tagRepository;
 
-	/**
-	 * @param AddonRepository $addonRepository
-	 * @param TagRepository $tagRepository
-	 */
 	public function __construct(AddonRepository $addonRepository, TagRepository $tagRepository)
 	{
 		$this->addonRepository = $addonRepository;
 		$this->tagRepository = $tagRepository;
 	}
 
-	/**
-	 * @param int $id
-	 * @return Addon|NULL
-	 */
-	public function getById($id)
+	public function getById(int $id): ?Addon
 	{
 		return $this->addonRepository->getById($id);
 	}
 
-	/**
-	 * @param Addon $addon
-	 * @return void
-	 */
-	public function update(Addon $addon)
+	public function update(Addon $addon): void
 	{
 		$this->addonRepository->persistAndFlush($addon);
 	}

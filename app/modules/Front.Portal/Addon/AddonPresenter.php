@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Portal\Addon;
 
@@ -20,11 +20,7 @@ final class AddonPresenter extends BasePresenter
 	/** @var Addon */
 	protected $addon;
 
-	/**
-	 * @param int $slug
-	 * @return void
-	 */
-	public function actionDetail($slug)
+	public function actionDetail(int $slug): void
 	{
 		$this->addon = $this->addonFacade->getById($slug);
 		if (!$this->addon) {
@@ -34,17 +30,12 @@ final class AddonPresenter extends BasePresenter
 
 	/**
 	 * Display addon detail
-	 *
-	 * @return void
 	 */
-	public function renderDetail()
+	public function renderDetail(): void
 	{
 		$this->template->addon = $this->addon;
 	}
 
-	/**
-	 * @return AddonDetail
-	 */
 	protected function createComponentAddon(): AddonDetail
 	{
 		return $this->addonDetailFactory->create($this->addon);

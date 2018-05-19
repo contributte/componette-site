@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Portal\Index;
 
@@ -11,7 +11,7 @@ use App\Modules\Front\Portal\Base\Controls\AddonList\AddonList;
 use App\Modules\Front\Portal\Base\Controls\AddonList\CategorizedAddonList;
 use App\Modules\Front\Portal\Base\Controls\AddonList\ICategorizedAddonListFactory;
 use App\Modules\Front\Portal\Base\Controls\Search\Search;
-use Minetro\Nextras\Orm\QueryObject\Queryable;
+use Contributte\Nextras\Orm\QueryObject\Queryable;
 use Nextras\Orm\Collection\ICollection;
 
 final class IndexPresenter extends BaseAddonPresenter
@@ -30,10 +30,7 @@ final class IndexPresenter extends BaseAddonPresenter
 	 * ALL *********************************************************************
 	 */
 
-	/**
-	 * @return void
-	 */
-	public function actionAll()
+	public function actionAll(): void
 	{
 	}
 
@@ -41,11 +38,7 @@ final class IndexPresenter extends BaseAddonPresenter
 	 * AUTHOR ******************************************************************
 	 */
 
-	/**
-	 * @param string $slug
-	 * @return void
-	 */
-	public function actionAuthor($slug)
+	public function actionAuthor(string $slug): void
 	{
 		$query = new SearchAddonsQuery();
 		$query->byAuthor($slug);
@@ -53,11 +46,7 @@ final class IndexPresenter extends BaseAddonPresenter
 		$this->addons = $this->addonRepository->fetch($query, Queryable::HYDRATION_ENTITY);
 	}
 
-	/**
-	 * @param string $slug
-	 * @return void
-	 */
-	public function renderAuthor($slug)
+	public function renderAuthor(string $slug): void
 	{
 		$this->template->author = $slug;
 	}
@@ -66,11 +55,7 @@ final class IndexPresenter extends BaseAddonPresenter
 	 * BY SEARCH ***************************************************************
 	 */
 
-	/**
-	 * @param string $q
-	 * @return void
-	 */
-	public function actionSearch($q)
+	public function actionSearch(string $q): void
 	{
 		if (strlen($q) > 100) {
 			$this->redirect('this', ['q' => substr($q, 0, 100)]);
@@ -86,10 +71,7 @@ final class IndexPresenter extends BaseAddonPresenter
 		$this->addons = $this->addonRepository->fetch($query, Queryable::HYDRATION_ENTITY);
 	}
 
-	/**
-	 * @return void
-	 */
-	public function renderSearch()
+	public function renderSearch(): void
 	{
 		if ($this->isAjax()) {
 			$this->redrawControl('search-result');
@@ -102,11 +84,7 @@ final class IndexPresenter extends BaseAddonPresenter
 	 * BY TAG *****************************************************************
 	 */
 
-	/**
-	 * @param string $tag
-	 * @return void
-	 */
-	public function actionTag($tag)
+	public function actionTag(string $tag): void
 	{
 		$query = new SearchAddonsQuery();
 		$query->byTag($tag);
@@ -114,11 +92,7 @@ final class IndexPresenter extends BaseAddonPresenter
 		$this->addons = $this->addonRepository->fetch($query, Queryable::HYDRATION_ENTITY);
 	}
 
-	/**
-	 * @param string $tag
-	 * @return void
-	 */
-	public function renderTag($tag)
+	public function renderTag(string $tag): void
 	{
 		$this->template->tag = $tag;
 	}
@@ -127,29 +101,20 @@ final class IndexPresenter extends BaseAddonPresenter
 	 * CONTROLS ****************************************************************
 	 */
 
-	/**
-	 * @return Search
-	 */
-	protected function createComponentSearch()
+	protected function createComponentSearch(): Search
 	{
 		$search = parent::createComponentSearch();
-		$search['form']['q']->controlPrototype->autofocus = TRUE;
+		$search['form']['q']->controlPrototype->autofocus = true;
 
 		return $search;
 	}
 
-	/**
-	 * @return AddonList
-	 */
-	protected function createComponentAddons()
+	protected function createComponentAddons(): AddonList
 	{
 		return $this->createAddonListControl($this->addons);
 	}
 
-	/**
-	 * @return CategorizedAddonList
-	 */
-	protected function createComponentCategorizedAddons()
+	protected function createComponentCategorizedAddons(): CategorizedAddonList
 	{
 		return $this->categorizedAddonsListFactory->create();
 	}

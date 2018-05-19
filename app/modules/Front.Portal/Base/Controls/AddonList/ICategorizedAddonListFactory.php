@@ -1,13 +1,10 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Portal\Base\Controls\AddonList;
 
 interface ICategorizedAddonListFactory
 {
 
-	/**
-	 * @return CategorizedAddonList
-	 */
-	public function create();
+	public function create(): CategorizedAddonList;
 
 }

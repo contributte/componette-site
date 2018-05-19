@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\WebServices\Composer;
 
@@ -9,26 +9,21 @@ use Contributte\Http\Curl\Response;
 final class ComposerClient
 {
 
-	const URL = 'https://packagist.org';
+	public const URL = 'https://packagist.org';
 
 	/** @var CurlClient */
 	private $curl;
 
-	/**
-	 * @param CurlClient $curl
-	 */
 	public function __construct(CurlClient $curl)
 	{
 		$this->curl = $curl;
 	}
 
 	/**
-	 * @param string $uri
-	 * @param array $headers
-	 * @param array $opts
-	 * @return Response
+	 * @param string[] $headers
+	 * @param string[] $opts
 	 */
-	public function makeRequest($uri, array $headers = [], array $opts = [])
+	public function makeRequest(string $uri, array $headers = [], array $opts = []): Response
 	{
 		$uri = self::URL . '/' . ltrim($uri, '/');
 		$response = $this->curl->makeRequest($uri, $headers, $opts);

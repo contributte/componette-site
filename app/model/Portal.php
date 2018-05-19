@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model;
 
@@ -8,31 +8,27 @@ use Nette\Utils\Arrays;
 final class Portal
 {
 
-	/** @var array */
+	/** @var mixed[] */
 	private $parameters = [];
 
 	/**
-	 * @param array $parameters
+	 * @param mixed[] $parameters
 	 */
 	public function __construct(array $parameters = [])
 	{
 		$this->parameters = $parameters;
 	}
 
-	/**
-	 * @return int
-	 */
-	public function isDebug()
+	public function isDebug(): bool
 	{
-		return $this->parameters['debugMode'] === TRUE;
+		return $this->parameters['debugMode'] === true;
 	}
 
 	/**
-	 * @param string $name
-	 * @param mixed $default
+	 * @param mixed|null $default
 	 * @return mixed
 	 */
-	public function get($name, $default = NULL)
+	public function get(string $name, $default = null)
 	{
 		if (func_num_args() > 1) {
 			return Arrays::get($this->parameters, $name, $default);
@@ -42,11 +38,9 @@ final class Portal
 	}
 
 	/**
-	 * @param string $name
-	 * @param boolean $recursive
 	 * @return mixed
 	 */
-	public function expand($name, $recursive = FALSE)
+	public function expand(string $name, bool $recursive = false)
 	{
 		return Helpers::expand('%' . $name . '%', $this->parameters, $recursive);
 	}

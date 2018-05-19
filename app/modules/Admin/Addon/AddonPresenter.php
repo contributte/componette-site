@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Admin\Addon;
 
@@ -19,21 +19,15 @@ final class AddonPresenter extends SecuredPresenter
 
 	/**
 	 * List all addons
-	 *
-	 * @return void
 	 */
-	public function renderDefault()
+	public function renderDefault(): void
 	{
 		$this->template->addons = $this->addonFacade
 			->findAll()
 			->orderBy('author', 'ASC');
 	}
 
-	/**
-	 * @param int $id
-	 * @return void
-	 */
-	public function actionDetail($id)
+	public function actionDetail(int $id): void
 	{
 		$this->addon = $addon = $this->addonFacade->getById($id);
 		if (!$this->addon) {
@@ -47,18 +41,12 @@ final class AddonPresenter extends SecuredPresenter
 		]);
 	}
 
-	/**
-	 * @return void
-	 */
-	public function renderDetail()
+	public function renderDetail(): void
 	{
 		$this->template->addon = $this->addon;
 	}
 
-	/**
-	 * @return Form
-	 */
-	protected function createComponentAddonForm()
+	protected function createComponentAddonForm(): Form
 	{
 		$form = new Form();
 
@@ -79,11 +67,7 @@ final class AddonPresenter extends SecuredPresenter
 		return $form;
 	}
 
-	/**
-	 * @param Form $form
-	 * @return void
-	 */
-	public function processAddonForm(Form $form)
+	public function processAddonForm(Form $form): void
 	{
 		$values = $form->getValues();
 

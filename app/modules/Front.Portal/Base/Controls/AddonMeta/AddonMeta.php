@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Portal\Base\Controls\AddonMeta;
 
@@ -12,22 +12,14 @@ final class AddonMeta extends BaseControl
 	 * RENDER ******************************************************************
 	 */
 
-	/**
-	 * @param Addon $addon
-	 * @return void
-	 */
-	public function render(Addon $addon)
+	public function render(Addon $addon): void
 	{
 		$this->template->addon = $addon;
 		$this->template->setFile(__DIR__ . '/templates/full.latte');
 		$this->template->render();
 	}
 
-	/**
-	 * @param Addon $addon
-	 * @return void
-	 */
-	public function renderShort(Addon $addon)
+	public function renderShort(Addon $addon): void
 	{
 		$this->template->addon = $addon;
 		$this->template->setFile(__DIR__ . '/templates/short.latte');

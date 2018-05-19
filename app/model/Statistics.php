@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model;
 
@@ -11,7 +11,7 @@ use Nette\Utils\DateTime;
 final class Statistics
 {
 
-	/** @var array */
+	/** @var mixed[] */
 	private $cached = [];
 
 	/** @var AddonRepository */
@@ -20,10 +20,6 @@ final class Statistics
 	/** @var Cache */
 	private $cache;
 
-	/**
-	 * @param AddonRepository $addonRepository
-	 * @param CacheFactory $cacheFactory
-	 */
 	public function __construct(AddonRepository $addonRepository, CacheFactory $cacheFactory)
 	{
 		$this->addonRepository = $addonRepository;
@@ -33,10 +29,8 @@ final class Statistics
 
 	/**
 	 * Build cache
-	 *
-	 * @return void
 	 */
-	protected function build()
+	protected function build(): void
 	{
 		$this->cached = $this->cache->load('cached', function (&$dependencies) {
 			$dependencies[Cache::EXPIRE] = new DateTime('+1 day');
@@ -49,10 +43,7 @@ final class Statistics
 		});
 	}
 
-	/**
-	 * @return int
-	 */
-	public function getAddonsCount()
+	public function getAddonsCount(): int
 	{
 		return $this->cached['addons'];
 	}

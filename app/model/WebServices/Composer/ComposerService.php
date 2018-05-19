@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\WebServices\Composer;
 
@@ -12,19 +12,12 @@ final class ComposerService
 	/** @var ComposerClient */
 	private $client;
 
-	/**
-	 * @param ComposerClient $client
-	 */
 	public function __construct(ComposerClient $client)
 	{
 		$this->client = $client;
 	}
 
-	/**
-	 * @param string $uri
-	 * @return Response
-	 */
-	protected function call($uri)
+	protected function call(string $uri): Response
 	{
 		try {
 			return $this->client->makeRequest($uri);
@@ -33,23 +26,12 @@ final class ComposerService
 		}
 	}
 
-	/**
-	 * @param string $vendor
-	 * @param string $repo
-	 * @return Response
-	 */
-	public function repo($vendor, $repo)
+	public function repo(string $vendor, string $repo): Response
 	{
 		return $this->call(sprintf('/packages/%s/%s.json', $vendor, $repo));
 	}
 
-	/**
-	 * @param string $vendor
-	 * @param string $repo
-	 * @param string $version
-	 * @return Response
-	 */
-	public function stats($vendor, $repo, $version = NULL)
+	public function stats(string $vendor, string $repo, ?string $version = null): Response
 	{
 		if ($version) {
 			return $this->call(sprintf('/packages/%s/%s/stats/%s.json', $vendor, $repo, $version));

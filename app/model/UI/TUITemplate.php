@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\UI;
 
@@ -13,9 +13,9 @@ trait TUITemplate
 	 */
 
 	/**
-	 * @return array
+	 * @return string[]
 	 */
-	public function formatTemplateFiles()
+	public function formatTemplateFiles(): array
 	{
 		$dir = dirname($this->getReflection()->getFileName());
 
@@ -25,9 +25,9 @@ trait TUITemplate
 	}
 
 	/**
-	 * @return array
+	 * @return string[]
 	 */
-	public function formatLayoutTemplateFiles()
+	public function formatLayoutTemplateFiles(): array
 	{
 		$list = [];
 

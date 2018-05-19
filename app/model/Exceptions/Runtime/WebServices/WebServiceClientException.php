@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Exceptions\Runtime\WebServices;
 
@@ -11,9 +11,6 @@ abstract class WebServiceClientException extends RuntimeException
 	/** @var Response */
 	protected $response;
 
-	/**
-	 * @param Response $response
-	 */
 	public function __construct(Response $response)
 	{
 		parent::__construct();

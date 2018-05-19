@@ -1,2 +1,0 @@
-extensions:
-	nextrasqueryobject: Minetro\Nextras\Orm\QueryObject\DI\NextrasQueryObjectExtension

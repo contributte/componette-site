@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Commands\Addons\Content;
 
@@ -24,10 +24,6 @@ final class GenerateContentCommand extends BaseCommand
 	/** @var GithubService */
 	private $github;
 
-	/**
-	 * @param AddonRepository $addonRepository
-	 * @param GithubService $github
-	 */
 	public function __construct(AddonRepository $addonRepository, GithubService $github)
 	{
 		parent::__construct();
@@ -37,10 +33,8 @@ final class GenerateContentCommand extends BaseCommand
 
 	/**
 	 * Configure command
-	 *
-	 * @return void
 	 */
-	protected function configure()
+	protected function configure(): void
 	{
 		$this
 			->setName('addons:content:generate')
@@ -48,26 +42,21 @@ final class GenerateContentCommand extends BaseCommand
 
 		$this->addOption(
 			'rest',
-			NULL,
+			null,
 			InputOption::VALUE_NONE,
 			'Should synchronize only queued addons?'
 		);
 	}
 
-	/**
-	 * @param InputInterface $input
-	 * @param OutputInterface $output
-	 * @return void
-	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
+	protected function execute(InputInterface $input, OutputInterface $output): void
 	{
 		/** @var ICollection|Addon[] $addons */
 		$addons = $this->addonRepository->findBy(['state' => Addon::STATE_ACTIVE]);
 
 		// FILTER PACKAGES ===========================================
 
-		if ($input->getOption('rest') == TRUE) {
-			$addons = $addons->findBy(['this->github->contentHtml' => NULL]);
+		if ($input->getOption('rest') === true) {
+			$addons = $addons->findBy(['this->github->contentHtml' => null]);
 		}
 
 		// DO YOUR JOB ===============================================
@@ -107,19 +96,15 @@ final class GenerateContentCommand extends BaseCommand
 		$output->writeln(sprintf('Updated %s addons contents', $counter));
 	}
 
-	/**
-	 * @param Github $github
-	 * @return void
-	 */
-	protected function reformatLinks(Github $github)
+	protected function reformatLinks(Github $github): void
 	{
 		// Resolve links
 		$github->contentHtml = Strings::replace($github->contentHtml, '#href=\"(.*)\"#iU', function ($matches) use ($github) {
-			list ($all, $url) = $matches;
+			 [$all, $url] = $matches;
 
 			if (!Validators::isUrl($url)) {
 				if (Urls::hasFragment($url)) {
-					$url = $github->linker->getFileUrl(NULL, $url);
+					$url = $github->linker->getFileUrl(null, $url);
 				} else {
 					$url = $github->linker->getBlobUrl($url);
 				}
@@ -130,7 +115,7 @@ final class GenerateContentCommand extends BaseCommand
 
 		// Resolve images
 		$github->contentHtml = Strings::replace($github->contentHtml, '#img.+src=\"(.*)\"#iU', function ($matches) use ($github) {
-			list ($all, $url) = $matches;
+			 [$all, $url] = $matches;
 
 			if (!Validators::isUrl($url)) {
 				$url = $github->linker->getRawUrl($url);

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Facade\Cli\Commands;
 
@@ -7,9 +7,9 @@ use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\Addon\AddonRepository;
 use App\Model\Database\ORM\EntityModel;
 use App\Model\Exceptions\Logical\InvalidArgumentException;
-use Exception;
 use Nextras\Orm\Collection\ICollection;
 use Symfony\Component\Console\Input\InputInterface;
+use Throwable;
 use Tracy\Debugger;
 
 final class AddonFacade
@@ -18,16 +18,12 @@ final class AddonFacade
 	/** @var EntityModel */
 	private $em;
 
-	/**
-	 * @param EntityModel $em
-	 */
 	public function __construct(EntityModel $em)
 	{
 		$this->em = $em;
 	}
 
 	/**
-	 * @param InputInterface $input
 	 * @return ICollection|Addon[]
 	 */
 	public function find(InputInterface $input)
@@ -42,7 +38,7 @@ final class AddonFacade
 		/** @var ICollection|Addon[] $addons */
 		$addons = $repository->findBy(['state' => Addon::STATE_ACTIVE]);
 
-		if ($input->getOption('rest') == TRUE) {
+		if ($input->getOption('rest') === true) {
 			$addons = $repository->findBy(['state' => Addon::STATE_QUEUED]);
 		}
 
@@ -69,28 +65,21 @@ final class AddonFacade
 		return $addons;
 	}
 
-	/**
-	 * @param AbstractEntity $entity
-	 * @return AbstractEntity
-	 */
-	public function persist(AbstractEntity $entity)
+	public function persist(AbstractEntity $entity): AbstractEntity
 	{
 		try {
 			return $this->em->persist($entity);
-		} catch (Exception $e) {
+		} catch (Throwable $e) {
 			Debugger::log($e);
 			throw $e;
 		}
 	}
 
-	/**
-	 * @return void
-	 */
-	public function flush()
+	public function flush(): void
 	{
 		try {
 			$this->em->flush();
-		} catch (Exception $e) {
+		} catch (Throwable $e) {
 			Debugger::log($e);
 			throw $e;
 		}

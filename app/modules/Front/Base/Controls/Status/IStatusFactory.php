@@ -1,13 +1,10 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Base\Controls\Status;
 
 interface IStatusFactory
 {
 
-	/**
-	 * @return Status
-	 */
-	public function create();
+	public function create(): Status;
 
 }

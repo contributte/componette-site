@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Portal\Base;
 
@@ -18,10 +18,8 @@ abstract class BaseAddonPresenter extends BasePresenter
 
 	/**
 	 * Common render method
-	 *
-	 * @return void
 	 */
-	protected function beforeRender()
+	protected function beforeRender(): void
 	{
 		parent::beforeRender();
 
@@ -32,11 +30,7 @@ abstract class BaseAddonPresenter extends BasePresenter
 	 * CONTROLS ****************************************************************
 	 */
 
-	/**
-	 * @param ICollection $addons
-	 * @return AddonList
-	 */
-	protected function createAddonListControl(ICollection $addons)
+	protected function createAddonListControl(ICollection $addons): AddonList
 	{
 		return $this->addonListFactory->create($addons);
 	}

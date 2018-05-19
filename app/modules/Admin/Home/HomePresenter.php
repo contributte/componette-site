@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Admin\Home;
 
@@ -9,10 +9,8 @@ final class HomePresenter extends SecuredPresenter
 
 	/**
 	 * Redirect to addons
-	 *
-	 * @return void
 	 */
-	public function actionDefault()
+	public function actionDefault(): void
 	{
 		$this->redirect('Addon:');
 	}

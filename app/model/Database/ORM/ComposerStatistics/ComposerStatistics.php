@@ -1,11 +1,10 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Database\ORM\ComposerStatistics;
 
 use App\Model\Database\ORM\AbstractEntity;
 use App\Model\Database\ORM\Addon\Addon;
 use Nette\Utils\ArrayHash;
-use Nette\Utils\DateTime;
 
 /**
  * @property int $id                        {primary}
@@ -13,23 +12,19 @@ use Nette\Utils\DateTime;
  * @property string $type                   {enum self::TYPE*}
  * @property string $custom
  * @property-read string $data
- * @property DateTime $createdAt            {default now}
- * @property DateTime|NULL $updatedAt
- *
- * @property ArrayHash|array $json          {virtual}
  */
 class ComposerStatistics extends AbstractEntity
 {
 
 	// Types
-	const TYPE_ALL = 'ALL';
-	const TYPE_BRANCH = 'BRANCH';
-	const TYPE_TAG = 'TAG';
+	public const TYPE_ALL = 'ALL';
+	public const TYPE_BRANCH = 'BRANCH';
+	public const TYPE_TAG = 'TAG';
 
 	// Customs
-	const CUSTOM_ALL = 'ALL';
+	public const CUSTOM_ALL = 'ALL';
 
-	/** @var ArrayHash|array */
+	/** @var ArrayHash|string[] */
 	protected $json = [];
 
 	/**
@@ -37,7 +32,7 @@ class ComposerStatistics extends AbstractEntity
 	 */
 
 	/**
-	 * @return ArrayHash|array
+	 * @return ArrayHash|string[]
 	 */
 	protected function getterJson()
 	{
@@ -49,10 +44,9 @@ class ComposerStatistics extends AbstractEntity
 	 */
 
 	/**
-	 * @param array $data
-	 * @return void
+	 * @param string[] $data
 	 */
-	protected function onLoad(array $data)
+	protected function onLoad(array $data): void
 	{
 		parent::onLoad($data);
 
@@ -61,10 +55,7 @@ class ComposerStatistics extends AbstractEntity
 		}
 	}
 
-	/**
-	 * @return void
-	 */
-	protected function onBeforeInsert()
+	protected function onBeforeInsert(): void
 	{
 		parent::onBeforeInsert();
 

@@ -1,11 +1,11 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Portal\Rss\Controls\RssFeed;
 
 use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\EntityModel;
 use App\Model\Database\Query\RssFeedQuery;
-use Minetro\Nextras\Orm\QueryObject\Queryable;
+use Contributte\Nextras\Orm\QueryObject\Queryable;
 
 final class RssFeedFactory
 {
@@ -16,20 +16,13 @@ final class RssFeedFactory
 	/** @var IRssFeedFactory */
 	private $rssFeedFactory;
 
-	/**
-	 * @param EntityModel $em
-	 * @param IRssFeedFactory $rssFeedFactory
-	 */
 	public function __construct(EntityModel $em, IRssFeedFactory $rssFeedFactory)
 	{
 		$this->em = $em;
 		$this->rssFeedFactory = $rssFeedFactory;
 	}
 
-	/**
-	 * @return RssFeed
-	 */
-	public function createNewest()
+	public function createNewest(): RssFeed
 	{
 		$query = new RssFeedQuery();
 		$query->byLatest();
@@ -43,11 +36,7 @@ final class RssFeedFactory
 		return $control;
 	}
 
-	/**
-	 * @param string $author
-	 * @return RssFeed
-	 */
-	public function createByAuthor($author)
+	public function createByAuthor(string $author): RssFeed
 	{
 		$query = new RssFeedQuery();
 		$query->byAuthor($author);

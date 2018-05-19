@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Facade;
 
@@ -16,40 +16,27 @@ final class StatisticsFacade
 	/** @var TagRepository */
 	private $tagRepository;
 
-	/**
-	 * @param AddonRepository $addonRepository
-	 * @param TagRepository $tagRepository
-	 */
 	public function __construct(AddonRepository $addonRepository, TagRepository $tagRepository)
 	{
 		$this->addonRepository = $addonRepository;
 		$this->tagRepository = $tagRepository;
 	}
 
-	/**
-	 * @return int
-	 */
-	public function countAddons()
+	public function countAddons(): int
 	{
 		return $this->addonRepository
 			->findAll()
 			->countStored();
 	}
 
-	/**
-	 * @return int
-	 */
-	public function countQueued()
+	public function countQueued(): int
 	{
 		return $this->addonRepository
 			->findBy(['state' => Addon::STATE_QUEUED])
 			->countStored();
 	}
 
-	/**
-	 * @return int
-	 */
-	public function countOwners()
+	public function countOwners(): int
 	{
 		$collection = $this->addonRepository
 			->findAll()
@@ -58,10 +45,7 @@ final class StatisticsFacade
 		return count($collection);
 	}
 
-	/**
-	 * @return int
-	 */
-	public function countTags()
+	public function countTags(): int
 	{
 		return $this->tagRepository
 			->findAll()

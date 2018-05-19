@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Caching;
 
@@ -6,11 +6,11 @@ interface CacheKeys
 {
 
 	// Routing
-	const ROUTING = 'App.Routing';
+	public const ROUTING = 'App.Routing';
 
 	// Front.Controls
-	const FRONT_CONTROLS_ADDON_MODAL = 'App.Front.Controls.AddonModal';
-	const FRONT_CONTROLS_STATUS = 'App.Front.Controls.Status';
-	const FRONT_CONTROLS_STATISTICS = 'App.Front.Controls.Statistics';
+	public const FRONT_CONTROLS_ADDON_MODAL = 'App.Front.Controls.AddonModal';
+	public const FRONT_CONTROLS_STATUS = 'App.Front.Controls.Status';
+	public const FRONT_CONTROLS_STATISTICS = 'App.Front.Controls.Statistics';
 
 }

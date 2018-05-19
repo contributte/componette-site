@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Portal\Base;
 
@@ -35,10 +35,7 @@ abstract class BasePresenter extends BaseFrontPresenter
 	 * CONTROLS ****************************************************************
 	 */
 
-	/**
-	 * @return Search
-	 */
-	protected function createComponentSearch()
+	protected function createComponentSearch(): Search
 	{
 		$search = $this->searchFactory->create();
 
@@ -52,26 +49,17 @@ abstract class BasePresenter extends BaseFrontPresenter
 		return $search;
 	}
 
-	/**
-	 * @return AddonModal
-	 */
-	protected function createComponentModal()
+	protected function createComponentModal(): AddonModal
 	{
 		return $this->addonModalFactory->create();
 	}
 
-	/**
-	 * @return SideMenu
-	 */
-	protected function createComponentSideMenu()
+	protected function createComponentSideMenu(): SideMenu
 	{
 		return $this->sideMenuFactory->create();
 	}
 
-	/**
-	 * @return Componetters
-	 */
-	protected function createComponentComponetters()
+	protected function createComponentComponetters(): Componetters
 	{
 		return $this->componettersFactory->create();
 	}

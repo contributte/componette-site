@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Portal\Addon\Controls\AddonDetail;
 
@@ -13,9 +13,6 @@ final class AddonDetail extends BaseControl
 	/** @var Addon */
 	private $addon;
 
-	/**
-	 * @param Addon $addon
-	 */
 	public function __construct(Addon $addon)
 	{
 		parent::__construct();
@@ -26,10 +23,7 @@ final class AddonDetail extends BaseControl
 	 * CONTROLS ****************************************************************
 	 */
 
-	/**
-	 * @return AddonMeta
-	 */
-	protected function createComponentMeta()
+	protected function createComponentMeta(): AddonMeta
 	{
 		return new AddonMeta();
 	}
@@ -40,10 +34,8 @@ final class AddonDetail extends BaseControl
 
 	/**
 	 * Render header
-	 *
-	 * @return void
 	 */
-	public function renderHeader()
+	public function renderHeader(): void
 	{
 		$this->template->addon = $this->addon;
 		$this->template->setFile(__DIR__ . '/templates/header.latte');
@@ -52,10 +44,8 @@ final class AddonDetail extends BaseControl
 
 	/**
 	 * Render content
-	 *
-	 * @return void
 	 */
-	public function renderContent()
+	public function renderContent(): void
 	{
 		$this->template->addon = $this->addon;
 		$this->template->setFile(__DIR__ . '/templates/content.latte');
@@ -64,10 +54,8 @@ final class AddonDetail extends BaseControl
 
 	/**
 	 * Render sidebar
-	 *
-	 * @return void
 	 */
-	public function renderSidebar()
+	public function renderSidebar(): void
 	{
 		$this->template->addon = $this->addon;
 		$this->template->setFile(__DIR__ . '/templates/sidebar.latte');
@@ -76,10 +64,8 @@ final class AddonDetail extends BaseControl
 
 	/**
 	 * Render statistics
-	 *
-	 * @return void
 	 */
-	public function renderStats()
+	public function renderStats(): void
 	{
 		$totalDownloads = [];
 
@@ -91,7 +77,7 @@ final class AddonDetail extends BaseControl
 			}
 			$this->template->totalDownloads = json_encode($totalDownloads);
 		} else {
-			$this->template->totalDownloads = NULL;
+			$this->template->totalDownloads = null;
 		}
 
 		$this->template->setFile(__DIR__ . '/templates/stats.latte');
@@ -100,10 +86,8 @@ final class AddonDetail extends BaseControl
 
 	/**
 	 * Render report
-	 *
-	 * @return void
 	 */
-	public function renderReport()
+	public function renderReport(): void
 	{
 		$this->template->setFile(__DIR__ . '/templates/report.latte');
 		$this->template->render();
@@ -111,10 +95,8 @@ final class AddonDetail extends BaseControl
 
 	/**
 	 * Render releases
-	 *
-	 * @return void
 	 */
-	public function renderReleases()
+	public function renderReleases(): void
 	{
 		$this->template->addon = $this->addon;
 		$this->template->setFile(__DIR__ . '/templates/releases.latte');
@@ -123,10 +105,8 @@ final class AddonDetail extends BaseControl
 
 	/**
 	 * Render comments
-	 *
-	 * @return void
 	 */
-	public function renderComments()
+	public function renderComments(): void
 	{
 		$this->template->setFile(__DIR__ . '/templates/comments.latte');
 		$this->template->render();

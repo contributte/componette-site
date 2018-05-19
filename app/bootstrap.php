@@ -1,14 +1,12 @@
-<?php
+<?php declare(strict_types = 1);
 
 use Contributte\Bootstrap\ExtraConfigurator;
-use Nette\Configurator;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$configurator = new Configurator();
+$configurator = new ExtraConfigurator();
 
 $configurator->enableDebugger(__DIR__ . '/../log');
-
 $configurator->setTempDirectory(__DIR__ . '/../temp');
 
 $configurator->createRobotLoader()
@@ -17,8 +15,6 @@ $configurator->createRobotLoader()
 
 $configurator->addConfig(__DIR__ . '/config/config.neon');
 $configurator->addConfig(__DIR__ . '/config/config.local.neon');
-
-ExtraConfigurator::wrap($configurator);
 
 $container = $configurator->createContainer();
 

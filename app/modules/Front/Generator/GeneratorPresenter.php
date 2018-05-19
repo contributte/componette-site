@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Generator;
 
@@ -12,10 +12,7 @@ final class GeneratorPresenter extends BasePresenter
 	/** @var ISitemapFactory @inject */
 	public $sitemapFactory;
 
-	/**
-	 * @return Sitemap
-	 */
-	protected function createComponentSitemap()
+	protected function createComponentSitemap(): Sitemap
 	{
 		return $this->sitemapFactory->create();
 	}

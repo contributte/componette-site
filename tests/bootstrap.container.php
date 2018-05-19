@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 use Nette\Configurator;
 
@@ -19,7 +19,7 @@ $configurator->addConfig(APP_DIR . '/config/config.neon');
 $configurator->addConfig(APP_DIR . '/config/config.test.neon');
 
 // Setup debugMode of course!
-$configurator->setDebugMode(TRUE);
+$configurator->setDebugMode(true);
 
 // Override to original wwwDir
 $configurator->addParameters([

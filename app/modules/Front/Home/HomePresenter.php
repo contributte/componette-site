@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Home;
 
@@ -10,10 +10,8 @@ final class HomePresenter extends BasePresenter
 
 	/**
 	 * Redirect to Portal
-	 *
-	 * @return void
 	 */
-	public function actionDefault()
+	public function actionDefault(): void
 	{
 		$this->redirect(Destination::FRONT_PORTAL_HOMEPAGE);
 	}

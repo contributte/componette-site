@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Portal\Home;
 
@@ -9,7 +9,7 @@ use App\Model\Database\Query\LatestAddedAddonsQuery;
 use App\Modules\Front\Portal\Base\BaseAddonPresenter;
 use App\Modules\Front\Portal\Base\Controls\AddonList\AddonList;
 use App\Modules\Front\Portal\Base\Controls\Search\Search;
-use Minetro\Nextras\Orm\QueryObject\Queryable;
+use Contributte\Nextras\Orm\QueryObject\Queryable;
 use Nextras\Orm\Collection\ICollection;
 
 final class HomePresenter extends BaseAddonPresenter
@@ -26,10 +26,8 @@ final class HomePresenter extends BaseAddonPresenter
 
 	/**
 	 * Find addons by criteria
-	 *
-	 * @return void
 	 */
-	public function actionDefault()
+	public function actionDefault(): void
 	{
 		$this->newest = $this->addonRepository->fetch(new LatestAddedAddonsQuery(), Queryable::HYDRATION_ENTITY);
 		$this->lastActive = $this->addonRepository->fetch(new LatestActivityAddonsQuery(), Queryable::HYDRATION_ENTITY);
@@ -39,29 +37,20 @@ final class HomePresenter extends BaseAddonPresenter
 	 * CONTROLS ****************************************************************
 	 */
 
-	/**
-	 * @return Search
-	 */
-	protected function createComponentSearch()
+	protected function createComponentSearch(): Search
 	{
 		$search = parent::createComponentSearch();
-		$search['form']['q']->controlPrototype->autofocus = TRUE;
+		$search['form']['q']->controlPrototype->autofocus = true;
 
 		return $search;
 	}
 
-	/**
-	 * @return AddonList
-	 */
-	protected function createComponentLatestAdded()
+	protected function createComponentLatestAdded(): AddonList
 	{
 		return $this->createAddonListControl($this->newest);
 	}
 
-	/**
-	 * @return AddonList
-	 */
-	protected function createComponentLatestActivity()
+	protected function createComponentLatestActivity(): AddonList
 	{
 		return $this->createAddonListControl($this->lastActive);
 	}

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Portal\Rss;
 
@@ -12,19 +12,12 @@ final class RssPresenter extends BasePresenter
 	/** @var RssFeedFactory @inject */
 	public $rssFeedFactory;
 
-	/**
-	 * @param string $author
-	 * @return void
-	 */
-	public function renderAuthor($author)
+	public function renderAuthor(string $author): void
 	{
 		$this->template->author = $author;
 	}
 
-	/**
-	 * @return RssFeed
-	 */
-	protected function createComponentAuthor()
+	protected function createComponentAuthor(): RssFeed
 	{
 		$control = $this->rssFeedFactory->createByAuthor($this->getParameter('author'));
 		$control->setLink($this->link('//:Front:Home:default'));
@@ -32,10 +25,7 @@ final class RssPresenter extends BasePresenter
 		return $control;
 	}
 
-	/**
-	 * @return RssFeed
-	 */
-	protected function createComponentNewest()
+	protected function createComponentNewest(): RssFeed
 	{
 		$control = $this->rssFeedFactory->createNewest();
 		$control->setLink($this->link('//:Front:Home:default'));

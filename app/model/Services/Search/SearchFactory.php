@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Services\Search;
 
@@ -10,25 +10,19 @@ final class SearchFactory
 	/** @var Request */
 	private $request;
 
-	/**
-	 * @param Request $request
-	 */
 	public function __construct(Request $request)
 	{
 		$this->request = $request;
 	}
 
-	/**
-	 * @return Search
-	 */
-	public function create()
+	public function create(): Search
 	{
 		$search = new Search();
 
 		// Pass parameters from request
 		$search->by = $this->request->getQuery('search-by');
 		$search->limit = $this->request->getQuery('search-limit');
-		$search->q = $this->request->getQuery('q', NULL);
+		$search->q = $this->request->getQuery('q', null);
 
 		return $search;
 	}

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Portal\Rss\Controls\RssFeed;
 
@@ -9,8 +9,7 @@ interface IRssFeedFactory
 
 	/**
 	 * @param Addon[] $addons
-	 * @return RssFeed
 	 */
-	public function create($addons);
+	public function create(array $addons): RssFeed;
 
 }

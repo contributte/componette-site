@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Database\ORM\Github;
 
@@ -44,10 +44,7 @@ class Github extends AbstractEntity
 	 * VIRTUAL *****************************************************************
 	 */
 
-	/**
-	 * @return GithubLinker
-	 */
-	protected function getterLinker()
+	protected function getterLinker(): GithubLinker
 	{
 		if (!$this->linker) {
 			$this->linker = new GithubLinker($this);
@@ -56,10 +53,7 @@ class Github extends AbstractEntity
 		return $this->linker;
 	}
 
-	/**
-	 * @return GithubComposer
-	 */
-	protected function getterMasterComposer()
+	protected function getterMasterComposer(): GithubComposer
 	{
 		return $this->composers->get()->getBy([
 			'type' => GithubComposer::TYPE_BRANCH,

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Admin\Sign\Controls\Login;
 
@@ -10,25 +10,19 @@ use Nette\Security\User;
 final class Login extends BaseControl
 {
 
-	/** @var array */
+	/** @var callable[] */
 	public $onLoggedIn = [];
 
 	/** @var User */
 	private $user;
 
-	/**
-	 * @param User $user
-	 */
 	public function __construct(User $user)
 	{
 		parent::__construct();
 		$this->user = $user;
 	}
 
-	/**
-	 * @return Form
-	 */
-	protected function createComponentForm()
+	protected function createComponentForm(): Form
 	{
 		$form = new Form();
 
@@ -45,11 +39,7 @@ final class Login extends BaseControl
 		return $form;
 	}
 
-	/**
-	 * @param Form $form
-	 * @return void
-	 */
-	public function processForm(Form $form)
+	public function processForm(Form $form): void
 	{
 		$values = $form->getValues();
 
@@ -73,10 +63,8 @@ final class Login extends BaseControl
 
 	/**
 	 * Render component
-	 *
-	 * @return void
 	 */
-	public function render()
+	public function render(): void
 	{
 		$this->template->setFile(__DIR__ . '/templates/login.latte');
 		$this->template->render();

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Routing;
 
@@ -18,10 +18,7 @@ final class RouterFactory
 	/** @var Request @inject */
 	public $httpRequest;
 
-	/**
-	 * @return IRouter
-	 */
-	public function create()
+	public function create(): IRouter
 	{
 		if (PHP_SAPI === 'cli') {
 			return $this->createCli();
@@ -30,10 +27,7 @@ final class RouterFactory
 		}
 	}
 
-	/**
-	 * @return RouteList
-	 */
-	protected function createCli()
+	protected function createCli(): RouteList
 	{
 		$router = new RouteList('Cli');
 		$router[] = new CliRouter(['action' => 'Cli:hi']);
@@ -41,10 +35,7 @@ final class RouterFactory
 		return $router;
 	}
 
-	/**
-	 * @return RouteList
-	 */
-	protected function createWeb()
+	protected function createWeb(): RouteList
 	{
 		$router = new RouteList();
 

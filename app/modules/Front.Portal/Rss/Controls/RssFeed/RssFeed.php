@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Portal\Rss\Controls\RssFeed;
 
@@ -29,52 +29,42 @@ final class RssFeed extends Control
 	/**
 	 * @param Addon[] $addons
 	 */
-	public function __construct($addons)
+	public function __construct(array $addons)
 	{
 		parent::__construct();
 		$this->addons = $addons;
 	}
 
-	/**
-	 * @param string $title
-	 * @return void
-	 */
-	public function setTitle($title)
+	public function setTitle(string $title): void
 	{
 		$this->title = $title;
 	}
 
 	/**
 	 * @param string|Link $link
-	 * @return void
 	 */
-	public function setLink($link)
+	public function setLink($link): void
 	{
 		$this->link = $link;
 	}
 
-	/**
-	 * @param string $description
-	 * @return void
-	 */
-	public function setDescription($description)
+	public function setDescription(string $description): void
 	{
 		$this->description = $description;
 	}
 
 	/**
 	 * @param mixed $time
-	 * @return void
 	 */
-	public function setTime($time)
+	public function setTime($time): void
 	{
 		$this->time = $time;
 	}
 
 	/**
-	 * @return array
+	 * @return mixed[]
 	 */
-	public function getItems()
+	public function getItems(): array
 	{
 		$items = [];
 		foreach ($this->addons as $addon) {
@@ -102,10 +92,8 @@ final class RssFeed extends Control
 
 	/**
 	 * Render component
-	 *
-	 * @return void
 	 */
-	public function render()
+	public function render(): void
 	{
 		$this->template->title = $this->title;
 		$this->template->link = (string) $this->link;

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Base\Controls\Statistics;
 
@@ -11,9 +11,6 @@ final class Statistics extends Control
 	/** @var StatisticsFacade */
 	private $facade;
 
-	/**
-	 * @param StatisticsFacade $facade
-	 */
 	public function __construct(StatisticsFacade $facade)
 	{
 		parent::__construct();
@@ -26,10 +23,8 @@ final class Statistics extends Control
 
 	/**
 	 * Render component
-	 *
-	 * @return void
 	 */
-	public function renderFooter()
+	public function renderFooter(): void
 	{
 		// Stats
 		$this->template->_stats = function () {

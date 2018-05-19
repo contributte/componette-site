@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Commands\Addons\Composer;
 
@@ -7,12 +7,12 @@ use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\Addon\AddonRepository;
 use App\Model\Database\ORM\Composer\Composer;
 use App\Model\WebServices\Composer\ComposerService;
-use Exception;
 use Nette\InvalidStateException;
 use Nette\Utils\Arrays;
 use Nextras\Orm\Collection\ICollection;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Throwable;
 use Tracy\Debugger;
 
 final class SynchronizeCommand extends BaseCommand
@@ -24,10 +24,6 @@ final class SynchronizeCommand extends BaseCommand
 	/** @var ComposerService */
 	private $composer;
 
-	/**
-	 * @param AddonRepository $addonRepository
-	 * @param ComposerService $composer
-	 */
 	public function __construct(AddonRepository $addonRepository, ComposerService $composer)
 	{
 		parent::__construct();
@@ -37,22 +33,15 @@ final class SynchronizeCommand extends BaseCommand
 
 	/**
 	 * Configure command
-	 *
-	 * @return void
 	 */
-	protected function configure()
+	protected function configure(): void
 	{
 		$this
 			->setName('addons:composer:sync')
 			->setDescription('Synchronize composer detailed information');
 	}
 
-	/**
-	 * @param InputInterface $input
-	 * @param OutputInterface $output
-	 * @return void
-	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
+	protected function execute(InputInterface $input, OutputInterface $output): void
 	{
 		/** @var ICollection|Addon[] $addons */
 		$addons = $this->addonRepository->findBy(['state' => Addon::STATE_ACTIVE, 'type' => Addon::TYPE_COMPOSER]);
@@ -69,7 +58,7 @@ final class SynchronizeCommand extends BaseCommand
 						throw new InvalidStateException('No composer name at ' . $addon->fullname);
 					}
 
-					list ($author, $repo) = explode('/', $composer->name);
+					 [$author, $repo] = explode('/', $composer->name);
 
 					// Create composer entity if not exist
 					if (!$addon->composer) {
@@ -77,13 +66,13 @@ final class SynchronizeCommand extends BaseCommand
 					}
 
 					// Basic info
-					$addon->composer->name = $composer->get('name', NULL);
-					$addon->composer->description = $composer->get('description', NULL);
-					$addon->composer->type = $composer->get('type', NULL);
+					$addon->composer->name = $composer->get('name', null);
+					$addon->composer->description = $composer->get('description', null);
+					$addon->composer->type = $composer->get('type', null);
 
 					// Keywords
 					$keywords = (array) $composer->get('keywords', []);
-					$addon->composer->keywords = $keywords ? implode(',', $keywords) : NULL;
+					$addon->composer->keywords = $keywords ? implode(',', $keywords) : null;
 
 					// Downloads
 					$response = $this->composer->repo($author, $repo);
@@ -99,7 +88,7 @@ final class SynchronizeCommand extends BaseCommand
 				} else {
 					$output->writeln('Skip (composer) [no composer data]: ' . $addon->fullname);
 				}
-			} catch (Exception $e) {
+			} catch (Throwable $e) {
 				Debugger::log($e, Debugger::EXCEPTION);
 				$output->writeln('Skip (composer) [exception]: ' . $e->getMessage());
 			}

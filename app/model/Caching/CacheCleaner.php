@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Caching;
 
@@ -11,9 +11,6 @@ final class CacheCleaner
 	/** @var IStorage */
 	private $storage;
 
-	/**
-	 * @param IStorage $storage
-	 */
 	public function __construct(IStorage $storage)
 	{
 		$this->storage = $storage;
@@ -21,19 +18,16 @@ final class CacheCleaner
 
 	/**
 	 * Clean whole cache
-	 *
-	 * @return void
 	 */
 	public function clean(): void
 	{
-		$this->storage->clean([Cache::ALL => TRUE]);
+		$this->storage->clean([Cache::ALL => true]);
 	}
 
 	/**
 	 * Clean by given tags
 	 *
-	 * @param array $tags
-	 * @return void
+	 * @param string[] $tags
 	 */
 	public function cleanByTags(array $tags): void
 	{
@@ -42,11 +36,8 @@ final class CacheCleaner
 
 	/**
 	 * Clear by priority
-	 *
-	 * @param int $priority
-	 * @return void
 	 */
-	public function cleanByPriority($priority): void
+	public function cleanByPriority(int $priority): void
 	{
 		$this->storage->clean([Cache::PRIORITY => intval($priority)]);
 	}
@@ -54,8 +45,7 @@ final class CacheCleaner
 	/**
 	 * Custom clear by
 	 *
-	 * @param array $conditions
-	 * @return void
+	 * @param string[] $conditions
 	 */
 	public function cleanBy(array $conditions): void
 	{

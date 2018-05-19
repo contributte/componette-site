@@ -1,13 +1,10 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Admin\Sign\Controls\Login;
 
 interface ILoginFactory
 {
 
-	/**
-	 * @return Login
-	 */
-	public function create();
+	public function create(): Login;
 
 }

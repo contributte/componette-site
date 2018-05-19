@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Database\ORM\Addon;
 
@@ -35,47 +35,35 @@ class Addon extends AbstractEntity
 {
 
 	// Types
-	const TYPE_COMPOSER = 'COMPOSER';
-	const TYPE_BOWER = 'BOWER';
-	const TYPE_UNTYPE = 'UNTYPE';
-	const TYPE_UNKNOWN = 'UNKNOWN';
+	public const TYPE_COMPOSER = 'COMPOSER';
+	public const TYPE_BOWER = 'BOWER';
+	public const TYPE_UNTYPE = 'UNTYPE';
+	public const TYPE_UNKNOWN = 'UNKNOWN';
 
 	// States
-	const STATE_ACTIVE = 'ACTIVE';
-	const STATE_ARCHIVED = 'ARCHIVED';
-	const STATE_QUEUED = 'QUEUED';
+	public const STATE_ACTIVE = 'ACTIVE';
+	public const STATE_ARCHIVED = 'ARCHIVED';
+	public const STATE_QUEUED = 'QUEUED';
 
 	// Github scheme
-	const GITHUB_REGEX = '^(?:(?:https?:\/\/)?(?:www\.)?github\.com\/)?([\w\d-\.]+)\/([\w\d-\.]+)$';
+	public const GITHUB_REGEX = '^(?:(?:https?:\/\/)?(?:www\.)?github\.com\/)?([\w\d-\.]+)\/([\w\d-\.]+)$';
 
-	/**
-	 * @return string
-	 */
-	protected function getterFullname()
+	protected function getterFullname(): string
 	{
 		return $this->author . '/' . $this->name;
 	}
 
-	/**
-	 * @return bool
-	 */
-	protected function getterIsComposer()
+	protected function getterIsComposer(): bool
 	{
 		return $this->type === self::TYPE_COMPOSER;
 	}
 
-	/**
-	 * @return bool
-	 */
-	protected function getterIsBower()
+	protected function getterIsBower(): bool
 	{
 		return $this->type === self::TYPE_BOWER;
 	}
 
-	/**
-	 * @return ComposerStatistics
-	 */
-	protected function getterComposerLatestStatistics()
+	protected function getterComposerLatestStatistics(): ComposerStatistics
 	{
 		return $this->composerStatistics->get()->limitBy(1)->fetch();
 	}

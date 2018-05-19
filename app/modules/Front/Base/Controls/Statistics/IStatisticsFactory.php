@@ -1,13 +1,10 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Base\Controls\Statistics;
 
 interface IStatisticsFactory
 {
 
-	/**
-	 * @return Statistics
-	 */
-	public function create();
+	public function create(): Statistics;
 
 }

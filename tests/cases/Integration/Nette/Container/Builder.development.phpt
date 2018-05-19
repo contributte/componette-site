@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 /**
  * Test: Container Builder [DEVELOPMENT]
@@ -14,7 +14,7 @@ use Tester\Assert;
 /**
  * DEBUG
  */
-test(function () {
+test(function (): void {
 	$configurator = new Configurator();
 	$configurator->setTempDirectory(TEMP_DIR);
 
@@ -28,10 +28,10 @@ test(function () {
 	ExtraConfigurator::wrap($configurator);
 
 	try {
-		$configurator->setDebugMode(TRUE);
+		$configurator->setDebugMode(true);
 		$container = $configurator->createContainer();
 		Assert::type(Container::class, $container);
-	} catch (Exception $e) {
+	} catch (Throwable $e) {
 		Assert::fail(sprintf('Building development container failed. Exception: %s.', $e->getMessage()));
 	}
 });

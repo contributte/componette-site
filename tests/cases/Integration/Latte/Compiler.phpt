@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 /**
  * Test: Latte Template Compiler
@@ -14,7 +14,7 @@ use Tester\Assert;
 /** @var Container $container */
 $container = require_once __DIR__ . '/../../../bootstrap.container.php';
 
-test(function () use ($container) {
+test(function () use ($container): void {
 	try {
 		/** @var ITemplateFactory $templateFactory */
 		$templateFactory = $container->getByType(ITemplateFactory::class);
@@ -27,7 +27,7 @@ test(function () use ($container) {
 		foreach ($finder as $file) {
 			$template->getLatte()->warmupCache($file);
 		}
-	} catch (Exception $e) {
+	} catch (Throwable $e) {
 		Assert::fail(sprintf('Template compilation failed (%s)', $e->getMessage()));
 	}
 });

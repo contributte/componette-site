@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Database\Query;
 
@@ -13,11 +13,7 @@ final class OpenSearchQuery extends QueryObject
 	/** @var string */
 	private $token;
 
-	/**
-	 * @param string $query
-	 * @return void
-	 */
-	public function byQuery(string $query)
+	public function byQuery(string $query): void
 	{
 		$query = Strings::replace($query, '#[.\-]#', ' ');
 		//$tokens = explode(' ', $query);
@@ -25,11 +21,7 @@ final class OpenSearchQuery extends QueryObject
 		$this->token = $query;
 	}
 
-	/**
-	 * @param QueryBuilder $builder
-	 * @return QueryBuilder
-	 */
-	public function doQuery(QueryBuilder $builder)
+	public function doQuery(QueryBuilder $builder): QueryBuilder
 	{
 		if (!$this->token) {
 			throw new InvalidStateException('Provide search query');

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Database\ORM\ComposerStatistics;
 
@@ -7,7 +7,6 @@ use Nextras\Orm\Collection\ICollection;
 
 /**
  * @property-read ComposerStatisticsMapper $mapper
- *
  * @method ICollection|ComposerStatistics[] findAll()
  * @method ICollection|ComposerStatistics[] findBy(array $conds)
  * @method ComposerStatistics|NULL getBy(array $conds)
@@ -16,9 +15,9 @@ final class ComposerStatisticsRepository extends AbstractRepository
 {
 
 	/**
-	 * @return array
+	 * @return string[]
 	 */
-	public static function getEntityClassNames()
+	public static function getEntityClassNames(): array
 	{
 		return [ComposerStatistics::class];
 	}

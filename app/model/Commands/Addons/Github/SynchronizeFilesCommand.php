@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Commands\Addons\Github;
 
@@ -21,10 +21,6 @@ final class SynchronizeFilesCommand extends BaseCommand
 	/** @var GithubService */
 	private $github;
 
-	/**
-	 * @param AddonFacade $addonFacade
-	 * @param GithubService $github
-	 */
 	public function __construct(AddonFacade $addonFacade, GithubService $github)
 	{
 		parent::__construct();
@@ -34,10 +30,8 @@ final class SynchronizeFilesCommand extends BaseCommand
 
 	/**
 	 * Configure command
-	 *
-	 * @return void
 	 */
-	protected function configure()
+	protected function configure(): void
 	{
 		$this
 			->setName('addons:github:sync:files')
@@ -52,18 +46,13 @@ final class SynchronizeFilesCommand extends BaseCommand
 
 		$this->addOption(
 			'rest',
-			NULL,
+			null,
 			InputOption::VALUE_NONE,
 			'Should synchronize only queued addons?'
 		);
 	}
 
-	/**
-	 * @param InputInterface $input
-	 * @param OutputInterface $output
-	 * @return void
-	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
+	protected function execute(InputInterface $input, OutputInterface $output): void
 	{
 		// @todo maybe catch exceptions and update output??
 		$addons = $this->addonFacade->find($input);
@@ -73,7 +62,7 @@ final class SynchronizeFilesCommand extends BaseCommand
 		$counter = 0;
 		foreach ($addons as $addon) {
 			// Composer
-			if (in_array($addon->type, [NULL, Addon::TYPE_UNKNOWN, Addon::TYPE_COMPOSER])) {
+			if (in_array($addon->type, [null, Addon::TYPE_UNKNOWN, Addon::TYPE_COMPOSER])) {
 				$response = $this->github->composer($addon->author, $addon->name);
 
 				if ($response->isOk()) {
@@ -104,7 +93,7 @@ final class SynchronizeFilesCommand extends BaseCommand
 			}
 
 			// Untype
-			if (in_array($addon->type, [NULL, Addon::TYPE_UNKNOWN])) {
+			if (in_array($addon->type, [null, Addon::TYPE_UNKNOWN])) {
 				$addon->type = Addon::TYPE_UNTYPE;
 			}
 

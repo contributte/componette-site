@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Database\Helpers;
 
@@ -13,19 +13,12 @@ final class ComposerLinker
 	/** @var Composer */
 	private $composer;
 
-	/**
-	 * @param Composer $composer
-	 */
 	public function __construct(Composer $composer)
 	{
 		$this->composer = $composer;
 	}
 
-	/**
-	 * @param string|NULL $package
-	 * @return string
-	 */
-	public function getPackageUrl(string $package = NULL): string
+	public function getPackageUrl(?string $package = null): string
 	{
 		$url = new Url(self::PACKAGIST . '/packages');
 		$url->appendPath('/');
@@ -39,19 +32,12 @@ final class ComposerLinker
 		return (string) $url;
 	}
 
-	/**
-	 * @param string $tag
-	 * @return string
-	 */
 	public function getTagUrl(string $tag): string
 	{
 		return self::PACKAGIST . '/search/?tags=' . $tag;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getName()
+	public function getName(): string
 	{
 		return $this->composer->name;
 	}

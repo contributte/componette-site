@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Routing\Helpers;
 
@@ -16,7 +16,7 @@ final class AddonsHelper
 	/** @var Cache */
 	private $cache;
 
-	/** @var array */
+	/** @var string[][] */
 	private $data = [
 		'addons' => [],
 		'authors' => [],
@@ -25,10 +25,6 @@ final class AddonsHelper
 	/** @var bool */
 	private $build;
 
-	/**
-	 * @param AddonRepository $repository
-	 * @param CacheFactory $cacheFactory
-	 */
 	public function __construct(AddonRepository $repository, CacheFactory $cacheFactory)
 	{
 		$this->repository = $repository;
@@ -37,8 +33,6 @@ final class AddonsHelper
 
 	/**
 	 * Build cache
-	 *
-	 * @return void
 	 */
 	protected function build(): void
 	{
@@ -56,7 +50,7 @@ final class AddonsHelper
 
 				return $data;
 			});
-			$this->build = TRUE;
+			$this->build = true;
 		}
 	}
 
@@ -64,41 +58,29 @@ final class AddonsHelper
 	 * ADDON *******************************************************************
 	 */
 
-	/**
-	 * @param string $slug
-	 * @return int|NULL
-	 */
-	public function addonIn($slug): ?int
+	public function addonIn(string $slug): ?int
 	{
 		$this->build();
 		$addon = array_search(strtolower($slug), $this->data['addons']);
 
-		return $addon ? $addon : NULL;
+		return $addon ?: null;
 	}
 
-	/**
-	 * @param int $id
-	 * @return string|NULL
-	 */
-	public function addonOut($id): ?string
+	public function addonOut(int $id): ?string
 	{
 		$this->build();
 		if (isset($this->data['addons'][$id])) {
 			return strtolower($this->data['addons'][$id]);
 		}
 
-		return NULL;
+		return null;
 	}
 
 	/**
 	 * OWNER *******************************************************************
 	 */
 
-	/**
-	 * @param string $slug
-	 * @return string|NULL
-	 */
-	public function authorIn($slug): ?string
+	public function authorIn(string $slug): ?string
 	{
 		$this->build();
 		$slug = strtolower($slug);
@@ -106,14 +88,10 @@ final class AddonsHelper
 			return strtolower($this->data['authors'][$slug]);
 		}
 
-		return NULL;
+		return null;
 	}
 
-	/**
-	 * @param string $slug
-	 * @return string
-	 */
-	public function authorOut($slug): ?string
+	public function authorOut(string $slug): ?string
 	{
 		$this->build();
 		$slug = strtolower($slug);
@@ -121,7 +99,7 @@ final class AddonsHelper
 			return strtolower($this->data['authors'][$slug]);
 		}
 
-		return NULL;
+		return null;
 	}
 
 }

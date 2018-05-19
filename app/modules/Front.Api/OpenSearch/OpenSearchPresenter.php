@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Api\OpenSearch;
 
@@ -6,7 +6,7 @@ use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\EntityModel;
 use App\Model\Database\Query\OpenSearchQuery;
 use App\Modules\Front\Api\Base\BasePresenter;
-use Minetro\Nextras\Orm\QueryObject\Queryable;
+use Contributte\Nextras\Orm\QueryObject\Queryable;
 
 final class OpenSearchPresenter extends BasePresenter
 {
@@ -14,12 +14,7 @@ final class OpenSearchPresenter extends BasePresenter
 	/** @var EntityModel @inject */
 	public $em;
 
-	/**
-	 * @param string $q
-	 * @return void
-	 * @send json
-	 */
-	public function actionSuggest($q)
+	public function actionSuggest(string $q): void
 	{
 		$query = new OpenSearchQuery();
 		$query->byQuery($q);

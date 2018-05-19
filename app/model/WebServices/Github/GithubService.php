@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\WebServices\Github;
 
@@ -10,28 +10,23 @@ final class GithubService
 {
 
 	// Mediatypes
-	const MEDIATYPE_HTML = 'html';
-	const MEDIATYPE_HTML_JSON = 'html+json';
-	const MEDIATYPE_RAW = 'raw';
+	public const MEDIATYPE_HTML = 'html';
+	public const MEDIATYPE_HTML_JSON = 'html+json';
+	public const MEDIATYPE_RAW = 'raw';
 
 	/** @var GithubClient */
 	private $client;
 
-	/**
-	 * @param GithubClient $client
-	 */
 	public function __construct(GithubClient $client)
 	{
 		$this->client = $client;
 	}
 
 	/**
-	 * @param string $url
-	 * @param array $headers
-	 * @param array $opts
-	 * @return Response
+	 * @param string[] $headers
+	 * @param string[] $opts
 	 */
-	protected function makeRequest($url, array $headers = [], array $opts = [])
+	protected function makeRequest(string $url, array $headers = [], array $opts = []): Response
 	{
 		try {
 			return $this->client->makeRequest($url, $headers, $opts);
@@ -41,23 +36,20 @@ final class GithubService
 	}
 
 	/**
-	 * @param string $uri
-	 * @param array $headers
-	 * @param array $opts
-	 * @return Response
+	 * @param string[] $headers
+	 * @param string[] $opts
 	 */
-	protected function call($uri, array $headers = [], array $opts = [])
+	protected function call(string $uri, array $headers = [], array $opts = []): Response
 	{
 		return $this->makeRequest($this->client->getApiUrl($uri), $headers, $opts);
 	}
 
 	/**
-	 * @param string $url
-	 * @param array $headers
-	 * @param array $opts
+	 * @param string[] $headers
+	 * @param string[] $opts
 	 * @return Response[]
 	 */
-	protected function aggregate($url, array $headers = [], array $opts = [])
+	protected function aggregate(string $url, array $headers = [], array $opts = []): array
 	{
 		// Fire request
 		$response = $this->makeRequest($url, $headers, $opts);
@@ -75,7 +67,7 @@ final class GithubService
 			$pages = $this->parsePages($link);
 			foreach ($pages as $page) {
 				// Iterate over all pages and take only next pages
-				if ($page['rel'] == 'next') {
+				if ($page['rel'] === 'next') {
 					// Fetch next response
 					$innerResponses = $this->aggregate($page['url'], $headers, $opts);
 					// Append to current responses
@@ -88,10 +80,9 @@ final class GithubService
 	}
 
 	/**
-	 * @param string $link
-	 * @return array
+	 * @return string[]
 	 */
-	protected function parsePages($link)
+	protected function parsePages(string $link): array
 	{
 		preg_match_all('#<(.+\?page=(\d+))>;\srel=.((?:next|last|first)).#U', $link, $matches);
 		if (!$matches) return [];
@@ -110,10 +101,9 @@ final class GithubService
 
 
 	/**
-	 * @param string $mediatype
-	 * @return array
+	 * @return string[]
 	 */
-	protected function mediatype($mediatype)
+	protected function mediatype(string $mediatype): array
 	{
 		switch ($mediatype) {
 			case self::MEDIATYPE_HTML:
@@ -137,79 +127,41 @@ final class GithubService
 	 * API *********************************************************************
 	 */
 
-	/**
-	 * @param string $author
-	 * @param string $repo
-	 * @return Response
-	 */
-	public function repo($author, $repo)
+	public function repo(string $author, string $repo): Response
 	{
 		return $this->call(sprintf('/repos/%s/%s', $author, $repo));
 	}
 
-	/**
-	 * @param string $author
-	 * @param string $repo
-	 * @param string $mediatype
-	 * @return Response
-	 */
-	public function readme($author, $repo, $mediatype = NULL)
+	public function readme(string $author, string $repo, ?string $mediatype = null): Response
 	{
 		$headers = $this->mediatype($mediatype);
 
 		return $this->call(sprintf('/repos/%s/%s/readme', $author, $repo), $headers);
 	}
 
-	/**
-	 * @param string $author
-	 * @param string $repo
-	 * @param string $path
-	 * @param string $mediatype
-	 * @return Response
-	 */
-	public function content($author, $repo, $path, $mediatype = NULL)
+	public function content(string $author, string $repo, string $path, ?string $mediatype = null): Response
 	{
 		$headers = $this->mediatype($mediatype);
 
 		return $this->call(sprintf('/repos/%s/%s/contents/%s', $author, $repo, $path), $headers);
 	}
 
-	/**
-	 * @param string $filename
-	 * @return Response
-	 */
-	public function download($filename)
+	public function download(string $filename): Response
 	{
 		return $this->makeRequest($this->client->getContentUrl($filename));
 	}
 
-	/**
-	 * @param string $author
-	 * @param string $repo
-	 * @return Response
-	 */
-	public function composer($author, $repo)
+	public function composer(string $author, string $repo): Response
 	{
 		return $this->download(sprintf('%s/%s/master/%s', $author, $repo, 'composer.json'));
 	}
 
-	/**
-	 * @param string $author
-	 * @param string $repo
-	 * @return Response
-	 */
-	public function bower($author, $repo)
+	public function bower(string $author, string $repo): Response
 	{
 		return $this->content($author, $repo, 'bower.json');
 	}
 
-	/**
-	 * @param string $author
-	 * @param string $repo
-	 * @param int $page
-	 * @return Response
-	 */
-	public function releases($author, $repo, $page = NULL)
+	public function releases(string $author, string $repo, ?int $page = null): Response
 	{
 		if ($page) {
 			return $this->call(sprintf('/repos/%s/%s/releases?page=%s', $author, $repo, $page));
@@ -219,12 +171,9 @@ final class GithubService
 	}
 
 	/**
-	 * @param string $author
-	 * @param string $repo
-	 * @param string $mediatype
 	 * @return Response[]
 	 */
-	public function allReleases($author, $repo, $mediatype = NULL): array
+	public function allReleases(string $author, string $repo, ?string $mediatype = null): array
 	{
 		$headers = $this->mediatype($mediatype);
 
@@ -234,46 +183,29 @@ final class GithubService
 		);
 	}
 
-	/**
-	 * @param string $author
-	 * @param string $repo
-	 * @return Response
-	 */
-	public function stargazers($author, $repo)
+	public function stargazers(string $author, string $repo): Response
 	{
 		return $this->call(sprintf('/repos/%s/%s/stargazers', $author, $repo));
 	}
 
-	/**
-	 * @param string $author
-	 * @return Response
-	 */
-	public function user($author)
+	public function user(string $author): Response
 	{
 		return $this->call(sprintf('/users/%s', $author));
 	}
 
-	/**
-	 * @param string $author
-	 * @param bool $content
-	 * @return Response
-	 */
-	public function avatar($author, $content = TRUE)
+	public function avatar(string $author, bool $content = true): Response
 	{
 		$opts = [];
 
 		if (!$content) {
-			$opts[CURLOPT_FILETIME] = TRUE;
-			$opts[CURLOPT_NOBODY] = TRUE;
+			$opts[CURLOPT_FILETIME] = true;
+			$opts[CURLOPT_NOBODY] = true;
 		}
 
 		return $this->makeRequest($this->client->getAvatarUrl($author), [], $opts);
 	}
 
-	/**
-	 * @return Response
-	 */
-	public function limit()
+	public function limit(): Response
 	{
 		return $this->call('/rate_limit');
 	}

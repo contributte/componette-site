@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Portal\Base\Controls\AddonList;
 
@@ -15,9 +15,6 @@ final class CategorizedAddonList extends BaseControl
 	/** @var EntityModel */
 	private $em;
 
-	/**
-	 * @param EntityModel $em
-	 */
 	public function __construct(EntityModel $em)
 	{
 		parent::__construct();
@@ -29,9 +26,9 @@ final class CategorizedAddonList extends BaseControl
 	 */
 
 	/**
-	 * @return AddonMeta
+	 * Creates meta component
 	 */
-	protected function createComponentMeta()
+	protected function createComponentMeta(): AddonMeta
 	{
 		return new AddonMeta();
 	}
@@ -43,7 +40,7 @@ final class CategorizedAddonList extends BaseControl
 	/**
 	 * @return Tag[]
 	 */
-	protected function getTags()
+	protected function getTags(): array
 	{
 		return $this->em->getRepositoryForEntity(Tag::class)
 			->findAll()
@@ -54,7 +51,7 @@ final class CategorizedAddonList extends BaseControl
 	/**
 	 * @return ICollection|Addon[]
 	 */
-	protected function getAddons()
+	protected function getAddons(): ICollection
 	{
 		return $this->em->getRepositoryForEntity(Addon::class)
 			->findBy(['state' => Addon::STATE_ACTIVE])
@@ -67,10 +64,8 @@ final class CategorizedAddonList extends BaseControl
 
 	/**
 	 * Render component
-	 *
-	 * @return void
 	 */
-	public function render()
+	public function render(): void
 	{
 		$categories = $this->getTags();
 		$addons = $this->getAddons();

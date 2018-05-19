@@ -1,13 +1,10 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Portal\Base\Controls\AddonModal;
 
 interface IAddonModalFactory
 {
 
-	/**
-	 * @return AddonModal
-	 */
-	public function create();
+	public function create(): AddonModal;
 
 }

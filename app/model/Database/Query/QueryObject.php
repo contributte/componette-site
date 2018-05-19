@@ -1,8 +1,8 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Database\Query;
 
-use Minetro\Nextras\Orm\QueryObject\QueryObject as NQueryObject;
+use Contributte\Nextras\Orm\QueryObject\QueryObject as NQueryObject;
 
 abstract class QueryObject extends NQueryObject
 {
@@ -13,20 +13,12 @@ abstract class QueryObject extends NQueryObject
 	/** @var int */
 	protected $offset;
 
-	/**
-	 * @param int $limit
-	 * @return void
-	 */
-	public function setLimit(int $limit)
+	public function setLimit(int $limit): void
 	{
 		$this->limit = $limit;
 	}
 
-	/**
-	 * @param int $offset
-	 * @return void
-	 */
-	public function setOffset(int $offset)
+	public function setOffset(int $offset): void
 	{
 		$this->offset = $offset;
 	}

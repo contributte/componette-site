@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Modules\Front\Generator\Controls\Sitemap;
 
@@ -14,9 +14,6 @@ final class Sitemap extends Control
 	/** @var EntityModel */
 	private $em;
 
-	/**
-	 * @param EntityModel $em
-	 */
 	public function __construct(EntityModel $em)
 	{
 		parent::__construct();
@@ -24,9 +21,9 @@ final class Sitemap extends Control
 	}
 
 	/**
-	 * @return array
+	 * @return string[]
 	 */
-	private function getUrls()
+	private function getUrls(): array
 	{
 		$urls = [];
 
@@ -83,7 +80,7 @@ final class Sitemap extends Control
 	/**
 	 * @return Addon[]
 	 */
-	private function findAuthors()
+	private function findAuthors(): array
 	{
 		return $this->em->getRepositoryForEntity(Addon::class)
 			->findBy(['state' => Addon::STATE_ACTIVE])
@@ -94,7 +91,7 @@ final class Sitemap extends Control
 	/**
 	 * @return Addon[]|ICollection
 	 */
-	private function findAddons()
+	private function findAddons(): ICollection
 	{
 		return $this->em->getRepositoryForEntity(Addon::class)
 			->findBy(['state' => Addon::STATE_ACTIVE])
@@ -104,7 +101,7 @@ final class Sitemap extends Control
 	/**
 	 * @return Tag[]|ICollection
 	 */
-	private function findTags()
+	private function findTags(): ICollection
 	{
 		return $this->em->getRepositoryForEntity(Tag::class)
 			->findAll()
@@ -117,10 +114,8 @@ final class Sitemap extends Control
 
 	/**
 	 * Render component
-	 *
-	 * @return void
 	 */
-	public function render()
+	public function render(): void
 	{
 		$this->template->urls = $this->getUrls();
 		$this->template->setFile(__DIR__ . '/templates/sitemap.latte');
