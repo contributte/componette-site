@@ -2,9 +2,9 @@
 
 namespace App\Model\Commands;
 
-use Contributte\Console\Command\AbstractCommand;
+use Symfony\Component\Console\Command\Command;
 
-abstract class BaseCommand extends AbstractCommand
+abstract class BaseCommand extends Command
 {
 
 }
