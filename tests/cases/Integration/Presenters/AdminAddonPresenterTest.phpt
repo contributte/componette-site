@@ -3,11 +3,13 @@
 namespace AppTests\Integration\Presenters;
 
 use App\Model\Database\ORM\Addon\Addon;
+use App\Model\Database\ORM\Tag\Tag;
 use App\Model\Security\SimpleAuthenticator;
 use Mangoweb\Tester\Infrastructure\TestCase;
 use Mangoweb\Tester\NextrasOrmEntityGenerator\EntityGenerator;
 use Mangoweb\Tester\PresenterTester\PresenterTester;
 use Nette\Security\Identity;
+use Tester\Assert;
 
 $containerFactory = require __DIR__ . '/../../../bootstrap.mango.php';
 
@@ -64,6 +66,33 @@ class AdminAddonPresenterTest extends TestCase
 
 		$response = $this->presenterTester->execute($request);
 		$response->assertRenders(['mangoweb/presenter-tester']);
+	}
+
+
+	public function testAddTags()
+	{
+		/** @var Addon $addon */
+		$addon = $this->entityGenerator->create(Addon::class);
+		Assert::same([], $addon->tags->get()->fetchPairs(null, 'name'));
+
+		/** @var Tag[] $tags */
+		$tags = $this->entityGenerator->createList(Tag::class, 5);
+
+		$request = $this->presenterTester->createRequest('Admin:Addon')
+			->withIdentity($this->identity)
+			->withParameters(['action' => 'detail', 'id' => $addon->id])
+			->withForm('addonForm', [
+				'author' => $addon->author,
+				'name' => $addon->name,
+				'tags' => [$tags[0]->id, $tags[2]->id],
+			]);
+
+		$response = $this->presenterTester->execute($request);
+		$response->assertFormValid('addonForm');
+		$response->assertRedirects('Admin:Addon');
+
+		$this->entityGenerator->refreshAll(); // TODO: why is this not necessary?
+		Assert::same(['tag1', 'tag3'], $addon->tags->get()->fetchPairs(null, 'name'));
 	}
 }
 
