@@ -49,7 +49,8 @@
 		"mangoweb/tester-infrastructure": "^0.2.0",
 		"mangoweb/tester-database-creator": "^0.2.0",
 		"mangoweb/presenter-tester": "^0.1.0",
-		"mangoweb/tester-http-mocks": "^0.1.0"
+		"mangoweb/tester-http-mocks": "^0.1.0",
+		"mangoweb/tester-nextras-orm-entity-generator": "@dev"
 	},
 	"require-dev": {
 		"ninjify/qa": "^0.8.0",
@@ -65,6 +66,12 @@
 	"autoload-dev": {
 		"classmap": ["app", "tests/cases"]
 	},
+	"repositories": [
+		{
+			"type": "github",
+			"url": "https://github.com/mangoweb-backend/tester-nextras-orm-entity-generator"
+		}
+	],
 	"minimum-stability": "dev",
 	"prefer-stable": true,
 	"scripts": {

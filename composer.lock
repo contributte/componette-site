@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b36cc7a66390f9a59460166d43e1b963",
+    "content-hash": "fc02a81a7b62f8522323429ad85583bb",
     "packages": [
         {
             "name": "contributte/application",
@@ -1007,6 +1007,43 @@
                 "MIT"
             ],
             "time": "2018-03-17T15:51:36+00:00"
+        },
+        {
+            "name": "mangoweb/tester-nextras-orm-entity-generator",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mangoweb-backend/tester-nextras-orm-entity-generator.git",
+                "reference": "5298f628b88ffb372b10e517f486d66cf910ade8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mangoweb-backend/tester-nextras-orm-entity-generator/zipball/5298f628b88ffb372b10e517f486d66cf910ade8",
+                "reference": "5298f628b88ffb372b10e517f486d66cf910ade8",
+                "shasum": ""
+            },
+            "require": {
+                "nextras/orm": "~3.0",
+                "php": "~7.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan-shim": "~0.9"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Nextras ORM entity generator suitable for testing",
+            "support": {
+                "source": "https://github.com/mangoweb-backend/tester-nextras-orm-entity-generator/tree/master",
+                "issues": "https://github.com/mangoweb-backend/tester-nextras-orm-entity-generator/issues"
+            },
+            "time": "2018-05-25T20:25:37+00:00"
         },
         {
             "name": "nette/application",
@@ -2262,16 +2299,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.0.9",
+            "version": "v4.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "3e820bc2c520a87ca209ad8fa961c97f42e0b4ae"
+                "reference": "058f120b8e06ebcd7b211de5ffae07b2db00fbdd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/3e820bc2c520a87ca209ad8fa961c97f42e0b4ae",
-                "reference": "3e820bc2c520a87ca209ad8fa961c97f42e0b4ae",
+                "url": "https://api.github.com/repos/symfony/console/zipball/058f120b8e06ebcd7b211de5ffae07b2db00fbdd",
+                "reference": "058f120b8e06ebcd7b211de5ffae07b2db00fbdd",
                 "shasum": ""
             },
             "require": {
@@ -2326,7 +2363,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2018-04-30T01:23:47+00:00"
+            "time": "2018-05-16T09:05:32+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -2389,16 +2426,16 @@
         },
         {
             "name": "tracy/tracy",
-            "version": "v2.4.14",
+            "version": "v2.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tracy.git",
-                "reference": "229249212e041bc3cd5d88f65965d9391dad3852"
+                "reference": "8b57aae09450f0ef3201aabaca87435ebf74571a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tracy/zipball/229249212e041bc3cd5d88f65965d9391dad3852",
-                "reference": "229249212e041bc3cd5d88f65965d9391dad3852",
+                "url": "https://api.github.com/repos/nette/tracy/zipball/8b57aae09450f0ef3201aabaca87435ebf74571a",
+                "reference": "8b57aae09450f0ef3201aabaca87435ebf74571a",
                 "shasum": ""
             },
             "require": {
@@ -2450,7 +2487,7 @@
                 "nette",
                 "profiler"
             ],
-            "time": "2018-05-04T11:54:21+00:00"
+            "time": "2018-05-25T09:32:42+00:00"
         }
     ],
     "packages-dev": [
@@ -2668,12 +2705,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ninjify/coding-standard.git",
-                "reference": "98113e2b00e5391ee84e3d26b171bcd8d7ca04ad"
+                "reference": "a2f1763b7fd83f336b301344ff29ae0f89273b0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ninjify/coding-standard/zipball/98113e2b00e5391ee84e3d26b171bcd8d7ca04ad",
-                "reference": "98113e2b00e5391ee84e3d26b171bcd8d7ca04ad",
+                "url": "https://api.github.com/repos/ninjify/coding-standard/zipball/a2f1763b7fd83f336b301344ff29ae0f89273b0f",
+                "reference": "a2f1763b7fd83f336b301344ff29ae0f89273b0f",
                 "shasum": ""
             },
             "require": {
@@ -2705,7 +2742,7 @@
                 "ninjify",
                 "php"
             ],
-            "time": "2018-04-26T16:18:11+00:00"
+            "time": "2018-05-21T09:01:03+00:00"
         },
         {
             "name": "ninjify/nunjuck",
@@ -2912,7 +2949,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "nextras/migrations": 20
+        "nextras/migrations": 20,
+        "mangoweb/tester-nextras-orm-entity-generator": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
