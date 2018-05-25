@@ -20,11 +20,7 @@ final class RouterFactory
 
 	public function create(bool $consoleMode): IRouter
 	{
-		if ($consoleMode) {
-			return $this->createCli();
-		} else {
-			return $this->createWeb();
-		}
+		return $this->createWeb();
 	}
 
 	protected function createCli(): RouteList
