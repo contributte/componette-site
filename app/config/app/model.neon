@@ -32,7 +32,7 @@ services:
 	# Routing ==============================================
 	- App\Model\Routing\Helpers\AddonsHelper
 	- {class: App\Model\Routing\RouterFactory, inject: on}
-	routing.router: @App\Model\Routing\RouterFactory::create
+	routing.router: @App\Model\Routing\RouterFactory::create(%consoleMode%)
 
 	# Portal ===============================================
 	- App\Model\Portal(@container::parameters)

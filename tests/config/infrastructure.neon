@@ -1,0 +1,26 @@
+extensions:
+	mango.databaseCreator: Mangoweb\Tester\DatabaseCreator\Bridges\NetteDI\DatabaseCreatorExtension
+	mango.databaseCreatorInfrastructure: Mangoweb\Tester\DatabaseCreator\Bridges\Infrastructure\DatabaseCreatorInfrastructureExtension
+	mango.presenterTester: Mangoweb\Tester\PresenterTester\Bridges\Infrastructure\PresenterTesterExtension
+	nette.cache: Nette\Bridges\CacheDI\CacheExtension(%tempDir%)
+	mango.httpMocks: Mangoweb\Tester\HttpMocks\Bridges\Infrastructure\HttpExtension
+
+parameters:
+	database:
+		driver: mysqli
+
+services:
+	- Mangoweb\Tester\Infrastructure\DefaultAppConfiguratorFactory([
+		%appDir%/config/config.neon
+		%appDir%/config/config.local.neon
+	])
+
+
+mango.databaseCreator:
+	driver: mysql
+	dbal: Mangoweb\Tester\DatabaseCreator\Bridges\NextrasDbal\NextrasDbalAdapter
+	migrations: Mangoweb\Tester\DatabaseCreator\Bridges\NextrasMigrations\NextrasMigrationsDriver
+	strategy: reset
+	databaseName:
+		migrationHashSuffix: true
+
