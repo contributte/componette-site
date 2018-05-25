@@ -1,7 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace AppTests\Integreation\Presenters;
-
+namespace AppTests\Integration\Presenters;
 
 use Mangoweb\Tester\Infrastructure\TestCase;
 use Mangoweb\Tester\PresenterTester\PresenterTester;
