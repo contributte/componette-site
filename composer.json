@@ -65,7 +65,7 @@
 		}
 	},
 	"autoload-dev": {
-		"classmap": ["app", "tests/cases"]
+		"classmap": ["app", "tests/cases", "tests/inc"]
 	},
 	"repositories": [
 		{

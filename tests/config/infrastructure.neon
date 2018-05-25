@@ -15,6 +15,10 @@ services:
 		%appDir%/config/config.local.neon
 	])
 
+	entityGenerator:
+		class: Mangoweb\Tester\NextrasOrmEntityGenerator\EntityGenerator
+		setup:
+			- addFactory(AppTests\Inc\AddonEntityFactory())
 
 mango.databaseCreator:
 	driver: mysql
