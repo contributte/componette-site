@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "83891fe1759f4c7a87bbce895f1ac30b",
+    "content-hash": "15148de80a00a81942ca0a4f388a3761",
     "packages": [
         {
             "name": "contributte/application",
@@ -2947,7 +2947,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "nextras/migrations": 20
+        "nextras/migrations": 20,
+        "mangoweb/tester-infrastructure": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

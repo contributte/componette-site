@@ -46,7 +46,7 @@
 
 		"contributte/nextras-orm-query-object": "^0.2.0",
 		"contributte/console": "^0.4.0",
-		"mangoweb/tester-infrastructure": "^0.2.0",
+		"mangoweb/tester-infrastructure": "@dev",
 		"mangoweb/tester-database-creator": "^0.2.0",
 		"mangoweb/presenter-tester": "^0.1.0",
 		"mangoweb/tester-http-mocks": "^0.1.0",

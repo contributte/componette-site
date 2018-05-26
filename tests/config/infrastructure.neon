@@ -1,0 +1,5 @@
+mango.tester:
+	appContainer:
+		configs:
+			- %appDir%/config/config.neon
+			- %appDir%/config/config.local.neon
