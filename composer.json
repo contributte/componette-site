@@ -45,18 +45,19 @@
 		"nextras/migrations": "dev-master",
 
 		"contributte/nextras-orm-query-object": "^0.2.0",
-		"contributte/console": "^0.4.0",
-		"mangoweb/tester-infrastructure": "dev-master",
-		"mangoweb/tester-database-creator": "^0.2.0",
-		"mangoweb/presenter-tester": "^0.1.0",
-		"mangoweb/tester-http-mocks": "^0.1.0",
-		"mangoweb/tester-nextras-transactional": "^0.1.0"
+		"contributte/console": "^0.4.0"
 	},
 	"require-dev": {
 		"ninjify/qa": "^0.8.0",
 		"ninjify/nunjuck": "^0.2.0",
 
-		"contributte/dev": "^0.1.0"
+		"contributte/dev": "^0.1.0",
+		"mangoweb/tester-infrastructure": "dev-master",
+		"mangoweb/tester-database-creator": "^0.2.0",
+		"mangoweb/presenter-tester": "^0.1.0",
+		"mangoweb/tester-http-mocks": "^0.1.0",
+		"mangoweb/tester-nextras-transactional": "^0.1.0",
+		"mockery/mockery": "^1.1"
 	},
 	"autoload": {
 		"psr-4": {

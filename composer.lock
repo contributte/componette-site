@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9af79ccb4884a739d8dc79c05e86574c",
+    "content-hash": "8bc8b175c593a0140399b8988c607662",
     "packages": [
         {
             "name": "contributte/application",
@@ -854,194 +854,6 @@
                 "twig"
             ],
             "time": "2018-02-06T14:42:33+00:00"
-        },
-        {
-            "name": "mangoweb/presenter-tester",
-            "version": "v0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mangoweb-backend/presenter-tester.git",
-                "reference": "61b5f6b3bbeef333bf6ffae2bdb1d72ee688deac"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mangoweb-backend/presenter-tester/zipball/61b5f6b3bbeef333bf6ffae2bdb1d72ee688deac",
-                "reference": "61b5f6b3bbeef333bf6ffae2bdb1d72ee688deac",
-                "shasum": ""
-            },
-            "require": {
-                "nette/application": "~2.4",
-                "nette/forms": "~2.4",
-                "nette/security": "~2.4",
-                "nette/tester": "~2.0",
-                "php": "~7.1"
-            },
-            "require-dev": {
-                "mangoweb/tester-http-mocks": "@dev",
-                "mangoweb/tester-infrastructure": "@dev",
-                "nextras/secured-links": "^1.4",
-                "phpstan/phpstan-shim": "^0.9.2"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "time": "2018-03-14T17:37:00+00:00"
-        },
-        {
-            "name": "mangoweb/tester-database-creator",
-            "version": "v0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mangoweb-backend/tester-database-creator.git",
-                "reference": "f20c8ad92c56385451dad7d6445e6fbab8485525"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mangoweb-backend/tester-database-creator/zipball/f20c8ad92c56385451dad7d6445e6fbab8485525",
-                "reference": "f20c8ad92c56385451dad7d6445e6fbab8485525",
-                "shasum": ""
-            },
-            "require": {
-                "php": "~7.1"
-            },
-            "require-dev": {
-                "mangoweb/tester-infrastructure": "@dev",
-                "nette/di": "~2.4",
-                "nextras/dbal": "@dev",
-                "nextras/migrations": "@dev",
-                "nextras/orm": "@dev",
-                "phpstan/phpstan-shim": "^0.9.2"
-            },
-            "suggest": {
-                "nextras/dbal": "",
-                "nextras/migrations": "",
-                "nextras/orm": ""
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "time": "2018-03-18T17:37:39+00:00"
-        },
-        {
-            "name": "mangoweb/tester-http-mocks",
-            "version": "v0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mangoweb-backend/tester-http-mocks.git",
-                "reference": "f451aa7e639b31c9760984c81e622f08705ef9f6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mangoweb-backend/tester-http-mocks/zipball/f451aa7e639b31c9760984c81e622f08705ef9f6",
-                "reference": "f451aa7e639b31c9760984c81e622f08705ef9f6",
-                "shasum": ""
-            },
-            "require": {
-                "nette/http": "~2.4",
-                "php": "~7.1"
-            },
-            "require-dev": {
-                "mangoweb/tester-infrastructure": "@dev",
-                "phpstan/phpstan-shim": "~0.9"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "time": "2018-03-14T17:13:46+00:00"
-        },
-        {
-            "name": "mangoweb/tester-infrastructure",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mangoweb-backend/tester-infrastructure.git",
-                "reference": "11f9babfb38d0c69f2e95bc8086ecbe1880c63ac"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mangoweb-backend/tester-infrastructure/zipball/11f9babfb38d0c69f2e95bc8086ecbe1880c63ac",
-                "reference": "11f9babfb38d0c69f2e95bc8086ecbe1880c63ac",
-                "shasum": ""
-            },
-            "require": {
-                "nette/bootstrap": "~2.4",
-                "nette/di": "~2.4",
-                "nette/tester": "~2.0",
-                "php": "~7.1"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.0",
-                "nette/reflection": "^2.4",
-                "nette/utils": "~2.4",
-                "phpstan/phpstan-shim": "^0.9.2"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "time": "2018-05-26T06:34:18+00:00"
-        },
-        {
-            "name": "mangoweb/tester-nextras-transactional",
-            "version": "v0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mangoweb-backend/tester-nextras-transactional.git",
-                "reference": "c3b57ca92ec9e4747a1e74048de225324bcdc3ec"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mangoweb-backend/tester-nextras-transactional/zipball/c3b57ca92ec9e4747a1e74048de225324bcdc3ec",
-                "reference": "c3b57ca92ec9e4747a1e74048de225324bcdc3ec",
-                "shasum": ""
-            },
-            "require": {
-                "mangoweb/tester-infrastructure": "@dev",
-                "nette/di": "~2.4",
-                "nextras/dbal": "~3.0",
-                "php": "~7.1"
-            },
-            "require-dev": {
-                "phpstan/phpstan-shim": "^0.9.2"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "time": "2018-05-26T06:51:45+00:00"
         },
         {
             "name": "nette/application",
@@ -1912,68 +1724,6 @@
             "time": "2018-04-02T19:47:47+00:00"
         },
         {
-            "name": "nette/tester",
-            "version": "v2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nette/tester.git",
-                "reference": "93f70b53f7b87b44334d98219302939eda2a423b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nette/tester/zipball/93f70b53f7b87b44334d98219302939eda2a423b",
-                "reference": "93f70b53f7b87b44334d98219302939eda2a423b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6.0"
-            },
-            "bin": [
-                "src/tester"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "David Grudl",
-                    "homepage": "https://davidgrudl.com"
-                },
-                {
-                    "name": "Nette Community",
-                    "homepage": "https://nette.org/contributors"
-                }
-            ],
-            "description": "Nette Tester: enjoyable unit testing in PHP with code coverage reporter. 🍏🍏🍎🍏",
-            "homepage": "https://tester.nette.org",
-            "keywords": [
-                "Xdebug",
-                "assertions",
-                "clover",
-                "code coverage",
-                "nette",
-                "phpdbg",
-                "phpunit",
-                "testing",
-                "unit"
-            ],
-            "time": "2018-02-07T12:55:20+00:00"
-        },
-        {
             "name": "nette/tokenizer",
             "version": "v2.3.0",
             "source": {
@@ -2297,16 +2047,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.0.9",
+            "version": "v4.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "3e820bc2c520a87ca209ad8fa961c97f42e0b4ae"
+                "reference": "058f120b8e06ebcd7b211de5ffae07b2db00fbdd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/3e820bc2c520a87ca209ad8fa961c97f42e0b4ae",
-                "reference": "3e820bc2c520a87ca209ad8fa961c97f42e0b4ae",
+                "url": "https://api.github.com/repos/symfony/console/zipball/058f120b8e06ebcd7b211de5ffae07b2db00fbdd",
+                "reference": "058f120b8e06ebcd7b211de5ffae07b2db00fbdd",
                 "shasum": ""
             },
             "require": {
@@ -2361,7 +2111,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2018-04-30T01:23:47+00:00"
+            "time": "2018-05-16T09:05:32+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -2424,16 +2174,16 @@
         },
         {
             "name": "tracy/tracy",
-            "version": "v2.4.14",
+            "version": "v2.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tracy.git",
-                "reference": "229249212e041bc3cd5d88f65965d9391dad3852"
+                "reference": "8b57aae09450f0ef3201aabaca87435ebf74571a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tracy/zipball/229249212e041bc3cd5d88f65965d9391dad3852",
-                "reference": "229249212e041bc3cd5d88f65965d9391dad3852",
+                "url": "https://api.github.com/repos/nette/tracy/zipball/8b57aae09450f0ef3201aabaca87435ebf74571a",
+                "reference": "8b57aae09450f0ef3201aabaca87435ebf74571a",
                 "shasum": ""
             },
             "require": {
@@ -2485,7 +2235,7 @@
                 "nette",
                 "profiler"
             ],
-            "time": "2018-05-04T11:54:21+00:00"
+            "time": "2018-05-25T09:32:42+00:00"
         }
     ],
     "packages-dev": [
@@ -2561,6 +2311,54 @@
                 "shortcuts"
             ],
             "time": "2017-03-12T18:43:26+00:00"
+        },
+        {
+            "name": "hamcrest/hamcrest-php",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hamcrest/hamcrest-php.git",
+                "reference": "776503d3a8e85d4f9a1148614f95b7a608b046ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hamcrest/hamcrest-php/zipball/776503d3a8e85d4f9a1148614f95b7a608b046ad",
+                "reference": "776503d3a8e85d4f9a1148614f95b7a608b046ad",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3|^7.0"
+            },
+            "replace": {
+                "cordoval/hamcrest-php": "*",
+                "davedevelopment/hamcrest-php": "*",
+                "kodova/hamcrest-php": "*"
+            },
+            "require-dev": {
+                "phpunit/php-file-iterator": "1.3.3",
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "hamcrest"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "description": "This is the PHP port of Hamcrest Matchers",
+            "keywords": [
+                "test"
+            ],
+            "time": "2016-01-20T08:20:44+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -2698,17 +2496,333 @@
             "time": "2018-02-24T15:31:20+00:00"
         },
         {
+            "name": "mangoweb/presenter-tester",
+            "version": "v0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mangoweb-backend/presenter-tester.git",
+                "reference": "61b5f6b3bbeef333bf6ffae2bdb1d72ee688deac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mangoweb-backend/presenter-tester/zipball/61b5f6b3bbeef333bf6ffae2bdb1d72ee688deac",
+                "reference": "61b5f6b3bbeef333bf6ffae2bdb1d72ee688deac",
+                "shasum": ""
+            },
+            "require": {
+                "nette/application": "~2.4",
+                "nette/forms": "~2.4",
+                "nette/security": "~2.4",
+                "nette/tester": "~2.0",
+                "php": "~7.1"
+            },
+            "require-dev": {
+                "mangoweb/tester-http-mocks": "@dev",
+                "mangoweb/tester-infrastructure": "@dev",
+                "nextras/secured-links": "^1.4",
+                "phpstan/phpstan-shim": "^0.9.2"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2018-03-14T17:37:00+00:00"
+        },
+        {
+            "name": "mangoweb/tester-database-creator",
+            "version": "v0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mangoweb-backend/tester-database-creator.git",
+                "reference": "f20c8ad92c56385451dad7d6445e6fbab8485525"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mangoweb-backend/tester-database-creator/zipball/f20c8ad92c56385451dad7d6445e6fbab8485525",
+                "reference": "f20c8ad92c56385451dad7d6445e6fbab8485525",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~7.1"
+            },
+            "require-dev": {
+                "mangoweb/tester-infrastructure": "@dev",
+                "nette/di": "~2.4",
+                "nextras/dbal": "@dev",
+                "nextras/migrations": "@dev",
+                "nextras/orm": "@dev",
+                "phpstan/phpstan-shim": "^0.9.2"
+            },
+            "suggest": {
+                "nextras/dbal": "",
+                "nextras/migrations": "",
+                "nextras/orm": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2018-03-18T17:37:39+00:00"
+        },
+        {
+            "name": "mangoweb/tester-http-mocks",
+            "version": "v0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mangoweb-backend/tester-http-mocks.git",
+                "reference": "f451aa7e639b31c9760984c81e622f08705ef9f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mangoweb-backend/tester-http-mocks/zipball/f451aa7e639b31c9760984c81e622f08705ef9f6",
+                "reference": "f451aa7e639b31c9760984c81e622f08705ef9f6",
+                "shasum": ""
+            },
+            "require": {
+                "nette/http": "~2.4",
+                "php": "~7.1"
+            },
+            "require-dev": {
+                "mangoweb/tester-infrastructure": "@dev",
+                "phpstan/phpstan-shim": "~0.9"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2018-03-14T17:13:46+00:00"
+        },
+        {
+            "name": "mangoweb/tester-infrastructure",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mangoweb-backend/tester-infrastructure.git",
+                "reference": "11f9babfb38d0c69f2e95bc8086ecbe1880c63ac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mangoweb-backend/tester-infrastructure/zipball/11f9babfb38d0c69f2e95bc8086ecbe1880c63ac",
+                "reference": "11f9babfb38d0c69f2e95bc8086ecbe1880c63ac",
+                "shasum": ""
+            },
+            "require": {
+                "nette/bootstrap": "~2.4",
+                "nette/di": "~2.4",
+                "nette/tester": "~2.0",
+                "php": "~7.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "nette/reflection": "^2.4",
+                "nette/utils": "~2.4",
+                "phpstan/phpstan-shim": "^0.9.2"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2018-05-26T06:34:18+00:00"
+        },
+        {
+            "name": "mangoweb/tester-nextras-transactional",
+            "version": "v0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mangoweb-backend/tester-nextras-transactional.git",
+                "reference": "c3b57ca92ec9e4747a1e74048de225324bcdc3ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mangoweb-backend/tester-nextras-transactional/zipball/c3b57ca92ec9e4747a1e74048de225324bcdc3ec",
+                "reference": "c3b57ca92ec9e4747a1e74048de225324bcdc3ec",
+                "shasum": ""
+            },
+            "require": {
+                "mangoweb/tester-infrastructure": "@dev",
+                "nette/di": "~2.4",
+                "nextras/dbal": "~3.0",
+                "php": "~7.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan-shim": "^0.9.2"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2018-05-26T06:51:45+00:00"
+        },
+        {
+            "name": "mockery/mockery",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mockery/mockery.git",
+                "reference": "99e29d3596b16dabe4982548527d5ddf90232e99"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/99e29d3596b16dabe4982548527d5ddf90232e99",
+                "reference": "99e29d3596b16dabe4982548527d5ddf90232e99",
+                "shasum": ""
+            },
+            "require": {
+                "hamcrest/hamcrest-php": "~2.0",
+                "lib-pcre": ">=7.0",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpdocumentor/phpdocumentor": "^2.9",
+                "phpunit/phpunit": "~5.7.10|~6.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mockery": "library/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Pádraic Brady",
+                    "email": "padraic.brady@gmail.com",
+                    "homepage": "http://blog.astrumfutura.com"
+                },
+                {
+                    "name": "Dave Marshall",
+                    "email": "dave.marshall@atstsolutions.co.uk",
+                    "homepage": "http://davedevelopment.co.uk"
+                }
+            ],
+            "description": "Mockery is a simple yet flexible PHP mock object framework",
+            "homepage": "https://github.com/mockery/mockery",
+            "keywords": [
+                "BDD",
+                "TDD",
+                "library",
+                "mock",
+                "mock objects",
+                "mockery",
+                "stub",
+                "test",
+                "test double",
+                "testing"
+            ],
+            "time": "2018-05-08T08:54:48+00:00"
+        },
+        {
+            "name": "nette/tester",
+            "version": "v2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nette/tester.git",
+                "reference": "93f70b53f7b87b44334d98219302939eda2a423b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nette/tester/zipball/93f70b53f7b87b44334d98219302939eda2a423b",
+                "reference": "93f70b53f7b87b44334d98219302939eda2a423b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "bin": [
+                "src/tester"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0",
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                },
+                {
+                    "name": "Nette Community",
+                    "homepage": "https://nette.org/contributors"
+                }
+            ],
+            "description": "Nette Tester: enjoyable unit testing in PHP with code coverage reporter. 🍏🍏🍎🍏",
+            "homepage": "https://tester.nette.org",
+            "keywords": [
+                "Xdebug",
+                "assertions",
+                "clover",
+                "code coverage",
+                "nette",
+                "phpdbg",
+                "phpunit",
+                "testing",
+                "unit"
+            ],
+            "time": "2018-02-07T12:55:20+00:00"
+        },
+        {
             "name": "ninjify/coding-standard",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ninjify/coding-standard.git",
-                "reference": "98113e2b00e5391ee84e3d26b171bcd8d7ca04ad"
+                "reference": "a2f1763b7fd83f336b301344ff29ae0f89273b0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ninjify/coding-standard/zipball/98113e2b00e5391ee84e3d26b171bcd8d7ca04ad",
-                "reference": "98113e2b00e5391ee84e3d26b171bcd8d7ca04ad",
+                "url": "https://api.github.com/repos/ninjify/coding-standard/zipball/a2f1763b7fd83f336b301344ff29ae0f89273b0f",
+                "reference": "a2f1763b7fd83f336b301344ff29ae0f89273b0f",
                 "shasum": ""
             },
             "require": {
@@ -2740,7 +2854,7 @@
                 "ninjify",
                 "php"
             ],
-            "time": "2018-04-26T16:18:11+00:00"
+            "time": "2018-05-21T09:01:03+00:00"
         },
         {
             "name": "ninjify/nunjuck",

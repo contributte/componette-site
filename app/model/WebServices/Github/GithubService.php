@@ -6,7 +6,7 @@ use App\Model\Exceptions\Runtime\WebServices\GithubException;
 use Contributte\Http\Curl\ExceptionResponse;
 use Contributte\Http\Curl\Response;
 
-final class GithubService
+class GithubService
 {
 
 	// Mediatypes
