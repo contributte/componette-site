@@ -15,6 +15,7 @@ mango.tester:
 	appContainer:
 		configs:
 			- %appDir%/config/config.neon
+			- %appDir%/../tests/config/app.neon
 			- %appDir%/config/config.local.neon
 
 databaseCreatorDbal:
