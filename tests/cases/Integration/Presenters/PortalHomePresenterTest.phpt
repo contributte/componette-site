@@ -39,8 +39,10 @@ class PortalHomePresenterTest extends TestCase
 
 		$response = $this->presenterTester->execute($request);
 		$response->assertRenders([
-			'Testx addon'
+			'Testx addon',
+			'pdf',
 		]);
+		$response->assertNotRenders(['foox']);
 	}
 }
 
