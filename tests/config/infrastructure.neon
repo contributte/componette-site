@@ -1,3 +1,6 @@
+extensions:
+	mango.presenterTester: Mangoweb\Tester\PresenterTester\Bridges\Infrastructure\PresenterTesterExtension
+	mango.httpMocks: Mangoweb\Tester\HttpMocks\Bridges\Infrastructure\HttpExtension
 mango.tester:
 	appContainer:
 		configs:
