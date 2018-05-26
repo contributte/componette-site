@@ -11,7 +11,11 @@ extensions:
 
 	transactional: Mangoweb\NextrasTransactional\TransactionalExtension
 
+	nextras.orm: Nextras\Orm\Bridges\NetteDI\OrmExtension
+
 mango.tester:
+	require:
+		- Nextras\Dbal\IConnection
 	appContainer:
 		configs:
 			- %appDir%/config/config.neon
@@ -44,3 +48,10 @@ migrations:
 services:
 	migrations.dbal:
 		arguments: [connection: @databaseCreatorDbal.connection]
+	-
+		class: Mangoweb\Tester\NextrasOrmEntityGenerator\EntityGenerator
+		setup:
+			- addFactory(ApptTests\Inc\AddonEntityFactory())
+
+nextras.orm:
+	model: App\Model\Database\ORM\EntityModel

@@ -57,7 +57,8 @@
 		"mangoweb/presenter-tester": "^0.1.0",
 		"mangoweb/tester-http-mocks": "^0.1.0",
 		"mangoweb/tester-nextras-transactional": "^0.1.0",
-		"mockery/mockery": "^1.1"
+		"mockery/mockery": "^1.1",
+		"mangoweb/tester-nextras-orm-entity-generator": "dev-master"
 	},
 	"autoload": {
 		"psr-4": {
@@ -65,7 +66,7 @@
 		}
 	},
 	"autoload-dev": {
-		"classmap": ["app", "tests/cases"]
+		"classmap": ["app", "tests/cases", "tests/inc"]
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true,

@@ -6,6 +6,7 @@ use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\Addon\AddonRepository;
 use App\Model\Database\ORM\Github\Github;
 use Mangoweb\Tester\Infrastructure\TestCase;
+use Mangoweb\Tester\NextrasOrmEntityGenerator\EntityGenerator;
 use Mangoweb\Tester\PresenterTester\PresenterTester;
 use Nextras\Dbal\Connection;
 use Nextras\Orm\Model\Model;
@@ -19,23 +20,20 @@ class PortalHomePresenterTest extends TestCase
 	/** @var PresenterTester */
 	private $presenterTester;
 
+	/** @var EntityGenerator */
+	private $entityGenerator;
 
-	public function __construct(PresenterTester $presenterTester)
+
+	public function __construct(PresenterTester $presenterTester, EntityGenerator $entityGenerator)
 	{
 		$this->presenterTester = $presenterTester;
+		$this->entityGenerator = $entityGenerator;
 	}
 
 
 	public function testRender(Model $orm)
 	{
-		$addon = new Addon();
-		$addon->name = 'Testx addon';
-		$addon->author = 'nextras';
-		$addon->state = Addon::STATE_ACTIVE;
-		$addon->type = Addon::TYPE_COMPOSER;
-		$github = new Github();
-		$addon->github = $github;
-		$orm->persistAndFlush($addon);
+		$addon = $this->entityGenerator->create(Addon::class, []);
 
 		$request = $this->presenterTester->createRequest('Front:Portal:Home');
 

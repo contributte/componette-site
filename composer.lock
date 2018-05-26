@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8bc8b175c593a0140399b8988c607662",
+    "content-hash": "87a0cadcb5317d0d94a571a02f5a4328",
     "packages": [
         {
             "name": "contributte/application",
@@ -2649,6 +2649,40 @@
             "time": "2018-05-26T06:34:18+00:00"
         },
         {
+            "name": "mangoweb/tester-nextras-orm-entity-generator",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mangoweb-backend/tester-nextras-orm-entity-generator.git",
+                "reference": "5298f628b88ffb372b10e517f486d66cf910ade8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mangoweb-backend/tester-nextras-orm-entity-generator/zipball/5298f628b88ffb372b10e517f486d66cf910ade8",
+                "reference": "5298f628b88ffb372b10e517f486d66cf910ade8",
+                "shasum": ""
+            },
+            "require": {
+                "nextras/orm": "~3.0",
+                "php": "~7.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan-shim": "~0.9"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Nextras ORM entity generator suitable for testing",
+            "time": "2018-05-25T20:25:37+00:00"
+        },
+        {
             "name": "mangoweb/tester-nextras-transactional",
             "version": "v0.1",
             "source": {
@@ -3062,7 +3096,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "nextras/migrations": 20,
-        "mangoweb/tester-infrastructure": 20
+        "mangoweb/tester-infrastructure": 20,
+        "mangoweb/tester-nextras-orm-entity-generator": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
