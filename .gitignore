@@ -5,8 +5,8 @@
 /app/config/config.local.neon
 
 # Assets
-/www/assets/css/*.css
-/www/dist
+# /www/assets/css/*.css
+# /www/dist
 
 # Front-end
 /www/imgs
