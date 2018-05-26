@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "15148de80a00a81942ca0a4f388a3761",
+    "content-hash": "9af79ccb4884a739d8dc79c05e86574c",
     "packages": [
         {
             "name": "contributte/application",
@@ -972,16 +972,16 @@
         },
         {
             "name": "mangoweb/tester-infrastructure",
-            "version": "v0.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mangoweb-backend/tester-infrastructure.git",
-                "reference": "09b32413ea70979f841944c28d3c04ab25a18a80"
+                "reference": "11f9babfb38d0c69f2e95bc8086ecbe1880c63ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mangoweb-backend/tester-infrastructure/zipball/09b32413ea70979f841944c28d3c04ab25a18a80",
-                "reference": "09b32413ea70979f841944c28d3c04ab25a18a80",
+                "url": "https://api.github.com/repos/mangoweb-backend/tester-infrastructure/zipball/11f9babfb38d0c69f2e95bc8086ecbe1880c63ac",
+                "reference": "11f9babfb38d0c69f2e95bc8086ecbe1880c63ac",
                 "shasum": ""
             },
             "require": {
@@ -1006,7 +1006,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2018-03-17T15:51:36+00:00"
+            "time": "2018-05-26T06:34:18+00:00"
         },
         {
             "name": "mangoweb/tester-nextras-transactional",
