@@ -4,6 +4,7 @@ namespace AppTests\Integration\Presenters;
 
 use Mangoweb\Tester\Infrastructure\TestCase;
 use Mangoweb\Tester\PresenterTester\PresenterTester;
+use Nextras\Dbal\Connection;
 
 $containerFactory = require __DIR__ . '/../../../bootstrap.mango.php';
 
@@ -25,7 +26,9 @@ class PortalHomePresenterTest extends TestCase
 		$request = $this->presenterTester->createRequest('Front:Portal:Home');
 
 		$response = $this->presenterTester->execute($request);
-		$response->assertRenders();
+		$response->assertRenders([
+			'pdf'
+		]);
 	}
 }
 
