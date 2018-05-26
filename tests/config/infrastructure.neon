@@ -31,9 +31,9 @@ mango.databaseCreator:
 	driver: mysql
 	dbal: Mangoweb\Tester\DatabaseCreator\Bridges\NextrasDbal\NextrasDbalAdapter(@databaseCreatorDbal.connection)
 	migrations: Mangoweb\Tester\DatabaseCreator\Bridges\NextrasMigrations\NextrasMigrationsDriver
-	strategy: reset
-#	databaseName:
-#		migrationHashSuffix: true
+	strategy: continueOrReset
+	databaseName:
+		migrationHashSuffix: true
 
 migrations:
 	dir: %appDir%/../migrations
