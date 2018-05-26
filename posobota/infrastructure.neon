@@ -1,0 +1,45 @@
+extensions:
+	nette.cache: Nette\Bridges\CacheDI\CacheExtension(%tempDir%)
+
+	mango.databaseCreator: Mangoweb\Tester\DatabaseCreator\Bridges\NetteDI\DatabaseCreatorExtension
+	mango.databaseCreatorInfrastructure: Mangoweb\Tester\DatabaseCreator\Bridges\Infrastructure\DatabaseCreatorInfrastructureExtension
+	databaseCreatorDbal: Nextras\Dbal\Bridges\NetteDI\DbalExtension
+	migrations: Nextras\Migrations\Bridges\NetteDI\MigrationsExtension
+
+	mango.presenterTester: Mangoweb\Tester\PresenterTester\Bridges\Infrastructure\PresenterTesterExtension
+	mango.httpMocks: Mangoweb\Tester\HttpMocks\Bridges\Infrastructure\HttpExtension
+
+	transactional: Mangoweb\NextrasTransactional\TransactionalExtension
+
+mango.tester:
+	appContainer:
+		configs:
+			- %appDir%/config/config.neon
+			- %appDir%/config/config.local.neon
+
+databaseCreatorDbal:
+	driver: mysqli
+	host: %database.host%
+	database: xxx
+	username: %database.user%
+	password: %database.password%
+	connectionTz: '+2:00'
+	port: %database.port%
+	autowired: false
+
+mango.databaseCreator:
+	driver: mysql
+	dbal: Mangoweb\Tester\DatabaseCreator\Bridges\NextrasDbal\NextrasDbalAdapter(@databaseCreatorDbal.connection)
+	migrations: Mangoweb\Tester\DatabaseCreator\Bridges\NextrasMigrations\NextrasMigrationsDriver
+	strategy: reset
+	databaseName:
+		migrationHashSuffix: true
+
+migrations:
+	dir: %appDir%/../migrations
+	driver: mysql
+	dbal: nextras
+
+services:
+	migrations.dbal:
+		arguments: [connection: @databaseCreatorDbal.connection]
