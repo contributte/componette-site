@@ -3,15 +3,29 @@
 namespace AppTests\Integration\Presenters;
 
 use Mangoweb\Tester\Infrastructure\TestCase;
-use Tester\Assert;
+use Mangoweb\Tester\PresenterTester\PresenterTester;
 
 $containerFactory = require __DIR__ . '/../../../bootstrap.mango.php';
 
+
 class PortalHomePresenterTest extends TestCase
 {
+	/** @var PresenterTester */
+	private $presenterTester;
+
+
+	public function __construct(PresenterTester $presenterTester)
+	{
+		$this->presenterTester = $presenterTester;
+	}
+
+
 	public function testRender()
 	{
-		Assert::true(false);
+		$request = $this->presenterTester->createRequest('Front:Portal:Home');
+
+		$response = $this->presenterTester->execute($request);
+		$response->assertRenders();
 	}
 }
 
