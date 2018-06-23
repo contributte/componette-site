@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 /**
  * Test:App\Model\Templating\Filters\Filters.timeAgo
