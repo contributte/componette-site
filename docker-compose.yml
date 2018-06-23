@@ -1,0 +1,9 @@
+version: '3.5'
+
+services:
+    app:
+        build: 
+          context: .
+          dockerfile: .docker/app/Dockerfile
+        ports:
+            - 8000:2015

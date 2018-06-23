@@ -20,3 +20,7 @@
 # Files
 !.gitignore
 !.htaccess
+
+# Docker
+/.docker/data
+/docker-compose.override.yml
