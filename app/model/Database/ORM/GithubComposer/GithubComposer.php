@@ -5,6 +5,7 @@ namespace App\Model\Database\ORM\GithubComposer;
 use App\Model\Database\ORM\AbstractEntity;
 use App\Model\Database\ORM\Github\Github;
 use App\Model\Exceptions\Logical\InvalidArgumentException;
+use App\Model\Utils\Arrays;
 use Nette\Utils\ArrayHash;
 
 /**
@@ -90,7 +91,7 @@ class GithubComposer extends AbstractEntity
 	public function onBeforeInsert(): void
 	{
 		parent::onBeforeInsert();
-		$this->setRawValue('data', (array) $this->json);
+		$this->setRawValue('data', json_encode(Arrays::ensure($this->json)));
 	}
 
 }

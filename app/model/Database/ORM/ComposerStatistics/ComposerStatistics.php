@@ -4,6 +4,7 @@ namespace App\Model\Database\ORM\ComposerStatistics;
 
 use App\Model\Database\ORM\AbstractEntity;
 use App\Model\Database\ORM\Addon\Addon;
+use App\Model\Utils\Arrays;
 use Nette\Utils\ArrayHash;
 use Nextras\Dbal\Utils\DateTimeImmutable;
 
@@ -13,10 +14,10 @@ use Nextras\Dbal\Utils\DateTimeImmutable;
  * @property string $type                   {enum self::TYPE*}
  * @property string $custom
  * @property-read string $data
- * @property DateTimeImmutable $createdAt	{default now}
+ * @property DateTimeImmutable $createdAt   {default now}
  * @property DateTimeImmutable|NULL $updatedAt
  *
- * @property ArrayHash $json               {virtual}
+ * @property ArrayHash $json                {virtual}
  */
 class ComposerStatistics extends AbstractEntity
 {
@@ -70,7 +71,7 @@ class ComposerStatistics extends AbstractEntity
 	public function onBeforeInsert(): void
 	{
 		parent::onBeforeInsert();
-		$this->setRawValue('data', json_encode((array) $this->json));
+		$this->setRawValue('data', json_encode(Arrays::ensure($this->json)));
 	}
 
 }
