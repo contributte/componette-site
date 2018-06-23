@@ -11,4 +11,4 @@ parameters:
 		users: []
 
 	github:
-		token: null
+		token: faketoken
