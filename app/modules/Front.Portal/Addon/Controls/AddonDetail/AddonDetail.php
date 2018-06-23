@@ -73,7 +73,10 @@ final class AddonDetail extends BaseControl
 		$stats = $this->addon->composerLatestStatistics;
 		if ($stats && $stats->json) {
 			foreach ($stats->json['labels'] as $key => $label) {
-				$totalDownloads[] = ['x' => DateTime::from($label)->format('c'), 'y' => $stats->json['values'][$key]];
+				$totalDownloads[] = [
+					'x' => DateTime::from($label)->format('c'),
+					'y' => ((array) $stats->json['values'])[$key],
+				];
 			}
 			$this->template->totalDownloads = json_encode($totalDownloads);
 		} else {
