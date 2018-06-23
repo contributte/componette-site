@@ -5,6 +5,7 @@ namespace App\Model\Database\ORM\ComposerStatistics;
 use App\Model\Database\ORM\AbstractEntity;
 use App\Model\Database\ORM\Addon\Addon;
 use Nette\Utils\ArrayHash;
+use Nextras\Dbal\Utils\DateTimeImmutable;
 
 /**
  * @property int $id                        {primary}
@@ -12,6 +13,8 @@ use Nette\Utils\ArrayHash;
  * @property string $type                   {enum self::TYPE*}
  * @property string $custom
  * @property-read string $data
+ * @property DateTimeImmutable $createdAt	{default now}
+ * @property DateTimeImmutable|NULL $updatedAt
  *
  * @property ArrayHash $json               {virtual}
  */
