@@ -18,9 +18,9 @@ final class RouterFactory
 	/** @var Request @inject */
 	public $httpRequest;
 
-	public function create(): IRouter
+	public function create(bool $consoleMode = false): IRouter
 	{
-		if (PHP_SAPI === 'cli') {
+		if ($consoleMode) {
 			return $this->createCli();
 		} else {
 			return $this->createWeb();
