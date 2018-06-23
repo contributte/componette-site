@@ -7,7 +7,6 @@
 require_once __DIR__ . '/../../../../bootstrap.php';
 
 use Contributte\Bootstrap\ExtraConfigurator;
-use Nette\Configurator;
 use Nette\DI\Container;
 use Tester\Assert;
 
@@ -15,7 +14,7 @@ use Tester\Assert;
  * DEBUG
  */
 test(function (): void {
-	$configurator = new Configurator();
+	$configurator = new ExtraConfigurator();
 	$configurator->setTempDirectory(TEMP_DIR);
 
 	$configurator->createRobotLoader()
@@ -24,8 +23,6 @@ test(function (): void {
 
 	$configurator->addConfig(APP_DIR . '/config/config.neon');
 	$configurator->addConfig(APP_DIR . '/config/config.test.neon');
-
-	ExtraConfigurator::wrap($configurator);
 
 	try {
 		$configurator->setDebugMode(true);
