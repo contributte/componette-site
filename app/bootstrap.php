@@ -5,6 +5,7 @@ use Contributte\Bootstrap\ExtraConfigurator;
 require __DIR__ . '/../vendor/autoload.php';
 
 $configurator = new ExtraConfigurator();
+$configurator->setEnvDebugMode();
 
 $configurator->enableDebugger(__DIR__ . '/../log');
 $configurator->setTempDirectory(__DIR__ . '/../temp');

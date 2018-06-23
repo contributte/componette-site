@@ -20,15 +20,15 @@ Modern useful #nette addons portal.
 
 ### Application
 
-* PHP >= 7.1.0
-* NodeJS
-* WebServer (Nginx / Apache)
-* MariaDB / MySQL
-* [**Docker**](https://github.com/componette/dockerfiles) [optionally]
+* PHP >= 7.2
+* NodeJS 10
+* Caddy 0.11
+* MariaDB 10.3
+* **Docker** [optionally]
 
 ## Docker
 
-This portal is running in isolated Docker container(s). You can see configurations in [**dockerfiles**](https://github.com/componette/dockerfiles) repository.
+Docker helps us to faster delivery.
 
 ## How to run
 
@@ -54,17 +54,14 @@ I very appreciate you contributing work, these tools keep on eye and help me to 
 
 This project has a few tasks you should fired before you prepare PR.
 
-- Linter - checks PHP syntax errors
-    ```bash
-    bin/linter
-    ```
+**Quality Assurance** - checks PHP syntax errors and codestyle
 
-- CodeSniffer - checks codestyle
-    ```bash
-    bin/codesniffer
-    ```
+```
+composer qa
+```
 
-- Tests - checks code integrity
-    ```sh
-    bin/tester
-    ```
+**Nette\Tester** - runs unit & integration tests
+
+```
+composer tester
+```

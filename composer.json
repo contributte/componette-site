@@ -22,23 +22,23 @@
 		}
 	],
 	"require": {
-		"php": ">=7.1.0",
+		"php": ">=7.2",
 		"ext-curl": "*",
 		"ext-mbstring": "*",
 		"ext-mysqli": "*",
 
 		"contributte/application": "^0.3.0",
-		"contributte/bootstrap": "^0.2.1",
+		"contributte/bootstrap": "^0.3.0",
 		"contributte/cache": "^0.1.0",
 		"contributte/di": "^0.2.2",
 		"contributte/forms": "^0.2.0",
 		"contributte/http": "^0.1.0",
-		"contributte/latte": "^0.1.0",
+		"contributte/latte": "^0.3.0",
 		"contributte/security": "^0.2.0",
-		"contributte/tracy": "^0.1.0",
-		"contributte/utils": "^0.1.1",
+		"contributte/tracy": "^0.2.0",
+		"contributte/utils": "^0.2.0",
 
-		"nette/robot-loader": "^2.4.4",
+		"nette/robot-loader": "^3.0.3",
 
 		"nextras/orm": "~3.0.1",
 		"nextras/dbal": "~3.0.0",
