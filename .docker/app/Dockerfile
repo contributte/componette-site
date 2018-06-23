@@ -7,6 +7,7 @@ RUN docker-php-ext-install mbstring mysqli pdo pdo_mysql
 
 ADD . /srv/app
 ADD .docker/app/Caddyfile /etc/Caddyfile
+COPY .docker/app/config/php.ini /usr/local/etc/php/
 
 WORKDIR /srv/app/
 RUN chown -R www-data:www-data /srv/app
