@@ -79,7 +79,7 @@
     </span>
 </div>
 
-{if $addon->isComposer && $addon->github->masterComposer}
+{if $addon->isComposer && $addon->composer && $addon->github->masterComposer}
     {var $composer => $addon->github->masterComposer}
     {if ($require = $composer->get('require', []))}
         <div class="requirements">
