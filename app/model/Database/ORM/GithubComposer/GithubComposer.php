@@ -7,6 +7,7 @@ use App\Model\Database\ORM\Github\Github;
 use App\Model\Exceptions\Logical\InvalidArgumentException;
 use App\Model\Utils\Arrays;
 use Nette\Utils\ArrayHash;
+use Nextras\Dbal\Utils\DateTimeImmutable;
 
 /**
  * @property int $id                        {primary}
@@ -14,6 +15,9 @@ use Nette\Utils\ArrayHash;
  * @property string $type                   {enum self::TYPE*}
  * @property string $custom
  * @property-read string $data
+ * @property DateTimeImmutable $createdAt   {default now}
+ * @property DateTimeImmutable|NULL $updatedAt
+ *
  * @property string $name                   {virtual}
  * @property ArrayHash $json                {virtual}
  */
