@@ -9,6 +9,7 @@ use App\Model\Database\ORM\Composer\Composer;
 use App\Model\WebServices\Composer\ComposerService;
 use Nette\InvalidStateException;
 use Nette\Utils\Arrays;
+use Nextras\Dbal\Utils\DateTimeImmutable;
 use Nextras\Orm\Collection\ICollection;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -84,6 +85,7 @@ final class SynchronizeCommand extends BaseCommand
 					}
 
 					// Persist
+					$addon->composer->crawledAt = new DateTimeImmutable();
 					$this->addonRepository->persistAndFlush($addon);
 
 					// Increase counting

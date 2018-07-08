@@ -7,6 +7,7 @@ use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\GithubComposer\GithubComposer;
 use App\Model\Facade\Cli\Commands\AddonFacade;
 use App\Model\WebServices\Github\GithubService;
+use Nextras\Dbal\Utils\DateTimeImmutable;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -84,6 +85,7 @@ final class SynchronizeFilesCommand extends BaseCommand
 						$addon->github->composers->add($composer);
 					} else {
 						$composer->json = $body;
+						$composer->updatedAt = new DateTimeImmutable();
 					}
 
 					$this->addonFacade->persist($composer);

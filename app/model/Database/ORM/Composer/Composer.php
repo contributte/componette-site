@@ -38,14 +38,4 @@ class Composer extends AbstractEntity
 		return $this->linker;
 	}
 
-	/**
-	 * Called before persist to storage
-	 */
-	public function onBeforePersist(): void
-	{
-		parent::onBeforePersist();
-
-		$this->crawledAt = new DateTimeImmutable();
-	}
-
 }
