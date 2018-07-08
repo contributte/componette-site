@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace App\Model\Utils;
 
@@ -8,6 +8,7 @@ final class Arrays
 	/**
 	 * @param mixed[]|iterable $array
 	 * @return mixed[]
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
 	 */
 	public static function ensure($array): array
 	{
