@@ -1,14 +1,12 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace App\Model\Utils;
-
-use Nette\Utils\ArrayHash;
 
 final class Arrays
 {
 
 	/**
-	 * @param mixed[]|ArrayHash $array
+	 * @param mixed[]|iterable $array
 	 * @return mixed[]
 	 */
 	public static function ensure($array): array
