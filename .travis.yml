@@ -3,7 +3,6 @@ language: php
 sudo: false
 
 php:
-    - 7.1
     - 7.2
 
 env:
@@ -15,7 +14,6 @@ matrix:
         - php: hhvm
 
 install:
-    # Install Nette Tester
     - travis_retry composer update ${COMPOSER_GLOBAL_FLAGS}
 
 script:
