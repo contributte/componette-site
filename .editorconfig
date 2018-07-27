@@ -26,6 +26,11 @@ indent_size = 4
 indent_style = space
 indent_size = 2
 
+# Caddyfile
+[Caddyfile]
+indent_style = space
+indent_size = 2
+
 # JSON
 [*.json]
 indent_style = tab
