@@ -55,7 +55,7 @@
                 <img alt="" title="isitmaintained" src="https://isitmaintained.com/badge/open/{$author|lower}/{$name|lower}.svg">
             </a>
         </li>
-        {if $addon->isComposer && $addon->github->masterComposer}
+        {if $addon->isComposer && $addon->composer && $addon->github->masterComposer}
             <li>
                 <a href="{$addon->composer->linker->getPackageUrl()}">
                     <img alt="" title="{$addon->github->masterComposer->name}" src="https://img.shields.io/packagist/v/{$addon->github->masterComposer->name}.svg">
