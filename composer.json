@@ -85,7 +85,7 @@
 			"tester -s -p phpdbg --colors 1 -C -d extension=xdebug.so --coverage ./coverage.xml --coverage-src ./src tests/cases"
 		],
 		"phpstan": [
-			"temp/phpstan/vendor/bin/phpstan analyse -l max -c phpstan.neon app"
+			"vendor/bin/phpstan analyse -l max -c phpstan.neon app"
 		]
 	}
 }
