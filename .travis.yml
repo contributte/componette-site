@@ -24,7 +24,6 @@ script:
     - composer tester
 
     # Run Phpstan
-    - composer phpstan-install
     - composer phpstan
 
 after_failure:
