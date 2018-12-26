@@ -89,7 +89,7 @@ final class AddonPresenter extends SecuredPresenter
 	{
 		if (!($addon = $this->addonFacade->getById($id))) {
 			$this->error('Addon not found');
-		};
+		}
 
 		return $addon;
 	}

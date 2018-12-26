@@ -39,7 +39,7 @@ final class AddonPresenter extends BasePresenter
 	{
 		if (!($addon = $this->addonFacade->getDetail($id))) {
 			$this->error('Addon not found');
-		};
+		}
 
 		return $addon;
 	}

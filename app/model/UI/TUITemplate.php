@@ -31,7 +31,7 @@ trait TUITemplate
 	{
 		$list = [];
 
-		$rf1 = new ComponentReflection(get_called_class());
+		$rf1 = new ComponentReflection(static::class);
 		$dir1 = dirname($rf1->getFileName());
 		$list[] = $dir1 . '/templates/@layout.latte';
 
