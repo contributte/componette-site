@@ -3,7 +3,7 @@
 namespace App\Modules\Front\Base;
 
 use App\Model\UI\AbstractPresenter;
-use App\Model\UI\TUITemplate;
+use Contributte\Application\UI\Presenter\StructuredTemplates;
 
 /**
  * Base presenter for all front-end presenters.
@@ -11,6 +11,6 @@ use App\Model\UI\TUITemplate;
 abstract class BasePresenter extends AbstractPresenter
 {
 
-	use TUITemplate;
+	use StructuredTemplates;
 
 }

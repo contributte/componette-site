@@ -53,7 +53,7 @@ abstract class BasePresenter extends BaseFrontPresenter
 	{
 		$control = $this->addonModalFactory->create();
 
-		$control->onSuccess[] = function () {
+		$control->onSuccess[] = function (): void {
 			$this->redirect(Destination::FRONT_PORTAL_HOMEPAGE);
 		};
 

@@ -15,6 +15,9 @@ use PDOException;
 final class AddonModal extends BaseControl
 {
 
+	/** @var callable[] */
+	public $onSuccess = [];
+
 	/** @var EntityModel */
 	private $em;
 
@@ -75,7 +78,7 @@ final class AddonModal extends BaseControl
 				$this->presenter->flashMessage('Database error has occurred.', 'danger');
 			}
 
-			$this->presenter->redirect('this');
+			$this->onSuccess($this);
 		};
 
 		return $form;

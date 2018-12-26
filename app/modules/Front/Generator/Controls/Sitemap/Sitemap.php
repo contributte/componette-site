@@ -21,7 +21,7 @@ final class Sitemap extends BaseControl
 	}
 
 	/**
-	 * @return string[]
+	 * @return mixed[]
 	 */
 	private function getUrls(): array
 	{

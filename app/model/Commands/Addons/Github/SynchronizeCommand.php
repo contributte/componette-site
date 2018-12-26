@@ -83,8 +83,8 @@ final class SynchronizeCommand extends BaseCommand
 
 				$output->writeln('Skip (archived): ' . $addon->fullname);
 			} elseif (!$body || isset($body['message'])) {
-				if (isset($response['message'])) {
-					$output->writeln('Skip (' . $response['message'] . '): ' . $addon->fullname);
+				if (isset($body['message'])) {
+					$output->writeln('Skip (' . $body['message'] . '): ' . $addon->fullname);
 				} else {
 					$output->writeln('Skip (base): ' . $addon->fullname);
 				}

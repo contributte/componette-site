@@ -71,7 +71,7 @@ final class AddonDetail extends BaseControl
 
 		// Calculate total downloads
 		$stats = $this->addon->composerLatestStatistics;
-		if ($stats && $stats->json) {
+		if ($stats) {
 			foreach ($stats->json['labels'] as $key => $label) {
 				$totalDownloads[] = [
 					'x' => DateTime::from($label)->format('c'),

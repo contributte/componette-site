@@ -7,7 +7,13 @@ parameters:
 		- phpt
 
 	ignoreErrors:
+		# ORM
 		- "#Method App\\\\Model\\\\Database\\\\ORM\\\\[a-zA-Z]+\\\\[a-zA-Z]+::[a-zA-Z]+\\\\(\\\\) should return App\\\\Model\\\\Database\\\\ORM\\\\[a-zA-Z]+\\\\[a-zA-Z]+\\\\|null but returns Nextras\\\\Orm\\\\Entity\\\\IEntity\\\\|null.#"
+		- "#Property.+\\(iterable<App\\\\Model\\\\Database\\\\ORM\\\\[a-zA-Z]+\\\\[a-zA-Z]+>&Nextras\\\\Orm\\\\Collection\\\\ICollection\\).+Nextras\\\\Dbal\\\\Result\\\\Result\\|Nextras\\\\Orm\\\\Entity\\\\IEntity.#"
+
+		# Nette Presenters
+		- "#Cannot access offset 'q' on Nette\\\\ComponentModel\\\\IComponent.#"
+		- "#Call to an undefined method Nette\\\\ComponentModel\\\\IComponent::[a-zA-Z]+().#"
 
 includes:
 	- temp/phpstan/vendor/phpstan/phpstan-nette/extension.neon

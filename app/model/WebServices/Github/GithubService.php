@@ -3,7 +3,6 @@
 namespace App\Model\WebServices\Github;
 
 use App\Model\Exceptions\Runtime\WebServices\GithubException;
-use Contributte\Http\Curl\ExceptionResponse;
 use Contributte\Http\Curl\Response;
 
 final class GithubService
@@ -24,14 +23,17 @@ final class GithubService
 
 	/**
 	 * @param string[] $headers
-	 * @param string[] $opts
+	 * @param mixed[] $opts
 	 */
 	protected function makeRequest(string $url, array $headers = [], array $opts = []): Response
 	{
 		try {
 			return $this->client->makeRequest($url, $headers, $opts);
 		} catch (GithubException $e) {
-			return new ExceptionResponse($e);
+			$response = new Response();
+			$response->setError($e);
+
+			return $response;
 		}
 	}
 
@@ -53,9 +55,6 @@ final class GithubService
 	{
 		// Fire request
 		$response = $this->makeRequest($url, $headers, $opts);
-
-		// Empty response
-		if (!$response) return [];
 
 		// Create array of responses
 		$responses = [$response];
@@ -80,7 +79,7 @@ final class GithubService
 	}
 
 	/**
-	 * @return string[]
+	 * @return string[][]
 	 */
 	protected function parsePages(string $link): array
 	{

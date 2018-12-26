@@ -5,7 +5,6 @@ namespace App\Modules\Front\Portal\Rss\Controls\RssFeed;
 use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\EntityModel;
 use App\Model\Database\Query\RssFeedQuery;
-use Contributte\Nextras\Orm\QueryObject\Queryable;
 
 final class RssFeedFactory
 {
@@ -27,7 +26,8 @@ final class RssFeedFactory
 		$query = new RssFeedQuery();
 		$query->byLatest();
 		$query->setLimit(25);
-		$list = $this->em->getRepositoryForEntity(Addon::class)->fetch($query, Queryable::HYDRATION_ENTITY);
+
+		$list = $this->em->getRepositoryForEntity(Addon::class)->fetchEntities($query);
 		$control = $this->rssFeedFactory->create($list);
 
 		$control->setTitle('Componette - latest addons');
@@ -40,7 +40,8 @@ final class RssFeedFactory
 	{
 		$query = new RssFeedQuery();
 		$query->byAuthor($author);
-		$list = $this->em->getRepositoryForEntity(Addon::class)->fetch($query, Queryable::HYDRATION_ENTITY);
+
+		$list = $this->em->getRepositoryForEntity(Addon::class)->fetchEntities($query);
 		$control = $this->rssFeedFactory->create($list);
 
 		$control->setTitle('Componette - addons by ' . $author);

@@ -7,6 +7,7 @@ use App\Model\Database\ORM\EntityModel;
 use App\Model\Database\Query\OpenSearchQuery;
 use App\Modules\Front\Api\Base\BasePresenter;
 use Contributte\Nextras\Orm\QueryObject\Queryable;
+use Nextras\Orm\Collection\ICollection;
 
 final class OpenSearchPresenter extends BasePresenter
 {
@@ -18,6 +19,8 @@ final class OpenSearchPresenter extends BasePresenter
 	{
 		$query = new OpenSearchQuery();
 		$query->byQuery($q);
+
+		/** @var ICollection $addons */
 		$addons = $this->em->getRepositoryForEntity(Addon::class)->fetch($query, Queryable::HYDRATION_ENTITY);
 
 		$output = [];

@@ -37,7 +37,7 @@ use Nextras\Orm\Relationships\OneHasMany;
 class Github extends AbstractEntity
 {
 
-	/** @var GithubLinker */
+	/** @var GithubLinker|NULL */
 	private $linker;
 
 	/**
@@ -46,7 +46,7 @@ class Github extends AbstractEntity
 
 	protected function getterLinker(): GithubLinker
 	{
-		if (!$this->linker) {
+		if ($this->linker === null) {
 			$this->linker = new GithubLinker($this);
 		}
 

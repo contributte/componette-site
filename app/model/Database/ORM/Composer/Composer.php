@@ -15,14 +15,14 @@ use Nextras\Dbal\Utils\DateTimeImmutable;
  * @property string|NULL $type
  * @property int|NULL $downloads
  * @property string|NULL $keywords
- * @property DateTimeImmutable $crawledAt                {default now}
+ * @property DateTimeImmutable $crawledAt       {default now}
  *
  * @property ComposerLinker $linker             {virtual}
  */
 class Composer extends AbstractEntity
 {
 
-	/** @var ComposerLinker */
+	/** @var ComposerLinker|NULL */
 	private $linker;
 
 	/**
@@ -31,7 +31,7 @@ class Composer extends AbstractEntity
 
 	protected function getterLinker(): ComposerLinker
 	{
-		if (!$this->linker) {
+		if ($this->linker === null) {
 			$this->linker = new ComposerLinker($this);
 		}
 

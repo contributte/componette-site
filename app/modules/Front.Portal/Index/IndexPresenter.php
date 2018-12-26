@@ -43,7 +43,7 @@ final class IndexPresenter extends BaseAddonPresenter
 		$query = new SearchAddonsQuery();
 		$query->byAuthor($slug);
 
-		$this->addons = $this->addonRepository->fetch($query, Queryable::HYDRATION_ENTITY);
+		$this->addons = $this->addonRepository->fetchEntities($query);
 	}
 
 	public function renderAuthor(string $slug): void
@@ -68,7 +68,7 @@ final class IndexPresenter extends BaseAddonPresenter
 		$query = new SearchAddonsQuery();
 		$query->byQuery($q);
 
-		$this->addons = $this->addonRepository->fetch($query, Queryable::HYDRATION_ENTITY);
+		$this->addons = $this->addonRepository->fetchEntities($query);
 	}
 
 	public function renderSearch(): void

@@ -34,7 +34,7 @@ final class AddonPresenter extends SecuredPresenter
 		$this['addonForm']->setDefaults([
 			'author' => $this->addon->author,
 			'name' => $this->addon->name,
-			'tags' => (array) array_keys($this->addon->tags->get()->fetchPairs('id', 'id')),
+			'tags' => array_keys($this->addon->tags->get()->fetchPairs('id', 'id')),
 		]);
 	}
 

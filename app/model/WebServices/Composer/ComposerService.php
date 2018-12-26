@@ -3,7 +3,6 @@
 namespace App\Model\WebServices\Composer;
 
 use App\Model\Exceptions\Runtime\WebServices\ComposerException;
-use Contributte\Http\Curl\ExceptionResponse;
 use Contributte\Http\Curl\Response;
 
 final class ComposerService
@@ -22,7 +21,10 @@ final class ComposerService
 		try {
 			return $this->client->makeRequest($uri);
 		} catch (ComposerException $e) {
-			return new ExceptionResponse($e);
+			$response = new Response();
+			$response->setError($e);
+
+			return $response;
 		}
 	}
 
