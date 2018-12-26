@@ -51,7 +51,13 @@ abstract class BasePresenter extends BaseFrontPresenter
 
 	protected function createComponentModal(): AddonModal
 	{
-		return $this->addonModalFactory->create();
+		$control = $this->addonModalFactory->create();
+
+		$control->onSuccess[] = function () {
+			$this->redirect(Destination::FRONT_PORTAL_HOMEPAGE);
+		};
+
+		return $control;
 	}
 
 	protected function createComponentSideMenu(): SideMenu
