@@ -26,29 +26,30 @@
 		"ext-curl": "*",
 		"ext-mbstring": "*",
 		"ext-mysqli": "*",
+		"ext-pdo": "*",
 
-		"contributte/application": "^0.3.0",
-		"contributte/bootstrap": "^0.3.0",
-		"contributte/cache": "^0.1.0",
-		"contributte/di": "^0.2.2",
-		"contributte/forms": "^0.2.0",
-		"contributte/http": "^0.1.0",
+		"contributte/application": "^0.3.2",
+		"contributte/bootstrap": "^0.3.1",
+		"contributte/cache": "^0.3.0",
+		"contributte/di": "^0.3.0",
+		"contributte/forms": "^0.3.0",
+		"contributte/http": "^0.2.0",
 		"contributte/latte": "^0.3.0",
 		"contributte/security": "^0.2.0",
-		"contributte/tracy": "^0.2.0",
-		"contributte/utils": "^0.2.0",
+		"contributte/tracy": "^0.3.1",
+		"contributte/utils": "^0.3.1",
 
-		"nette/robot-loader": "^3.0.3",
+		"nette/robot-loader": "^3.1.0",
 
 		"nextras/orm": "~3.0.1",
 		"nextras/dbal": "~3.0.0",
 		"nextras/migrations": "~3.0.5",
 
 		"contributte/nextras-orm-query-object": "^0.2.0",
-		"contributte/console": "^0.4.0"
+		"contributte/console": "^0.5.0"
 	},
 	"require-dev": {
-		"ninjify/qa": "^0.8.0",
+		"ninjify/qa": "^0.9.0",
 		"ninjify/nunjuck": "^0.2.0",
 
 		"contributte/dev": "^0.1.0"

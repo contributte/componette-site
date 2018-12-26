@@ -2,7 +2,7 @@ extensions:
 	console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
 	version: Contributte\Latte\DI\VersionExtension
 	xcache: Contributte\Cache\DI\CacheFactoryExtension
-	curl: Contributte\Http\Curl\DI\CurlExtension
+	curl: Contributte\Http\DI\CurlExtension
 	nextras.queryobject: Contributte\Nextras\Orm\QueryObject\DI\NextrasQueryObjectExtension
 
 console:
