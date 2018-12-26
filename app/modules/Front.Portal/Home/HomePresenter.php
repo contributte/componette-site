@@ -2,15 +2,14 @@
 
 namespace App\Modules\Front\Portal\Home;
 
-use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\Addon\AddonRepository;
 use App\Model\Database\Query\LatestActivityAddonsQuery;
 use App\Model\Database\Query\LatestAddedAddonsQuery;
 use App\Modules\Front\Portal\Base\BaseAddonPresenter;
 use App\Modules\Front\Portal\Base\Controls\AddonList\AddonList;
+use App\Modules\Front\Portal\Base\Controls\ReleaseList\IReleaseListFactory;
+use App\Modules\Front\Portal\Base\Controls\ReleaseList\ReleaseList;
 use App\Modules\Front\Portal\Base\Controls\Search\Search;
-use Contributte\Nextras\Orm\QueryObject\Queryable;
-use Nextras\Orm\Collection\ICollection;
 
 final class HomePresenter extends BaseAddonPresenter
 {
@@ -18,20 +17,8 @@ final class HomePresenter extends BaseAddonPresenter
 	/** @var AddonRepository @inject */
 	public $addonRepository;
 
-	/** @var ICollection|Addon[] */
-	private $newest;
-
-	/** @var ICollection|Addon[] */
-	private $lastActive;
-
-	/**
-	 * Find addons by criteria
-	 */
-	public function actionDefault(): void
-	{
-		$this->newest = $this->addonRepository->fetch(new LatestAddedAddonsQuery(), Queryable::HYDRATION_ENTITY);
-		$this->lastActive = $this->addonRepository->fetch(new LatestActivityAddonsQuery(), Queryable::HYDRATION_ENTITY);
-	}
+	/** @var IReleaseListFactory @inject */
+	public $releaseListFactory;
 
 	/**
 	 * CONTROLS ****************************************************************
@@ -47,12 +34,17 @@ final class HomePresenter extends BaseAddonPresenter
 
 	protected function createComponentLatestAdded(): AddonList
 	{
-		return $this->createAddonListControl($this->newest);
+		return $this->createAddonListControl($this->addonRepository->fetchEntities(new LatestAddedAddonsQuery()));
 	}
 
 	protected function createComponentLatestActivity(): AddonList
 	{
-		return $this->createAddonListControl($this->lastActive);
+		return $this->createAddonListControl($this->addonRepository->fetchEntities(new LatestActivityAddonsQuery()));
+	}
+
+	protected function createComponentLatestReleases(): ReleaseList
+	{
+		return $this->releaseListFactory->create();
 	}
 
 }

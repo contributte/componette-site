@@ -1,11 +1,40 @@
-{block #content}
+{block #wrapper}
+    <div class="row">
+        <!-- Content(12) -->
+        <div class="col-md-12 col-box col-box--first">
+            <div class="row">
+                <div class="col-md-7">
+                    <h2 class="category"><span class="mega-octicon octicon-clock"></span> Latest updated addons</h2>
+                    {cache 'addons/lastest-activity', expire => '+1 hour'}
+                        {control latestActivity}
+                    {/cache}
+                </div>
+                <div class="col-md-5">
+                    <h2 class="category"><span class="mega-octicon octicon-tag"></span> Latest releases</h2>
+                    {cache 'addons/lastest-releases', expire => '+1 hour'}
+                        {control latestReleases}
+                    {/cache}
 
-<h2 class="category"><span class="mega-octicon octicon-clock"></span> Latest activity</h2>
-{cache 'addons/lastest-activity', expire => '+1 hour'}
-    {control latestActivity}
-{/cache}
+                </div>
+            </div>
+        </div>
+        <!-- /Content(12) -->
 
-<h2 class="category"><span class="mega-octicon octicon-cloud-download"></span> Latest added</h2>
-{cache 'addons/latest-added', expire => '+1 hour'}
-    {control latestAdded}
-{/cache}
+        <!-- Content(9) -->
+        <div class="col-md-9 col-box">
+            <h2 class="category"><span class="mega-octicon octicon-cloud-download"></span> Latest indexed addons</h2>
+            {cache 'addons/latest-added', expire => '+1 hour'}
+                {control latestAdded}
+            {/cache}
+        </div>
+        <!-- /Content(9) -->
+
+        <!-- Sidebar(3) -->
+        <div class="col-md-3 col-aside clearfix">
+            {block #sidebar}
+                {control sideMenu}
+            {/block}
+        </div>
+        <!-- /Sidebar(3) -->
+    </div>
+{/block}

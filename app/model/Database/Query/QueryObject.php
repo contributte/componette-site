@@ -13,14 +13,24 @@ abstract class QueryObject extends NQueryObject
 	/** @var int */
 	protected $offset;
 
-	public function setLimit(int $limit): void
+	/**
+	 * @return static
+	 */
+	public function setLimit(int $limit): self
 	{
 		$this->limit = $limit;
+
+		return $this;
 	}
 
-	public function setOffset(int $offset): void
+	/**
+	 * @return static
+	 */
+	public function setOffset(int $offset): self
 	{
 		$this->offset = $offset;
+
+		return $this;
 	}
 
 }

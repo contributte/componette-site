@@ -2,32 +2,32 @@
     <div class="meta-right">
         {if $addon->isComposer && $addon->composer}
             <span class="b-meta-info">
-                <span class="box-icon"><span class="octicon octicon-cloud-download"></span></span>
-                &nbsp;
                 <span class="box-count"><a data-ga="1" data-event="click" data-category="meta-short" data-action="composer" href="{$addon->composer->linker->getPackageUrl()}" data-toggle="tooltip" data-placement="left" title="Total downloads">{$addon->composer->downloads|count}</a></span>
+                &nbsp;
+                <span class="box-icon"><span class="octicon octicon-cloud-download"></span></span>
             </span>
         {elseif $addon->isBower && $addon->bower}
             <span class="b-meta-info">
-                <span class="box-icon"><span class="octicon octicon-cloud-download"></span></span>
-                &nbsp;
                 <span class="box-count"><a data-ga="1" data-event="click" data-category="meta-short" data-action="repo" href="{$addon->github->linker->getRepoUrl()}" data-toggle="tooltip" data-placement="left" title="Total hits">{$addon->bower->downloads|count}</a></span>
+                &nbsp;
+                <span class="box-icon"><span class="octicon octicon-cloud-download"></span></span>
             </span>
         {else}
             <span class="b-meta-info">
-                <span class="box-icon"><span class="octicon octicon-desktop-download"></span></span>
-                &nbsp;
                 <span class="box-count"><a data-ga="1" data-event="click" data-category="meta-short" data-action="releases" href="{$addon->github->linker->getReleasesUrl()}" data-toggle="tooltip" data-placement="left" title="Releases on Github">{$addon->github->releases|count}</a></span>
+                &nbsp;
+                <span class="box-icon"><span class="octicon octicon-desktop-download"></span></span>
             </span>
         {/if}
         <span class="b-meta-info">
-            <span class="box-icon"><span class="octicon octicon-star"></span></span>
-            &nbsp;
             <span class="box-count"><a data-ga="1" data-event="click" data-category="meta-short" data-action="stars" href="{$addon->github->linker->getStarsUrl()}" data-toggle="tooltip" data-placement="left" title="Total stargazers">{$addon->github->stars|count}</a></span>
+            &nbsp;
+            <span class="box-icon"><span class="octicon octicon-star"></span></span>
         </span>
         <span class="b-meta-info">
-            <span class="box-icon"><span class="octicon octicon-clock"></span></span>
-            &nbsp;
             <span class="box-count box-age"><a data-ga="1" data-event="click" data-category="meta-short" data-action="commits" href="{$addon->github->linker->getCommitsUrl()}" data-toggle="tooltip" data-placement="left" title="Last activity">{$addon->github->pushedAt|timeAgo}</a></span>
+            &nbsp;
+            <span class="box-icon"><span class="octicon octicon-clock"></span></span>
         </span>
     </div>
 </section>

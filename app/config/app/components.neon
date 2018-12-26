@@ -15,3 +15,4 @@ services:
 	- App\Modules\Front\Portal\Rss\Controls\RssFeed\IRssFeedFactory
 	- App\Modules\Front\Generator\Controls\Sitemap\ISitemapFactory
 	- App\Modules\Front\Portal\Base\Controls\Componetters\IComponettersFactory
+	- App\Modules\Front\Portal\Base\Controls\ReleaseList\IReleaseListFactory

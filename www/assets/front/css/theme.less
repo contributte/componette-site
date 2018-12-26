@@ -111,12 +111,15 @@ q:after {
     li:nth-child(1) a {
       color: #e4db37;
     }
+
     li:nth-child(2) a {
       color: #ec3409;
     }
+
     li:nth-child(3) a {
       color: #dab182;
     }
+
     li:nth-child(4) a {
       color: #25d825;
     }
@@ -139,13 +142,14 @@ q:after {
 
   .header-col {
     text-align: center;
-    padding: 20px 0;
+    padding: 10px 0;
   }
 
   .main-title {
     color: black;
     font-size: 24px;
     position: relative;
+
     img {
       width: 50px;
     }
@@ -264,21 +268,33 @@ q:after {
     margin-top: 50px;
     border-bottom: 1px dashed #ccc;
     padding-bottom: 10px;
+    font-size: 26px;
 
     &:first-of-type {
       margin-top: 0;
     }
+
     a {
       color: #000;
+    }
+
+    .mega-octicon {
+      font-size: 24px;
     }
   }
 
   .box {
     box-shadow: 0 2px 2px rgba(0, 0, 0, .3);
     background: #fff;
+
     .col-box {
-      padding: 15px 15px 15px 30px;
+      padding: 0 15px 15px 30px;
     }
+
+    .col-box--first {
+      padding-top: 15px;
+    }
+
     .col-aside {
       padding-left: 0;
     }
@@ -288,6 +304,7 @@ q:after {
 .sidebar {
   background: #fafafa;
   border-left: 1px solid #eee;
+  border-top: 1px solid #eee;
   height: 100%;
 
   .buttons {
@@ -306,6 +323,7 @@ q:after {
     .btn-group {
       margin-top: 2px;
       margin-bottom: 2px;
+
       .label-default {
         margin-right: 0;
         display: inline-block;
@@ -314,6 +332,7 @@ q:after {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
       }
+
       .label-info {
         margin-left: 0;
         display: inline-block;
@@ -323,44 +342,58 @@ q:after {
         border-bottom-left-radius: 0;
       }
     }
+
     .btn-group--50 {
       font-size: 25px;
+
       .label-info {
         background-color: #d9534f;
       }
     }
+
     .btn-group--40 {
       font-size: 23px;
+
       .label-info {
         background-color: #f0ad4e;
       }
     }
+
     .btn-group--30 {
       font-size: 21px;
+
       .label-info {
         background-color: #d44fde;
       }
     }
+
     .btn-group--20 {
       font-size: 19px;
+
       .label-info {
         background-color: #1aa55f;
       }
     }
+
     .btn-group--10 {
       font-size: 17px;
+
       .label-info {
         background-color: #cfba3b;
       }
     }
+
     .btn-group--5 {
       font-size: 15px;
+
       .label-info {
         background-color: #78deaf;
       }
     }
+
     .btn-group--0 {
       font-size: 13px;
+
       .label-info {
         background-color: rgba(255, 0, 0, 0.3);
       }
@@ -372,6 +405,7 @@ q:after {
   padding: 20px;
   margin-bottom: 20px;
   background: #fff;
+
   &:empty {
     display: none;
   }
@@ -392,6 +426,7 @@ q:after {
       align-items: center;
       justify-content: center;
     }
+
     .addon__image {
       flex: 1;
       flex-grow: 0;
@@ -403,22 +438,57 @@ q:after {
         max-height: 60px;
       }
     }
+
     .addon__body {
       flex: 1;
+
       p {
         margin: 0;
       }
+
       h3 {
         margin: 0 0 5px 0;
         font-size: 18px;
         font-weight: 600;
       }
     }
+
     .addon__meta {
       flex: 1;
       flex-grow: 0;
       min-width: 100px;
     }
+  }
+}
+
+.releases {
+  margin-right: 15px;
+
+  .release {
+    display: flex;
+
+    .release__date,
+    .release__tag {
+      color: inherit;
+    }
+
+    .release__title {
+      flex-grow: 1;
+    }
+
+    .release__icon {
+      margin: 0 8px;
+
+      img {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    .release__tag {
+      font-weight: bold;
+    }
+
   }
 }
 
@@ -432,21 +502,26 @@ q:after {
       color: gold;
       text-align: center;
     }
+
     p {
       text-align: center;
     }
+
     padding: 10px 0;
     background: darken(@bgcolor, 20%);
+
     .componetters {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+
       img {
         width: 50px;
         height: 50px;
         padding: 2px;
         -webkit-transition: .3s ease-in-out;
         transition: .3s ease-in-out;
+
         &:hover {
           border-radius: 8px;
         }
@@ -513,12 +588,10 @@ q:after {
 
 .b-meta-info {
   display: block;
+  text-align: right;
   line-height: 20px;
-  margin-top: 5px;
-  margin-bottom: 2px;
 
   .box-count {
-    float: right;
   }
 
   .box-count a {
@@ -631,6 +704,7 @@ q:after {
             font-weight: bold;
           }
         }
+
         tbody {
           tr:nth-of-type(odd) {
             background-color: #f9f9f9;
@@ -700,6 +774,7 @@ q:after {
         font-size: 14px;
         text-decoration: underline;
       }
+
       .title {
         margin-top: 0;
       }
@@ -750,6 +825,7 @@ q:after {
     .requirements.tags {
       span.label {
         padding: .3em .6em;
+
         a {
           color: #fff;
         }
@@ -877,6 +953,7 @@ q:after {
     .addon {
       width: 100%;
       float: none;
+
       article {
         height: auto;
 
@@ -924,6 +1001,7 @@ q:after {
             display: inline;
             float: none;
           }
+
           li.title-tags {
             margin-top: 10px;
             display: block;
@@ -967,6 +1045,7 @@ q:after {
         padding-left: 15px;
       }
     }
+
     .side-menu {
       .nav > li {
         float: left;
@@ -1036,6 +1115,7 @@ q:after {
           }
         }
       }
+
       section:last-of-type {
         margin-bottom: 0;
       }

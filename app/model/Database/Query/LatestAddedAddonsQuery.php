@@ -8,7 +8,7 @@ use Nextras\Dbal\QueryBuilder\QueryBuilder;
 final class LatestAddedAddonsQuery extends QueryObject
 {
 
-	public const DEFAULT_LIMIT = 8;
+	public const DEFAULT_LIMIT = 9;
 
 	public function doQuery(QueryBuilder $builder): QueryBuilder
 	{

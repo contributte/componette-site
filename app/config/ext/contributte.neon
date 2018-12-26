@@ -10,5 +10,5 @@ console:
 	version: "1.2.0"
 
 version:
-	rev: 201801
+	rev: 201812
 	build: 1

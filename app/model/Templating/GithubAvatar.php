@@ -20,7 +20,7 @@ final class GithubAvatar
 		if (isset($opts['s'])) {
 			$url .= '?s=' . intval($opts['s']);
 		} else {
-			$url .= '?s=60';
+			$url .= '?s=50';
 		}
 
 		return sprintf($url, $user);
