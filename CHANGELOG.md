@@ -1,12 +1,25 @@
 # CHANGELOG
 
-## 1.3.0-dev
+## 1.4.0-dev
+
+## 1.3.0 [27.12.2017]
 
 - Feature: accurate authors sorting in the footer
 - Command: addon content has utf8mb4_general_ci collate
 - Fix: syntax typo in GithubLinker
 - Fix: after deploy errors
 - Fix: invalid links on homepage [#88]
+- Feature: implement phpstan [#83]
+- Fix: search, empty search, sorting
+- Refactoring: drow bower, drop old cron
+- Feature: improve design [#90]
+- Feature: added disqus to addon detail [#75]
+- Fix: relative links in readme [#104] [#105]
+- Feature: upgrade nextras/orm+dbal to v3.0
+- Feature: simplify docker image (based on Caddy server)
+- Feature: use PHP 7.3
+- Fix: URL in Caddy [#110][#111]
+- Feature: upgrade composer deps, npm deps
 
 ## 1.2.0 [06.04.2017]
 
