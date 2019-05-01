@@ -25,7 +25,7 @@ test(function () use ($container): void {
 
 		$finder = Finder::findFiles('*.latte')->from(APP_DIR);
 		foreach ($finder as $file) {
-			$template->getLatte()->warmupCache($file);
+			$template->getLatte()->warmupCache((string) $file);
 		}
 	} catch (Throwable $e) {
 		Assert::fail(sprintf('Template compilation failed (%s)', $e->getMessage()));

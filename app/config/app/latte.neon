@@ -13,9 +13,6 @@ services:
 			- addFilter('ucfirst', ['App\Model\Templating\Filters\Filters', 'ucfirst'])
 			- addFilter('emojify', ['App\Model\Templating\Filters\Filters', 'emojify'])
 
-			# Composer
-			- addFilter('isPhpDependency', ['App\Model\Templating\Filters\ComposerHelper', 'isPhpDependency'])
-
 latte:
 	macros:
 		- App\Model\Templating\Macros\Macros
