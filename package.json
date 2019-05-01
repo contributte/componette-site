@@ -3,9 +3,9 @@
 	"version": "1.0.0",
 	"repository": {
 		"type": "git",
-		"url": "git@github.com:componette/componette.com.git"
+		"url": "git@github.com:planette/componette.com.git"
 	},
-	"licence": "BSD-3-Clause",
+	"licence": "MIT",
 	"devDependencies": {
 		"gulp": "^3.9.0",
 		"gulp-clean-css": "^4.0.0",
