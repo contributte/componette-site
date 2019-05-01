@@ -5,7 +5,6 @@
 		<exclude name="Squiz.Commenting.FunctionComment.SpacingAfter"/>
 		<exclude name="SlevomatCodingStandard.ControlStructures.EarlyExit"/>
 		<exclude name="SlevomatCodingStandard.ControlStructures.RequireTernaryOperator"/>
-		<exclude name="SlevomatCodingStandard.ControlStructures.UselessConditionWithReturn"/>
 		<exclude name="SlevomatCodingStandard.ControlStructures.ControlStructureSpacing"/>
 		<exclude name="SlevomatCodingStandard.ControlStructures.RequireMultiLineTernaryOperator.MultiLineTernaryOperatorNotUsed"/>
 	</rule>
@@ -14,13 +13,13 @@
 	<rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
 		<properties>
 			<property name="rootNamespaces" type="array" value="
-                app/model=>App\Model,
-                app/modules/Admin=>App\Modules\Admin,
-                app/modules/Front=>App\Modules\Front,
-                app/modules/Front.Api=>App\Modules\Front\Api,
-                app/modules/Front.Portal=>App\Modules\Front\Portal,
-                tests=>Tests
-            "/>
+				app/model=>App\Model,
+				app/modules/Admin=>App\Modules\Admin,
+				app/modules/Front=>App\Modules\Front,
+				app/modules/Front.Api=>App\Modules\Front\Api,
+				app/modules/Front.Portal=>App\Modules\Front\Portal,
+				tests=>Tests
+			"/>
 		</properties>
 	</rule>
 

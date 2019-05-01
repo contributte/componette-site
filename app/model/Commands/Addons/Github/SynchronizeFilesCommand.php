@@ -65,7 +65,9 @@ final class SynchronizeFilesCommand extends BaseCommand
 			if (in_array($addon->type, [null, Addon::TYPE_UNKNOWN, Addon::TYPE_COMPOSER])) {
 
 				// Skip non-github reference
-				if (!$addon->github) continue;
+				if (!$addon->github) {
+					continue;
+				}
 
 				$response = $this->github->composer($addon->author, $addon->name);
 

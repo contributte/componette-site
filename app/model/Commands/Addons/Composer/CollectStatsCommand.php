@@ -50,7 +50,9 @@ final class CollectStatsCommand extends BaseCommand
 		$counter = 0;
 		foreach ($addons as $addon) {
 			// Skip non-github reference
-			if (!$addon->github) continue;
+			if (!$addon->github) {
+				continue;
+			}
 
 			try {
 				// Skip addon without data

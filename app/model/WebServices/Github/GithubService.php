@@ -84,7 +84,9 @@ final class GithubService
 	protected function parsePages(string $link): array
 	{
 		preg_match_all('#<(.+\?page=(\d+))>;\srel=.((?:next|last|first)).#U', $link, $matches);
-		if (!$matches) return [];
+		if (!$matches) {
+			return [];
+		}
 
 		$pages = [];
 		foreach ($matches[1] as $n => $url) {

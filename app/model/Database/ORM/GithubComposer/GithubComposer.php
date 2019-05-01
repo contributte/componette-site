@@ -67,7 +67,9 @@ class GithubComposer extends AbstractEntity
 	public function get(string $key, $default = null)
 	{
 		if (!isset($this->json->{$key})) {
-			if (func_num_args() > 1) return $default;
+			if (func_num_args() > 1) {
+				return $default;
+			}
 			throw new InvalidArgumentException(sprintf('Key "%s" not found in Composer\'s data', $key));
 		}
 

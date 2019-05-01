@@ -75,11 +75,15 @@ final class CategorizedAddonList extends BaseControl
 		foreach ($addons as $addon) {
 			if ($addon->tags->countStored() > 0) {
 				foreach ($addon->tags as $tag) {
-					if (!isset($tmplist[$tag->id])) $tmplist[$tag->id] = [];
+					if (!isset($tmplist[$tag->id])) {
+						$tmplist[$tag->id] = [];
+					}
 					$tmplist[$tag->id][] = $addon;
 				}
 			} else {
-				if (!isset($tmplist[-1])) $tmplist[-1] = [];
+				if (!isset($tmplist[-1])) {
+					$tmplist[-1] = [];
+				}
 				$tmplist[-1][] = $addon;
 			}
 		}
