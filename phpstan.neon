@@ -12,9 +12,8 @@ parameters:
 		- "#Property.+\\(iterable<App\\\\Model\\\\Database\\\\ORM\\\\[a-zA-Z]+\\\\[a-zA-Z]+>&Nextras\\\\Orm\\\\Collection\\\\ICollection\\).+Nextras\\\\Dbal\\\\Result\\\\Result\\|Nextras\\\\Orm\\\\Entity\\\\IEntity.#"
 
 		# Nette Presenters
-		- "#Cannot access offset 'q' on Nette\\\\ComponentModel\\\\IComponent.#"
-		- "#Call to an undefined method Nette\\\\ComponentModel\\\\IComponent::[a-zA-Z]+().#"
+		- '#Access to an undefined property Nette\\ComponentModel\\IComponent::\$controlPrototype.#'
 
 includes:
-	- temp/phpstan/vendor/phpstan/phpstan-nette/extension.neon
-	- temp/phpstan/vendor/phpstan/phpstan-nette/rules.neon
+	- vendor/phpstan/phpstan-nette/extension.neon
+	- vendor/phpstan/phpstan-nette/rules.neon
