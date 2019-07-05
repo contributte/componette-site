@@ -19,5 +19,6 @@ parameters:
 		- '#Array \(array\<callable\(Nette\\Forms\\Form, mixed\)\: void\>\) does not accept array\(\$this\(.+\), .+\)#'
 
 includes:
+	- vendor/phpstan/phpstan/conf/bleedingEdge.neon
 	- vendor/phpstan/phpstan-nette/extension.neon
 	- vendor/phpstan/phpstan-nette/rules.neon
