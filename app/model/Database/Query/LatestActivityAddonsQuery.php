@@ -12,9 +12,9 @@ final class LatestActivityAddonsQuery extends QueryObject
 
 	public function doQuery(QueryBuilder $builder): QueryBuilder
 	{
-		$qb = $builder->select('*')
+		$qb = $builder->select('g.*, a.*')
 			->from('[addon]', 'a')
-			->leftJoin('a', '[github]', 'g', '[g.addon_id] = [a.id]')
+			->rightJoin('a', '[github]', 'g', '[g.addon_id] = [a.id]')
 			->andWhere('[a.state] = %s', Addon::STATE_ACTIVE)
 			->addOrderBy('[g.pushed_at] DESC')
 			->addOrderBy('[a.updated_at] DESC');

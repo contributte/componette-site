@@ -27,13 +27,13 @@ final class OpenSearchQuery extends QueryObject
 			throw new InvalidStateException('Provide search query');
 		}
 
-		$qb = $builder->select('*')
+		$qb = $builder->select('g.*, a.*')
 			->from('[addon]', 'a')
 			->andWhere('[a.state] = %s', Addon::STATE_ACTIVE)
 			->addOrderBy('[a.rating] DESC')
 			->addOrderBy('[a.created_at] DESC');
 
-		$qb->leftJoin('a', '[github]', 'g', '[g.addon_id] = [a.id]')
+		$qb->rightJoin('a', '[github]', 'g', '[g.addon_id] = [a.id]')
 			->andWhere('[a.author] LIKE %s OR [a.name] LIKE %s', '%' . $this->token . '%', '%' . $this->token . '%')
 			->groupBy('[a.id]');
 

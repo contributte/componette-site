@@ -12,7 +12,7 @@ final class LatestAddedAddonsQuery extends QueryObject
 
 	public function doQuery(QueryBuilder $builder): QueryBuilder
 	{
-		$qb = $builder->select('*')
+		$qb = $builder->select('a.*')
 			->from('[addon]', 'a')
 			->andWhere('[a.state] = %s', Addon::STATE_ACTIVE)
 			->orderBy('[a.created_at] DESC');

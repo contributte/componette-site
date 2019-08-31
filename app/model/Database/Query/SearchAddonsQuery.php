@@ -38,7 +38,7 @@ final class SearchAddonsQuery extends QueryObject
 
 	public function doQuery(QueryBuilder $builder): QueryBuilder
 	{
-		$qb = $builder->select('*')
+		$qb = $builder->select('a.*')
 			->from('[addon]', 'a')
 			->andWhere('[a.state] = %s', Addon::STATE_ACTIVE)
 			->addOrderBy('[a.rating] DESC')
@@ -48,26 +48,16 @@ final class SearchAddonsQuery extends QueryObject
 			$qb->andWhere('[a.author] = %s', $this->author);
 		}
 
-		/*
-		 *
-		$builder = $this->builder()
-			->from('[addon]', 'a')
-			->leftJoin('a', '[github]', 'g', '[g.addon_id] = [a.id]')
-			->orWhere('[a.owner] LIKE %s', "%$q%")
-			->orWhere('[a.name] LIKE %s', "%$q%")
-			->andWhere('[a.state] = %s', Addon::STATE_ACTIVE);
-		 */
-
 		if ($this->tag) {
-			$qb->leftJoin('a', '[addon_x_tag]', 'axt', '[axt.addon_id] = [a.id]')
-				->leftJoin('t', '[tag]', 't', '[t.id] = [axt.tag_id]')
+			$qb->rightJoin('a', '[addon_x_tag]', 'axt', '[axt.addon_id] = [a.id]')
+				->rightJoin('t', '[tag]', 't', '[t.id] = [axt.tag_id]')
 				->andWhere('[t.name] = %s', $this->tag)
 				->groupBy('[a.id]');
 		}
 
 		if ($this->tokens) {
-			$qb->leftJoin('a', '[github]', 'g', '[g.addon_id] = [a.id]')
-				->leftJoin('a', '[composer]', 'c', '[c.addon_id] = [a.id]');
+			$qb->rightJoin('a', '[github]', 'g', '[g.addon_id] = [a.id]')
+				->rightJoin('a', '[composer]', 'c', '[c.addon_id] = [a.id]');
 
 			foreach ($this->tokens as $token) {
 				$builder->andWhere(
