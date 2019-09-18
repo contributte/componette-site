@@ -6,7 +6,7 @@
     <p>
        Addons, extensions & components portal for <a href="https://nette.org">Nette Framework</a> with smooth searching and categorization.
     </p>
-    <p>Check the <a href="https://componette.com"><strong>real demo</strong></a>.</p>
+    <p>Open <a href="https://componette.com"><strong>componette website</strong></a>.</p>
     <br/>
     <p>
         <a href="https://gitter.im/componette/componette" rel="nofollow"><img src="https://img.shields.io/gitter/room/componette/componette.svg"></a>
