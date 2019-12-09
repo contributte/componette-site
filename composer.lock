@@ -597,7 +597,7 @@
             ],
             "authors": [
                 {
-                    "name": "Milan Felix Sulc",
+                    "name": "Milan Felix Šulc",
                     "homepage": "https://f3l1x.io"
                 }
             ],
@@ -894,7 +894,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🏆 Nette Application: a full-stack component-based MVC kernel for PHP that helps you write powerful and modern web applications. Write less, have cleaner code and your work will bring you joy.",
+            "description": "? Nette Application: a full-stack component-based MVC kernel for PHP that helps you write powerful and modern web applications. Write less, have cleaner code and your work will bring you joy.",
             "homepage": "https://nette.org",
             "keywords": [
                 "Forms",
@@ -977,7 +977,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🅱 Nette Bootstrap: the simple way to configure and bootstrap your Nette application.",
+            "description": "? Nette Bootstrap: the simple way to configure and bootstrap your Nette application.",
             "homepage": "https://nette.org",
             "keywords": [
                 "bootstrapping",
@@ -1690,7 +1690,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🔑 Nette Security: provides authentication, authorization and a role-based access control management via ACL (Access Control List)",
+            "description": "? Nette Security: provides authentication, authorization and a role-based access control management via ACL (Access Control List)",
             "homepage": "https://nette.org",
             "keywords": [
                 "Authentication",
@@ -1817,7 +1817,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🛠 Nette Utils: lightweight utilities for string & array manipulation, image handling, safe JSON encoding/decoding, validation, slug or strong password generating etc.",
+            "description": "? Nette Utils: lightweight utilities for string & array manipulation, image handling, safe JSON encoding/decoding, validation, slug or strong password generating etc.",
             "homepage": "https://nette.org",
             "keywords": [
                 "array",
@@ -1839,31 +1839,31 @@
         },
         {
             "name": "nextras/dbal",
-            "version": "v3.1.0",
+            "version": "v3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nextras/dbal.git",
-                "reference": "1da35388a665e94d2bc552482d541f2923fafa5a"
+                "reference": "3d4bc5adf88a864c655ece8d8d9b67ab4aed6952"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nextras/dbal/zipball/1da35388a665e94d2bc552482d541f2923fafa5a",
-                "reference": "1da35388a665e94d2bc552482d541f2923fafa5a",
+                "url": "https://api.github.com/repos/nextras/dbal/zipball/3d4bc5adf88a864c655ece8d8d9b67ab4aed6952",
+                "reference": "3d4bc5adf88a864c655ece8d8d9b67ab4aed6952",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1"
             },
             "require-dev": {
-                "mockery/mockery": "~1.2",
-                "nette/caching": "~2.5 || ~3.0@rc",
-                "nette/di": "~2.4 >=2.4.10 || ~3.0@beta",
-                "nette/finder": "~2.5 || ~3.0@rc",
-                "nette/neon": "~2.4 || ~3.0@rc",
-                "nette/tester": "~2.1",
-                "nette/utils": "~2.5 || ~3.0@rc",
-                "phpstan/phpstan-shim": "0.11.1",
-                "tracy/tracy": "~2.4 || ~3.0@dev"
+                "mockery/mockery": "~1.3.0",
+                "nette/caching": "~3.0",
+                "nette/di": "~3.0",
+                "nette/finder": "~2.5",
+                "nette/neon": "~3.0",
+                "nette/tester": "~2.3.1",
+                "nette/utils": "~3.0",
+                "phpstan/phpstan-shim": "0.11.12",
+                "tracy/tracy": "~2.7"
             },
             "type": "library",
             "extra": {
@@ -1896,7 +1896,7 @@
                 "dbal",
                 "nextras"
             ],
-            "time": "2019-02-11T08:58:28+00:00"
+            "time": "2019-11-30T21:42:33+00:00"
         },
         {
             "name": "nextras/migrations",
