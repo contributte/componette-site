@@ -24,7 +24,7 @@
 ## Requirements
 
 * PHP 7.3+
-* NodeJS 10+
+* NodeJS 12+
 * Caddy 0.11+
 * MariaDB 10.3+
 * **Docker** [optionally]
