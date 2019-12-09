@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4a1c8d99d1b034bb35102921d867b456",
+    "content-hash": "358d6e7efa2ff20dae7c616763468311",
     "packages": [
         {
             "name": "contributte/application",
@@ -2890,16 +2890,16 @@
         },
         {
             "name": "ninjify/coding-standard",
-            "version": "v0.8",
+            "version": "v0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ninjify/coding-standard.git",
-                "reference": "ce589279676d2e1215f03e13aa728b0ec62cdefb"
+                "reference": "123c81daf8623afde8b5728e8d1a2f664452dbf3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ninjify/coding-standard/zipball/ce589279676d2e1215f03e13aa728b0ec62cdefb",
-                "reference": "ce589279676d2e1215f03e13aa728b0ec62cdefb",
+                "url": "https://api.github.com/repos/ninjify/coding-standard/zipball/123c81daf8623afde8b5728e8d1a2f664452dbf3",
+                "reference": "123c81daf8623afde8b5728e8d1a2f664452dbf3",
                 "shasum": ""
             },
             "require": {
@@ -2910,7 +2910,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.8.x-dev"
+                    "dev-master": "0.9.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2931,7 +2931,7 @@
                 "ninjify",
                 "php"
             ],
-            "time": "2019-02-24T16:05:27+00:00"
+            "time": "2019-04-27T17:14:05+00:00"
         },
         {
             "name": "ninjify/nunjuck",
@@ -3002,22 +3002,22 @@
         },
         {
             "name": "ninjify/qa",
-            "version": "v0.9",
+            "version": "v0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ninjify/qa.git",
-                "reference": "810d9c14fec2dd910dbfb6bd86f4e6ee67cc28af"
+                "reference": "a2d521958a9bb38d894f94cbd8e3718cf6e02971"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ninjify/qa/zipball/810d9c14fec2dd910dbfb6bd86f4e6ee67cc28af",
-                "reference": "810d9c14fec2dd910dbfb6bd86f4e6ee67cc28af",
+                "url": "https://api.github.com/repos/ninjify/qa/zipball/a2d521958a9bb38d894f94cbd8e3718cf6e02971",
+                "reference": "a2d521958a9bb38d894f94cbd8e3718cf6e02971",
                 "shasum": ""
             },
             "require": {
                 "jakub-onderka/php-console-highlighter": "^0.4.0",
                 "jakub-onderka/php-parallel-lint": "^1.0.0",
-                "ninjify/coding-standard": "^0.8.0",
+                "ninjify/coding-standard": "^0.9.0",
                 "php": ">=7.1"
             },
             "bin": [
@@ -3028,7 +3028,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.9.x-dev"
+                    "dev-master": "0.10.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3051,7 +3051,7 @@
                 "php",
                 "quality"
             ],
-            "time": "2019-02-24T11:31:23+00:00"
+            "time": "2019-09-12T19:29:49+00:00"
         },
         {
             "name": "ocramius/package-versions",
