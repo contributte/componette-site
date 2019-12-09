@@ -58,7 +58,7 @@ final class SynchronizeCommand extends BaseCommand
 		);
 	}
 
-	protected function execute(InputInterface $input, OutputInterface $output): void
+	protected function execute(InputInterface $input, OutputInterface $output): int
 	{
 		$addons = $this->addonFacade->find($input);
 
@@ -147,6 +147,8 @@ final class SynchronizeCommand extends BaseCommand
 		}
 
 		$output->writeln(sprintf('Updated %s addons', $counter));
+
+		return 0;
 	}
 
 }

@@ -23,7 +23,6 @@ final class AddonModal extends BaseControl
 
 	public function __construct(EntityModel $em)
 	{
-		parent::__construct();
 		$this->em = $em;
 	}
 

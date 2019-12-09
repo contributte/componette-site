@@ -52,7 +52,7 @@ final class SynchronizeFilesCommand extends BaseCommand
 		);
 	}
 
-	protected function execute(InputInterface $input, OutputInterface $output): void
+	protected function execute(InputInterface $input, OutputInterface $output): int
 	{
 		// @todo maybe catch exceptions and update output??
 		$addons = $this->addonFacade->find($input);
@@ -110,6 +110,8 @@ final class SynchronizeFilesCommand extends BaseCommand
 		}
 
 		$output->writeln(sprintf('Updated %s addons files', $counter));
+
+		return 0;
 	}
 
 }

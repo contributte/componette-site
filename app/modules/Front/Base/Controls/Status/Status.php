@@ -29,7 +29,6 @@ final class Status extends BaseControl
 		CacheFactory $cacheFactory
 	)
 	{
-		parent::__construct();
 		$this->addonRepository = $addonRepository;
 		$this->github = $github;
 		$this->cache = $cacheFactory->create(CacheKeys::FRONT_CONTROLS_STATUS);

@@ -40,7 +40,7 @@ final class CollectStatsCommand extends BaseCommand
 			->setDescription('Update composer stats');
 	}
 
-	protected function execute(InputInterface $input, OutputInterface $output): void
+	protected function execute(InputInterface $input, OutputInterface $output): int
 	{
 		/** @var ICollection|Addon[] $addons */
 		$addons = $this->addonRepository->findBy(['state' => Addon::STATE_ACTIVE, 'type' => Addon::TYPE_COMPOSER]);
@@ -92,6 +92,8 @@ final class CollectStatsCommand extends BaseCommand
 		}
 
 		$output->writeln(sprintf('Updated %s packages', $counter));
+
+		return 0;
 	}
 
 }

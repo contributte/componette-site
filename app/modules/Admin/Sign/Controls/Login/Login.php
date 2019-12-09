@@ -18,7 +18,6 @@ final class Login extends BaseControl
 
 	public function __construct(User $user)
 	{
-		parent::__construct();
 		$this->user = $user;
 	}
 

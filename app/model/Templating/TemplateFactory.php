@@ -6,6 +6,7 @@ use App\Model\Portal;
 use App\Model\Templating\Filters\Helpers;
 use App\Model\Templating\Filters\HelpersExecutor;
 use Nette\Application\UI\Control;
+use Nette\Application\UI\ITemplate;
 use Nette\Bridges\ApplicationLatte\Template;
 use Nette\Bridges\ApplicationLatte\TemplateFactory as NTemplateFactory;
 
@@ -18,12 +19,9 @@ final class TemplateFactory extends NTemplateFactory
 	/** @var Portal @inject */
 	public $rawgit;
 
-	/**
-	 * @param Control $control
-	 * @return Template
-	 */
-	public function createTemplate(Control $control = NULL)
+	public function createTemplate(Control $control = NULL): ITemplate
 	{
+		/** @var Template $template */
 		$template = parent::createTemplate($control);
 
 		// Template tweaks!

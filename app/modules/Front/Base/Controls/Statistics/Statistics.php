@@ -13,7 +13,6 @@ final class Statistics extends BaseControl
 
 	public function __construct(StatisticsFacade $facade)
 	{
-		parent::__construct();
 		$this->facade = $facade;
 	}
 

@@ -15,7 +15,6 @@ final class AddonDetail extends BaseControl
 
 	public function __construct(Addon $addon)
 	{
-		parent::__construct();
 		$this->addon = $addon;
 	}
 

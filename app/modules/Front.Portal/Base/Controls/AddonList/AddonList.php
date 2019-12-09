@@ -15,7 +15,6 @@ class AddonList extends BaseControl
 
 	public function __construct(ICollection $addons)
 	{
-		parent::__construct();
 		$this->addons = $addons;
 	}
 

@@ -48,7 +48,7 @@ final class GenerateContentCommand extends BaseCommand
 		);
 	}
 
-	protected function execute(InputInterface $input, OutputInterface $output): void
+	protected function execute(InputInterface $input, OutputInterface $output): int
 	{
 		/** @var ICollection|Addon[] $addons */
 		$addons = $this->addonRepository->findBy(['state' => Addon::STATE_ACTIVE]);
@@ -94,6 +94,8 @@ final class GenerateContentCommand extends BaseCommand
 		}
 
 		$output->writeln(sprintf('Updated %s addons contents', $counter));
+
+		return 0;
 	}
 
 	protected function reformatLinks(Github $github): void

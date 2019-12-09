@@ -17,7 +17,6 @@ final class Search extends BaseControl
 
 	public function __construct(Searching $search)
 	{
-		parent::__construct();
 		$this->search = $search;
 	}
 

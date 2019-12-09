@@ -42,7 +42,7 @@ final class SynchronizeCommand extends BaseCommand
 			->setDescription('Synchronize composer detailed information');
 	}
 
-	protected function execute(InputInterface $input, OutputInterface $output): void
+	protected function execute(InputInterface $input, OutputInterface $output): int
 	{
 		/** @var ICollection|Addon[] $addons */
 		$addons = $this->addonRepository->findBy(['state' => Addon::STATE_ACTIVE, 'type' => Addon::TYPE_COMPOSER]);
@@ -102,6 +102,8 @@ final class SynchronizeCommand extends BaseCommand
 		}
 
 		$output->writeln(sprintf('Updated %s composer addons', $counter));
+
+		return 0;
 	}
 
 }

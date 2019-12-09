@@ -34,7 +34,7 @@ final class SimpleAuthenticator implements IAuthenticator
 		[$username, $password] = $credentials;
 		foreach ($this->userlist as $_name => $_pass) {
 			if (strcasecmp($_name, $username) === 0) {
-				if (Passwords::verify($password, $_pass)) {
+				if ((new Passwords())->verify($password, $_pass)) {
 					return new Identity($_name, self::ROLE_ADMIN);
 				} else {
 					throw new AuthenticationException('Invalid password.', self::INVALID_CREDENTIAL);

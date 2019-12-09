@@ -32,7 +32,6 @@ final class RssFeed extends BaseControl
 	 */
 	public function __construct($addons)
 	{
-		parent::__construct();
 		$this->addons = $addons;
 	}
 
