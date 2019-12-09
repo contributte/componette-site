@@ -10,7 +10,7 @@
     <br/>
     <p>
         <a href="https://gitter.im/componette/componette" rel="nofollow"><img src="https://img.shields.io/gitter/room/componette/componette.svg"></a>
-        <a href="https://travis-ci.org/planette/componette.com" rel="nofollow"><img src="https://img.shields.io/travis/planette/componette.com.svg?style=flat-square"></a>
+        <a href="https://travis-ci.org/planette/componette.com" rel="nofollow"><img src="https://img.shields.io/travis/planette/componette.com.svg"></a>
         <a href="http://isitmaintained.com/project/componette/componette.com" rel="nofollow"><img src="https://isitmaintained.com/badge/open/componette/componette.com.svg"></a>
         <a href="http://isitmaintained.com/project/componette/componette.com" rel="nofollow"><img src="https://isitmaintained.com/badge/resolution/componette/componette.com.svg"></a>
     </p>
