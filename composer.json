@@ -43,7 +43,7 @@
 
 		"nextras/orm": "~3.1.0",
 		"nextras/dbal": "~3.1.0",
-		"nextras/migrations": "~3.0.5",
+		"nextras/migrations": "~3.1.1",
 
 		"contributte/nextras-orm-query-object": "^0.2.0",
 		"contributte/console": "^0.5.0"

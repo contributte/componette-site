@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "61c4e6cb9b699ba551ed2275f8766c75",
+    "content-hash": "4f14b9d6c3cffe38ff90a1ae85133806",
     "packages": [
         {
             "name": "contributte/application",
@@ -597,7 +597,7 @@
             ],
             "authors": [
                 {
-                    "name": "Milan Felix Sulc",
+                    "name": "Milan Felix Šulc",
                     "homepage": "https://f3l1x.io"
                 }
             ],
@@ -894,7 +894,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🏆 Nette Application: a full-stack component-based MVC kernel for PHP that helps you write powerful and modern web applications. Write less, have cleaner code and your work will bring you joy.",
+            "description": "? Nette Application: a full-stack component-based MVC kernel for PHP that helps you write powerful and modern web applications. Write less, have cleaner code and your work will bring you joy.",
             "homepage": "https://nette.org",
             "keywords": [
                 "Forms",
@@ -977,7 +977,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🅱 Nette Bootstrap: the simple way to configure and bootstrap your Nette application.",
+            "description": "? Nette Bootstrap: the simple way to configure and bootstrap your Nette application.",
             "homepage": "https://nette.org",
             "keywords": [
                 "bootstrapping",
@@ -1690,7 +1690,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🔑 Nette Security: provides authentication, authorization and a role-based access control management via ACL (Access Control List)",
+            "description": "? Nette Security: provides authentication, authorization and a role-based access control management via ACL (Access Control List)",
             "homepage": "https://nette.org",
             "keywords": [
                 "Authentication",
@@ -1817,7 +1817,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🛠 Nette Utils: lightweight utilities for string & array manipulation, image handling, safe JSON encoding/decoding, validation, slug or strong password generating etc.",
+            "description": "? Nette Utils: lightweight utilities for string & array manipulation, image handling, safe JSON encoding/decoding, validation, slug or strong password generating etc.",
             "homepage": "https://nette.org",
             "keywords": [
                 "array",
@@ -1900,42 +1900,51 @@
         },
         {
             "name": "nextras/migrations",
-            "version": "v3.0.5",
+            "version": "v3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nextras/migrations.git",
-                "reference": "b84f500699c64bfe7de9ac0bb4c608b757fe2e55"
+                "reference": "85b4101a11f3bbb0d6685d6bd5d04e333cfebe51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nextras/migrations/zipball/b84f500699c64bfe7de9ac0bb4c608b757fe2e55",
-                "reference": "b84f500699c64bfe7de9ac0bb4c608b757fe2e55",
+                "url": "https://api.github.com/repos/nextras/migrations/zipball/85b4101a11f3bbb0d6685d6bd5d04e333cfebe51",
+                "reference": "85b4101a11f3bbb0d6685d6bd5d04e333cfebe51",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4"
             },
             "require-dev": {
-                "dibi/dibi": "~2.3",
+                "dibi/dibi": "~3.0 | ~4.0",
+                "doctrine/cache": "~1.5",
                 "doctrine/dbal": "~2.5",
+                "doctrine/orm": "~2.5",
                 "ext-openssl": "*",
-                "mockery/mockery": "~0.9",
+                "mockery/mockery": "~0.9 | ~1.0",
                 "nette/database": "~2.2",
                 "nette/di": "~2.3.12 | ~2.4",
-                "nette/tester": "~1.4",
+                "nette/tester": "~1.7 | ~2.0",
                 "nette/utils": "~2.3",
-                "nextras/dbal": "~1.0 | ~2.0",
-                "symfony/console": "~2.6 | ~3.0"
+                "nextras/dbal": "~1.0 | ~2.0 | ~3.0",
+                "symfony/config": "~2.6 | ~3.0 | ~4.0",
+                "symfony/console": "~2.6 | ~3.0 | ~4.0",
+                "symfony/dependency-injection": "~2.6 | ~3.0 | ~4.0",
+                "symfony/http-kernel": "~2.6 | ~3.0 | ~4.0",
+                "tracy/tracy": "^2.2"
             },
             "suggest": {
                 "dibi/dibi": "to use DibiAdapter",
+                "doctrine/dbal": "to use DoctrineAdapter",
+                "doctrine/orm": "to generate migrations with Doctrine SchemaTool",
                 "nette/database": "to use NetteAdapter",
-                "nextras/dbal": "to use NextrasAdapter"
+                "nextras/dbal": "to use NextrasAdapter",
+                "symfony/console": "to use Symfony commands"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "3.1-dev"
                 }
             },
             "autoload": {
@@ -1952,7 +1961,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Database migrations runner",
-            "time": "2017-07-28T18:19:10+00:00"
+            "time": "2019-06-23T10:28:48+00:00"
         },
         {
             "name": "nextras/orm",
