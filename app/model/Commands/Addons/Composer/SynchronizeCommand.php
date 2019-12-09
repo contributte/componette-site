@@ -19,6 +19,9 @@ use Tracy\Debugger;
 final class SynchronizeCommand extends BaseCommand
 {
 
+	/** @var string */
+	protected static $defaultName = 'addons:composer:sync';
+
 	/** @var AddonRepository */
 	private $addonRepository;
 
@@ -38,7 +41,7 @@ final class SynchronizeCommand extends BaseCommand
 	protected function configure(): void
 	{
 		$this
-			->setName('addons:composer:sync')
+			->setName(self::$defaultName)
 			->setDescription('Synchronize composer detailed information');
 	}
 

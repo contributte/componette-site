@@ -16,6 +16,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 final class SynchronizeReleasesCommand extends BaseCommand
 {
 
+	/** @var string */
+	protected static $defaultName = 'addons:github:sync:releases';
+
 	/** @var AddonFacade */
 	private $addonFacade;
 
@@ -48,7 +51,7 @@ final class SynchronizeReleasesCommand extends BaseCommand
 	protected function configure(): void
 	{
 		$this
-			->setName('addons:github:sync:releases')
+			->setName(self::$defaultName)
 			->setDescription('Synchronize addon releases');
 
 		$this->addArgument(

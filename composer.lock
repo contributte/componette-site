@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "68833577d2faeb581ebec4839a616933",
+    "content-hash": "4a1c8d99d1b034bb35102921d867b456",
     "packages": [
         {
             "name": "contributte/application",
@@ -527,33 +527,37 @@
         },
         {
             "name": "contributte/nextras-orm-query-object",
-            "version": "v0.2",
+            "version": "v0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/contributte/nextras-orm-query-object.git",
-                "reference": "c81d24732157674496fa113d5167369842256e64"
+                "reference": "333f3f458f775cbafe3ef099cff245fc75674c5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contributte/nextras-orm-query-object/zipball/c81d24732157674496fa113d5167369842256e64",
-                "reference": "c81d24732157674496fa113d5167369842256e64",
+                "url": "https://api.github.com/repos/contributte/nextras-orm-query-object/zipball/333f3f458f775cbafe3ef099cff245fc75674c5d",
+                "reference": "333f3f458f775cbafe3ef099cff245fc75674c5d",
                 "shasum": ""
             },
             "require": {
-                "nextras/dbal": "^3.0.0",
-                "php": ">= 7.1"
+                "nextras/dbal": "^3.1.1",
+                "php": "^7.2"
             },
             "require-dev": {
-                "mockery/mockery": "^1.1.0",
-                "nette/di": "~2.4.12",
-                "nextras/orm": "^3.0.0",
-                "ninjify/nunjuck": "^0.2.0",
-                "ninjify/qa": "^0.8.0"
+                "mockery/mockery": "^1.3.0",
+                "nette/di": "~3.0.1",
+                "nextras/orm": "^3.1.0",
+                "ninjify/nunjuck": "^0.3.0",
+                "ninjify/qa": "^0.10.0",
+                "phpstan/phpstan": "^0.12.0",
+                "phpstan/phpstan-deprecation-rules": "^0.12.0",
+                "phpstan/phpstan-nette": "^0.12.0",
+                "phpstan/phpstan-strict-rules": "^0.12.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-develop": "0.2.x-dev"
+                    "dev-master": "0.4.x-dev"
                 }
             },
             "autoload": {
@@ -573,7 +577,7 @@
             ],
             "description": "QueryObjects for Nextras ORM",
             "homepage": "https://github.com/contributte/nextras-orm-query-object",
-            "time": "2018-05-19T13:52:32+00:00"
+            "time": "2019-12-09T14:48:41+00:00"
         },
         {
             "name": "contributte/security",
@@ -3485,7 +3489,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.2",
+        "php": "^7.3",
         "ext-curl": "*",
         "ext-mbstring": "*",
         "ext-mysqli": "*",

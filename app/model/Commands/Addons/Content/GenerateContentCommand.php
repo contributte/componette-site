@@ -18,6 +18,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 final class GenerateContentCommand extends BaseCommand
 {
 
+	/** @var string */
+	protected static $defaultName = 'addons:content:generate';
+
 	/** @var AddonRepository */
 	private $addonRepository;
 
@@ -37,7 +40,7 @@ final class GenerateContentCommand extends BaseCommand
 	protected function configure(): void
 	{
 		$this
-			->setName('addons:content:generate')
+			->setName(self::$defaultName)
 			->setDescription('Generate addons contents');
 
 		$this->addOption(

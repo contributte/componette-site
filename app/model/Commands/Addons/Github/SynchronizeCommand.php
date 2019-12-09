@@ -17,6 +17,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 final class SynchronizeCommand extends BaseCommand
 {
 
+	/** @var string */
+	protected static $defaultName = 'addons:github:sync';
+
 	/** @var AddonFacade */
 	private $addonFacade;
 
@@ -40,7 +43,7 @@ final class SynchronizeCommand extends BaseCommand
 	protected function configure(): void
 	{
 		$this
-			->setName('addons:github:sync')
+			->setName(self::$defaultName)
 			->setDescription('Synchronize github detailed information');
 
 		$this->addArgument(

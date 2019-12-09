@@ -17,6 +17,9 @@ use Tracy\Debugger;
 final class CollectStatsCommand extends BaseCommand
 {
 
+	/** @var string */
+	protected static $defaultName = 'addons:composer:collect';
+
 	/** @var AddonRepository */
 	private $addonRepository;
 
@@ -36,7 +39,7 @@ final class CollectStatsCommand extends BaseCommand
 	protected function configure(): void
 	{
 		$this
-			->setName('addons:composer:collect')
+			->setName(self::$defaultName)
 			->setDescription('Update composer stats');
 	}
 

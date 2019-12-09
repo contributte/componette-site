@@ -15,6 +15,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 final class SynchronizeFilesCommand extends BaseCommand
 {
 
+	/** @var string */
+	protected static $defaultName = 'addons:github:sync:files';
+
 	/** @var AddonFacade */
 	private $addonFacade;
 
@@ -34,7 +37,7 @@ final class SynchronizeFilesCommand extends BaseCommand
 	protected function configure(): void
 	{
 		$this
-			->setName('addons:github:sync:files')
+			->setName(self::$defaultName)
 			->setDescription('Synchronize github files (composer.json, bower.json)');
 
 		$this->addArgument(
