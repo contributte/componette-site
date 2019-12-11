@@ -10,8 +10,7 @@ final class GithubAvatar
 
 	/**
 	 * @param string $user
-	 * @param array $opts
-	 * @return string
+	 * @phpstan-param array{s?: string|int} $opts
 	 */
 	public static function generate($user, array $opts = []): string
 	{

@@ -6,28 +6,44 @@ use App\Model\Database\Query\QueryObject;
 use Contributte\Nextras\Orm\QueryObject\Repository\TRepositoryQueryable;
 use Nextras\Dbal\Result\Result;
 use Nextras\Orm\Collection\ICollection;
-use Nextras\Orm\Entity\IEntity;
 use Nextras\Orm\Repository\Repository;
 
+/**
+ * @template TEntityClass
+ */
 abstract class AbstractRepository extends Repository
 {
 
 	use TRepositoryQueryable;
 
+	/**
+	 * @phpstan-return ICollection<TEntityClass>
+	 */
 	public function fetchEntities(QueryObject $query): ICollection
 	{
-		/** @var ICollection|IEntity[] $collection */
 		$collection = $this->fetch($query, QueryObject::HYDRATION_ENTITY);
+
+		assert($collection instanceof ICollection);
 
 		return $collection;
 	}
 
+	/**
+	 * @phpstan-return Result<TEntityClass>
+	 */
 	public function fetchResult(QueryObject $query): Result
 	{
-		/** @var Result|IEntity[] $result */
 		$result = $this->fetch($query, QueryObject::HYDRATION_RESULTSET);
+
+		assert($result instanceof Result);
 
 		return $result;
 	}
+
+	/**
+	 * @phpstan-return array<int, class-string<TEntityClass>>
+	 * @return string[]
+	 */
+	abstract public static function getEntityClassNames(): array;
 
 }

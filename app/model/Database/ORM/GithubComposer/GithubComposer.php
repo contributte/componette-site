@@ -31,13 +31,19 @@ class GithubComposer extends AbstractEntity
 	// Branches
 	public const BRANCH_MASTER = 'master';
 
-	/** @var ArrayHash */
+	/**
+	 * @var ArrayHash
+	 * @phpstan-var ArrayHash<string, mixed>
+	 */
 	protected $json;
 
 	/**
 	 * VIRTUAL *****************************************************************
 	 */
 
+	/**
+	 * @phpstan-return ArrayHash<string, mixed>
+	 */
 	protected function getterJson(): ArrayHash
 	{
 		return $this->json;
@@ -45,6 +51,7 @@ class GithubComposer extends AbstractEntity
 
 	/**
 	 * @param mixed[] $data
+	 * @phpstan-param array<string, mixed> $data
 	 */
 	protected function setterJson(array $data): void
 	{

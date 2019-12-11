@@ -7,6 +7,9 @@ use Nextras\Orm\Collection\ICollection;
 interface IAddonListFactory
 {
 
+	/**
+	 * @phpstan-param ICollection<\App\Model\Database\ORM\Addon\Addon> $addons
+	 */
 	public function create(ICollection $addons): AddonList;
 
 }

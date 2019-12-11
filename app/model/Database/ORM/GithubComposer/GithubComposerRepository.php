@@ -10,6 +10,7 @@ use Nextras\Orm\Collection\ICollection;
  * @method ICollection|GithubComposer[] findAll()
  * @method ICollection|GithubComposer[] findBy(array $conds)
  * @method GithubComposer|NULL getBy(array $conds)
+ * @extends AbstractRepository<GithubComposer>
  */
 final class GithubComposerRepository extends AbstractRepository
 {

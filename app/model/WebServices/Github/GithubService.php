@@ -109,15 +109,12 @@ final class GithubService
 		switch ($mediatype) {
 			case self::MEDIATYPE_HTML:
 				return ['Accept' => 'application/vnd.github.' . GithubClient::VERSION . '.html'];
-				break;
 
 			case self::MEDIATYPE_HTML_JSON:
 				return ['Accept' => 'application/vnd.github.' . GithubClient::VERSION . '.html+json'];
-				break;
 
 			case self::MEDIATYPE_RAW:
 				return ['Accept' => 'application/vnd.github.' . GithubClient::VERSION . '.raw'];
-				break;
 
 			default:
 				return [];

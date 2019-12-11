@@ -10,6 +10,7 @@ use Nextras\Orm\Collection\ICollection;
  * @method ICollection|Tag[] findAll()
  * @method ICollection|Tag[] findBy(array $conds)
  * @method Tag|NULL getBy(array $conds)
+ * @extends AbstractRepository<Tag>
  */
 final class TagRepository extends AbstractRepository
 {

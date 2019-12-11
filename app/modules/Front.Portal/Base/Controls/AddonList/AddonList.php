@@ -10,9 +10,15 @@ use Nextras\Orm\Collection\ICollection;
 class AddonList extends BaseControl
 {
 
-	/** @var ICollection|Addon[] */
+	/**
+	 * @var ICollection|Addon[]
+	 * @phpstan-var ICollection<Addon>
+	 */
 	protected $addons;
 
+	/**
+	 * @phpstan-param ICollection<Addon> $addons
+	 */
 	public function __construct(ICollection $addons)
 	{
 		$this->addons = $addons;

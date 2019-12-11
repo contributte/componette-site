@@ -30,6 +30,9 @@ abstract class BaseAddonPresenter extends BasePresenter
 	 * CONTROLS ****************************************************************
 	 */
 
+	/**
+	 * @phpstan-param ICollection<\App\Model\Database\ORM\Addon\Addon> $addons
+	 */
 	protected function createAddonListControl(ICollection $addons): AddonList
 	{
 		return $this->addonListFactory->create($addons);

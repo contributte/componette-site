@@ -7,7 +7,7 @@ use App\Model\Exceptions\Logical\InvalidArgumentException;
 final class HelpersExecutor
 {
 
-	/** @var array */
+	/** @var array<string, callable> */
 	private $helpers = [];
 
 	/**
@@ -22,7 +22,7 @@ final class HelpersExecutor
 
 	/**
 	 * @param string $name
-	 * @param array $args
+	 * @param array<int, mixed> $args
 	 * @return mixed
 	 */
 	public function __call($name, $args)

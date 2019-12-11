@@ -10,6 +10,7 @@ use Nextras\Orm\Collection\ICollection;
  * @method ICollection|GithubRelease[] findAll()
  * @method ICollection|GithubRelease[] findBy(array $conds)
  * @method GithubRelease|NULL getBy(array $conds)
+ * @extends AbstractRepository<GithubRelease>
  */
 class GithubReleaseRepository extends AbstractRepository
 {

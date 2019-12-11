@@ -27,6 +27,9 @@ final class RouterFactory
 		}
 	}
 
+	/**
+	 * @phpstan-return RouteList<CliRouter>
+	 */
 	protected function createCli(): RouteList
 	{
 		$router = new RouteList('Cli');
@@ -35,6 +38,9 @@ final class RouterFactory
 		return $router;
 	}
 
+	/**
+	 * @phpstan-return RouteList<RouteList<Route>>
+	 */
 	protected function createWeb(): RouteList
 	{
 		$router = new RouteList();
