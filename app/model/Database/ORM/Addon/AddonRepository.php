@@ -10,6 +10,7 @@ use Nextras\Orm\Collection\ICollection;
  * @method ICollection|Addon[] findAll()
  * @method ICollection|Addon[] findBy(array $conds)
  * @method Addon|NULL getBy(array $conds)
+ * @extends AbstractRepository<Addon>
  */
 final class AddonRepository extends AbstractRepository
 {

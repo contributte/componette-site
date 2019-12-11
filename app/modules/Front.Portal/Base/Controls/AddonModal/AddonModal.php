@@ -51,8 +51,6 @@ final class AddonModal extends BaseControl
 			if (!$matches) {
 				$this->presenter->flashMessage('Invalid addon name.', 'warning');
 				$this->presenter->redirect('this');
-
-				return;
 			}
 
 			[$all, $owner, $name] = $matches;

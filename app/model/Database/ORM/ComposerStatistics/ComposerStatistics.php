@@ -30,13 +30,19 @@ class ComposerStatistics extends AbstractEntity
 	// Customs
 	public const CUSTOM_ALL = 'ALL';
 
-	/** @var ArrayHash */
+	/**
+	 * @var ArrayHash
+	 * @phpstan-var ArrayHash<string, mixed>
+	 */
 	protected $json;
 
 	/**
 	 * VIRTUAL *****************************************************************
 	 */
 
+	/**
+	 * @phpstan-return ArrayHash<string, mixed>
+	 */
 	protected function getterJson(): ArrayHash
 	{
 		return $this->json;
@@ -44,6 +50,7 @@ class ComposerStatistics extends AbstractEntity
 
 	/**
 	 * @param mixed[] $data
+	 * @phpstan-param array<string, mixed> $data
 	 */
 	protected function setterJson(array $data): void
 	{

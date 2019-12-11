@@ -10,6 +10,7 @@ use Nextras\Orm\Collection\ICollection;
  * @method ICollection|Composer[] findAll()
  * @method ICollection|Composer[] findBy(array $conds)
  * @method Composer|NULL getBy(array $conds)
+ * @extends AbstractRepository<Composer>
  */
 final class ComposerRepository extends AbstractRepository
 {
