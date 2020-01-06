@@ -46,7 +46,7 @@
 		"nextras/migrations": "~3.1.1",
 
 		"contributte/nextras-orm-query-object": "^0.3.0",
-		"contributte/console": "^0.7.1"
+		"contributte/console": "^0.8.0"
 	},
 	"require-dev": {
 		"ninjify/qa": "^0.10",
