@@ -1968,16 +1968,16 @@
         },
         {
             "name": "nextras/migrations",
-            "version": "v3.1.1",
+            "version": "v3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nextras/migrations.git",
-                "reference": "85b4101a11f3bbb0d6685d6bd5d04e333cfebe51"
+                "reference": "eb26600d4f59bfc19579eb6cbabfc5de5133e20d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nextras/migrations/zipball/85b4101a11f3bbb0d6685d6bd5d04e333cfebe51",
-                "reference": "85b4101a11f3bbb0d6685d6bd5d04e333cfebe51",
+                "url": "https://api.github.com/repos/nextras/migrations/zipball/eb26600d4f59bfc19579eb6cbabfc5de5133e20d",
+                "reference": "eb26600d4f59bfc19579eb6cbabfc5de5133e20d",
                 "shasum": ""
             },
             "require": {
@@ -2029,7 +2029,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Database migrations runner",
-            "time": "2019-06-23T10:28:48+00:00"
+            "time": "2020-01-18T09:46:41+00:00"
         },
         {
             "name": "nextras/orm",
