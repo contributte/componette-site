@@ -1,23 +1,23 @@
-<div align="center">
-    <br/>
-    <img src="https://cdn.jsdelivr.net/gh/f3l1x/xsource/assets/componette.png" alt="Componette" title="Componette" width="400">
-    <br/>
-    <br/>
-    <p>
-       Addons, extensions & components portal for <a href="https://nette.org">Nette Framework</a> with smooth searching and categorization.
-    </p>
-    <p>Open <a href="https://componette.com"><strong>componette website</strong></a>.</p>
-    <br/>
-    <p>
-        <a href="https://gitter.im/componette/componette" rel="nofollow"><img src="https://img.shields.io/gitter/room/componette/componette.svg"></a>
-        <a href="https://travis-ci.org/planette/componette.com" rel="nofollow"><img src="https://img.shields.io/travis/planette/componette.com.svg"></a>
-        <a href="http://isitmaintained.com/project/componette/componette.com" rel="nofollow"><img src="https://isitmaintained.com/badge/open/componette/componette.com.svg"></a>
-        <a href="http://isitmaintained.com/project/componette/componette.com" rel="nofollow"><img src="https://isitmaintained.com/badge/resolution/componette/componette.com.svg"></a>
-    </p>
-    <p>
-        <em>Follow <a href="http://twitter.com/xf3l1x">@xf3l1x</a> for more updates!</em>
-    </p>
-</div>
+<h1 align=center>Componette</h1>
+
+<p align=center>
+   Addons, extensions & components <a href="https://componette.com">portal</a> for <a href="https://nette.org">Nette Framework</a> with smooth searching and categorization.
+</p>
+
+<p align=center>
+	<a href="https://componette.com"><img src="https://rawcdn.githack.com/f3l1x/xsource/b2663bd230b4ca50521fe6c7c554e484dd91e24d/assets/componette.png" alt="Componette" title="Componette" width="400"></a>
+</p>
+
+<p align=center>
+    <a href="http://bit.ly/ctteg" rel="nofollow"><img src="https://img.shields.io/gitter/room/contributte/contributte.svg"></a>
+    <a href="https://travis-ci.org/planette/componette.com" rel="nofollow"><img src="https://img.shields.io/travis/planette/componette.com.svg"></a>
+    <a href="http://isitmaintained.com/project/componette/componette.com" rel="nofollow"><img src="https://isitmaintained.com/badge/open/componette/componette.com.svg"></a>
+    <a href="http://isitmaintained.com/project/componette/componette.com" rel="nofollow"><img src="https://isitmaintained.com/badge/resolution/componette/componette.com.svg"></a>
+</p>
+
+<p align=center>
+🕹 <a href="https://f3l1x.io">f3l1x.io</a> | 💻 <a href="https://github.com/f3l1x">f3l1x</a> | 🐦 <a href="https://twitter.com/xf3l1x">@xf3l1x</a>
+</p>
 
 ----
 
@@ -36,7 +36,8 @@
 - Clone this repo (`git@github.com:planette/componette.com.git`).
 - Rename `app/config/config.local.sample` to `config.local.neon` and fill parameters (database, github token, etc).
 - Run `composer install`.
-- Run migration via `bin/console migrations:continue` or manually in browser `<project>/migrations/run.php` and follow steps.
+- Run migration via `bin/console migrations:continue` follow steps.
+- Start webserver `NETTE_DEBUG=1 php -S 0.0.0.0:8000 -t www`
 
 ### Frontend
 
