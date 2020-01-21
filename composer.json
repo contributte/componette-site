@@ -46,16 +46,16 @@
 		"nextras/migrations": "~3.1.1",
 
 		"contributte/nextras-orm-query-object": "^0.3.0",
-		"contributte/console": "^0.7.1"
+		"contributte/console": "^0.8.0"
 	},
 	"require-dev": {
-		"ninjify/qa": "^0.10",
+		"ninjify/qa": "^0.10.0",
 		"ninjify/nunjuck": "^0.3.0",
 
 		"contributte/dev": "^0.1.0",
 
-		"phpstan/phpstan": "^0.12.0",
-		"phpstan/phpstan-nette": "^0.12.0"
+		"phpstan/phpstan": "^0.12.7",
+		"phpstan/phpstan-nette": "^0.12.3"
 	},
 	"autoload": {
 		"psr-4": {
@@ -69,7 +69,6 @@
 	"prefer-stable": true,
 	"scripts": {
 		"qa": [
-			"linter app tests",
 			"codesniffer app tests"
 		],
 		"codesniffer": [
