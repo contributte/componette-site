@@ -2,7 +2,7 @@ services:
 	# Filters ==============================================
 	latte.templateFactory:
 		class: App\Model\Templating\TemplateFactory
-		inject: on
+		inject: true
 
 	latte.latteFactory:
 		setup:

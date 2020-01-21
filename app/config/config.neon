@@ -20,7 +20,7 @@ includes:
 	- ext/nextras.neon
 
 latte:
-	xhtml: no
+	xhtml: false
 
 session:
 	debugger: %debugMode%
@@ -46,7 +46,7 @@ di:
 
 tracy:
 	email: %system.error.email%
-	strictMode: yes
+	strictMode: true
 
 services:
 	nette.userStorage:
