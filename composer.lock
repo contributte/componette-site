@@ -1913,16 +1913,16 @@
         },
         {
             "name": "nextras/dbal",
-            "version": "v3.1.1",
+            "version": "v3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nextras/dbal.git",
-                "reference": "3d4bc5adf88a864c655ece8d8d9b67ab4aed6952"
+                "reference": "884431eb074bebab8dd2bdfb7b68055a78ecabbb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nextras/dbal/zipball/3d4bc5adf88a864c655ece8d8d9b67ab4aed6952",
-                "reference": "3d4bc5adf88a864c655ece8d8d9b67ab4aed6952",
+                "url": "https://api.github.com/repos/nextras/dbal/zipball/884431eb074bebab8dd2bdfb7b68055a78ecabbb",
+                "reference": "884431eb074bebab8dd2bdfb7b68055a78ecabbb",
                 "shasum": ""
             },
             "require": {
@@ -1970,7 +1970,7 @@
                 "dbal",
                 "nextras"
             ],
-            "time": "2019-11-30T21:42:33+00:00"
+            "time": "2020-02-26T12:32:09+00:00"
         },
         {
             "name": "nextras/migrations",
