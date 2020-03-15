@@ -1,18 +1,18 @@
 <h1 align=center>Componette</h1>
 
 <p align=center>
-   Addons, extensions & components <a href="https://componette.com">portal</a> for <a href="https://nette.org">Nette Framework</a> with smooth searching and categorization.
+   Addons, extensions & components <a href="https://componette.org">portal</a> for <a href="https://nette.org">Nette Framework</a> with smooth searching and categorization.
 </p>
 
 <p align=center>
-	<a href="https://componette.com"><img src="https://rawcdn.githack.com/f3l1x/xsource/b2663bd230b4ca50521fe6c7c554e484dd91e24d/assets/componette.png" alt="Componette" title="Componette" width="400"></a>
+	<a href="https://componette.org"><img src="https://rawcdn.githack.com/f3l1x/xsource/b2663bd230b4ca50521fe6c7c554e484dd91e24d/assets/componette.png" alt="Componette" title="Componette" width="400"></a>
 </p>
 
 <p align=center>
     <a href="http://bit.ly/ctteg" rel="nofollow"><img src="https://img.shields.io/gitter/room/contributte/contributte.svg"></a>
-    <a href="https://travis-ci.org/planette/componette.com" rel="nofollow"><img src="https://img.shields.io/travis/planette/componette.com.svg"></a>
-    <a href="http://isitmaintained.com/project/componette/componette.com" rel="nofollow"><img src="https://isitmaintained.com/badge/open/componette/componette.com.svg"></a>
-    <a href="http://isitmaintained.com/project/componette/componette.com" rel="nofollow"><img src="https://isitmaintained.com/badge/resolution/componette/componette.com.svg"></a>
+    <a href="https://travis-ci.org/planette/componette" rel="nofollow"><img src="https://img.shields.io/travis/planette/componette.svg"></a>
+    <a href="http://isitmaintained.com/project/componette/componette" rel="nofollow"><img src="https://isitmaintained.com/badge/open/componette/componette.svg"></a>
+    <a href="http://isitmaintained.com/project/componette/componette" rel="nofollow"><img src="https://isitmaintained.com/badge/resolution/componette/componette.svg"></a>
 </p>
 
 <p align=center>
@@ -33,7 +33,7 @@
 
 ### Backend
 
-- Clone this repo (`git@github.com:planette/componette.com.git`).
+- Clone this repo (`git@github.com:planette/componette.git`).
 - Rename `app/config/config.local.sample` to `config.local.neon` and fill parameters (database, github token, etc).
 - Run `composer install`.
 - Run migration via `bin/console migrations:continue` follow steps.
