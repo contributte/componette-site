@@ -11,8 +11,8 @@
 <p align=center>
     <a href="http://bit.ly/ctteg" rel="nofollow"><img src="https://img.shields.io/gitter/room/contributte/contributte.svg"></a>
     <a href="https://travis-ci.org/planette/componette" rel="nofollow"><img src="https://img.shields.io/travis/planette/componette.svg"></a>
-    <a href="http://isitmaintained.com/project/componette/componette" rel="nofollow"><img src="https://isitmaintained.com/badge/open/componette/componette.svg"></a>
-    <a href="http://isitmaintained.com/project/componette/componette" rel="nofollow"><img src="https://isitmaintained.com/badge/resolution/componette/componette.svg"></a>
+    <a href="http://isitmaintained.com/project/planette/componette" rel="nofollow"><img src="https://isitmaintained.com/badge/open/planette/componette.svg"></a>
+    <a href="http://isitmaintained.com/project/planette/componette" rel="nofollow"><img src="https://isitmaintained.com/badge/resolution/planette/componette.svg"></a>
 </p>
 
 <p align=center>
