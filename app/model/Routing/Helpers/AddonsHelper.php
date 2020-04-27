@@ -16,7 +16,10 @@ final class AddonsHelper
 	/** @var Cache */
 	private $cache;
 
-	/** @var string[][] */
+	/**
+	 * @var string[][]
+	 * @phpstan-var array{addons: array<int, string>, authors: array<string, string>}
+	 */
 	private $data = [
 		'addons' => [],
 		'authors' => [],
@@ -37,7 +40,7 @@ final class AddonsHelper
 	protected function build(): void
 	{
 		if (!$this->build) {
-			$this->data = $this->cache->load('routes', function (&$dependencies) {
+			$this->data = (array)$this->cache->load('routes', function (&$dependencies): array {
 				$dependencies[Cache::EXPIRE] = '+1 day';
 				$dependencies[Cache::TAGS] = ['routing', 'routes'];
 
@@ -61,7 +64,7 @@ final class AddonsHelper
 	public function addonIn(string $slug): ?int
 	{
 		$this->build();
-		$addon = array_search(strtolower($slug), $this->data['addons']);
+		$addon = array_search(strtolower($slug), $this->data['addons'], true);
 
 		return $addon ?: null;
 	}
