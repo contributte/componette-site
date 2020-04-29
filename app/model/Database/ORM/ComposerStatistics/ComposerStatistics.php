@@ -69,7 +69,7 @@ class ComposerStatistics extends AbstractEntity
 		parent::onLoad($data);
 
 		if (isset($data['data'])) {
-			$this->json = ArrayHash::from(json_decode($data['data']));
+			$this->json = ArrayHash::from((array) json_decode($data['data']));
 		} else {
 			$this->json = new ArrayHash();
 		}

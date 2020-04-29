@@ -69,7 +69,7 @@ final class AddonsHelper
 		return $addon ?: null;
 	}
 
-	public function addonOut(int $id): ?string
+	public function addonOut(string $id): ?string
 	{
 		$this->build();
 		if (isset($this->data['addons'][$id])) {

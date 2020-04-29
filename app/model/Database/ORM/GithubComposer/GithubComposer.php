@@ -71,7 +71,7 @@ class GithubComposer extends AbstractEntity
 	 * @param mixed|null $default
 	 * @return mixed
 	 */
-	public function get(string $key, $default = null)
+	public function get(string $key, $default = NULL)
 	{
 		if (!isset($this->json->{$key})) {
 			if (func_num_args() > 1) {
@@ -95,7 +95,7 @@ class GithubComposer extends AbstractEntity
 		parent::onLoad($data);
 
 		if (isset($data['data'])) {
-			$this->json = ArrayHash::from(json_decode($data['data']));
+			$this->json = ArrayHash::from((array) json_decode($data['data']));
 		} else {
 			$this->json = new ArrayHash();
 		}
