@@ -22,7 +22,7 @@ final class SearchFactory
 		// Pass parameters from request
 		$search->by = $this->request->getQuery('search-by');
 		$search->limit = $this->request->getQuery('search-limit');
-		$search->q = $this->request->getQuery('q', null);
+		$search->q = $this->request->getQuery('q') ?? null;
 
 		return $search;
 	}
