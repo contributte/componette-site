@@ -72,8 +72,8 @@ final class AddonsHelper
 	public function addonOut(string $id): ?string
 	{
 		$this->build();
-		if (isset($this->data['addons'][$id])) {
-			return strtolower($this->data['addons'][$id]);
+		if (isset($this->data['addons'][intval($id)])) {
+			return strtolower($this->data['addons'][intval($id)]);
 		}
 
 		return null;

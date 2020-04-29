@@ -71,7 +71,7 @@ class GithubComposer extends AbstractEntity
 	 * @param mixed|null $default
 	 * @return mixed
 	 */
-	public function get(string $key, $default = NULL)
+	public function get(string $key, $default = null)
 	{
 		if (!isset($this->json->{$key})) {
 			if (func_num_args() > 1) {
