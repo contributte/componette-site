@@ -27,7 +27,7 @@ final class OpenSearchPresenter extends BasePresenter
 		foreach ($addons as $addon) {
 			$terms[] = [
 				'completion' => $addon->fullname,
-				'description' => $addon->github->description,
+				'description' => $addon->github !== null ? $addon->github->description : '',
 				'link' => $this->link(':Front:Portal:Addon:detail', $addon->id),
 			];
 		}

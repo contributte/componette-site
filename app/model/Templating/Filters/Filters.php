@@ -95,6 +95,7 @@ final class Filters
 	{
 		$name = lcfirst($name);
 		$name = preg_replace('#([A-Z]+)#', '-$1', $name);
+		assert($name !== null); // impossible to have null here, regex is valid
 		$name = str_replace('--', '-', $name);
 
 		return $name;

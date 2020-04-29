@@ -42,7 +42,8 @@ final class AddonFacade
 			$addons = $repository->findBy(['state' => Addon::STATE_QUEUED]);
 		}
 
-		switch ($input->getArgument('type')) {
+		$type = $input->getArgument('type');
+		switch ($type) {
 			case 'composer':
 				// Use only composer types
 				$addons = $addons->findBy(['type' => Addon::TYPE_COMPOSER]);
@@ -59,7 +60,7 @@ final class AddonFacade
 				// Do nothing, just use all
 				break;
 			default:
-				throw new InvalidArgumentException(sprintf('Unsupported type "%s"', $input->getArgument('type')));
+				throw new InvalidArgumentException(sprintf('Unsupported type "%s"', is_array($type) ? print_r($type, true) : (string)$type));
 		}
 
 		return $addons;

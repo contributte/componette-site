@@ -104,7 +104,7 @@ final class GenerateContentCommand extends BaseCommand
 	protected function reformatLinks(Github $github): void
 	{
 		// Resolve links
-		$github->contentHtml = Strings::replace($github->contentHtml, '#href=\"(.*)\"#iU', function ($matches) use ($github) {
+		$github->contentHtml = Strings::replace((string)$github->contentHtml, '#href=\"(.*)\"#iU', function ($matches) use ($github) {
 			 [$all, $url] = $matches;
 
 			if (!Validators::isUrl($url)) {
