@@ -3,7 +3,7 @@
         <div class="release" n:foreach="$releases as $release">
             <a class="release__date" href="{plink Addon:detail, slug => $release->github->addon->id}">{$release->publishedAt|date:'d.m.Y'}</a>
             <a class="release__icon" href="{plink Addon:detail, slug => $release->github->addon->id}">
-                <img alt="" title="{$release->github->addon->author}" src="{avatar $release->github->addon->author, [s=>16]}">
+                <img alt="" title="{$release->github->addon->author}" loading="lazy" src="{avatar $release->github->addon->author, [s=>16]}">
             </a>
             <a class="release__title" href="{plink Addon:detail, slug => $release->github->addon->id}">
                 {$release->github->addon->fullname}

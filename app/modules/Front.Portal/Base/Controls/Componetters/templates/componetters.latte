@@ -6,7 +6,7 @@
 <div class="componetters">
     <div n:foreach="$_componetters as $componetter">
         <a n:tag-if="$componetter->github" data-toggle="tooltip" data-placement="top" data-original-title="{$componetter->author} (since {$componetter->createdAt|date})" href="{$componetter->github->linker->getAuthorUrl()}">
-            <img src="{avatar $componetter->author, ['s' => 30]}">
+            <img loading="lazy" src="{avatar $componetter->author, ['s' => 30]}">
         </a>
     </div>
 </div>

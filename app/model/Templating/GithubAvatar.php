@@ -5,8 +5,7 @@ namespace App\Model\Templating;
 final class GithubAvatar
 {
 
-	const URL1 = 'https://avatars.githubusercontent.com/%s';
-	const URL2 = 'https://github.com/%s.png';
+	const URL = 'https://avatars.githubusercontent.com/%s';
 
 	/**
 	 * @param string $user
@@ -14,12 +13,12 @@ final class GithubAvatar
 	 */
 	public static function generate($user, array $opts = []): string
 	{
-		$url = self::URL1;
+		$url = self::URL;
 
 		if (isset($opts['s'])) {
 			$url .= '?s=' . intval($opts['s']);
 		} else {
-			$url .= '?s=50';
+			$url .= '?s=64';
 		}
 
 		return sprintf($url, $user);

@@ -47,23 +47,23 @@
     <ul>
         <li>
             <a href="{$addon->github->linker->getRepoUrl()}">
-                <img alt="" title="isitmaintained" src="https://isitmaintained.com/badge/resolution/{$author|lower}/{$name|lower}.svg">
+                <img alt="" title="isitmaintained" loading="lazy" src="https://isitmaintained.com/badge/resolution/{$author|lower}/{$name|lower}.svg">
             </a>
         </li>
         <li>
             <a href="{$addon->github->linker->getRepoUrl()}">
-                <img alt="" title="isitmaintained" src="https://isitmaintained.com/badge/open/{$author|lower}/{$name|lower}.svg">
+                <img alt="" title="isitmaintained" loading="lazy" src="https://isitmaintained.com/badge/open/{$author|lower}/{$name|lower}.svg">
             </a>
         </li>
         {if $addon->isComposer && $addon->composer && $addon->github->masterComposer}
             <li>
                 <a href="{$addon->composer->linker->getPackageUrl()}">
-                    <img alt="" title="{$addon->github->masterComposer->name}" src="https://img.shields.io/packagist/v/{$addon->github->masterComposer->name}.svg">
+                    <img alt="" title="{$addon->github->masterComposer->name}" loading="lazy" src="https://img.shields.io/packagist/v/{$addon->github->masterComposer->name}.svg">
                 </a>
             </li>
             <li>
                 <a href="{$addon->github->linker->getRepoUrl()}">
-                    <img alt="" title="{$addon->github->masterComposer->name}" src="https://img.shields.io/packagist/l/{$addon->github->masterComposer->name}.svg">
+                    <img alt="" title="{$addon->github->masterComposer->name}" loading="lazy" src="https://img.shields.io/packagist/l/{$addon->github->masterComposer->name}.svg">
                 </a>
             </li>
         {/if}
