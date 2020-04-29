@@ -1,7 +1,7 @@
 {block}
 
-{var $author => $addon->author}
-{var $name => $addon->name}
+{var $author = $addon->author}
+{var $name = $addon->name}
 
 <div class="github">
     <div class="title">Github</div>
@@ -80,7 +80,7 @@
 </div>
 
 {if $addon->isComposer && $addon->composer && $addon->github->masterComposer}
-    {var $composer => $addon->github->masterComposer}
+    {var $composer = $addon->github->masterComposer}
     {if ($require = $composer->get('require', []))}
         <div class="requirements">
             <div class="title">Dependencies</div>
