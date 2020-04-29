@@ -23,7 +23,7 @@
 
 ## Requirements
 
-* PHP 7.3+
+* PHP 7.4+
 * NodeJS 12+
 * Caddy 0.11+
 * MariaDB 10.3+
@@ -64,4 +64,10 @@ This project has a few tasks you should fired before you prepare PR.
 
     ```
     composer tester
+    ```
+
+- **PHPstan** - runs static analyse
+
+    ```
+    composer phpstan
     ```
