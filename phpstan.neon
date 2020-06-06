@@ -21,12 +21,6 @@ parameters:
 		# Nette Presenters
 		- '#Access to an undefined property Nette\\ComponentModel\\IComponent::\$controlPrototype.#'
 
-		# impossible to annotate anonymous functions
-		-
-			message: '#^Property App\\Model\\Routing\\Helpers\\AddonsHelper::\$data \(array<string, array<int\|string, string>>\) does not accept array\.$#'
-			path: 'app/model/Routing/Helpers/AddonsHelper.php'
-			count: 1
-
 includes:
 	- vendor/phpstan/phpstan/conf/bleedingEdge.neon
 	- vendor/phpstan/phpstan-nette/extension.neon

@@ -18,7 +18,6 @@ final class AddonsHelper
 
 	/**
 	 * @var string[][]
-	 * @phpstan-var array{addons: array<int, string>, authors: array<string, string>}
 	 */
 	private $data = [
 		'addons' => [],
