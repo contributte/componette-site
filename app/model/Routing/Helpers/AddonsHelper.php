@@ -16,9 +16,7 @@ final class AddonsHelper
 	/** @var Cache */
 	private $cache;
 
-	/**
-	 * @var string[][]
-	 */
+	/** @var string[][] */
 	private $data = [
 		'addons' => [],
 		'authors' => [],
@@ -65,7 +63,7 @@ final class AddonsHelper
 		$this->build();
 		$addon = array_search(strtolower($slug), $this->data['addons'], true);
 
-		return $addon ?: null;
+		return $addon ? ((int) $addon) : null;
 	}
 
 	public function addonOut(string $id): ?string
