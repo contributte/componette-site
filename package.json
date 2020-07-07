@@ -7,6 +7,8 @@
 	},
 	"licence": "MIT",
 	"devDependencies": {
+		"@tailwindcss/custom-forms": "^0.2.1",
+		"autoprefixer": "^9.8.4",
 		"gulp": "^4.0.2",
 		"gulp-clean-css": "^4.3.0",
 		"gulp-concat": "^2.6.1",
@@ -14,9 +16,10 @@
 		"gulp-order": "^1.2.0",
 		"gulp-remote-src": "^0.4.4",
 		"gulp-uglify": "^3.0.1",
-		"gulp-watch": "^5.0.1"
-	},
-	"scripts": {
-		"gulp": "gulp"
+		"gulp-watch": "^5.0.1",
+		"postcss": "^7.0.32",
+		"prettier": "^2.0.5",
+		"tailwindcss": "^1.4.6",
+		"tailwindcss-gradients": "^3.0.0"
 	}
 }

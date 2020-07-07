@@ -1,5 +1,6 @@
 app=app
 bin=vendor/bin
+node=node_modules/.bin
 temp=temp
 tests=tests
 dirs:=$(app) $(tests)
@@ -8,6 +9,9 @@ dirs:=$(app) $(tests)
 
 autoload:
 	composer dump-autoload
+
+build:
+	$(node)/gulp deploy
 
 rm-cache:
 	rm -rf $(temp)/cache
@@ -33,4 +37,12 @@ codesniffer:
 phpstan:
 	$(bin)/phpstan analyse
 
-qa: reset codefixer codesniffer phpstan
+prettier:
+	$(node)/prettier --check "**/*.js"
+
+prettier-fix:
+	$(node)/prettier --write "**/*.js"
+
+fix: reset codefixer prettier-fix qa
+
+qa: codesniffer phpstan prettier
