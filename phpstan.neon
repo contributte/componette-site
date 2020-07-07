@@ -15,6 +15,7 @@ parameters:
 		# ORM, todo add nextras/orm-phpstan when it can solve our problems
 		- '#^Method App\\Model\\Database\\ORM\\[a-zA-Z]+\\[a-zA-Z]+::[a-zA-Z]+\(\) should return App\\Model\\Database\\ORM\\[a-zA-Z]+\\[a-zA-Z]+\|null but returns Nextras\\Orm\\Entity\\IEntity\|null\.$#'
 		- '#^Method App\\Model\\Facade\\[a-zA-Z]+::[a-zA-Z]+\(\) should return App\\Model\\Database\\ORM\\[a-zA-Z]+\\[a-zA-Z]+\|null but returns Nextras\\Orm\\Entity\\IEntity\|null\.$#'
+		- '#^Property.+\(iterable<App\\Model\\Database\\ORM\\[a-zA-Z]+\\[a-zA-Z]+>&Nextras\\Orm\\Collection\\ICollection\).+Nextras\\Dbal\\Result\\Result\|Nextras\\Orm\\Entity\\IEntity\.$#'
 
 		# Nette Presenters
 		- '#Access to an undefined property Nette\\ComponentModel\\IComponent::\$controlPrototype.#'
