@@ -1,24 +1,36 @@
-.PHONY: install qa cs csf phpstan tests coverage-clover coverage-html
+app=app
+bin=vendor/bin
+temp=temp
+tests=tests
+dirs:=$(app) $(tests)
 
-install:
-	composer update
+# Setup
 
-qa: phpstan cs
+autoload:
+	composer dump-autoload
 
-cs:
-	vendor/bin/codesniffer app tests
+rm-cache:
+	rm -rf $(temp)/cache
 
-csf:
-	vendor/bin/codefixer app tests
+reset: rm-cache autoload
+
+# Tests
+
+test:
+	$(bin)/tester -s -p phpdbg --colors 1 -C $(tests)/cases
+
+test-coverage:
+	$(bin)/tester -s -p phpdbg --colors 1 -C -d extension=xdebug.so --coverage $(temp)/coverage.xml --coverage-src $(dirs)
+
+# QA
+
+codefixer:
+	$(bin)/codefixer $(dirs)
+
+codesniffer:
+	$(bin)/codesniffer $(dirs)
 
 phpstan:
-	vendor/bin/phpstan analyse -l max -c phpstan.neon app
+	$(bin)/phpstan analyse
 
-tests:
-	vendor/bin/tester -s -p php --colors 1 -C tests/cases
-
-coverage-clover:
-	vendor/bin/tester -s -p phpdbg --colors 1 -C --coverage ./coverage.xml --coverage-src ./app tests/cases
-
-coverage-html:
-	vendor/bin/tester -s -p phpdbg --colors 1 -C --coverage ./coverage.html --coverage-src ./app tests/cases
+qa: reset codefixer codesniffer phpstan
