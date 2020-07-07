@@ -30,5 +30,6 @@ after_failure:
   - 'for i in $(find tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done'
 
 cache:
+  npm: true
   directories:
     - $HOME/.composer/cache
