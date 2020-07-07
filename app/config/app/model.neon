@@ -20,9 +20,6 @@ services:
 	- App\Model\Facade\AddonFacade
 	- App\Model\Facade\StatisticsFacade
 
-	# [back-end]
-	- App\Model\Facade\Admin\AddonFacade
-
 	# [cli]
 	- App\Model\Facade\Cli\Commands\AddonFacade
 

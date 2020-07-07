@@ -17,13 +17,6 @@ parameters:
 	#github:
 	#	token: *TOKEN*
 
-	# Users for Authenticator
-	#security:
-	#	users:
-	#		# <name> : <bcrypt password>
-	#		# defaults => componette / componette!
-	#		componette: $2y$10$0mIpEBxjCeokVZhg.EdJNO7XS1.6t2P.Demj6PGc2yYDLipW8clwy
-
 services:
 
 	# Disable cache
