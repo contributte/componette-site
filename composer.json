@@ -21,39 +21,36 @@
 			"homepage": "https://github.com/componette/componette.com/graphs/contributors"
 		}
 	],
+	"config": {
+		"sort-packages": true
+	},
 	"require": {
-		"php": "^7.4",
-		"ext-curl": "*",
-		"ext-mbstring": "*",
-		"ext-mysqli": "*",
-		"ext-pdo": "*",
-
 		"contributte/application": "^0.4.0",
 		"contributte/bootstrap": "^0.4.0",
 		"contributte/cache": "^0.5.0",
+		"contributte/console": "^0.8.0",
 		"contributte/di": "^0.4.1",
 		"contributte/forms": "^0.4.0",
 		"contributte/http": "^0.3.0",
 		"contributte/latte": "^0.5.0",
+		"contributte/nextras-orm-query-object": "^0.3.0",
 		"contributte/security": "^0.3.0",
 		"contributte/tracy": "^0.4.0",
 		"contributte/utils": "^0.4.0",
-
+		"ext-curl": "*",
+		"ext-mbstring": "*",
+		"ext-mysqli": "*",
+		"ext-pdo": "*",
 		"nette/robot-loader": "^3.2.0",
-
-		"nextras/orm": "~3.1.0",
 		"nextras/dbal": "~3.1.0",
 		"nextras/migrations": "~3.1.1",
-
-		"contributte/nextras-orm-query-object": "^0.3.0",
-		"contributte/console": "^0.8.0"
+		"nextras/orm": "~3.1.0",
+		"php": "^7.4"
 	},
 	"require-dev": {
-		"ninjify/qa": "^0.10.0",
-		"ninjify/nunjuck": "^0.3.0",
-
 		"contributte/dev": "^0.1.0",
-
+		"ninjify/nunjuck": "^0.3.0",
+		"ninjify/qa": "^0.10.0",
 		"phpstan/phpstan": "^0.12.7",
 		"phpstan/phpstan-nette": "^0.12.3"
 	},
@@ -63,28 +60,11 @@
 		}
 	},
 	"autoload-dev": {
-		"classmap": ["app", "tests/cases"]
+		"classmap": [
+			"app",
+			"tests/cases"
+		]
 	},
 	"minimum-stability": "dev",
-	"prefer-stable": true,
-	"scripts": {
-		"qa": [
-			"codesniffer app tests"
-		],
-		"codesniffer": [
-			"codesniffer app tests"
-		],
-		"codefixer": [
-			"codefixer app tests"
-		],
-		"tester": [
-			"tester -s -p phpdbg --colors 1 -C tests/cases"
-		],
-		"coverage": [
-			"tester -s -p phpdbg --colors 1 -C -d extension=xdebug.so --coverage ./coverage.xml --coverage-src ./src tests/cases"
-		],
-		"phpstan": [
-			"vendor/bin/phpstan analyse"
-		]
-	}
+	"prefer-stable": true
 }

@@ -3,33 +3,30 @@ language: php
 sudo: false
 
 php:
-    - 7.4
+  - 7.4
 
 env:
-    global:
-     - COMPOSER_GLOBAL_FLAGS=--no-interaction --prefer-source -o
+  global:
+    - COMPOSER_GLOBAL_FLAGS=--no-interaction --prefer-source -o
 
 matrix:
-    allow_failures:
-        - php: hhvm
+  allow_failures:
+    - php: hhvm
 
 install:
-    - travis_retry composer update ${COMPOSER_GLOBAL_FLAGS}
+  - travis_retry composer update ${COMPOSER_GLOBAL_FLAGS}
 
 script:
-    # Run QA
-    - composer qa
+  # Run QA
+  - make qa
 
-    # Run Nette Tester
-    - composer tester
-
-    # Run Phpstan
-    - composer phpstan
+  # Run Nette Tester
+  - make test
 
 after_failure:
-    # Print *.actual content
-    - 'for i in $(find tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done'
+  # Print *.actual content
+  - 'for i in $(find tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done'
 
 cache:
-    directories:
-        - $HOME/.composer/cache
+  directories:
+    - $HOME/.composer/cache
