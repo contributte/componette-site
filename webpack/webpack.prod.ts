@@ -1,10 +1,10 @@
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import { optimize } from 'webpack';
 
 import makeConfig from './webpack.config';
 import { helper } from './utils';
-import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 
 export default makeConfig({
   mode: 'production',
