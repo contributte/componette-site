@@ -54,6 +54,14 @@ prettier-fix:
 ts:
 	$(node)/tsc --noEmit --project tsconfig.json
 
-fix: reset codefixer prettier-fix qa
+fix-php: reset codefixer qa-php
+
+fix-ts: prettier-fix qa-ts
+
+fix: fix-php fix-ts
+
+qa-php: codesniffer phpstan
+
+qa-ts: ts prettier
 
 qa: codesniffer phpstan ts prettier
