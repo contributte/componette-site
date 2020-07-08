@@ -20,5 +20,5 @@
     "target": "esnext"
   },
   "exclude": ["/**/node_modules", "/**/vendor"],
-  "include": ["app/assets/**/*", "webpack/**/*"]
+  "include": ["www/assets/**/*", "webpack/**/*"]
 }

@@ -1,6 +1,6 @@
 import deepmerge from 'deepmerge';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { Configuration, ProvidePlugin } from 'webpack';
+import { Configuration } from 'webpack';
 
 import { DEV, helper, makeEntry } from './utils';
 import makeLoaders from './loaders';
@@ -14,10 +14,6 @@ const baseConfig: Configuration = {
   plugins: [
     new MiniCssExtractPlugin({ filename: '[name].css?[hash]' }),
     helper.createManifestPlugin(),
-    new ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-    }),
   ],
   resolve: {
     extensions: ['.ts', '.js'],
