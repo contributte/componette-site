@@ -1,6 +1,7 @@
 app=app
 bin=vendor/bin
 node=node_modules/.bin
+prettier-pattern="**/*.{css,js,ts}"
 temp=temp
 tests=tests
 ts-webpack=$(node)/cross-env TS_NODE_PROJECT='webpack/tsconfig.json' TS_NODE_TRANSPILE_ONLY=true
@@ -17,6 +18,10 @@ build:
 
 dev:
 	$(ts-webpack) $(node)/webpack-dev-server --config $(webpack)/webpack.dev.ts
+
+di: reset
+	bin/extract-services
+	$(MAKE) reset
 
 rm-cache:
 	rm -rf $(temp)/cache
@@ -46,17 +51,17 @@ phpstan:
 	$(bin)/phpstan analyse
 
 prettier:
-	$(node)/prettier --check "**/*.js"
+	$(node)/prettier --check $(prettier-pattern)
 
 prettier-fix:
-	$(node)/prettier --write "**/*.js"
+	$(node)/prettier --write $(prettier-pattern)
 
 ts:
 	$(node)/tsc --noEmit --project tsconfig.json
 
-fix-php: reset codefixer qa-php
+fix-php: reset codefixer
 
-fix-ts: prettier-fix qa-ts
+fix-ts: prettier-fix
 
 fix: fix-php fix-ts
 
