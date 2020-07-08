@@ -3,7 +3,9 @@ bin=vendor/bin
 node=node_modules/.bin
 temp=temp
 tests=tests
-dirs:=$(app) $(tests)
+ts-webpack=$(node)/cross-env TS_NODE_PROJECT='webpack/tsconfig.json' TS_NODE_TRANSPILE_ONLY=true
+webpack=webpack
+dirs:=bin $(app) $(tests)
 
 # Setup
 
@@ -11,12 +13,18 @@ autoload:
 	composer dump-autoload
 
 build:
-	$(node)/gulp deploy
+	$(ts-webpack) NODE_ENV=production $(node)/webpack --config $(webpack)/webpack.prod.ts --progress
+
+dev:
+	$(ts-webpack) $(node)/webpack-dev-server --config $(webpack)/webpack.dev.ts
 
 rm-cache:
 	rm -rf $(temp)/cache
 
 reset: rm-cache autoload
+
+serve:
+	NETTE_DEBUG=1 php -S 0.0.0.0:8000 -t www
 
 # Tests
 
@@ -43,6 +51,9 @@ prettier:
 prettier-fix:
 	$(node)/prettier --write "**/*.js"
 
+ts:
+	$(node)/tsc --noEmit --project tsconfig.json
+
 fix: reset codefixer prettier-fix qa
 
-qa: codesniffer phpstan prettier
+qa: codesniffer phpstan ts prettier

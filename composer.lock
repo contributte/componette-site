@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "da1e75a41c963257f08ec0fe3c4ac6cb",
+    "content-hash": "af28f400251ffad687bd2b48f809e64b",
     "packages": [
         {
             "name": "contributte/application",
@@ -777,6 +777,47 @@
                 "utils"
             ],
             "time": "2020-01-05T18:16:08+00:00"
+        },
+        {
+            "name": "flow/jsonpath",
+            "version": "0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FlowCommunications/JSONPath.git",
+                "reference": "f0222818d5c938e4ab668ab2e2c079bd51a27112"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FlowCommunications/JSONPath/zipball/f0222818d5c938e4ab668ab2e2c079bd51a27112",
+                "reference": "f0222818d5c938e4ab668ab2e2c079bd51a27112",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "peekmo/jsonpath": "dev-master",
+                "phpunit/phpunit": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Flow\\JSONPath": "src/",
+                    "Flow\\JSONPath\\Test": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stephen Frank",
+                    "email": "stephen@flowsa.com"
+                }
+            ],
+            "description": "JSONPath implementation for parsing, searching and flattening arrays",
+            "time": "2018-03-04T16:39:47+00:00"
         },
         {
             "name": "latte/latte",
@@ -2924,6 +2965,192 @@
                 "profiler"
             ],
             "time": "2020-05-17T09:50:45+00:00"
+        },
+        {
+            "name": "wavevision/nette-webpack",
+            "version": "0.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wavevision/nette-webpack.git",
+                "reference": "21acec4378c6229206f8eeab7076f2355ee134ca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wavevision/nette-webpack/zipball/21acec4378c6229206f8eeab7076f2355ee134ca",
+                "reference": "21acec4378c6229206f8eeab7076f2355ee134ca",
+                "shasum": ""
+            },
+            "require": {
+                "latte/latte": "^2.6",
+                "nette/di": "^3.0",
+                "nette/http": "^3.0",
+                "php": ">=7.4",
+                "tracy/tracy": "^2.7",
+                "wavevision/props-control": "^5.0",
+                "wavevision/utils": "^2.4"
+            },
+            "require-dev": {
+                "nette/application": "^3.0",
+                "phing/phing": "3.0a3",
+                "php-coveralls/php-coveralls": "^2.2",
+                "php-parallel-lint/php-parallel-lint": "^1.1",
+                "phpstan/extension-installer": "^1.0",
+                "phpstan/phpstan": "^0.12.11",
+                "phpstan/phpstan-nette": "^0.12.3",
+                "wavevision/coding-standard": "^3.1",
+                "wavevision/di-service-annotation": "^3.1",
+                "wavevision/nette-tests": "^3.0"
+            },
+            "type": "library",
+            "extra": {
+                "phpstan": []
+            },
+            "autoload": {
+                "psr-4": {
+                    "Wavevision\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Wavevision s.r.o",
+                    "email": "info@wavevision.com"
+                },
+                {
+                    "name": "Vít Rozsíval",
+                    "email": "vit@wavevision.com"
+                }
+            ],
+            "description": "Webpack adapter for Nette framework.",
+            "time": "2020-03-25T13:07:25+00:00"
+        },
+        {
+            "name": "wavevision/props-control",
+            "version": "5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wavevision/props-control.git",
+                "reference": "ffb39c395025661d768b2ec2c1dc27025ed6102f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wavevision/props-control/zipball/ffb39c395025661d768b2ec2c1dc27025ed6102f",
+                "reference": "ffb39c395025661d768b2ec2c1dc27025ed6102f",
+                "shasum": ""
+            },
+            "require": {
+                "nette/application": "^3.0",
+                "nette/schema": "^1.0",
+                "php": ">=7.4",
+                "wavevision/utils": "^2.5"
+            },
+            "require-dev": {
+                "jakub-onderka/php-parallel-lint": "^1.0",
+                "latte/latte": "^2.5",
+                "phing/phing": "^3.0.0-alpha3",
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpstan/phpstan": "^0.11.16",
+                "phpunit/phpunit": "^8.3",
+                "symfony/css-selector": "^4.3",
+                "symfony/dom-crawler": "^4.3",
+                "wavevision/coding-standard": "^3.1"
+            },
+            "type": "library",
+            "extra": {
+                "phpstan": []
+            },
+            "autoload": {
+                "psr-4": {
+                    "Wavevision\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Wavevision s.r.o.",
+                    "email": "info@wavevision.com"
+                },
+                {
+                    "name": "Jakub Filla",
+                    "email": "jakub.filla@wavevision.com"
+                },
+                {
+                    "name": "Vít Rozsíval",
+                    "email": "vit@waveivison.com"
+                }
+            ],
+            "description": "Create smart UI components for Nette Framework.",
+            "time": "2020-03-25T12:43:14+00:00"
+        },
+        {
+            "name": "wavevision/utils",
+            "version": "2.12.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wavevision/utils.git",
+                "reference": "e61f07fbaf8ac74d02ce0eab92b8354a44963d95"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wavevision/utils/zipball/e61f07fbaf8ac74d02ce0eab92b8354a44963d95",
+                "reference": "e61f07fbaf8ac74d02ce0eab92b8354a44963d95",
+                "shasum": ""
+            },
+            "require": {
+                "ext-fileinfo": "*",
+                "ext-iconv": "*",
+                "ext-json": "*",
+                "ext-zip": "*",
+                "flow/jsonpath": "^0.4.0",
+                "nette/finder": "^2.5",
+                "nette/utils": "^3.1",
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "^1.6",
+                "phing/phing": "^3.0-alpha3",
+                "php-coveralls/php-coveralls": "^2.1",
+                "php-mock/php-mock-phpunit": "^2.4",
+                "php-parallel-lint/php-parallel-lint": "^1.0",
+                "phpstan/phpstan": "^0.12.3",
+                "phpunit/phpunit": "^8.3",
+                "wavevision/coding-standard": "^3.0"
+            },
+            "type": "library",
+            "extra": {
+                "phpstan": []
+            },
+            "autoload": {
+                "psr-4": {
+                    "Wavevision\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Wavevision s.r.o.",
+                    "email": "info@wavevision.com"
+                },
+                {
+                    "name": "Jakub Filla",
+                    "email": "jakub.filla@wavevision.com"
+                },
+                {
+                    "name": "Vít Rozsíval",
+                    "email": "vit@wavevision.com"
+                }
+            ],
+            "description": "Useful PHP utilities and helpers.",
+            "time": "2020-07-01T09:00:15+00:00"
         }
     ],
     "packages-dev": [
@@ -2999,6 +3226,151 @@
                 "shortcuts"
             ],
             "time": "2017-03-12T18:43:26+00:00"
+        },
+        {
+            "name": "doctrine/annotations",
+            "version": "1.10.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/annotations.git",
+                "reference": "5db60a4969eba0e0c197a19c077780aadbc43c5d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/5db60a4969eba0e0c197a19c077780aadbc43c5d",
+                "reference": "5db60a4969eba0e0c197a19c077780aadbc43c5d",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/lexer": "1.*",
+                "ext-tokenizer": "*",
+                "php": "^7.1 || ^8.0"
+            },
+            "require-dev": {
+                "doctrine/cache": "1.*",
+                "phpunit/phpunit": "^7.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.9.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\Common\\Annotations\\": "lib/Doctrine/Common/Annotations"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
+                },
+                {
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com"
+                }
+            ],
+            "description": "Docblock Annotations Parser",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "annotations",
+                "docblock",
+                "parser"
+            ],
+            "time": "2020-05-25T17:24:27+00:00"
+        },
+        {
+            "name": "doctrine/lexer",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/lexer.git",
+                "reference": "e864bbf5904cb8f5bb334f99209b48018522f042"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/lexer/zipball/e864bbf5904cb8f5bb334f99209b48018522f042",
+                "reference": "e864bbf5904cb8f5bb334f99209b48018522f042",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^6.0",
+                "phpstan/phpstan": "^0.11.8",
+                "phpunit/phpunit": "^8.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\Common\\Lexer\\": "lib/Doctrine/Common/Lexer"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com"
+                }
+            ],
+            "description": "PHP Doctrine Lexer parser library that can be used in Top-Down, Recursive Descent Parsers.",
+            "homepage": "https://www.doctrine-project.org/projects/lexer.html",
+            "keywords": [
+                "annotations",
+                "docblock",
+                "lexer",
+                "parser",
+                "php"
+            ],
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Flexer",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-05-25T17:44:05+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -3614,6 +3986,62 @@
                 "standards"
             ],
             "time": "2020-04-17T01:09:41+00:00"
+        },
+        {
+            "name": "wavevision/di-service-annotation",
+            "version": "4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wavevision/di-service-annotation.git",
+                "reference": "dbab10a50191703f5772384a8f09962bb736adba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wavevision/di-service-annotation/zipball/dbab10a50191703f5772384a8f09962bb736adba",
+                "reference": "dbab10a50191703f5772384a8f09962bb736adba",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/annotations": "^1.8",
+                "nette/finder": "^2.5",
+                "php": ">=7.4",
+                "wavevision/utils": "^2.2"
+            },
+            "require-dev": {
+                "jakub-onderka/php-parallel-lint": "^1.0",
+                "mikey179/vfsstream": "^1.6",
+                "phing/phing": "^3.0.0a3",
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpstan/phpstan": "^0.11",
+                "phpunit/phpunit": "^8.3",
+                "wavevision/coding-standard": "^3.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Wavevision\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Wavevision s.r.o.",
+                    "email": "info@wavevision.com"
+                },
+                {
+                    "name": "Jakub Filla",
+                    "email": "jakub.filla@wavevision.com"
+                },
+                {
+                    "name": "Vít Rozsíval",
+                    "email": "vit@wavevision.com"
+                }
+            ],
+            "description": "Register DI services using annotation for Nette Framework.",
+            "time": "2020-03-31T13:41:57+00:00"
         }
     ],
     "aliases": [],

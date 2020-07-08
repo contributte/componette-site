@@ -1,0 +1,21 @@
+#!/usr/bin/env php
+<?php declare(strict_types=1);
+
+use Wavevision\DIServiceAnnotation\Configuration;
+use Wavevision\DIServiceAnnotation\Runner;
+use Wavevision\Utils\Path;
+
+require __DIR__ . '/../app/bootstrap.php';
+
+$rootDir = Path::create(__DIR__, '..');
+$appDir = $rootDir->path('app');
+$configDir = $appDir->path('config', 'app');
+
+Runner::run((new Configuration(
+    (string)$appDir,
+    $configDir->string('services.neon'))
+)->setFileMapping(
+    [
+        'App\Modules\Front' => $configDir->string('front.neon')
+    ]
+));
