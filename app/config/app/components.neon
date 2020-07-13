@@ -1,3 +1,6 @@
+includes:
+	- front.neon
+
 services:
 	- App\Modules\Front\Portal\Base\Controls\AddonList\IAddonListFactory
 	- App\Modules\Front\Portal\Base\Controls\AddonList\ICategorizedAddonListFactory

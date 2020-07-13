@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600,700&display=swap&subset=latin-ext');
+
 @tailwind base;
 @tailwind components;
-
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600,700&display=swap&subset=latin-ext');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;700&display=swap');
+@tailwind utilities;
 
 html {
   @apply font-body bg-blue-100;
@@ -18,4 +19,8 @@ html {
   .bg-no-image {
     background-image: none;
   }
+}
+
+.microdata {
+  display: none !important;
 }

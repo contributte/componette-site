@@ -1,3 +1,6 @@
+includes:
+	- services.neon
+
 services:
 
 	# WebServices ==========================================

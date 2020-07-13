@@ -1,0 +1,15 @@
+{varType string $home}
+{varType string $logo}
+{varType App\Modules\Front\Base\Controls\Layout\Header\Menu\MenuProps $menu}
+<header class="px-2 bg-gradient-r-blue-900-blue-700 md:px-4 relative">
+    <div class="container z-10 relative flex items-center justify-between pb-8 mx-auto lg:pb-10">
+        <a href="{$home}"
+           class="flex items-center pt-2 pb-1 text-sm font-bold text-white uppercase md:pt-3 md:pb-2 md:text-base xl:text-xl group focus:outline-none">
+            <img alt="Componette" loading="lazy" src="{$logo}" height="64" width="64"
+                 class="h-12 w-12 mr-2 md:h-16 md:w-16 transform transition-all duration-300 ease-in-out group-hover:rotate-360">
+            <h1>Componette</h1>
+        </a>
+        {control menu, $menu}
+    </div>
+    {include _shapes.latte}
+</header>

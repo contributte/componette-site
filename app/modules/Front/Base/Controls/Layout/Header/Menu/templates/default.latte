@@ -1,0 +1,36 @@
+{templateType Wavevision\PropsControl\PropsControlTemplate}
+<div x-data="{ open: false }" class="relative flex-shrink-0 md:flex-1"
+     xmlns:x-transition="http://www.w3.org/1999/xhtml">
+    <button @click="open = true"
+            class="p-2 rounded focus:outline-none hover:bg-blue-800 transition duration-150 ease-in-out md:hidden"
+            :class="{'bg-blue-800': open}">
+        <div class="relative flex w-6 h-6">
+            <img loading="lazy" src="https://obr.now.sh/remixicon/system/menu-line/64/ffffff" class="absolute w-6 h-6"
+                 :class="{ 'hidden': open }">
+            <img loading="lazy" src="https://obr.now.sh/remixicon/system/close-line/64/ffffff" class="absolute w-6 h-6"
+                 :class="{ 'hidden': !open }">
+        </div>
+        <span class="hidden">Open mobile menu</span>
+    </button>
+    <ul
+            x-show="open"
+            x-transition:enter="transition ease-out duration-150"
+            x-transition:enter-start="opacity-0 transform scale-75"
+            x-transition:enter-end="opacity-100 transform scale-100"
+            x-transition:leave="transition ease-in duration-150"
+            x-transition:leave-start="opacity-100 transform scale-100"
+            x-transition:leave-end="opacity-0 transform scale-75"
+            @click.away="open = false"
+            class="absolute right-0 z-20 items-center w-32 py-2 mt-2 bg-white rounded shadow-md transform origin-top-right md:mt-0 md:bg-transparent md:shadow-none md:relative md:flex md:flex-1 md:w-auto md:text-right top-menu"
+    >
+        {varType App\Modules\Front\Base\Controls\Layout\Header\Menu\MenuLink $link}
+        {foreach $props->get(App\Modules\Front\Base\Controls\Layout\Header\Menu\MenuProps::LINKS) as $link}
+            <li class="md:inline-flex">
+                <a href="{$link->getUrl()}"
+                   class="flex px-4 py-2 text-xs hover:bg-blue-100 md:hover:bg-blue-800 md:rounded md:hover:text-blue-200 md:text-blue-400 md:text-sm transition duration-150 ease-out focus:outline-none">
+                    {$link->getName()}
+                </a>
+            </li>
+        {/foreach}
+    </ul>
+</div>

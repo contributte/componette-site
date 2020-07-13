@@ -1,0 +1,4 @@
+# Generated file, do not modify directly!
+services:
+	- factory: App\Model\Forms\FormFactory
+	  inject: true
