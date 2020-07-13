@@ -7,6 +7,7 @@ export default (): RuleSetRule[] => [
       {
         loader: 'file-loader',
         options: {
+          esModule: false,
           name: '[name].[ext]?[hash]',
         },
       },
