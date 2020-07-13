@@ -1,4 +1,16 @@
 # Generated file, do not modify directly!
 services:
+	- implement: App\Modules\Front\Base\Controls\Layout\Footer\ControlFactory
+	  inject: true
+	- implement: App\Modules\Front\Base\Controls\Layout\Footer\Heading\ControlFactory
+	  inject: true
+	- implement: App\Modules\Front\Base\Controls\Layout\Footer\SubscribeForm\ControlFactory
+	  inject: true
+	- factory: App\Modules\Front\Base\Controls\Layout\Footer\SubscribeForm\Factory
+	  inject: true
+	- factory: App\Modules\Front\Base\Controls\Layout\Footer\SubscribeForm\Handler
+	  inject: true
 	- implement: App\Modules\Front\Base\Controls\Layout\Header\ControlFactory
+	  inject: true
+	- implement: App\Modules\Front\Base\Controls\Layout\Header\Menu\ControlFactory
 	  inject: true

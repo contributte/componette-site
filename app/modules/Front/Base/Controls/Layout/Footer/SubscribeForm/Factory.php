@@ -2,7 +2,7 @@
 
 namespace App\Modules\Front\Base\Controls\Layout\Footer\SubscribeForm;
 
-use App\Model\Forms\BaseForm;
+use App\Model\Forms\Form;
 use App\Model\Forms\InjectFormFactory;
 use Nette\Forms\Container;
 use Nette\SmartObject;
@@ -21,11 +21,9 @@ class Factory
 
 	public const SUBMIT = 'submit';
 
-	public function create(): BaseForm
+	public function create(): Form
 	{
 		$form = $this->formFactory->create();
-		$form->setAction('https://f3l1x.us4.list-manage.com/subscribe/post?u=7207f2543ed43156f473e11f0&id=0185f5988c');
-		$form->setHtmlAttribute('target', '_blank');
 		$this->email($form);
 		$form->addSubmit(self::SUBMIT, 'Submit');
 		return $form;

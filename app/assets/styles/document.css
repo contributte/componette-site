@@ -3,6 +3,7 @@
 
 @tailwind base;
 @tailwind components;
+@tailwind utilities;
 
 html {
   @apply font-body bg-blue-100;
@@ -23,5 +24,3 @@ html {
 .microdata {
   display: none !important;
 }
-
-@tailwind utilities;

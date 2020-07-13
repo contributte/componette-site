@@ -7,7 +7,6 @@ export default (): RuleSetRule[] => [
       {
         loader: 'file-loader',
         options: {
-          esModule: false,
           name: '[name].[ext]?[hash]',
         },
       },
@@ -22,7 +21,7 @@ export default (): RuleSetRule[] => [
             enabled: true,
           },
           pngquant: {
-            quality: [0.65, 0.9],
+            quality: '65-90',
             speed: 4,
           },
           gifsicle: {

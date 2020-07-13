@@ -2,11 +2,10 @@
 
 namespace App\Modules\Front\Base\Controls\Layout\Footer\SubscribeForm;
 
-use App\Model\Forms\BaseForm;
+use App\Model\Forms\Form;
 use App\Model\UI\BaseRenderControl;
 use App\Modules\Front\Base\Controls\Layout\Footer\Heading\HeadingComponent;
 use App\Modules\Front\Base\Controls\Layout\Footer\Heading\HeadingProps;
-use Nette\Forms\Form;
 use Wavevision\DIServiceAnnotation\DIService;
 
 /**
@@ -31,13 +30,10 @@ class Control extends BaseRenderControl
 			);
 	}
 
-	protected function createComponentForm(): BaseForm
+	protected function createComponentForm(): Form
 	{
 		$form = $this->factory->create();
-		$form->onSuccess[] = function (Form $form): void {
-			$this->handler->process($form);
-			$this->presenter->redirect('this');
-		};
+		$form->onSuccess[] = [$this->handler, 'process'];
 		return $form;
 	}
 

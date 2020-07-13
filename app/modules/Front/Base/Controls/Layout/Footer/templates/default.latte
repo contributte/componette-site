@@ -1,13 +1,8 @@
-{varType App\Modules\Front\Base\Controls\Layout\Footer\SocialLinks\SocialLinksProps $socialLinks}
 <footer class="bg-white px-2 md:px-4 py-12 lg:py-16 relative overflow-hidden">
     <div class="container mx-auto">
         <div class="xl:grid xl:grid-cols-3 px-5 lg:px-8 xl:gap-8">
-            {include _links.latte}
+            <div class="grid grid-cols-2 gap-8 xl:col-span-2"></div>
             {control subscribeForm}
-        </div>
-        <div class="mt-8 mx-5 lg:mx-8 border-t border-gray-200 pt-8 md:flex md:items-center md:justify-between">
-            {control socialLinks, $socialLinks}
-            {include _componette.latte}
         </div>
     </div>
     {include _shapes.latte}
