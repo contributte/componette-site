@@ -13,9 +13,9 @@ class FormFactory
 
 	use SmartObject;
 
-	public function create(): Form
+	public function create(): BaseForm
 	{
-		$form = new Form();
+		$form = new BaseForm();
 		$form->addProtection();
 		return $form;
 	}

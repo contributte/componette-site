@@ -2,7 +2,7 @@
 
 namespace App\Modules\Front\Base\Controls\Layout\Footer\SubscribeForm;
 
-use App\Model\Forms\Form;
+use App\Model\Forms\BaseForm;
 use App\Model\Forms\InjectFormFactory;
 use Nette\Forms\Container;
 use Nette\SmartObject;
@@ -21,7 +21,7 @@ class Factory
 
 	public const SUBMIT = 'submit';
 
-	public function create(): Form
+	public function create(): BaseForm
 	{
 		$form = $this->formFactory->create();
 		$this->email($form);

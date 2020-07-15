@@ -2,7 +2,9 @@
 
 namespace App\Model\Forms;
 
-class Form extends \Nette\Forms\Form
+use Nette\Application\UI\Form;
+
+class BaseForm extends Form
 {
 
 }
