@@ -1281,12 +1281,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/forms.git",
-                "reference": "ec3633f01989c1ab42bd6502f76035ae5bf8c0c0"
+                "reference": "206edb73814871d2b22cf3c59495e3fb5453bbfe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/forms/zipball/ec3633f01989c1ab42bd6502f76035ae5bf8c0c0",
-                "reference": "ec3633f01989c1ab42bd6502f76035ae5bf8c0c0",
+                "url": "https://api.github.com/repos/nette/forms/zipball/206edb73814871d2b22cf3c59495e3fb5453bbfe",
+                "reference": "206edb73814871d2b22cf3c59495e3fb5453bbfe",
                 "shasum": ""
             },
             "require": {
@@ -1343,7 +1343,7 @@
                 "nette",
                 "validation"
             ],
-            "time": "2020-06-06T13:38:25+00:00"
+            "time": "2020-06-06T15:13:38+00:00"
         },
         {
             "name": "nette/http",
@@ -2045,16 +2045,16 @@
         },
         {
             "name": "nextras/orm",
-            "version": "v3.1.2",
+            "version": "v3.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nextras/orm.git",
-                "reference": "dd9d092c2b479d76858f19e57c481727b86fb0c1"
+                "reference": "d495ee1679daea9b1054b419c043d6788f45ab3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nextras/orm/zipball/dd9d092c2b479d76858f19e57c481727b86fb0c1",
-                "reference": "dd9d092c2b479d76858f19e57c481727b86fb0c1",
+                "url": "https://api.github.com/repos/nextras/orm/zipball/d495ee1679daea9b1054b419c043d6788f45ab3e",
+                "reference": "d495ee1679daea9b1054b419c043d6788f45ab3e",
                 "shasum": ""
             },
             "require": {
@@ -2107,7 +2107,13 @@
                 "nextras",
                 "orm"
             ],
-            "time": "2020-04-13T10:32:55+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/hrach",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-05-08T07:14:36+00:00"
         },
         {
             "name": "psr/container",
