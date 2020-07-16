@@ -49,7 +49,7 @@
 		"contributte/console": "^0.8.0"
 	},
 	"require-dev": {
-		"ninjify/qa": "^0.10.0",
+		"ninjify/qa": "^0.11",
 		"ninjify/nunjuck": "^0.3.0",
 
 		"contributte/dev": "^0.1.0",
