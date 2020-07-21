@@ -1,28 +1,76 @@
-{if $addons->count()}
-    <div class="addons">
-        <div class="addon" n:foreach="$addons as $addon">
-            <article class="addon__box">
-                <section class="addon__image">
-                    <a href="{plink Addon:detail, slug => $addon->id}">
-                        <img alt="" title="{$addon->author}" loading="lazy" src="{avatar $addon->author}">
-                    </a>
-                </section>
-                <section class="addon__body">
-                    <h3 class="addon__title">
-                        <a href="{plink Addon:detail, slug => $addon->id}">
-                            {$addon->author}
-                            /
-                            {$addon->name}</a>
-                    </h3>
-
-                    <p>{$addon->github->description|truncate:150|striptags|emojify|noescape}</p>
-                </section>
-                <section class="addon__meta">
-                    {control meta:short $addon}
-                </section>
-            </article>
+{varType Nextras\Orm\Collection\ICollection $addons}
+{varType string|null $title}
+{*{if $addons->count()}*}
+<div n:if="$title" class="flex flex-wrap items-center justify-between px-5 pt-3 lg:px-8 lg:pt-4">
+    <div class="mb-3 lg:mb-5">
+        <h2 class="text-xl font-bold text-gray-800 lg:text-3xl font-headers">{$title}</h2>
+    </div>
+    <a href="{plink :Front:Portal:Index:all}"
+       class="inline-flex px-4 py-2 mb-3 font-medium text-teal-900 uppercase border rounded lg:mb-4 hover:bg-blue-100 transition duration-150 ease-in-out"
+    >
+        Show all
+    </a>
+</div>
+{varType App\Model\Database\ORM\Addon\Addon $addon}
+<div class="flex flex-wrap items-center justify-between px-5 pt-3 border-t lg:px-8 lg:pt-4">
+    <div class="flex items-center w-full mb-3 lg:mb-5 md:w-3/5">
+        <a href="" class="flex-shrink-0 mr-4">
+            <img loading="lazy" src="https://avatars.githubusercontent.com/slevomat?s=128"
+                 class="w-8 h-8 rounded-full lg:h-16 lg:w-16"/>
+        </a>
+        <div class="flex flex-col flex-1">
+            <h3 class="inline-block mb-2 text-lg font-bold leading-tight text-teal-800 font-headers xl:text-xl align-middle">
+                <a href="" class="mr-2">tacoberu / nette-mailing</a> <span
+                        class="relative inline-block px-2 text-sm font-normal text-blue-700 bg-blue-100 rounded-full -mt-1 align-middle">3.2.0</span>
+            </h3>
+            <p class="text-sm text-gray-700">Support send mail in nette application.</p>
         </div>
     </div>
-{else}
+    <div class="flex flex-wrap w-full pl-12 sm:w-4/5 md:pl-4 md:w-2/5">
+        <div class="flex items-center flex-1 mb-3 text-xs text-blue-700 lg:mb-5 md:justify-end">
+            <div class="inline-flex items-center justify-center w-6 h-6 mr-2 bg-teal-100 rounded-full">
+                <img loading="lazy" src="https://obr.now.sh/remixicon/system/download-cloud-fill/64/467A85"
+                     class="w-4 h-4"/>
+            </div>
+            481
+        </div>
+        <div class="flex items-center flex-1 mb-3 text-xs text-blue-700 lg:mb-5 md:justify-end">
+            <div class="inline-flex items-center justify-center w-6 h-6 mr-2 bg-teal-100 rounded-full">
+                <img loading="lazy" src="https://obr.now.sh/remixicon/system/star-fill/64/467A85" class="w-4 h-4"/>
+            </div>
+            481
+        </div>
+        <div class="flex items-center flex-1 mb-3 text-xs text-blue-700 lg:mb-5 md:justify-end">
+            <div class="inline-flex items-center justify-center w-6 h-6 mr-2 bg-teal-100 rounded-full">
+                <img loading="lazy" src="https://obr.now.sh/remixicon/weather/flashlight-fill/64/467A85"
+                     class="w-4 h-4"/>
+            </div>
+            481
+        </div>
+    </div>
+</div>
+<div class="addon" n:foreach="$addons as $addon">
+    <article class="addon__box">
+        <section class="addon__image">
+            <a href="{plink Addon:detail, slug => $addon->id}">
+                <img alt="" title="{$addon->author}" loading="lazy" src="{avatar $addon->author}">
+            </a>
+        </section>
+        <section class="addon__body">
+            <h3 class="addon__title">
+                <a href="{plink Addon:detail, slug => $addon->id}">
+                    {$addon->author}
+                        /
+                    {$addon->name}</a>
+            </h3>
+
+            <p>{$addon->github->description|truncate:150|striptags|emojify|noescape}</p>
+        </section>
+        <section class="addon__meta">
+            {control meta:short $addon}
+        </section>
+    </article>
+</div>
+{*{else}
     <p class="alert alert-danger">No package found.</p>
-{/if}
+{/if}*}

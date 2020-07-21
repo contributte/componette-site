@@ -2,8 +2,8 @@
 
 namespace App\Modules\Front\Portal\Index;
 
-use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\Addon\AddonRepository;
+use App\Model\Database\Query\QueryObject;
 use App\Model\Database\Query\SearchAddonsQuery;
 use App\Model\UI\Destination;
 use App\Modules\Front\Portal\Base\BaseAddonPresenter;
@@ -12,7 +12,6 @@ use App\Modules\Front\Portal\Base\Controls\AddonList\CategorizedAddonList;
 use App\Modules\Front\Portal\Base\Controls\AddonList\ICategorizedAddonListFactory;
 use App\Modules\Front\Portal\Base\Controls\Search\Search;
 use Contributte\Nextras\Orm\QueryObject\Queryable;
-use Nextras\Orm\Collection\ICollection;
 
 final class IndexPresenter extends BaseAddonPresenter
 {
@@ -23,8 +22,10 @@ final class IndexPresenter extends BaseAddonPresenter
 	/** @var ICategorizedAddonListFactory @inject */
 	public $categorizedAddonsListFactory;
 
-	/** @var ICollection|Addon[] */
-	private $addons;
+	/**
+	 * @var QueryObject
+	 */
+	private QueryObject $queryObject;
 
 	/**
 	 * ALL *********************************************************************
@@ -42,8 +43,7 @@ final class IndexPresenter extends BaseAddonPresenter
 	{
 		$query = new SearchAddonsQuery();
 		$query->byAuthor($slug);
-
-		$this->addons = $this->addonRepository->fetchEntities($query);
+		$this->queryObject = $query;
 	}
 
 	public function renderAuthor(string $slug): void
@@ -67,8 +67,7 @@ final class IndexPresenter extends BaseAddonPresenter
 
 		$query = new SearchAddonsQuery();
 		$query->byQuery($q);
-
-		$this->addons = $this->addonRepository->fetchEntities($query);
+		$this->queryObject = $query;
 	}
 
 	public function renderSearch(): void
@@ -77,7 +76,7 @@ final class IndexPresenter extends BaseAddonPresenter
 			$this->redrawControl('search-result');
 		}
 
-		$this->template->addons = $this->addons;
+		$this->template->addons = $this->addonRepository->fetchEntities($this->queryObject);
 	}
 
 	/**
@@ -88,8 +87,7 @@ final class IndexPresenter extends BaseAddonPresenter
 	{
 		$query = new SearchAddonsQuery();
 		$query->byTag($tag);
-
-		$this->addons = $this->addonRepository->fetch($query, Queryable::HYDRATION_ENTITY);
+		$this->template->addons = $this->addonRepository->fetch($query, Queryable::HYDRATION_ENTITY);
 	}
 
 	public function renderTag(string $tag): void
@@ -111,7 +109,7 @@ final class IndexPresenter extends BaseAddonPresenter
 
 	protected function createComponentAddons(): AddonList
 	{
-		return $this->createAddonListControl($this->addons);
+		return $this->createAddonListControl($this->queryObject);
 	}
 
 	protected function createComponentCategorizedAddons(): CategorizedAddonList

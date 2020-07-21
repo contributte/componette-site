@@ -18,3 +18,5 @@ services:
 	  inject: true
 	- implement: App\Modules\Front\Base\Controls\Svg\ControlFactory
 	  inject: true
+	- implement: App\Modules\Front\Portal\Base\Controls\Layout\Box\ControlFactory
+	  inject: true

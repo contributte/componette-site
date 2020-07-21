@@ -2,7 +2,8 @@ includes:
 	- front.neon
 
 services:
-	- App\Modules\Front\Portal\Base\Controls\AddonList\IAddonListFactory
+	- implement: App\Modules\Front\Portal\Base\Controls\AddonList\IAddonListFactory
+	  inject: true
 	- App\Modules\Front\Portal\Base\Controls\AddonList\ICategorizedAddonListFactory
 	- App\Modules\Front\Base\Controls\Status\IStatusFactory
 	- App\Modules\Front\Portal\Addon\Controls\AddonDetail\IAddonDetailFactory

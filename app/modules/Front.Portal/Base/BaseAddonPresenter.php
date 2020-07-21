@@ -2,10 +2,10 @@
 
 namespace App\Modules\Front\Portal\Base;
 
+use App\Model\Database\Query\QueryObject;
 use App\Model\Services\Search\Search;
 use App\Modules\Front\Portal\Base\Controls\AddonList\AddonList;
 use App\Modules\Front\Portal\Base\Controls\AddonList\IAddonListFactory;
-use Nextras\Orm\Collection\ICollection;
 
 abstract class BaseAddonPresenter extends BasePresenter
 {
@@ -29,13 +29,9 @@ abstract class BaseAddonPresenter extends BasePresenter
 	/**
 	 * CONTROLS ****************************************************************
 	 */
-
-	/**
-	 * @phpstan-param ICollection<\App\Model\Database\ORM\Addon\Addon> $addons
-	 */
-	protected function createAddonListControl(ICollection $addons): AddonList
+	protected function createAddonListControl(QueryObject $queryObject): AddonList
 	{
-		return $this->addonListFactory->create($addons);
+		return $this->addonListFactory->create($queryObject);
 	}
 
 }

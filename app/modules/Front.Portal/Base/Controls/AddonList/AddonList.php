@@ -2,47 +2,69 @@
 
 namespace App\Modules\Front\Portal\Base\Controls\AddonList;
 
-use App\Model\Database\ORM\Addon\Addon;
+use App\Model\Database\ORM\Addon\AddonRepository;
+use App\Model\Database\Query\LatestActivityAddonsQuery;
+use App\Model\Database\Query\LatestAddedAddonsQuery;
+use App\Model\Database\Query\QueryObject;
 use App\Model\UI\BaseControl;
 use App\Modules\Front\Portal\Base\Controls\AddonMeta\AddonMeta;
-use Nextras\Orm\Collection\ICollection;
+use App\Modules\Front\Portal\Base\Controls\Layout\Box\BoxComponent;
+use App\Modules\Front\Portal\Base\Controls\Layout\Box\BoxProps;
+use Nette\Utils\Html;
+use Wavevision\PropsControl\Helpers\Render;
 
 class AddonList extends BaseControl
 {
 
-	/**
-	 * @var ICollection|Addon[]
-	 * @phpstan-var ICollection<Addon>
-	 */
-	protected $addons;
+	use BoxComponent;
 
 	/**
-	 * @phpstan-param ICollection<Addon> $addons
+	 * @var AddonRepository
+	 * @inject
 	 */
-	public function __construct(ICollection $addons)
+	public AddonRepository $addonRepository;
+
+	/**
+	 * @var QueryObject
+	 */
+	private QueryObject $queryObject;
+
+	public function __construct(QueryObject $queryObject)
 	{
-		$this->addons = $addons;
+		$this->queryObject = $queryObject;
 	}
-
-	/**
-	 * CONTROLS ****************************************************************
-	 */
 
 	protected function createComponentMeta(): AddonMeta
 	{
 		return new AddonMeta();
 	}
 
-	/**
-	 * RENDER ******************************************************************
-	 */
-
 	public function render(): void
 	{
-		$this->template->addons = $this->addons;
+		$this->getBoxComponent()->render(new BoxProps([BoxProps::CONTENT => $this->renderContent()]));
+	}
 
-		$this->template->setFile(__DIR__ . '/templates/list.latte');
-		$this->template->render();
+	private function renderContent(): Html
+	{
+		return Render::toHtml(
+			$this->template
+				->setParameters([
+					'addons' => $this->addonRepository->fetchEntities($this->queryObject),
+					'title' => $this->renderTitle(),
+				])->renderToString(__DIR__ . '/templates/list.latte')
+		);
+	}
+
+	private function renderTitle(): ?string
+	{
+		$query = get_class($this->queryObject);
+		switch ($query) {
+			case LatestActivityAddonsQuery::class:
+				return 'Latest updated addons';
+			case LatestAddedAddonsQuery::class:
+				return 'Latest indexed addons';
+		}
+		return null;
 	}
 
 }
