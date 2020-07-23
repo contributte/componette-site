@@ -3405,21 +3405,21 @@
         },
         {
             "name": "phpstan/phpstan-nette",
-            "version": "0.12.6",
+            "version": "0.12.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan-nette.git",
-                "reference": "87aa0f68df743dd820434da0eacfd0dcb59fd541"
+                "reference": "ff3e7c05d7cd1648b1c1bd5f50f5265255a520a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan-nette/zipball/87aa0f68df743dd820434da0eacfd0dcb59fd541",
-                "reference": "87aa0f68df743dd820434da0eacfd0dcb59fd541",
+                "url": "https://api.github.com/repos/phpstan/phpstan-nette/zipball/ff3e7c05d7cd1648b1c1bd5f50f5265255a520a9",
+                "reference": "ff3e7c05d7cd1648b1c1bd5f50f5265255a520a9",
                 "shasum": ""
             },
             "require": {
-                "php": "~7.1",
-                "phpstan/phpstan": "^0.12"
+                "php": "^7.1 || ^8.0",
+                "phpstan/phpstan": "^0.12.33"
             },
             "conflict": {
                 "nette/application": "<2.3.0",
@@ -3431,7 +3431,7 @@
             },
             "require-dev": {
                 "consistence/coding-standard": "^3.0.1",
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
                 "ergebnis/composer-normalize": "^2.0.2",
                 "jakub-onderka/php-parallel-lint": "^1.0",
                 "nette/utils": "^2.3.0 || ^3.0.0",
@@ -3465,7 +3465,7 @@
                 "MIT"
             ],
             "description": "Nette Framework class reflection extension for PHPStan",
-            "time": "2020-03-17T14:27:55+00:00"
+            "time": "2020-07-21T14:47:32+00:00"
         },
         {
             "name": "slevomat/coding-standard",
