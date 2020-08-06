@@ -28,3 +28,9 @@ services:
 	  inject: true
 	- implement: App\Modules\Front\Portal\Base\Controls\Layout\Box\ControlFactory
 	  inject: true
+	- implement: App\Modules\Front\Portal\Base\Controls\Layout\Heading\ControlFactory
+	  inject: true
+	- implement: App\Modules\Front\Portal\Base\Controls\Tags\ControlFactory
+	  inject: true
+	- factory: App\Modules\Front\Portal\Base\Controls\Tags\Tags
+	  inject: true

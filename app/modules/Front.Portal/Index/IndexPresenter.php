@@ -10,11 +10,13 @@ use App\Modules\Front\Portal\Base\BaseAddonPresenter;
 use App\Modules\Front\Portal\Base\Controls\AddonList\AddonList;
 use App\Modules\Front\Portal\Base\Controls\AddonList\CategorizedAddonList;
 use App\Modules\Front\Portal\Base\Controls\AddonList\ICategorizedAddonListFactory;
+use App\Modules\Front\Portal\Base\Controls\Layout\Heading\HeadingComponent;
 use App\Modules\Front\Portal\Base\Controls\Search\Search;
-use Contributte\Nextras\Orm\QueryObject\Queryable;
 
 final class IndexPresenter extends BaseAddonPresenter
 {
+
+	use HeadingComponent;
 
 	/** @var AddonRepository @inject */
 	public $addonRepository;
@@ -75,8 +77,6 @@ final class IndexPresenter extends BaseAddonPresenter
 		if ($this->isAjax()) {
 			$this->redrawControl('search-result');
 		}
-
-		$this->template->addons = $this->addonRepository->fetchEntities($this->queryObject);
 	}
 
 	/**
@@ -87,7 +87,7 @@ final class IndexPresenter extends BaseAddonPresenter
 	{
 		$query = new SearchAddonsQuery();
 		$query->byTag($tag);
-		$this->template->addons = $this->addonRepository->fetch($query, Queryable::HYDRATION_ENTITY);
+		$this->queryObject = $query;
 	}
 
 	public function renderTag(string $tag): void

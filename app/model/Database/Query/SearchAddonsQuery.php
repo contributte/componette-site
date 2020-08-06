@@ -18,6 +18,21 @@ final class SearchAddonsQuery extends QueryObject
 	/** @var string[] */
 	private $tokens = [];
 
+	public function getAuthor(): ?string
+	{
+		return $this->author;
+	}
+
+	public function getTag(): ?string
+	{
+		return $this->tag;
+	}
+
+	public function getQuery(): string
+	{
+		return implode('', $this->tokens);
+	}
+
 	public function byAuthor(string $author): void
 	{
 		$this->author = $author;
