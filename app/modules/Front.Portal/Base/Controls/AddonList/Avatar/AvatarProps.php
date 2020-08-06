@@ -11,17 +11,12 @@ class AvatarProps extends BaseAddonProps
 
 	public const LINK_TO_GITHUB = 'linkToGithub';
 
-	public const SMALL = 'small';
-
 	/**
 	 * @inheritDoc
 	 */
 	protected function define(): array
 	{
-		return PropUtils::merge(parent::define(), [
-			self::LINK_TO_GITHUB => Expect::bool(false),
-			self::SMALL => Expect::bool(false),
-		]);
+		return PropUtils::merge(parent::define(), [self::LINK_TO_GITHUB => Expect::bool(false)]);
 	}
 
 }

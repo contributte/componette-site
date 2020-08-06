@@ -1,1 +1,2 @@
-import './main.css';
+import './document.css';
+import './markdown.css';

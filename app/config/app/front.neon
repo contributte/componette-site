@@ -18,5 +18,13 @@ services:
 	  inject: true
 	- implement: App\Modules\Front\Base\Controls\Svg\ControlFactory
 	  inject: true
+	- implement: App\Modules\Front\Portal\Base\Controls\AddonList\Avatar\ControlFactory
+	  inject: true
+	- implement: App\Modules\Front\Portal\Base\Controls\AddonList\Description\ControlFactory
+	  inject: true
+	- implement: App\Modules\Front\Portal\Base\Controls\AddonList\Name\ControlFactory
+	  inject: true
+	- implement: App\Modules\Front\Portal\Base\Controls\AddonList\Statistics\ControlFactory
+	  inject: true
 	- implement: App\Modules\Front\Portal\Base\Controls\Layout\Box\ControlFactory
 	  inject: true

@@ -1,6 +1,11 @@
-{block title}Search for {$search->q}{/block}
-{block content}
-{snippet search-result}
-    <h2 class="category"><span class="mega-octicon octicon-search"></span> Searched for $<strong>{$search->q}</strong> <i class="badge">{count($addons)} results</i></h2>
+{block #title}Search for {$search->q}{/block}
+{block #content}
+{snippet #search-result}
+    <h2 class="text-2xl mb-4">
+        Searched for $<strong>{$search->q}</strong>
+        <i class="relative inline-block px-2 text-sm font-normal text-blue-700 bg-white rounded-full -mt-1 align-middle">
+            {count($addons)} results
+        </i>
+    </h2>
     {control addons}
 {/snippet}
