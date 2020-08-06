@@ -11,10 +11,8 @@ services:
 	- App\Modules\Front\Portal\Base\Controls\AddonModal\IAddonModalFactory
 	- implement: App\Modules\Front\Portal\Base\Controls\Search\ISearchFactory
 	  inject: true
-	- App\Modules\Front\Portal\Base\Controls\SideMenu\ISideMenuFactory
 	- App\Modules\Front\Base\Controls\Statistics\IStatisticsFactory
 	- App\Modules\Front\Portal\Rss\Controls\RssFeed\RssFeedFactory
 	- App\Modules\Front\Portal\Rss\Controls\RssFeed\IRssFeedFactory
 	- App\Modules\Front\Generator\Controls\Sitemap\ISitemapFactory
-	- App\Modules\Front\Portal\Base\Controls\Componetters\IComponettersFactory
 	- App\Modules\Front\Portal\Base\Controls\ReleaseList\IReleaseListFactory

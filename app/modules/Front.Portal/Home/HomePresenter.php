@@ -9,9 +9,12 @@ use App\Modules\Front\Portal\Base\Controls\AddonList\AddonList;
 use App\Modules\Front\Portal\Base\Controls\ReleaseList\IReleaseListFactory;
 use App\Modules\Front\Portal\Base\Controls\ReleaseList\ReleaseList;
 use App\Modules\Front\Portal\Base\Controls\Search\Search;
+use App\Modules\Front\Portal\Base\Controls\Tags\TagsComponent;
 
 final class HomePresenter extends BaseAddonPresenter
 {
+
+	use TagsComponent;
 
 	/** @var IReleaseListFactory @inject */
 	public $releaseListFactory;

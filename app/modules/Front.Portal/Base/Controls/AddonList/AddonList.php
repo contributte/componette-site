@@ -6,6 +6,7 @@ use App\Model\Database\ORM\Addon\AddonRepository;
 use App\Model\Database\Query\LatestActivityAddonsQuery;
 use App\Model\Database\Query\LatestAddedAddonsQuery;
 use App\Model\Database\Query\QueryObject;
+use App\Model\Database\Query\SearchAddonsQuery;
 use App\Model\UI\BaseControl;
 use App\Modules\Front\Portal\Base\Controls\AddonList\Avatar\AvatarComponent;
 use App\Modules\Front\Portal\Base\Controls\AddonList\Description\DescriptionComponent;
@@ -14,6 +15,7 @@ use App\Modules\Front\Portal\Base\Controls\AddonList\Statistics\StatisticsCompon
 use App\Modules\Front\Portal\Base\Controls\AddonMeta\AddonMeta;
 use App\Modules\Front\Portal\Base\Controls\Layout\Box\BoxComponent;
 use App\Modules\Front\Portal\Base\Controls\Layout\Box\BoxProps;
+use App\Modules\Front\Portal\Base\Controls\Layout\Heading\HeadingComponent;
 use Nette\Utils\Html;
 use Wavevision\PropsControl\Helpers\Render;
 
@@ -23,6 +25,7 @@ class AddonList extends BaseControl
 	use AvatarComponent;
 	use BoxComponent;
 	use DescriptionComponent;
+	use HeadingComponent;
 	use NameComponent;
 	use StatisticsComponent;
 
@@ -54,25 +57,50 @@ class AddonList extends BaseControl
 
 	private function renderContent(): Html
 	{
+		$addons = $this->addonRepository->fetchEntities($this->queryObject);
 		return Render::toHtml(
 			$this->template
 				->setParameters([
-					'addons' => $this->addonRepository->fetchEntities($this->queryObject),
-					'title' => $this->renderTitle(),
+					'addons' => $addons,
+					'title' => $this->renderTitle(count($addons)),
 				])->renderToString(__DIR__ . '/templates/list.latte')
 		);
 	}
 
-	private function renderTitle(): ?string
+	private function renderTitle(int $addonsCount): ?Html
 	{
 		$query = get_class($this->queryObject);
 		switch ($query) {
 			case LatestActivityAddonsQuery::class:
-				return 'Latest updated addons';
+				return Html::el()->setText('Latest updated addons');
 			case LatestAddedAddonsQuery::class:
-				return 'Latest indexed addons';
+				return Html::el()->setText('Latest indexed addons');
+			case SearchAddonsQuery::class:
+				return $this->renderSearchTitle($addonsCount);
 		}
 		return null;
+	}
+
+	private function renderSearchTitle(int $addonsCount): Html
+	{
+		/** @var SearchAddonsQuery $query */
+		$query = $this->queryObject;
+		if ($author = $query->getAuthor()) {
+			return Html::el()
+				->addHtml(Html::el()->setText('By'))
+				->addHtml(Html::el('strong')->setText($author));
+		}
+		if ($tag = $query->getTag()) {
+			return Html::el()
+				->addHtml(Html::el()->setText('Tagged by #'))
+				->addHtml(Html::el('strong')->setText($tag));
+		}
+		return Html::el()
+			->addHtml(Html::el()->setText('Searched for $'))
+			->addHtml(Html::el('strong')->setText($query->getQuery()))
+			->addHtml(Html::el('i')
+				->setAttribute('class', 'ml-2 relative inline-block px-2 text-sm font-normal text-blue-700 bg-blue-100 rounded-full align-middle')
+				->setText(sprintf('%d result%s', $addonsCount, $addonsCount > 1 ? 's' : '')));
 	}
 
 }
