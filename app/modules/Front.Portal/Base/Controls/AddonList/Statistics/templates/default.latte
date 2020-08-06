@@ -1,0 +1,42 @@
+{templateType Wavevision\PropsControl\PropsControlTemplate}
+{varType App\Model\Database\ORM\Addon\Addon $addon}
+{varType App\Modules\Front\Base\Controls\Svg\SvgProps $statistics}
+{varType App\Modules\Front\Portal\Base\Controls\AddonList\Statistics\Icon $icon}
+{var $addon = $props->get(App\Modules\Front\Portal\Base\Controls\AddonList\Statistics\StatisticsProps::ADDON)}
+<div n:if="!$props->inline" class="flex flex-wrap items-center justify-start px-5 pt-3 lg:px-8 lg:pt-4 min-h-16">
+    {control svg, $statistics}
+    <div class="mb-3 lg:mb-4 flex-1">
+        <h2 class="font-bold text-gray-800 lg:text-lg font-headers">Statistics</h2>
+    </div>
+</div>
+<div n:class="'flex flex-wrap', $props->inline ? 'w-full pl-12 sm:w-4/5 md:pl-4 md:w-2/5' : 'justify-between px-5 py-3 border-t lg:px-8 lg:py-4'">
+    <div class="flex items-center flex-1 text-xs text-blue-700">
+        <div class="inline-flex items-center justify-center w-6 h-6 mr-2 bg-teal-100 rounded-full">
+            {$icon->render('download-cloud-fill', 'system')}
+        </div>
+        {if $addon->isComposer && $addon->composer}
+            {$addon->composer->downloads|count}
+        {/if}
+            {if $addon->isBower && $addon->bower}
+            {$addon->bower->downloads|count}
+        {/if}
+    </div>
+    <div class="flex items-center flex-1 text-xs text-blue-700">
+        <div class="inline-flex items-center justify-center w-6 h-6 mr-2 bg-teal-100 rounded-full">
+            {$icon->render('star-fill', 'system')}
+        </div>
+        {$addon->github->stars|count}
+    </div>
+    <div n:if="!$props->inline" class="flex items-center flex-1 text-xs text-blue-700">
+        <div class="inline-flex items-center justify-center w-6 h-6 mr-2 bg-teal-100 rounded-full">
+            {$icon->render('bug-fill', 'development')}
+        </div>
+        {$addon->github->issues|count}
+    </div>
+    <div class="flex items-center flex-1 text-xs text-blue-700">
+        <div class="inline-flex items-center justify-center w-6 h-6 mr-2 bg-teal-100 rounded-full">
+            {$icon->render('flashlight-fill', 'weather')}
+        </div>
+        {$addon->github->pushedAt|timeAgo}
+    </div>
+</div>

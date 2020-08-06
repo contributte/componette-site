@@ -7,6 +7,10 @@ use App\Model\Database\Query\LatestActivityAddonsQuery;
 use App\Model\Database\Query\LatestAddedAddonsQuery;
 use App\Model\Database\Query\QueryObject;
 use App\Model\UI\BaseControl;
+use App\Modules\Front\Portal\Base\Controls\AddonList\Avatar\AvatarComponent;
+use App\Modules\Front\Portal\Base\Controls\AddonList\Description\DescriptionComponent;
+use App\Modules\Front\Portal\Base\Controls\AddonList\Name\NameComponent;
+use App\Modules\Front\Portal\Base\Controls\AddonList\Statistics\StatisticsComponent;
 use App\Modules\Front\Portal\Base\Controls\AddonMeta\AddonMeta;
 use App\Modules\Front\Portal\Base\Controls\Layout\Box\BoxComponent;
 use App\Modules\Front\Portal\Base\Controls\Layout\Box\BoxProps;
@@ -16,7 +20,11 @@ use Wavevision\PropsControl\Helpers\Render;
 class AddonList extends BaseControl
 {
 
+	use AvatarComponent;
 	use BoxComponent;
+	use DescriptionComponent;
+	use NameComponent;
+	use StatisticsComponent;
 
 	/**
 	 * @var AddonRepository

@@ -1,0 +1,24 @@
+{templateType Wavevision\PropsControl\PropsControlTemplate}
+{varType App\Model\Database\ORM\Addon\Addon $addon}
+{var $addon = $props->get(App\Modules\Front\Portal\Base\Controls\AddonList\Name\NameProps::ADDON)}
+<h3 class="inline-block mb-2 text-lg font-bold leading-tight text-teal-800 font-headers xl:text-xl align-middle">
+    {if $props->linkToGithub}
+        <a data-ga="1" data-event="click" data-category="header" data-action="repo-author"
+           title="Show all addons by {$addon->author}" href="{plink Index:author, slug => $addon->author}"
+        >
+            {$addon->author}
+        </a>
+        <a class="mr-2" data-ga="1" data-event="click" data-category="header" data-action="repo-name"
+           title="See {$addon->name} Github profile" href="{$addon->github->linker->getRepoUrl()}"
+        >
+            {$addon->name}
+        </a>
+    {else}
+        <a href="{plink Addon:detail, slug => $addon->id}" class="mr-2">
+            {$addon->author} / {$addon->name}
+        </a>
+    {/if}
+    <span n:class="'relative inline-block px-2 text-sm font-normal text-blue-700 rounded-full -mt-1 align-middle', $props->inverseTag ? 'bg-white' :'bg-blue-100'">
+        1.0.0
+    </span>
+</h3>

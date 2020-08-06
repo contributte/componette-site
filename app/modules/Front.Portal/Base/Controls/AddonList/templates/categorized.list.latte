@@ -1,35 +1,13 @@
 {if count($list) > 0}
-<div class="addons addons-all" n:foreach="$list as $category => $addons">
-    <h2 class="category" id="toc-{$categories[$category]->name|lower}">
-        <a href="{link this}#toc-{$categories[$category]->name|lower}">
-            <span class="octicon octicon-bookmark"></span>
-        </a>
-        {$categories[$category]->name|ucfirst}
-        ({=count($addons)})
-    </h2>
-    <div class="addon" n:foreach="$addons as $addon">
-        <article class="addon__box">
-            <section class="addon__image">
-                <a href="{plink Addon:detail, slug => $addon->id}">
-                    <img alt="" title="{$addon->author}" loading="lazy" src="{avatar $addon->author}">
-                </a>
-            </section>
-            <section class="addon__body">
-                <h3 class="addon__title">
-                    <a href="{plink Addon:detail, slug => $addon->id}">
-                        {$addon->author}
-                        /
-                        {$addon->name}</a>
-                </h3>
-
-                <p>{$addon->github->description|truncate:150}</p>
-            </section>
-            <section class="addon__meta">
-                {control meta:short $addon}
-            </section>
-        </article>
-    </div>
-</div>
+    {foreach $list as $category => $addons}
+        <h2 class="text-xl px-4 py-2" id="toc-{$categories[$category]->name|lower}">
+            <a href="{link this}#toc-{$categories[$category]->name|lower}">
+                {$categories[$category]->name|ucfirst}
+                ({=count($addons)})
+            </a>
+        </h2>
+        {include list.latte, addons => $addons}
+    {/foreach}
 {else}
-    <p class="alert alert-danger">No package found.</p>
+    <p class="text-xl text-gray-500 p-4">No package found.</p>
 {/if}

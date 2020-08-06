@@ -1,4 +1,17 @@
-<form n:name="form" class="search-form">
-    <input n:name="q" class="search-input" type="text" autocomplete="off" placeholder="Search for... datagrid, tracy, doctrine, database, latte">
-    <a href="#" class="icon"><span class="mega-octicon octicon-search"></span></a>
-</form>
+{varType App\Modules\Front\Base\Controls\Svg\SvgProps $searchIcon}
+<div class="px-2 -mb-4 md:px-4 md:-mb-1 lg:-mb-0">
+    <form n:name="form" class="container flex mx-auto bg-white rounded shadow-xl transform -translate-y-1/2">
+        <input n:name="q"
+                class="flex-1 w-full px-5 py-4 text-sm border-0 lg:px-8 lg:py-6 form-input md:text-base focus:outline-none"
+                type="text" autocomplete="off"
+                placeholder="Datagrid, tracy, doctrine, database, latte..."
+        >
+        <button n:name="submit"
+                class="inline-flex items-center flex-shrink-0 px-4 text-sm font-medium text-blue-700 uppercase rounded-r md:px-8 xl:text-base transition duration-150 ease-in-out hover:bg-blue-100 focus:outline-none"
+        >
+            {control svg, $searchIcon}
+            <span class="hidden md:block">Search</span>
+        </button>
+    </form>
+</div>
+
