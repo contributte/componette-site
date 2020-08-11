@@ -12,5 +12,8 @@
             </section>
         </li>
     </ul>
-    <p class="alert alert-warning" n:if="$addon->github->releases->count() <= 0">No release at this moment. <a href="{$addon->github->linker->getNewReleaseUrl()}">Try to create first one</a>.</p>
+    <p n:if="$addon->github->releases->count() <= 0">
+        No release at this moment.
+        <a class="text-teal-800" href="{$addon->github->linker->getNewReleaseUrl()}">Try to create first one</a>.
+    </p>
 </div>

@@ -4,11 +4,22 @@ namespace App\Modules\Front\Portal\Addon\Controls\AddonDetail;
 
 use App\Model\Database\ORM\Addon\Addon;
 use App\Model\UI\BaseControl;
+use App\Modules\Front\Base\Controls\Svg\SvgComponent;
+use App\Modules\Front\Portal\Base\Controls\AddonList\Avatar\AvatarComponent;
+use App\Modules\Front\Portal\Base\Controls\AddonList\Description\DescriptionComponent;
+use App\Modules\Front\Portal\Base\Controls\AddonList\Name\NameComponent;
+use App\Modules\Front\Portal\Base\Controls\AddonList\Statistics\StatisticsComponent;
 use App\Modules\Front\Portal\Base\Controls\AddonMeta\AddonMeta;
 use Nette\Utils\DateTime;
 
 final class AddonDetail extends BaseControl
 {
+
+	use AvatarComponent;
+	use DescriptionComponent;
+	use NameComponent;
+	use StatisticsComponent;
+	use SvgComponent;
 
 	/** @var Addon */
 	private $addon;
@@ -74,7 +85,7 @@ final class AddonDetail extends BaseControl
 			foreach ($stats->json['labels'] as $key => $label) {
 				$totalDownloads[] = [
 					'x' => DateTime::from($label)->format('c'),
-					'y' => ((array) $stats->json['values'])[$key],
+					'y' => ((array)$stats->json['values'])[$key],
 				];
 			}
 			$this->template->totalDownloads = json_encode($totalDownloads);

@@ -1,30 +1,17 @@
-{block}
-<div class="title-repo">
-    <ul>
-        <li class="title-image">
-            <a data-ga="1" data-event="click" data-category="header" data-action="repo-image" href="{plink Index:author, slug => $addon->author}">
-                <img alt="" loading="lazy" title="{$addon->author}" src="{avatar $addon->author}">
-            </a>
-        </li>
-        <li>
-
-            <a data-ga="1" data-event="click" data-category="header" data-action="repo-author" title="Show all addons by {$addon->author}" href="{plink Index:author, slug => $addon->author}">
-                {$addon->author}
-            </a>
-        </li>
-        <li>/</li>
-        <li>
-
-            <a data-ga="1" data-event="click" data-category="header" data-action="repo-name" title="See {$addon->name} Github profile" href="{$addon->github->linker->getRepoUrl()}">
-                {$addon->name}
-            </a>
-        </li>
-    </ul>
+{varType App\Model\Database\ORM\Addon\Addon $addon}
+<div class="w-full flex flex-wrap justify-between">
+    <div class="flex items-center w-full px-5 pt-2 md:pt-0 lg:px-8 mb-3 lg:mb-6 lg:w-1/2">
+        {control avatar, [addon => $addon, linkToGithub => true]}
+        <div class="flex flex-col flex-1">
+            {control name, [addon => $addon, inverseTag => true, linkToGithub => true]}
+            {control description, [addon => $addon]}
+        </div>
+    </div>
+    <div n:if="$addon->isComposer && $addon->github->masterComposer"
+            class="flex items-start w-auto sm:ml-16 md:mt-2 mb-2 md:mb-4 lg:ml-0">
+        <div class="bg-white py-2 px-5 w-full rounded border flex items-center">
+            {control svg, [image => 'download-cloud-line', className => 'w-5 h-5 mr-2', fill => '8A99B0', type => 'system', size => 64]}
+            <code class="text-blue-900 text-sm">composer require {$addon->github->masterComposer->name}</code>
+        </div>
+    </div>
 </div>
-
-<div class="title-code title-composer hidden-sm hidden-xs" n:if="$addon->isComposer && $addon->github->masterComposer">
-    <span class="composer-clipboard octicon octicon octicon-desktop-download" data-toggle="tooltip" data-placement="left" title="Click & copy" data-composer="composer require {$addon->github->masterComposer->name}"></span>
-    <span class="composer-code">composer require {$addon->github->masterComposer->name}</span>
-</div>
-
-<div class="clearfix"></div>
