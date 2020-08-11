@@ -7,7 +7,8 @@ services:
 	- implement: App\Modules\Front\Portal\Base\Controls\AddonList\ICategorizedAddonListFactory
 	  inject: true
 	- App\Modules\Front\Base\Controls\Status\IStatusFactory
-	- App\Modules\Front\Portal\Addon\Controls\AddonDetail\IAddonDetailFactory
+	- implement: App\Modules\Front\Portal\Addon\Controls\AddonDetail\IAddonDetailFactory
+	  inject: true
 	- App\Modules\Front\Portal\Base\Controls\AddonModal\IAddonModalFactory
 	- implement: App\Modules\Front\Portal\Base\Controls\Search\ISearchFactory
 	  inject: true

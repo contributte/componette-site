@@ -58,17 +58,13 @@
             </div>
         </div>
         <div class="flex flex-wrap items-center justify-between px-5 py-3 border-t lg:px-8 lg:py-4">
-            <div class="grid grid-cols-1 row-gap-2 w-full text-sm" n:inner-foreach="$require as $name => $version">
-                <div>
-                    <a n:tag-if="!$_helpers->isPhp($name)" n:class="!$_helpers->isPhp($name) ? 'text-blue-900 underline hover:no-underline'"
-                            data-ga="1" data-event="click" data-category="requirements"
-                            data-action="{$name}"
-                            href="{$addon->composer->linker->getPackageUrl($name)}"
-                    >
-                        {$name}
-                    </a>
-                    ({$version})
-                </div>
+            <div class="grid grid-cols-1 row-gap-2 w-full" n:inner-foreach="$require as $name => $version">
+                <a n:tag-if="!$_helpers->isPhp($name)" data-ga="1" data-event="click" data-category="requirements"
+                                                       data-action="{$name}"
+                                                       href="{$addon->composer->linker->getPackageUrl($name)}">
+                    {$name}
+                </a>
+                ({$version})
             </div>
         </div>
     </div>
@@ -90,6 +86,9 @@
                     {$name}
                 </a>
             </div>
+            <a href="{$addon->github->linker->getRepoUrl()}" class="text-blue-900 underline hover:no-underline">
+                {$addon->fullname}
+            </a>
         </div>
     </div>
 {/if}
