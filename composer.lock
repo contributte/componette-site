@@ -3405,16 +3405,16 @@
         },
         {
             "name": "phpstan/phpstan-nette",
-            "version": "0.12.8",
+            "version": "0.12.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan-nette.git",
-                "reference": "ff3e7c05d7cd1648b1c1bd5f50f5265255a520a9"
+                "reference": "7a3a35b71e4ee131126972be4475da603e74453a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan-nette/zipball/ff3e7c05d7cd1648b1c1bd5f50f5265255a520a9",
-                "reference": "ff3e7c05d7cd1648b1c1bd5f50f5265255a520a9",
+                "url": "https://api.github.com/repos/phpstan/phpstan-nette/zipball/7a3a35b71e4ee131126972be4475da603e74453a",
+                "reference": "7a3a35b71e4ee131126972be4475da603e74453a",
                 "shasum": ""
             },
             "require": {
@@ -3465,7 +3465,7 @@
                 "MIT"
             ],
             "description": "Nette Framework class reflection extension for PHPStan",
-            "time": "2020-07-21T14:47:32+00:00"
+            "time": "2020-08-26T07:54:37+00:00"
         },
         {
             "name": "slevomat/coding-standard",
