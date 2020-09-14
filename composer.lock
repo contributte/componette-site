@@ -1841,16 +1841,16 @@
         },
         {
             "name": "nette/utils",
-            "version": "v3.1.2",
+            "version": "v3.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/utils.git",
-                "reference": "488f58378bba71767e7831c83f9e0fa808bf83b9"
+                "reference": "c09937fbb24987b2a41c6022ebe84f4f1b8eec0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/utils/zipball/488f58378bba71767e7831c83f9e0fa808bf83b9",
-                "reference": "488f58378bba71767e7831c83f9e0fa808bf83b9",
+                "url": "https://api.github.com/repos/nette/utils/zipball/c09937fbb24987b2a41c6022ebe84f4f1b8eec0f",
+                "reference": "c09937fbb24987b2a41c6022ebe84f4f1b8eec0f",
                 "shasum": ""
             },
             "require": {
@@ -1915,7 +1915,7 @@
                 "utility",
                 "validation"
             ],
-            "time": "2020-05-27T09:58:51+00:00"
+            "time": "2020-08-07T10:34:21+00:00"
         },
         {
             "name": "nextras/dbal",
@@ -2045,16 +2045,16 @@
         },
         {
             "name": "nextras/orm",
-            "version": "v3.1.3",
+            "version": "v3.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nextras/orm.git",
-                "reference": "d495ee1679daea9b1054b419c043d6788f45ab3e"
+                "reference": "d781eb328a345a680f9790c345337a2cb97b1109"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nextras/orm/zipball/d495ee1679daea9b1054b419c043d6788f45ab3e",
-                "reference": "d495ee1679daea9b1054b419c043d6788f45ab3e",
+                "url": "https://api.github.com/repos/nextras/orm/zipball/d781eb328a345a680f9790c345337a2cb97b1109",
+                "reference": "d781eb328a345a680f9790c345337a2cb97b1109",
                 "shasum": ""
             },
             "require": {
@@ -2113,7 +2113,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-05-08T07:14:36+00:00"
+            "time": "2020-09-13T20:56:36+00:00"
         },
         {
             "name": "psr/container",
