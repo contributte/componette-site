@@ -6,6 +6,7 @@ use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\EntityModel;
 use App\Model\Database\ORM\Tag\Tag;
 use App\Model\UI\BaseControl;
+use App\Modules\Front\Base\Controls\Svg\SvgComponent;
 use Nette\Application\UI\Form;
 use Nette\Utils\Strings;
 use Nextras\Dbal\UniqueConstraintViolationException;
@@ -14,6 +15,8 @@ use PDOException;
 
 final class AddonModal extends BaseControl
 {
+
+	use SvgComponent;
 
 	/** @var callable[] */
 	public $onSuccess = [];

@@ -68,20 +68,10 @@ final class AddonDetail extends BaseControl
 	public function renderSidebar(): void
 	{
 		$this->template->addon = $this->addon;
-		$this->template->setFile(__DIR__ . '/templates/sidebar.latte');
-		$this->template->render();
-	}
-
-	/**
-	 * Render statistics
-	 */
-	public function renderStats(): void
-	{
 		$totalDownloads = [];
-
 		// Calculate total downloads
 		$stats = $this->addon->composerLatestStatistics;
-		if ($stats) {
+		if ($stats && isset($stats->json['labels'])) {
 			foreach ($stats->json['labels'] as $key => $label) {
 				$totalDownloads[] = [
 					'x' => DateTime::from($label)->format('c'),
@@ -92,8 +82,7 @@ final class AddonDetail extends BaseControl
 		} else {
 			$this->template->totalDownloads = null;
 		}
-
-		$this->template->setFile(__DIR__ . '/templates/stats.latte');
+		$this->template->setFile(__DIR__ . '/templates/sidebar.latte');
 		$this->template->render();
 	}
 

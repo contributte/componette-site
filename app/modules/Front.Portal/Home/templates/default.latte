@@ -5,6 +5,14 @@
                 {control latestActivity}
             {/cache}
         </div>
+        <div class="order-1 col-span-3 grid grid-cols-2 gap-2 lg:col-span-1">
+            {cache addon-modal, expire => '+1 week'}
+                {control modal}
+            {/cache}
+            <a href="{plink :Front:Portal:Index:all}" class="col-span-2 inline-flex text-xs md:text-sm items-center justify-center px-2 py-2 font-medium text-gray-900 uppercase flex-1 bg-white rounded hover:bg-blue-200 transition duration-150 ease-in-out">
+                <span>All packages</span>
+            </a>
+        </div>
     </div>
     <div class="grid grid-cols-3 gap-4 mb-4">
         <div class="order-2 row-span-3 col-span-3 lg:col-span-2 lg:order-1 relative z-10">

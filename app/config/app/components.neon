@@ -9,7 +9,8 @@ services:
 	- App\Modules\Front\Base\Controls\Status\IStatusFactory
 	- implement: App\Modules\Front\Portal\Addon\Controls\AddonDetail\IAddonDetailFactory
 	  inject: true
-	- App\Modules\Front\Portal\Base\Controls\AddonModal\IAddonModalFactory
+	- implement: App\Modules\Front\Portal\Base\Controls\AddonModal\IAddonModalFactory
+	  inject: true
 	- implement: App\Modules\Front\Portal\Base\Controls\Search\ISearchFactory
 	  inject: true
 	- App\Modules\Front\Base\Controls\Statistics\IStatisticsFactory
