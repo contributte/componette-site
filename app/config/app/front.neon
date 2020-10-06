@@ -1,5 +1,7 @@
 # Generated file, do not modify directly!
 services:
+	- implement: App\Modules\Front\Base\Controls\FlashMessages\ControlFactory
+	  inject: true
 	- implement: App\Modules\Front\Base\Controls\Layout\Footer\ControlFactory
 	  inject: true
 	- implement: App\Modules\Front\Base\Controls\Layout\Footer\Heading\ControlFactory

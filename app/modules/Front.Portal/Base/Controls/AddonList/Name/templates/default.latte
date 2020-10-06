@@ -1,6 +1,6 @@
 {templateType Wavevision\PropsControl\PropsControlTemplate}
 {varType App\Model\Database\ORM\Addon\Addon $addon}
-{var $addon = $props->get(App\Modules\Front\Portal\Base\Controls\AddonList\Name\NameProps::ADDON)}
+{varType App\Model\Database\ORM\GithubRelease\GithubRelease|null $release}
 <h3 class="inline-block mb-2 text-lg font-bold leading-tight text-teal-800 font-headers xl:text-xl align-middle">
     {if $props->linkToGithub}
         <a data-ga="1" data-event="click" data-category="header" data-action="repo-author"
@@ -19,7 +19,7 @@
             {$addon->author} / {$addon->name}
         </a>
     {/if}
-    <span n:class="'relative inline-block px-2 text-sm font-normal text-blue-700 rounded-full -mt-1 align-middle', $props->inverseTag ? 'bg-white' :'bg-blue-100'">
-        1.0.0
+    <span n:if="$release" n:class="'relative inline-block px-2 text-sm font-normal text-blue-700 rounded-full -mt-1 align-middle', $props->inverseTag ? 'bg-white' :'bg-blue-100'">
+        {$release->tag}
     </span>
 </h3>

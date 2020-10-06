@@ -8,11 +8,15 @@
   "licence": "MIT",
   "dependencies": {
     "alpinejs": "^2.4.1",
+    "chosen-js": "^1.8.7",
+    "jquery": "^3.5.1",
     "nette-forms": "^3.0.5",
     "svgxuse": "^1.2.6"
   },
   "devDependencies": {
     "@tailwindcss/custom-forms": "^0.2.1",
+    "@types/chosen": "^1.6.32",
+    "@types/google.analytics": "0.0.40",
     "@types/mini-css-extract-plugin": "^0.9.1",
     "@types/node": "^12.12.48",
     "@types/optimize-css-assets-webpack-plugin": "^5.0.1",

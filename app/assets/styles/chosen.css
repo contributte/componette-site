@@ -1,0 +1,13 @@
+.chosen-choices {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.chosen-container .chosen-drop {
+  border-radius: 0.25rem;
+  border: 1px solid #e2e8f0;
+  left: 0;
+  margin-top: 6px;
+  overflow: hidden;
+}
