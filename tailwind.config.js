@@ -162,4 +162,5 @@ module.exports = {
     require('@tailwindcss/custom-forms'),
     require('tailwindcss-gradients'),
   ],
+  purge: ['./app/**/*.latte'],
 };
