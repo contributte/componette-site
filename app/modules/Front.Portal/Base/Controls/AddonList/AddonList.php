@@ -87,7 +87,7 @@ class AddonList extends BaseControl
 		$query = $this->queryObject;
 		if ($author = $query->getAuthor()) {
 			return Html::el()
-				->addHtml(Html::el()->setText('By'))
+				->addHtml(Html::el()->setText('By '))
 				->addHtml(Html::el('strong')->setText($author));
 		}
 		if ($tag = $query->getTag()) {
