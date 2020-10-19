@@ -17,4 +17,5 @@ services:
 	- App\Modules\Front\Portal\Rss\Controls\RssFeed\RssFeedFactory
 	- App\Modules\Front\Portal\Rss\Controls\RssFeed\IRssFeedFactory
 	- App\Modules\Front\Generator\Controls\Sitemap\ISitemapFactory
-	- App\Modules\Front\Portal\Base\Controls\ReleaseList\IReleaseListFactory
+	- implement: App\Modules\Front\Portal\Base\Controls\ReleaseList\IReleaseListFactory
+	  inject: true

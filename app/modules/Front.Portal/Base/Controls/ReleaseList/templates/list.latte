@@ -1,18 +1,35 @@
-{if $releases->count()}
-    <div class="releases">
-        <div class="release" n:foreach="$releases as $release">
-            <a class="release__date" href="{plink Addon:detail, slug => $release->github->addon->id}">{$release->publishedAt|date:'d.m.Y'}</a>
-            <a class="release__icon" href="{plink Addon:detail, slug => $release->github->addon->id}">
-                <img alt="" title="{$release->github->addon->author}" loading="lazy" src="{avatar $release->github->addon->author, [s=>16]}">
-            </a>
-            <a class="release__title" href="{plink Addon:detail, slug => $release->github->addon->id}">
-                {$release->github->addon->fullname}
-            </a>
-            <a class="release__tag" href="{plink Addon:detail, slug => $release->github->addon->id}">
-                {$release->tag}
-            </a>
+{varType Nextras\Orm\Collection\ICollection $releases}
+{varType string $icon}
+<div class="relative" n:if="$releases->count()">
+    <div class="bg-white rounded shadow-md mb-4">
+        <div class="flex flex-wrap items-center justify-start px-5 pt-3 lg:px-8 lg:pt-4">
+            <img loading="lazy" src="{$icon}"
+                 class="rounded-full w-8 h-8 p-1 border mb-3 lg:mb-5 mr-4 flex-shrink-0"
+            >
+            <div class="mb-3 lg:mb-5 flex-1">
+                <h2 class="text-lg font-bold text-gray-800 lg:text-2xl font-headers">Latest releases</h2>
+            </div>
+        </div>
+        <div class="flex flex-col flex-wrap justify-start px-5 pt-4 border-t lg:px-8 lg:pt-6 pb-2 lg:pb-4">
+            {varType App\Model\Database\ORM\GithubRelease\GithubRelease $release}
+            {foreach $releases as $release}
+                <a href="{plink Addon:detail, slug => $release->github->addon->id}"
+                   class="flex flex-wrap items-center mb-2 justify-between leading-tight text-teal-800 group"
+                >
+                    <span class="inline-flex items-center text-sm font-medium font-headers">
+                        <img class="w-3 h-3 rounded-full flex-shrink-0 mr-1"
+                             alt="{$release->github->addon->author}"
+                             title="{$release->github->addon->author}"
+                             loading="lazy"
+                             src="{avatar $release->github->addon->author, [s => 16]}"
+                        >
+                        <span class="flex-1 group-hover:underline">{$release->github->addon->fullname}</span>
+                    </span>
+                    <span class="relative inline-block px-2 text-xs font-normal text-blue-700 bg-blue-100 rounded-full align-middle leading-tight">
+                        {$release->tag}
+                    </span>
+                </a>
+            {/foreach}
         </div>
     </div>
-{else}
-    <p class="alert alert-danger">No releases found.</p>
-{/if}
+</div>

@@ -32,6 +32,10 @@ services:
 	  inject: true
 	- implement: App\Modules\Front\Portal\Base\Controls\Layout\Heading\ControlFactory
 	  inject: true
+	- implement: App\Modules\Front\Portal\Base\Controls\News\ControlFactory
+	  inject: true
+	- factory: App\Modules\Front\Portal\Base\Controls\News\LoadFromRss
+	  inject: true
 	- implement: App\Modules\Front\Portal\Base\Controls\Tags\ControlFactory
 	  inject: true
 	- factory: App\Modules\Front\Portal\Base\Controls\Tags\Tags

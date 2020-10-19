@@ -1,0 +1,27 @@
+{varType App\Modules\Front\Portal\Base\Controls\News\Article|null $article}
+{varType App\Modules\Front\Base\Controls\Svg\SvgProps $icon}
+<div class="bg-teal-200 rounded shadow-md" n:if="$article">
+    <div class="bg-orange-500 text-sm font-bold leading-tight py-1 uppercase text-white inline-flex items-center rounded-r pl-5 pr-2 lg:pl-8 mt-3 lg:mt-4">
+        {control svg, $icon}
+        Hot
+    </div>
+    <div class="relative">
+        <div class="px-5 pt-3 lg:px-8 lg:pt-4 text-teal-800">
+            <h2 class="text-lg mb-2 font-bold font-headers text-teal-900 lg:text-xl">{$article->getTitle()}</h2>
+            <p class="mb-3 lg:mb-5">
+                {$article->getDescription()|truncate:363}
+            </p>
+        </div>
+        <div class="absolute bg-gradient-b-transparent-teal-200 bottom-0 left-0 w-full h-32 pointer-events-none"
+             aria-label="hidden"></div>
+    </div>
+    <div class="flex flex-wrap items-center justify-between px-5 lg:px-8 pb-3 lg:pb-4">
+        <span class="mb-3 lg:mb-4 text-sm mr-2 font-medium text-teal-800" n:if="$article->getDate()">{$article->getDate()->format('j.n.Y')}</span>
+        <a href="{$article->getLink()}"
+           class="inline-flex px-4 py-2 mb-3 font-medium text-teal-800 uppercase border border-teal-300 rounded lg:mb-4 bg-white hover:bg-teal-100 transition duration-150 ease-in-out"
+           target="_blank"
+        >
+            Read more
+        </a>
+    </div>
+</div>

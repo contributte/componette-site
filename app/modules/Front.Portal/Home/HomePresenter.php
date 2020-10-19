@@ -6,6 +6,7 @@ use App\Model\Database\Query\LatestActivityAddonsQuery;
 use App\Model\Database\Query\LatestAddedAddonsQuery;
 use App\Modules\Front\Portal\Base\BaseAddonPresenter;
 use App\Modules\Front\Portal\Base\Controls\AddonList\AddonList;
+use App\Modules\Front\Portal\Base\Controls\News\NewsComponent;
 use App\Modules\Front\Portal\Base\Controls\ReleaseList\IReleaseListFactory;
 use App\Modules\Front\Portal\Base\Controls\ReleaseList\ReleaseList;
 use App\Modules\Front\Portal\Base\Controls\Search\Search;
@@ -14,6 +15,7 @@ use App\Modules\Front\Portal\Base\Controls\Tags\TagsComponent;
 final class HomePresenter extends BaseAddonPresenter
 {
 
+	use NewsComponent;
 	use TagsComponent;
 
 	/** @var IReleaseListFactory @inject */
