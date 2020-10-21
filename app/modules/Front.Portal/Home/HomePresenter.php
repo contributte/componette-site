@@ -4,6 +4,7 @@ namespace App\Modules\Front\Portal\Home;
 
 use App\Model\Database\Query\LatestActivityAddonsQuery;
 use App\Model\Database\Query\LatestAddedAddonsQuery;
+use App\Modules\Front\Portal\Addon\Controls\FeaturedAddon\FeaturedAddonComponent;
 use App\Modules\Front\Portal\Base\BaseAddonPresenter;
 use App\Modules\Front\Portal\Base\Controls\AddonList\AddonList;
 use App\Modules\Front\Portal\Base\Controls\News\NewsComponent;
@@ -17,6 +18,7 @@ final class HomePresenter extends BaseAddonPresenter
 
 	use NewsComponent;
 	use TagsComponent;
+	use FeaturedAddonComponent;
 
 	/** @var IReleaseListFactory @inject */
 	public $releaseListFactory;

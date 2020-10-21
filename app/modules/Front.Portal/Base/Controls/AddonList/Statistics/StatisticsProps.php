@@ -9,6 +9,8 @@ use Wavevision\PropsControl\Helpers\PropUtils;
 class StatisticsProps extends BaseAddonProps
 {
 
+	public const FEATURED = 'featured';
+
 	public const INLINE = 'inline';
 
 	/**
@@ -16,7 +18,10 @@ class StatisticsProps extends BaseAddonProps
 	 */
 	protected function define(): array
 	{
-		return PropUtils::merge(parent::define(), [self::INLINE => Expect::bool(false)]);
+		return PropUtils::merge(parent::define(), [
+			self::FEATURED => Expect::bool(false),
+			self::INLINE => Expect::bool(false),
+		]);
 	}
 
 }

@@ -20,6 +20,7 @@ use Nextras\Orm\Relationships\OneHasMany;
  * @property int|NULL $rating
  * @property DateTimeImmutable $createdAt        {default now}
  * @property DateTimeImmutable|NULL $updatedAt
+ * @property DateTimeImmutable|NULL $featuredAt
  *
  * @property string $fullname                                     {virtual}
  * @property string $isComposer                                   {virtual}

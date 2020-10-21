@@ -162,5 +162,11 @@ module.exports = {
     require('@tailwindcss/custom-forms'),
     require('tailwindcss-gradients'),
   ],
-  purge: ['./app/**/*.latte'],
+  purge: {
+    // TODO: Implement custom purgecss pattern instead of whitelisting
+    content: ['./app/**/*.latte'],
+    options: {
+      whitelist: ['h-4', 'md:mr-4', 'w4'],
+    },
+  },
 };

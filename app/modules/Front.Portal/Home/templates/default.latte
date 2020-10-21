@@ -28,6 +28,9 @@
             {/cache}
         </div>
         <div class="order-3 col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 lg:col-span-1">
+            {cache 'addons/featured', expire => '+1 month'}
+                {control featuredAddon}
+            {/cache}
             {cache 'addons/latest-release', expire => '+1 hour'}
                 {control latestReleases}
             {/cache}

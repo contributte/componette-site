@@ -4,7 +4,6 @@
 <a href="{if $props->linkToGithub}{$addon->github->linker->getRepoUrl()}{else}{plink Addon:detail, slug => $addon->id}{/if}"
    class="flex-shrink-0 mr-4"
 >
-    <img loading="lazy" alt="{$addon->author}" src="{avatar $addon->author}"
-         class="w-8 h-8 rounded-full lg:h-16 lg:w-16"
-    >
+    <img loading="lazy" alt="{$addon->author}"
+         src="{avatar $addon->author}" n:class="'w-8 h-8 rounded-full', !$props->small ? 'lg:h-16 lg:w-16'">
 </a>

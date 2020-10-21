@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+DATE=`date +%Y-%m-%d`
+echo $DATE
+
+../bin/console addons:change-featured
