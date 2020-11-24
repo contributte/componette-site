@@ -24,6 +24,8 @@ class Factory
 	public function create(): BaseForm
 	{
 		$form = $this->formFactory->create();
+		$form->setAction('https://f3l1x.us4.list-manage.com/subscribe/post?u=7207f2543ed43156f473e11f0&id=0185f5988c');
+		$form->setHtmlAttribute('target', '_blank');
 		$this->email($form);
 		$form->addSubmit(self::SUBMIT, 'Submit');
 		return $form;
