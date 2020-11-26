@@ -166,7 +166,7 @@ module.exports = {
     // TODO: Implement custom purgecss pattern instead of whitelisting
     content: ['./app/**/*.latte'],
     options: {
-      whitelist: ['h-4', 'md:mr-4', 'w4'],
+      whitelist: ['h-4', 'md:mr-4', 'w4', 'ml-2'],
     },
   },
 };

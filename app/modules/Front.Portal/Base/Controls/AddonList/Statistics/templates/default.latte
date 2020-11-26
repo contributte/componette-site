@@ -14,24 +14,30 @@
         <div class="inline-flex items-center justify-center w-6 h-6 mr-2 bg-teal-100 rounded-full">
             {$icon->render('download-cloud-fill', 'system')}
         </div>
-        {if $addon->isComposer && $addon->composer}
-            {$addon->composer->downloads|count}
-        {/if}
+        <span class="pr-2">
+            {if $addon->isComposer && $addon->composer}
+                {$addon->composer->downloads|count}
+            {/if}
             {if $addon->isBower && $addon->bower}
-            {$addon->bower->downloads|count}
-        {/if}
+                {$addon->bower->downloads|count}
+            {/if}
+        </span>
     </div>
     <div n:class="'flex items-center flex-1 text-xs text-blue-700', $props->inline ? 'lg:mb-5 md:justify-end'">
         <div class="inline-flex items-center justify-center w-6 h-6 mr-2 bg-teal-100 rounded-full">
             {$icon->render('star-fill', 'system')}
         </div>
-        {$addon->github->stars|count}
+        <span class="pr-2">
+            {$addon->github->stars|count}
+        </span>
     </div>
     <div n:if="!$props->inline" n:class="'flex items-center flex-1 text-xs text-blue-700', $props->inline ? 'lg:mb-5 md:justify-end'">
         <div class="inline-flex items-center justify-center w-6 h-6 mr-2 bg-teal-100 rounded-full">
             {$icon->render('bug-fill', 'development')}
         </div>
-        {$addon->github->issues|count}
+        <span class="pr-2">
+            {$addon->github->issues|count}
+        </span>
     </div>
     <div n:class="'flex items-center flex-1 text-xs text-blue-700', $props->inline ? 'lg:mb-5 md:justify-end'">
         <div class="inline-flex items-center justify-center w-6 h-6 mr-2 bg-teal-100 rounded-full">
