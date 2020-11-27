@@ -17,9 +17,10 @@
         <span class="pr-2">
             {if $addon->isComposer && $addon->composer}
                 {$addon->composer->downloads|count}
-            {/if}
-            {if $addon->isBower && $addon->bower}
+            {elseif $addon->isBower && $addon->bower}
                 {$addon->bower->downloads|count}
+            {else}
+                N/A
             {/if}
         </span>
     </div>
