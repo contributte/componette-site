@@ -466,17 +466,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/contributte/latte.git",
-                "reference": "9b0efb2a6adfc78f3bb0f332e589879446c40ce0"
+                "reference": "4d46bc059c9c3b317dbb95d00448001e74cf5bb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contributte/latte/zipball/9b0efb2a6adfc78f3bb0f332e589879446c40ce0",
-                "reference": "9b0efb2a6adfc78f3bb0f332e589879446c40ce0",
+                "url": "https://api.github.com/repos/contributte/latte/zipball/4d46bc059c9c3b317dbb95d00448001e74cf5bb7",
+                "reference": "4d46bc059c9c3b317dbb95d00448001e74cf5bb7",
                 "shasum": ""
             },
             "require": {
                 "latte/latte": "^2.5.1",
-                "php": "^7.2"
+                "php": ">=7.2"
             },
             "conflict": {
                 "nette/di": "<3.0.0"
@@ -484,7 +484,7 @@
             "require-dev": {
                 "nette/application": "~3.0.0",
                 "nette/di": "~3.0.0",
-                "ninjify/nunjuck": "^0.3.0",
+                "ninjify/nunjuck": "^0.4.0",
                 "ninjify/qa": "^0.10.0",
                 "phpstan/extension-installer": "^1.0",
                 "phpstan/phpstan-deprecation-rules": "^0.11",
@@ -523,7 +523,7 @@
                 "latte",
                 "nette"
             ],
-            "time": "2020-05-18T11:54:55+00:00"
+            "time": "2020-11-18T23:08:40+00:00"
         },
         {
             "name": "contributte/nextras-orm-query-object",
@@ -3349,16 +3349,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.54",
+            "version": "0.12.58",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "45c7b999a4b7dd9ac5558bdaaf23dcebbef88223"
+                "reference": "2a4847df6047b30af28854ed9dc95304cdb56ae5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/45c7b999a4b7dd9ac5558bdaaf23dcebbef88223",
-                "reference": "45c7b999a4b7dd9ac5558bdaaf23dcebbef88223",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/2a4847df6047b30af28854ed9dc95304cdb56ae5",
+                "reference": "2a4847df6047b30af28854ed9dc95304cdb56ae5",
                 "shasum": ""
             },
             "require": {
@@ -3401,7 +3401,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-11-05T13:36:26+00:00"
+            "time": "2020-11-29T13:32:03+00:00"
         },
         {
             "name": "phpstan/phpstan-nette",
