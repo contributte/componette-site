@@ -20,10 +20,6 @@ final class HomePresenter extends BaseAddonPresenter
 	/** @var IReleaseListFactory @inject */
 	public $releaseListFactory;
 
-	/**
-	 * CONTROLS ****************************************************************
-	 */
-
 	protected function createComponentSearch(): Search
 	{
 		$search = parent::createComponentSearch();

@@ -77,12 +77,14 @@ final class CategorizedAddonList extends BaseControl
 					if (!isset($tmplist[$tag->id])) {
 						$tmplist[$tag->id] = [];
 					}
+
 					$tmplist[$tag->id][] = $addon;
 				}
 			} else {
 				if (!isset($tmplist[-1])) {
 					$tmplist[-1] = [];
 				}
+
 				$tmplist[-1][] = $addon;
 			}
 		}

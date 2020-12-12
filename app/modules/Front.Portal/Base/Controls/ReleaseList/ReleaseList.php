@@ -18,10 +18,6 @@ class ReleaseList extends BaseControl
 		$this->em = $em;
 	}
 
-	/**
-	 * RENDER ******************************************************************
-	 */
-
 	public function render(): void
 	{
 		$ids = $this->em->getRepositoryForEntity(GithubRelease::class)

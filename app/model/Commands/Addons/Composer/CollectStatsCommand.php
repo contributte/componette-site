@@ -61,7 +61,6 @@ final class CollectStatsCommand extends BaseCommand
 				// Skip addon without data
 				$composer = $addon->github->masterComposer;
 				if ($composer) {
-
 					if (!$composer->name) {
 						throw new InvalidStateException('No composer name at ' . $addon->fullname);
 					}

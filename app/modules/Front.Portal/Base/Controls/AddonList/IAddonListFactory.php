@@ -2,13 +2,14 @@
 
 namespace App\Modules\Front\Portal\Base\Controls\AddonList;
 
+use App\Model\Database\ORM\Addon\Addon;
 use Nextras\Orm\Collection\ICollection;
 
 interface IAddonListFactory
 {
 
 	/**
-	 * @phpstan-param ICollection<\App\Model\Database\ORM\Addon\Addon> $addons
+	 * @param ICollection<Addon> $addons
 	 */
 	public function create(ICollection $addons): AddonList;
 

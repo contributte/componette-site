@@ -26,17 +26,9 @@ final class IndexPresenter extends BaseAddonPresenter
 	/** @var ICollection|Addon[] */
 	private $addons;
 
-	/**
-	 * ALL *********************************************************************
-	 */
-
 	public function actionAll(): void
 	{
 	}
-
-	/**
-	 * AUTHOR ******************************************************************
-	 */
 
 	public function actionAuthor(string $slug): void
 	{
@@ -50,10 +42,6 @@ final class IndexPresenter extends BaseAddonPresenter
 	{
 		$this->template->author = $slug;
 	}
-
-	/**
-	 * BY SEARCH ***************************************************************
-	 */
 
 	public function actionSearch(?string $q): void
 	{
@@ -80,10 +68,6 @@ final class IndexPresenter extends BaseAddonPresenter
 		$this->template->addons = $this->addons;
 	}
 
-	/**
-	 * BY TAG *****************************************************************
-	 */
-
 	public function actionTag(string $tag): void
 	{
 		$query = new SearchAddonsQuery();
@@ -96,10 +80,6 @@ final class IndexPresenter extends BaseAddonPresenter
 	{
 		$this->template->tag = $tag;
 	}
-
-	/**
-	 * CONTROLS ****************************************************************
-	 */
 
 	protected function createComponentSearch(): Search
 	{

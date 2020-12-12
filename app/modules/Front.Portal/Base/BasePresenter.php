@@ -31,10 +31,6 @@ abstract class BasePresenter extends BaseFrontPresenter
 	/** @var IComponettersFactory @inject */
 	public $componettersFactory;
 
-	/**
-	 * CONTROLS ****************************************************************
-	 */
-
 	protected function createComponentSearch(): Search
 	{
 		$search = $this->searchFactory->create();

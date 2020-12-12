@@ -26,10 +26,6 @@ final class AddonModal extends BaseControl
 		$this->em = $em;
 	}
 
-	/**
-	 * FORMS *******************************************************************
-	 */
-
 	protected function createComponentForm(): Form
 	{
 		$form = new Form();
@@ -53,7 +49,7 @@ final class AddonModal extends BaseControl
 				$this->presenter->redirect('this');
 			}
 
-			[$all, $owner, $name] = $matches;
+			[, $owner, $name] = $matches;
 
 			$addonRepository = $this->em->getRepositoryForEntity(Addon::class);
 			$addon = new Addon();
@@ -80,10 +76,6 @@ final class AddonModal extends BaseControl
 
 		return $form;
 	}
-
-	/**
-	 * RENDER ******************************************************************
-	 */
 
 	/**
 	 * Render component

@@ -2,6 +2,7 @@
 
 namespace App\Modules\Front\Portal\Base;
 
+use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Services\Search\Search;
 use App\Modules\Front\Portal\Base\Controls\AddonList\AddonList;
 use App\Modules\Front\Portal\Base\Controls\AddonList\IAddonListFactory;
@@ -31,7 +32,7 @@ abstract class BaseAddonPresenter extends BasePresenter
 	 */
 
 	/**
-	 * @phpstan-param ICollection<\App\Model\Database\ORM\Addon\Addon> $addons
+	 * @param ICollection<Addon> $addons
 	 */
 	protected function createAddonListControl(ICollection $addons): AddonList
 	{

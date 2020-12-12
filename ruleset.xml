@@ -2,12 +2,7 @@
 <ruleset name="Componette">
 	<!-- Extending ruleset -->
 	<rule ref="vendor/ninjify/coding-standard/contributte.xml">
-		<exclude name="Generic.Formatting.SpaceAfterCast.NoSpace"/>
-		<exclude name="Squiz.Commenting.FunctionComment.SpacingAfter"/>
-		<exclude name="SlevomatCodingStandard.ControlStructures.EarlyExit"/>
-		<exclude name="SlevomatCodingStandard.ControlStructures.RequireTernaryOperator"/>
-		<exclude name="SlevomatCodingStandard.ControlStructures.ControlStructureSpacing"/>
-		<exclude name="SlevomatCodingStandard.ControlStructures.RequireMultiLineTernaryOperator.MultiLineTernaryOperatorNotUsed"/>
+		<exclude name="SlevomatCodingStandard.ControlStructures.RequireTernaryOperator.TernaryOperatorNotUsed"/>
 	</rule>
 
 	<!-- Project rules -->

@@ -24,18 +24,10 @@ class AddonList extends BaseControl
 		$this->addons = $addons;
 	}
 
-	/**
-	 * CONTROLS ****************************************************************
-	 */
-
 	protected function createComponentMeta(): AddonMeta
 	{
 		return new AddonMeta();
 	}
-
-	/**
-	 * RENDER ******************************************************************
-	 */
 
 	public function render(): void
 	{

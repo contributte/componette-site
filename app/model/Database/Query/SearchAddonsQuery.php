@@ -71,6 +71,7 @@ final class SearchAddonsQuery extends QueryObject
 					'%' . $token . '%'
 				);
 			}
+
 			$qb->groupBy('[a.id]');
 		}
 

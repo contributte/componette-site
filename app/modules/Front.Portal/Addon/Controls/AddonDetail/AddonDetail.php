@@ -18,18 +18,10 @@ final class AddonDetail extends BaseControl
 		$this->addon = $addon;
 	}
 
-	/**
-	 * CONTROLS ****************************************************************
-	 */
-
 	protected function createComponentMeta(): AddonMeta
 	{
 		return new AddonMeta();
 	}
-
-	/**
-	 * RENDER ******************************************************************
-	 */
 
 	/**
 	 * Render header
@@ -77,6 +69,7 @@ final class AddonDetail extends BaseControl
 					'y' => ((array) $stats->json['values'])[$key],
 				];
 			}
+
 			$this->template->totalDownloads = json_encode($totalDownloads);
 		} else {
 			$this->template->totalDownloads = null;

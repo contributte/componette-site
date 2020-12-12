@@ -121,10 +121,6 @@ final class GithubService
 		}
 	}
 
-	/**
-	 * API *********************************************************************
-	 */
-
 	public function repo(string $author, string $repo): Response
 	{
 		return $this->call(sprintf('/repos/%s/%s', $author, $repo));

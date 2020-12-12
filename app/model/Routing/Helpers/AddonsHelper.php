@@ -37,7 +37,7 @@ final class AddonsHelper
 	protected function build(): void
 	{
 		if (!$this->build) {
-			$this->data = (array)$this->cache->load('routes', function (&$dependencies): array {
+			$this->data = (array) $this->cache->load('routes', function (&$dependencies): array {
 				$dependencies[Cache::EXPIRE] = '+1 day';
 				$dependencies[Cache::TAGS] = ['routing', 'routes'];
 
@@ -53,10 +53,6 @@ final class AddonsHelper
 			$this->build = true;
 		}
 	}
-
-	/**
-	 * ADDON *******************************************************************
-	 */
 
 	public function addonIn(string $slug): ?int
 	{
@@ -75,10 +71,6 @@ final class AddonsHelper
 
 		return null;
 	}
-
-	/**
-	 * OWNER *******************************************************************
-	 */
 
 	public function authorIn(string $slug): ?string
 	{
