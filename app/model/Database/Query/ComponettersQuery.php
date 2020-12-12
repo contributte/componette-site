@@ -10,13 +10,11 @@ final class ComponettersQuery extends QueryObject
 
 	public function doQuery(QueryBuilder $builder): QueryBuilder
 	{
-		$qb = $builder->select('a.*')
+		return $builder->select('a.*')
 			->from('[addon]', 'a')
 			->andWhere('[a.state] = %s', Addon::STATE_ACTIVE)
 			->groupBy('[a.author]')
 			->orderBy('[a.id] DESC');
-
-		return $qb;
 	}
 
 }

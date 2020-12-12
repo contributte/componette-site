@@ -40,10 +40,6 @@ class Github extends AbstractEntity
 	/** @var GithubLinker|NULL */
 	private $linker;
 
-	/**
-	 * VIRTUAL *****************************************************************
-	 */
-
 	protected function getterLinker(): GithubLinker
 	{
 		if ($this->linker === null) {

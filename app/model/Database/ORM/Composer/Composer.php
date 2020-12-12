@@ -25,10 +25,6 @@ class Composer extends AbstractEntity
 	/** @var ComposerLinker|NULL */
 	private $linker;
 
-	/**
-	 * VIRTUAL *****************************************************************
-	 */
-
 	protected function getterLinker(): ComposerLinker
 	{
 		if ($this->linker === null) {

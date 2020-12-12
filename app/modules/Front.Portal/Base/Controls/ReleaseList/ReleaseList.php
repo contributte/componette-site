@@ -23,10 +23,6 @@ class ReleaseList extends BaseControl
 		$this->em = $em;
 	}
 
-	/**
-	 * RENDER ******************************************************************
-	 */
-
 	public function render(): void
 	{
 		$this->template->icon = $this->netteWebpack->getUrl('merge.svg');

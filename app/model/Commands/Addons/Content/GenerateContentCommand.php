@@ -104,8 +104,8 @@ final class GenerateContentCommand extends BaseCommand
 	protected function reformatLinks(Github $github): void
 	{
 		// Resolve links
-		$github->contentHtml = Strings::replace((string)$github->contentHtml, '#href=\"(.*)\"#iU', function ($matches) use ($github) {
-			 [$all, $url] = $matches;
+		$github->contentHtml = Strings::replace((string) $github->contentHtml, '#href=\"(.*)\"#iU', function ($matches) use ($github) {
+			[, $url] = $matches;
 
 			if (!Validators::isUrl($url)) {
 				if (Urls::hasFragment($url)) {
@@ -120,7 +120,7 @@ final class GenerateContentCommand extends BaseCommand
 
 		// Resolve images
 		$github->contentHtml = Strings::replace($github->contentHtml, '#img.+src=\"(.*)\"#iU', function ($matches) use ($github) {
-			 [$all, $url] = $matches;
+			[, $url] = $matches;
 
 			if (!Validators::isUrl($url)) {
 				$url = $github->linker->getRawUrl($url);
