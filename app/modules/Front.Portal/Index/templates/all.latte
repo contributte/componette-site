@@ -1,9 +1,8 @@
-{block #title}All addons{/block}
-{block #content}
-    <div class="mb-4">
-        {control heading, [content => 'All addons']}
-    </div>
-    {cache 'addons/all', expire => '+1 day'}
-        {control categorizedAddons}
-    {/cache}
-{/block}
+{block title}All addons{/block}
+{block content}
+<div n:snippet="search-result"></div>
+
+<h2 class="category"><span class="mega-octicon octicon-list-unordered"></span> All components</h2>
+{cache 'addons/all', expire => '+1 day'}
+    {control categorizedAddons}
+{/cache}

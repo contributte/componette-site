@@ -1,48 +1,48 @@
-{varType App\Model\Database\ORM\Addon\Addon $addon}
-{varType array $tabs}
-{block #title}{$addon->fullname}{/block}
-{block #description}{$addon->github->description}{/block}
-{block #meta}
+{block title}{$addon->fullname}{/block}
+{block description}{$addon->github->description}{/block}
+{block meta}
     <!-- TODO @IMAGE -->
 {/block}
-{block #wrapper}
-{block #content}
-    <div class="flex flex-wrap w-full">
+{block wrapper}
+<div n:snippet="search-result"></div>
+<section class="page page-package clearfix">
+    <section class="page-header">
         {control addon:header}
-    </div>
-    <div class="grid grid-cols-7 gap-4 mb-4">
-        <div class="order-2 row-span-3 col-span-7 lg:col-span-4 xl:col-span-5 lg:order-1 relative z-0">
-            {include _shapes.latte}
-            <div class="bg-white rounded shadow-md z-10 relative" x-data="{ tab: '{=array_key_first($tabs)}' }">
-                <div class="flex flex-col flex-wrap items-stretch w-full px-5 lg:px-8">
-                    <nav class="-mx-5 -mb-px">
-                        <ul class="flex flex-wrap w-full items-end justify-between px-5 md:px-0 md:justify-start lg:min-h-16">
-                            {foreach $tabs as $tab => $label}
-                                <li class="flex md:px-5" @click="tab = '{$tab}'">
-                                        <span class="font-medium text-blue-500 py-3 border-b-2 md:py-4 text-sm md:text-base cursor-pointer hover:text-blue-900 border-transparent"
-                                              :class="[tab === '{$tab}' ? 'text-blue-900 hover:text-blue-900 cursor-auto border-teal-600' : 'cursor-pointer hover:text-blue-900 border-transparent' ]">
-                                           {$label}
-                                        </span>
-                                </li>
-                            {/foreach}
-                        </ul>
-                    </nav>
-                </div>
-                <div class="flex flex-wrap items-center justify-between px-5 pt-4 pb-5 border-t lg:px-8 lg:pt-5 lg:pb-8">
-                    {foreach array_keys($tabs) as $tab}
-                        <div class="w-full" x-show="tab === '{$tab}'">
-                            {control addon:$tab}
-                        </div>
-                    {/foreach}
-                </div>
+
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#tab-readme" role="tab" data-toggle="tab">Readme</a></li>
+            <li role="presentation"><a href="#tab-releases" role="tab" data-toggle="tab">Releases <span class="badge">{$addon->github->releases->countStored()}</span></a></li>
+            <li role="presentation"><a href="#tab-comments" role="tab" data-toggle="tab">Comments <span class="badge disqus-comment-count" data-disqus-url="{plink //this}">0</span></a></li>
+        </ul>
+    </section>
+    <section class="page-sidebar">
+        {control addon:sidebar}
+    </section>
+    <section class="page-content">
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="tab-readme">
+                {control addon:content}
+            </div>
+            <div role="tabpanel" class="tab-pane" id="tab-releases">
+                {control addon:releases}
+            </div>
+            <div role="tabpanel" class="tab-pane" id="tab-comments">
+                {control addon:comments}
             </div>
         </div>
-        <div class="order-3 col-span-7 lg:col-span-3 xl:col-span-2 z-10">
-            {control addon:sidebar}
-        </div>
-    </div>
+    </section>
+    {*
+    <section n:if="$addon->isComposer && $addon->composerLatestStatistics" class="page-stats">
+        {control addon:stats}
+    </section>
+    *}
+    <section class="page-report">
+        {control addon:report}
+    </section>
+</section>
 {/block}
-{block #scripts}
-    <script id="dsq-count-scr" src="//componette.disqus.com/count.js" async defer></script>
-    <script src="//componette.disqus.com/embed.js" async defer></script>
+
+{block scripts}
+<script id="dsq-count-scr" src="//componette.disqus.com/count.js" async defer></script>
+<script src="//componette.disqus.com/embed.js" async defer></script>
 {/block}

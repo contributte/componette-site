@@ -1,0 +1,49 @@
+{block}
+{cache menu, expire => '+1 day'}
+{var $_items = $items()}
+<div class="sidebar">
+    <div class="buttons">
+        <a href="#" title="Add new package" data-toggle="modal" data-target="#package-modal" class="btn btn-success btn-block"><i class="octicon-mark-github octicon"></i> Add new component</a>
+        <a href="{plink :Front:Portal:Index:all}" title="Show all" data-toggle="modal" class="btn btn-info btn-block"><i class="octicon-database octicon"></i> Show all components</a>
+    </div>
+
+    <hr>
+
+    <div class="tags" n:inner-foreach="$_items as $tag">
+        {include #tag-group, tag => $tag}
+    </div>
+</div>
+{/cache}
+{/block}
+
+{define tag-group}
+    {var $classes = ['btn-group']}
+    {if $tag->addons->count() > 50}
+        {php $classes[] = 'btn-group--50'}
+    {elseif $tag->addons->count() > 40}
+        {php $classes[] = 'btn-group--40'}
+    {elseif $tag->addons->count() > 30}
+        {php $classes[] = 'btn-group--30'}
+    {elseif $tag->addons->count() > 20}
+        {php $classes[] = 'btn-group--20'}
+    {elseif $tag->addons->count() > 10}
+        {php $classes[] = 'btn-group--10'}
+    {elseif $tag->addons->count() > 5}
+        {php $classes[] = 'btn-group--5'}
+    {elseif $tag->addons->count() === 0}
+        {php $classes[] = 'btn-group--0'}
+    {/if}
+    <div n:class="(expand) $classes" role="group">
+        <a href="{plink Index:tag $tag->name}">
+            {include #tag-name, tag => $tag}
+            {include #tag-count, tag => $tag}
+        </a>
+    </div>
+{/define}
+
+{define tag-name}
+    <span class="label label-default">{$tag->name}</span>
+{/define}
+{define tag-count}
+    <span class="label label-info">{$tag->addons->count()}</span>
+{/define}

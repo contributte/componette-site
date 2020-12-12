@@ -1,6 +1,6 @@
-{block #title}Search for {$search->q}{/block}
-{block #content}
-    {snippet search-result}
-        {control addons}
-    {/snippet}
-{/block}
+{block title}Search for {$search->q}{/block}
+{block content}
+{snippet search-result}
+    <h2 class="category"><span class="mega-octicon octicon-search"></span> Searched for $<strong>{$search->q}</strong> <i class="badge">{count($addons)} results</i></h2>
+    {control addons}
+{/snippet}
