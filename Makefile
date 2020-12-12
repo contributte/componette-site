@@ -1,72 +1,24 @@
-app=app
-bin=vendor/bin
-node=node_modules/.bin
-prettier-pattern="**/*.{css,js,ts}"
-temp=temp
-tests=tests
-ts-webpack=$(node)/cross-env TS_NODE_PROJECT='webpack/tsconfig.json' TS_NODE_TRANSPILE_ONLY=true
-webpack=webpack
-dirs:=bin $(app) $(tests)
+.PHONY: install qa cs csf phpstan tests coverage-clover coverage-html
 
-# Setup
+install:
+	composer update
 
-autoload:
-	composer dump-autoload
+qa: phpstan cs
 
-build:
-	$(ts-webpack) NODE_ENV=production $(node)/webpack --config $(webpack)/webpack.prod.ts --progress
+cs:
+	vendor/bin/codesniffer app tests
 
-dev:
-	$(ts-webpack) $(node)/webpack-dev-server --config $(webpack)/webpack.dev.ts
-
-di: reset
-	bin/extract-services
-	$(MAKE) reset
-
-rm-cache:
-	rm -rf $(temp)/cache
-
-reset: rm-cache autoload
-
-serve:
-	NETTE_DEBUG=1 php -S 0.0.0.0:8000 -t www
-
-# Tests
-
-test:
-	$(bin)/tester -s -p phpdbg --colors 1 -C $(tests)/cases
-
-test-coverage:
-	$(bin)/tester -s -p phpdbg --colors 1 -C -d extension=xdebug.so --coverage $(temp)/coverage.xml --coverage-src $(dirs)
-
-# QA
-
-codefixer:
-	$(bin)/codefixer $(dirs)
-
-codesniffer:
-	$(bin)/codesniffer $(dirs)
+csf:
+	vendor/bin/codefixer app tests
 
 phpstan:
-	$(bin)/phpstan analyse
+	vendor/bin/phpstan analyse -l max -c phpstan.neon app
 
-prettier:
-	$(node)/prettier --check $(prettier-pattern)
+tests:
+	vendor/bin/tester -s -p php --colors 1 -C tests/cases
 
-prettier-fix:
-	$(node)/prettier --write $(prettier-pattern)
+coverage-clover:
+	vendor/bin/tester -s -p phpdbg --colors 1 -C --coverage ./coverage.xml --coverage-src ./app tests/cases
 
-ts:
-	$(node)/tsc --noEmit --project tsconfig.json
-
-fix-php: reset codefixer
-
-fix-ts: prettier-fix
-
-fix: fix-php fix-ts
-
-qa-php: codesniffer phpstan
-
-qa-ts: ts prettier
-
-qa: codesniffer phpstan ts prettier
+coverage-html:
+	vendor/bin/tester -s -p phpdbg --colors 1 -C --coverage ./coverage.html --coverage-src ./app tests/cases
