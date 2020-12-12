@@ -1,0 +1,24 @@
+.PHONY: install qa cs csf phpstan tests coverage-clover coverage-html
+
+install:
+	composer update
+
+qa: phpstan cs
+
+cs:
+	vendor/bin/codesniffer app tests
+
+csf:
+	vendor/bin/codefixer app tests
+
+phpstan:
+	vendor/bin/phpstan analyse -l max -c phpstan.neon app
+
+tests:
+	vendor/bin/tester -s -p php --colors 1 -C tests/cases
+
+coverage-clover:
+	vendor/bin/tester -s -p phpdbg --colors 1 -C --coverage ./coverage.xml --coverage-src ./app tests/cases
+
+coverage-html:
+	vendor/bin/tester -s -p phpdbg --colors 1 -C --coverage ./coverage.html --coverage-src ./app tests/cases
