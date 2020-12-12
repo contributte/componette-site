@@ -16,7 +16,7 @@
 {/cache}
 {/block}
 
-{define #tag-group}
+{define tag-group}
     {var $classes = ['btn-group']}
     {if $tag->addons->count() > 50}
         {php $classes[] = 'btn-group--50'}
@@ -41,9 +41,9 @@
     </div>
 {/define}
 
-{define #tag-name}
+{define tag-name}
     <span class="label label-default">{$tag->name}</span>
 {/define}
-{define #tag-count}
+{define tag-count}
     <span class="label label-info">{$tag->addons->count()}</span>
 {/define}

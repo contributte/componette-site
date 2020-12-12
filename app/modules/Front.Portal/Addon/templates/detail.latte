@@ -1,9 +1,9 @@
-{block #title}{$addon->fullname}{/block}
-{block #description}{$addon->github->description}{/block}
-{block #meta}
+{block title}{$addon->fullname}{/block}
+{block description}{$addon->github->description}{/block}
+{block meta}
     <!-- TODO @IMAGE -->
 {/block}
-{block #wrapper}
+{block wrapper}
 <div n:snippet="search-result"></div>
 <section class="page page-package clearfix">
     <section class="page-header">
@@ -42,7 +42,7 @@
 </section>
 {/block}
 
-{block #scripts}
+{block scripts}
 <script id="dsq-count-scr" src="//componette.disqus.com/count.js" async defer></script>
 <script src="//componette.disqus.com/embed.js" async defer></script>
 {/block}

@@ -45,7 +45,7 @@
     {include '_parts/@smartlook.latte'}
 
     <!-- Extra head-->
-    {block #head}{/block}
+    {block head}{/block}
 </head>
 <body>
     <!-- Container -->
@@ -79,7 +79,7 @@
             <!-- /Search -->
             {ifset #wrapper}
                 <div class="box">
-                    {block #wrapper}
+                    {block wrapper}
                     <div class="row row-flex">
                         <!-- Content(9) -->
                         <div class="col-md-9 col-box">
@@ -89,7 +89,7 @@
 
                         <!-- Sidebar(3) -->
                         <div class="col-md-3 col-aside clearfix">
-                            {block #sidebar}
+                            {block sidebar}
                                 {control sideMenu}
                             {/block}
                         </div>
@@ -172,6 +172,6 @@
     <script src="{$basePath}/dist/front.bundle.js?v={rev}"></script>
     <!-- /Scripts -->
 
-    {block #scripts}{/block}
+    {block scripts}{/block}
 </body>
 </html>
