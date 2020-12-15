@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "85db8f0eb8d68d818f5fa06e9bf4395a",
+    "content-hash": "f47124d581aabf839f5af7cfc7b1ee9e",
     "packages": [
         {
             "name": "contributte/application",
@@ -66,10 +66,6 @@
                 "nette",
                 "presenter"
             ],
-            "support": {
-                "issues": "https://github.com/contributte/application/issues",
-                "source": "https://github.com/contributte/application/tree/v0.5.0"
-            },
             "time": "2020-12-07T17:13:05+00:00"
         },
         {
@@ -129,10 +125,6 @@
                 "docker",
                 "nette"
             ],
-            "support": {
-                "issues": "https://github.com/contributte/bootstrap/issues",
-                "source": "https://github.com/contributte/bootstrap/tree/master"
-            },
             "time": "2020-01-05T18:30:11+00:00"
         },
         {
@@ -198,10 +190,6 @@
                 "nette",
                 "provider"
             ],
-            "support": {
-                "issues": "https://github.com/contributte/cache/issues",
-                "source": "https://github.com/contributte/cache/tree/v0.5.0"
-            },
             "time": "2019-07-15T07:52:35+00:00"
         },
         {
@@ -261,10 +249,6 @@
                 "nette",
                 "symfony"
             ],
-            "support": {
-                "issues": "https://github.com/contributte/console/issues",
-                "source": "https://github.com/contributte/console/tree/v0.9.0"
-            },
             "time": "2020-12-11T13:00:07+00:00"
         },
         {
@@ -332,10 +316,6 @@
                 "inject",
                 "nette"
             ],
-            "support": {
-                "issues": "https://github.com/contributte/di/issues",
-                "source": "https://github.com/contributte/di/tree/v0.5.0"
-            },
             "time": "2020-12-06T15:10:07+00:00"
         },
         {
@@ -409,10 +389,6 @@
                 "rules",
                 "validation"
             ],
-            "support": {
-                "issues": "https://github.com/contributte/forms/issues",
-                "source": "https://github.com/contributte/forms/tree/v0.4.0"
-            },
             "time": "2019-06-16T13:58:26+00:00"
         },
         {
@@ -481,10 +457,6 @@
                 "request",
                 "response"
             ],
-            "support": {
-                "issues": "https://github.com/contributte/http/issues",
-                "source": "https://github.com/contributte/http/tree/master"
-            },
             "time": "2019-06-16T14:00:48+00:00"
         },
         {
@@ -522,7 +494,6 @@
             "suggest": {
                 "nette/di": "to use VersionExtension[CompilerExtension]"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -559,28 +530,28 @@
         },
         {
             "name": "contributte/nextras-orm-query-object",
-            "version": "v0.3",
+            "version": "v0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/contributte/nextras-orm-query-object.git",
-                "reference": "333f3f458f775cbafe3ef099cff245fc75674c5d"
+                "reference": "511ed72d42dae5010c12c6b8b5efc574d250d098"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contributte/nextras-orm-query-object/zipball/333f3f458f775cbafe3ef099cff245fc75674c5d",
-                "reference": "333f3f458f775cbafe3ef099cff245fc75674c5d",
+                "url": "https://api.github.com/repos/contributte/nextras-orm-query-object/zipball/511ed72d42dae5010c12c6b8b5efc574d250d098",
+                "reference": "511ed72d42dae5010c12c6b8b5efc574d250d098",
                 "shasum": ""
             },
             "require": {
                 "nextras/dbal": "^3.1.1",
-                "php": "^7.2"
+                "php": ">=7.2"
             },
             "require-dev": {
                 "mockery/mockery": "^1.3.0",
                 "nette/di": "~3.0.1",
                 "nextras/orm": "^3.1.0",
-                "ninjify/nunjuck": "^0.3.0",
-                "ninjify/qa": "^0.10.0",
+                "ninjify/nunjuck": "^0.4",
+                "ninjify/qa": "^0.12.",
                 "phpstan/phpstan": "^0.12.0",
                 "phpstan/phpstan-deprecation-rules": "^0.12.0",
                 "phpstan/phpstan-nette": "^0.12.0",
@@ -609,11 +580,7 @@
             ],
             "description": "QueryObjects for Nextras ORM",
             "homepage": "https://github.com/contributte/nextras-orm-query-object",
-            "support": {
-                "issues": "https://github.com/contributte/nextras-orm-query-object/issues",
-                "source": "https://github.com/contributte/nextras-orm-query-object/tree/v0.3"
-            },
-            "time": "2019-12-09T14:48:41+00:00"
+            "time": "2020-12-14T17:02:13+00:00"
         },
         {
             "name": "contributte/security",
@@ -676,10 +643,6 @@
                 "privilege",
                 "security"
             ],
-            "support": {
-                "issues": "https://github.com/contributte/security/issues",
-                "source": "https://github.com/contributte/security/tree/v0.3.0"
-            },
             "time": "2019-06-16T14:03:07+00:00"
         },
         {
@@ -750,10 +713,6 @@
                 "profile",
                 "tracy"
             ],
-            "support": {
-                "issues": "https://github.com/contributte/tracy/issues",
-                "source": "https://github.com/contributte/tracy/tree/v0.4.1"
-            },
             "time": "2019-10-08T14:13:20+00:00"
         },
         {
@@ -820,10 +779,6 @@
                 "strings",
                 "utils"
             ],
-            "support": {
-                "issues": "https://github.com/contributte/utils/issues",
-                "source": "https://github.com/contributte/utils/tree/v0.5.0"
-            },
             "time": "2020-12-11T11:13:16+00:00"
         },
         {
@@ -901,10 +856,6 @@
                 "template",
                 "twig"
             ],
-            "support": {
-                "issues": "https://github.com/nette/latte/issues",
-                "source": "https://github.com/nette/latte/tree/v2.9.1"
-            },
             "time": "2020-11-24T00:57:37+00:00"
         },
         {
@@ -990,10 +941,6 @@
                 "routing",
                 "seo"
             ],
-            "support": {
-                "issues": "https://github.com/nette/application/issues",
-                "source": "https://github.com/nette/application/tree/v3.0.7"
-            },
             "time": "2020-11-02T13:42:35+00:00"
         },
         {
@@ -1071,10 +1018,6 @@
                 "configurator",
                 "nette"
             ],
-            "support": {
-                "issues": "https://github.com/nette/bootstrap/issues",
-                "source": "https://github.com/nette/bootstrap/tree/master"
-            },
             "time": "2020-05-26T08:46:23+00:00"
         },
         {
@@ -1142,10 +1085,6 @@
                 "nette",
                 "sqlite"
             ],
-            "support": {
-                "issues": "https://github.com/nette/caching/issues",
-                "source": "https://github.com/nette/caching/tree/v3.0.2"
-            },
             "time": "2020-11-16T01:37:04+00:00"
         },
         {
@@ -1204,10 +1143,6 @@
                 "components",
                 "nette"
             ],
-            "support": {
-                "issues": "https://github.com/nette/component-model/issues",
-                "source": "https://github.com/nette/component-model/tree/v3.0.1"
-            },
             "time": "2020-04-21T13:48:20+00:00"
         },
         {
@@ -1279,10 +1214,6 @@
                 "nette",
                 "static"
             ],
-            "support": {
-                "issues": "https://github.com/nette/di/issues",
-                "source": "https://github.com/nette/di/tree/v3.0.6"
-            },
             "time": "2020-11-25T22:42:55+00:00"
         },
         {
@@ -1346,10 +1277,6 @@
                 "iterator",
                 "nette"
             ],
-            "support": {
-                "issues": "https://github.com/nette/finder/issues",
-                "source": "https://github.com/nette/finder/tree/v2.5.2"
-            },
             "time": "2020-01-03T20:35:40+00:00"
         },
         {
@@ -1420,10 +1347,6 @@
                 "nette",
                 "validation"
             ],
-            "support": {
-                "issues": "https://github.com/nette/forms/issues",
-                "source": "https://github.com/nette/forms/tree/v3.0.7"
-            },
             "time": "2020-11-02T15:52:20+00:00"
         },
         {
@@ -1498,10 +1421,6 @@
                 "session",
                 "url"
             ],
-            "support": {
-                "issues": "https://github.com/nette/http/issues",
-                "source": "https://github.com/nette/http/tree/v3.0.5"
-            },
             "time": "2020-11-02T15:42:36+00:00"
         },
         {
@@ -1564,10 +1483,6 @@
                 "nette",
                 "yaml"
             ],
-            "support": {
-                "issues": "https://github.com/nette/neon/issues",
-                "source": "https://github.com/nette/neon/tree/master"
-            },
             "time": "2020-07-31T12:28:05+00:00"
         },
         {
@@ -1632,10 +1547,6 @@
                 "php",
                 "scaffolding"
             ],
-            "support": {
-                "issues": "https://github.com/nette/php-generator/issues",
-                "source": "https://github.com/nette/php-generator/tree/v3.5.1"
-            },
             "time": "2020-11-04T11:26:26+00:00"
         },
         {
@@ -1699,10 +1610,6 @@
                 "nette",
                 "trait"
             ],
-            "support": {
-                "issues": "https://github.com/nette/robot-loader/issues",
-                "source": "https://github.com/nette/robot-loader/tree/v3.3.1"
-            },
             "time": "2020-09-15T15:14:17+00:00"
         },
         {
@@ -1761,10 +1668,6 @@
             "keywords": [
                 "nette"
             ],
-            "support": {
-                "issues": "https://github.com/nette/routing/issues",
-                "source": "https://github.com/nette/routing/tree/v3.0.1"
-            },
             "time": "2020-11-02T15:13:26+00:00"
         },
         {
@@ -1823,10 +1726,6 @@
                 "config",
                 "nette"
             ],
-            "support": {
-                "issues": "https://github.com/nette/schema/issues",
-                "source": "https://github.com/nette/schema/tree/v1.0.3"
-            },
             "time": "2020-11-25T21:54:59+00:00"
         },
         {
@@ -1892,10 +1791,6 @@
                 "authorization",
                 "nette"
             ],
-            "support": {
-                "issues": "https://github.com/nette/security/issues",
-                "source": "https://github.com/nette/security/tree/v3.0.5"
-            },
             "time": "2020-11-02T16:53:12+00:00"
         },
         {
@@ -1948,10 +1843,6 @@
             ],
             "description": "Nette Tokenizer",
             "homepage": "https://nette.org",
-            "support": {
-                "issues": "https://github.com/nette/tokenizer/issues",
-                "source": "https://github.com/nette/tokenizer/tree/v3.1.0"
-            },
             "time": "2019-09-13T11:28:17+00:00"
         },
         {
@@ -2030,10 +1921,6 @@
                 "utility",
                 "validation"
             ],
-            "support": {
-                "issues": "https://github.com/nette/utils/issues",
-                "source": "https://github.com/nette/utils/tree/v3.1.4"
-            },
             "time": "2020-11-25T20:53:17+00:00"
         },
         {
@@ -2095,10 +1982,6 @@
                 "dbal",
                 "nextras"
             ],
-            "support": {
-                "issues": "https://github.com/nextras/dbal/issues",
-                "source": "https://github.com/nextras/dbal/tree/v3.1"
-            },
             "time": "2020-02-26T12:32:09+00:00"
         },
         {
@@ -2164,10 +2047,6 @@
                 "BSD-3-Clause"
             ],
             "description": "Database migrations runner",
-            "support": {
-                "issues": "https://github.com/nextras/migrations/issues",
-                "source": "https://github.com/nextras/migrations/tree/v3.1.3"
-            },
             "time": "2020-10-04T19:23:07+00:00"
         },
         {
@@ -2234,10 +2113,6 @@
                 "nextras",
                 "orm"
             ],
-            "support": {
-                "issues": "https://github.com/nextras/orm/issues",
-                "source": "https://github.com/nextras/orm/tree/v3.1.4"
-            },
             "funding": [
                 {
                     "url": "https://github.com/hrach",
@@ -2293,10 +2168,6 @@
                 "container-interop",
                 "psr"
             ],
-            "support": {
-                "issues": "https://github.com/php-fig/container/issues",
-                "source": "https://github.com/php-fig/container/tree/master"
-            },
             "time": "2017-02-14T16:28:37+00:00"
         },
         {
@@ -2377,9 +2248,6 @@
                 "console",
                 "terminal"
             ],
-            "support": {
-                "source": "https://github.com/symfony/console/tree/v5.2.0"
-            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -2456,9 +2324,6 @@
                 "polyfill",
                 "portable"
             ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.20.0"
-            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -2537,9 +2402,6 @@
                 "portable",
                 "shim"
             ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/v1.20.0"
-            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -2621,9 +2483,6 @@
                 "portable",
                 "shim"
             ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-intl-normalizer/tree/v1.20.0"
-            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -2701,9 +2560,6 @@
                 "portable",
                 "shim"
             ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.20.0"
-            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -2780,9 +2636,6 @@
                 "portable",
                 "shim"
             ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-php73/tree/v1.20.0"
-            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -2863,9 +2716,6 @@
                 "portable",
                 "shim"
             ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-php80/tree/v1.20.0"
-            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -2942,9 +2792,6 @@
                 "interoperability",
                 "standards"
             ],
-            "support": {
-                "source": "https://github.com/symfony/service-contracts/tree/master"
-            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -3025,9 +2872,6 @@
                 "utf-8",
                 "utf8"
             ],
-            "support": {
-                "source": "https://github.com/symfony/string/tree/v5.2.0"
-            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -3115,10 +2959,6 @@
                 "nette",
                 "profiler"
             ],
-            "support": {
-                "issues": "https://github.com/nette/tracy/issues",
-                "source": "https://github.com/nette/tracy/tree/v2.7.6"
-            },
             "time": "2020-11-02T17:06:27+00:00"
         }
     ],
@@ -3194,10 +3034,6 @@
                 "nette",
                 "shortcuts"
             ],
-            "support": {
-                "issues": "https://github.com/contributte/dev/issues",
-                "source": "https://github.com/contributte/dev/tree/master"
-            },
             "time": "2017-03-12T18:43:26+00:00"
         },
         {
@@ -3264,10 +3100,6 @@
                 "stylecheck",
                 "tests"
             ],
-            "support": {
-                "issues": "https://github.com/dealerdirect/phpcodesniffer-composer-installer/issues",
-                "source": "https://github.com/dealerdirect/phpcodesniffer-composer-installer"
-            },
             "time": "2020-12-07T18:04:37+00:00"
         },
         {
@@ -3335,10 +3167,6 @@
                 "testing",
                 "unit"
             ],
-            "support": {
-                "issues": "https://github.com/nette/tester/issues",
-                "source": "https://github.com/nette/tester/tree/v2.3.4"
-            },
             "time": "2020-11-02T17:30:29+00:00"
         },
         {
@@ -3384,10 +3212,6 @@
                 "ninjify",
                 "php"
             ],
-            "support": {
-                "issues": "https://github.com/ninjify/coding-standard/issues",
-                "source": "https://github.com/ninjify/coding-standard/tree/v0.11.1"
-            },
             "funding": [
                 {
                     "url": "https://contributte.org/partners.html",
@@ -3430,7 +3254,6 @@
                 "mockery/mockery": "to use BaseMockeryTestCase",
                 "nette/di": "to use BaseContainerTestCase"
             },
-            "default-branch": true,
             "bin": [
                 "bin/nunjuck",
                 "bin/nunjuck-setup"
@@ -3466,10 +3289,6 @@
                 "php",
                 "tester"
             ],
-            "support": {
-                "issues": "https://github.com/ninjify/nunjuck/issues",
-                "source": "https://github.com/ninjify/nunjuck/tree/master"
-            },
             "time": "2020-11-17T20:46:37+00:00"
         },
         {
@@ -3522,10 +3341,6 @@
                 "php",
                 "quality"
             ],
-            "support": {
-                "issues": "https://github.com/ninjify/qa/issues",
-                "source": "https://github.com/ninjify/qa/tree/v0.12"
-            },
             "funding": [
                 {
                     "url": "https://contributte.org/partners.html",
@@ -3589,10 +3404,6 @@
             ],
             "description": "This tool check syntax of PHP files about 20x faster than serial check.",
             "homepage": "https://github.com/php-parallel-lint/PHP-Parallel-Lint",
-            "support": {
-                "issues": "https://github.com/php-parallel-lint/PHP-Parallel-Lint/issues",
-                "source": "https://github.com/php-parallel-lint/PHP-Parallel-Lint/tree/master"
-            },
             "time": "2020-04-04T12:18:32+00:00"
         },
         {
@@ -3642,10 +3453,6 @@
                 "MIT"
             ],
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
-            "support": {
-                "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/master"
-            },
             "time": "2020-08-03T20:32:43+00:00"
         },
         {
@@ -3688,10 +3495,6 @@
                 "MIT"
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
-            "support": {
-                "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/0.12.62"
-            },
             "funding": [
                 {
                     "url": "https://github.com/ondrejmirtes",
@@ -3766,10 +3569,6 @@
                 "MIT"
             ],
             "description": "Nette Framework class reflection extension for PHPStan",
-            "support": {
-                "issues": "https://github.com/phpstan/phpstan-nette/issues",
-                "source": "https://github.com/phpstan/phpstan-nette/tree/0.12.12"
-            },
             "time": "2020-12-12T20:45:51+00:00"
         },
         {
@@ -3817,10 +3616,6 @@
                 "MIT"
             ],
             "description": "Slevomat Coding Standard for PHP_CodeSniffer complements Consistence Coding Standard by providing sniffs with additional checks.",
-            "support": {
-                "issues": "https://github.com/slevomat/coding-standard/issues",
-                "source": "https://github.com/slevomat/coding-standard/tree/6.4.1"
-            },
             "funding": [
                 {
                     "url": "https://github.com/kukulich",
@@ -3882,11 +3677,6 @@
                 "phpcs",
                 "standards"
             ],
-            "support": {
-                "issues": "https://github.com/squizlabs/PHP_CodeSniffer/issues",
-                "source": "https://github.com/squizlabs/PHP_CodeSniffer",
-                "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
-            },
             "time": "2020-10-23T02:01:07+00:00"
         }
     ],
@@ -3903,5 +3693,5 @@
         "ext-pdo": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "1.1.0"
 }
