@@ -30,14 +30,14 @@
 		"ext-pdo": "*",
 
 		"contributte/application": "^0.5.0",
-		"contributte/bootstrap": "^0.4.0",
-		"contributte/cache": "^0.5.0",
+		"contributte/bootstrap": "^0.5.0",
+		"contributte/cache": "^0.6.0",
 		"contributte/di": "^0.5.0",
-		"contributte/forms": "^0.4.0",
-		"contributte/http": "^0.3.0",
+		"contributte/forms": "^0.5.0",
+		"contributte/http": "^0.4.0",
 		"contributte/latte": "^0.5.0",
-		"contributte/security": "^0.3.0",
-		"contributte/tracy": "^0.4.0",
+		"contributte/security": "^0.4.0",
+		"contributte/tracy": "^0.5.0",
 		"contributte/utils": "^0.5.0",
 
 		"nette/robot-loader": "^3.2.0",
@@ -46,17 +46,17 @@
 		"nextras/dbal": "~3.1.0",
 		"nextras/migrations": "~3.1.1",
 
-		"contributte/nextras-orm-query-object": "^0.3.0",
+		"contributte/nextras-orm-query-object": "^0.4.0",
 		"contributte/console": "^0.9.0"
 	},
 	"require-dev": {
 		"ninjify/qa": "^0.12",
 		"ninjify/nunjuck": "^0.4",
 
-		"contributte/dev": "^0.1.0",
+		"contributte/dev": "^0.3.0",
 
-		"phpstan/phpstan": "^0.12.7",
-		"phpstan/phpstan-nette": "^0.12.3"
+		"phpstan/phpstan": "^0.12",
+		"phpstan/phpstan-nette": "^0.12"
 	},
 	"autoload": {
 		"psr-4": {
