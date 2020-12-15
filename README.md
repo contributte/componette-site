@@ -17,7 +17,7 @@
 </p>
 
 <p align=center>
-Website 🚀 <a href="https://contributte.org">componette.org</a> | Contact 👨🏻‍💻 <a href="https://f3l1x.io">f3l1x.io</a> | Twitter 🐦 <a href="https://twitter.com/xf3l1x">@xf3l1x</a>
+Website 🚀 <a href="https://componette.org">componette.org</a> | Contact 👨🏻‍💻 <a href="https://f3l1x.io">f3l1x.io</a> | Twitter 🐦 <a href="https://twitter.com/xf3l1x">@xf3l1x</a>
 </p>
 
 ----
