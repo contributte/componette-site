@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "85db8f0eb8d68d818f5fa06e9bf4395a",
+    "content-hash": "44e6e8fe5fc5ab04b50932147d9cfbbb",
     "packages": [
         {
             "name": "contributte/application",
@@ -74,36 +74,35 @@
         },
         {
             "name": "contributte/bootstrap",
-            "version": "v0.4.1",
+            "version": "v0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/contributte/bootstrap.git",
-                "reference": "ede13bdff51bbfd71380010e435a2fdc97df6d48"
+                "reference": "55c2358ef001b922896f9a8faaa0282e67a64d09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contributte/bootstrap/zipball/ede13bdff51bbfd71380010e435a2fdc97df6d48",
-                "reference": "ede13bdff51bbfd71380010e435a2fdc97df6d48",
+                "url": "https://api.github.com/repos/contributte/bootstrap/zipball/55c2358ef001b922896f9a8faaa0282e67a64d09",
+                "reference": "55c2358ef001b922896f9a8faaa0282e67a64d09",
                 "shasum": ""
             },
             "require": {
-                "nette/bootstrap": "~3.0.0",
-                "nette/utils": "~3.0.1|~3.1.0",
-                "php": "^7.2"
+                "nette/bootstrap": "^3.0.2",
+                "nette/utils": "^3.1.5",
+                "php": ">=7.2"
             },
             "require-dev": {
-                "ninjify/nunjuck": "^0.2.0",
-                "ninjify/qa": "^0.8.0",
-                "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan-deprecation-rules": "^0.11",
-                "phpstan/phpstan-nette": "^0.11",
-                "phpstan/phpstan-shim": "^0.11",
-                "phpstan/phpstan-strict-rules": "^0.11"
+                "ninjify/nunjuck": "^0.4",
+                "ninjify/qa": "^0.12",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-deprecation-rules": "^0.12",
+                "phpstan/phpstan-nette": "^0.12",
+                "phpstan/phpstan-strict-rules": "^0.12"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.5-dev"
+                    "dev-master": "0.6-dev"
                 }
             },
             "autoload": {
@@ -131,41 +130,40 @@
             ],
             "support": {
                 "issues": "https://github.com/contributte/bootstrap/issues",
-                "source": "https://github.com/contributte/bootstrap/tree/master"
+                "source": "https://github.com/contributte/bootstrap/tree/v0.5.0"
             },
-            "time": "2020-01-05T18:30:11+00:00"
+            "time": "2020-12-13T19:07:20+00:00"
         },
         {
             "name": "contributte/cache",
-            "version": "v0.5.0",
+            "version": "v0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/contributte/cache.git",
-                "reference": "c54d4c4448f16b6cfbfa34607990904c19b5759e"
+                "reference": "21b975609e58b074cd281dc2344b6d93ca5951bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contributte/cache/zipball/c54d4c4448f16b6cfbfa34607990904c19b5759e",
-                "reference": "c54d4c4448f16b6cfbfa34607990904c19b5759e",
+                "url": "https://api.github.com/repos/contributte/cache/zipball/21b975609e58b074cd281dc2344b6d93ca5951bb",
+                "reference": "21b975609e58b074cd281dc2344b6d93ca5951bb",
                 "shasum": ""
             },
             "require": {
-                "nette/caching": "~3.0.0",
-                "php": "^7.2"
+                "nette/caching": "^3.0.0",
+                "php": ">=7.2"
             },
             "conflict": {
                 "nette/di": "<3.0.0"
             },
             "require-dev": {
                 "nette/di": "~3.0.0",
-                "ninjify/nunjuck": "^0.2.0",
-                "ninjify/qa": "^0.8.0",
-                "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan-deprecation-rules": "^0.11",
-                "phpstan/phpstan-nette": "^0.11",
-                "phpstan/phpstan-shim": "^0.11",
-                "phpstan/phpstan-strict-rules": "^0.11",
-                "tracy/tracy": "~2.6.0"
+                "ninjify/nunjuck": "^0.4",
+                "ninjify/qa": "^0.12",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-deprecation-rules": "^0.12",
+                "phpstan/phpstan-nette": "^0.12",
+                "phpstan/phpstan-strict-rules": "^0.12",
+                "tracy/tracy": "^2.6.0"
             },
             "suggest": {
                 "nette/di": "to use CacheFactoryExtension and DebugStorageExtension"
@@ -173,7 +171,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.5.x-dev"
+                    "dev-master": "0.7.x-dev"
                 }
             },
             "autoload": {
@@ -200,9 +198,9 @@
             ],
             "support": {
                 "issues": "https://github.com/contributte/cache/issues",
-                "source": "https://github.com/contributte/cache/tree/v0.5.0"
+                "source": "https://github.com/contributte/cache/tree/v0.6.0"
             },
-            "time": "2019-07-15T07:52:35+00:00"
+            "time": "2020-12-14T17:38:03+00:00"
         },
         {
             "name": "contributte/console",
@@ -340,35 +338,34 @@
         },
         {
             "name": "contributte/forms",
-            "version": "v0.4.0",
+            "version": "v0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/contributte/forms.git",
-                "reference": "c58723613f866ac28fbffe1f4c90530beec7d105"
+                "reference": "995d5349b3b6233808a4abc9e4324d78192e3779"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contributte/forms/zipball/c58723613f866ac28fbffe1f4c90530beec7d105",
-                "reference": "c58723613f866ac28fbffe1f4c90530beec7d105",
+                "url": "https://api.github.com/repos/contributte/forms/zipball/995d5349b3b6233808a4abc9e4324d78192e3779",
+                "reference": "995d5349b3b6233808a4abc9e4324d78192e3779",
                 "shasum": ""
             },
             "require": {
-                "nette/forms": "~3.0.0",
-                "php": "^7.2"
+                "nette/forms": "^3.0.0",
+                "php": ">=7.2"
             },
             "conflict": {
                 "nette/di": "<3.0.0"
             },
             "require-dev": {
-                "nette/application": "~3.0.0",
-                "nette/di": "~3.0.0",
-                "ninjify/nunjuck": "^0.2",
-                "ninjify/qa": "^0.8.0",
-                "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan-deprecation-rules": "^0.11",
-                "phpstan/phpstan-nette": "^0.11",
-                "phpstan/phpstan-shim": "^0.11",
-                "phpstan/phpstan-strict-rules": "^0.11"
+                "nette/application": "^3.0.0",
+                "nette/di": "^3.0.0",
+                "ninjify/nunjuck": "^0.4",
+                "ninjify/qa": "^0.12",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-deprecation-rules": "^0.12",
+                "phpstan/phpstan-nette": "^0.12",
+                "phpstan/phpstan-strict-rules": "^0.12"
             },
             "suggest": {
                 "nette/di": "to use FormFactoryExtension[CompilerExtension]"
@@ -376,7 +373,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.5.x-dev"
+                    "dev-master": "0.6.x-dev"
                 }
             },
             "autoload": {
@@ -392,10 +389,6 @@
                 {
                     "name": "Milan Felix Šulc",
                     "homepage": "https://f3l1x.io"
-                },
-                {
-                    "name": "Marek Bartoš",
-                    "homepage": "https://marek-bartos.cz"
                 }
             ],
             "description": "Extra contrib to nette/forms",
@@ -411,40 +404,39 @@
             ],
             "support": {
                 "issues": "https://github.com/contributte/forms/issues",
-                "source": "https://github.com/contributte/forms/tree/v0.4.0"
+                "source": "https://github.com/contributte/forms/tree/v0.5.0"
             },
-            "time": "2019-06-16T13:58:26+00:00"
+            "time": "2020-12-14T17:46:11+00:00"
         },
         {
             "name": "contributte/http",
-            "version": "v0.3.0",
+            "version": "v0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/contributte/http.git",
-                "reference": "7ebc43afe521b9a877686046ec5c2a8450057571"
+                "reference": "b2d5b4144fbc23076f7e53df996afeb1a47639d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contributte/http/zipball/7ebc43afe521b9a877686046ec5c2a8450057571",
-                "reference": "7ebc43afe521b9a877686046ec5c2a8450057571",
+                "url": "https://api.github.com/repos/contributte/http/zipball/b2d5b4144fbc23076f7e53df996afeb1a47639d5",
+                "reference": "b2d5b4144fbc23076f7e53df996afeb1a47639d5",
                 "shasum": ""
             },
             "require": {
                 "nette/http": "~3.0.1",
-                "php": "^7.2"
+                "php": ">=7.2"
             },
             "conflict": {
                 "nette/di": "<3.0.0"
             },
             "require-dev": {
                 "nette/di": "~3.0.0",
-                "ninjify/nunjuck": "^0.2.0",
-                "ninjify/qa": "^0.8.0",
-                "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan-deprecation-rules": "^0.11",
-                "phpstan/phpstan-nette": "^0.11",
-                "phpstan/phpstan-shim": "^0.11",
-                "phpstan/phpstan-strict-rules": "^0.11",
+                "ninjify/nunjuck": "^0.4",
+                "ninjify/qa": "^0.12",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-deprecation-rules": "^0.12",
+                "phpstan/phpstan-nette": "^0.12",
+                "phpstan/phpstan-strict-rules": "^0.12",
                 "tracy/tracy": "~2.5.1"
             },
             "suggest": {
@@ -453,7 +445,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.4.x-dev"
+                    "dev-master": "0.5.x-dev"
                 }
             },
             "autoload": {
@@ -483,22 +475,22 @@
             ],
             "support": {
                 "issues": "https://github.com/contributte/http/issues",
-                "source": "https://github.com/contributte/http/tree/master"
+                "source": "https://github.com/contributte/http/tree/v0.4.0"
             },
-            "time": "2019-06-16T14:00:48+00:00"
+            "time": "2020-12-15T15:52:06+00:00"
         },
         {
             "name": "contributte/latte",
-            "version": "dev-master",
+            "version": "v0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/contributte/latte.git",
-                "reference": "4d46bc059c9c3b317dbb95d00448001e74cf5bb7"
+                "reference": "f9ed277ddc6d8f0559375aae82bf08e5fc419519"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contributte/latte/zipball/4d46bc059c9c3b317dbb95d00448001e74cf5bb7",
-                "reference": "4d46bc059c9c3b317dbb95d00448001e74cf5bb7",
+                "url": "https://api.github.com/repos/contributte/latte/zipball/f9ed277ddc6d8f0559375aae82bf08e5fc419519",
+                "reference": "f9ed277ddc6d8f0559375aae82bf08e5fc419519",
                 "shasum": ""
             },
             "require": {
@@ -511,22 +503,20 @@
             "require-dev": {
                 "nette/application": "~3.0.0",
                 "nette/di": "~3.0.0",
-                "ninjify/nunjuck": "^0.4.0",
-                "ninjify/qa": "^0.10.0",
-                "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan-deprecation-rules": "^0.11",
-                "phpstan/phpstan-nette": "^0.11",
-                "phpstan/phpstan-shim": "^0.11",
-                "phpstan/phpstan-strict-rules": "^0.11"
+                "ninjify/nunjuck": "^0.4",
+                "ninjify/qa": "^0.12",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-deprecation-rules": "^0.12",
+                "phpstan/phpstan-nette": "^0.12",
+                "phpstan/phpstan-strict-rules": "^0.12"
             },
             "suggest": {
                 "nette/di": "to use VersionExtension[CompilerExtension]"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.5.x-dev"
+                    "dev-master": "0.6.x-dev"
                 }
             },
             "autoload": {
@@ -553,34 +543,34 @@
             ],
             "support": {
                 "issues": "https://github.com/contributte/latte/issues",
-                "source": "https://github.com/contributte/latte/tree/master"
+                "source": "https://github.com/contributte/latte/tree/v0.5.0"
             },
-            "time": "2020-11-18T23:08:40+00:00"
+            "time": "2020-12-14T11:24:50+00:00"
         },
         {
             "name": "contributte/nextras-orm-query-object",
-            "version": "v0.3",
+            "version": "v0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/contributte/nextras-orm-query-object.git",
-                "reference": "333f3f458f775cbafe3ef099cff245fc75674c5d"
+                "reference": "511ed72d42dae5010c12c6b8b5efc574d250d098"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contributte/nextras-orm-query-object/zipball/333f3f458f775cbafe3ef099cff245fc75674c5d",
-                "reference": "333f3f458f775cbafe3ef099cff245fc75674c5d",
+                "url": "https://api.github.com/repos/contributte/nextras-orm-query-object/zipball/511ed72d42dae5010c12c6b8b5efc574d250d098",
+                "reference": "511ed72d42dae5010c12c6b8b5efc574d250d098",
                 "shasum": ""
             },
             "require": {
                 "nextras/dbal": "^3.1.1",
-                "php": "^7.2"
+                "php": ">=7.2"
             },
             "require-dev": {
                 "mockery/mockery": "^1.3.0",
                 "nette/di": "~3.0.1",
                 "nextras/orm": "^3.1.0",
-                "ninjify/nunjuck": "^0.3.0",
-                "ninjify/qa": "^0.10.0",
+                "ninjify/nunjuck": "^0.4",
+                "ninjify/qa": "^0.12.",
                 "phpstan/phpstan": "^0.12.0",
                 "phpstan/phpstan-deprecation-rules": "^0.12.0",
                 "phpstan/phpstan-nette": "^0.12.0",
@@ -611,36 +601,35 @@
             "homepage": "https://github.com/contributte/nextras-orm-query-object",
             "support": {
                 "issues": "https://github.com/contributte/nextras-orm-query-object/issues",
-                "source": "https://github.com/contributte/nextras-orm-query-object/tree/v0.3"
+                "source": "https://github.com/contributte/nextras-orm-query-object/tree/v0.4"
             },
-            "time": "2019-12-09T14:48:41+00:00"
+            "time": "2020-12-14T17:02:13+00:00"
         },
         {
             "name": "contributte/security",
-            "version": "v0.3.0",
+            "version": "v0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/contributte/security.git",
-                "reference": "30f8a6f9b5dbcc7a8facda4bbd2688eec715b8e5"
+                "reference": "4ca84fbf22a8cbd0a292fba6e661a896c1a1a4d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contributte/security/zipball/30f8a6f9b5dbcc7a8facda4bbd2688eec715b8e5",
-                "reference": "30f8a6f9b5dbcc7a8facda4bbd2688eec715b8e5",
+                "url": "https://api.github.com/repos/contributte/security/zipball/4ca84fbf22a8cbd0a292fba6e661a896c1a1a4d4",
+                "reference": "4ca84fbf22a8cbd0a292fba6e661a896c1a1a4d4",
                 "shasum": ""
             },
             "require": {
-                "nette/security": "~3.0.0",
-                "php": "^7.2"
+                "nette/security": "^3.0.0",
+                "php": ">=7.2"
             },
             "require-dev": {
-                "ninjify/nunjuck": "^0.2.0",
-                "ninjify/qa": "^0.8.0",
-                "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan-deprecation-rules": "^0.11",
-                "phpstan/phpstan-nette": "^0.11",
-                "phpstan/phpstan-shim": "^0.11",
-                "phpstan/phpstan-strict-rules": "^0.11"
+                "ninjify/nunjuck": "^0.4",
+                "ninjify/qa": "^0.12",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-deprecation-rules": "^0.12",
+                "phpstan/phpstan-nette": "^0.12",
+                "phpstan/phpstan-strict-rules": "^0.12"
             },
             "suggest": {
                 "nette/di": "to use SecurityExtension [CompilerExtension]"
@@ -648,7 +637,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.4-dev"
+                    "dev-master": "0.5.x-dev"
                 }
             },
             "autoload": {
@@ -662,7 +651,7 @@
             ],
             "authors": [
                 {
-                    "name": "Milan Felix Šulc",
+                    "name": "Milan Felix Sulc",
                     "homepage": "https://f3l1x.io"
                 }
             ],
@@ -678,26 +667,26 @@
             ],
             "support": {
                 "issues": "https://github.com/contributte/security/issues",
-                "source": "https://github.com/contributte/security/tree/v0.3.0"
+                "source": "https://github.com/contributte/security/tree/v0.4.0"
             },
-            "time": "2019-06-16T14:03:07+00:00"
+            "time": "2020-12-15T16:22:12+00:00"
         },
         {
             "name": "contributte/tracy",
-            "version": "v0.4.1",
+            "version": "v0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/contributte/tracy.git",
-                "reference": "791113ffb6c75e7603e7edc121c193e57282f447"
+                "reference": "c20a4dbc81d55226d5c53e3c4a3a46b1c9bb0e3a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contributte/tracy/zipball/791113ffb6c75e7603e7edc121c193e57282f447",
-                "reference": "791113ffb6c75e7603e7edc121c193e57282f447",
+                "url": "https://api.github.com/repos/contributte/tracy/zipball/c20a4dbc81d55226d5c53e3c4a3a46b1c9bb0e3a",
+                "reference": "c20a4dbc81d55226d5c53e3c4a3a46b1c9bb0e3a",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2",
+                "php": ">=7.2",
                 "tracy/tracy": "~2.7.0"
             },
             "conflict": {
@@ -707,13 +696,12 @@
                 "nette/application": "~3.0.0",
                 "nette/di": "~3.0.0",
                 "nette/http": "~3.0.1",
-                "ninjify/nunjuck": "^0.3.0",
-                "ninjify/qa": "^0.10.0",
-                "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan-deprecation-rules": "^0.11",
-                "phpstan/phpstan-nette": "^0.11",
-                "phpstan/phpstan-shim": "^0.11",
-                "phpstan/phpstan-strict-rules": "^0.11"
+                "ninjify/nunjuck": "^0.4",
+                "ninjify/qa": "^0.12",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-deprecation-rules": "^0.12",
+                "phpstan/phpstan-nette": "^0.12",
+                "phpstan/phpstan-strict-rules": "^0.12"
             },
             "type": "library",
             "extra": {
@@ -752,9 +740,9 @@
             ],
             "support": {
                 "issues": "https://github.com/contributte/tracy/issues",
-                "source": "https://github.com/contributte/tracy/tree/v0.4.1"
+                "source": "https://github.com/contributte/tracy/tree/v0.5.0"
             },
-            "time": "2019-10-08T14:13:20+00:00"
+            "time": "2020-12-15T16:31:41+00:00"
         },
         {
             "name": "contributte/utils",
@@ -1956,20 +1944,23 @@
         },
         {
             "name": "nette/utils",
-            "version": "v3.1.4",
+            "version": "v3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/utils.git",
-                "reference": "19b3057d44cf5306c64f3c51a7fb77fa834fda1c"
+                "reference": "d0427c1811462dbb6c503143eabe5478b26685f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/utils/zipball/19b3057d44cf5306c64f3c51a7fb77fa834fda1c",
-                "reference": "19b3057d44cf5306c64f3c51a7fb77fa834fda1c",
+                "url": "https://api.github.com/repos/nette/utils/zipball/d0427c1811462dbb6c503143eabe5478b26685f7",
+                "reference": "d0427c1811462dbb6c503143eabe5478b26685f7",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.2 <8.1"
+            },
+            "conflict": {
+                "nette/di": "<3.0.6"
             },
             "require-dev": {
                 "nette/tester": "~2.0",
@@ -1988,7 +1979,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev"
+                    "dev-master": "3.2-dev"
                 }
             },
             "autoload": {
@@ -2032,9 +2023,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/utils/issues",
-                "source": "https://github.com/nette/utils/tree/v3.1.4"
+                "source": "https://github.com/nette/utils/tree/v3.2.0"
             },
-            "time": "2020-11-25T20:53:17+00:00"
+            "time": "2020-11-25T23:47:50+00:00"
         },
         {
             "name": "nextras/dbal",
@@ -3125,55 +3116,33 @@
     "packages-dev": [
         {
             "name": "contributte/dev",
-            "version": "v0.1",
+            "version": "v0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/contributte/dev.git",
-                "reference": "ec46ddfce08cd45960ae40efc5872a18e968d6a2"
+                "reference": "2f583ab44c082d4fd09db57db3906cb0c48706e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contributte/dev/zipball/ec46ddfce08cd45960ae40efc5872a18e968d6a2",
-                "reference": "ec46ddfce08cd45960ae40efc5872a18e968d6a2",
+                "url": "https://api.github.com/repos/contributte/dev/zipball/2f583ab44c082d4fd09db57db3906cb0c48706e4",
+                "reference": "2f583ab44c082d4fd09db57db3906cb0c48706e4",
                 "shasum": ""
             },
             "require": {
-                "php": ">= 5.6"
+                "php": ">=7.2"
             },
             "require-dev": {
-                "ninjify/nunjuck": "^0.1.4",
-                "ninjify/qa": "^0.3.3"
+                "ninjify/nunjuck": "^0.4",
+                "ninjify/qa": "^0.12"
             },
             "type": "library",
             "extra": {
-                "ninjify": {
-                    "qa": {
-                        "codesniffer": {
-                            "ruleset": "nette",
-                            "folders": [
-                                "src",
-                                "tests"
-                            ]
-                        },
-                        "codefixer": {
-                            "ruleset": "nette",
-                            "folders": [
-                                "src",
-                                "tests"
-                            ]
-                        },
-                        "linter": {
-                            "folders": [
-                                "src",
-                                "tests"
-                            ]
-                        }
-                    }
+                "branch-alias": {
+                    "dev-master": "0.4.x-dev"
                 }
             },
             "autoload": {
                 "files": [
-                    "src/functions.php",
                     "src/shortcuts.php"
                 ]
             },
@@ -3184,7 +3153,7 @@
             "authors": [
                 {
                     "name": "Milan Felix Sulc",
-                    "homepage": "https://jfx.cz"
+                    "homepage": "https://f3l1x.io"
                 }
             ],
             "description": "Tools for development",
@@ -3196,9 +3165,9 @@
             ],
             "support": {
                 "issues": "https://github.com/contributte/dev/issues",
-                "source": "https://github.com/contributte/dev/tree/master"
+                "source": "https://github.com/contributte/dev/tree/v0.3"
             },
-            "time": "2017-03-12T18:43:26+00:00"
+            "time": "2020-12-13T18:46:03+00:00"
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
