@@ -9,14 +9,15 @@
 </p>
 
 <p align=center>
-    <a href="http://bit.ly/ctteg" rel="nofollow"><img src="https://img.shields.io/gitter/room/contributte/contributte.svg"></a>
-    <a href="https://travis-ci.org/planette/componette" rel="nofollow"><img src="https://img.shields.io/travis/planette/componette.svg"></a>
-    <a href="http://isitmaintained.com/project/planette/componette" rel="nofollow"><img src="https://isitmaintained.com/badge/open/planette/componette.svg"></a>
-    <a href="http://isitmaintained.com/project/planette/componette" rel="nofollow"><img src="https://isitmaintained.com/badge/resolution/planette/componette.svg"></a>
+  <a href="https://github.com/planette/componette/actions"><img src="https://badgen.net/github/checks/planette/componette/master?tracy=300"></a>
+  <a href="https://github.com/planette/componette"><img src="https://badgen.net/github/license/planette/componette"></a>
+  <a href="https://bit.ly/ctteg"><img src="https://badgen.net/badge/support/gitter/cyan"></a>
+  <a href="https://bit.ly/cttfo"><img src="https://badgen.net/badge/support/forum/yellow"></a>
+  <a href="https://contributte.org/partners.html"><img src="https://badgen.net/badge/sponsor/donations/F96854"></a>
 </p>
 
 <p align=center>
-🕹 <a href="https://f3l1x.io">f3l1x.io</a> | 💻 <a href="https://github.com/f3l1x">f3l1x</a> | 🐦 <a href="https://twitter.com/xf3l1x">@xf3l1x</a>
+Website 🚀 <a href="https://contributte.org">componette.org</a> | Contact 👨🏻‍💻 <a href="https://f3l1x.io">f3l1x.io</a> | Twitter 🐦 <a href="https://twitter.com/xf3l1x">@xf3l1x</a>
 </p>
 
 ----
