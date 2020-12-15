@@ -5,7 +5,7 @@
 </p>
 
 <p align=center>
-	<a href="https://componette.org"><img src="https://rawcdn.githack.com/f3l1x/xsource/b2663bd230b4ca50521fe6c7c554e484dd91e24d/assets/componette.png" alt="Componette" title="Componette" width="400"></a>
+	<a href="https://componette.org"><img src="https://api.microlink.io?url=https://componette.org&screenshot=true&meta=false&embed=screenshot.url"></a>
 </p>
 
 <p align=center>
