@@ -33,7 +33,7 @@
 		"contributte/bootstrap": "^0.4.0",
 		"contributte/cache": "^0.5.0",
 		"contributte/di": "^0.5.0",
-		"contributte/forms": "^0.4.0",
+		"contributte/forms": "^0.5.0",
 		"contributte/http": "^0.3.0",
 		"contributte/latte": "^0.5.0",
 		"contributte/security": "^0.3.0",
