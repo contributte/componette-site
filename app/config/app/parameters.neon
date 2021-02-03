@@ -4,7 +4,7 @@ parameters:
 
 	system:
 		error:
-			email: admin@componette.com
+			email: null
 			presenter: Front:Portal:Error
 
 	security:
