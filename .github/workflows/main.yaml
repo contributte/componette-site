@@ -21,8 +21,9 @@ jobs:
 
     strategy:
       matrix:
-        php-versions: ["7.4"]
-        operating-system: ["ubuntu-latest"]
+        node-versions: [ "12.19.0" ]
+        php-versions: [ "7.4" ]
+        operating-system: [ "ubuntu-latest" ]
       fail-fast: false
 
     steps:
@@ -72,7 +73,25 @@ jobs:
         run: "${{ env.composerInstall }}"
 
       - name: "Coding Standard"
-        run: "make cs"
+        run: "make codesniffer"
+
+      - name: "Install Node.js"
+        uses: "actions/setup-node@v2"
+        with:
+          node-version: "${{ matrix.node-versions }}"
+
+      - name: "Cache Node.js dependencies"
+        uses: "actions/cache@v2"
+        with:
+          path: node_modules
+          key: "${{ runner.os }}-npm-${{ hashFiles('**/package.json') }}"
+          restore-keys: "${{ runner.os }}-npm-"
+
+      - name: "Install Node.js dependencies"
+        run: npm install
+
+      - name: "Prettier"
+        run: make prettier
 
   static-analysis:
     name: "Static analysis"
@@ -80,8 +99,8 @@ jobs:
 
     strategy:
       matrix:
-        php-versions: ["7.4"]
-        operating-system: ["ubuntu-latest"]
+        php-versions: [ "7.4" ]
+        operating-system: [ "ubuntu-latest" ]
       fail-fast: false
 
     steps:
@@ -130,14 +149,33 @@ jobs:
       - name: "PHPStan"
         run: "make phpstan"
 
+      - name: "Install Node.js"
+        uses: "actions/setup-node@v2"
+        with:
+          node-version: "${{ matrix.node-versions }}"
+
+      - name: "Cache Node.js dependencies"
+        uses: "actions/cache@v2"
+        with:
+          path: node_modules
+          key: "${{ runner.os }}-npm-${{ hashFiles('**/package.json') }}"
+          restore-keys: "${{ runner.os }}-npm-"
+
+      - name: "Install Node.js dependencies"
+        run: npm install
+
+      - name: "TSC"
+        run: make ts
+
+
   tests:
     name: "Tests"
     runs-on: "${{ matrix.operating-system }}"
 
     strategy:
       matrix:
-        php-versions: ["7.4", "8.0"]
-        operating-system: ["ubuntu-latest"]
+        php-versions: [ "7.4", "8.0" ]
+        operating-system: [ "ubuntu-latest" ]
       fail-fast: false
 
     steps:
@@ -187,4 +225,4 @@ jobs:
         run: 'echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"'
 
       - name: "Tests"
-        run: "make tests"
+        run: "make test"
