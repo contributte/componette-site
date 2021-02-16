@@ -9,14 +9,10 @@ final class MenuLink
 
 	use SmartObject;
 
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private string $name;
 
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private string $url;
 
 	public function __construct(string $name, string $url)

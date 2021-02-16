@@ -24,9 +24,7 @@ final class IndexPresenter extends BaseAddonPresenter
 	/** @var ICategorizedAddonListFactory @inject */
 	public $categorizedAddonsListFactory;
 
-	/**
-	 * @var QueryObject
-	 */
+	/** @var QueryObject */
 	private QueryObject $queryObject;
 
 	public function actionAll(): void
