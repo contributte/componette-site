@@ -67,7 +67,7 @@ final class AddonDetail extends BaseControl
 			foreach ($stats->json['labels'] as $key => $label) {
 				$totalDownloads[] = [
 					'x' => DateTime::from($label)->format('c'),
-					'y' => ((array)$stats->json['values'])[$key],
+					'y' => ((array) $stats->json['values'])[$key],
 				];
 			}
 
