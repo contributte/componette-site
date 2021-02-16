@@ -82,6 +82,7 @@ final class SynchronizeCommand extends BaseCommand
 				if (!$addon->github) {
 					$addon->github = new Github();
 				}
+
 				$addon->state = Addon::STATE_ARCHIVED;
 
 				$output->writeln('Skip (archived): ' . $addon->fullname);
@@ -109,7 +110,7 @@ final class SynchronizeCommand extends BaseCommand
 					continue;
 				}
 
-				[$all, $author, $name] = $matches;
+				[, $author, $name] = $matches;
 
 				// Update author & repo name if it is not same
 				if ($addon->author !== $author) {

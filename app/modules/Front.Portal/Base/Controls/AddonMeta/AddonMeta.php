@@ -8,10 +8,6 @@ use App\Model\UI\BaseControl;
 final class AddonMeta extends BaseControl
 {
 
-	/**
-	 * RENDER ******************************************************************
-	 */
-
 	public function render(Addon $addon): void
 	{
 		$this->template->addon = $addon;

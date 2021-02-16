@@ -77,7 +77,6 @@ final class SynchronizeReleasesCommand extends BaseCommand
 
 		$counter = 0;
 		foreach ($addons as $addon) {
-
 			// Skip non-github reference
 			if (!$addon->github) {
 				continue;

@@ -29,18 +29,10 @@ final class AddonDetail extends BaseControl
 		$this->addon = $addon;
 	}
 
-	/**
-	 * CONTROLS ****************************************************************
-	 */
-
 	protected function createComponentMeta(): AddonMeta
 	{
 		return new AddonMeta();
 	}
-
-	/**
-	 * RENDER ******************************************************************
-	 */
 
 	/**
 	 * Render header
@@ -75,13 +67,15 @@ final class AddonDetail extends BaseControl
 			foreach ($stats->json['labels'] as $key => $label) {
 				$totalDownloads[] = [
 					'x' => DateTime::from($label)->format('c'),
-					'y' => ((array)$stats->json['values'])[$key],
+					'y' => ((array) $stats->json['values'])[$key],
 				];
 			}
+
 			$this->template->totalDownloads = json_encode($totalDownloads);
 		} else {
 			$this->template->totalDownloads = null;
 		}
+
 		$this->template->setFile(__DIR__ . '/templates/sidebar.latte');
 		$this->template->render();
 	}

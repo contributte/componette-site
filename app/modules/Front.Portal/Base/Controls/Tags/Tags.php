@@ -30,7 +30,7 @@ class Tags
 	{
 		$items = $this->em->getRepositoryForEntity(Tag::class)->findAll()->fetchAll();
 		usort($items, function ($a, $b) {
-			return $a->addons->countStored() < $b->addons->countStored();
+			return $a->addons->countStored() <=> $b->addons->countStored();
 		});
 		return $items;
 	}

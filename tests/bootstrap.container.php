@@ -27,6 +27,4 @@ $configurator->addParameters([
 ]);
 
 // Create test container
-$container = $configurator->createContainer();
-
-return $container;
+return $configurator->createContainer();

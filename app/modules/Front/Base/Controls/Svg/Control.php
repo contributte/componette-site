@@ -35,7 +35,8 @@ class Control extends BasePropsControl
 				[SvgProps::TYPE, SvgProps::IMAGE, SvgProps::SIZE, SvgProps::FILL],
 				function (string $prop) use ($props): ?string {
 					$value = $props->get($prop);
-					return $value ? (string)$value : null;
+
+					return $value ? (string) $value : null;
 				}
 			)
 		);

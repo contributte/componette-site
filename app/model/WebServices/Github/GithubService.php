@@ -109,21 +109,14 @@ final class GithubService
 		switch ($mediatype) {
 			case self::MEDIATYPE_HTML:
 				return ['Accept' => 'application/vnd.github.' . GithubClient::VERSION . '.html'];
-
 			case self::MEDIATYPE_HTML_JSON:
 				return ['Accept' => 'application/vnd.github.' . GithubClient::VERSION . '.html+json'];
-
 			case self::MEDIATYPE_RAW:
 				return ['Accept' => 'application/vnd.github.' . GithubClient::VERSION . '.raw'];
-
 			default:
 				return [];
 		}
 	}
-
-	/**
-	 * API *********************************************************************
-	 */
 
 	public function repo(string $author, string $repo): Response
 	{

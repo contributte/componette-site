@@ -21,10 +21,6 @@ abstract class BasePresenter extends BaseFrontPresenter
 	/** @var IAddonModalFactory @inject */
 	public $addonModalFactory;
 
-	/**
-	 * CONTROLS ****************************************************************
-	 */
-
 	protected function createComponentSearch(): Search
 	{
 		$search = $this->searchFactory->create();
