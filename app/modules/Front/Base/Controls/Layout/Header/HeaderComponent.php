@@ -5,9 +5,7 @@ namespace App\Modules\Front\Base\Controls\Layout\Header;
 trait HeaderComponent
 {
 
-	/**
-	 * @var ControlFactory
-	 */
+	/** @var ControlFactory */
 	private ControlFactory $headerControlFactory;
 
 	public function injectHeaderControlFactory(ControlFactory $controlFactory): void

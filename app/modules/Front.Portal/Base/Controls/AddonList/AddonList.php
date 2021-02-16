@@ -35,9 +35,7 @@ class AddonList extends BaseControl
 	 */
 	public AddonRepository $addonRepository;
 
-	/**
-	 * @var QueryObject
-	 */
+	/** @var QueryObject */
 	private QueryObject $queryObject;
 
 	public function __construct(QueryObject $queryObject)

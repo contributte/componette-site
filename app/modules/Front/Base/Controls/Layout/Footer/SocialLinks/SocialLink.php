@@ -9,19 +9,13 @@ final class SocialLink
 
 	use SmartObject;
 
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private string $name;
 
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private string $url;
 
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private string $icon;
 
 	public function __construct(string $name, string $url, string $icon)

@@ -8,9 +8,7 @@ use Nette\Utils\Html;
 final class Icon
 {
 
-	/**
-	 * @var Control
-	 */
+	/** @var Control */
 	private Control $control;
 
 	public function __construct(Control $control)
