@@ -3,7 +3,6 @@
 namespace App\Model\Routing;
 
 use App\Model\Routing\Helpers\AddonsHelper;
-use Nette\Application\IRouter;
 use Nette\Application\Routers\CliRouter;
 use Nette\Application\Routers\Route;
 use Nette\Application\Routers\RouteList;
@@ -18,7 +17,7 @@ final class RouterFactory
 	/** @var Request @inject */
 	public $httpRequest;
 
-	public function create(bool $consoleMode = false): IRouter
+	public function create(bool $consoleMode = false): RouteList
 	{
 		if ($consoleMode) {
 			return $this->createCli();
