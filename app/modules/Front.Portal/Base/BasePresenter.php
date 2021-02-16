@@ -6,8 +6,12 @@ use App\Model\UI\Destination;
 use App\Modules\Front\Base\BasePresenter as BaseFrontPresenter;
 use App\Modules\Front\Portal\Base\Controls\AddonModal\AddonModal;
 use App\Modules\Front\Portal\Base\Controls\AddonModal\IAddonModalFactory;
+use App\Modules\Front\Portal\Base\Controls\Componetters\Componetters;
+use App\Modules\Front\Portal\Base\Controls\Componetters\IComponettersFactory;
 use App\Modules\Front\Portal\Base\Controls\Search\ISearchFactory;
 use App\Modules\Front\Portal\Base\Controls\Search\Search;
+use App\Modules\Front\Portal\Base\Controls\SideMenu\ISideMenuFactory;
+use App\Modules\Front\Portal\Base\Controls\SideMenu\SideMenu;
 
 /**
  * Base presenter for all portal presenters.
@@ -21,9 +25,11 @@ abstract class BasePresenter extends BaseFrontPresenter
 	/** @var IAddonModalFactory @inject */
 	public $addonModalFactory;
 
-	/**
-	 * CONTROLS ****************************************************************
-	 */
+	/** @var ISideMenuFactory @inject */
+	public $sideMenuFactory;
+
+	/** @var IComponettersFactory @inject */
+	public $componettersFactory;
 
 	protected function createComponentSearch(): Search
 	{
@@ -48,6 +54,16 @@ abstract class BasePresenter extends BaseFrontPresenter
 		};
 
 		return $control;
+	}
+
+	protected function createComponentSideMenu(): SideMenu
+	{
+		return $this->sideMenuFactory->create();
+	}
+
+	protected function createComponentComponetters(): Componetters
+	{
+		return $this->componettersFactory->create();
 	}
 
 }

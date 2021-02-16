@@ -36,10 +36,6 @@ final class Search extends BaseControl
 		parent::loadState($params);
 	}
 
-	/**
-	 * FORMS *******************************************************************
-	 */
-
 	protected function createComponentForm(): Form
 	{
 		$form = new Form();
@@ -55,10 +51,6 @@ final class Search extends BaseControl
 
 		return $form;
 	}
-
-	/**
-	 * RENDER ******************************************************************
-	 */
 
 	public function render(): void
 	{

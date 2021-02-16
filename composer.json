@@ -1,4 +1,5 @@
 {
+	"name": "planette/componette",
 	"description": "Addons, plugins and components for Nette Framework",
 	"keywords": [
 		"nette",
@@ -25,7 +26,7 @@
 		"sort-packages": true
 	},
 	"require": {
-		"php": "^7.4",
+		"php": ">=7.4",
 		"ext-curl": "*",
 		"ext-mbstring": "*",
 		"ext-mysqli": "*",

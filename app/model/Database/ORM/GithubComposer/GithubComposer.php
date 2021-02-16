@@ -64,10 +64,6 @@ class GithubComposer extends AbstractEntity
 	}
 
 	/**
-	 * METHODS *****************************************************************
-	 */
-
-	/**
 	 * @param mixed|null $default
 	 * @return mixed
 	 */
@@ -77,15 +73,12 @@ class GithubComposer extends AbstractEntity
 			if (func_num_args() > 1) {
 				return $default;
 			}
+
 			throw new InvalidArgumentException(sprintf('Key "%s" not found in Composer\'s data', $key));
 		}
 
 		return $this->json->{$key};
 	}
-
-	/**
-	 * EVENTS ******************************************************************
-	 */
 
 	/**
 	 * @param string[] $data

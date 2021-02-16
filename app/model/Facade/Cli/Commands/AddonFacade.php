@@ -60,7 +60,7 @@ final class AddonFacade
 				// Do nothing, just use all
 				break;
 			default:
-				throw new InvalidArgumentException(sprintf('Unsupported type "%s"', is_array($type) ? print_r($type, true) : (string)$type));
+				throw new InvalidArgumentException(sprintf('Unsupported type "%s"', is_array($type) ? print_r($type, true) : (string) $type));
 		}
 
 		return $addons;
