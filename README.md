@@ -57,18 +57,18 @@ This project has a few tasks you should fired before you prepare PR.
 
 - **Quality Assurance** - checks PHP syntax errors and codestyle
 
-    ```
+    ```bash
     make qa
     ```
 
 - **Nette\Tester** - runs unit & integration tests
 
-    ```
+    ```bash
     make tests
     ```
 
 - **PHPstan** - runs static analyse
 
-    ```
+    ```bash
     make phpstan
     ```
