@@ -75,6 +75,7 @@ final class AddonDetail extends BaseControl
 		} else {
 			$this->template->totalDownloads = null;
 		}
+
 		$this->template->setFile(__DIR__ . '/templates/sidebar.latte');
 		$this->template->render();
 	}

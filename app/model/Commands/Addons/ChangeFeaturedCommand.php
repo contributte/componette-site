@@ -39,6 +39,7 @@ final class ChangeFeaturedCommand extends BaseCommand
 				->orderBy('featuredAt', ICollection::ASC)
 				->fetch();
 		}
+
 		$next->featuredAt = new DateTimeImmutable();
 		$this->em->persistAndFlush($next);
 		$output->writeln(sprintf('Addon ID %d is now featured.', $next->id));

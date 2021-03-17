@@ -28,6 +28,7 @@ class LoadFromRss
 				return new Article($article['title'], $article['description'], $article['link'], $this->date($article));
 			}
 		}
+
 		return null;
 	}
 
@@ -40,6 +41,7 @@ class LoadFromRss
 		if ($date) {
 			return $date;
 		}
+
 		return null;
 	}
 
@@ -53,6 +55,7 @@ class LoadFromRss
 				return $xml;
 			}
 		}
+
 		return null;
 	}
 

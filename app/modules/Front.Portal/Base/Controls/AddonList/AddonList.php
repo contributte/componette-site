@@ -76,6 +76,7 @@ class AddonList extends BaseControl
 			case SearchAddonsQuery::class:
 				return $this->renderSearchTitle($addonsCount);
 		}
+
 		return null;
 	}
 
@@ -88,11 +89,13 @@ class AddonList extends BaseControl
 				->addHtml(Html::el()->setText('By '))
 				->addHtml(Html::el('strong')->setText($author));
 		}
+
 		if ($tag = $query->getTag()) {
 			return Html::el()
 				->addHtml(Html::el()->setText('Tagged by #'))
 				->addHtml(Html::el('strong')->setText($tag));
 		}
+
 		return Html::el()
 			->addHtml(Html::el()->setText('Searched for $'))
 			->addHtml(Html::el('strong')->setText($query->getQuery()))
