@@ -1,0 +1,13 @@
+{varType App\Modules\Front\Base\Controls\Layout\Footer\Heading\HeadingProps $heading}
+<div class="mt-8 xl:mt-0">
+    {control heading, $heading}
+    <p class="mt-4 text-gray-600 text-base leading-6">
+        The latest news, articles, and resources, sent to your inbox weekly.
+    </p>
+    {form form, class => 'mt-4 sm:flex sm:max-w-md'}
+        {input App\Modules\Front\Base\Controls\Layout\Footer\SubscribeForm\Factory::EMAIL, class => 'appearance-none w-full px-5 py-2 border border-gray-300 text-base leading-6 rounded text-gray-900 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 transition duration-150 ease-in-out'}
+        <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
+            {input App\Modules\Front\Base\Controls\Layout\Footer\SubscribeForm\Factory::SUBMIT, class => 'w-full flex items-center justify-center px-6 py-2 border border-transparent text-base leading-6 font-medium rounded text-white bg-teal-600 hover:bg-teal-500 focus:outline-none focus:outline-none transition duration-150 ease-in-out'}
+        </div>
+    {/form}
+</div>

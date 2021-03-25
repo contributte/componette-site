@@ -2,15 +2,17 @@
 <div class="releases">
     <ul n:inner-foreach="$addon->github->releases as $release">
         <li>
-            <h3>
+            <h3 class="text-xl font-bold text-blue-700 mb-4 pb-2 border-b">
                 <a href="{$addon->github->linker->getReleaseUrl($release->tag)}">{$release->tag}</a>
-                <small>{$release->name}</small>
+                <small class="text-blue-300">{$release->name}</small>
             </h3>
-
             <section>
                 {$release->body|noescape}
             </section>
         </li>
     </ul>
-    <p class="alert alert-warning" n:if="$addon->github->releases->count() <= 0">No release at this moment. <a href="{$addon->github->linker->getNewReleaseUrl()}">Try to create first one</a>.</p>
+    <p n:if="$addon->github->releases->count() <= 0">
+        No release at this moment.
+        <a class="text-teal-800" href="{$addon->github->linker->getNewReleaseUrl()}">Try to create first one</a>.
+    </p>
 </div>

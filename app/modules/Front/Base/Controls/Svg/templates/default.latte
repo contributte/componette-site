@@ -1,0 +1,7 @@
+{templateType Wavevision\PropsControl\PropsControlTemplate}
+{varType string $url}
+<img n:class="$props->get(App\Modules\Front\Base\Controls\Svg\SvgProps::CLASS_NAME)"
+        alt="{$props->get(App\Modules\Front\Base\Controls\Svg\SvgProps::ALT) ?? $props->get(App\Modules\Front\Base\Controls\Svg\SvgProps::IMAGE)}"
+        loading="lazy"
+        src="{$url}"
+>

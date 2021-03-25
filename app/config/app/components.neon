@@ -1,18 +1,21 @@
-services:
-	# [back-end]
-	- App\Modules\Admin\Sign\Controls\Login\ILoginFactory
+includes:
+	- front.neon
 
-	# [front-end]
-	- App\Modules\Front\Portal\Base\Controls\AddonList\IAddonListFactory
-	- App\Modules\Front\Portal\Base\Controls\AddonList\ICategorizedAddonListFactory
+services:
+	- implement: App\Modules\Front\Portal\Base\Controls\AddonList\IAddonListFactory
+	  inject: true
+	- implement: App\Modules\Front\Portal\Base\Controls\AddonList\ICategorizedAddonListFactory
+	  inject: true
 	- App\Modules\Front\Base\Controls\Status\IStatusFactory
-	- App\Modules\Front\Portal\Addon\Controls\AddonDetail\IAddonDetailFactory
-	- App\Modules\Front\Portal\Base\Controls\AddonModal\IAddonModalFactory
-	- App\Modules\Front\Portal\Base\Controls\Search\ISearchFactory
-	- App\Modules\Front\Portal\Base\Controls\SideMenu\ISideMenuFactory
+	- implement: App\Modules\Front\Portal\Addon\Controls\AddonDetail\IAddonDetailFactory
+	  inject: true
+	- implement: App\Modules\Front\Portal\Base\Controls\AddonModal\IAddonModalFactory
+	  inject: true
+	- implement: App\Modules\Front\Portal\Base\Controls\Search\ISearchFactory
+	  inject: true
 	- App\Modules\Front\Base\Controls\Statistics\IStatisticsFactory
 	- App\Modules\Front\Portal\Rss\Controls\RssFeed\RssFeedFactory
 	- App\Modules\Front\Portal\Rss\Controls\RssFeed\IRssFeedFactory
 	- App\Modules\Front\Generator\Controls\Sitemap\ISitemapFactory
-	- App\Modules\Front\Portal\Base\Controls\Componetters\IComponettersFactory
-	- App\Modules\Front\Portal\Base\Controls\ReleaseList\IReleaseListFactory
+	- implement: App\Modules\Front\Portal\Base\Controls\ReleaseList\IReleaseListFactory
+	  inject: true

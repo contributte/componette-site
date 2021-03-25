@@ -1,40 +1,40 @@
-{block wrapper}
-    <div class="row">
-        <!-- Content(12) -->
-        <div class="col-md-12 col-box col-box--first">
-            <div class="row">
-                <div class="col-md-7">
-                    <h2 class="category"><span class="mega-octicon octicon-clock"></span> Latest updated addons</h2>
-                    {cache 'addons/lastest-activity', expire => '+1 hour'}
-                        {control latestActivity}
-                    {/cache}
-                </div>
-                <div class="col-md-5">
-                    <h2 class="category"><span class="mega-octicon octicon-tag"></span> Latest releases</h2>
-                    {cache 'addons/lastest-releases', expire => '+1 hour'}
-                        {control latestReleases}
-                    {/cache}
-
-                </div>
-            </div>
+{block #content}
+    <div class="grid grid-cols-3 gap-4 mb-4">
+        <div class="order-2 row-span-3 col-span-3 lg:col-span-2 lg:order-1 relative z-0">
+            {cache 'addons/lastest-activity', expire => '+1 hour'}
+                {control latestActivity}
+            {/cache}
         </div>
-        <!-- /Content(12) -->
-
-        <!-- Content(9) -->
-        <div class="col-md-9 col-box">
-            <h2 class="category"><span class="mega-octicon octicon-cloud-download"></span> Latest indexed addons</h2>
+        <div class="order-1 col-span-3 grid grid-cols-2 gap-2 lg:col-span-1">
+            {cache addon-modal, expire => '+1 week'}
+                {control modal}
+            {/cache}
+            <a href="{plink :Front:Portal:Index:all}"
+               class="col-span-2 inline-flex text-xs md:text-sm items-center justify-center px-2 py-2 font-medium text-gray-900 uppercase flex-1 bg-white rounded hover:bg-blue-200 transition duration-150 ease-in-out"
+            >
+                <span>All packages</span>
+            </a>
+        </div>
+        <div class="order-3 col-span-3 lg:col-span-1 z-10">
+            {cache news, expire => '+1 hour'}
+                {control news}
+            {/cache}
+        </div>
+    </div>
+    <div class="grid grid-cols-3 gap-4 mb-4">
+        <div class="order-2 row-span-3 col-span-3 lg:col-span-2 lg:order-1 relative z-10">
             {cache 'addons/latest-added', expire => '+1 hour'}
                 {control latestAdded}
             {/cache}
         </div>
-        <!-- /Content(9) -->
-
-        <!-- Sidebar(3) -->
-        <div class="col-md-3 col-aside clearfix">
-            {block sidebar}
-                {control sideMenu}
-            {/block}
+        <div class="order-3 col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 lg:col-span-1">
+            {cache 'addons/featured', expire => '+1 month'}
+                {control featuredAddon}
+            {/cache}
+            {cache 'addons/latest-release', expire => '+1 hour'}
+                {control latestReleases}
+            {/cache}
         </div>
-        <!-- /Sidebar(3) -->
     </div>
+    {control tags}
 {/block}

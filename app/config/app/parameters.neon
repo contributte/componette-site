@@ -7,8 +7,5 @@ parameters:
 			email: null
 			presenter: Front:Portal:Error
 
-	security:
-		users: []
-
 	github:
 		token: faketoken

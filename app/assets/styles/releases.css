@@ -1,0 +1,25 @@
+.releases section a {
+  color: #467a85;
+}
+
+.releases section a:hover {
+  color: #2a4c53;
+}
+
+.releases section code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(27, 31, 35, 0.05);
+  border-radius: 3px;
+}
+
+.releases section p,
+.releases section ul {
+  margin: 1em auto;
+}
+
+.releases section ul {
+  list-style: disc;
+  padding-left: 1em;
+}

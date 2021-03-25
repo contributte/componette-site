@@ -1,0 +1,12 @@
+{varType array $tags}
+{varType App\Model\Database\ORM\Tag\Tag $tag}
+<div class="px-3 lg:px-6" n:inner-foreach="$tags as $tag">
+    <a href="{plink Index:tag $tag->name}" class="bg-white inline-flex items-center rounded mb-2 mx-2 text-sm">
+		<span class="text-red-100 rounded-l py-1 px-2" style="background-color: {$tag->color ?? '#5bc0de'|noescape}">
+			{$tag->addons->count()}
+		</span>
+        <span class="py-1 px-2 text-gray-800">
+			{$tag->name}
+		</span>
+    </a>
+</div>

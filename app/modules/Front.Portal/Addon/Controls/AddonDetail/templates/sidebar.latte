@@ -1,106 +1,95 @@
-{block}
-
+{varType App\Model\Database\ORM\Addon\Addon $addon}
 {var $author = $addon->author}
 {var $name = $addon->name}
 
-<div class="github">
-    <div class="title">Github</div>
-    <div>
-        <span class="octicon octicon-mark-github"></span>
-        <a data-ga="1" data-event="click" data-category="sidebar" data-action="github" href="{$addon->github->linker->getRepoUrl()}">
-            {$author} / {$name}
+<div class="bg-white rounded shadow-md relative z-10 mb-4">
+    <div class="flex flex-wrap items-center justify-start px-5 pt-3 lg:px-8 lg:pt-4 min-h-16">
+        {control svg, [image => 'github-fill', className => 'flex-shrink-0 w-5 h-5 mb-3 lg:mb-4 mr-2', fill => 'C1CCDB', size => 64, type => 'logos']}
+        <div class="mb-3 lg:mb-4 flex-1">
+            <h2 class="font-bold text-gray-800 lg:text-lg font-headers">GitHub</h2>
+        </div>
+    </div>
+    <div class="flex flex-wrap items-center justify-between px-5 py-3 border-t lg:px-8 lg:py-4">
+        <a href="{$addon->github->linker->getRepoUrl()}" class="text-blue-900 underline hover:no-underline">
+            {$addon->fullname}
         </a>
     </div>
 </div>
-
-<div class="statistics">
-    <div class="title">Statistics</div>
-    <table>
-        {if $addon->isComposer && $addon->composer}
-            <tr>
-                <td><span class="octicon octicon-cloud-download"></span></td>
-                <td data-toggle="tooltip" data-placement="left" title="Total downloads">{$addon->composer->downloads|count}</td>
-            </tr>
-        {elseif $addon->isBower && $addon->bower}
-            <tr>
-                <td><span class="octicon octicon-cloud-download"></span></td>
-                <td data-toggle="tooltip" data-placement="left" title="Total hits">{$addon->bower->downloads|count}</td>
-            </tr>
-        {/if}
-        <tr>
-            <td><span class="octicon octicon-star"></span></td>
-            <td data-toggle="tooltip" data-placement="left" title="Total stargazers">{$addon->github->stars|count}</td>
-        </tr>
-        <tr>
-            <td><span class="octicon octicon-issue-opened"></span></td>
-            <td data-toggle="tooltip" data-placement="left" title="Open issues">{$addon->github->issues|count}</td>
-        </tr>
-        <tr>
-            <td><span class="octicon octicon-clock"></span></td>
-            <td data-toggle="tooltip" data-placement="left" title="Last activity">{$addon->github->pushedAt|timeAgo}</td>
-        </tr>
-    </table>
+<div class="bg-white rounded shadow-md relative z-10 mb-4">
+    {control statistics, [addon => $addon]}
 </div>
-
-<div class="badges">
-    <div class="title">Badges</div>
-    <ul>
-        <li>
+<div class="bg-white rounded shadow-md relative z-10 mb-4">
+    <div class="flex flex-wrap items-center justify-start px-5 pt-3 lg:px-8 lg:pt-4 min-h-16">
+        {control svg, [image => 'price-tag-2-line', className => 'flex-shrink-0 w-5 h-5 mb-3 lg:mb-4 mr-2', fill => 'C1CCDB', size => 64, type => 'finance']}
+        <div class="mb-3 lg:mb-4 flex-1">
+            <h2 class="font-bold text-gray-800 lg:text-lg font-headers">Badges</h2>
+        </div>
+    </div>
+    <div class="flex flex-wrap items-center justify-between px-5 py-3 border-t lg:px-8 lg:py-4">
+        <div class="grid grid-cols-1 row-gap-2 w-full">
             <a href="{$addon->github->linker->getRepoUrl()}">
-                <img alt="" title="isitmaintained" loading="lazy" src="https://isitmaintained.com/badge/resolution/{$author|lower}/{$name|lower}.svg">
+                <img alt="" title="isitmaintained" loading="lazy"
+                     src="https://isitmaintained.com/badge/resolution/{$author|lower}/{$name|lower}.svg">
             </a>
-        </li>
-        <li>
             <a href="{$addon->github->linker->getRepoUrl()}">
-                <img alt="" title="isitmaintained" loading="lazy" src="https://isitmaintained.com/badge/open/{$author|lower}/{$name|lower}.svg">
+                <img alt="" title="isitmaintained" loading="lazy"
+                     src="https://isitmaintained.com/badge/open/{$author|lower}/{$name|lower}.svg">
             </a>
-        </li>
-        {if $addon->isComposer && $addon->composer && $addon->github->masterComposer}
-            <li>
+            {if $addon->isComposer && $addon->composer && $addon->github->masterComposer}
                 <a href="{$addon->composer->linker->getPackageUrl()}">
-                    <img alt="" title="{$addon->github->masterComposer->name}" loading="lazy" src="https://img.shields.io/packagist/v/{$addon->github->masterComposer->name}.svg">
+                    <img alt="" title="{$addon->github->masterComposer->name}" loading="lazy"
+                         src="https://img.shields.io/packagist/v/{$addon->github->masterComposer->name}.svg">
                 </a>
-            </li>
-            <li>
                 <a href="{$addon->github->linker->getRepoUrl()}">
-                    <img alt="" title="{$addon->github->masterComposer->name}" loading="lazy" src="https://img.shields.io/packagist/l/{$addon->github->masterComposer->name}.svg">
+                    <img alt="" title="{$addon->github->masterComposer->name}" loading="lazy"
+                         src="https://img.shields.io/packagist/l/{$addon->github->masterComposer->name}.svg">
                 </a>
-            </li>
-        {/if}
-    </ul>
+            {/if}
+        </div>
+    </div>
 </div>
-
-<div class="requirements tags">
-    <div class="title">Tags</div>
-    <span n:foreach="$addon->tags as $tag" class="label label-success">
-        <a href="{plink Index:tag tag => $tag->name}">
-            <i class="octicon octicon-tag"></i> {$tag->name}
-        </a>
-    </span>
-</div>
-
 {if $addon->isComposer && $addon->composer && $addon->github->masterComposer}
     {var $composer = $addon->github->masterComposer}
-    {if ($require = $composer->get('require', []))}
-        <div class="requirements">
-            <div class="title">Dependencies</div>
-
-            <ul n:inner-foreach="$require as $name => $version">
-                <li>
-                    <a n:tag-if="!$_helpers->isPhp($name)" data-ga="1" data-event="click" data-category="requirements" data-action="{$name}" href="{$addon->composer->linker->getPackageUrl($name)}">
+    <div n:if="($require = $composer->get('require', []))" class="bg-white rounded shadow-md relative z-10 mb-4">
+        <div class="flex flex-wrap items-center justify-start px-5 pt-3 lg:px-8 lg:pt-4 min-h-16">
+            {control svg, [image => 'guide-fill', className => 'flex-shrink-0 w-5 h-5 mb-3 lg:mb-4 mr-2', fill => 'C1CCDB', size => 64, type => 'map']}
+            <div class="mb-3 lg:mb-4 flex-1">
+                <h2 class="font-bold text-gray-800 lg:text-lg font-headers">Dependencies</h2>
+            </div>
+        </div>
+        <div class="flex flex-wrap items-center justify-between px-5 py-3 border-t lg:px-8 lg:py-4">
+            <div class="grid grid-cols-1 row-gap-2 w-full text-sm" n:inner-foreach="$require as $name => $version">
+                <div>
+                    <a n:tag-if="!$_helpers->isPhp($name)" n:class="!$_helpers->isPhp($name) ? 'text-blue-900 underline hover:no-underline'"
+                            data-ga="1" data-event="click" data-category="requirements"
+                            data-action="{$name}"
+                            href="{$addon->composer->linker->getPackageUrl($name)}"
+                    >
                         {$name}
                     </a>
                     ({$version})
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
-    {/if}
-    {if ($keywords = $composer->get('keywords', []))}
-        <div class="requirements">
-            <div class="title">Keywords</div>
-            <a n:foreach="$keywords as $name" data-ga="1" data-event="click" data-category="keywords" data-action="{$name}" href="{$addon->composer->linker->getTagUrl($name)}">
-                <span class="label label-default">{$name}</span>
-            </a>
+    </div>
+    <div n:if="($keywords = $composer->get('keywords', []))" class="bg-white rounded shadow-md relative z-10 mb-4">
+        <div class="flex flex-wrap items-center justify-start px-5 pt-3 lg:px-8 lg:pt-4 min-h-16">
+            {control svg, [image => 'guide-fill', className => 'flex-shrink-0 w-5 h-5 mb-3 lg:mb-4 mr-2', fill => 'C1CCDB', size => 64, type => 'map']}
+            <div class="mb-3 lg:mb-4 flex-1">
+                <h2 class="font-bold text-gray-800 lg:text-lg font-headers">Keywords</h2>
+            </div>
         </div>
-    {/if}
+        <div class="flex flex-wrap items-center justify-between px-5 py-3 border-t lg:px-8 lg:py-4">
+            <div class="w-full" n:inner-foreach="$keywords as $name">
+                <a class="leading-tight py-1 px-3 bg-blue-100 rounded text-sm inline-block my-1 mr-1"
+                   data-ga="1"
+                   data-event="click" data-category="keywords"
+                   data-action="{$name}"
+                   href="{$addon->composer->linker->getTagUrl($name)}"
+                >
+                    {$name}
+                </a>
+            </div>
+        </div>
+    </div>
 {/if}

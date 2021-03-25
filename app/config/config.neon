@@ -18,6 +18,7 @@ includes:
 	# EXTENSIONS ===
 	- ext/contributte.neon
 	- ext/nextras.neon
+	- ext/webpack.neon
 
 latte:
 	xhtml: false

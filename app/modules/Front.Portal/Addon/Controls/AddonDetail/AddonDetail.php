@@ -4,11 +4,22 @@ namespace App\Modules\Front\Portal\Addon\Controls\AddonDetail;
 
 use App\Model\Database\ORM\Addon\Addon;
 use App\Model\UI\BaseControl;
+use App\Modules\Front\Base\Controls\Svg\SvgComponent;
+use App\Modules\Front\Portal\Base\Controls\AddonList\Avatar\AvatarComponent;
+use App\Modules\Front\Portal\Base\Controls\AddonList\Description\DescriptionComponent;
+use App\Modules\Front\Portal\Base\Controls\AddonList\Name\NameComponent;
+use App\Modules\Front\Portal\Base\Controls\AddonList\Statistics\StatisticsComponent;
 use App\Modules\Front\Portal\Base\Controls\AddonMeta\AddonMeta;
 use Nette\Utils\DateTime;
 
 final class AddonDetail extends BaseControl
 {
+
+	use AvatarComponent;
+	use DescriptionComponent;
+	use NameComponent;
+	use StatisticsComponent;
+	use SvgComponent;
 
 	/** @var Addon */
 	private $addon;
@@ -49,20 +60,10 @@ final class AddonDetail extends BaseControl
 	public function renderSidebar(): void
 	{
 		$this->template->addon = $this->addon;
-		$this->template->setFile(__DIR__ . '/templates/sidebar.latte');
-		$this->template->render();
-	}
-
-	/**
-	 * Render statistics
-	 */
-	public function renderStats(): void
-	{
 		$totalDownloads = [];
-
 		// Calculate total downloads
 		$stats = $this->addon->composerLatestStatistics;
-		if ($stats) {
+		if ($stats && isset($stats->json['labels'])) {
 			foreach ($stats->json['labels'] as $key => $label) {
 				$totalDownloads[] = [
 					'x' => DateTime::from($label)->format('c'),
@@ -75,7 +76,7 @@ final class AddonDetail extends BaseControl
 			$this->template->totalDownloads = null;
 		}
 
-		$this->template->setFile(__DIR__ . '/templates/stats.latte');
+		$this->template->setFile(__DIR__ . '/templates/sidebar.latte');
 		$this->template->render();
 	}
 

@@ -2,15 +2,11 @@
 
 namespace App\Modules\Front\Portal\Base\Controls\AddonList;
 
-use App\Model\Database\ORM\Addon\Addon;
-use Nextras\Orm\Collection\ICollection;
+use App\Model\Database\Query\QueryObject;
 
 interface IAddonListFactory
 {
 
-	/**
-	 * @param ICollection<Addon> $addons
-	 */
-	public function create(ICollection $addons): AddonList;
+	public function create(QueryObject $queryObject): AddonList;
 
 }

@@ -1,0 +1,6 @@
+extensions:
+	webpack: Wavevision\NetteWebpack\DI\Extension(%debugMode%, %consoleMode%)
+
+webpack:
+	entries:
+		front: true

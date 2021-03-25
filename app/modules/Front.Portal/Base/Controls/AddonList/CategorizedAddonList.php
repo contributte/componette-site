@@ -6,11 +6,25 @@ use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\EntityModel;
 use App\Model\Database\ORM\Tag\Tag;
 use App\Model\UI\BaseControl;
+use App\Modules\Front\Portal\Base\Controls\AddonList\Avatar\AvatarComponent;
+use App\Modules\Front\Portal\Base\Controls\AddonList\Description\DescriptionComponent;
+use App\Modules\Front\Portal\Base\Controls\AddonList\Name\NameComponent;
+use App\Modules\Front\Portal\Base\Controls\AddonList\Statistics\StatisticsComponent;
 use App\Modules\Front\Portal\Base\Controls\AddonMeta\AddonMeta;
+use App\Modules\Front\Portal\Base\Controls\Layout\Box\BoxComponent;
+use App\Modules\Front\Portal\Base\Controls\Layout\Box\BoxProps;
+use Nette\Utils\Html;
 use Nextras\Orm\Collection\ICollection;
+use Wavevision\PropsControl\Helpers\Render;
 
 final class CategorizedAddonList extends BaseControl
 {
+
+	use AvatarComponent;
+	use BoxComponent;
+	use DescriptionComponent;
+	use NameComponent;
+	use StatisticsComponent;
 
 	/** @var EntityModel */
 	private $em;
@@ -57,14 +71,12 @@ final class CategorizedAddonList extends BaseControl
 			->orderBy(['author' => 'ASC', 'name' => 'ASC']);
 	}
 
-	/**
-	 * RENDER ******************************************************************
-	 */
-
-	/**
-	 * Render component
-	 */
 	public function render(): void
+	{
+		$this->getBoxComponent()->render(new BoxProps([BoxProps::CONTENT => $this->renderContent()]));
+	}
+
+	private function renderContent(): Html
 	{
 		$categories = $this->getTags();
 		$addons = $this->getAddons();
@@ -109,10 +121,9 @@ final class CategorizedAddonList extends BaseControl
 		// Fill template
 		$this->template->categories = $categories;
 		$this->template->list = $list;
-
+		$this->template->title = null;
 		// Render
-		$this->template->setFile(__DIR__ . '/templates/categorized.list.latte');
-		$this->template->render();
+		return Render::toHtml($this->template->renderToString(__DIR__ . '/templates/categorized.list.latte'));
 	}
 
 }

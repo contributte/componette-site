@@ -2,25 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="google-site-verification" content="wIeHv7ZRzLxLQy7wrS9tjxHGFXVVUCtZQMPDYeMAriQ">
     <link rel="shortcut icon" href="{$baseUrl}/favicon.ico">
     <link rel="canonical" href="{plink this}">
-    <meta name="theme-color" content="#2c547b">
+    <meta name="theme-color" content="#314159">
 
     <!-- Title -->
     <title>{ifset #title}{include #title|striptags}{else}Addons, plugins and components{/ifset} | Componette</title>
 
     <!-- Seo -->
-    <meta name="description" content="{ifset #description}{include #description|striptags}{else}New and modern addons portal for Nette Framework.{/ifset}">
-    <meta name="keywords" content="{ifset #keywords}{include #keywords|striptags}{else}nette, addons, plugins, components, extension, forms{/ifset}">
+    <meta name="description"
+          content="{ifset #description}{include #description|striptags}{else}New and modern addons portal for Nette Framework.{/ifset}">
+    <meta name="keywords"
+          content="{ifset #keywords}{include #keywords|striptags}{else}nette, addons, plugins, components, extension, forms{/ifset}">
     <meta name="googlebot" content="snippet,archive">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Nette Community">
 
     <!-- Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{ifset #title}{include #title|striptags}{else}Addons, plugins and components{/ifset} | Componette">
+    <meta property="og:title"
+          content="{ifset #title}{include #title|striptags}{else}Addons, plugins and components{/ifset} | Componette">
     <meta property="og:url" content="{plink //this}">
     <meta property="og:site_name" content="Componette">
     <!--<meta property="og:image" content="">-->
@@ -29,149 +32,53 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@componette">
     <meta name="twitter:url" content="{plink //this}">
-    <meta name="twitter:title" content="{ifset #title}{include #title|striptags}{else}Addons, plugins and components{/ifset} | Componette">
-    <meta name="twitter:description" content="{ifset #description}{include #description|striptags}{else}New and modern addons portal for Nette Framework.{/ifset}">
+    <meta name="twitter:title"
+          content="{ifset #title}{include #title|striptags}{else}Addons, plugins and components{/ifset} | Componette">
+    <meta name="twitter:description"
+          content="{ifset #description}{include #description|striptags}{else}New and modern addons portal for Nette Framework.{/ifset}">
     <!--<meta name="twitter:image" content="">-->
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="{$basePath}/dist/front.external.css?v={rev}">
-    <link rel="stylesheet" href="{$basePath}/dist/front.bundle.css?v={rev}">
+    {control assets:styles}
 
     <!-- Feeds -->
     <link rel="alternate" type="application/rss+xml" title="RSS" n:href="//:Front:Portal:Rss:newest">
-    <link rel="search" type="application/opensearchdescription+xml" title="Componette" n:href="//:Front:Generator:opensearch, v => 2.4">
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Componette" n:href="//:Front:Generator:opensearch, v => 2.4">
 
     {include '_parts/@newrelic.latte'}
     {include '_parts/@smartlook.latte'}
 
     <!-- Extra head-->
-    {block head}{/block}
+    {block #head}{/block}
 </head>
 <body>
-    <!-- Container -->
-    <div class="main-container container">
-
-        <!-- Header -->
-        <div class="header">
-            <div class="row">
-                <div class="col-xs-1 header-col">
-                    <a class="main-title" n:href=":Front:Home:"><img src="https://avatars3.githubusercontent.com/u/10809856?v=3&s=50" title="Componette <3" loading="lazy"></a>
-                </div>
-                <div class="col-xs-11 header-col">
-                    <div class="b-search">
-                        {control search}
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /Header -->
-
-        <!-- Flashes -->
-        <div class="alerts" n:inner-foreach="$flashes as $flash">
-            <div class="alert alert-{$flash->type}">{$flash->message}</div>
-        </div>
-        <!-- /Flashes -->
-
-        <!-- Content -->
-        <div class="content">
-            <!-- Search -->
-            <div n:if="!$presenter->isLinkCurrent(':Front:Portal:Index:search')" class="search" n:snippet="search-result"></div>
-            <!-- /Search -->
-            {ifset #wrapper}
-                <div class="box">
-                    {block wrapper}
-                    <div class="row row-flex">
-                        <!-- Content(9) -->
-                        <div class="col-md-9 col-box">
-                            {include #content}
-                        </div>
-                        <!-- /Content(9) -->
-
-                        <!-- Sidebar(3) -->
-                        <div class="col-md-3 col-aside clearfix">
-                            {block sidebar}
-                                {control sideMenu}
-                            {/block}
-                        </div>
-                        <!-- /Sidebar(3) -->
-                    </div>
-                    {/block}
-                </div>
-            {else}
-                <div class="row">
-                    <!-- Content(12) -->
-                    <div class="col-md-12">
-                        {include #content}
-                    </div>
-                    <!-- /Content(12) -->
-                </div>
-            {/ifset}
-        </div>
-        <!-- /Content -->
-
+{control flashMessages}
+{control header}
+{control search}
+<div class="px-2 md:px-4 overflow-hidden">
+    <div class="container mx-auto mb-10">
+        {include #content}
     </div>
-    <!-- /Container -->
+</div>
+{control footer}
 
-    <!-- Footer -->
-    <div class="main-container footer">
-        <div class="componetters-container">
-            <div class="container">
-                {control componetters}
-            </div>
-        </div>
-        <div class="copyright">
-            <div class="container">
-                <p>Copyright © 2015 - {date('Y')} <a href="http://github.com/componette">Componette</a></p>
-            </div>
-        </div>
-    </div>
-    <!-- /Footer -->
+<!-- Microdata -->
+<div class="microdata" itemscope itemtype="http://schema.org/Person">
+    <span itemprop="name">Componette</span>
+    <span itemprop="company">Componette</span>
+    <a itemprop="email" href="mailto:admin@componette.com">admin@componette.com</a>
+</div>
+<!-- /Microdata -->
 
-    <!-- Nette Bar -->
-    <div class="main-container bar">
-        <div>
-            <ul class="projects">
-                <li><a href="https://nette.org">Nette</a></li>
-                <li><a href="https://tracy.nette.org">Tracy</a></li>
-                <li><a href="https://latte.nette.org">Latte</a></li>
-                <li><a href="https://tester.nette.org">Tester</a></li>
-                <li><a href="http://ne-on.org">Neon</a></li>
-            </ul>
-            <ul class="user hidden-sm hidden-xs">
-                <li><a n:href=":Front:Home:" class="active"><span>Componette <i class="octoicon octicon-heart"></i></span></a></li>
-                <li><a href="https://pla.nette.org"><span>Planette</span></a></li>
-                <li><a href="https://forum.nette.org/cs/"><span>Forum</span></a></li>
-                <li><a href="https://blog.nette.org"><span>Blog</span></a></li>
-                <li><a href="https://nette.org/donate"><span>Donate</span></a></li>
-            </ul>
-        </div>
-    </div>
-    <!-- /Nette Bar -->
+<!-- Tracking -->
+{include '_parts/@ga.latte'}
+{include '_parts/@pageinfo.latte'}
+<!-- /Tracking -->
 
-    <!-- Microdata -->
-    <div class="microdata" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">Componette</span>
-        <span itemprop="company">Componette</span>
-        <a itemprop="email" href="mailto:admin@componette.com">admin@componette.com</a>
-    </div>
-    <!-- /Microdata -->
+<!-- Scripts -->
+{control assets:scripts}
+<!-- /Scripts -->
 
-    <!-- Add addon -->
-    {cache addon-modal, expire => '+1 week'}
-        {control modal}
-    {/cache}
-    <!-- /Add addon -->
-
-    <!-- Tracking -->
-    {include '_parts/@ga.latte'}
-    {include '_parts/@pageinfo.latte'}
-    <!-- /Tracking -->
-
-    <!-- Scripts -->
-    <script src="{$basePath}/dist/front.external.js?v={rev}"></script>
-    <script src="{$basePath}/dist/front.bundle.js?v={rev}"></script>
-    <!-- /Scripts -->
-
-    {block scripts}{/block}
+{block #scripts}{/block}
 </body>
 </html>

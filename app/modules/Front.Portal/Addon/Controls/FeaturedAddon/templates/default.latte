@@ -1,0 +1,23 @@
+{varType App\Model\Database\ORM\Addon\Addon $addon}
+{varType string $icon}
+<div class="relative ">
+    <div class="bg-white rounded shadow-md relative z-10">
+        <div class="flex flex-wrap items-center justify-start px-5 pt-3 lg:px-8 lg:pt-4">
+            <img loading="lazy" src="{$icon}" class="rounded-full w-8 h-8 p-1 border mb-3 lg:mb-5 mr-4 flex-shrink-0">
+            <div class="mb-3 lg:mb-5 flex-1">
+                <h2 class="text-lg font-bold text-gray-800 lg:text-2xl font-headers">Package of the month</h2>
+            </div>
+        </div>
+        <div class="flex flex-wrap items-center justify-between px-5 pt-3 border-t lg:px-8 lg:pt-4">
+            <div class="flex items-start w-full mb-3 lg:mb-5">
+                {control avatar, [addon => $addon, small => true]}
+                <div class="flex flex-col flex-1">
+                    {control name, [addon => $addon]}
+                    {control description, [addon => $addon]}
+                </div>
+            </div>
+            {control statistics, [addon => $addon, featured => true, inline => true]}
+        </div>
+    </div>
+    {include _shapes.latte}
+</div>

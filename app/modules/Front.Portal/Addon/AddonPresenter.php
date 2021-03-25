@@ -28,6 +28,7 @@ final class AddonPresenter extends BasePresenter
 	public function renderDetail(): void
 	{
 		$this->template->addon = $this->addon;
+		$this->template->tabs = ['content' => 'Readme', 'releases' => 'Releases', 'comments' => 'Comments'];
 	}
 
 	protected function createComponentAddon(): AddonDetail

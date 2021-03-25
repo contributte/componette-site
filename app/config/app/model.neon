@@ -1,3 +1,6 @@
+includes:
+	- services.neon
+
 services:
 
 	# WebServices ==========================================
@@ -20,9 +23,6 @@ services:
 	- App\Model\Facade\AddonFacade
 	- App\Model\Facade\StatisticsFacade
 
-	# [back-end]
-	- App\Model\Facade\Admin\AddonFacade
-
 	# [cli]
 	- App\Model\Facade\Cli\Commands\AddonFacade
 
@@ -37,6 +37,3 @@ services:
 	# Portal ===============================================
 	- App\Model\Portal(@container::parameters)
 	- App\Model\Statistics
-
-	# Security =============================================
-	authenticator: App\Model\Security\SimpleAuthenticator(%security.users%)
