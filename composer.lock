@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9a4e9be9416a90f617635a8f6156cb6e",
+    "content-hash": "65ab9f732d295b6c8ced54caaadf6272",
     "packages": [
         {
             "name": "contributte/application",
@@ -3187,16 +3187,16 @@
         },
         {
             "name": "wavevision/nette-webpack",
-            "version": "0.7.1",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wavevision/nette-webpack.git",
-                "reference": "aa0155cc9d6895d5e15226f64ec0508f064f2b85"
+                "reference": "59d479e1de7a47728fa370d532d2f9eb5bb0c522"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wavevision/nette-webpack/zipball/aa0155cc9d6895d5e15226f64ec0508f064f2b85",
-                "reference": "aa0155cc9d6895d5e15226f64ec0508f064f2b85",
+                "url": "https://api.github.com/repos/wavevision/nette-webpack/zipball/59d479e1de7a47728fa370d532d2f9eb5bb0c522",
+                "reference": "59d479e1de7a47728fa370d532d2f9eb5bb0c522",
                 "shasum": ""
             },
             "require": {
@@ -3210,15 +3210,13 @@
             },
             "require-dev": {
                 "nette/application": "^3.0",
-                "phing/phing": "3.0a3",
                 "php-coveralls/php-coveralls": "^2.2",
-                "php-parallel-lint/php-parallel-lint": "^1.1",
                 "phpstan/extension-installer": "^1.0",
                 "phpstan/phpstan": "^0.12.11",
                 "phpstan/phpstan-nette": "^0.12.3",
-                "wavevision/coding-standard": "^3.1",
-                "wavevision/di-service-annotation": "^3.1",
-                "wavevision/nette-tests": "^3.0"
+                "wavevision/coding-standard": "^5.2",
+                "wavevision/di-service-annotation": "^4.0",
+                "wavevision/nette-tests": "^3.1"
             },
             "type": "library",
             "extra": {
@@ -3246,9 +3244,9 @@
             "description": "Webpack adapter for Nette framework.",
             "support": {
                 "issues": "https://github.com/wavevision/nette-webpack/issues",
-                "source": "https://github.com/wavevision/nette-webpack/tree/0.7.1"
+                "source": "https://github.com/wavevision/nette-webpack/tree/1.0.0"
             },
-            "time": "2020-08-27T13:01:31+00:00"
+            "time": "2020-11-02T09:36:12+00:00"
         },
         {
             "name": "wavevision/props-control",
