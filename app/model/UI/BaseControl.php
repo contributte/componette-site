@@ -3,10 +3,10 @@
 namespace App\Model\UI;
 
 use Nette\Application\UI\Control;
-use Nette\Bridges\ApplicationLatte\Template;
+use Nette\Bridges\ApplicationLatte\DefaultTemplate;
 
 /**
- * @property-read Template $template
+ * @property-read DefaultTemplate $template
  */
 abstract class BaseControl extends Control
 {
