@@ -2,8 +2,12 @@
 
 namespace App\Model\UI;
 
+use Nette\Bridges\ApplicationLatte\DefaultTemplate;
 use Wavevision\PropsControl\BaseControl;
 
+/**
+ * @property-read DefaultTemplate $template
+ */
 abstract class BaseRenderControl extends BaseControl
 {
 

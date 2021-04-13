@@ -20,9 +20,6 @@ includes:
 	- ext/nextras.neon
 	- ext/webpack.neon
 
-latte:
-	xhtml: false
-
 session:
 	debugger: %debugMode%
 	expiration: '+14 days'
