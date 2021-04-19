@@ -2308,27 +2308,32 @@
         },
         {
             "name": "softcreatr/jsonpath",
-            "version": "0.6.4",
+            "version": "0.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SoftCreatR/JSONPath.git",
-                "reference": "79da94b863743ec1fbf22127580d88e34f0146c3"
+                "reference": "e3ae75112a5247e3b27a7e0e72155eae261d8c72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SoftCreatR/JSONPath/zipball/79da94b863743ec1fbf22127580d88e34f0146c3",
-                "reference": "79da94b863743ec1fbf22127580d88e34f0146c3",
+                "url": "https://api.github.com/repos/SoftCreatR/JSONPath/zipball/e3ae75112a5247e3b27a7e0e72155eae261d8c72",
+                "reference": "e3ae75112a5247e3b27a7e0e72155eae261d8c72",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "php": ">=7.1 || <8.1"
+                "php": ">=7.1"
+            },
+            "conflict": {
+                "phpunit/phpunit": "<7.0 || >= 10.0"
             },
             "replace": {
                 "flow/jsonpath": "*"
             },
             "require-dev": {
-                "phpunit/phpunit": "<7.0 || >= 10.0"
+                "phpunit/phpunit": ">=7.0",
+                "roave/security-advisories": "dev-master",
+                "squizlabs/php_codesniffer": "^3.5"
             },
             "type": "library",
             "autoload": {
@@ -2357,6 +2362,7 @@
             "description": "JSONPath implementation for parsing, searching and flattening arrays",
             "support": {
                 "email": "hello@1-2.dev",
+                "forum": "https://github.com/SoftCreatR/JSONPath/discussions",
                 "issues": "https://github.com/SoftCreatR/JSONPath/issues",
                 "source": "https://github.com/SoftCreatR/JSONPath"
             },
@@ -2366,7 +2372,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-18T06:35:49+00:00"
+            "time": "2021-03-08T14:18:21+00:00"
         },
         {
             "name": "symfony/console",
@@ -3316,16 +3322,16 @@
         },
         {
             "name": "wavevision/utils",
-            "version": "2.13.1",
+            "version": "2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wavevision/utils.git",
-                "reference": "c9551b6f062fc52466b5b2669210b134db12e6c3"
+                "reference": "d685a39533c359f7fa8468ea3f54a38f0b30868a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wavevision/utils/zipball/c9551b6f062fc52466b5b2669210b134db12e6c3",
-                "reference": "c9551b6f062fc52466b5b2669210b134db12e6c3",
+                "url": "https://api.github.com/repos/wavevision/utils/zipball/d685a39533c359f7fa8468ea3f54a38f0b30868a",
+                "reference": "d685a39533c359f7fa8468ea3f54a38f0b30868a",
                 "shasum": ""
             },
             "require": {
@@ -3336,13 +3342,13 @@
                 "nette/finder": "^2.5",
                 "nette/utils": "^3.1",
                 "php": ">=7.4",
-                "softcreatr/jsonpath": "^0.6.4"
+                "softcreatr/jsonpath": "^0.7.3"
             },
             "require-dev": {
                 "mikey179/vfsstream": "^1.6",
                 "php-coveralls/php-coveralls": "^2.1",
                 "phpunit/phpunit": "^9.4",
-                "wavevision/coding-standard": "^5.2"
+                "wavevision/coding-standard": "^6.0"
             },
             "type": "library",
             "extra": {
@@ -3374,9 +3380,9 @@
             "description": "Useful PHP utilities and helpers.",
             "support": {
                 "issues": "https://github.com/wavevision/utils/issues",
-                "source": "https://github.com/wavevision/utils/tree/2.13.1"
+                "source": "https://github.com/wavevision/utils/tree/2.14.0"
             },
-            "time": "2020-10-21T13:25:37+00:00"
+            "time": "2021-04-17T10:05:14+00:00"
         }
     ],
     "packages-dev": [
