@@ -12,18 +12,15 @@
     <title>{ifset #title}{include #title|striptags}{else}Addons, plugins and components{/ifset} | Componette</title>
 
     <!-- Seo -->
-    <meta name="description"
-          content="{ifset #description}{include #description|striptags}{else}New and modern addons portal for Nette Framework.{/ifset}">
-    <meta name="keywords"
-          content="{ifset #keywords}{include #keywords|striptags}{else}nette, addons, plugins, components, extension, forms{/ifset}">
+    <meta name="description" content="{ifset #description}{include #description|striptags}{else}New and modern addons portal for Nette Framework.{/ifset}">
+    <meta name="keywords" content="{ifset #keywords}{include #keywords|striptags}{else}nette, addons, plugins, components, extension, forms{/ifset}">
     <meta name="googlebot" content="snippet,archive">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Nette Community">
 
     <!-- Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:title"
-          content="{ifset #title}{include #title|striptags}{else}Addons, plugins and components{/ifset} | Componette">
+    <meta property="og:title" content="{ifset #title}{include #title|striptags}{else}Addons, plugins and components{/ifset} | Componette">
     <meta property="og:url" content="{plink //this}">
     <meta property="og:site_name" content="Componette">
     <!--<meta property="og:image" content="">-->
@@ -32,53 +29,54 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@componette">
     <meta name="twitter:url" content="{plink //this}">
-    <meta name="twitter:title"
-          content="{ifset #title}{include #title|striptags}{else}Addons, plugins and components{/ifset} | Componette">
-    <meta name="twitter:description"
-          content="{ifset #description}{include #description|striptags}{else}New and modern addons portal for Nette Framework.{/ifset}">
-    <!--<meta name="twitter:image" content="">-->
+    <meta name="twitter:title" content="{ifset #title}{include #title|striptags}{else}Addons, plugins and components{/ifset} | Componette">
+    <meta name="twitter:description" content="{ifset #description}{include #description|striptags}{else}New and modern addons portal for Nette Framework.{/ifset}">
 
     {control assets:styles}
 
     <!-- Feeds -->
     <link rel="alternate" type="application/rss+xml" title="RSS" n:href="//:Front:Portal:Rss:newest">
-    <link rel="search" type="application/opensearchdescription+xml"
-          title="Componette" n:href="//:Front:Generator:opensearch, v => 2.4">
 
-    {include '_parts/@newrelic.latte'}
-    {include '_parts/@smartlook.latte'}
+    <!-- Opensearch -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Componette" n:href="//:Front:Generator:opensearch, v => 2.4">
 
     <!-- Extra head-->
     {block #head}{/block}
 </head>
 <body>
-{control flashMessages}
-{control header}
-{control search}
-<div class="px-2 md:px-4 overflow-hidden">
-    <div class="container mx-auto mb-10">
-        {include #content}
+    {control flashMessages}
+    {control header}
+    {control search}
+
+    <div class="px-2 md:px-4 overflow-hidden">
+        <div class="container mx-auto mb-10">
+            {include #content}
+        </div>
     </div>
-</div>
-{control footer}
+    {control footer}
 
-<!-- Microdata -->
-<div class="microdata" itemscope itemtype="http://schema.org/Person">
-    <span itemprop="name">Componette</span>
-    <span itemprop="company">Componette</span>
-    <a itemprop="email" href="mailto:admin@componette.com">admin@componette.com</a>
-</div>
-<!-- /Microdata -->
+    <!-- Microdata -->
+    <div class="microdata" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Componette</span>
+        <span itemprop="company">Componette</span>
+        <a itemprop="email" href="mailto:felix@nette.org">felix@nette.org</a>
+    </div>
+    <!-- /Microdata -->
 
-<!-- Tracking -->
-{include '_parts/@ga.latte'}
-{include '_parts/@pageinfo.latte'}
-<!-- /Tracking -->
+    <!-- Tracking -->
+    {include '_parts/@ga.latte'}
+    {include '_parts/@pageinfo.latte'}
+    <!-- /Tracking -->
 
-<!-- Scripts -->
-{control assets:scripts}
-<!-- /Scripts -->
+    <!-- Tracking -->
+    {include '_parts/@smartlook.latte'}
+    {include '_parts/@ga.latte'}
+    {include '_parts/@pageinfo.latte'}
+    <!-- /Tracking -->
 
-{block #scripts}{/block}
+    <!-- Scripts -->
+    {control assets:scripts}
+    {block #scripts}{/block}
+    <!-- /Scripts -->
 </body>
 </html>
