@@ -12,7 +12,7 @@ const baseConfig: Configuration = {
   },
   target: 'web',
   plugins: [
-    new MiniCssExtractPlugin({ filename: '[name].css?[hash]' }),
+    new MiniCssExtractPlugin({ filename: '[name].css?[hash]' }) as any, // @todo remove any
     helper.createManifestPlugin(),
     new ProvidePlugin({
       $: 'jquery',

@@ -7,9 +7,9 @@ export default (dev: boolean): RuleSetRule[] => [
     use: [
       {
         loader: MiniCssExtractPlugin.loader,
-        options: {
-          hmr: dev,
-        },
+        // options: {
+        //   hmr: dev,
+        // },
       },
       'css-loader',
       'postcss-loader',
