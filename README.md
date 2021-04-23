@@ -9,8 +9,8 @@
 </p>
 
 <p align=center>
-  <a href="https://github.com/planette/componette/actions"><img src="https://badgen.net/github/checks/planette/componette/master?tracy=300"></a>
-  <a href="https://github.com/planette/componette"><img src="https://badgen.net/github/license/planette/componette"></a>
+  <a href="https://github.com/contributte/componette-site/actions"><img src="https://badgen.net/github/checks/contributte/componette-site/master?tracy=300"></a>
+  <a href="https://github.com/contributte/componette-site"><img src="https://badgen.net/github/license/contributte/componette-site"></a>
   <a href="https://bit.ly/ctteg"><img src="https://badgen.net/badge/support/gitter/cyan"></a>
   <a href="https://bit.ly/cttfo"><img src="https://badgen.net/badge/support/forum/yellow"></a>
   <a href="https://contributte.org/partners.html"><img src="https://badgen.net/badge/sponsor/donations/F96854"></a>
@@ -34,7 +34,7 @@ Website 🚀 <a href="https://componette.org">componette.org</a> | Contact 👨�
 
 ### Backend
 
-- Clone this repo (`git@github.com:planette/componette.git`).
+- Clone this repo (`git@github.com:contributte/componette-site.git`).
 - Rename `app/config/config.local.sample` to `config.local.neon` and fill parameters (database, github token, etc).
 - Run `composer install`.
 - Run migration via `bin/console migrations:continue` follow steps.

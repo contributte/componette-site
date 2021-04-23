@@ -69,10 +69,10 @@ final class RssFeed extends BaseControl
 		$items = [];
 		foreach ($this->addons as $addon) {
 			$items[] = $item = (object) [
-				'guid' => sprintf('%s@componette.com', $addon->id),
+				'guid' => sprintf('%s@componette.org', $addon->id),
 				'link' => $this->presenter->link('//:Front:Portal:Addon:detail', ['slug' => $addon->id, 'utm_source' => 'rss', 'utm_medium' => 'rss', 'utm_campaign' => 'rss']),
 				'time' => $addon->createdAt->setTimezone(new DateTimeZone('UTC')),
-				'author' => sprintf('noreply@componette.com (%s)', $addon->author),
+				'author' => sprintf('noreply@componette.org (%s)', $addon->author),
 				'content' => $addon->github && $addon->github->contentHtml,
 			];
 

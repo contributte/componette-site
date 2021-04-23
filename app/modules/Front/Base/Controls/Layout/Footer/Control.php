@@ -40,7 +40,7 @@ class Control extends BaseRenderControl
 	private function socialLinks(): array
 	{
 		return [
-			new SocialLink('GitHub', 'https://github.com/planette/componette', 'github-fill'),
+			new SocialLink('GitHub', 'https://github.com/contributte/componette-site', 'github-fill'),
 			new SocialLink('Twitter', 'https://twitter.com/componette', 'twitter-fill'),
 			new SocialLink('Slack', 'https://pehapkari.slack.com', 'slack-fill'),
 		];

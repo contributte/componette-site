@@ -1,5 +1,5 @@
 {
-	"name": "planette/componette",
+	"name": "contributte/componette-site",
 	"description": "Addons, plugins and components for Nette Framework",
 	"keywords": [
 		"nette",
@@ -7,7 +7,7 @@
 		"addons",
 		"extensions"
 	],
-	"homepage": "https://componette.com",
+	"homepage": "https://componette.org",
 	"type": "project",
 	"license": [
 		"MIT"
@@ -19,7 +19,7 @@
 		},
 		{
 			"name": "Componette Contributors",
-			"homepage": "https://github.com/componette/componette.com/graphs/contributors"
+			"homepage": "https://github.com/contributte/contributte-site/graphs/contributors"
 		}
 	],
 	"config": {

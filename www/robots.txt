@@ -1,2 +1,2 @@
 # Componette
-Sitemap: https://componette.com/sitemap.xml
+Sitemap: https://componette.org/sitemap.xml
