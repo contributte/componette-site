@@ -1,4 +1,4 @@
-FROM php:7.3-fpm-alpine
+FROM php:8.0-fpm-alpine
 
 # Install application dependencies
 RUN apk add --no-cache curl bash
