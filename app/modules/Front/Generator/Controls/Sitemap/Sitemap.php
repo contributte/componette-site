@@ -28,13 +28,13 @@ final class Sitemap extends BaseControl
 
 		// Build static urls
 		$urls[] = [
-			'loc' => $this->presenter->link('//:Front:Portal:Home:default'),
+			'loc' => $this->presenter->link('//:Front:Home:default'),
 			'priority' => 1,
 			'change' => 'hourly',
 		];
 
 		$urls[] = [
-			'loc' => $this->presenter->link('//:Front:Portal:Index:all'),
+			'loc' => $this->presenter->link('//:Front:Index:all'),
 			'priority' => 0.9,
 			'change' => 'daily',
 		];
@@ -43,7 +43,7 @@ final class Sitemap extends BaseControl
 		$authors = $this->findAuthors();
 		foreach ($authors as $addon) {
 			$urls[] = [
-				'loc' => $this->presenter->link('//:Front:Portal:Index:author', ['slug' => $addon->author]),
+				'loc' => $this->presenter->link('//:Front:Index:author', ['slug' => $addon->author]),
 				'priority' => 0.6,
 				'change' => 'weekly',
 			];
@@ -53,7 +53,7 @@ final class Sitemap extends BaseControl
 		$addons = $this->findAddons();
 		foreach ($addons as $addon) {
 			$urls[] = [
-				'loc' => $this->presenter->link('//:Front:Portal:Addon:detail', ['slug' => $addon->id]),
+				'loc' => $this->presenter->link('//:Front:Addon:detail', ['slug' => $addon->id]),
 				'priority' => 0.5,
 				'change' => 'weekly',
 			];
@@ -63,7 +63,7 @@ final class Sitemap extends BaseControl
 		$tags = $this->findTags();
 		foreach ($tags as $tag) {
 			$urls[] = [
-				'loc' => $this->presenter->link('//:Front:Portal:Index:tag', ['tag' => $tag->name]),
+				'loc' => $this->presenter->link('//:Front:Index:tag', ['tag' => $tag->name]),
 				'priority' => 0.3,
 				'change' => 'yearly',
 			];

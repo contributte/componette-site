@@ -2,18 +2,48 @@
 
 namespace App\Modules\Front\Home;
 
-use App\Model\UI\Destination;
-use App\Modules\Front\Base\BasePresenter;
+use App\Model\Database\Query\LatestActivityAddonsQuery;
+use App\Model\Database\Query\LatestAddedAddonsQuery;
+use App\Modules\Front\Addon\Controls\FeaturedAddon\FeaturedAddonComponent;
+use App\Modules\Front\Base\BaseAddonPresenter;
+use App\Modules\Front\Base\Controls\AddonList\AddonList;
+use App\Modules\Front\Base\Controls\News\NewsComponent;
+use App\Modules\Front\Base\Controls\ReleaseList\IReleaseListFactory;
+use App\Modules\Front\Base\Controls\ReleaseList\ReleaseList;
+use App\Modules\Front\Base\Controls\Search\Search;
+use App\Modules\Front\Base\Controls\Tags\TagsComponent;
 
-final class HomePresenter extends BasePresenter
+final class HomePresenter extends BaseAddonPresenter
 {
 
-	/**
-	 * Redirect to Portal
-	 */
-	public function actionDefault(): void
+	use NewsComponent;
+	use TagsComponent;
+	use FeaturedAddonComponent;
+
+	/** @var IReleaseListFactory @inject */
+	public $releaseListFactory;
+
+	protected function createComponentSearch(): Search
 	{
-		$this->redirect(Destination::FRONT_PORTAL_HOMEPAGE);
+		$search = parent::createComponentSearch();
+		$search['form']['q']->controlPrototype->autofocus = true;
+
+		return $search;
+	}
+
+	protected function createComponentLatestAdded(): AddonList
+	{
+		return $this->createAddonListControl(new LatestAddedAddonsQuery());
+	}
+
+	protected function createComponentLatestActivity(): AddonList
+	{
+		return $this->createAddonListControl(new LatestActivityAddonsQuery());
+	}
+
+	protected function createComponentLatestReleases(): ReleaseList
+	{
+		return $this->releaseListFactory->create();
 	}
 
 }

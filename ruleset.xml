@@ -1,38 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ruleset name="Componette">
-    <!-- Extending ruleset -->
-    <rule ref="vendor/ninjify/coding-standard/contributte.xml">
-        <exclude name="Generic.Formatting.SpaceAfterCast.NoSpace"/>
-        <exclude name="Squiz.Commenting.FunctionComment.SpacingAfter"/>
-        <exclude name="Squiz.Commenting.VariableComment.Missing"/>
-        <exclude name="SlevomatCodingStandard.ControlStructures.EarlyExit"/>
-        <exclude name="SlevomatCodingStandard.ControlStructures.RequireTernaryOperator"/>
-        <exclude
-                name="SlevomatCodingStandard.ControlStructures.RequireMultiLineTernaryOperator.MultiLineTernaryOperatorNotUsed"/>
-    </rule>
+	<!-- Extending ruleset -->
+	<rule ref="vendor/ninjify/coding-standard/contributte.xml">
+		<exclude name="Generic.Formatting.SpaceAfterCast.NoSpace"/>
+		<exclude name="Squiz.Commenting.FunctionComment.SpacingAfter"/>
+		<exclude name="Squiz.Commenting.VariableComment.Missing"/>
+		<exclude name="SlevomatCodingStandard.ControlStructures.EarlyExit"/>
+		<exclude name="SlevomatCodingStandard.ControlStructures.RequireTernaryOperator"/>
+		<exclude
+				name="SlevomatCodingStandard.ControlStructures.RequireMultiLineTernaryOperator.MultiLineTernaryOperatorNotUsed"/>
+	</rule>
 
-    <!-- Project rules -->
-    <rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
-        <properties>
-            <property name="rootNamespaces" type="array" value="
+	<!-- Project rules -->
+	<rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
+		<properties>
+			<property name="rootNamespaces" type="array" value="
 				app/model=>App\Model,
-				app/modules/Admin=>App\Modules\Admin,
 				app/modules/Front=>App\Modules\Front,
-				app/modules/Front.Api=>App\Modules\Front\Api,
-				app/modules/Front.Portal=>App\Modules\Front\Portal,
 				tests=>Tests
 			"/>
-        </properties>
-    </rule>
+		</properties>
+	</rule>
 
-    <rule ref="SlevomatCodingStandard.Commenting.DocCommentSpacing.IncorrectLinesCountAfterLastContent">
-        <exclude-pattern>/app/model/Database/ORM</exclude-pattern>
-    </rule>
+	<rule ref="SlevomatCodingStandard.Commenting.DocCommentSpacing.IncorrectLinesCountAfterLastContent">
+		<exclude-pattern>/app/model/Database/ORM</exclude-pattern>
+	</rule>
 
-    <rule ref="SlevomatCodingStandard.Commenting.DocCommentSpacing.IncorrectLinesCountBetweenDifferentAnnotationsTypes">
-        <exclude-pattern>/app/model/Database/ORM</exclude-pattern>
-    </rule>
+	<rule ref="SlevomatCodingStandard.Commenting.DocCommentSpacing.IncorrectLinesCountBetweenDifferentAnnotationsTypes">
+		<exclude-pattern>/app/model/Database/ORM</exclude-pattern>
+	</rule>
 
-    <!-- Exclude folders -->
-    <exclude-pattern>/tests/tmp</exclude-pattern>
+	<!-- Exclude folders -->
+	<exclude-pattern>/tests/tmp</exclude-pattern>
 </ruleset>

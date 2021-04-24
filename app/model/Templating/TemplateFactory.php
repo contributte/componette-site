@@ -2,7 +2,7 @@
 
 namespace App\Model\Templating;
 
-use App\Model\Portal;
+use App\Model\AppParams;
 use App\Model\Templating\Filters\Helpers;
 use App\Model\Templating\Filters\HelpersExecutor;
 use Nette\Application\UI\Control;
@@ -12,10 +12,10 @@ use Nette\Bridges\ApplicationLatte\TemplateFactory as NTemplateFactory;
 final class TemplateFactory extends NTemplateFactory
 {
 
-	/** @var Portal @inject */
-	public $portal;
+	/** @var AppParams @inject */
+	public $appParams;
 
-	/** @var Portal @inject */
+	/** @var AppParams @inject */
 	public $rawgit;
 
 	public function createTemplate(Control $control = null, string $class = null): Template
@@ -28,7 +28,7 @@ final class TemplateFactory extends NTemplateFactory
 		$helpers->addHelper('isPhp', [Helpers::class, 'isPhp']);
 
 		// Common variables
-		$template->_debug = $this->portal->isDebug();
+		$template->_debug = $this->appParams->isDebug();
 
 		return $template;
 	}

@@ -34,6 +34,6 @@ services:
 	- {class: App\Model\Routing\RouterFactory, inject: true}
 	routing.router: @App\Model\Routing\RouterFactory::create()
 
-	# Portal ===============================================
-	- App\Model\Portal(@container::parameters)
+	# App ==================================================
+	- App\Model\AppParams(@container::parameters)
 	- App\Model\Statistics

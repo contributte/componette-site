@@ -27,7 +27,7 @@ class Control extends BaseRenderControl
 			->template
 			->setParameters(
 				[
-					'home' => $this->presenter->link(':Front:Portal:Home:'),
+					'home' => $this->presenter->link(':Front:Home:'),
 					'logo' => $this->formatAssetName->process('logo-small.svg'),
 					'socialLinks' => new SocialLinksProps([SocialLinksProps::LINKS => $this->socialLinks()]),
 				]

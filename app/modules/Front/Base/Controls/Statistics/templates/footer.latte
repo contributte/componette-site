@@ -18,7 +18,7 @@
     <section class="col-md-4">
         <h4>Most popular</h4>
         <ul n:foreach="$popular as $addon">
-            <li><a href="{plink :Front:Portal:Addon:detail, slug => $addon->id}">{$addon->fullname}</a></li>
+            <li><a href="{plink :Front:Addon:detail, slug => $addon->id}">{$addon->fullname}</a></li>
         </ul>
     </section>
     {/cache}
@@ -28,7 +28,7 @@
     <section class="col-md-4">
         <h4>Newest</h4>
         <ul n:foreach="$newest as $addon">
-            <li><a href="{plink :Front:Portal:Addon:detail, slug => $addon->id}">{$addon->fullname}</a></li>
+            <li><a href="{plink :Front:Addon:detail, slug => $addon->id}">{$addon->fullname}</a></li>
         </ul>
     </section>
     {/cache}

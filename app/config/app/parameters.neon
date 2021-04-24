@@ -5,7 +5,7 @@ parameters:
 	system:
 		error:
 			email: null
-			presenter: Front:Portal:Error
+			presenter: Front:Error
 
 	github:
 		token: faketoken

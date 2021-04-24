@@ -2,7 +2,6 @@
 
 namespace App\Model\Routing;
 
-use App\Model\Routing\RouterHelper;
 use Nette\Application\Routers\Route;
 use Nette\Application\Routers\RouteList;
 use Nette\Http\Request;
@@ -22,12 +21,8 @@ final class RouterFactory
 
 		$router->withModule('Front')
 			->addRoute('sitemap.xml', 'Generator:sitemap')
-			->addRoute('opensearch.xml', 'Generator:opensearch');
-
-		$router->withModule('Api')
-			->addRoute('api/v1/opensearch/suggest', 'OpenSearch:suggest');
-
-		$router->withModule('Portal')
+			->addRoute('opensearch.xml', 'Generator:opensearch')
+			->addRoute('api/v1/opensearch/suggest', 'OpenSearch:suggest')
 			->addRoute('rss/new.xml', 'Rss:newest', Route::ONE_WAY)
 			->addRoute('rss/latest[!.xml]', 'Rss:newest')
 			->addRoute('rss/<author [a-zA-Z0-9\-\.]+>[!.xml]', 'Rss:author')

@@ -64,12 +64,12 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"App\\Model\\": "app/model"
+			"App\\Model\\": "app/model",
+			"App\\Modules\\": "app/modules"
 		}
 	},
 	"autoload-dev": {
 		"classmap": [
-			"app",
 			"tests/cases"
 		]
 	},
