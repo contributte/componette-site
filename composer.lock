@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9be810fe3a46afca4d10fcd4773c422e",
+    "content-hash": "4c3dfe8b7669b07f2cb3ef9ded143c61",
     "packages": [
         {
             "name": "contributte/application",
@@ -3730,6 +3730,52 @@
                 "source": "https://github.com/nette/tester/tree/v2.4.0"
             },
             "time": "2021-03-01T15:27:25+00:00"
+        },
+        {
+            "name": "nextras/orm-phpstan",
+            "version": "v0.6.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nextras/orm-phpstan.git",
+                "reference": "ad59e938e0ce090d4f20910fccb202b910e42a4f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nextras/orm-phpstan/zipball/ad59e938e0ce090d4f20910fccb202b910e42a4f",
+                "reference": "ad59e938e0ce090d4f20910fccb202b910e42a4f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~7.1 || ~8.0",
+                "phpstan/phpstan": "^0.12.29"
+            },
+            "require-dev": {
+                "nette/tester": "^2.3.1",
+                "nextras/orm": "~4.0 || ~5.0@dev"
+            },
+            "type": "phpstan-extension",
+            "extra": {
+                "phpstan": {
+                    "includes": [
+                        "extension.neon"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nextras\\OrmPhpStan\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHPStan extension for Nextras Orm",
+            "support": {
+                "issues": "https://github.com/nextras/orm-phpstan/issues",
+                "source": "https://github.com/nextras/orm-phpstan/tree/v0.6.3"
+            },
+            "time": "2021-04-09T21:56:59+00:00"
         },
         {
             "name": "ninjify/coding-standard",
