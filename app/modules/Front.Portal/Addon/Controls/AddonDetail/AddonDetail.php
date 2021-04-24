@@ -10,7 +10,6 @@ use App\Modules\Front\Portal\Base\Controls\AddonList\Description\DescriptionComp
 use App\Modules\Front\Portal\Base\Controls\AddonList\Name\NameComponent;
 use App\Modules\Front\Portal\Base\Controls\AddonList\Statistics\StatisticsComponent;
 use App\Modules\Front\Portal\Base\Controls\AddonMeta\AddonMeta;
-use Nette\Utils\DateTime;
 
 final class AddonDetail extends BaseControl
 {
@@ -60,22 +59,6 @@ final class AddonDetail extends BaseControl
 	public function renderSidebar(): void
 	{
 		$this->template->addon = $this->addon;
-		$totalDownloads = [];
-		// Calculate total downloads
-		$stats = $this->addon->composerLatestStatistics;
-		if ($stats && isset($stats->json['labels'])) {
-			foreach ($stats->json['labels'] as $key => $label) {
-				$totalDownloads[] = [
-					'x' => DateTime::from($label)->format('c'),
-					'y' => ((array) $stats->json['values'])[$key],
-				];
-			}
-
-			$this->template->totalDownloads = json_encode($totalDownloads);
-		} else {
-			$this->template->totalDownloads = null;
-		}
-
 		$this->template->setFile(__DIR__ . '/templates/sidebar.latte');
 		$this->template->render();
 	}
