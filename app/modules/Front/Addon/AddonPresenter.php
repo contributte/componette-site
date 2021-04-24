@@ -6,9 +6,9 @@ use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Facade\AddonFacade;
 use App\Modules\Front\Addon\Controls\AddonDetail\AddonDetail;
 use App\Modules\Front\Addon\Controls\AddonDetail\IAddonDetailFactory;
-use App\Modules\Front\Base\BasePresenter;
+use App\Modules\Front\Base\BaseAddonPresenter;
 
-final class AddonPresenter extends BasePresenter
+final class AddonPresenter extends BaseAddonPresenter
 {
 
 	/** @var AddonFacade @inject */
