@@ -19,7 +19,6 @@ final class OpenSearchPresenter extends BasePresenter
 	{
 		if (!$q) {
 			$this->sendJson([]);
-			return;
 		}
 
 		$query = new OpenSearchQuery();
@@ -33,7 +32,7 @@ final class OpenSearchPresenter extends BasePresenter
 		foreach ($addons as $addon) {
 			$terms[] = [
 				'completion' => $addon->fullname,
-				'description' => $addon->github !== NULL ? $addon->github->description : '',
+				'description' => $addon->github !== null ? $addon->github->description : '',
 				'link' => $this->link(':Front:Addon:detail', $addon->id),
 			];
 		}
