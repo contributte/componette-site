@@ -38,10 +38,11 @@ class Control extends BaseRenderControl
 	private function links(): array
 	{
 		return [
-			new MenuLink('Planette', 'https://pla.nette.org'),
+			new MenuLink('Nette', 'https://pla.nette.org'),
 			new MenuLink('Forum', 'https://forum.nette.org'),
 			new MenuLink('Blog', 'https://blog.nette.org'),
-			new MenuLink('Donate', 'https://nette.org/donate'),
+			new MenuLink('Contributte', 'https://contributte.org'),
+			new MenuLink('Sponsorship', 'https://contributte.org/partners.html'),
 		];
 	}
 
