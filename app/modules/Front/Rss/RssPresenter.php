@@ -14,7 +14,14 @@ final class RssPresenter extends BasePresenter
 
 	public function renderAuthor(string $author): void
 	{
+		$this->getHttpResponse()->setContentType('application/rss+xml', 'utf-8');
+
 		$this->template->author = $author;
+	}
+
+	public function renderNewest(): void
+	{
+		$this->getHttpResponse()->setContentType('application/rss+xml', 'utf-8');
 	}
 
 	protected function createComponentAuthor(): RssFeed

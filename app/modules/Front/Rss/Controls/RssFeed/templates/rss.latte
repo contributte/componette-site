@@ -1,4 +1,3 @@
-{contentType application/rss+xml; charset=utf-8}
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
 	<channel>
@@ -8,7 +7,8 @@
 		<language>en-us</language>
 		<description>{$description}</description>
 		<pubDate>{$time|date:\DateTime::RSS}</pubDate>
-		<item n:foreach="$items as $item">
+		{foreach $items as $item}
+		<item>
 			<guid isPermaLink="false">{$item->guid}</guid>
 			<title>{$item->title}</title>
 			<link>{$item->link}</link>
@@ -17,5 +17,6 @@
 			<description>{$item->content|striptags}</description>
 			<content:encoded><![CDATA[{$item->content|noescape}]]></content:encoded>
 		</item>
+		{/foreach}
 	</channel>
 </rss>
