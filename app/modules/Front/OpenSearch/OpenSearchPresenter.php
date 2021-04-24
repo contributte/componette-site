@@ -15,8 +15,13 @@ final class OpenSearchPresenter extends BasePresenter
 	/** @var EntityModel @inject */
 	public $em;
 
-	public function actionSuggest(string $q): void
+	public function actionSuggest(?string $q): void
 	{
+		if (!$q) {
+			$this->sendJson([]);
+			return;
+		}
+
 		$query = new OpenSearchQuery();
 		$query->byQuery($q);
 
@@ -28,7 +33,7 @@ final class OpenSearchPresenter extends BasePresenter
 		foreach ($addons as $addon) {
 			$terms[] = [
 				'completion' => $addon->fullname,
-				'description' => $addon->github !== null ? $addon->github->description : '',
+				'description' => $addon->github !== NULL ? $addon->github->description : '',
 				'link' => $this->link(':Front:Addon:detail', $addon->id),
 			];
 		}
