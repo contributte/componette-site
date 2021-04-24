@@ -1,13 +1,13 @@
 <?php declare(strict_types = 1);
 
-namespace App\Model\Routing\Helpers;
+namespace App\Model\Routing;
 
 use App\Model\Caching\CacheKeys;
 use App\Model\Database\ORM\Addon\AddonRepository;
 use Contributte\Cache\CacheFactory;
 use Nette\Caching\Cache;
 
-final class AddonsHelper
+final class RouterHelper
 {
 
 	/** @var AddonRepository */

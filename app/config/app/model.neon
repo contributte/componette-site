@@ -30,9 +30,9 @@ services:
 	- App\Model\Caching\CacheCleaner
 
 	# Routing ==============================================
-	- App\Model\Routing\Helpers\AddonsHelper
+	- App\Model\Routing\RouterHelper
 	- {class: App\Model\Routing\RouterFactory, inject: true}
-	routing.router: @App\Model\Routing\RouterFactory::create(%consoleMode%)
+	routing.router: @App\Model\Routing\RouterFactory::create()
 
 	# Portal ===============================================
 	- App\Model\Portal(@container::parameters)
