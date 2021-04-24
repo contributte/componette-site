@@ -70,3 +70,13 @@ qa-php: codesniffer phpstan
 qa-ts: ts prettier
 
 qa: codesniffer phpstan ts prettier
+
+
+# Deploy
+
+deploy:
+	npm ci
+	make build
+	composer install --prefer-dist -o --no-dev
+	bin/console migrations:continue
+	rm -rf temp/*
