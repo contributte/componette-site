@@ -1,4 +1,4 @@
-import deepmerge from 'deepmerge';
+import merge from 'webpack-merge';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { Configuration, ProvidePlugin } from 'webpack';
 
@@ -12,7 +12,7 @@ const baseConfig: Configuration = {
   },
   target: 'web',
   plugins: [
-    new MiniCssExtractPlugin({ filename: '[name].css?[hash]' }) as any, // @todo remove any
+    new MiniCssExtractPlugin({ filename: '[name].css?[hash]' }),
     helper.createManifestPlugin(),
     new ProvidePlugin({
       $: 'jquery',
@@ -25,8 +25,6 @@ const baseConfig: Configuration = {
 };
 
 const makeConfig = (config: Configuration): Configuration =>
-  deepmerge(baseConfig, config, {
-    arrayMerge: (target, source) => [...source, ...target],
-  });
+  merge(baseConfig, config);
 
 export default makeConfig;

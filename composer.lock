@@ -430,34 +430,31 @@
         },
         {
             "name": "contributte/http",
-            "version": "v0.4.0",
+            "version": "v0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/contributte/http.git",
-                "reference": "b2d5b4144fbc23076f7e53df996afeb1a47639d5"
+                "reference": "3f926d0e0ec0807e68714149df55ae0e8e4888a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contributte/http/zipball/b2d5b4144fbc23076f7e53df996afeb1a47639d5",
-                "reference": "b2d5b4144fbc23076f7e53df996afeb1a47639d5",
+                "url": "https://api.github.com/repos/contributte/http/zipball/3f926d0e0ec0807e68714149df55ae0e8e4888a4",
+                "reference": "3f926d0e0ec0807e68714149df55ae0e8e4888a4",
                 "shasum": ""
             },
             "require": {
-                "nette/http": "~3.0.1",
+                "nette/http": "^3.0.1",
                 "php": ">=7.2"
             },
-            "conflict": {
-                "nette/di": "<3.0.0"
-            },
             "require-dev": {
-                "nette/di": "~3.0.0",
+                "nette/di": "^3.0.0",
                 "ninjify/nunjuck": "^0.4",
                 "ninjify/qa": "^0.12",
                 "phpstan/phpstan": "^0.12",
                 "phpstan/phpstan-deprecation-rules": "^0.12",
                 "phpstan/phpstan-nette": "^0.12",
                 "phpstan/phpstan-strict-rules": "^0.12",
-                "tracy/tracy": "~2.5.1"
+                "tracy/tracy": "^2.5.1"
             },
             "suggest": {
                 "nette/di": "to use CompilerExtensions"
@@ -495,9 +492,19 @@
             ],
             "support": {
                 "issues": "https://github.com/contributte/http/issues",
-                "source": "https://github.com/contributte/http/tree/v0.4.0"
+                "source": "https://github.com/contributte/http/tree/v0.4.1"
             },
-            "time": "2020-12-15T15:52:06+00:00"
+            "funding": [
+                {
+                    "url": "https://contributte.org/partners.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/f3l1x",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-03-12T22:31:30+00:00"
         },
         {
             "name": "contributte/latte",
@@ -1364,29 +1371,30 @@
         },
         {
             "name": "nette/forms",
-            "version": "v3.0.7",
+            "version": "v3.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/forms.git",
-                "reference": "cfe069b5880e07930e92058b774f22e491aa7b0e"
+                "reference": "bfbef39b1f07dc5cdfeb7dba4843ee086ca0c065"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/forms/zipball/cfe069b5880e07930e92058b774f22e491aa7b0e",
-                "reference": "cfe069b5880e07930e92058b774f22e491aa7b0e",
+                "url": "https://api.github.com/repos/nette/forms/zipball/bfbef39b1f07dc5cdfeb7dba4843ee086ca0c065",
+                "reference": "bfbef39b1f07dc5cdfeb7dba4843ee086ca0c065",
                 "shasum": ""
             },
             "require": {
                 "nette/component-model": "^3.0",
-                "nette/http": "^3.0",
-                "nette/utils": "^3.0",
-                "php": ">=7.1"
+                "nette/http": "^3.1",
+                "nette/utils": "^3.2.1",
+                "php": ">=7.2 <8.1"
             },
             "conflict": {
+                "latte/latte": ">=3.0",
                 "nette/di": "<3.0-stable"
             },
             "require-dev": {
-                "latte/latte": "^2.8",
+                "latte/latte": "^2.10.2",
                 "nette/application": "^3.0",
                 "nette/di": "^3.0",
                 "nette/tester": "^2.0",
@@ -1396,7 +1404,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "3.1-dev"
                 }
             },
             "autoload": {
@@ -1420,7 +1428,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "?? Nette Forms: generating, validating and processing secure forms in PHP. Handy API, fully customizable, server & client side validation and mature design.",
+            "description": "📝 Nette Forms: generating, validating and processing secure forms in PHP. Handy API, fully customizable, server & client side validation and mature design.",
             "homepage": "https://nette.org",
             "keywords": [
                 "Forms",
@@ -1432,30 +1440,31 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/forms/issues",
-                "source": "https://github.com/nette/forms/tree/v3.0.7"
+                "source": "https://github.com/nette/forms/tree/v3.1.3"
             },
-            "time": "2020-11-02T15:52:20+00:00"
+            "time": "2021-03-03T22:13:44+00:00"
         },
         {
             "name": "nette/http",
-            "version": "v3.0.5",
+            "version": "v3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/http.git",
-                "reference": "24647c6c52a9ed008b2d39494a8c4fc23c48e487"
+                "reference": "c903d0f0b793ed2045a442f338e756e1d3954c22"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/http/zipball/24647c6c52a9ed008b2d39494a8c4fc23c48e487",
-                "reference": "24647c6c52a9ed008b2d39494a8c4fc23c48e487",
+                "url": "https://api.github.com/repos/nette/http/zipball/c903d0f0b793ed2045a442f338e756e1d3954c22",
+                "reference": "c903d0f0b793ed2045a442f338e756e1d3954c22",
                 "shasum": ""
             },
             "require": {
                 "nette/utils": "^3.1",
-                "php": ">=7.1"
+                "php": ">=7.2 <8.1"
             },
             "conflict": {
-                "nette/di": "<3.0.3"
+                "nette/di": "<3.0.3",
+                "nette/schema": "<1.2"
             },
             "require-dev": {
                 "nette/di": "^3.0",
@@ -1465,13 +1474,12 @@
                 "tracy/tracy": "^2.4"
             },
             "suggest": {
-                "ext-fileinfo": "to detect type of uploaded files",
-                "nette/security": "allows use Nette\\Http\\UserStorage"
+                "ext-fileinfo": "to detect type of uploaded files"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "3.1-dev"
                 }
             },
             "autoload": {
@@ -1510,9 +1518,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/http/issues",
-                "source": "https://github.com/nette/http/tree/v3.0.5"
+                "source": "https://github.com/nette/http/tree/v3.1.1"
             },
-            "time": "2020-11-02T15:42:36+00:00"
+            "time": "2021-01-25T20:15:01+00:00"
         },
         {
             "name": "nette/neon",
@@ -2959,21 +2967,21 @@
         },
         {
             "name": "symfony/service-contracts",
-            "version": "v2.2.0",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "d15da7ba4957ffb8f1747218be9e1a121fd298a1"
+                "reference": "f040a30e04b57fbcc9c6cbcf4dbaa96bd318b9bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/d15da7ba4957ffb8f1747218be9e1a121fd298a1",
-                "reference": "d15da7ba4957ffb8f1747218be9e1a121fd298a1",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/f040a30e04b57fbcc9c6cbcf4dbaa96bd318b9bb",
+                "reference": "f040a30e04b57fbcc9c6cbcf4dbaa96bd318b9bb",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
-                "psr/container": "^1.0"
+                "psr/container": "^1.1"
             },
             "suggest": {
                 "symfony/service-implementation": ""
@@ -2981,7 +2989,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev"
+                    "dev-main": "2.4-dev"
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -3018,7 +3026,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/service-contracts/tree/master"
+                "source": "https://github.com/symfony/service-contracts/tree/v2.4.0"
             },
             "funding": [
                 {
@@ -3034,7 +3042,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-07T11:33:47+00:00"
+            "time": "2021-04-01T10:43:52+00:00"
         },
         {
             "name": "symfony/string",

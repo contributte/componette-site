@@ -17,7 +17,7 @@ build:
 	$(ts-webpack) NODE_ENV=production $(node)/webpack --config $(webpack)/webpack.prod.ts --progress
 
 dev:
-	$(ts-webpack) $(node)/webpack-dev-server --config $(webpack)/webpack.dev.ts
+	$(ts-webpack) $(node)/webpack serve --config $(webpack)/webpack.dev.ts
 
 di: reset
 	bin/extract-services

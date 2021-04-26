@@ -47,7 +47,7 @@ class Addon extends AbstractEntity
 	public const STATE_QUEUED = 'QUEUED';
 
 	// Github scheme
-	public const GITHUB_REGEX = '^(?:(?:https?:\/\/)?(?:www\.)?github\.com\/)?([\w\d\-\.]+)\/([\w\d\-\.]+)$';
+	public const GITHUB_REGEX = '^(?:(?:https?:\/\/)?(?:www\.)?github\.com\/)?([\w\d\-\.]+)\/([\w\d\-\.]+)/?$';
 
 	protected function getterFullname(): string
 	{
