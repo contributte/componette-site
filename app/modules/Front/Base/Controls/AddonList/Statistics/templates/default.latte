@@ -10,7 +10,7 @@
     </div>
 </div>
 <div n:class="'flex flex-wrap', ($props->inline || $props->featured) ? 'w-full pl-12 sm:w-4/5' : 'justify-between px-5 py-3 border-t lg:px-8 lg:py-4', $props->featured ? 'md:pl-4 sm:pl-4', ($props->inline && !$props->featured) ? 'md:w-2/5'">
-    <div n:class="'flex items-center flex-1 text-xs text-blue-700', $props->inline ? 'lg:mb-5 md:justify-end'">
+    <div n:class="'flex items-center flex-1 text-xs text-blue-700', $props->inline ? 'mb-3 lg:mb-5 md:justify-end'">
         <div class="inline-flex items-center justify-center w-6 h-6 mr-2 bg-teal-100 rounded-full">
             {$icon->render('download-cloud-fill', 'system')}
         </div>
@@ -24,7 +24,7 @@
             {/if}
         </span>
     </div>
-    <div n:class="'flex items-center flex-1 text-xs text-blue-700', $props->inline ? 'lg:mb-5 md:justify-end'">
+    <div n:class="'flex items-center flex-1 text-xs text-blue-700', $props->inline ? 'mb-3 lg:mb-5 md:justify-end'">
         <div class="inline-flex items-center justify-center w-6 h-6 mr-2 bg-teal-100 rounded-full">
             {$icon->render('star-fill', 'system')}
         </div>
@@ -32,7 +32,7 @@
             {$addon->github->stars|count}
         </span>
     </div>
-    <div n:if="!$props->inline" n:class="'flex items-center flex-1 text-xs text-blue-700', $props->inline ? 'lg:mb-5 md:justify-end'">
+    <div n:if="!$props->inline" n:class="'flex items-center flex-1 text-xs text-blue-700', $props->inline ? 'mb-3 lg:mb-5 md:justify-end'">
         <div class="inline-flex items-center justify-center w-6 h-6 mr-2 bg-teal-100 rounded-full">
             {$icon->render('bug-fill', 'development')}
         </div>
@@ -40,7 +40,7 @@
             {$addon->github->issues|count}
         </span>
     </div>
-    <div n:class="'flex items-center flex-1 text-xs text-blue-700', $props->inline ? 'lg:mb-5 md:justify-end'">
+    <div n:class="'flex items-center flex-1 text-xs text-blue-700', $props->inline ? 'mb-3 lg:mb-5 md:justify-end'">
         <div class="inline-flex items-center justify-center w-6 h-6 mr-2 bg-teal-100 rounded-full">
             {$icon->render('flashlight-fill', 'weather')}
         </div>
