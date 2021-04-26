@@ -18,7 +18,7 @@ final class ErrorPresenter extends BasePresenter
 		if ($exception instanceof BadRequestException) {
 			$code = $exception->getCode();
 			// load template 403.latte or 404.latte or ... 4xx.latte
-			$this->setView((string) (in_array($code, [403, 404, 405, 410, 500]) ? $code : '4xx'));
+			$this->setView((string)(in_array($code, [403, 404, 405, 410, 500]) ? $code : '4xx'));
 			// log to access.log
 			$this->logger->log(sprintf(
 				'HTTP code %s: %s in %s:%s',

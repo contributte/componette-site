@@ -3,29 +3,20 @@
 namespace App\Modules\Front\Base;
 
 use App\Model\Database\Query\QueryObject;
-use App\Model\Services\Search\Search;
 use App\Model\UI\Destination;
 use App\Modules\Front\Base\Controls\AddonList\AddonList;
 use App\Modules\Front\Base\Controls\AddonList\IAddonListFactory;
 use App\Modules\Front\Base\Controls\AddonModal\AddonModal;
 use App\Modules\Front\Base\Controls\AddonModal\IAddonModalFactory;
-use App\Modules\Front\Base\Controls\Search\ISearchFactory;
-use App\Modules\Front\Base\Controls\Search\Search as SearchComponent;
 
 abstract class BaseAddonPresenter extends BasePresenter
 {
-
-	/** @var ISearchFactory @inject */
-	public $searchFactory;
 
 	/** @var IAddonModalFactory @inject */
 	public $addonModalFactory;
 
 	/** @var IAddonListFactory @inject */
 	public $addonListFactory;
-
-	/** @var Search @inject */
-	public $search;
 
 	/**
 	 * Common render method
@@ -35,20 +26,6 @@ abstract class BaseAddonPresenter extends BasePresenter
 		parent::beforeRender();
 
 		$this->template->search = $this->search;
-	}
-
-	protected function createComponentSearch(): SearchComponent
-	{
-		$search = $this->searchFactory->create();
-
-		$search['form']->setMethod('GET');
-		$search['form']->setAction($this->link(Destination::FRONT_SEARCH));
-
-		$search['form']['q']
-			->controlPrototype
-			->data('handle', $this->link(Destination::FRONT_SEARCH, ['q' => '_QUERY_']));
-
-		return $search;
 	}
 
 	protected function createComponentModal(): AddonModal
