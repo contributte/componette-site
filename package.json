@@ -33,7 +33,7 @@
     "postcss": "^8.2.10",
     "postcss-loader": "^4.2.0",
     "prettier": "^2.0.5",
-    "tailwindcss": "^1.4.6",
+    "tailwindcss": "^2.1.2",
     "tailwindcss-gradients": "^3.0.0",
     "terser-webpack-plugin": "^4.2.3",
     "ts-loader": "^8.1.0",
