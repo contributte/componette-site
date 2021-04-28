@@ -12,11 +12,14 @@ use App\Modules\Front\Base\Controls\Layout\Header\HeaderComponent;
 use App\Modules\Front\Base\Controls\Search\ISearchFactory;
 use App\Modules\Front\Base\Controls\Search\Search as SearchComponent;
 use Contributte\Application\UI\Presenter\StructuredTemplates;
+use Nette\Bridges\ApplicationLatte\DefaultTemplate;
 use Wavevision\NetteWebpack\InjectResolveEntryChunks;
 use Wavevision\NetteWebpack\UI\Components\Assets\AssetsComponent;
 
 /**
  * Base presenter for all front-end presenters.
+ *
+ * @property-read DefaultTemplate $template
  */
 abstract class BasePresenter extends AbstractPresenter
 {
