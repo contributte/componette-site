@@ -28,7 +28,7 @@
     "file-loader": "^6.0.0",
     "image-webpack-loader": "^7.0.1",
     "mini-css-extract-plugin": "^1.6.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "optimize-css-assets-webpack-plugin": "^6.0.0",
     "postcss": "^8.2.15",
     "postcss-loader": "^4.2.0",
     "prettier": "^2.3.0",
