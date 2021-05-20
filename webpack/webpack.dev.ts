@@ -1,5 +1,3 @@
-import { HotModuleReplacementPlugin } from 'webpack';
-
 import makeConfig from './webpack.config';
 import { helper } from './utils';
 
@@ -21,5 +19,4 @@ export default makeConfig({
     filename: '[name].js?[hash]',
     publicPath: helper.getDevServerPublicPath(),
   },
-  plugins: [new HotModuleReplacementPlugin()],
 });

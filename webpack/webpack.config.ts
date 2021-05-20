@@ -8,11 +8,14 @@ import makeLoaders from './loaders';
 const baseConfig: Configuration = {
   entry: makeEntry(),
   module: {
-    rules: makeLoaders(DEV),
+    rules: makeLoaders(),
   },
   target: 'web',
   plugins: [
-    new MiniCssExtractPlugin({ filename: '[name].css?[hash]' }),
+    new MiniCssExtractPlugin({
+      filename: `[name].css${DEV ? '' : '?[hash]'}`,
+      chunkFilename: `[id].css${DEV ? '' : '?[hash]'}`,
+    }),
     helper.createManifestPlugin(),
     new ProvidePlugin({
       $: 'jquery',
