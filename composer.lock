@@ -4161,16 +4161,16 @@
         },
         {
             "name": "phpstan/phpstan-nette",
-            "version": "0.12.19",
+            "version": "0.12.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan-nette.git",
-                "reference": "4be612eb635f69e8e7b8837a2b39b4c68a03e5a7"
+                "reference": "c24d2bb6292b81cf3878b2892c49f9277e8789d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan-nette/zipball/4be612eb635f69e8e7b8837a2b39b4c68a03e5a7",
-                "reference": "4be612eb635f69e8e7b8837a2b39b4c68a03e5a7",
+                "url": "https://api.github.com/repos/phpstan/phpstan-nette/zipball/c24d2bb6292b81cf3878b2892c49f9277e8789d0",
+                "reference": "c24d2bb6292b81cf3878b2892c49f9277e8789d0",
                 "shasum": ""
             },
             "require": {
@@ -4218,9 +4218,9 @@
             "description": "Nette Framework class reflection extension for PHPStan",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan-nette/issues",
-                "source": "https://github.com/phpstan/phpstan-nette/tree/0.12.19"
+                "source": "https://github.com/phpstan/phpstan-nette/tree/0.12.21"
             },
-            "time": "2021-05-19T15:45:34+00:00"
+            "time": "2021-06-09T08:47:54+00:00"
         },
         {
             "name": "psr/cache",
