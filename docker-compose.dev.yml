@@ -1,20 +1,20 @@
 version: '3.5'
 
 services:
-    app:
-        environment:
-          NETTE_DEBUG: 1
-        volumes:
-            - ./:/srv/app:delegated
+  app:
+    environment:
+      NETTE_DEBUG: 1
+    volumes:
+      - ./:/srv/app:delegated
 
-    db:
-      image: mariadb:10.3  
-      environment:
-        MYSQL_ROOT_PASSWORD: componette
-      volumes:
-        - ./.docker/data/db:/var/lib/mysql
+  db:
+    image: mariadb:10.3
+    environment:
+      MYSQL_ROOT_PASSWORD: componette
+    volumes:
+      - ./.docker/data/db:/var/lib/mysql
 
-    adminer:
-      image: dockette/adminer:dg
-      ports:
-        - 8888:80
+  adminer:
+    image: dockette/adminer:dg
+    ports:
+      - 8888:80

@@ -1,10 +1,12 @@
-name: "main"
+name: "build"
 
 on:
   pull_request:
+    paths-ignore:
+      - ".docs/**"
   push:
     branches:
-      - "master"
+      - "*"
   schedule:
     - cron: "0 8 * * 1" # At 08:00 on Monday
 

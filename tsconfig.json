@@ -4,7 +4,11 @@
     "allowJs": true,
     "esModuleInterop": true,
     "jsx": "react",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": false,
@@ -19,6 +23,12 @@
     "strictPropertyInitialization": false,
     "target": "esnext"
   },
-  "exclude": ["/**/node_modules", "/**/vendor"],
-  "include": ["app/assets/**/*", "webpack/**/*"]
+  "exclude": [
+    "/**/node_modules",
+    "/**/vendor"
+  ],
+  "include": [
+    "app/assets/**/*",
+    "webpack/**/*"
+  ]
 }
