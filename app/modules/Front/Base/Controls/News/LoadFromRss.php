@@ -2,6 +2,7 @@
 
 namespace App\Modules\Front\Base\Controls\News;
 
+use DateTimeInterface;
 use Nette\SmartObject;
 use Nette\Utils\DateTime;
 use SimpleXMLElement;
@@ -37,7 +38,7 @@ class LoadFromRss
 	 */
 	private function date(array $article): ?DateTime
 	{
-		$date = DateTime::createFromFormat(DateTime::RSS, $article['pubDate']);
+		$date = DateTime::createFromFormat(DateTimeInterface::RSS, $article['pubDate']);
 		if ($date) {
 			return $date;
 		}

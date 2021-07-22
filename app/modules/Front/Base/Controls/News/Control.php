@@ -19,7 +19,6 @@ class Control extends BaseRenderControl
 	protected function beforeRender(): void
 	{
 		parent::beforeRender();
-		$this->loadFromRss->process();
 		$this->template->setParameters(
 			[
 				'article' => $this->loadFromRss->process(),
