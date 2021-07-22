@@ -4,11 +4,7 @@
     "allowJs": true,
     "esModuleInterop": true,
     "jsx": "react",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": false,
@@ -21,14 +17,9 @@
     "sourceMap": true,
     "strict": true,
     "strictPropertyInitialization": false,
-    "target": "esnext"
+    "target": "esnext",
+    "typeRoots": ["./node_modules/@types", "./app/assets/types"]
   },
-  "exclude": [
-    "/**/node_modules",
-    "/**/vendor"
-  ],
-  "include": [
-    "app/assets/**/*",
-    "webpack/**/*"
-  ]
+  "exclude": ["/**/node_modules", "/**/vendor"],
+  "include": ["app/assets/**/*", "webpack/**/*"]
 }

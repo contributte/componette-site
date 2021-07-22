@@ -1,7 +1,7 @@
 app=app
 bin=vendor/bin
 node=node_modules/.bin
-prettier-pattern="**/*.{css,js,ts}"
+prettier-pattern="**/*.{css,js,json,md,ts}"
 temp=temp
 tests=tests
 ts-webpack=$(node)/cross-env TS_NODE_PROJECT='webpack/tsconfig.json' TS_NODE_TRANSPILE_ONLY=true
