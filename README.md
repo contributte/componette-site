@@ -20,15 +20,15 @@
 Website 🚀 <a href="https://componette.org">componette.org</a> | Contact 👨🏻‍💻 <a href="https://f3l1x.io">f3l1x.io</a> | Twitter 🐦 <a href="https://twitter.com/xf3l1x">@xf3l1x</a>
 </p>
 
-----
+---
 
 ## Requirements
 
-* PHP 7.4+
-* NodeJS 12+
-* Caddy 0.11+
-* MariaDB 10.3+
-* **Docker** [optionally]
+- PHP 7.4+
+- NodeJS 12+
+- Caddy 0.11+
+- MariaDB 10.3+
+- **Docker** [optionally]
 
 ## How to develop
 

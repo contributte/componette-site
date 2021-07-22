@@ -29,7 +29,7 @@
 - Feature: PSR4
 - Drop: support bower
 - Fix: order addons releases
-- Fix: addons tabs URL 
+- Fix: addons tabs URL
 - Feature: improve search (thanks @artemevsin)[#81][#67]
 - Composer: update dependencies
 - Fix: Bower/Composer URL in http client
@@ -49,9 +49,9 @@
 - Fix: do not disable curl ssl verify [#60]
 - Feature: added report page/link [#29]
 - Fix: image resolving also over src [#64]
-- Improvement: sync homepage headline links 
+- Improvement: sync homepage headline links
 - Improvement: convert EOF to unix style [#57]
-- Improvement: update composer.json (autoloading, classmap, etc) 
+- Improvement: update composer.json (autoloading, classmap, etc)
 - Feature: added editorconfig [#57]
 - Feature: track composer.json [#59]
 - Feature: update to Nette 2.4, Nette\Tester 2.0
@@ -85,7 +85,7 @@
 - Improvement: added some addon tags
 - Feature: added simple admin module
 - Fix: replace & with &amp; at opensearch
-- Fix: RSS feed 
+- Fix: RSS feed
 - Fix: gitter link
 
 ## 1.0.4 [12.02.2016]
@@ -141,6 +141,7 @@
 - Other: docker configuration
 
 ### alpha2 [7.10.2015]
+
 - Feature: bower packages
 - Fixed: routing with dot(.)
 - Improved: CLI tasks
@@ -149,6 +150,7 @@
 - Improved: few tiny things
 
 ### alpha1 [5.10.2015]
+
 - Feature: new landing page
 - Feature: new searching / sorting / ordering
 - Feature: modal for new packages
@@ -156,4 +158,5 @@
 - Improved: responsibility
 
 ## 1.0.0 [1.10.2015]
+
 - First version
