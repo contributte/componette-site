@@ -19,7 +19,7 @@
     "@types/optimize-css-assets-webpack-plugin": "^5.0.4",
     "@types/terser-webpack-plugin": "^3.0.0",
     "@types/webpack": "^4.41.27",
-    "@types/webpack-dev-server": "^3.11.5",
+    "@types/webpack-dev-server": "^4.0.0",
     "@wavevision/nette-webpack": "^1.0.3",
     "autoprefixer": "^10.3.1",
     "clean-webpack-plugin": "^3.0.0",
