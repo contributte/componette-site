@@ -7,7 +7,7 @@
   },
   "licence": "MIT",
   "dependencies": {
-    "alpinejs": "^3.2.4",
+    "alpinejs": "^3.3.2",
     "nette-forms": "^3.3.0",
     "svgxuse": "^1.2.6"
   },
@@ -19,7 +19,7 @@
     "@types/optimize-css-assets-webpack-plugin": "^5.0.4",
     "@types/terser-webpack-plugin": "^3.0.0",
     "@types/webpack": "^4.41.27",
-    "@types/webpack-dev-server": "^4.0.3",
+    "@types/webpack-dev-server": "^4.1.0",
     "@wavevision/nette-webpack": "^1.0.3",
     "autoprefixer": "^10.3.3",
     "clean-webpack-plugin": "^3.0.0",
