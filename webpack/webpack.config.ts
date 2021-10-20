@@ -13,8 +13,8 @@ const baseConfig: Configuration = {
   target: 'web',
   plugins: [
     new MiniCssExtractPlugin({
-      filename: `[name].css${DEV ? '' : '?[hash]'}`,
-      chunkFilename: `[id].css${DEV ? '' : '?[hash]'}`,
+      filename: `[name].css${DEV ? '' : '?[fullhash]'}`,
+      chunkFilename: `[id].css${DEV ? '' : '?[fullhash]'}`,
     }),
     helper.createManifestPlugin(),
     new ProvidePlugin({

@@ -168,22 +168,20 @@ module.exports = {
   purge: {
     // TODO: Implement custom purgecss pattern instead of whitelisting
     content: ['./app/**/*.latte'],
-    options: {
-      whitelist: [
-        'bg-orange-100',
-        'bg-red-100',
-        'bg-teal-100',
-        'border-orange-400',
-        'border-red-400',
-        'border-teal-400',
-        'h-4',
-        'md:mr-4',
-        'ml-2',
-        'text-orange-700',
-        'text-red-700',
-        'text-teal-700',
-        'w4',
-      ],
-    },
+    safelist: [
+      'bg-orange-100',
+      'bg-red-100',
+      'bg-teal-100',
+      'border-orange-400',
+      'border-red-400',
+      'border-teal-400',
+      'h-4',
+      'md:mr-4',
+      'ml-2',
+      'text-orange-700',
+      'text-red-700',
+      'text-teal-700',
+      'w-4',
+    ],
   },
 };
