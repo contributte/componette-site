@@ -25,7 +25,7 @@ class ReleaseList extends BaseControl
 
 	public function render(): void
 	{
-		$this->template->icon = $this->netteWebpack->getUrl('merge.svg');
+		$this->template->icon = $this->netteWebpack->getUrl($this->netteWebpack->getAsset('merge.svg'));
 		$ids = $this->em->getRepositoryForEntity(GithubRelease::class)
 			->fetchResult(new LatestReleaseIdsQuery())
 			->fetchPairs(null, 'id');

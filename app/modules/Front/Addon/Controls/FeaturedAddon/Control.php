@@ -38,7 +38,7 @@ class Control extends BaseControl
 				->setParameters(
 					[
 						'addon' => $addon,
-						'icon' => $this->netteWebpack->getUrl('trophy.svg'),
+						'icon' => $this->netteWebpack->getUrl($this->netteWebpack->getAsset('trophy.svg')),
 					]
 				)->render(__DIR__ . '/templates/default.latte');
 		}
