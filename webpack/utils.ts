@@ -11,17 +11,10 @@ export const helper = new WebpackHelper({
   wwwDir: resolve(ROOT, 'www'),
 });
 
-export const makeDevEntry = (): string => {
-  const devServerUrl = helper.getDevServerUrl();
-  return `webpack-dev-server/client?${devServerUrl.href}`;
-};
-
 export const makeEntry = (): Entry => {
   const entry: Entry = {};
-  const devEntry = makeDevEntry();
   for (const enabled of helper.getEnabledEntries()) {
-    const base = resolve('app', 'assets', `${enabled}.ts`);
-    entry[enabled] = DEV ? [devEntry, base] : base;
+    entry[enabled] = resolve('app', 'assets', `${enabled}.ts`);
   }
   return entry;
 };
