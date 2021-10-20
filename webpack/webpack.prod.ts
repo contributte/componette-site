@@ -9,7 +9,7 @@ export default makeConfig({
   mode: 'production',
   devtool: 'source-map',
   output: {
-    filename: '[name].js?[fullhash]',
+    filename: '[name].[fullhash].js',
     path: helper.getOutputPath(),
   },
   optimization: {

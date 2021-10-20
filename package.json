@@ -12,7 +12,7 @@
     "svgxuse": "^1.2.6"
   },
   "devDependencies": {
-    "@tailwindcss/custom-forms": "^0.2.1",
+    "@tailwindcss/forms": "^0.3.4",
     "@types/css-minimizer-webpack-plugin": "^3.0.2",
     "@types/google.analytics": "0.0.42",
     "@types/mini-css-extract-plugin": "^2.4.0",
@@ -27,7 +27,7 @@
     "css-loader": "^6.4.0",
     "css-minimizer-webpack-plugin": "^3.1.1",
     "file-loader": "^6.2.0",
-    "image-webpack-loader": "^3.3.1",
+    "image-webpack-loader": "^8.0.1",
     "mini-css-extract-plugin": "^2.4.2",
     "postcss": "^8.3.9",
     "postcss-loader": "^4.3.0",

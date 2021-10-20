@@ -158,10 +158,7 @@ module.exports = {
     gridRowStart: ['responsive', 'hover'],
     gridRowEnd: ['responsive', 'hover'],
   },
-  plugins: [
-    require('@tailwindcss/custom-forms'),
-    require('tailwindcss-gradients'),
-  ],
+  plugins: [require('@tailwindcss/forms'), require('tailwindcss-gradients')],
   future: {
     purgeLayersByDefault: true,
   },

@@ -16,7 +16,7 @@ export default makeConfig({
     },
   },
   output: {
-    filename: '[name].js?[fullhash]',
+    filename: '[name].[fullhash].js',
     publicPath: helper.getDevServerPublicPath(),
   },
 });
