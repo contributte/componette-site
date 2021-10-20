@@ -8,7 +8,7 @@
   "licence": "MIT",
   "dependencies": {
     "alpinejs": "^3.4.2",
-    "nette-forms": "^3.3.0",
+    "nette-forms": "^3.3.1",
     "svgxuse": "^1.2.6"
   },
   "devDependencies": {
