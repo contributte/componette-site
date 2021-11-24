@@ -29,7 +29,7 @@
     "file-loader": "^6.2.0",
     "image-webpack-loader": "^8.0.1",
     "mini-css-extract-plugin": "^2.4.5",
-    "postcss": "^8.3.11",
+    "postcss": "^8.4.0",
     "postcss-loader": "^6.2.0",
     "prettier": "^2.4.1",
     "tailwindcss": "^2.2.19",
