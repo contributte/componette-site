@@ -44,7 +44,7 @@
     "contributte/security": "^0.4.0",
     "contributte/tracy": "^0.5.0",
     "contributte/utils": "^0.5.0",
-    "nette/application": "3.1.4",
+    "nette/application": "3.1.5",
     "nette/robot-loader": "^3.2.0",
     "nextras/dbal": "~3.1.0",
     "nextras/migrations": "~3.1.1",
