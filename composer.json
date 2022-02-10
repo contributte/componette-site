@@ -22,9 +22,6 @@
       "homepage": "https://github.com/contributte/contributte-site/graphs/contributors"
     }
   ],
-  "config": {
-    "sort-packages": true
-  },
   "require": {
     "php": ">=7.4",
     "ext-curl": "*",
@@ -72,6 +69,12 @@
     "classmap": [
       "tests/cases"
     ]
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
   },
   "minimum-stability": "dev",
   "prefer-stable": true
