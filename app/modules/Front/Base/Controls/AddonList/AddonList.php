@@ -71,8 +71,10 @@ class AddonList extends BaseControl
 		switch ($query) {
 			case LatestActivityAddonsQuery::class:
 				return Html::el()->setText('Latest updated addons');
+
 			case LatestAddedAddonsQuery::class:
 				return Html::el()->setText('Latest indexed addons');
+
 			case SearchAddonsQuery::class:
 				return $this->renderSearchTitle($addonsCount);
 		}

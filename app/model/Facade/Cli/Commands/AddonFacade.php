@@ -48,17 +48,21 @@ final class AddonFacade
 				// Use only composer types
 				$addons = $addons->findBy(['type' => Addon::TYPE_COMPOSER]);
 				break;
+
 			case 'bower':
 				// Use only bower types
 				$addons = $addons->findBy(['type' => Addon::TYPE_BOWER]);
 				break;
+
 			case 'unknown':
 				// Use only uknown types
 				$addons = $addons->findBy(['type' => Addon::TYPE_UNKNOWN]);
 				break;
+
 			case 'all':
 				// Do nothing, just use all
 				break;
+
 			default:
 				throw new InvalidArgumentException(sprintf('Unsupported type "%s"', is_array($type) ? print_r($type, true) : (string) $type));
 		}
