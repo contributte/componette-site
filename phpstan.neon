@@ -1,10 +1,11 @@
 parameters:
-	level: max
+	level: 9
+	phpVersion: 80000
 
 	paths:
 		- app
 
-	excludes_analyse:
+	excludePaths:
 		- */tests/tmp/*
 
 	fileExtensions:
