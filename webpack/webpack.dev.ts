@@ -1,3 +1,5 @@
+import 'webpack-dev-server';
+
 import makeConfig from './webpack.config';
 import { helper } from './utils';
 
