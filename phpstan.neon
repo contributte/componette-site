@@ -21,6 +21,8 @@ parameters:
 		- '#Access to an undefined property Nette\\ComponentModel\\IComponent::\$controlPrototype.#'
 
 includes:
+	- phpstan-baseline.neon
+	# Extensions
 	- vendor/phpstan/phpstan-nette/extension.neon
 	- vendor/phpstan/phpstan-nette/rules.neon
 	#- vendor/nextras/orm-phpstan/extension.neon
