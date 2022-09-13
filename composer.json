@@ -54,7 +54,7 @@
     "contributte/dev": "^0.3.0",
     "nextras/orm-phpstan": "^1.0.0",
     "ninjify/nunjuck": "^0.4",
-    "ninjify/qa": "^0.13",
+    "ninjify/qa": "^0.14",
     "phpstan/phpstan": "^1.4.0",
     "phpstan/phpstan-nette": "^1.0.0",
     "wavevision/di-service-annotation": "^4.0"
