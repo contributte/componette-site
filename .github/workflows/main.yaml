@@ -164,7 +164,7 @@ jobs:
           restore-keys: "${{ runner.os }}-npm-"
 
       - name: "Install Node.js dependencies"
-        run: npm install
+        run: npm ci --force
 
       - name: "TSC"
         run: make ts
