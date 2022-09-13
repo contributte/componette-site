@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a67ec553b3abf700b922587b65459100",
+    "content-hash": "a6eb42ec2268b30ea4daadd33cab0744",
     "packages": [
         {
             "name": "contributte/application",
@@ -3889,16 +3889,16 @@
         },
         {
             "name": "ninjify/qa",
-            "version": "v0.13.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ninjify/qa.git",
-                "reference": "9080dc0b8c28ba9b984e451f99654212288e60bb"
+                "reference": "2b5263da89e8a4bcab6ec521d4cc1cda061f9f00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ninjify/qa/zipball/9080dc0b8c28ba9b984e451f99654212288e60bb",
-                "reference": "9080dc0b8c28ba9b984e451f99654212288e60bb",
+                "url": "https://api.github.com/repos/ninjify/qa/zipball/2b5263da89e8a4bcab6ec521d4cc1cda061f9f00",
+                "reference": "2b5263da89e8a4bcab6ec521d4cc1cda061f9f00",
                 "shasum": ""
             },
             "require": {
@@ -3906,6 +3906,7 @@
                 "php": ">=7.2",
                 "php-parallel-lint/php-parallel-lint": "^1.2.0"
             },
+            "default-branch": true,
             "bin": [
                 "bin/codesniffer",
                 "bin/codefixer",
@@ -3914,7 +3915,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.13.x-dev"
+                    "dev-master": "0.14.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3939,7 +3940,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ninjify/qa/issues",
-                "source": "https://github.com/ninjify/qa/tree/v0.13.0"
+                "source": "https://github.com/ninjify/qa/tree/master"
             },
             "funding": [
                 {
@@ -3951,7 +3952,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-01-08T13:15:44+00:00"
+            "time": "2022-01-08T14:13:10+00:00"
         },
         {
             "name": "php-parallel-lint/php-parallel-lint",
