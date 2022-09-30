@@ -23,7 +23,7 @@ jobs:
 
     strategy:
       matrix:
-        node-versions: [ "12.19.0" ]
+        node-versions: [ "18.1.0" ]
         php-versions: [ "8.0", "8.1" ]
         operating-system: [ "ubuntu-latest" ]
       fail-fast: false

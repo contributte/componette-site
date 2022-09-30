@@ -14,7 +14,7 @@ html {
   }
 }
 
-@variants hover {
+@layer utilities hover {
   .bg-no-image {
     background-image: none;
   }
