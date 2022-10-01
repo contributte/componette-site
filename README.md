@@ -24,8 +24,8 @@ Website 🚀 <a href="https://componette.org">componette.org</a> | Contact 👨�
 
 ## Requirements
 
-- PHP 8.0+
-- NodeJS 14+
+- PHP 8.1+
+- NodeJS 18+
 - Caddy 0.11+
 - MariaDB 10.3+
 - **Docker** [optionally]
