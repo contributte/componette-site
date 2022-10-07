@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "43fc51b210ce877dbdf31b4d82b32e69",
+    "content-hash": "99934b4322826f5d01bac54a271f1135",
     "packages": [
         {
             "name": "contributte/application",
@@ -596,37 +596,37 @@
         },
         {
             "name": "contributte/nextras-orm-query-object",
-            "version": "v0.4",
+            "version": "v0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/contributte/nextras-orm-query-object.git",
-                "reference": "511ed72d42dae5010c12c6b8b5efc574d250d098"
+                "reference": "6b19a11fed7d8b5fdaf07665096a99231f1051a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contributte/nextras-orm-query-object/zipball/511ed72d42dae5010c12c6b8b5efc574d250d098",
-                "reference": "511ed72d42dae5010c12c6b8b5efc574d250d098",
+                "url": "https://api.github.com/repos/contributte/nextras-orm-query-object/zipball/6b19a11fed7d8b5fdaf07665096a99231f1051a5",
+                "reference": "6b19a11fed7d8b5fdaf07665096a99231f1051a5",
                 "shasum": ""
             },
             "require": {
-                "nextras/dbal": "^3.1.1",
+                "nextras/dbal": "^4.0.0",
                 "php": ">=7.2"
             },
             "require-dev": {
                 "mockery/mockery": "^1.3.0",
-                "nette/di": "~3.0.1",
-                "nextras/orm": "^3.1.0",
+                "nette/di": "^3.0.1",
+                "nextras/orm": "^4.0.0",
                 "ninjify/nunjuck": "^0.4",
-                "ninjify/qa": "^0.12.",
-                "phpstan/phpstan": "^0.12.0",
-                "phpstan/phpstan-deprecation-rules": "^0.12.0",
-                "phpstan/phpstan-nette": "^0.12.0",
-                "phpstan/phpstan-strict-rules": "^0.12.0"
+                "ninjify/qa": "^0.13",
+                "phpstan/phpstan": "^1.0.0",
+                "phpstan/phpstan-deprecation-rules": "^1.0.0",
+                "phpstan/phpstan-nette": "^1.0.0",
+                "phpstan/phpstan-strict-rules": "^1.0.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.4.x-dev"
+                    "dev-master": "0.5.x-dev"
                 }
             },
             "autoload": {
@@ -648,9 +648,19 @@
             "homepage": "https://github.com/contributte/nextras-orm-query-object",
             "support": {
                 "issues": "https://github.com/contributte/nextras-orm-query-object/issues",
-                "source": "https://github.com/contributte/nextras-orm-query-object/tree/v0.4"
+                "source": "https://github.com/contributte/nextras-orm-query-object/tree/v0.5.0"
             },
-            "time": "2020-12-14T17:02:13+00:00"
+            "funding": [
+                {
+                    "url": "https://contributte.org/partners.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/f3l1x",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-01-04T19:52:26+00:00"
         },
         {
             "name": "contributte/security",
@@ -1624,16 +1634,16 @@
         },
         {
             "name": "nette/php-generator",
-            "version": "v4.0.3",
+            "version": "v4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/php-generator.git",
-                "reference": "ce449138b73ee788e818afeb41af51df3ec03710"
+                "reference": "80f158a2d2fa44c1785b16a3dcdabef3120b3e71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/php-generator/zipball/ce449138b73ee788e818afeb41af51df3ec03710",
-                "reference": "ce449138b73ee788e818afeb41af51df3ec03710",
+                "url": "https://api.github.com/repos/nette/php-generator/zipball/80f158a2d2fa44c1785b16a3dcdabef3120b3e71",
+                "reference": "80f158a2d2fa44c1785b16a3dcdabef3120b3e71",
                 "shasum": ""
             },
             "require": {
@@ -1642,7 +1652,7 @@
             },
             "require-dev": {
                 "nette/tester": "^2.4",
-                "nikic/php-parser": "^4.13",
+                "nikic/php-parser": "^4.15",
                 "phpstan/phpstan": "^1.0",
                 "tracy/tracy": "^2.8"
             },
@@ -1676,7 +1686,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🐘 Nette PHP Generator: generates neat PHP code for you. Supports new PHP 8.1 features.",
+            "description": "🐘 Nette PHP Generator: generates neat PHP code for you. Supports new PHP 8.2 features.",
             "homepage": "https://nette.org",
             "keywords": [
                 "code",
@@ -1686,9 +1696,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/php-generator/issues",
-                "source": "https://github.com/nette/php-generator/tree/v4.0.3"
+                "source": "https://github.com/nette/php-generator/tree/v4.0.4"
             },
-            "time": "2022-09-12T23:43:02+00:00"
+            "time": "2022-10-06T21:43:12+00:00"
         },
         {
             "name": "nette/robot-loader",
@@ -2095,16 +2105,16 @@
         },
         {
             "name": "nextras/dbal",
-            "version": "v3.1.2",
+            "version": "v4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nextras/dbal.git",
-                "reference": "884431eb074bebab8dd2bdfb7b68055a78ecabbb"
+                "reference": "05c44e728bd9362699c7a0b65ed458fcb62d02ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nextras/dbal/zipball/884431eb074bebab8dd2bdfb7b68055a78ecabbb",
-                "reference": "884431eb074bebab8dd2bdfb7b68055a78ecabbb",
+                "url": "https://api.github.com/repos/nextras/dbal/zipball/05c44e728bd9362699c7a0b65ed458fcb62d02ac",
+                "reference": "05c44e728bd9362699c7a0b65ed458fcb62d02ac",
                 "shasum": ""
             },
             "require": {
@@ -2118,22 +2128,28 @@
                 "nette/neon": "~3.0",
                 "nette/tester": "~2.3.1",
                 "nette/utils": "~3.0",
-                "phpstan/phpstan-shim": "0.11.12",
+                "phpstan/extension-installer": "1.0.5",
+                "phpstan/phpstan": "1.0.0",
+                "phpstan/phpstan-deprecation-rules": "1.0.0",
+                "phpstan/phpstan-strict-rules": "1.0.0",
+                "symfony/config": "~4.4 || ~5.0",
+                "symfony/dependency-injection": "~4.4 || ~5.0",
+                "symfony/http-kernel": "~4.4 || ~5.0",
                 "tracy/tracy": "~2.7"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev"
+                    "dev-master": "4.0-dev"
                 }
             },
             "autoload": {
+                "files": [
+                    "srcCompat/compatibility.php"
+                ],
                 "psr-4": {
                     "Nextras\\Dbal\\": "src/"
-                },
-                "classmap": [
-                    "src/exceptions.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -2154,9 +2170,15 @@
             ],
             "support": {
                 "issues": "https://github.com/nextras/dbal/issues",
-                "source": "https://github.com/nextras/dbal/tree/v3.1"
+                "source": "https://github.com/nextras/dbal/tree/v4.0.4"
             },
-            "time": "2020-02-26T12:32:09+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/hrach",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-01-09T20:39:43+00:00"
         },
         {
             "name": "nextras/migrations",
@@ -2230,50 +2252,58 @@
         },
         {
             "name": "nextras/orm",
-            "version": "v3.1.4",
+            "version": "v4.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nextras/orm.git",
-                "reference": "d781eb328a345a680f9790c345337a2cb97b1109"
+                "reference": "2abc593a3bb7a80bdb9ad94f3e9c47ead65ea69f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nextras/orm/zipball/d781eb328a345a680f9790c345337a2cb97b1109",
-                "reference": "d781eb328a345a680f9790c345337a2cb97b1109",
+                "url": "https://api.github.com/repos/nextras/orm/zipball/2abc593a3bb7a80bdb9ad94f3e9c47ead65ea69f",
+                "reference": "2abc593a3bb7a80bdb9ad94f3e9c47ead65ea69f",
                 "shasum": ""
             },
             "require": {
-                "nette/caching": "~2.5 || ~3.0@rc",
-                "nette/tokenizer": "~2.3 || ~3.0@rc",
-                "nette/utils": "~2.5 || ~3.0@rc",
-                "nextras/dbal": "~3.0 || ~3.1@dev",
+                "ext-ctype": "*",
+                "ext-json": "*",
+                "nette/caching": "~2.5 || ~3.0",
+                "nette/tokenizer": "~2.3 || ~3.0",
+                "nette/utils": "~2.5 || ~3.0",
+                "nextras/dbal": "~4.0@dev",
                 "php": ">=7.1"
             },
             "require-dev": {
                 "marc-mabe/php-enum": "~3.0",
+                "marc-mabe/php-enum-phpstan": "2.0.0",
                 "mockery/mockery": "~1.2",
-                "nette/bootstrap": "~2.4 || ~3.0@rc",
-                "nette/di": "~2.4 >=2.4.10 || ~3.0@beta",
-                "nette/finder": "~2.4 || ~3.0@rc",
-                "nette/neon": "~2.4 || ~3.0@rc",
-                "nette/tester": "~2.1",
-                "phpstan/phpstan-nette": "0.11",
-                "phpstan/phpstan-shim": "0.11.1",
+                "nette/bootstrap": "~2.4 || ~3.0",
+                "nette/di": "~2.4 >=2.4.10 || ~3.0",
+                "nette/finder": "~2.4 || ~3.0",
+                "nette/neon": "~2.4 || ~3.0",
+                "nette/tester": "~2.3",
+                "nextras/orm-phpstan": "1.0.0",
+                "phpstan/extension-installer": "1.0.5",
+                "phpstan/phpstan": "1.1.2",
+                "phpstan/phpstan-deprecation-rules": "1.0.0",
+                "phpstan/phpstan-mockery": "1.0.0",
+                "phpstan/phpstan-nette": "1.0.0",
+                "phpstan/phpstan-strict-rules": "1.0.0",
                 "tracy/tracy": "~2.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev"
+                    "dev-master": "4.0-dev"
                 }
             },
             "autoload": {
+                "files": [
+                    "srcCompat/compatibility.php"
+                ],
                 "psr-4": {
                     "Nextras\\Orm\\": "src/"
-                },
-                "classmap": [
-                    "src/exceptions.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -2294,7 +2324,7 @@
             ],
             "support": {
                 "issues": "https://github.com/nextras/orm/issues",
-                "source": "https://github.com/nextras/orm/tree/v3.1.4"
+                "source": "https://github.com/nextras/orm/tree/v4.0.6"
             },
             "funding": [
                 {
@@ -2302,7 +2332,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-09-13T20:56:36+00:00"
+            "time": "2022-09-07T07:36:49+00:00"
         },
         {
             "name": "psr/container",
@@ -4014,16 +4044,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.8.0",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "8dd908dd6156e974b9a0f8bb4cd5ad0707830f04"
+                "reference": "5f7eb9724b0ae386b922f34b62b3b55fee3b26cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/8dd908dd6156e974b9a0f8bb4cd5ad0707830f04",
-                "reference": "8dd908dd6156e974b9a0f8bb4cd5ad0707830f04",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/5f7eb9724b0ae386b922f34b62b3b55fee3b26cd",
+                "reference": "5f7eb9724b0ae386b922f34b62b3b55fee3b26cd",
                 "shasum": ""
             },
             "require": {
@@ -4053,22 +4083,22 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.8.0"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.9.0"
             },
-            "time": "2022-09-04T18:59:06+00:00"
+            "time": "2022-10-06T11:32:36+00:00"
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.8.6",
+            "version": "1.8.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "c386ab2741e64cc9e21729f891b28b2b10fe6618"
+                "reference": "08310ce271984587e2a4cda94e1ac66510a6ea07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c386ab2741e64cc9e21729f891b28b2b10fe6618",
-                "reference": "c386ab2741e64cc9e21729f891b28b2b10fe6618",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/08310ce271984587e2a4cda94e1ac66510a6ea07",
+                "reference": "08310ce271984587e2a4cda94e1ac66510a6ea07",
                 "shasum": ""
             },
             "require": {
@@ -4098,7 +4128,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.8.6"
+                "source": "https://github.com/phpstan/phpstan/tree/1.8.8"
             },
             "funding": [
                 {
@@ -4114,7 +4144,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-09-23T09:54:39+00:00"
+            "time": "2022-10-06T12:51:57+00:00"
         },
         {
             "name": "phpstan/phpstan-nette",

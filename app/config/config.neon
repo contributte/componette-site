@@ -23,7 +23,7 @@ includes:
 session:
 	debugger: %debugMode%
 	expiration: '+14 days'
-	autoStart: smart
+	autoStart: true
 
 application:
 	catchExceptions: %productionMode%

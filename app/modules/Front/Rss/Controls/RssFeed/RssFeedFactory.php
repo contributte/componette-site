@@ -5,6 +5,7 @@ namespace App\Modules\Front\Rss\Controls\RssFeed;
 use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\EntityModel;
 use App\Model\Database\Query\RssFeedQuery;
+use Nextras\Orm\Collection\ICollection;
 
 final class RssFeedFactory
 {
@@ -27,6 +28,7 @@ final class RssFeedFactory
 		$query->byLatest();
 		$query->setLimit(25);
 
+		/** @var ICollection<Addon> $list */
 		$list = $this->em->getRepositoryForEntity(Addon::class)->fetchEntities($query);
 		$control = $this->rssFeedFactory->create($list);
 
@@ -41,6 +43,7 @@ final class RssFeedFactory
 		$query = new RssFeedQuery();
 		$query->byAuthor($author);
 
+		/** @var ICollection<Addon> $list */
 		$list = $this->em->getRepositoryForEntity(Addon::class)->fetchEntities($query);
 		$control = $this->rssFeedFactory->create($list);
 

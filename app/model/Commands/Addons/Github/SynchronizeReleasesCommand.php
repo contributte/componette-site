@@ -8,7 +8,7 @@ use App\Model\Database\ORM\GithubRelease\GithubRelease;
 use App\Model\Database\ORM\GithubRelease\GithubReleaseRepository;
 use App\Model\Facade\Cli\Commands\AddonFacade;
 use App\Model\WebServices\Github\GithubService;
-use Nette\Utils\DateTime;
+use Nextras\Dbal\Utils\DateTimeImmutable;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -83,6 +83,7 @@ final class SynchronizeReleasesCommand extends BaseCommand
 			}
 
 			// Fetch all already saved github releases
+			/** @var GithubRelease[] $storedReleases */
 			$storedReleases = $addon->github->releases->get()->fetchPairs('gid');
 
 			// Get all releases
@@ -91,6 +92,7 @@ final class SynchronizeReleasesCommand extends BaseCommand
 				foreach ($responses as $response) {
 
 					// Get response body as releases
+					/** @var array<array<number|string>> $releases */
 					$releases = $response->getJsonBody();
 					if ($releases) {
 						// Iterate over all releases
@@ -104,17 +106,17 @@ final class SynchronizeReleasesCommand extends BaseCommand
 							} else {
 								// Create new one
 								$githubRelease = new GithubRelease();
-								$githubRelease->gid = $release['id'];
+								$githubRelease->gid = (int) $release['id'];
 							}
 
-							$githubRelease->name = $release['name'];
-							$githubRelease->tag = $release['tag_name'];
+							$githubRelease->name = (string) $release['name'];
+							$githubRelease->tag = (string) $release['tag_name'];
 							$githubRelease->draft = (bool) $release['draft'];
 							$githubRelease->prerelease = (bool) $release['prerelease'];
-							$githubRelease->createdAt = new DateTime($release['created_at']);
-							$githubRelease->crawledAt = new DateTime();
-							$githubRelease->publishedAt = new DateTime($release['published_at']);
-							$githubRelease->body = $release['body_html'];
+							$githubRelease->createdAt = new DateTimeImmutable((string) $release['created_at']);
+							$githubRelease->crawledAt = new DateTimeImmutable();
+							$githubRelease->publishedAt = new DateTimeImmutable((string) $release['published_at']);
+							$githubRelease->body = (string) $release['body_html'];
 
 							// If its new one
 							if (!$githubRelease->isPersisted()) {

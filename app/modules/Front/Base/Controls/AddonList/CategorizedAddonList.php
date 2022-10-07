@@ -55,10 +55,12 @@ final class CategorizedAddonList extends BaseControl
 	 */
 	protected function getTags(): array
 	{
-		return $this->em->getRepositoryForEntity(Tag::class)
+		/** @var Tag[] $tags */
+		$tags = $this->em->getRepositoryForEntity(Tag::class)
 			->findAll()
 			->orderBy(['name' => 'ASC'])
 			->fetchPairs('id');
+		return $tags;
 	}
 
 	/**
@@ -66,9 +68,11 @@ final class CategorizedAddonList extends BaseControl
 	 */
 	protected function getAddons(): ICollection
 	{
-		return $this->em->getRepositoryForEntity(Addon::class)
+		/** @var ICollection<Addon> $addons */
+		$addons = $this->em->getRepositoryForEntity(Addon::class)
 			->findBy(['state' => Addon::STATE_ACTIVE])
 			->orderBy(['author' => 'ASC', 'name' => 'ASC']);
+		return $addons;
 	}
 
 	public function render(): void

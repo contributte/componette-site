@@ -14,7 +14,7 @@ final class LatestActivityAddonsQuery extends QueryObject
 	{
 		$qb = $builder->select('g.*, a.*')
 			->from('[addon]', 'a')
-			->rightJoin('a', '[github]', 'g', '[g.addon_id] = [a.id]')
+			->joinRight('[github] AS [g]', '[g.addon_id] = [a.id]')
 			->andWhere('[a.state] = %s', Addon::STATE_ACTIVE)
 			->addOrderBy('[g.pushed_at] DESC')
 			->addOrderBy('[a.updated_at] DESC');

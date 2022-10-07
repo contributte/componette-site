@@ -64,15 +64,15 @@ final class SearchAddonsQuery extends QueryObject
 		}
 
 		if ($this->tag) {
-			$qb->rightJoin('a', '[addon_x_tag]', 'axt', '[axt.addon_id] = [a.id]')
-				->rightJoin('t', '[tag]', 't', '[t.id] = [axt.tag_id]')
+			$qb->joinRight('[addon_x_tag] AS axt', '[axt.addon_id] = [a.id]')
+				->joinRight('[tag] AS [t]', '[t.id] = [axt.tag_id]')
 				->andWhere('[t.name] = %s', $this->tag)
 				->groupBy('[a.id]');
 		}
 
 		if ($this->tokens) {
-			$qb->rightJoin('a', '[github]', 'g', '[g.addon_id] = [a.id]')
-				->rightJoin('a', '[composer]', 'c', '[c.addon_id] = [a.id]');
+			$qb->joinRight('[github] AS [g]', '[g.addon_id] = [a.id]')
+				->joinRight('[composer] AS [c]', '[c.addon_id] = [a.id]');
 
 			foreach ($this->tokens as $token) {
 				$builder->andWhere(
