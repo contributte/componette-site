@@ -33,7 +33,7 @@ final class OpenSearchQuery extends QueryObject
 			->addOrderBy('[a.rating] DESC')
 			->addOrderBy('[a.created_at] DESC');
 
-		$qb->rightJoin('a', '[github]', 'g', '[g.addon_id] = [a.id]')
+		$qb->joinRight('[github] AS [g]', '[g.addon_id] = [a.id]')
 			->andWhere('[a.author] LIKE %s OR [a.name] LIKE %s', '%' . $this->token . '%', '%' . $this->token . '%')
 			->groupBy('[a.id]');
 

@@ -26,31 +26,6 @@ parameters:
 			path: app/model/Commands/Addons/Composer/SynchronizeCommand.php
 
 		-
-			message: "#^Cannot access property \\$author on mixed\\.$#"
-			count: 2
-			path: app/model/Commands/Addons/Content/GenerateContentCommand.php
-
-		-
-			message: "#^Cannot access property \\$fullname on mixed\\.$#"
-			count: 2
-			path: app/model/Commands/Addons/Content/GenerateContentCommand.php
-
-		-
-			message: "#^Cannot access property \\$github on mixed\\.$#"
-			count: 6
-			path: app/model/Commands/Addons/Content/GenerateContentCommand.php
-
-		-
-			message: "#^Cannot access property \\$name on mixed\\.$#"
-			count: 2
-			path: app/model/Commands/Addons/Content/GenerateContentCommand.php
-
-		-
-			message: "#^Parameter \\#1 \\$entity of method Nextras\\\\Orm\\\\Repository\\\\Repository\\:\\:persistAndFlush\\(\\) expects Nextras\\\\Orm\\\\Entity\\\\IEntity, mixed given\\.$#"
-			count: 1
-			path: app/model/Commands/Addons/Content/GenerateContentCommand.php
-
-		-
 			message: "#^Cannot access offset 'created_at' on mixed\\.$#"
 			count: 1
 			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
@@ -164,61 +139,6 @@ parameters:
 			message: "#^Property App\\\\Model\\\\Database\\\\ORM\\\\GithubComposer\\\\GithubComposer\\:\\:\\$json \\(Nette\\\\Utils\\\\ArrayHash\\) does not accept mixed\\.$#"
 			count: 2
 			path: app/model/Commands/Addons/Github/SynchronizeFilesCommand.php
-
-		-
-			message: "#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\\.$#"
-			count: 1
-			path: app/model/Commands/Addons/Github/SynchronizeReleasesCommand.php
-
-		-
-			message: "#^Cannot access offset 'body_html' on mixed\\.$#"
-			count: 1
-			path: app/model/Commands/Addons/Github/SynchronizeReleasesCommand.php
-
-		-
-			message: "#^Cannot access offset 'created_at' on mixed\\.$#"
-			count: 1
-			path: app/model/Commands/Addons/Github/SynchronizeReleasesCommand.php
-
-		-
-			message: "#^Cannot access offset 'draft' on mixed\\.$#"
-			count: 1
-			path: app/model/Commands/Addons/Github/SynchronizeReleasesCommand.php
-
-		-
-			message: "#^Cannot access offset 'id' on mixed\\.$#"
-			count: 2
-			path: app/model/Commands/Addons/Github/SynchronizeReleasesCommand.php
-
-		-
-			message: "#^Cannot access offset 'name' on mixed\\.$#"
-			count: 1
-			path: app/model/Commands/Addons/Github/SynchronizeReleasesCommand.php
-
-		-
-			message: "#^Cannot access offset 'prerelease' on mixed\\.$#"
-			count: 1
-			path: app/model/Commands/Addons/Github/SynchronizeReleasesCommand.php
-
-		-
-			message: "#^Cannot access offset 'published_at' on mixed\\.$#"
-			count: 1
-			path: app/model/Commands/Addons/Github/SynchronizeReleasesCommand.php
-
-		-
-			message: "#^Cannot access offset 'tag_name' on mixed\\.$#"
-			count: 1
-			path: app/model/Commands/Addons/Github/SynchronizeReleasesCommand.php
-
-		-
-			message: "#^Parameter \\#1 \\$datetime of class Nette\\\\Utils\\\\DateTime constructor expects string, mixed given\\.$#"
-			count: 2
-			path: app/model/Commands/Addons/Github/SynchronizeReleasesCommand.php
-
-		-
-			message: "#^Property App\\\\Model\\\\Database\\\\ORM\\\\GithubRelease\\\\GithubRelease\\:\\:\\$gid \\(int\\) does not accept mixed\\.$#"
-			count: 1
-			path: app/model/Commands/Addons/Github/SynchronizeReleasesCommand.php
 
 		-
 			message: "#^Cannot cast mixed to string\\.$#"

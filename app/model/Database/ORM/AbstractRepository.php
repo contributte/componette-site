@@ -21,6 +21,7 @@ abstract class AbstractRepository extends Repository
 	 */
 	public function fetchEntities(QueryObject $query): ICollection
 	{
+		/** @var ICollection<TEntityClass> $collection */
 		$collection = $this->fetch($query, QueryObject::HYDRATION_ENTITY);
 
 		assert($collection instanceof ICollection);
@@ -33,6 +34,7 @@ abstract class AbstractRepository extends Repository
 	 */
 	public function fetchResult(QueryObject $query): Result
 	{
+		/** @var Result<TEntityClass> $result */
 		$result = $this->fetch($query, QueryObject::HYDRATION_RESULTSET);
 
 		assert($result instanceof Result);

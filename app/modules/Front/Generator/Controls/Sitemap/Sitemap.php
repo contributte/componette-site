@@ -81,10 +81,12 @@ final class Sitemap extends BaseControl
 	 */
 	private function findAuthors(): array
 	{
-		return $this->em->getRepositoryForEntity(Addon::class)
+		/** @var Addon[] $authors */
+		$authors = $this->em->getRepositoryForEntity(Addon::class)
 			->findBy(['state' => Addon::STATE_ACTIVE])
 			->orderBy(['id' => 'DESC'])
 			->fetchPairs('author');
+		return $authors;
 	}
 
 	/**
@@ -92,9 +94,11 @@ final class Sitemap extends BaseControl
 	 */
 	private function findAddons(): ICollection
 	{
-		return $this->em->getRepositoryForEntity(Addon::class)
+		/** @var ICollection<Addon> $addons */
+		$addons = $this->em->getRepositoryForEntity(Addon::class)
 			->findBy(['state' => Addon::STATE_ACTIVE])
 			->orderBy(['id' => 'DESC']);
+		return $addons;
 	}
 
 	/**
@@ -102,9 +106,11 @@ final class Sitemap extends BaseControl
 	 */
 	private function findTags(): ICollection
 	{
-		return $this->em->getRepositoryForEntity(Tag::class)
+		/** @var ICollection<Tag> $tags */
+		$tags = $this->em->getRepositoryForEntity(Tag::class)
 			->findAll()
 			->orderBy(['id' => 'DESC']);
+		return $tags;
 	}
 
 	/**
