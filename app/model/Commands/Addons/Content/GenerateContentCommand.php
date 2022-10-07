@@ -66,34 +66,36 @@ final class GenerateContentCommand extends BaseCommand
 
 		$counter = 0;
 		foreach ($addons as $addon) {
-			// Raw
-			$response1 = $this->github->readme($addon->author, $addon->name, GithubService::MEDIATYPE_HTML);
-			if ($response1->isOk()) {
-				// Content
-				$addon->github->contentRaw = $response1->getBody();
-			} else {
-				$addon->github->contentRaw = '';
-				$output->writeln('Skip (content) [failed download raw content]: ' . $addon->fullname);
-			}
+			if ($addon->github) {
+				// Raw
+				$response1 = $this->github->readme($addon->author, $addon->name, GithubService::MEDIATYPE_HTML);
+				if ($response1->isOk() && is_string($response1->getBody())) {
+					// Content
+					$addon->github->contentRaw = $response1->getBody();
+				} else {
+					$addon->github->contentRaw = '';
+					$output->writeln('Skip (content) [failed download raw content]: ' . $addon->fullname);
+				}
 
-			// HTML
-			$response2 = $this->github->readme($addon->author, $addon->name, GithubService::MEDIATYPE_HTML);
-			if ($response2->isOk()) {
-				// Content
-				$addon->github->contentHtml = $response2->getBody();
-				$this->reformatLinks($addon->github);
-			} else {
-				$addon->github->contentHtml = '';
-				$output->writeln('Skip (content) [failed download html content]: ' . $addon->fullname);
-			}
+				// HTML
+				$response2 = $this->github->readme($addon->author, $addon->name, GithubService::MEDIATYPE_HTML);
+				if ($response2->isOk() && is_string($response2->getBody())) {
+					// Content
+					$addon->github->contentHtml = $response2->getBody();
+					$this->reformatLinks($addon->github);
+				} else {
+					$addon->github->contentHtml = '';
+					$output->writeln('Skip (content) [failed download html content]: ' . $addon->fullname);
+				}
 
-			// Persist
-			if ($addon->github->isModified()) {
-				$this->addonRepository->persistAndFlush($addon);
-			}
+				// Persist
+				if ($addon->github->isModified()) {
+					$this->addonRepository->persistAndFlush($addon);
+				}
 
-			// Increase counting
-			$counter++;
+				// Increase counting
+				$counter++;
+			}
 		}
 
 		$output->writeln(sprintf('Updated %s addons contents', $counter));
@@ -104,7 +106,7 @@ final class GenerateContentCommand extends BaseCommand
 	protected function reformatLinks(Github $github): void
 	{
 		// Resolve links
-		$github->contentHtml = Strings::replace((string) $github->contentHtml, '#href=\"(.*)\"#iU', function ($matches) use ($github) {
+		$github->contentHtml = Strings::replace((string)$github->contentHtml, '#href=\"(.*)\"#iU', function ($matches) use ($github) {
 			[, $url] = $matches;
 
 			if (!Validators::isUrl($url)) {
