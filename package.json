@@ -7,7 +7,7 @@
   },
   "licence": "MIT",
   "dependencies": {
-    "alpinejs": "^3.8.1",
+    "alpinejs": "^3.10.4",
     "nette-forms": "^3.3.0",
     "svgxuse": "^1.2.6"
   },
