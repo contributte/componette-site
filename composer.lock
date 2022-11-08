@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "99934b4322826f5d01bac54a271f1135",
+    "content-hash": "c47e0a28170cd7bbdaa51c89d01548f7",
     "packages": [
         {
             "name": "contributte/application",
@@ -2105,16 +2105,16 @@
         },
         {
             "name": "nextras/dbal",
-            "version": "v4.0.4",
+            "version": "v4.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nextras/dbal.git",
-                "reference": "05c44e728bd9362699c7a0b65ed458fcb62d02ac"
+                "reference": "a59d2ac11e12b2ab13d8739cdf4e851f868a1eb0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nextras/dbal/zipball/05c44e728bd9362699c7a0b65ed458fcb62d02ac",
-                "reference": "05c44e728bd9362699c7a0b65ed458fcb62d02ac",
+                "url": "https://api.github.com/repos/nextras/dbal/zipball/a59d2ac11e12b2ab13d8739cdf4e851f868a1eb0",
+                "reference": "a59d2ac11e12b2ab13d8739cdf4e851f868a1eb0",
                 "shasum": ""
             },
             "require": {
@@ -2170,7 +2170,7 @@
             ],
             "support": {
                 "issues": "https://github.com/nextras/dbal/issues",
-                "source": "https://github.com/nextras/dbal/tree/v4.0.4"
+                "source": "https://github.com/nextras/dbal/tree/v4.0.5"
             },
             "funding": [
                 {
@@ -2178,7 +2178,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-01-09T20:39:43+00:00"
+            "time": "2022-11-03T20:40:25+00:00"
         },
         {
             "name": "nextras/migrations",
