@@ -29,19 +29,18 @@
     "ext-mysqli": "*",
     "ext-pdo": "*",
     "ext-simplexml": "*",
-    "contributte/application": "^0.5.0",
+    "contributte/application": "^0.5.1",
     "contributte/bootstrap": "^0.5.0",
     "contributte/cache": "^0.6.0",
     "contributte/console": "^0.9.0",
-    "contributte/di": "^0.5.0",
-    "contributte/forms": "^0.5.0",
+    "contributte/di": "^0.5.5",
+    "contributte/forms": "^0.5.1",
     "contributte/http": "^0.4.0",
     "contributte/latte": "^0.5.0",
     "contributte/nextras-orm-query-object": "0.5.0",
     "contributte/security": "^0.4.0",
     "contributte/tracy": "^0.5.0",
-    "contributte/utils": "^0.5.0",
-    "nette/application": "3.1.5",
+    "contributte/utils": "^0.5.2",
     "nette/robot-loader": "^3.2.0",
     "nextras/dbal": "4.0.4",
     "nextras/migrations": "3.2.0",
@@ -71,6 +70,9 @@
     ]
   },
   "config": {
+    "platform": {
+      "php": "8.1"
+    },
     "sort-packages": true,
     "allow-plugins": {
       "dealerdirect/phpcodesniffer-composer-installer": true
