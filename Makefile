@@ -9,6 +9,8 @@ webpack=webpack
 dirs:=bin $(app) $(tests)
 
 # Setup
+install:
+	composer install
 
 autoload:
 	composer dump-autoload
