@@ -36,7 +36,7 @@ serve:
 # Tests
 
 test:
-	$(bin)/tester -s -p phpdbg --colors 1 -C $(tests)/cases
+	$(bin)/tester -s -p php --colors 1 -C $(tests)/cases
 
 test-coverage:
 	$(bin)/tester -s -p phpdbg --colors 1 -C -d extension=xdebug.so --coverage $(temp)/coverage.xml --coverage-src $(dirs)
