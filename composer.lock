@@ -4153,16 +4153,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.12",
+            "version": "1.10.62",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "7b2aaf999e522e2b10011a594cf06dc37de7fbd8"
+                "reference": "cd5c8a1660ed3540b211407c77abf4af193a6af9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/7b2aaf999e522e2b10011a594cf06dc37de7fbd8",
-                "reference": "7b2aaf999e522e2b10011a594cf06dc37de7fbd8",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/cd5c8a1660ed3540b211407c77abf4af193a6af9",
+                "reference": "cd5c8a1660ed3540b211407c77abf4af193a6af9",
                 "shasum": ""
             },
             "require": {
@@ -4211,7 +4211,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-04-12T10:33:29+00:00"
+            "time": "2024-03-13T12:27:20+00:00"
         },
         {
             "name": "phpstan/phpstan-nette",
@@ -4520,5 +4520,5 @@
     "platform-overrides": {
         "php": "8.1"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
