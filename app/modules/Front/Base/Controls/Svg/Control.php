@@ -14,7 +14,7 @@ use Wavevision\Utils\Path;
 class Control extends BasePropsControl
 {
 
-	private const URL = 'https://obr.now.sh/remixicon';
+	private const URL = 'https://obr.vercel.app/remixicon';
 
 	protected function beforeRender(ValidProps $props): void
 	{
