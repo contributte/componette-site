@@ -4,8 +4,8 @@ namespace App\Modules\Front\Base\Controls\Svg;
 
 use App\Model\UI\BasePropsControl;
 use Wavevision\PropsControl\ValidProps;
-use Wavevision\Utils\Arrays;
-use Wavevision\Utils\Path;
+use Contributte\Utils\Arrays;
+use Contributte\Utils\Strings;
 
 class Control extends BasePropsControl
 {
@@ -25,15 +25,15 @@ class Control extends BasePropsControl
 
 	private function url(ValidProps $props): string
 	{
-		return Path::join(
-			self::URL,
-			...Arrays::map(
-				[SvgProps::TYPE, SvgProps::IMAGE, SvgProps::SIZE, SvgProps::FILL],
-				function (string $prop) use ($props): ?string {
-					$value = $props->get($prop);
-					return $value ? (string)$value : null;
-				}
-			)
+		return implode(
+			'/',
+			array_filter([
+				self::URL,
+				$props->get(SvgProps::TYPE),
+				$props->get(SvgProps::IMAGE),
+				$props->get(SvgProps::SIZE),
+				$props->get(SvgProps::FILL),
+			], fn($part) => $part !== null)
 		);
 	}
 
