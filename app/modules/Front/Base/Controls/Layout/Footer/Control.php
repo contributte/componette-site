@@ -7,12 +7,8 @@ use App\Modules\Front\Base\Controls\Layout\Footer\SocialLinks\SocialLink;
 use App\Modules\Front\Base\Controls\Layout\Footer\SocialLinks\SocialLinksComponent;
 use App\Modules\Front\Base\Controls\Layout\Footer\SocialLinks\SocialLinksProps;
 use App\Modules\Front\Base\Controls\Layout\Footer\SubscribeForm\SubscribeFormComponent;
-use Wavevision\DIServiceAnnotation\DIService;
 use Wavevision\NetteWebpack\InjectFormatAssetName;
 
-/**
- * @DIService(generateComponent=true)
- */
 class Control extends BaseRenderControl
 {
 

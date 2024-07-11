@@ -5,11 +5,7 @@ namespace App\Modules\Front\Base\Controls\News;
 use App\Model\UI\BaseRenderControl;
 use App\Modules\Front\Base\Controls\Svg\SvgComponent;
 use App\Modules\Front\Base\Controls\Svg\SvgProps;
-use Wavevision\DIServiceAnnotation\DIService;
 
-/**
- * @DIService(generateComponent=true)
- */
 class Control extends BaseRenderControl
 {
 

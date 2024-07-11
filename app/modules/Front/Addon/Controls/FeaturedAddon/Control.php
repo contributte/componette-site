@@ -10,12 +10,8 @@ use App\Modules\Front\Base\Controls\AddonList\Description\DescriptionComponent;
 use App\Modules\Front\Base\Controls\AddonList\Name\NameComponent;
 use App\Modules\Front\Base\Controls\AddonList\Statistics\StatisticsComponent;
 use Nextras\Orm\Collection\ICollection;
-use Wavevision\DIServiceAnnotation\DIService;
 use Wavevision\NetteWebpack\InjectNetteWebpack;
 
-/**
- * @DIService(generateComponent=true)
- */
 class Control extends BaseControl
 {
 

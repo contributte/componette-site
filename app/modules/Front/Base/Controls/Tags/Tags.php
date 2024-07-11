@@ -6,11 +6,7 @@ use App\Model\Database\ORM\EntityModel;
 use App\Model\Database\ORM\Tag\Tag;
 use Nette\SmartObject;
 use Nextras\Orm\Entity\IEntity;
-use Wavevision\DIServiceAnnotation\DIService;
 
-/**
- * @DIService(generateInject=true)
- */
 class Tags
 {
 

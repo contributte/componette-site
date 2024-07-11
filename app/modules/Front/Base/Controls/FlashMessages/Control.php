@@ -3,11 +3,7 @@
 namespace App\Modules\Front\Base\Controls\FlashMessages;
 
 use App\Model\UI\BaseControl;
-use Wavevision\DIServiceAnnotation\DIService;
 
-/**
- * @DIService(generateComponent=true)
- */
 class Control extends BaseControl
 {
 

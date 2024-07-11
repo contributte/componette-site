@@ -6,12 +6,8 @@ use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\GithubRelease\GithubRelease;
 use App\Model\UI\BasePropsControl;
 use Nextras\Orm\Collection\ICollection;
-use Wavevision\DIServiceAnnotation\DIService;
 use Wavevision\PropsControl\ValidProps;
 
-/**
- * @DIService(generateComponent=true)
- */
 class Control extends BasePropsControl
 {
 
