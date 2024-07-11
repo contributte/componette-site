@@ -7,11 +7,7 @@ use App\Model\UI\BaseRenderControl;
 use App\Modules\Front\Base\Controls\Layout\Footer\Heading\HeadingComponent;
 use App\Modules\Front\Base\Controls\Layout\Footer\Heading\HeadingProps;
 use Nette\Forms\Form;
-use Wavevision\DIServiceAnnotation\DIService;
 
-/**
- * @DIService(generateComponent=true)
- */
 class Control extends BaseRenderControl
 {
 

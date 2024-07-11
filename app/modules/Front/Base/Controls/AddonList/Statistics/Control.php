@@ -4,13 +4,9 @@ namespace App\Modules\Front\Base\Controls\AddonList\Statistics;
 
 use App\Modules\Front\Base\Controls\Svg\SvgComponent;
 use App\Modules\Front\Base\Controls\Svg\SvgProps;
-use Wavevision\DIServiceAnnotation\DIService;
 use Wavevision\PropsControl\PropsControl;
 use Wavevision\PropsControl\ValidProps;
 
-/**
- * @DIService(generateComponent=true)
- */
 class Control extends PropsControl
 {
 

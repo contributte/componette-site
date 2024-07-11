@@ -6,12 +6,8 @@ use App\Model\UI\BaseRenderControl;
 use App\Modules\Front\Base\Controls\Layout\Header\Menu\MenuComponent;
 use App\Modules\Front\Base\Controls\Layout\Header\Menu\MenuLink;
 use App\Modules\Front\Base\Controls\Layout\Header\Menu\MenuProps;
-use Wavevision\DIServiceAnnotation\DIService;
 use Wavevision\NetteWebpack\InjectFormatAssetName;
 
-/**
- * @DIService(generateComponent=true)
- */
 class Control extends BaseRenderControl
 {
 

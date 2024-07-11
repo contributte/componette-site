@@ -4,12 +4,8 @@ namespace App\Modules\Front\Base\Controls\Layout\Footer\SocialLinks;
 
 use App\Model\UI\BasePropsControl;
 use App\Modules\Front\Base\Controls\Svg\SvgComponent;
-use Wavevision\DIServiceAnnotation\DIService;
 use Wavevision\PropsControl\ValidProps;
 
-/**
- * @DIService(generateComponent=true)
- */
 class Control extends BasePropsControl
 {
 

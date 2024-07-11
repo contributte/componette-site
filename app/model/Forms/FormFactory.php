@@ -3,11 +3,7 @@
 namespace App\Model\Forms;
 
 use Nette\SmartObject;
-use Wavevision\DIServiceAnnotation\DIService;
 
-/**
- * @DIService(generateInject=true)
- */
 class FormFactory
 {
 
