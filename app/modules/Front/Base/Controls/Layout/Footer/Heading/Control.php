@@ -3,11 +3,7 @@
 namespace App\Modules\Front\Base\Controls\Layout\Footer\Heading;
 
 use App\Model\UI\BasePropsControl;
-use Wavevision\DIServiceAnnotation\DIService;
 
-/**
- * @DIService(generateComponent=true)
- */
 class Control extends BasePropsControl
 {
 

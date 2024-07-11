@@ -2,12 +2,8 @@
 
 namespace App\Modules\Front\Base\Controls\AddonList\Description;
 
-use Wavevision\DIServiceAnnotation\DIService;
 use Wavevision\PropsControl\PropsControl;
 
-/**
- * @DIService(generateComponent=true)
- */
 class Control extends PropsControl
 {
 

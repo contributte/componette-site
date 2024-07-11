@@ -3,14 +3,10 @@
 namespace App\Modules\Front\Base\Controls\Svg;
 
 use App\Model\UI\BasePropsControl;
-use Wavevision\DIServiceAnnotation\DIService;
 use Wavevision\PropsControl\ValidProps;
 use Wavevision\Utils\Arrays;
 use Wavevision\Utils\Path;
 
-/**
- * @DIService(generateComponent=true)
- */
 class Control extends BasePropsControl
 {
 
