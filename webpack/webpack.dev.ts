@@ -1,16 +1,13 @@
 import 'webpack-dev-server';
 
 import makeConfig from './webpack.config';
-import { helper } from './utils';
-
-const devServerUrl = helper.getDevServerUrl();
 
 export default makeConfig({
   mode: 'development',
   devtool: false,
   devServer: {
-    port: Number(devServerUrl.port),
-    host: String(devServerUrl.hostname),
+    port: 9006,
+    host: 'localhost',
     hot: true,
     headers: {
       'Access-Control-Allow-Headers': '*',
@@ -19,6 +16,6 @@ export default makeConfig({
   },
   output: {
     filename: '[name].[fullhash].js',
-    publicPath: helper.getDevServerPublicPath(),
+    publicPath: 'http://localhost:9006/dist/',
   },
 });
