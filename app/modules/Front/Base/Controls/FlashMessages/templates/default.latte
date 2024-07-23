@@ -1,4 +1,4 @@
-{varType stdClass[] $flashMessages}
+{varType \stdClass[] $flashMessages}
 <div class="fixed w-full z-50 flex flex-col items-center justify-center" n:inner-foreach="$flashMessages as $flash">
     <div n:class="App\Modules\Front\Base\Controls\FlashMessages\Control::TYPE_TO_CLASS[$flash->type], 'mt-4 px-4 py-3 rounded relative w-full md:w-3/4 lg:w-1/2 shadow'"
             role="alert"

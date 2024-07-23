@@ -2,34 +2,30 @@
 
 namespace App\Modules\Front\Base\Controls\AddonList\Statistics;
 
+use App\Model\Database\ORM\Addon\Addon;
+use App\Model\UI\BaseRenderControl;
 use App\Modules\Front\Base\Controls\Svg\SvgComponent;
-use App\Modules\Front\Base\Controls\Svg\SvgProps;
-use Wavevision\PropsControl\PropsControl;
-use Wavevision\PropsControl\ValidProps;
 
-class Control extends PropsControl
+class Control extends BaseRenderControl
 {
 
 	use SvgComponent;
 
-	protected function beforeRender(ValidProps $props): void
+	public function render(Addon $addon, bool $featured = false, bool $inline = false): void
 	{
-		parent::beforeRender($props);
 		$this->template->setParameters([
-			'icon' => new Icon($this),
-			'statistics' => new SvgProps([
-				SvgProps::CLASS_NAME => 'flex-shrink-0 w-5 h-5 mb-3 lg:mb-4 mr-2',
-				SvgProps::IMAGE => 'bar-chart-fill',
-				SvgProps::FILL => 'C1CCDB',
-				SvgProps::SIZE => 64,
-				SvgProps::TYPE => 'business',
-			]),
+			'addon' => $addon,
+			'featured' => $featured,
+			'inline' => $inline,
+			'icon' => new Icon(),
+			'statistics' => [
+				'className' => 'flex-shrink-0 w-5 h-5 mb-3 lg:mb-4 mr-2',
+				'image' => 'bar-chart-fill',
+				'fill' => 'C1CCDB',
+				'size' => 64,
+				'type' => 'business',
+			],
 		]);
-	}
-
-	protected function getPropsClass(): string
-	{
-		return StatisticsProps::class;
 	}
 
 }

@@ -2,14 +2,19 @@
 
 namespace App\Modules\Front\Base\Controls\AddonList\Avatar;
 
-use Wavevision\PropsControl\PropsControl;
+use App\Model\Database\ORM\Addon\Addon;
+use App\Model\UI\BaseRenderControl;
 
-class Control extends PropsControl
+class Control extends BaseRenderControl
 {
 
-	protected function getPropsClass(): string
+	public function render(Addon $addon, bool $linkToGitHub = false, bool $small = false): void
 	{
-		return AvatarProps::class;
+		$this->template->setParameters([
+			'addon' => $addon,
+			'linkToGitHub' => $linkToGitHub,
+			'small' => $small,
+		])->render();
 	}
 
 }

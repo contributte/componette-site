@@ -5,24 +5,20 @@ namespace App\Modules\Front\Base\Controls\Layout\Header;
 use App\Model\UI\BaseRenderControl;
 use App\Modules\Front\Base\Controls\Layout\Header\Menu\MenuComponent;
 use App\Modules\Front\Base\Controls\Layout\Header\Menu\MenuLink;
-use App\Modules\Front\Base\Controls\Layout\Header\Menu\MenuProps;
 
 class Control extends BaseRenderControl
 {
 
 	use MenuComponent;
 
-	protected function beforeRender(): void
+	public function render(): void
 	{
-		parent::beforeRender();
-		$this
-			->template
-			->setParameters(
-				[
-					'home' => $this->presenter->link(':Front:Home:'),
-					'menu' => new MenuProps([MenuProps::LINKS => $this->links()]),
-				]
-			);
+		$this->template->setParameters(
+			[
+				'home' => $this->presenter->link(':Front:Home:'),
+				'menu' => $this->links()
+			]
+		)->render();
 	}
 
 	/**

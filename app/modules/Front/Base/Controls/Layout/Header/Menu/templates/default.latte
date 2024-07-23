@@ -1,4 +1,4 @@
-{templateType Wavevision\PropsControl\PropsControlTemplate}
+{varType App\Modules\Front\Base\Controls\Layout\Header\Menu\MenuLink[] $links}
 <div x-data="{ open: false }" class="relative flex-shrink-0 md:flex-1"
      xmlns:x-transition="http://www.w3.org/1999/xhtml">
     <button @click="open = true"
@@ -24,7 +24,7 @@
             class="absolute right-0 z-20 items-center w-32 py-2 mt-2 bg-white rounded shadow-md transform origin-top-right md:mt-0 md:bg-transparent md:shadow-none md:relative md:flex md:flex-1 md:w-auto md:text-right top-menu"
     >
         {varType App\Modules\Front\Base\Controls\Layout\Header\Menu\MenuLink $link}
-        {foreach $props->get(App\Modules\Front\Base\Controls\Layout\Header\Menu\MenuProps::LINKS) as $link}
+        {foreach $links as $link}
             <li class="md:inline-flex">
                 <a href="{$link->getUrl()}"
                    class="flex px-4 py-2 text-xs hover:bg-blue-100 md:hover:bg-blue-800 md:rounded md:hover:text-blue-200 md:text-blue-400 md:text-sm transition duration-150 ease-out focus:outline-none">
