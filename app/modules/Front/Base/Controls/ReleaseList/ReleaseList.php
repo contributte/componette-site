@@ -7,12 +7,10 @@ use App\Model\Database\ORM\GithubRelease\GithubRelease;
 use App\Model\Database\Query\LatestReleaseIdsQuery;
 use App\Model\UI\BaseControl;
 use App\Modules\Front\Base\Controls\Svg\SvgComponent;
-use Wavevision\NetteWebpack\InjectNetteWebpack;
 
 class ReleaseList extends BaseControl
 {
 
-	use InjectNetteWebpack;
 	use SvgComponent;
 
 	/** @var EntityModel */
@@ -25,7 +23,6 @@ class ReleaseList extends BaseControl
 
 	public function render(): void
 	{
-		$this->template->icon = $this->netteWebpack->getUrl($this->netteWebpack->getAsset('merge.svg'));
 		$ids = $this->em->getRepositoryForEntity(GithubRelease::class)
 			->fetchResult(new LatestReleaseIdsQuery())
 			->fetchPairs(null, 'id');

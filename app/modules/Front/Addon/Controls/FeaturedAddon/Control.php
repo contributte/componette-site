@@ -10,14 +10,12 @@ use App\Modules\Front\Base\Controls\AddonList\Description\DescriptionComponent;
 use App\Modules\Front\Base\Controls\AddonList\Name\NameComponent;
 use App\Modules\Front\Base\Controls\AddonList\Statistics\StatisticsComponent;
 use Nextras\Orm\Collection\ICollection;
-use Wavevision\NetteWebpack\InjectNetteWebpack;
 
 class Control extends BaseControl
 {
 
 	use AvatarComponent;
 	use DescriptionComponent;
-	use InjectNetteWebpack;
 	use NameComponent;
 	use StatisticsComponent;
 
@@ -34,7 +32,6 @@ class Control extends BaseControl
 				->setParameters(
 					[
 						'addon' => $addon,
-						'icon' => $this->netteWebpack->getUrl($this->netteWebpack->getAsset('trophy.svg')),
 					]
 				)->render(__DIR__ . '/templates/default.latte');
 		}

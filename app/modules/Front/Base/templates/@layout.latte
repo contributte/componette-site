@@ -33,7 +33,7 @@
     <meta name="twitter:title" content="{ifset #title}{include #title|striptags}{else}Addons, plugins and components{/ifset} | Componette">
     <meta name="twitter:description" content="{ifset #description}{include #description|striptags}{else}Addons, plugins and components for Nette Framework.{/ifset}">
 
-    {control assets:styles}
+    <link rel="stylesheet" href={webpack front.css}>
 
     <!-- Feeds -->
     <link rel="alternate" type="application/rss+xml" title="RSS" n:href="//:Front:Rss:newest">
@@ -76,7 +76,7 @@
     <!-- /Tracking -->
 
     <!-- Scripts -->
-    {control assets:scripts}
+    <script src={webpack front.js}></script>
     {block #scripts}{/block}
     <!-- /Scripts -->
 </body>
