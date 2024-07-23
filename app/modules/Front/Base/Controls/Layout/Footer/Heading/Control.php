@@ -3,13 +3,14 @@
 namespace App\Modules\Front\Base\Controls\Layout\Footer\Heading;
 
 use App\Model\UI\BasePropsControl;
+use App\Model\UI\BaseRenderControl;
 
-class Control extends BasePropsControl
+class Control extends BaseRenderControl
 {
 
-	protected function getPropsClass(): string
+	public function render(string $text): void
 	{
-		return HeadingProps::class;
+		$this->template->setParameters(['text' => $text])->render();
 	}
 
 }

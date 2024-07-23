@@ -4,29 +4,21 @@ namespace App\Modules\Front\Base\Controls\AddonList\Name;
 
 use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\GithubRelease\GithubRelease;
-use App\Model\UI\BasePropsControl;
+use App\Model\UI\BaseRenderControl;
 use Nextras\Orm\Collection\ICollection;
-use Wavevision\PropsControl\ValidProps;
 
-class Control extends BasePropsControl
+class Control extends BaseRenderControl
 {
 
-	protected function getPropsClass(): string
+	public function render(Addon $addon, bool $linkToGitHub = false, bool $inverseTag = false): void
 	{
-		return NameProps::class;
-	}
-
-	protected function beforeRender(ValidProps $props): void
-	{
-		parent::beforeRender($props);
-		/** @var Addon $addon */
-		$addon = $props->get(NameProps::ADDON);
-		$this->template->setParameters(['addon' => $addon]);
+		$this->template->setParameters(['addon' => $addon, 'linkToGitHub' => $linkToGitHub, 'inverseTag' => $inverseTag]);
 		if ($github = $addon->github) {
 			/** @var GithubRelease|null $release */
 			$release = $github->releases->get()->orderBy(['crawledAt' => ICollection::DESC])->fetch();
 			$this->template->setParameters(['release' => $release]);
 		}
+		$this->template->render();
 	}
 
 }

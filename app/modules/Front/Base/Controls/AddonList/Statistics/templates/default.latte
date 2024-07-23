@@ -1,18 +1,18 @@
-{templateType Wavevision\PropsControl\PropsControlTemplate}
+{varType bool $featured}
+{varType bool $inline}
 {varType App\Model\Database\ORM\Addon\Addon $addon}
-{varType App\Modules\Front\Base\Controls\Svg\SvgProps $statistics}
+{varType array $statistics}
 {varType App\Modules\Front\Base\Controls\AddonList\Statistics\Icon $icon}
-{var $addon = $props->get(App\Modules\Front\Base\Controls\AddonList\Statistics\StatisticsProps::ADDON)}
-<div n:if="!$props->inline" class="flex flex-wrap items-center justify-start px-5 pt-3 lg:px-8 lg:pt-4 min-h-16">
+<div n:if="!$inline" class="flex flex-wrap items-center justify-start px-5 pt-3 lg:px-8 lg:pt-4 min-h-16">
     {control svg, $statistics}
     <div class="mb-3 lg:mb-4 flex-1">
         <h2 class="font-bold text-gray-800 lg:text-lg font-headers">Statistics</h2>
     </div>
 </div>
-<div n:class="'flex flex-wrap', ($props->inline || $props->featured) ? 'w-full pl-12 sm:w-4/5' : 'justify-between px-5 py-3 border-t lg:px-8 lg:py-4', $props->featured ? 'md:pl-4 sm:pl-4', ($props->inline && !$props->featured) ? 'md:w-2/5'">
+<div n:class="'flex flex-wrap', ($inline || $featured) ? 'w-full pl-12 sm:w-4/5' : 'justify-between px-5 py-3 border-t lg:px-8 lg:py-4', $featured ? 'md:pl-4 sm:pl-4', ($inline && !$featured) ? 'md:w-2/5'">
     <div n:class="'flex items-center flex-1 text-xs text-blue-700', $props->inline ? 'mb-3 lg:mb-5 md:justify-end'">
         <div class="inline-flex items-center justify-center w-6 h-6 mr-2 bg-teal-100 rounded-full">
-            {$icon->render('download-cloud-fill', 'system')}
+            {control svg, $icon->getSvgProps('download-cloud-fill', 'system')}
         </div>
         <span class="pr-2">
             {if $addon->isComposer && $addon->composer}
@@ -24,25 +24,25 @@
             {/if}
         </span>
     </div>
-    <div n:class="'flex items-center flex-1 text-xs text-blue-700', $props->inline ? 'mb-3 lg:mb-5 md:justify-end'">
+    <div n:class="'flex items-center flex-1 text-xs text-blue-700', $inline ? 'mb-3 lg:mb-5 md:justify-end'">
         <div class="inline-flex items-center justify-center w-6 h-6 mr-2 bg-teal-100 rounded-full">
-            {$icon->render('star-fill', 'system')}
+            {control svg, $icon->getSvgProps('star-fill', 'system')}
         </div>
         <span class="pr-2">
             {$addon->github->stars|count}
         </span>
     </div>
-    <div n:if="!$props->inline" n:class="'flex items-center flex-1 text-xs text-blue-700', $props->inline ? 'mb-3 lg:mb-5 md:justify-end'">
+    <div n:if="!$inline" n:class="'flex items-center flex-1 text-xs text-blue-700', $inline ? 'mb-3 lg:mb-5 md:justify-end'">
         <div class="inline-flex items-center justify-center w-6 h-6 mr-2 bg-teal-100 rounded-full">
-            {$icon->render('bug-fill', 'development')}
+            {control svg, $icon->getSvgProps('bug-fill', 'development')}
         </div>
         <span class="pr-2">
             {$addon->github->issues|count}
         </span>
     </div>
-    <div n:class="'flex items-center flex-1 text-xs text-blue-700', $props->inline ? 'mb-3 lg:mb-5 md:justify-end'">
+    <div n:class="'flex items-center flex-1 text-xs text-blue-700', $inline ? 'mb-3 lg:mb-5 md:justify-end'">
         <div class="inline-flex items-center justify-center w-6 h-6 mr-2 bg-teal-100 rounded-full">
-            {$icon->render('flashlight-fill', 'weather')}
+            {control svg, $icon->getSvgProps('flashlight-fill', 'weather')}
         </div>
         {$addon->github->pushedAt|timeAgo}
     </div>

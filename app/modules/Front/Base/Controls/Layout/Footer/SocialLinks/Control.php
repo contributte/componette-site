@@ -2,24 +2,24 @@
 
 namespace App\Modules\Front\Base\Controls\Layout\Footer\SocialLinks;
 
-use App\Model\UI\BasePropsControl;
+use App\Model\UI\BaseRenderControl;
 use App\Modules\Front\Base\Controls\Svg\SvgComponent;
-use Wavevision\PropsControl\ValidProps;
 
-class Control extends BasePropsControl
+class Control extends BaseRenderControl
 {
 
 	use SvgComponent;
 
-	protected function beforeRender(ValidProps $props): void
+	/**
+	 * @param SocialLink[] $links
+	 * @return void
+	 */
+	public function render(array $links): void
 	{
-		parent::beforeRender($props);
-		$this->template->setParameters(['icon' => new Icon($this)]);
-	}
-
-	protected function getPropsClass(): string
-	{
-		return SocialLinksProps::class;
+		$this->template->setParameters([
+			'links' => $links,
+			'icon' => new Icon(),
+		])->render();
 	}
 
 }
