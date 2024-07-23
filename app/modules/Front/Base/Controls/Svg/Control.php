@@ -4,8 +4,6 @@ namespace App\Modules\Front\Base\Controls\Svg;
 
 use App\Model\UI\BasePropsControl;
 use Wavevision\PropsControl\ValidProps;
-use Contributte\Utils\Arrays;
-use Contributte\Utils\Strings;
 
 class Control extends BasePropsControl
 {

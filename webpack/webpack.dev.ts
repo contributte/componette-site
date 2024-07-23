@@ -16,6 +16,6 @@ export default makeConfig({
   },
   output: {
     filename: '[name].[fullhash].js',
-    publicPath: 'http://localhost:9006/dist/',
+    publicPath: 'http://localhost:9006/',
   },
 });

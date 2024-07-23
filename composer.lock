@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "938afdcb4f3ad305d5acf9651e291031",
+    "content-hash": "9e1f1c88494f9361ba1cbc4b721ee6e2",
     "packages": [
         {
             "name": "contributte/application",
@@ -891,6 +891,83 @@
                 }
             ],
             "time": "2022-12-26T13:10:34+00:00"
+        },
+        {
+            "name": "contributte/webpack",
+            "version": "2.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contributte/webpack.git",
+                "reference": "4104414e01a55c0962b8db7b56ea2e9745e67e5f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contributte/webpack/zipball/4104414e01a55c0962b8db7b56ea2e9745e67e5f",
+                "reference": "4104414e01a55c0962b8db7b56ea2e9745e67e5f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "nette/di": "^3.0",
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "latte/latte": "^2.4 || ^3.0",
+                "nette/application": "^3.0",
+                "nette/bootstrap": "^3.0",
+                "nette/tester": "^2.0",
+                "phpstan/phpstan": "^1.0",
+                "symplify/easy-coding-standard": "^12.0",
+                "tracy/tracy": "^2.4"
+            },
+            "suggest": {
+                "latte/latte": "to enable Latte integration via {webpack} macro",
+                "tracy/tracy": "to enable asset debugging in the debug bar panel"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Contributte\\Webpack\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Jiří Pudil",
+                    "email": "me@jiripudil.cz",
+                    "homepage": "https://jiripudil.cz"
+                }
+            ],
+            "description": "Webpack integration for Nette Framework.",
+            "homepage": "https://github.com/contributte/webpack",
+            "keywords": [
+                "nette",
+                "webpack"
+            ],
+            "support": {
+                "email": "me@jiripudil.cz",
+                "issues": "https://github.com/contributte/webpack/issues",
+                "source": "https://github.com/contributte/webpack/tree/2.3.1"
+            },
+            "funding": [
+                {
+                    "url": "https://contributte.org/partners.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/f3l1x",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-01-05T12:59:56+00:00"
         },
         {
             "name": "latte/latte",
@@ -3192,68 +3269,6 @@
                 "source": "https://github.com/nette/tracy/tree/v2.10.7"
             },
             "time": "2024-04-29T11:44:00+00:00"
-        },
-        {
-            "name": "wavevision/nette-webpack",
-            "version": "2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/wavevision/nette-webpack.git",
-                "reference": "fabea61d750c7c660695afce0272f9ce1b788805"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/wavevision/nette-webpack/zipball/fabea61d750c7c660695afce0272f9ce1b788805",
-                "reference": "fabea61d750c7c660695afce0272f9ce1b788805",
-                "shasum": ""
-            },
-            "require": {
-                "latte/latte": "^2.6",
-                "nette/di": "^3.0",
-                "nette/http": "^3.0",
-                "php": ">=7.4",
-                "tracy/tracy": "^2.7",
-                "wavevision/props-control": "^6.0",
-                "wavevision/utils": "^2.4"
-            },
-            "require-dev": {
-                "nette/application": "^3.0",
-                "php-coveralls/php-coveralls": "^2.2",
-                "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan-nette": "^0.12.3",
-                "wavevision/coding-standard": "^6.0",
-                "wavevision/di-service-annotation": "^4.0",
-                "wavevision/nette-tests": "^3.1"
-            },
-            "type": "library",
-            "extra": {
-                "phpstan": []
-            },
-            "autoload": {
-                "psr-4": {
-                    "Wavevision\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Wavevision s.r.o",
-                    "email": "info@wavevision.com"
-                },
-                {
-                    "name": "Vít Rozsíval",
-                    "email": "vit@wavevision.com"
-                }
-            ],
-            "description": "Webpack adapter for Nette framework.",
-            "support": {
-                "issues": "https://github.com/wavevision/nette-webpack/issues",
-                "source": "https://github.com/wavevision/nette-webpack/tree/2.0.0"
-            },
-            "time": "2021-10-19T09:11:43+00:00"
         },
         {
             "name": "wavevision/props-control",
