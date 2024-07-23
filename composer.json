@@ -47,11 +47,11 @@
     "contributte/security": "^0.4.0",
     "contributte/tracy": "^0.5.0",
     "contributte/utils": "^0.5.2",
+    "contributte/webpack": "^2.3",
     "nette/robot-loader": "^3.2.0",
     "nextras/dbal": "4.0.4",
     "nextras/migrations": "3.2.0",
     "nextras/orm": "4.0.6",
-    "wavevision/nette-webpack": "^2.0.0",
     "wavevision/props-control": "dev-next as 6.99",
     "wavevision/utils": "^2.12"
   },

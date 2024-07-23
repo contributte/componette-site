@@ -13,8 +13,6 @@ use App\Modules\Front\Base\Controls\Search\ISearchFactory;
 use App\Modules\Front\Base\Controls\Search\Search as SearchComponent;
 use Contributte\Application\UI\Presenter\StructuredTemplates;
 use Nette\Bridges\ApplicationLatte\DefaultTemplate;
-use Wavevision\NetteWebpack\InjectResolveEntryChunks;
-use Wavevision\NetteWebpack\UI\Components\Assets\AssetsComponent;
 
 /**
  * Base presenter for all front-end presenters.
@@ -24,11 +22,9 @@ use Wavevision\NetteWebpack\UI\Components\Assets\AssetsComponent;
 abstract class BasePresenter extends AbstractPresenter
 {
 
-	use AssetsComponent;
 	use FlashMessagesComponent;
 	use FooterComponent;
 	use HeaderComponent;
-	use InjectResolveEntryChunks;
 	use StructuredTemplates;
 
 	/** @inject */
@@ -36,14 +32,6 @@ abstract class BasePresenter extends AbstractPresenter
 
 	/** @inject */
 	public ISearchFactory $searchFactory;
-
-	protected function startup(): void
-	{
-		parent::startup();
-		$this
-			->getAssetsComponent()
-			->setChunks($this->resolveEntryChunks->process(Entries::FRONT));
-	}
 
 	protected function createComponentSearch(): SearchComponent
 	{

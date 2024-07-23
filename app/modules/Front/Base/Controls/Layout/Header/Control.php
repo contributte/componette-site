@@ -6,12 +6,10 @@ use App\Model\UI\BaseRenderControl;
 use App\Modules\Front\Base\Controls\Layout\Header\Menu\MenuComponent;
 use App\Modules\Front\Base\Controls\Layout\Header\Menu\MenuLink;
 use App\Modules\Front\Base\Controls\Layout\Header\Menu\MenuProps;
-use Wavevision\NetteWebpack\InjectFormatAssetName;
 
 class Control extends BaseRenderControl
 {
 
-	use InjectFormatAssetName;
 	use MenuComponent;
 
 	protected function beforeRender(): void
@@ -22,7 +20,6 @@ class Control extends BaseRenderControl
 			->setParameters(
 				[
 					'home' => $this->presenter->link(':Front:Home:'),
-					'logo' => $this->formatAssetName->process('logo.svg'),
 					'menu' => new MenuProps([MenuProps::LINKS => $this->links()]),
 				]
 			);

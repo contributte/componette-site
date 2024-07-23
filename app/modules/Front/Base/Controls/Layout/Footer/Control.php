@@ -7,12 +7,10 @@ use App\Modules\Front\Base\Controls\Layout\Footer\SocialLinks\SocialLink;
 use App\Modules\Front\Base\Controls\Layout\Footer\SocialLinks\SocialLinksComponent;
 use App\Modules\Front\Base\Controls\Layout\Footer\SocialLinks\SocialLinksProps;
 use App\Modules\Front\Base\Controls\Layout\Footer\SubscribeForm\SubscribeFormComponent;
-use Wavevision\NetteWebpack\InjectFormatAssetName;
 
 class Control extends BaseRenderControl
 {
 
-	use InjectFormatAssetName;
 	use SocialLinksComponent;
 	use SubscribeFormComponent;
 
@@ -24,7 +22,6 @@ class Control extends BaseRenderControl
 			->setParameters(
 				[
 					'home' => $this->presenter->link(':Front:Home:'),
-					'logo' => $this->formatAssetName->process('logo-small.svg'),
 					'socialLinks' => new SocialLinksProps([SocialLinksProps::LINKS => $this->socialLinks()]),
 				]
 			);
