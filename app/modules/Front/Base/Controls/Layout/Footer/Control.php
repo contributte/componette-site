@@ -5,7 +5,6 @@ namespace App\Modules\Front\Base\Controls\Layout\Footer;
 use App\Model\UI\BaseRenderControl;
 use App\Modules\Front\Base\Controls\Layout\Footer\SocialLinks\SocialLink;
 use App\Modules\Front\Base\Controls\Layout\Footer\SocialLinks\SocialLinksComponent;
-use App\Modules\Front\Base\Controls\Layout\Footer\SocialLinks\SocialLinksProps;
 use App\Modules\Front\Base\Controls\Layout\Footer\SubscribeForm\SubscribeFormComponent;
 
 class Control extends BaseRenderControl
@@ -14,17 +13,16 @@ class Control extends BaseRenderControl
 	use SocialLinksComponent;
 	use SubscribeFormComponent;
 
-	protected function beforeRender(): void
+	public function render(): void
 	{
-		parent::beforeRender();
 		$this
 			->template
 			->setParameters(
 				[
 					'home' => $this->presenter->link(':Front:Home:'),
-					'socialLinks' => new SocialLinksProps([SocialLinksProps::LINKS => $this->socialLinks()]),
+					'socialLinks' => $this->socialLinks(),
 				]
-			);
+			)->render();
 	}
 
 	/**

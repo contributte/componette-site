@@ -1,9 +1,9 @@
-{templateType Wavevision\PropsControl\PropsControlTemplate}
 {varType App\Model\Database\ORM\Addon\Addon $addon}
-{var $addon = $props->get(App\Modules\Front\Base\Controls\AddonList\Avatar\AvatarProps::ADDON)}
-<a href="{if $props->linkToGithub}{$addon->github->linker->getRepoUrl()}{else}{plink Addon:detail, slug => $addon->id}{/if}"
+{varType bool $linkToGithub}
+{varType bool $small}
+<a href="{if $linkToGithub}{$addon->github->linker->getRepoUrl()}{else}{plink Addon:detail, slug => $addon->id}{/if}"
    class="flex-shrink-0 mr-4"
 >
     <img loading="lazy" alt="{$addon->author}"
-         src="{avatar $addon->author}" n:class="'w-8 h-8 rounded-full', !$props->small ? 'lg:h-16 lg:w-16'">
+         src="{avatar $addon->author}" n:class="'w-8 h-8 rounded-full', !$small ? 'lg:h-16 lg:w-16'">
 </a>

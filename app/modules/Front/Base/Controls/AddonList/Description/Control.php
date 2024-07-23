@@ -2,14 +2,15 @@
 
 namespace App\Modules\Front\Base\Controls\AddonList\Description;
 
-use Wavevision\PropsControl\PropsControl;
+use App\Model\Database\ORM\Addon\Addon;
+use App\Model\UI\BaseRenderControl;
 
-class Control extends PropsControl
+class Control extends BaseRenderControl
 {
 
-	protected function getPropsClass(): string
+	public function render(Addon $addon): void
 	{
-		return DescriptionProps::class;
+		$this->template->setParameters(['addon' => $addon])->render();
 	}
 
 }

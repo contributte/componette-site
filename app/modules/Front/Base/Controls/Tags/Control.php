@@ -9,10 +9,9 @@ class Control extends BaseRenderControl
 
 	use InjectTags;
 
-	protected function beforeRender(): void
+	public function render(): void
 	{
-		parent::beforeRender();
-		$this->template->setParameters(['tags' => $this->tags->get()]);
+		$this->template->setParameters(['tags' => $this->tags->get()])->render();
 	}
 
 }

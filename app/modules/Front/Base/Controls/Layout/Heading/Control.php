@@ -2,14 +2,17 @@
 
 namespace App\Modules\Front\Base\Controls\Layout\Heading;
 
-use App\Model\UI\BasePropsControl;
+use App\Model\UI\BaseRenderControl;
 
-class Control extends BasePropsControl
+class Control extends BaseRenderControl
 {
 
-	protected function getPropsClass(): string
+	/**
+	 * @param array<string, mixed> $props
+	 */
+	public function render(array $props): void
 	{
-		return HeadingProps::class;
+		$this->template->setParameters(['props' => $props])->render();
 	}
 
 }

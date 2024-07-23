@@ -5,7 +5,6 @@ namespace App\Modules\Front\Base\Controls\Layout\Footer\SubscribeForm;
 use App\Model\Forms\BaseForm;
 use App\Model\UI\BaseRenderControl;
 use App\Modules\Front\Base\Controls\Layout\Footer\Heading\HeadingComponent;
-use App\Modules\Front\Base\Controls\Layout\Footer\Heading\HeadingProps;
 use Nette\Forms\Form;
 
 class Control extends BaseRenderControl
@@ -15,16 +14,15 @@ class Control extends BaseRenderControl
 	use InjectFactory;
 	use InjectHandler;
 
-	protected function beforeRender(): void
+	public function render(): void
 	{
-		parent::beforeRender();
 		$this
 			->template
 			->setParameters(
 				[
-					'heading' => new HeadingProps([HeadingProps::TEXT => 'Subscribe to our newsletter']),
+					'heading' =>'Subscribe to our newsletter',
 				]
-			);
+			)->render();
 	}
 
 	protected function createComponentForm(): BaseForm

@@ -2,14 +2,18 @@
 
 namespace App\Modules\Front\Base\Controls\Layout\Header\Menu;
 
-use App\Model\UI\BasePropsControl;
+use App\Model\UI\BaseRenderControl;
 
-class Control extends BasePropsControl
+class Control extends BaseRenderControl
 {
 
-	protected function getPropsClass(): string
+	/**
+	 * @param MenuLink[] $links
+	 */
+	public function render(array $links): void
 	{
-		return MenuProps::class;
+		$this->template->links = $links;
+		$this->template->render();
 	}
 
 }
