@@ -7,12 +7,10 @@ use App\Model\UI\BaseRenderControl;
 class Control extends BaseRenderControl
 {
 
-	/**
-	 * @param array<string, mixed> $props
-	 */
-	public function render(array $props): void
+
+	public function render(string $content, string $type = 'h2'): void
 	{
-		$this->template->setParameters(['props' => $props])->render();
+		$this->template->setParameters(['content' => $content, 'type' => $type])->render();
 	}
 
 }

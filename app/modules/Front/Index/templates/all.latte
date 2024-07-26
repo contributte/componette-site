@@ -1,7 +1,7 @@
 {block #title}All addons{/block}
 {block #content}
     <div class="mb-4">
-        {control heading, [content => 'All addons']}
+        {control heading, 'All addons'}
     </div>
     {cache 'addons/all', expire => '+1 day'}
         {control categorizedAddons}
