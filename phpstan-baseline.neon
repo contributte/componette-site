@@ -52,7 +52,7 @@ parameters:
 
 		-
 			message: "#^Cannot access offset 'homepage' on mixed\\.$#"
-			count: 2
+			count: 1
 			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
 
 		-
@@ -62,7 +62,7 @@ parameters:
 
 		-
 			message: "#^Cannot access offset 'message' on mixed\\.$#"
-			count: 3
+			count: 2
 			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
 
 		-
@@ -191,21 +191,6 @@ parameters:
 			path: app/model/WebServices/Github/GithubService.php
 
 		-
-			message: "#^Parameter \\#1 \\.\\.\\.\\$props of static method Wavevision\\\\PropsControl\\\\Helpers\\\\PropUtils\\:\\:merge\\(\\) expects array\\<Nette\\\\Schema\\\\Schema\\>, array given\\.$#"
-			count: 1
-			path: app/modules/Front/Base/Controls/AddonList/Avatar/AvatarProps.php
-
-		-
-			message: "#^Parameter \\#1 \\.\\.\\.\\$props of static method Wavevision\\\\PropsControl\\\\Helpers\\\\PropUtils\\:\\:merge\\(\\) expects array\\<Nette\\\\Schema\\\\Schema\\>, array given\\.$#"
-			count: 1
-			path: app/modules/Front/Base/Controls/AddonList/Name/NameProps.php
-
-		-
-			message: "#^Parameter \\#1 \\.\\.\\.\\$props of static method Wavevision\\\\PropsControl\\\\Helpers\\\\PropUtils\\:\\:merge\\(\\) expects array\\<Nette\\\\Schema\\\\Schema\\>, array given\\.$#"
-			count: 1
-			path: app/modules/Front/Base/Controls/AddonList/Statistics/StatisticsProps.php
-
-		-
 			message: "#^Cannot access offset 'core' on mixed\\.$#"
 			count: 3
 			path: app/modules/Front/Base/Controls/Status/Status.php
@@ -239,11 +224,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$time of static method Nette\\\\Utils\\\\DateTime\\:\\:from\\(\\) expects DateTimeInterface\\|int\\|string, mixed given\\.$#"
 			count: 2
 			path: app/modules/Front/Base/Controls/Status/Status.php
-
-		-
-			message: "#^Cannot cast mixed to string\\.$#"
-			count: 1
-			path: app/modules/Front/Base/Controls/Svg/Control.php
 
 		-
 			message: "#^Access to an undefined property Nextras\\\\Orm\\\\Entity\\\\IEntity\\:\\:\\$addons\\.$#"

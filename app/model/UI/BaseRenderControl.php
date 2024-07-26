@@ -2,8 +2,8 @@
 
 namespace App\Model\UI;
 
+use Nette\Application\UI\Template;
 use Nette\Bridges\ApplicationLatte\DefaultTemplate;
-use Wavevision\PropsControl\BaseControl;
 
 /**
  * @property-read DefaultTemplate $template
@@ -11,14 +11,22 @@ use Wavevision\PropsControl\BaseControl;
 abstract class BaseRenderControl extends BaseControl
 {
 
-	public function render(): void
+	protected const DEFAULT_TEMPLATE = 'default';
+
+	protected function createTemplate(): Template
 	{
-		$this->beforeRender();
-		$this->template->render();
+		$template = parent::createTemplate();
+		$template->setFile($this->getTemplateFile());
+		return $template;
 	}
 
-	protected function beforeRender(): void
+	final protected function getTemplateFile(?string $template = null): string
 	{
+		if (!$template) {
+			$template = static::DEFAULT_TEMPLATE;
+		}
+		$file = (string)$this->getReflection()->getFileName();
+		return dirname($file) . "/templates/$template.latte";
 	}
 
 }

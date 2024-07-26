@@ -1,10 +1,10 @@
 {varType App\Model\Database\ORM\Addon\Addon $addon}
 <div class="w-full flex flex-wrap justify-between">
     <div class="flex items-center w-full px-5 pt-2 md:pt-0 lg:px-8 mb-3 lg:mb-6 lg:w-1/2">
-        {control avatar, [addon => $addon, linkToGithub => true]}
+        {control avatar, $addon, true}
         <div class="flex flex-col flex-1">
-            {control name, [addon => $addon, inverseTag => true, linkToGithub => true]}
-            {control description, [addon => $addon]}
+            {control name, $addon, true, true}
+            {control description, $addon}
         </div>
     </div>
     <div n:if="$addon->isComposer && $addon->github->masterComposer"

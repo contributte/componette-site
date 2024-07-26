@@ -21,10 +21,6 @@ build:
 dev:
 	$(ts-webpack) $(node)/webpack serve --config $(webpack)/webpack.dev.ts
 
-di: reset
-	bin/extract-services
-	$(MAKE) reset
-
 rm-cache:
 	rm -rf $(temp)/cache
 

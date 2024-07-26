@@ -7,19 +7,17 @@ use App\Model\Database\Query\LatestActivityAddonsQuery;
 use App\Model\Database\Query\LatestAddedAddonsQuery;
 use App\Model\Database\Query\QueryObject;
 use App\Model\Database\Query\SearchAddonsQuery;
-use App\Model\UI\BaseControl;
+use App\Model\UI\BaseRenderControl;
 use App\Modules\Front\Base\Controls\AddonList\Avatar\AvatarComponent;
 use App\Modules\Front\Base\Controls\AddonList\Description\DescriptionComponent;
 use App\Modules\Front\Base\Controls\AddonList\Name\NameComponent;
 use App\Modules\Front\Base\Controls\AddonList\Statistics\StatisticsComponent;
 use App\Modules\Front\Base\Controls\AddonMeta\AddonMeta;
 use App\Modules\Front\Base\Controls\Layout\Box\BoxComponent;
-use App\Modules\Front\Base\Controls\Layout\Box\BoxProps;
 use App\Modules\Front\Base\Controls\Layout\Heading\HeadingComponent;
 use Nette\Utils\Html;
-use Wavevision\PropsControl\Helpers\Render;
 
-class AddonList extends BaseControl
+class AddonList extends BaseRenderControl
 {
 
 	use AvatarComponent;
@@ -50,13 +48,13 @@ class AddonList extends BaseControl
 
 	public function render(): void
 	{
-		$this->getBoxComponent()->render(new BoxProps([BoxProps::CONTENT => $this->renderContent()]));
+		$this->getBoxComponent()->render($this->renderContent());
 	}
 
 	private function renderContent(): Html
 	{
 		$addons = $this->addonRepository->fetchEntities($this->queryObject);
-		return Render::toHtml(
+		return Html::el()->setHtml(
 			$this->template
 				->setParameters([
 					'addons' => $addons,
@@ -71,14 +69,11 @@ class AddonList extends BaseControl
 		switch ($query) {
 			case LatestActivityAddonsQuery::class:
 				return Html::el()->setText('Latest updated addons');
-
 			case LatestAddedAddonsQuery::class:
 				return Html::el()->setText('Latest indexed addons');
-
 			case SearchAddonsQuery::class:
 				return $this->renderSearchTitle($addonsCount);
 		}
-
 		return null;
 	}
 
@@ -91,19 +86,22 @@ class AddonList extends BaseControl
 				->addHtml(Html::el()->setText('By '))
 				->addHtml(Html::el('strong')->setText($author));
 		}
-
 		if ($tag = $query->getTag()) {
 			return Html::el()
 				->addHtml(Html::el()->setText('Tagged by #'))
 				->addHtml(Html::el('strong')->setText($tag));
 		}
-
 		return Html::el()
 			->addHtml(Html::el()->setText('Searched for $'))
 			->addHtml(Html::el('strong')->setText($query->getQuery()))
-			->addHtml(Html::el('i')
-				->setAttribute('class', 'ml-2 relative inline-block px-2 text-sm font-normal text-blue-700 bg-blue-100 rounded-full align-middle')
-				->setText(sprintf('%d result%s', $addonsCount, $addonsCount > 1 ? 's' : '')));
+			->addHtml(
+				Html::el('i')
+					->setAttribute(
+						'class',
+						'ml-2 relative inline-block px-2 text-sm font-normal text-blue-700 bg-blue-100 rounded-full align-middle'
+					)
+					->setText(sprintf('%d result%s', $addonsCount, $addonsCount > 1 ? 's' : ''))
+			);
 	}
 
 }

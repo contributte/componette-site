@@ -2,18 +2,15 @@
 
 namespace App\Modules\Front\Base\Controls\Layout\Heading;
 
-use App\Model\UI\BasePropsControl;
-use Wavevision\DIServiceAnnotation\DIService;
+use App\Model\UI\BaseRenderControl;
 
-/**
- * @DIService(generateComponent=true)
- */
-class Control extends BasePropsControl
+class Control extends BaseRenderControl
 {
 
-	protected function getPropsClass(): string
+
+	public function render(string $content, string $type = 'h2'): void
 	{
-		return HeadingProps::class;
+		$this->template->setParameters(['content' => $content, 'type' => $type])->render();
 	}
 
 }

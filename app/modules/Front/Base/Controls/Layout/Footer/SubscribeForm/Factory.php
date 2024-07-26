@@ -6,11 +6,7 @@ use App\Model\Forms\BaseForm;
 use App\Model\Forms\InjectFormFactory;
 use Nette\Forms\Container;
 use Nette\SmartObject;
-use Wavevision\DIServiceAnnotation\DIService;
 
-/**
- * @DIService(generateInject=true)
- */
 class Factory
 {
 

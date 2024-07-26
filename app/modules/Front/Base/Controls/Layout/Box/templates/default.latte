@@ -1,6 +1,8 @@
-{templateType Wavevision\PropsControl\PropsControlTemplate}
-<div n:class="bg-white, rounded, shadow-md, 'z-10', relative, ...$props->get(App\Modules\Front\Base\Controls\Layout\Box\BoxProps::CLASS_NAMES)"
-    n:attr="$props->get(App\Modules\Front\Base\Controls\Layout\Box\BoxProps::ATTRIBUTES)"
+{varType Nette\Utils\Html $content}
+{varType array $attributes}
+{varType array $classNames}
+<div n:class="bg-white, rounded, shadow-md, 'z-10', relative, ...$classNames"
+    n:attr="$attributes"
 >
-    {$props->get(App\Modules\Front\Base\Controls\Layout\Box\BoxProps::CONTENT)}
+    {$content}
 </div>

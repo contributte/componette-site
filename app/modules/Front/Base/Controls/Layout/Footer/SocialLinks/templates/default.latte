@@ -1,11 +1,11 @@
-{templateType Wavevision\PropsControl\PropsControlTemplate}
 {varType App\Modules\Front\Base\Controls\Layout\Footer\SocialLinks\Icon $icon}
+{varType App\Modules\Front\Base\Controls\Layout\Footer\SocialLinks\SocialLink[] $links}
 <div class="flex md:order-2">
     {varType App\Modules\Front\Base\Controls\Layout\Footer\SocialLinks\SocialLink $link}
-    {foreach $props->get(App\Modules\Front\Base\Controls\Layout\Footer\SocialLinks\SocialLinksProps::LINKS) as $link}
+    {foreach $links as $link}
         <a href="{$link->getUrl()}" class="mr-6 md:mr-0 md:ml-6 text-gray-400 group">
             <span class="sr-only">{$link->getName()}</span>
-            {$icon->render($link)}
+            {control svg, $icon->getSvgProps($link)}
         </a>
     {/foreach}
 </div>

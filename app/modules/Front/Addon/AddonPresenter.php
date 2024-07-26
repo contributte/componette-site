@@ -38,6 +38,7 @@ final class AddonPresenter extends BaseAddonPresenter
 
 	private function getAddon(int $id): Addon
 	{
+		bdump($id);
 		if (!($addon = $this->addonFacade->getDetail($id))) {
 			$this->error('Addon not found');
 		}

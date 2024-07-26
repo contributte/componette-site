@@ -2,42 +2,35 @@
 
 namespace App\Modules\Front\Base\Controls\Svg;
 
-use App\Model\UI\BasePropsControl;
-use Wavevision\DIServiceAnnotation\DIService;
-use Wavevision\PropsControl\ValidProps;
-use Wavevision\Utils\Arrays;
-use Wavevision\Utils\Path;
+use App\Model\UI\BaseRenderControl;
 
-/**
- * @DIService(generateComponent=true)
- */
-class Control extends BasePropsControl
+class Control extends BaseRenderControl
 {
 
 	private const URL = 'https://obr.vercel.app/remixicon';
 
-	protected function beforeRender(ValidProps $props): void
+	/**
+	 * @param array<string, mixed> $props
+	 */
+	public function render(array $props): void
 	{
-		parent::beforeRender($props);
-		$this->template->setParameters(['url' => $this->url($props)]);
+		$this->template->setParameters(['props' => $props, 'url' => $this->url($props)])->render();
 	}
 
-	protected function getPropsClass(): string
+	/**
+	 * @param array<string, mixed> $props
+	 */
+	private function url(array $props): string
 	{
-		return SvgProps::class;
-	}
-
-	private function url(ValidProps $props): string
-	{
-		return Path::join(
-			self::URL,
-			...Arrays::map(
-				[SvgProps::TYPE, SvgProps::IMAGE, SvgProps::SIZE, SvgProps::FILL],
-				function (string $prop) use ($props): ?string {
-					$value = $props->get($prop);
-					return $value ? (string)$value : null;
-				}
-			)
+		return implode(
+			'/',
+			array_filter([
+				self::URL,
+				$props['type'] ?? null,
+				$props['image'] ?? null,
+				$props['size'] ?? null,
+				$props['fill'] ?? null,
+			], fn($part) => $part !== null)
 		);
 	}
 

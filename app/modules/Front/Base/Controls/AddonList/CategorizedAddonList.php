@@ -12,10 +12,8 @@ use App\Modules\Front\Base\Controls\AddonList\Name\NameComponent;
 use App\Modules\Front\Base\Controls\AddonList\Statistics\StatisticsComponent;
 use App\Modules\Front\Base\Controls\AddonMeta\AddonMeta;
 use App\Modules\Front\Base\Controls\Layout\Box\BoxComponent;
-use App\Modules\Front\Base\Controls\Layout\Box\BoxProps;
 use Nette\Utils\Html;
 use Nextras\Orm\Collection\ICollection;
-use Wavevision\PropsControl\Helpers\Render;
 
 final class CategorizedAddonList extends BaseControl
 {
@@ -77,7 +75,7 @@ final class CategorizedAddonList extends BaseControl
 
 	public function render(): void
 	{
-		$this->getBoxComponent()->render(new BoxProps([BoxProps::CONTENT => $this->renderContent()]));
+		$this->getBoxComponent()->render($this->renderContent());
 	}
 
 	private function renderContent(): Html
@@ -127,7 +125,7 @@ final class CategorizedAddonList extends BaseControl
 		$this->template->list = $list;
 		$this->template->title = null;
 		// Render
-		return Render::toHtml($this->template->renderToString(__DIR__ . '/templates/categorized.list.latte'));
+		return Html::el()->setHtml($this->template->renderToString(__DIR__ . '/templates/categorized.list.latte'));
 	}
 
 }

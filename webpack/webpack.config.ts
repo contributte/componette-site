@@ -1,12 +1,13 @@
+import { WebpackManifestPlugin } from 'webpack-manifest-plugin';
 import merge from 'webpack-merge';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { Configuration, ProvidePlugin } from 'webpack';
 
-import { DEV, helper, makeEntry } from './utils';
+import { DEV, entry } from './utils';
 import makeLoaders from './loaders';
 
 const baseConfig: Configuration = {
-  entry: makeEntry(),
+  entry: entry,
   module: {
     rules: makeLoaders(),
   },
@@ -16,7 +17,10 @@ const baseConfig: Configuration = {
       filename: `[name]${DEV ? '' : '.[fullhash]'}.css`,
       chunkFilename: `[id]${DEV ? '' : '.[fullhash]'}.css`,
     }),
-    helper.createManifestPlugin(),
+    new WebpackManifestPlugin({
+      fileName: 'manifest.json',
+      publicPath: '',
+    }),
     new ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',

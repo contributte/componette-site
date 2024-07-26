@@ -5,7 +5,6 @@ namespace App\Modules\Front\Base\Controls\Search;
 use App\Model\Services\Search\Search as Searching;
 use App\Model\UI\BaseControl;
 use App\Modules\Front\Base\Controls\Svg\SvgComponent;
-use App\Modules\Front\Base\Controls\Svg\SvgProps;
 use Nette\Application\UI\Form;
 
 final class Search extends BaseControl
@@ -55,13 +54,13 @@ final class Search extends BaseControl
 	public function render(): void
 	{
 		$this->template->setParameters([
-			'searchIcon' => new SvgProps([
-				SvgProps::CLASS_NAME => 'h-5 md:mr-4',
-				SvgProps::FILL => '8A99B0',
-				SvgProps::IMAGE => 'search-line',
-				SvgProps::SIZE => 64,
-				SvgProps::TYPE => 'system',
-			])]);
+			'searchIcon' => [
+				'className' => 'h-5 md:mr-4',
+				'fill' => '8A99B0',
+				'image' => 'search-line',
+				'size' => 64,
+				'type' => 'system',
+			]]);
 		$this->template->setFile(__DIR__ . '/templates/search.latte');
 		$this->template->render();
 	}

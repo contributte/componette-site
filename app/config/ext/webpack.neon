@@ -1,6 +1,12 @@
 extensions:
-	webpack: Wavevision\NetteWebpack\DI\Extension(%debugMode%, %consoleMode%)
+	webpack: Contributte\Webpack\DI\WebpackExtension(%debugMode%, %consoleMode%)
 
 webpack:
-	entries:
-		front: true
+	build:
+		directory: %wwwDir%/dist
+		publicPath: dist/
+	devServer:
+		enabled: %debugMode%
+		url: http://localhost:9006
+	manifest:
+		name: manifest.json

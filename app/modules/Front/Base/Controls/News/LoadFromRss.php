@@ -6,11 +6,7 @@ use DateTimeInterface;
 use Nette\SmartObject;
 use Nette\Utils\DateTime;
 use SimpleXMLElement;
-use Wavevision\DIServiceAnnotation\DIService;
 
-/**
- * @DIService(generateInject=true)
- */
 class LoadFromRss
 {
 

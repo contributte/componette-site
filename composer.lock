@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1b31b7d4dba79759632af7e02f68b6ac",
+    "content-hash": "4faf1a719fe30d75c223e021d85945ba",
     "packages": [
         {
             "name": "contributte/application",
@@ -891,6 +891,83 @@
                 }
             ],
             "time": "2022-12-26T13:10:34+00:00"
+        },
+        {
+            "name": "contributte/webpack",
+            "version": "2.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contributte/webpack.git",
+                "reference": "4104414e01a55c0962b8db7b56ea2e9745e67e5f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contributte/webpack/zipball/4104414e01a55c0962b8db7b56ea2e9745e67e5f",
+                "reference": "4104414e01a55c0962b8db7b56ea2e9745e67e5f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "nette/di": "^3.0",
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "latte/latte": "^2.4 || ^3.0",
+                "nette/application": "^3.0",
+                "nette/bootstrap": "^3.0",
+                "nette/tester": "^2.0",
+                "phpstan/phpstan": "^1.0",
+                "symplify/easy-coding-standard": "^12.0",
+                "tracy/tracy": "^2.4"
+            },
+            "suggest": {
+                "latte/latte": "to enable Latte integration via {webpack} macro",
+                "tracy/tracy": "to enable asset debugging in the debug bar panel"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Contributte\\Webpack\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Jiří Pudil",
+                    "email": "me@jiripudil.cz",
+                    "homepage": "https://jiripudil.cz"
+                }
+            ],
+            "description": "Webpack integration for Nette Framework.",
+            "homepage": "https://github.com/contributte/webpack",
+            "keywords": [
+                "nette",
+                "webpack"
+            ],
+            "support": {
+                "email": "me@jiripudil.cz",
+                "issues": "https://github.com/contributte/webpack/issues",
+                "source": "https://github.com/contributte/webpack/tree/2.3.1"
+            },
+            "funding": [
+                {
+                    "url": "https://contributte.org/partners.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/f3l1x",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-01-05T12:59:56+00:00"
         },
         {
             "name": "latte/latte",
@@ -2406,71 +2483,6 @@
             "time": "2021-11-05T16:47:00+00:00"
         },
         {
-            "name": "softcreatr/jsonpath",
-            "version": "0.7.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/SoftCreatR/JSONPath.git",
-                "reference": "008569bf80aa3584834f7890781576bc7b65afa7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/SoftCreatR/JSONPath/zipball/008569bf80aa3584834f7890781576bc7b65afa7",
-                "reference": "008569bf80aa3584834f7890781576bc7b65afa7",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "php": ">=7.1"
-            },
-            "replace": {
-                "flow/jsonpath": "*"
-            },
-            "require-dev": {
-                "phpunit/phpunit": ">=7.0",
-                "roave/security-advisories": "dev-master",
-                "squizlabs/php_codesniffer": "^3.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Flow\\JSONPath\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Stephen Frank",
-                    "email": "stephen@flowsa.com",
-                    "homepage": "https://prismaticbytes.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Sascha Greuel",
-                    "email": "hello@1-2.dev",
-                    "homepage": "http://1-2.dev",
-                    "role": "Developer"
-                }
-            ],
-            "description": "JSONPath implementation for parsing, searching and flattening arrays",
-            "support": {
-                "email": "hello@1-2.dev",
-                "forum": "https://github.com/SoftCreatR/JSONPath/discussions",
-                "issues": "https://github.com/SoftCreatR/JSONPath/issues",
-                "source": "https://github.com/SoftCreatR/JSONPath"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/softcreatr",
-                    "type": "github"
-                }
-            ],
-            "time": "2021-06-02T22:15:26+00:00"
-        },
-        {
             "name": "symfony/console",
             "version": "v6.4.7",
             "source": {
@@ -3192,199 +3204,6 @@
                 "source": "https://github.com/nette/tracy/tree/v2.10.7"
             },
             "time": "2024-04-29T11:44:00+00:00"
-        },
-        {
-            "name": "wavevision/nette-webpack",
-            "version": "2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/wavevision/nette-webpack.git",
-                "reference": "fabea61d750c7c660695afce0272f9ce1b788805"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/wavevision/nette-webpack/zipball/fabea61d750c7c660695afce0272f9ce1b788805",
-                "reference": "fabea61d750c7c660695afce0272f9ce1b788805",
-                "shasum": ""
-            },
-            "require": {
-                "latte/latte": "^2.6",
-                "nette/di": "^3.0",
-                "nette/http": "^3.0",
-                "php": ">=7.4",
-                "tracy/tracy": "^2.7",
-                "wavevision/props-control": "^6.0",
-                "wavevision/utils": "^2.4"
-            },
-            "require-dev": {
-                "nette/application": "^3.0",
-                "php-coveralls/php-coveralls": "^2.2",
-                "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan-nette": "^0.12.3",
-                "wavevision/coding-standard": "^6.0",
-                "wavevision/di-service-annotation": "^4.0",
-                "wavevision/nette-tests": "^3.1"
-            },
-            "type": "library",
-            "extra": {
-                "phpstan": []
-            },
-            "autoload": {
-                "psr-4": {
-                    "Wavevision\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Wavevision s.r.o",
-                    "email": "info@wavevision.com"
-                },
-                {
-                    "name": "Vít Rozsíval",
-                    "email": "vit@wavevision.com"
-                }
-            ],
-            "description": "Webpack adapter for Nette framework.",
-            "support": {
-                "issues": "https://github.com/wavevision/nette-webpack/issues",
-                "source": "https://github.com/wavevision/nette-webpack/tree/2.0.0"
-            },
-            "time": "2021-10-19T09:11:43+00:00"
-        },
-        {
-            "name": "wavevision/props-control",
-            "version": "dev-next",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/holyfork/wavevision-props-control.git",
-                "reference": "f17c09fb853bbb69f728602e709a12e2a311bf04"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/holyfork/wavevision-props-control/zipball/f17c09fb853bbb69f728602e709a12e2a311bf04",
-                "reference": "f17c09fb853bbb69f728602e709a12e2a311bf04",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "nette/application": "^3.1",
-                "nette/schema": "^1.0",
-                "php": ">=7.4",
-                "wavevision/utils": "^2.5"
-            },
-            "require-dev": {
-                "latte/latte": "^2.5",
-                "nette/bootstrap": "^3.0",
-                "php-coveralls/php-coveralls": "^2.1",
-                "phpunit/phpunit": "^9.3",
-                "symfony/css-selector": "^5.2",
-                "symfony/dom-crawler": "^5.2",
-                "wavevision/coding-standard": "^6.0"
-            },
-            "type": "library",
-            "extra": {
-                "phpstan": []
-            },
-            "autoload": {
-                "psr-4": {
-                    "Wavevision\\": "src"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Wavevision\\": "tests"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Wavevision s.r.o.",
-                    "email": "info@wavevision.com"
-                },
-                {
-                    "name": "Jakub Filla",
-                    "email": "jakub.filla@wavevision.com"
-                },
-                {
-                    "name": "Vít Rozsíval",
-                    "email": "vit@waveivison.com"
-                }
-            ],
-            "description": "Create smart UI components for Nette Framework.",
-            "support": {
-                "source": "https://github.com/holyfork/wavevision-props-control/tree/next"
-            },
-            "time": "2024-05-28T09:17:34+00:00"
-        },
-        {
-            "name": "wavevision/utils",
-            "version": "2.14.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/wavevision/utils.git",
-                "reference": "2facdd102fcc81b863e18e847bf4f6dcbe8de54f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/wavevision/utils/zipball/2facdd102fcc81b863e18e847bf4f6dcbe8de54f",
-                "reference": "2facdd102fcc81b863e18e847bf4f6dcbe8de54f",
-                "shasum": ""
-            },
-            "require": {
-                "ext-fileinfo": "*",
-                "ext-iconv": "*",
-                "ext-json": "*",
-                "ext-zip": "*",
-                "nette/finder": "^2.5",
-                "nette/utils": "^3.1",
-                "php": ">=7.4",
-                "softcreatr/jsonpath": "^0.7.3"
-            },
-            "require-dev": {
-                "mikey179/vfsstream": "^1.6",
-                "php-coveralls/php-coveralls": "^2.1",
-                "phpunit/phpunit": "^9.4",
-                "wavevision/coding-standard": "^6.0"
-            },
-            "type": "library",
-            "extra": {
-                "phpstan": []
-            },
-            "autoload": {
-                "psr-4": {
-                    "Wavevision\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Wavevision s.r.o.",
-                    "email": "info@wavevision.com"
-                },
-                {
-                    "name": "Jakub Filla",
-                    "email": "jakub.filla@wavevision.com"
-                },
-                {
-                    "name": "Vít Rozsíval",
-                    "email": "vit@wavevision.com"
-                }
-            ],
-            "description": "Useful PHP utilities and helpers.",
-            "support": {
-                "issues": "https://github.com/wavevision/utils/issues",
-                "source": "https://github.com/wavevision/utils/tree/2.14.1"
-            },
-            "time": "2021-05-28T12:47:31+00:00"
         }
     ],
     "packages-dev": [
@@ -3517,207 +3336,6 @@
                 "source": "https://github.com/dealerdirect/phpcodesniffer-composer-installer"
             },
             "time": "2022-02-04T12:51:07+00:00"
-        },
-        {
-            "name": "doctrine/annotations",
-            "version": "1.14.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/annotations.git",
-                "reference": "fb0d71a7393298a7b232cbf4c8b1f73f3ec3d5af"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/fb0d71a7393298a7b232cbf4c8b1f73f3ec3d5af",
-                "reference": "fb0d71a7393298a7b232cbf4c8b1f73f3ec3d5af",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/lexer": "^1 || ^2",
-                "ext-tokenizer": "*",
-                "php": "^7.1 || ^8.0",
-                "psr/cache": "^1 || ^2 || ^3"
-            },
-            "require-dev": {
-                "doctrine/cache": "^1.11 || ^2.0",
-                "doctrine/coding-standard": "^9 || ^10",
-                "phpstan/phpstan": "~1.4.10 || ^1.8.0",
-                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
-                "symfony/cache": "^4.4 || ^5.4 || ^6",
-                "vimeo/psalm": "^4.10"
-            },
-            "suggest": {
-                "php": "PHP 8.0 or higher comes with attributes, a native replacement for annotations"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Doctrine\\Common\\Annotations\\": "lib/Doctrine/Common/Annotations"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
-                },
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
-                },
-                {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                }
-            ],
-            "description": "Docblock Annotations Parser",
-            "homepage": "https://www.doctrine-project.org/projects/annotations.html",
-            "keywords": [
-                "annotations",
-                "docblock",
-                "parser"
-            ],
-            "support": {
-                "issues": "https://github.com/doctrine/annotations/issues",
-                "source": "https://github.com/doctrine/annotations/tree/1.14.3"
-            },
-            "time": "2023-02-01T09:20:38+00:00"
-        },
-        {
-            "name": "doctrine/deprecations",
-            "version": "1.1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/deprecations.git",
-                "reference": "dfbaa3c2d2e9a9df1118213f3b8b0c597bb99fab"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/deprecations/zipball/dfbaa3c2d2e9a9df1118213f3b8b0c597bb99fab",
-                "reference": "dfbaa3c2d2e9a9df1118213f3b8b0c597bb99fab",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.1 || ^8.0"
-            },
-            "require-dev": {
-                "doctrine/coding-standard": "^9",
-                "phpstan/phpstan": "1.4.10 || 1.10.15",
-                "phpstan/phpstan-phpunit": "^1.0",
-                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
-                "psalm/plugin-phpunit": "0.18.4",
-                "psr/log": "^1 || ^2 || ^3",
-                "vimeo/psalm": "4.30.0 || 5.12.0"
-            },
-            "suggest": {
-                "psr/log": "Allows logging deprecations via PSR-3 logger implementation"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Doctrine\\Deprecations\\": "lib/Doctrine/Deprecations"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "A small layer on top of trigger_error(E_USER_DEPRECATED) or PSR-3 logging with options to disable all deprecations or selectively for packages.",
-            "homepage": "https://www.doctrine-project.org/",
-            "support": {
-                "issues": "https://github.com/doctrine/deprecations/issues",
-                "source": "https://github.com/doctrine/deprecations/tree/1.1.3"
-            },
-            "time": "2024-01-30T19:34:25+00:00"
-        },
-        {
-            "name": "doctrine/lexer",
-            "version": "2.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/lexer.git",
-                "reference": "861c870e8b75f7c8f69c146c7f89cc1c0f1b49b6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/lexer/zipball/861c870e8b75f7c8f69c146c7f89cc1c0f1b49b6",
-                "reference": "861c870e8b75f7c8f69c146c7f89cc1c0f1b49b6",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/deprecations": "^1.0",
-                "php": "^7.1 || ^8.0"
-            },
-            "require-dev": {
-                "doctrine/coding-standard": "^9 || ^12",
-                "phpstan/phpstan": "^1.3",
-                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.6",
-                "psalm/plugin-phpunit": "^0.18.3",
-                "vimeo/psalm": "^4.11 || ^5.21"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Doctrine\\Common\\Lexer\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
-                },
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                }
-            ],
-            "description": "PHP Doctrine Lexer parser library that can be used in Top-Down, Recursive Descent Parsers.",
-            "homepage": "https://www.doctrine-project.org/projects/lexer.html",
-            "keywords": [
-                "annotations",
-                "docblock",
-                "lexer",
-                "parser",
-                "php"
-            ],
-            "support": {
-                "issues": "https://github.com/doctrine/lexer/issues",
-                "source": "https://github.com/doctrine/lexer/tree/2.1.1"
-            },
-            "funding": [
-                {
-                    "url": "https://www.doctrine-project.org/sponsorship.html",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://www.patreon.com/phpdoctrine",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Flexer",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2024-02-05T11:35:39+00:00"
         },
         {
             "name": "nette/tester",
@@ -4271,55 +3889,6 @@
             "time": "2024-04-20T06:40:32+00:00"
         },
         {
-            "name": "psr/cache",
-            "version": "3.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/cache.git",
-                "reference": "aa5030cfa5405eccfdcb1083ce040c2cb8d253bf"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/cache/zipball/aa5030cfa5405eccfdcb1083ce040c2cb8d253bf",
-                "reference": "aa5030cfa5405eccfdcb1083ce040c2cb8d253bf",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.0.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Cache\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "https://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for caching libraries",
-            "keywords": [
-                "cache",
-                "psr",
-                "psr-6"
-            ],
-            "support": {
-                "source": "https://github.com/php-fig/cache/tree/3.0.0"
-            },
-            "time": "2021-02-03T23:26:27+00:00"
-        },
-        {
             "name": "slevomat/coding-standard",
             "version": "7.2.1",
             "source": {
@@ -4459,80 +4028,11 @@
                 }
             ],
             "time": "2024-05-22T21:24:41+00:00"
-        },
-        {
-            "name": "wavevision/di-service-annotation",
-            "version": "4.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/wavevision/di-service-annotation.git",
-                "reference": "55bdbb0deca692d4d6dca21ce977fbef6edf4d91"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/wavevision/di-service-annotation/zipball/55bdbb0deca692d4d6dca21ce977fbef6edf4d91",
-                "reference": "55bdbb0deca692d4d6dca21ce977fbef6edf4d91",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/annotations": "^1.8",
-                "nette/finder": "^2.5",
-                "php": ">=7.4",
-                "wavevision/utils": "^2.13"
-            },
-            "require-dev": {
-                "mikey179/vfsstream": "^1.6",
-                "php-coveralls/php-coveralls": "^2.1",
-                "phpunit/phpunit": "^9.4",
-                "wavevision/coding-standard": "^5.2"
-            },
-            "type": "library",
-            "extra": {
-                "phpstan": []
-            },
-            "autoload": {
-                "psr-4": {
-                    "Wavevision\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Wavevision s.r.o.",
-                    "email": "info@wavevision.com"
-                },
-                {
-                    "name": "Jakub Filla",
-                    "email": "jakub.filla@wavevision.com"
-                },
-                {
-                    "name": "Vít Rozsíval",
-                    "email": "vit@wavevision.com"
-                }
-            ],
-            "description": "Register DI services using annotation for Nette Framework.",
-            "support": {
-                "issues": "https://github.com/wavevision/di-service-annotation/issues",
-                "source": "https://github.com/wavevision/di-service-annotation/tree/4.0.1"
-            },
-            "time": "2020-10-21T14:38:58+00:00"
         }
     ],
-    "aliases": [
-        {
-            "package": "wavevision/props-control",
-            "version": "dev-next",
-            "alias": "6.99",
-            "alias_normalized": "6.99.0.0"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "wavevision/props-control": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
@@ -4547,5 +4047,5 @@
     "platform-overrides": {
         "php": "8.1"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.2.0"
 }

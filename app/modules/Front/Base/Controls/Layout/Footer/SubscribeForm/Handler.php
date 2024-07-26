@@ -4,11 +4,7 @@ namespace App\Modules\Front\Base\Controls\Layout\Footer\SubscribeForm;
 
 use Nette\Forms\Form;
 use Nette\SmartObject;
-use Wavevision\DIServiceAnnotation\DIService;
 
-/**
- * @DIService(generateInject=true)
- */
 class Handler
 {
 
