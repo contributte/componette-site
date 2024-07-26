@@ -2,7 +2,6 @@
 
 namespace App\Modules\Front\Base\Controls\Layout\Footer\Heading;
 
-use App\Model\UI\BasePropsControl;
 use App\Model\UI\BaseRenderControl;
 
 class Control extends BaseRenderControl

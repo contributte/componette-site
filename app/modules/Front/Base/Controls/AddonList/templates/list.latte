@@ -3,7 +3,7 @@
 {if count($addons)}
     <div n:if="$title" class="flex flex-wrap items-center justify-between px-5 pt-3 lg:px-8 lg:pt-4">
         <div class="mb-3 lg:mb-5">
-            {control heading, [content => $title]}
+            {control heading, $title}
         </div>
         <a href="{plink :Front:Index:all}"
            class="inline-flex px-4 py-2 mb-3 font-medium text-teal-900 uppercase border rounded lg:mb-4 hover:bg-blue-100 transition duration-150 ease-in-out"

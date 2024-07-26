@@ -1,7 +1,7 @@
 {varType App\Model\Database\ORM\Addon\Addon $addon}
-{varType bool $linkToGithub}
+{varType bool $linkToGitHub}
 {varType bool $small}
-<a href="{if $linkToGithub}{$addon->github->linker->getRepoUrl()}{else}{plink Addon:detail, slug => $addon->id}{/if}"
+<a href="{if $linkToGitHub}{$addon->github->linker->getRepoUrl()}{else}{plink Addon:detail, slug => $addon->id}{/if}"
    class="flex-shrink-0 mr-4"
 >
     <img loading="lazy" alt="{$addon->author}"

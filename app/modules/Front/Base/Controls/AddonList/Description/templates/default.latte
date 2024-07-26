@@ -1,2 +1,2 @@
 {varType App\Model\Database\ORM\Addon\Addon $addon}
-<p class="text-sm text-gray-700">{$addon->github->description|truncate:150|striptags|emojify|noescape}</p>
+<p n:if="$addon->github" class="text-sm text-gray-700">{$addon->github->description|truncate:150|striptags|emojify|noescape}</p>

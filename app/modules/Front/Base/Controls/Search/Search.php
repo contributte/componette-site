@@ -5,7 +5,6 @@ namespace App\Modules\Front\Base\Controls\Search;
 use App\Model\Services\Search\Search as Searching;
 use App\Model\UI\BaseControl;
 use App\Modules\Front\Base\Controls\Svg\SvgComponent;
-use App\Modules\Front\Base\Controls\Svg\SvgProps;
 use Nette\Application\UI\Form;
 
 final class Search extends BaseControl

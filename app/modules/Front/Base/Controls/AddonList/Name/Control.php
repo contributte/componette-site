@@ -17,6 +17,8 @@ class Control extends BaseRenderControl
 			/** @var GithubRelease|null $release */
 			$release = $github->releases->get()->orderBy(['crawledAt' => ICollection::DESC])->fetch();
 			$this->template->setParameters(['release' => $release]);
+		} else {
+			$this->template->setParameters(['release' => null]);
 		}
 		$this->template->render();
 	}

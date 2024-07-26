@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9e1f1c88494f9361ba1cbc4b721ee6e2",
+    "content-hash": "4faf1a719fe30d75c223e021d85945ba",
     "packages": [
         {
             "name": "contributte/application",
@@ -2483,71 +2483,6 @@
             "time": "2021-11-05T16:47:00+00:00"
         },
         {
-            "name": "softcreatr/jsonpath",
-            "version": "0.7.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/SoftCreatR/JSONPath.git",
-                "reference": "008569bf80aa3584834f7890781576bc7b65afa7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/SoftCreatR/JSONPath/zipball/008569bf80aa3584834f7890781576bc7b65afa7",
-                "reference": "008569bf80aa3584834f7890781576bc7b65afa7",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "php": ">=7.1"
-            },
-            "replace": {
-                "flow/jsonpath": "*"
-            },
-            "require-dev": {
-                "phpunit/phpunit": ">=7.0",
-                "roave/security-advisories": "dev-master",
-                "squizlabs/php_codesniffer": "^3.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Flow\\JSONPath\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Stephen Frank",
-                    "email": "stephen@flowsa.com",
-                    "homepage": "https://prismaticbytes.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Sascha Greuel",
-                    "email": "hello@1-2.dev",
-                    "homepage": "http://1-2.dev",
-                    "role": "Developer"
-                }
-            ],
-            "description": "JSONPath implementation for parsing, searching and flattening arrays",
-            "support": {
-                "email": "hello@1-2.dev",
-                "forum": "https://github.com/SoftCreatR/JSONPath/discussions",
-                "issues": "https://github.com/SoftCreatR/JSONPath/issues",
-                "source": "https://github.com/SoftCreatR/JSONPath"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/softcreatr",
-                    "type": "github"
-                }
-            ],
-            "time": "2021-06-02T22:15:26+00:00"
-        },
-        {
             "name": "symfony/console",
             "version": "v6.4.7",
             "source": {
@@ -3269,137 +3204,6 @@
                 "source": "https://github.com/nette/tracy/tree/v2.10.7"
             },
             "time": "2024-04-29T11:44:00+00:00"
-        },
-        {
-            "name": "wavevision/props-control",
-            "version": "dev-next",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/holyfork/wavevision-props-control.git",
-                "reference": "f17c09fb853bbb69f728602e709a12e2a311bf04"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/holyfork/wavevision-props-control/zipball/f17c09fb853bbb69f728602e709a12e2a311bf04",
-                "reference": "f17c09fb853bbb69f728602e709a12e2a311bf04",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "nette/application": "^3.1",
-                "nette/schema": "^1.0",
-                "php": ">=7.4",
-                "wavevision/utils": "^2.5"
-            },
-            "require-dev": {
-                "latte/latte": "^2.5",
-                "nette/bootstrap": "^3.0",
-                "php-coveralls/php-coveralls": "^2.1",
-                "phpunit/phpunit": "^9.3",
-                "symfony/css-selector": "^5.2",
-                "symfony/dom-crawler": "^5.2",
-                "wavevision/coding-standard": "^6.0"
-            },
-            "type": "library",
-            "extra": {
-                "phpstan": []
-            },
-            "autoload": {
-                "psr-4": {
-                    "Wavevision\\": "src"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Wavevision\\": "tests"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Wavevision s.r.o.",
-                    "email": "info@wavevision.com"
-                },
-                {
-                    "name": "Jakub Filla",
-                    "email": "jakub.filla@wavevision.com"
-                },
-                {
-                    "name": "Vít Rozsíval",
-                    "email": "vit@waveivison.com"
-                }
-            ],
-            "description": "Create smart UI components for Nette Framework.",
-            "support": {
-                "source": "https://github.com/holyfork/wavevision-props-control/tree/next"
-            },
-            "time": "2024-05-28T09:17:34+00:00"
-        },
-        {
-            "name": "wavevision/utils",
-            "version": "2.14.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/wavevision/utils.git",
-                "reference": "2facdd102fcc81b863e18e847bf4f6dcbe8de54f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/wavevision/utils/zipball/2facdd102fcc81b863e18e847bf4f6dcbe8de54f",
-                "reference": "2facdd102fcc81b863e18e847bf4f6dcbe8de54f",
-                "shasum": ""
-            },
-            "require": {
-                "ext-fileinfo": "*",
-                "ext-iconv": "*",
-                "ext-json": "*",
-                "ext-zip": "*",
-                "nette/finder": "^2.5",
-                "nette/utils": "^3.1",
-                "php": ">=7.4",
-                "softcreatr/jsonpath": "^0.7.3"
-            },
-            "require-dev": {
-                "mikey179/vfsstream": "^1.6",
-                "php-coveralls/php-coveralls": "^2.1",
-                "phpunit/phpunit": "^9.4",
-                "wavevision/coding-standard": "^6.0"
-            },
-            "type": "library",
-            "extra": {
-                "phpstan": []
-            },
-            "autoload": {
-                "psr-4": {
-                    "Wavevision\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Wavevision s.r.o.",
-                    "email": "info@wavevision.com"
-                },
-                {
-                    "name": "Jakub Filla",
-                    "email": "jakub.filla@wavevision.com"
-                },
-                {
-                    "name": "Vít Rozsíval",
-                    "email": "vit@wavevision.com"
-                }
-            ],
-            "description": "Useful PHP utilities and helpers.",
-            "support": {
-                "issues": "https://github.com/wavevision/utils/issues",
-                "source": "https://github.com/wavevision/utils/tree/2.14.1"
-            },
-            "time": "2021-05-28T12:47:31+00:00"
         }
     ],
     "packages-dev": [
@@ -4226,18 +4030,9 @@
             "time": "2024-05-22T21:24:41+00:00"
         }
     ],
-    "aliases": [
-        {
-            "package": "wavevision/props-control",
-            "version": "dev-next",
-            "alias": "6.99",
-            "alias_normalized": "6.99.0.0"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "wavevision/props-control": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
