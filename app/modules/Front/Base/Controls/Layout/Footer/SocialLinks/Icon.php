@@ -2,7 +2,6 @@
 
 namespace App\Modules\Front\Base\Controls\Layout\Footer\SocialLinks;
 
-use App\Modules\Front\Base\Controls\Svg\SvgProps;
 use Nette\SmartObject;
 
 final class Icon
