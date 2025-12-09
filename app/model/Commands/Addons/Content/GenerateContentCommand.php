@@ -9,8 +9,8 @@ use App\Model\Database\ORM\Github\Github;
 use App\Model\Utils\Validators;
 use App\Model\WebServices\Github\GithubService;
 use Contributte\Utils\Urls;
+use Doctrine\ORM\EntityManagerInterface;
 use Nette\Utils\Strings;
-use Nextras\Orm\Collection\ICollection;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -21,17 +21,18 @@ final class GenerateContentCommand extends BaseCommand
 	/** @var string */
 	protected static $defaultName = 'addons:content:generate';
 
-	/** @var AddonRepository */
-	private $addonRepository;
+	private AddonRepository $addonRepository;
 
-	/** @var GithubService */
-	private $github;
+	private GithubService $github;
 
-	public function __construct(AddonRepository $addonRepository, GithubService $github)
+	private EntityManagerInterface $em;
+
+	public function __construct(AddonRepository $addonRepository, GithubService $github, EntityManagerInterface $em)
 	{
 		parent::__construct();
 		$this->addonRepository = $addonRepository;
 		$this->github = $github;
+		$this->em = $em;
 	}
 
 	/**
@@ -53,45 +54,47 @@ final class GenerateContentCommand extends BaseCommand
 
 	protected function execute(InputInterface $input, OutputInterface $output): int
 	{
-		/** @var ICollection|Addon[] $addons */
-		$addons = $this->addonRepository->findBy(['state' => Addon::STATE_ACTIVE]);
-
-		// FILTER PACKAGES ===========================================
-
 		if ($input->getOption('rest') === true) {
-			$addons = $addons->findBy(['this->github->contentHtml' => null]);
+			$addons = $this->addonRepository->createQueryBuilder('a')
+				->leftJoin('a.github', 'g')
+				->where('a.state = :state')
+				->andWhere('g.contentHtml IS NULL')
+				->setParameter('state', Addon::STATE_ACTIVE)
+				->getQuery()
+				->getResult();
+		} else {
+			$addons = $this->addonRepository->findBy(['state' => Addon::STATE_ACTIVE]);
 		}
 
 		// DO YOUR JOB ===============================================
 
 		$counter = 0;
 		foreach ($addons as $addon) {
-			if ($addon->github) {
+			if ($addon->getGithub()) {
 				// Raw
-				$response1 = $this->github->readme($addon->author, $addon->name, GithubService::MEDIATYPE_HTML);
+				$response1 = $this->github->readme($addon->getAuthor(), $addon->getName(), GithubService::MEDIATYPE_HTML);
 				if ($response1->isOk() && is_string($response1->getBody())) {
 					// Content
-					$addon->github->contentRaw = $response1->getBody();
+					$addon->getGithub()->setContentRaw($response1->getBody());
 				} else {
-					$addon->github->contentRaw = '';
-					$output->writeln('Skip (content) [failed download raw content]: ' . $addon->fullname);
+					$addon->getGithub()->setContentRaw('');
+					$output->writeln('Skip (content) [failed download raw content]: ' . $addon->getFullname());
 				}
 
 				// HTML
-				$response2 = $this->github->readme($addon->author, $addon->name, GithubService::MEDIATYPE_HTML);
+				$response2 = $this->github->readme($addon->getAuthor(), $addon->getName(), GithubService::MEDIATYPE_HTML);
 				if ($response2->isOk() && is_string($response2->getBody())) {
 					// Content
-					$addon->github->contentHtml = $response2->getBody();
-					$this->reformatLinks($addon->github);
+					$addon->getGithub()->setContentHtml($response2->getBody());
+					$this->reformatLinks($addon->getGithub());
 				} else {
-					$addon->github->contentHtml = '';
-					$output->writeln('Skip (content) [failed download html content]: ' . $addon->fullname);
+					$addon->getGithub()->setContentHtml('');
+					$output->writeln('Skip (content) [failed download html content]: ' . $addon->getFullname());
 				}
 
 				// Persist
-				if ($addon->github->isModified()) {
-					$this->addonRepository->persistAndFlush($addon);
-				}
+				$this->em->persist($addon);
+				$this->em->flush();
 
 				// Increase counting
 				$counter++;
@@ -105,15 +108,20 @@ final class GenerateContentCommand extends BaseCommand
 
 	protected function reformatLinks(Github $github): void
 	{
+		$content = $github->getContentHtml();
+		if ($content === null) {
+			return;
+		}
+
 		// Resolve links
-		$github->contentHtml = Strings::replace((string)$github->contentHtml, '#href=\"(.*)\"#iU', function ($matches) use ($github) {
+		$content = Strings::replace($content, '#href=\"(.*)\"#iU', function ($matches) use ($github) {
 			[, $url] = $matches;
 
 			if (!Validators::isUrl($url)) {
 				if (Urls::hasFragment($url)) {
-					$url = $github->linker->getFileUrl(null, $url);
+					$url = $github->getLinker()->getFileUrl(null, $url);
 				} else {
-					$url = $github->linker->getBlobUrl($url);
+					$url = $github->getLinker()->getBlobUrl($url);
 				}
 			}
 
@@ -121,15 +129,17 @@ final class GenerateContentCommand extends BaseCommand
 		});
 
 		// Resolve images
-		$github->contentHtml = Strings::replace($github->contentHtml, '#img.+src=\"(.*)\"#iU', function ($matches) use ($github) {
+		$content = Strings::replace($content, '#img.+src=\"(.*)\"#iU', function ($matches) use ($github) {
 			[, $url] = $matches;
 
 			if (!Validators::isUrl($url)) {
-				$url = $github->linker->getRawUrl($url);
+				$url = $github->getLinker()->getRawUrl($url);
 			}
 
 			return sprintf('img src="%s"', $url);
 		});
+
+		$github->setContentHtml($content);
 	}
 
 }

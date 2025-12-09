@@ -7,10 +7,10 @@ use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\Addon\AddonRepository;
 use App\Model\Database\ORM\Composer\Composer;
 use App\Model\WebServices\Composer\ComposerService;
+use DateTimeImmutable;
+use Doctrine\ORM\EntityManagerInterface;
 use Nette\InvalidStateException;
 use Nette\Utils\Arrays;
-use Nextras\Dbal\Utils\DateTimeImmutable;
-use Nextras\Orm\Collection\ICollection;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Throwable;
@@ -22,17 +22,18 @@ final class SynchronizeCommand extends BaseCommand
 	/** @var string */
 	protected static $defaultName = 'addons:composer:sync';
 
-	/** @var AddonRepository */
-	private $addonRepository;
+	private AddonRepository $addonRepository;
 
-	/** @var ComposerService */
-	private $composer;
+	private ComposerService $composer;
 
-	public function __construct(AddonRepository $addonRepository, ComposerService $composer)
+	private EntityManagerInterface $em;
+
+	public function __construct(AddonRepository $addonRepository, ComposerService $composer, EntityManagerInterface $em)
 	{
 		parent::__construct();
 		$this->addonRepository = $addonRepository;
 		$this->composer = $composer;
+		$this->em = $em;
 	}
 
 	/**
@@ -47,7 +48,6 @@ final class SynchronizeCommand extends BaseCommand
 
 	protected function execute(InputInterface $input, OutputInterface $output): int
 	{
-		/** @var ICollection|Addon[] $addons */
 		$addons = $this->addonRepository->findBy(['state' => Addon::STATE_ACTIVE, 'type' => Addon::TYPE_COMPOSER]);
 
 		// DO YOUR JOB ===============================================
@@ -55,48 +55,51 @@ final class SynchronizeCommand extends BaseCommand
 		$counter = 0;
 		foreach ($addons as $addon) {
 			// Skip non-github reference
-			if (!$addon->github) {
+			if (!$addon->getGithub()) {
 				continue;
 			}
 
 			try {
 				// Skip addon without data
-				$composer = $addon->github->masterComposer;
-				if ($composer) {
-					if (!isset($composer->name)) {
-						throw new InvalidStateException('No composer name at ' . $addon->fullname);
+				$githubComposer = $addon->getGithub()->getMasterComposer();
+				if ($githubComposer) {
+					$composerName = $githubComposer->getComposerName();
+					if (!$composerName) {
+						throw new InvalidStateException('No composer name at ' . $addon->getFullname());
 					}
 
-					 [$author, $repo] = explode('/', $composer->name);
+					[$author, $repo] = explode('/', $composerName);
 
 					// Create composer entity if not exist
-					if (!$addon->composer) {
-						$addon->composer = new Composer();
+					if (!$addon->getComposer()) {
+						$composerEntity = new Composer($addon, $composerName);
+						$addon->setComposer($composerEntity);
 					}
 
 					// Basic info
-					$addon->composer->name = $composer->get('name', null);
-					$addon->composer->description = $composer->get('description', null);
-					$addon->composer->type = $composer->get('type', null);
+					$addon->getComposer()->setName($githubComposer->get('name', null) ?? $composerName);
+					$addon->getComposer()->setDescription($githubComposer->get('description', null));
+					$addon->getComposer()->setType($githubComposer->get('type', null));
 
 					// Keywords
-					$keywords = (array) $composer->get('keywords', []);
-					$addon->composer->keywords = $keywords ? implode(',', $keywords) : null;
+					$keywords = (array) $githubComposer->get('keywords', []);
+					$addon->getComposer()->setKeywords($keywords ? implode(',', $keywords) : null);
 
 					// Downloads
 					$response = $this->composer->repo($author, $repo);
 					if ($response->isOk()) {
-						$addon->composer->downloads = Arrays::get($response->getJsonBody(), ['package', 'downloads', 'total'], 0);
+						$addon->getComposer()->setDownloads(Arrays::get($response->getJsonBody(), ['package', 'downloads', 'total'], 0));
 					}
 
 					// Persist
-					$addon->composer->crawledAt = new DateTimeImmutable();
-					$this->addonRepository->persistAndFlush($addon);
+					$addon->getComposer()->setCrawledAt(new DateTimeImmutable());
+					$this->em->persist($addon);
+					$this->em->flush();
 
 					// Increase counting
 					$counter++;
 				} else {
-					$output->writeln('Skip (composer) [no composer data]: ' . $addon->fullname);
+					$output->writeln('Skip (composer) [no composer data]: ' . $addon->getFullname());
 				}
 			} catch (Throwable $e) {
 				Debugger::log($e, Debugger::EXCEPTION);

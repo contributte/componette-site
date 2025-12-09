@@ -1,0 +1,32 @@
+extensions:
+	nettrine.cache: Nettrine\Cache\DI\CacheExtension
+	nettrine.dbal: Nettrine\DBAL\DI\DbalExtension
+	nettrine.dbal.console: Nettrine\DBAL\DI\DbalConsoleExtension
+	nettrine.orm: Nettrine\ORM\DI\OrmExtension
+	nettrine.orm.attributes: Nettrine\ORM\DI\OrmAttributesExtension
+	nettrine.orm.cache: Nettrine\ORM\DI\OrmCacheExtension
+	nettrine.migrations: Nettrine\Migrations\DI\MigrationsExtension
+
+nettrine.dbal:
+	connection:
+		driver: pdo_mysql
+		host: %database.host%
+		dbname: %database.dbname%
+		user: %database.user%
+		password: %database.password%
+		port: %database.port%
+		charset: utf8mb4
+
+nettrine.orm:
+	configuration:
+		autoGenerateProxyClasses: %debugMode%
+
+nettrine.orm.attributes:
+	mapping:
+		App\Model\Database\ORM: %appDir%/model/Database/ORM
+
+nettrine.migrations:
+	table: doctrine_migrations
+	column: version
+	directory: %appDir%/../migrations
+	namespace: Migrations

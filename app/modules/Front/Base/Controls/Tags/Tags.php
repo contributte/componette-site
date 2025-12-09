@@ -2,31 +2,30 @@
 
 namespace App\Modules\Front\Base\Controls\Tags;
 
-use App\Model\Database\ORM\EntityModel;
 use App\Model\Database\ORM\Tag\Tag;
+use App\Model\Database\ORM\Tag\TagRepository;
 use Nette\SmartObject;
-use Nextras\Orm\Entity\IEntity;
 
 class Tags
 {
 
 	use SmartObject;
 
-	private EntityModel $em;
+	private TagRepository $tagRepository;
 
-	public function __construct(EntityModel $em)
+	public function __construct(TagRepository $tagRepository)
 	{
-		$this->em = $em;
+		$this->tagRepository = $tagRepository;
 	}
 
 	/**
-	 * @return array<IEntity>
+	 * @return Tag[]
 	 */
 	public function get(): array
 	{
-		$items = $this->em->getRepositoryForEntity(Tag::class)->findAll()->fetchAll();
+		$items = $this->tagRepository->findAll();
 		usort($items, function ($a, $b) {
-			return $a->addons->countStored() <=> $b->addons->countStored();
+			return $a->getAddons()->count() <=> $b->getAddons()->count();
 		});
 		return $items;
 	}

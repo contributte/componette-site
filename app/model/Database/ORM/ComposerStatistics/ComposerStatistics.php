@@ -4,21 +4,13 @@ namespace App\Model\Database\ORM\ComposerStatistics;
 
 use App\Model\Database\ORM\AbstractEntity;
 use App\Model\Database\ORM\Addon\Addon;
-use App\Model\Utils\Arrays;
+use DateTimeImmutable;
+use Doctrine\ORM\Mapping as ORM;
 use Nette\Utils\ArrayHash;
-use Nextras\Dbal\Utils\DateTimeImmutable;
+use Nette\Utils\Json;
 
-/**
- * @property int $id                        {primary}
- * @property Addon $addon                   {m:1 Addon::$composerStatistics}
- * @property string $type                   {enum self::TYPE*}
- * @property string $custom
- * @property-read string $data
- * @property DateTimeImmutable $createdAt   {default now}
- * @property DateTimeImmutable|NULL $updatedAt
- *
- * @property ArrayHash $json                {virtual}
- */
+#[ORM\Entity(repositoryClass: ComposerStatisticsRepository::class)]
+#[ORM\Table(name: 'composer_statistics')]
 class ComposerStatistics extends AbstractEntity
 {
 
@@ -30,55 +22,116 @@ class ComposerStatistics extends AbstractEntity
 	// Customs
 	public const CUSTOM_ALL = 'ALL';
 
-	/**
-	 * @var ArrayHash
-	 * @phpstan-var ArrayHash<string, mixed>
-	 */
-	protected $json;
+	#[ORM\ManyToOne(targetEntity: Addon::class, inversedBy: 'composerStatistics')]
+	#[ORM\JoinColumn(name: 'addon_id', referencedColumnName: 'id', nullable: false)]
+	private Addon $addon;
 
-	/**
-	 * VIRTUAL *****************************************************************
-	 */
+	#[ORM\Column(type: 'string', length: 20)]
+	private string $type;
 
-	/**
-	 * @phpstan-return ArrayHash<string, mixed>
-	 */
-	protected function getterJson(): ArrayHash
+	#[ORM\Column(type: 'string', length: 100)]
+	private string $custom;
+
+	#[ORM\Column(type: 'text')]
+	private string $data = '{}';
+
+	#[ORM\Column(type: 'datetime_immutable')]
+	private DateTimeImmutable $createdAt;
+
+	#[ORM\Column(type: 'datetime_immutable', nullable: true)]
+	private ?DateTimeImmutable $updatedAt = null;
+
+	/** @var ArrayHash<string, mixed>|null */
+	private ?ArrayHash $json = null;
+
+	public function __construct(Addon $addon, string $type, string $custom)
 	{
+		$this->addon = $addon;
+		$this->type = $type;
+		$this->custom = $custom;
+		$this->createdAt = new DateTimeImmutable();
+	}
+
+	public function getAddon(): Addon
+	{
+		return $this->addon;
+	}
+
+	public function setAddon(Addon $addon): void
+	{
+		$this->addon = $addon;
+	}
+
+	public function getType(): string
+	{
+		return $this->type;
+	}
+
+	public function setType(string $type): void
+	{
+		$this->type = $type;
+	}
+
+	public function getCustom(): string
+	{
+		return $this->custom;
+	}
+
+	public function setCustom(string $custom): void
+	{
+		$this->custom = $custom;
+	}
+
+	public function getData(): string
+	{
+		return $this->data;
+	}
+
+	public function setData(string $data): void
+	{
+		$this->data = $data;
+		$this->json = null;
+	}
+
+	public function getCreatedAt(): DateTimeImmutable
+	{
+		return $this->createdAt;
+	}
+
+	public function setCreatedAt(DateTimeImmutable $createdAt): void
+	{
+		$this->createdAt = $createdAt;
+	}
+
+	public function getUpdatedAt(): ?DateTimeImmutable
+	{
+		return $this->updatedAt;
+	}
+
+	public function setUpdatedAt(?DateTimeImmutable $updatedAt): void
+	{
+		$this->updatedAt = $updatedAt;
+	}
+
+	/**
+	 * @return ArrayHash<string, mixed>
+	 */
+	public function getJson(): ArrayHash
+	{
+		if ($this->json === null) {
+			$this->json = ArrayHash::from((array) Json::decode($this->data));
+		}
+
 		return $this->json;
 	}
 
 	/**
-	 * @param mixed[] $data
-	 * @phpstan-param array<string, mixed> $data
+	 * @param array<string, mixed> $data
 	 */
-	protected function setterJson(array $data): void
+	public function setJson(array $data): void
 	{
 		$this->json = ArrayHash::from($data);
-	}
-
-	/**
-	 * EVENTS ******************************************************************
-	 */
-
-	/**
-	 * @param string[] $data
-	 */
-	public function onLoad(array $data): void
-	{
-		parent::onLoad($data);
-
-		if (isset($data['data'])) {
-			$this->json = ArrayHash::from((array) json_decode($data['data']));
-		} else {
-			$this->json = new ArrayHash();
-		}
-	}
-
-	public function onBeforeInsert(): void
-	{
-		parent::onBeforeInsert();
-		$this->setRawValue('data', json_encode(Arrays::ensure($this->json)));
+		$this->data = Json::encode($data);
 	}
 
 }

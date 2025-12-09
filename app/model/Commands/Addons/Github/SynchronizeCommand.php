@@ -8,8 +8,8 @@ use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\Github\Github;
 use App\Model\Facade\Cli\Commands\AddonFacade;
 use App\Model\WebServices\Github\GithubService;
+use DateTimeImmutable;
 use Nette\Utils\Strings;
-use Nextras\Dbal\Utils\DateTimeImmutable;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -20,14 +20,11 @@ final class SynchronizeCommand extends BaseCommand
 	/** @var string */
 	protected static $defaultName = 'addons:github:sync';
 
-	/** @var AddonFacade */
-	private $addonFacade;
+	private AddonFacade $addonFacade;
 
-	/** @var GithubService */
-	private $github;
+	private GithubService $github;
 
-	/** @var CacheCleaner */
-	private $cacher;
+	private CacheCleaner $cacher;
 
 	public function __construct(AddonFacade $addonFacade, GithubService $github, CacheCleaner $cacher)
 	{
@@ -74,32 +71,34 @@ final class SynchronizeCommand extends BaseCommand
 		foreach ($addons as $addon) {
 
 			// Base metadata
-			$response = $this->github->repo($addon->author, $addon->name);
+			$response = $this->github->repo($addon->getAuthor(), $addon->getName());
 			$body = $response->getJsonBody();
 
 			if (!$response->isOk()) {
 				// Create github entity if not exist
-				if (!$addon->github) {
-					$addon->github = new Github();
+				if (!$addon->getGithub()) {
+					$github = new Github($addon);
+					$addon->setGithub($github);
 				}
 
-				$addon->state = Addon::STATE_ARCHIVED;
+				$addon->setState(Addon::STATE_ARCHIVED);
 
-				$output->writeln('Skip (archived): ' . $addon->fullname);
+				$output->writeln('Skip (archived): ' . $addon->getFullname());
 			} elseif (!$body || isset($body['message'])) {
 				if (isset($body['message'])) {
-					$output->writeln('Skip (' . $body['message'] . '): ' . $addon->fullname);
+					$output->writeln('Skip (' . $body['message'] . '): ' . $addon->getFullname());
 				} else {
-					$output->writeln('Skip (base): ' . $addon->fullname);
+					$output->writeln('Skip (base): ' . $addon->getFullname());
 				}
 			} else {
 				// Create github entity if not exist
-				if (!$addon->github) {
-					$addon->github = new Github();
+				if (!$addon->getGithub()) {
+					$github = new Github($addon);
+					$addon->setGithub($github);
 				}
 
 				// Increase adding counting
-				if ($addon->state === Addon::STATE_QUEUED) {
+				if ($addon->getState() === Addon::STATE_QUEUED) {
 					$added++;
 				}
 
@@ -113,32 +112,32 @@ final class SynchronizeCommand extends BaseCommand
 				[, $author, $name] = $matches;
 
 				// Update author & repo name if it is not same
-				if ($addon->author !== $author) {
-					$addon->author = $author;
+				if ($addon->getAuthor() !== $author) {
+					$addon->setAuthor($author);
 				}
 
-				if ($addon->name !== $name) {
-					$addon->name = $name;
+				if ($addon->getName() !== $name) {
+					$addon->setName($name);
 				}
 
 				// Update basic information
-				$addon->github->description = $body['description'];
-				$addon->github->homepage = !empty($body['homepage']) ? $body['homepage'] : null;
-				$addon->github->stars = $body['stargazers_count'];
-				$addon->github->watchers = $body['watchers_count'];
-				$addon->github->issues = $body['open_issues_count'];
-				$addon->github->fork = boolval($body['fork']);
-				$addon->github->language = $body['language'];
-				$addon->github->forks = $body['forks_count'];
-				$addon->github->createdAt = new DateTimeImmutable($body['created_at']);
-				$addon->github->updatedAt = new DateTimeImmutable($body['updated_at']);
-				$addon->github->pushedAt = new DateTimeImmutable($body['pushed_at']);
-				$addon->state = Addon::STATE_ACTIVE;
+				$addon->getGithub()->setDescription($body['description']);
+				$addon->getGithub()->setHomepage(!empty($body['homepage']) ? $body['homepage'] : null);
+				$addon->getGithub()->setStars($body['stargazers_count']);
+				$addon->getGithub()->setWatchers($body['watchers_count']);
+				$addon->getGithub()->setIssues($body['open_issues_count']);
+				$addon->getGithub()->setFork((bool) $body['fork']);
+				$addon->getGithub()->setLanguage($body['language']);
+				$addon->getGithub()->setForks($body['forks_count']);
+				$addon->getGithub()->setCreatedAt(new DateTimeImmutable($body['created_at']));
+				$addon->getGithub()->setUpdatedAt(new DateTimeImmutable($body['updated_at']));
+				$addon->getGithub()->setPushedAt(new DateTimeImmutable($body['pushed_at']));
+				$addon->setState(Addon::STATE_ACTIVE);
 				// Calculate rating
-				$addon->rating = $addon->github->stars * 2 + $addon->github->watchers * 3 + $addon->github->forks;
+				$addon->setRating($addon->getGithub()->getStars() * 2 + $addon->getGithub()->getWatchers() * 3 + $addon->getGithub()->getForks());
 			}
 
-			$addon->updatedAt = new DateTimeImmutable();
+			$addon->setUpdatedAt(new DateTimeImmutable());
 			$this->addonFacade->persist($addon);
 			$this->addonFacade->flush();
 

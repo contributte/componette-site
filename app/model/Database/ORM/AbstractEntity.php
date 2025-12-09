@@ -2,9 +2,12 @@
 
 namespace App\Model\Database\ORM;
 
-use Nextras\Orm\Entity\Entity;
+use Nettrine\Extra\Entity\AbstractEntity as NettrineAbstractEntity;
+use Nettrine\Extra\Entity\TGeneratedId;
 
-abstract class AbstractEntity extends Entity
+abstract class AbstractEntity extends NettrineAbstractEntity
 {
+
+	use TGeneratedId;
 
 }

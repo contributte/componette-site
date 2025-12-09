@@ -7,30 +7,27 @@ use App\Model\UI\BaseControl;
 use DateTimeZone;
 use Nette\Application\UI\Link;
 use Nette\Utils\DateTime;
-use Nextras\Orm\Collection\ICollection;
 
 final class RssFeed extends BaseControl
 {
 
-	/** @var ICollection|Addon[] */
-	private $addons;
+	/** @var Addon[] */
+	private array $addons;
 
-	/** @var string */
-	private $title;
+	private string $title;
 
 	/** @var string|Link */
 	private $link;
 
-	/** @var string */
-	private $description;
+	private string $description;
 
 	/** @var string|int|DateTime */
 	private $time;
 
 	/**
-	 * @param ICollection|Addon[] $addons
+	 * @param Addon[] $addons
 	 */
-	public function __construct($addons)
+	public function __construct(array $addons)
 	{
 		$this->addons = $addons;
 	}
@@ -69,17 +66,17 @@ final class RssFeed extends BaseControl
 		$items = [];
 		foreach ($this->addons as $addon) {
 			$items[] = $item = (object) [
-				'guid' => sprintf('%s@componette.org', $addon->id),
-				'link' => $this->presenter->link('//:Front:Addon:detail', ['slug' => $addon->id, 'utm_source' => 'rss', 'utm_medium' => 'rss', 'utm_campaign' => 'rss']),
-				'time' => $addon->createdAt->setTimezone(new DateTimeZone('UTC')),
-				'author' => sprintf('noreply@componette.org (%s)', $addon->author),
-				'content' => $addon->github && $addon->github->contentHtml,
+				'guid' => sprintf('%s@componette.org', $addon->getId()),
+				'link' => $this->presenter->link('//:Front:Addon:detail', ['slug' => $addon->getId(), 'utm_source' => 'rss', 'utm_medium' => 'rss', 'utm_campaign' => 'rss']),
+				'time' => $addon->getCreatedAt()->setTimezone(new DateTimeZone('UTC')),
+				'author' => sprintf('noreply@componette.org (%s)', $addon->getAuthor()),
+				'content' => $addon->getGithub() && $addon->getGithub()->getContentHtml(),
 			];
 
-			if ($addon->github && $addon->github->description) {
-				$item->title = sprintf('%s - %s', $addon->fullname, $addon->github->description);
+			if ($addon->getGithub() && $addon->getGithub()->getDescription()) {
+				$item->title = sprintf('%s - %s', $addon->getFullname(), $addon->getGithub()->getDescription());
 			} else {
-				$item->title = sprintf('%s', $addon->fullname);
+				$item->title = sprintf('%s', $addon->getFullname());
 			}
 		}
 

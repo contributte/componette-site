@@ -7,7 +7,7 @@ use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\GithubComposer\GithubComposer;
 use App\Model\Facade\Cli\Commands\AddonFacade;
 use App\Model\WebServices\Github\GithubService;
-use Nextras\Dbal\Utils\DateTimeImmutable;
+use DateTimeImmutable;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -18,11 +18,9 @@ final class SynchronizeFilesCommand extends BaseCommand
 	/** @var string */
 	protected static $defaultName = 'addons:github:sync:files';
 
-	/** @var AddonFacade */
-	private $addonFacade;
+	private AddonFacade $addonFacade;
 
-	/** @var GithubService */
-	private $github;
+	private GithubService $github;
 
 	public function __construct(AddonFacade $addonFacade, GithubService $github)
 	{
@@ -65,42 +63,40 @@ final class SynchronizeFilesCommand extends BaseCommand
 		$counter = 0;
 		foreach ($addons as $addon) {
 			// Composer
-			if (in_array($addon->type, [null, Addon::TYPE_UNKNOWN, Addon::TYPE_COMPOSER])) {
+			if (in_array($addon->getType(), [Addon::TYPE_UNKNOWN, Addon::TYPE_COMPOSER])) {
 				// Skip non-github reference
-				if (!$addon->github) {
+				if (!$addon->getGithub()) {
 					continue;
 				}
 
-				$response = $this->github->composer($addon->author, $addon->name);
+				$response = $this->github->composer($addon->getAuthor(), $addon->getName());
 
 				if ($response->isOk()) {
-					if ($addon->type !== Addon::TYPE_COMPOSER) {
-						$addon->type = Addon::TYPE_COMPOSER;
+					if ($addon->getType() !== Addon::TYPE_COMPOSER) {
+						$addon->setType(Addon::TYPE_COMPOSER);
 					}
 
 					$body = $response->getJsonBody();
-					$composer = $addon->github->masterComposer;
+					$composer = $addon->getGithub()->getMasterComposer();
 
 					if (!$composer) {
-						$composer = new GithubComposer();
-						$composer->custom = GithubComposer::BRANCH_MASTER;
-						$composer->type = GithubComposer::TYPE_BRANCH;
-						$composer->json = $body;
-						$addon->github->composers->add($composer);
+						$composer = new GithubComposer($addon->getGithub(), GithubComposer::TYPE_BRANCH, GithubComposer::BRANCH_MASTER);
+						$composer->setJson($body);
+						$addon->getGithub()->addComposer($composer);
 					} else {
-						$composer->json = $body;
-						$composer->updatedAt = new DateTimeImmutable();
+						$composer->setJson($body);
+						$composer->setUpdatedAt(new DateTimeImmutable());
 					}
 
 					$this->addonFacade->persist($composer);
 				} else {
-					$output->writeln('Skip (composer): ' . $addon->fullname);
+					$output->writeln('Skip (composer): ' . $addon->getFullname());
 				}
 			}
 
 			// Untype
-			if (in_array($addon->type, [null, Addon::TYPE_UNKNOWN])) {
-				$addon->type = Addon::TYPE_UNTYPE;
+			if ($addon->getType() === Addon::TYPE_UNKNOWN) {
+				$addon->setType(Addon::TYPE_UNTYPE);
 			}
 
 			// Persist

@@ -9,7 +9,6 @@ use App\Modules\Front\Base\Controls\AddonList\Avatar\AvatarComponent;
 use App\Modules\Front\Base\Controls\AddonList\Description\DescriptionComponent;
 use App\Modules\Front\Base\Controls\AddonList\Name\NameComponent;
 use App\Modules\Front\Base\Controls\AddonList\Statistics\StatisticsComponent;
-use Nextras\Orm\Collection\ICollection;
 
 class Control extends BaseControl
 {
@@ -41,10 +40,11 @@ class Control extends BaseControl
 	{
 		/** @var Addon|null $addon */
 		$addon = $this->repository
-			->findBy([])
-			->limitBy(1)
-			->orderBy('featuredAt', ICollection::DESC)
-			->fetch();
+			->createQueryBuilder('a')
+			->orderBy('a.featuredAt', 'DESC')
+			->setMaxResults(1)
+			->getQuery()
+			->getOneOrNullResult();
 		return $addon;
 	}
 

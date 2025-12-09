@@ -5,9 +5,8 @@ namespace App\Model\Facade\Cli\Commands;
 use App\Model\Database\ORM\AbstractEntity;
 use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\Addon\AddonRepository;
-use App\Model\Database\ORM\EntityModel;
 use App\Model\Exceptions\Logical\InvalidArgumentException;
-use Nextras\Orm\Collection\ICollection;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Input\InputInterface;
 use Throwable;
 use Tracy\Debugger;
@@ -15,48 +14,43 @@ use Tracy\Debugger;
 final class AddonFacade
 {
 
-	/** @var EntityModel */
-	private $em;
+	private EntityManagerInterface $em;
 
-	public function __construct(EntityModel $em)
+	private AddonRepository $repository;
+
+	public function __construct(EntityManagerInterface $em, AddonRepository $repository)
 	{
 		$this->em = $em;
+		$this->repository = $repository;
 	}
 
 	/**
-	 * @return ICollection|Addon[]
+	 * @return Addon[]
 	 */
-	public function find(InputInterface $input)
+	public function find(InputInterface $input): array
 	{
 		if (!$input->getArgument('type')) {
 			throw new InvalidArgumentException('Argument type is required');
 		}
 
-		/** @var AddonRepository $repository */
-		$repository = $this->em->getRepositoryForEntity(Addon::class);
-
-		/** @var ICollection|Addon[] $addons */
-		$addons = $repository->findBy(['state' => Addon::STATE_ACTIVE]);
+		$criteria = ['state' => Addon::STATE_ACTIVE];
 
 		if ($input->getOption('rest') === true) {
-			$addons = $repository->findBy(['state' => Addon::STATE_QUEUED]);
+			$criteria = ['state' => Addon::STATE_QUEUED];
 		}
 
 		$type = $input->getArgument('type');
 		switch ($type) {
 			case 'composer':
-				// Use only composer types
-				$addons = $addons->findBy(['type' => Addon::TYPE_COMPOSER]);
+				$criteria['type'] = Addon::TYPE_COMPOSER;
 				break;
 
 			case 'bower':
-				// Use only bower types
-				$addons = $addons->findBy(['type' => Addon::TYPE_BOWER]);
+				$criteria['type'] = Addon::TYPE_BOWER;
 				break;
 
 			case 'unknown':
-				// Use only uknown types
-				$addons = $addons->findBy(['type' => Addon::TYPE_UNKNOWN]);
+				$criteria['type'] = Addon::TYPE_UNKNOWN;
 				break;
 
 			case 'all':
@@ -67,13 +61,13 @@ final class AddonFacade
 				throw new InvalidArgumentException(sprintf('Unsupported type "%s"', is_array($type) ? print_r($type, true) : (string) $type));
 		}
 
-		return $addons;
+		return $this->repository->findBy($criteria);
 	}
 
-	public function persist(AbstractEntity $entity): AbstractEntity
+	public function persist(AbstractEntity $entity): void
 	{
 		try {
-			return $this->em->persist($entity);
+			$this->em->persist($entity);
 		} catch (Throwable $e) {
 			Debugger::log($e);
 			throw $e;

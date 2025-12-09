@@ -3,14 +3,14 @@
 namespace App\Modules\Front\Base\Controls\AddonModal;
 
 use App\Model\Database\ORM\Addon\Addon;
-use App\Model\Database\ORM\EntityModel;
 use App\Model\Database\ORM\Tag\Tag;
+use App\Model\Database\ORM\Tag\TagRepository;
 use App\Model\UI\BaseControl;
 use App\Modules\Front\Base\Controls\Svg\SvgComponent;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
+use Doctrine\ORM\EntityManagerInterface;
 use Nette\Application\UI\Form;
 use Nette\Utils\Strings;
-use Nextras\Dbal\UniqueConstraintViolationException;
-use Nextras\Dbal\Utils\DateTimeImmutable;
 use PDOException;
 
 final class AddonModal extends BaseControl
@@ -21,12 +21,14 @@ final class AddonModal extends BaseControl
 	/** @var callable[] */
 	public $onSuccess = [];
 
-	/** @var EntityModel */
-	private $em;
+	private EntityManagerInterface $em;
 
-	public function __construct(EntityModel $em)
+	private TagRepository $tagRepository;
+
+	public function __construct(EntityManagerInterface $em, TagRepository $tagRepository)
 	{
 		$this->em = $em;
+		$this->tagRepository = $tagRepository;
 	}
 
 	protected function createComponentForm(): Form
@@ -37,9 +39,10 @@ final class AddonModal extends BaseControl
 			->addRule($form::URL, 'URL is not valid')
 			->addRule($form::PATTERN, 'Only GitHub urls are allowed', Addon::GITHUB_REGEX);
 
-		$tags = $this->em->getRepositoryForEntity(Tag::class)
-			->findAll()
-			->fetchPairs('id', 'name');
+		$tags = [];
+		foreach ($this->tagRepository->findAll() as $tag) {
+			$tags[$tag->getId()] = $tag->getName();
+		}
 
 		$form->addMultiSelect('tags', 'Tags', $tags);
 
@@ -54,19 +57,21 @@ final class AddonModal extends BaseControl
 
 			[, $owner, $name] = $matches;
 
-			$addonRepository = $this->em->getRepositoryForEntity(Addon::class);
-			$addon = new Addon();
-			$addonRepository->attach($addon);
-			$addon->state = Addon::STATE_QUEUED;
-			$addon->createdAt = new DateTimeImmutable();
-			$addon->author = $owner;
-			$addon->name = $name;
+			$addon = new Addon($owner, $name);
+			$addon->setState(Addon::STATE_QUEUED);
+
 			if ($form->values->tags) {
-				$addon->tags->add($form->values->tags);
+				foreach ($form->values->tags as $tagId) {
+					$tag = $this->tagRepository->find($tagId);
+					if ($tag instanceof Tag) {
+						$addon->addTag($tag);
+					}
+				}
 			}
 
 			try {
-				$this->em->persistAndFlush($addon);
+				$this->em->persist($addon);
+				$this->em->flush();
 				$this->presenter->flashMessage('Addon successful added to the cron process queue. Thank you.', 'info');
 			} catch (UniqueConstraintViolationException $e) {
 				$this->presenter->flashMessage(sprintf('There is already addon %s/%s in our database.', $owner, $name), 'warning');

@@ -3,17 +3,15 @@
 namespace App\Modules\Front\OpenSearch;
 
 use App\Model\Database\ORM\Addon\Addon;
-use App\Model\Database\ORM\EntityModel;
-use App\Model\Database\Query\OpenSearchQuery;
+use App\Model\Database\ORM\Addon\AddonRepository;
 use App\Modules\Front\Base\BasePresenter;
-use Contributte\Nextras\Orm\QueryObject\Queryable;
-use Nextras\Orm\Collection\ICollection;
+use Nette\Utils\Strings;
 
 final class OpenSearchPresenter extends BasePresenter
 {
 
-	/** @var EntityModel @inject */
-	public $em;
+	/** @var AddonRepository @inject */
+	public AddonRepository $addonRepository;
 
 	public function actionSuggest(?string $q): void
 	{
@@ -21,19 +19,26 @@ final class OpenSearchPresenter extends BasePresenter
 			$this->sendJson([]);
 		}
 
-		$query = new OpenSearchQuery();
-		$query->byQuery($q);
+		$token = Strings::replace($q, '#[.\-]#', ' ');
 
-		/** @var ICollection<Addon> $addons */
-		$addons = $this->em->getRepositoryForEntity(Addon::class)->fetch($query, Queryable::HYDRATION_ENTITY);
+		$addons = $this->addonRepository->createQueryBuilder('a')
+			->leftJoin('a.github', 'g')
+			->where('a.state = :state')
+			->andWhere('a.author LIKE :token OR a.name LIKE :token')
+			->setParameter('state', Addon::STATE_ACTIVE)
+			->setParameter('token', '%' . $token . '%')
+			->orderBy('a.rating', 'DESC')
+			->addOrderBy('a.createdAt', 'DESC')
+			->getQuery()
+			->getResult();
 
 		$output = [];
 		$terms = [];
 		foreach ($addons as $addon) {
 			$terms[] = [
-				'completion' => $addon->fullname,
-				'description' => $addon->github !== null ? $addon->github->description : '',
-				'link' => $this->link(':Front:Addon:detail', $addon->id),
+				'completion' => $addon->getFullname(),
+				'description' => $addon->getGithub() !== null ? $addon->getGithub()->getDescription() : '',
+				'link' => $this->link(':Front:Addon:detail', $addon->getId()),
 			];
 		}
 
