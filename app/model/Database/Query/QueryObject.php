@@ -2,35 +2,39 @@
 
 namespace App\Model\Database\Query;
 
-use Contributte\Nextras\Orm\QueryObject\QueryObject as NQueryObject;
+use App\Model\Database\Query\Base\QueryObjectBase;
 
-abstract class QueryObject extends NQueryObject
+abstract class QueryObject extends QueryObjectBase
 {
 
-	/** @var int */
-	protected $limit;
+    /**
+     * @var int 
+     */
+    protected $limit;
 
-	/** @var int */
-	protected $offset;
+    /**
+     * @var int 
+     */
+    protected $offset;
 
-	/**
-	 * @return static
-	 */
-	public function setLimit(int $limit): self
-	{
-		$this->limit = $limit;
+    /**
+     * @return static
+     */
+    public function setLimit(int $limit): self
+    {
+        $this->limit = $limit;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * @return static
-	 */
-	public function setOffset(int $offset): self
-	{
-		$this->offset = $offset;
+    /**
+     * @return static
+     */
+    public function setOffset(int $offset): self
+    {
+        $this->offset = $offset;
 
-		return $this;
-	}
+        return $this;
+    }
 
 }

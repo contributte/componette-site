@@ -1,241 +1,787 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Property App\\\\Model\\\\Database\\\\ORM\\\\ComposerStatistics\\\\ComposerStatistics\\:\\:\\$json \\(Nette\\\\Utils\\\\ArrayHash\\) does not accept mixed\\.$#"
+			message: '#^PHPDoc tag @var for variable \$addons contains generic interface Nextras\\Orm\\Collection\\ICollection but does not specify its types\: E$#'
+			identifier: missingType.generics
 			count: 1
 			path: app/model/Commands/Addons/Composer/CollectStatsCommand.php
 
 		-
-			message: "#^Parameter \\#1 \\$array of static method Nette\\\\Utils\\\\Arrays\\:\\:get\\(\\) expects array\\<int\\>, mixed given\\.$#"
+			message: '#^Property App\\Model\\Database\\ORM\\ComposerStatistics\\ComposerStatistics\:\:\$json \(Nette\\Utils\\ArrayHash\) does not accept mixed\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: app/model/Commands/Addons/Composer/CollectStatsCommand.php
+
+		-
+			message: '#^Cannot access property \$crawledAt on App\\Model\\Database\\ORM\\Composer\\Composer\|null\.$#'
+			identifier: property.nonObject
 			count: 1
 			path: app/model/Commands/Addons/Composer/SynchronizeCommand.php
 
 		-
-			message: "#^Property App\\\\Model\\\\Database\\\\ORM\\\\Composer\\\\Composer\\:\\:\\$description \\(string\\|null\\) does not accept mixed\\.$#"
+			message: '#^Cannot access property \$description on App\\Model\\Database\\ORM\\Composer\\Composer\|null\.$#'
+			identifier: property.nonObject
 			count: 1
 			path: app/model/Commands/Addons/Composer/SynchronizeCommand.php
 
 		-
-			message: "#^Property App\\\\Model\\\\Database\\\\ORM\\\\Composer\\\\Composer\\:\\:\\$name \\(string\\) does not accept mixed\\.$#"
+			message: '#^Cannot access property \$downloads on App\\Model\\Database\\ORM\\Composer\\Composer\|null\.$#'
+			identifier: property.nonObject
 			count: 1
 			path: app/model/Commands/Addons/Composer/SynchronizeCommand.php
 
 		-
-			message: "#^Property App\\\\Model\\\\Database\\\\ORM\\\\Composer\\\\Composer\\:\\:\\$type \\(string\\|null\\) does not accept mixed\\.$#"
+			message: '#^Cannot access property \$keywords on App\\Model\\Database\\ORM\\Composer\\Composer\|null\.$#'
+			identifier: property.nonObject
 			count: 1
 			path: app/model/Commands/Addons/Composer/SynchronizeCommand.php
 
 		-
-			message: "#^Cannot access offset 'created_at' on mixed\\.$#"
+			message: '#^Cannot access property \$name on App\\Model\\Database\\ORM\\Composer\\Composer\|null\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/model/Commands/Addons/Composer/SynchronizeCommand.php
+
+		-
+			message: '#^Cannot access property \$type on App\\Model\\Database\\ORM\\Composer\\Composer\|null\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/model/Commands/Addons/Composer/SynchronizeCommand.php
+
+		-
+			message: '#^PHPDoc tag @var for variable \$addons contains generic interface Nextras\\Orm\\Collection\\ICollection but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Commands/Addons/Composer/SynchronizeCommand.php
+
+		-
+			message: '#^Parameter \#1 \$array of static method Nette\\Utils\\Arrays\:\:get\(\) expects array\<0\>, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/model/Commands/Addons/Composer/SynchronizeCommand.php
+
+		-
+			message: '#^PHPDoc tag @var for variable \$addons contains generic interface Nextras\\Orm\\Collection\\ICollection but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Commands/Addons/Content/GenerateContentCommand.php
+
+		-
+			message: '#^Binary operation "\*" between mixed and 2 results in an error\.$#'
+			identifier: binaryOp.invalid
 			count: 1
 			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
 
 		-
-			message: "#^Cannot access offset 'description' on mixed\\.$#"
+			message: '#^Binary operation "\*" between mixed and 3 results in an error\.$#'
+			identifier: binaryOp.invalid
 			count: 1
 			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
 
 		-
-			message: "#^Cannot access offset 'fork' on mixed\\.$#"
+			message: '#^Binary operation "\+" between \(float\|int\) and mixed results in an error\.$#'
+			identifier: binaryOp.invalid
 			count: 1
 			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
 
 		-
-			message: "#^Cannot access offset 'forks_count' on mixed\\.$#"
+			message: '#^Binary operation "\." between ''Skip \('' and mixed results in an error\.$#'
+			identifier: binaryOp.invalid
 			count: 1
 			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
 
 		-
-			message: "#^Cannot access offset 'full_name' on mixed\\.$#"
+			message: '#^Binary operation "\." between ''Skip \(invalid addon…'' and mixed results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
+
+		-
+			message: '#^Cannot access offset ''created_at'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
+
+		-
+			message: '#^Cannot access offset ''description'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
+
+		-
+			message: '#^Cannot access offset ''fork'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
+
+		-
+			message: '#^Cannot access offset ''forks_count'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
+
+		-
+			message: '#^Cannot access offset ''full_name'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 2
 			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
 
 		-
-			message: "#^Cannot access offset 'homepage' on mixed\\.$#"
+			message: '#^Cannot access offset ''homepage'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
 
 		-
-			message: "#^Cannot access offset 'language' on mixed\\.$#"
+			message: '#^Cannot access offset ''language'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
 
 		-
-			message: "#^Cannot access offset 'message' on mixed\\.$#"
+			message: '#^Cannot access offset ''message'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 2
 			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
 
 		-
-			message: "#^Cannot access offset 'open_issues_count' on mixed\\.$#"
+			message: '#^Cannot access offset ''open_issues_count'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
 
 		-
-			message: "#^Cannot access offset 'pushed_at' on mixed\\.$#"
+			message: '#^Cannot access offset ''pushed_at'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
 
 		-
-			message: "#^Cannot access offset 'stargazers_count' on mixed\\.$#"
+			message: '#^Cannot access offset ''stargazers_count'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
 
 		-
-			message: "#^Cannot access offset 'updated_at' on mixed\\.$#"
+			message: '#^Cannot access offset ''updated_at'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
 
 		-
-			message: "#^Cannot access offset 'watchers_count' on mixed\\.$#"
+			message: '#^Cannot access offset ''watchers_count'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
 
 		-
-			message: "#^Parameter \\#1 \\$datetime of class Nextras\\\\Dbal\\\\Utils\\\\DateTimeImmutable constructor expects string, mixed given\\.$#"
+			message: '#^Cannot access property \$createdAt on App\\Model\\Database\\ORM\\Github\\Github\|null\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
+
+		-
+			message: '#^Cannot access property \$description on App\\Model\\Database\\ORM\\Github\\Github\|null\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
+
+		-
+			message: '#^Cannot access property \$fork on App\\Model\\Database\\ORM\\Github\\Github\|null\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
+
+		-
+			message: '#^Cannot access property \$forks on App\\Model\\Database\\ORM\\Github\\Github\|null\.$#'
+			identifier: property.nonObject
+			count: 2
+			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
+
+		-
+			message: '#^Cannot access property \$homepage on App\\Model\\Database\\ORM\\Github\\Github\|null\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
+
+		-
+			message: '#^Cannot access property \$issues on App\\Model\\Database\\ORM\\Github\\Github\|null\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
+
+		-
+			message: '#^Cannot access property \$language on App\\Model\\Database\\ORM\\Github\\Github\|null\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
+
+		-
+			message: '#^Cannot access property \$pushedAt on App\\Model\\Database\\ORM\\Github\\Github\|null\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
+
+		-
+			message: '#^Cannot access property \$stars on App\\Model\\Database\\ORM\\Github\\Github\|null\.$#'
+			identifier: property.nonObject
+			count: 2
+			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
+
+		-
+			message: '#^Cannot access property \$updatedAt on App\\Model\\Database\\ORM\\Github\\Github\|null\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
+
+		-
+			message: '#^Cannot access property \$watchers on App\\Model\\Database\\ORM\\Github\\Github\|null\.$#'
+			identifier: property.nonObject
+			count: 2
+			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
+
+		-
+			message: '#^Parameter \#1 \$datetime of class Nextras\\Dbal\\Utils\\DateTimeImmutable constructor expects string, mixed given\.$#'
+			identifier: argument.type
 			count: 3
 			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
 
 		-
-			message: "#^Parameter \\#1 \\$subject of static method Nette\\\\Utils\\\\Strings\\:\\:match\\(\\) expects string, mixed given\\.$#"
+			message: '#^Parameter \#1 \$subject of static method Nette\\Utils\\Strings\:\:match\(\) expects string, mixed given\.$#'
+			identifier: argument.type
 			count: 1
 			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
 
 		-
-			message: "#^Property App\\\\Model\\\\Database\\\\ORM\\\\Github\\\\Github\\:\\:\\$description \\(string\\|null\\) does not accept mixed\\.$#"
-			count: 1
-			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
-
-		-
-			message: "#^Property App\\\\Model\\\\Database\\\\ORM\\\\Github\\\\Github\\:\\:\\$forks \\(int\\|null\\) does not accept mixed\\.$#"
-			count: 1
-			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
-
-		-
-			message: "#^Property App\\\\Model\\\\Database\\\\ORM\\\\Github\\\\Github\\:\\:\\$homepage \\(string\\|null\\) does not accept mixed\\.$#"
-			count: 1
-			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
-
-		-
-			message: "#^Property App\\\\Model\\\\Database\\\\ORM\\\\Github\\\\Github\\:\\:\\$issues \\(int\\|null\\) does not accept mixed\\.$#"
-			count: 1
-			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
-
-		-
-			message: "#^Property App\\\\Model\\\\Database\\\\ORM\\\\Github\\\\Github\\:\\:\\$language \\(string\\|null\\) does not accept mixed\\.$#"
-			count: 1
-			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
-
-		-
-			message: "#^Property App\\\\Model\\\\Database\\\\ORM\\\\Github\\\\Github\\:\\:\\$stars \\(int\\|null\\) does not accept mixed\\.$#"
-			count: 1
-			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
-
-		-
-			message: "#^Property App\\\\Model\\\\Database\\\\ORM\\\\Github\\\\Github\\:\\:\\$watchers \\(int\\|null\\) does not accept mixed\\.$#"
-			count: 1
-			path: app/model/Commands/Addons/Github/SynchronizeCommand.php
-
-		-
-			message: "#^Property App\\\\Model\\\\Database\\\\ORM\\\\GithubComposer\\\\GithubComposer\\:\\:\\$json \\(Nette\\\\Utils\\\\ArrayHash\\) does not accept mixed\\.$#"
+			message: '#^Property App\\Model\\Database\\ORM\\GithubComposer\\GithubComposer\:\:\$json \(Nette\\Utils\\ArrayHash\) does not accept mixed\.$#'
+			identifier: assign.propertyType
 			count: 2
 			path: app/model/Commands/Addons/Github/SynchronizeFilesCommand.php
 
 		-
-			message: "#^Cannot cast mixed to string\\.$#"
+			message: '#^Call to an undefined method iterable\<App\\Model\\Database\\ORM\\GithubRelease\\GithubRelease\>&Nextras\\Orm\\Relationships\\OneHasMany\:\:get\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/model/Commands/Addons/Github/SynchronizeReleasesCommand.php
+
+		-
+			message: '#^Possibly invalid array key type float\|int\|string\.$#'
+			identifier: offsetAccess.invalidOffset
+			count: 3
+			path: app/model/Commands/Addons/Github/SynchronizeReleasesCommand.php
+
+		-
+			message: '#^Class Nextras\\Orm\\Mapper\\Mapper not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/model/Database/DI/RepositoryInjectExtension.php
+
+		-
+			message: '#^Class App\\Model\\Database\\ORM\\AbstractMapper extends generic class Nextras\\Orm\\Mapper\\Dbal\\DbalMapper but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Database/ORM/AbstractMapper.php
+
+		-
+			message: '#^Call to an undefined method Nextras\\Orm\\Mapper\\IMapper\<Nextras\\Orm\\Entity\\IEntity\>\:\:toCollection\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/model/Database/ORM/AbstractRepository.php
+
+		-
+			message: '#^Call to function assert\(\) with true will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 2
+			path: app/model/Database/ORM/AbstractRepository.php
+
+		-
+			message: '#^Class App\\Model\\Database\\ORM\\AbstractRepository extends generic class Nextras\\Orm\\Repository\\Repository but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Database/ORM/AbstractRepository.php
+
+		-
+			message: '#^Instanceof between Nextras\\Orm\\Collection\\ICollection\<TEntityClass\> and Nextras\\Orm\\Collection\\ICollection will always evaluate to true\.$#'
+			identifier: instanceof.alwaysTrue
+			count: 1
+			path: app/model/Database/ORM/AbstractRepository.php
+
+		-
+			message: '#^Instanceof between iterable\<TEntityClass\>&Nextras\\Dbal\\Result\\Result and Nextras\\Dbal\\Result\\Result will always evaluate to true\.$#'
+			identifier: instanceof.alwaysTrue
+			count: 1
+			path: app/model/Database/ORM/AbstractRepository.php
+
+		-
+			message: '#^Type mixed in generic type Nextras\\Orm\\Collection\\ICollection\<mixed\> in PHPDoc tag @return is not subtype of template type E of Nextras\\Orm\\Entity\\IEntity of interface Nextras\\Orm\\Collection\\ICollection\.$#'
+			identifier: generics.notSubtype
+			count: 1
+			path: app/model/Database/ORM/AbstractRepository.php
+
+		-
+			message: '#^Type mixed in generic type Nextras\\Orm\\Collection\\ICollection\<mixed\> in PHPDoc tag @var for variable \$collection is not subtype of template type E of Nextras\\Orm\\Entity\\IEntity of interface Nextras\\Orm\\Collection\\ICollection\.$#'
+			identifier: generics.notSubtype
+			count: 1
+			path: app/model/Database/ORM/AbstractRepository.php
+
+		-
+			message: '#^Call to an undefined method iterable\<App\\Model\\Database\\ORM\\ComposerStatistics\\ComposerStatistics\>&Nextras\\Orm\\Relationships\\OneHasMany\:\:get\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/model/Database/ORM/Addon/Addon.php
+
+		-
+			message: '#^PHPDoc tag @property for property App\\Model\\Database\\ORM\\Addon\\Addon\:\:\$composerStatistics contains generic class Nextras\\Orm\\Relationships\\OneHasMany but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Database/ORM/Addon/Addon.php
+
+		-
+			message: '#^PHPDoc tag @property for property App\\Model\\Database\\ORM\\Addon\\Addon\:\:\$tags contains generic class Nextras\\Orm\\Relationships\\ManyHasMany but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Database/ORM/Addon/Addon.php
+
+		-
+			message: '#^Class App\\Model\\Database\\ORM\\Addon\\AddonRepository has PHPDoc tag @method for method findBy\(\) parameter \#1 \$conds with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/model/Database/ORM/Addon/AddonRepository.php
+
+		-
+			message: '#^Class App\\Model\\Database\\ORM\\Addon\\AddonRepository has PHPDoc tag @method for method getBy\(\) parameter \#1 \$conds with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/model/Database/ORM/Addon/AddonRepository.php
+
+		-
+			message: '#^PHPDoc tag @method for method App\\Model\\Database\\ORM\\Addon\\AddonRepository\:\:findAll\(\) return type contains generic interface Nextras\\Orm\\Collection\\ICollection but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Database/ORM/Addon/AddonRepository.php
+
+		-
+			message: '#^PHPDoc tag @method for method App\\Model\\Database\\ORM\\Addon\\AddonRepository\:\:findBy\(\) return type contains generic interface Nextras\\Orm\\Collection\\ICollection but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Database/ORM/Addon/AddonRepository.php
+
+		-
+			message: '#^Class App\\Model\\Database\\ORM\\Composer\\ComposerRepository has PHPDoc tag @method for method findBy\(\) parameter \#1 \$conds with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/model/Database/ORM/Composer/ComposerRepository.php
+
+		-
+			message: '#^Class App\\Model\\Database\\ORM\\Composer\\ComposerRepository has PHPDoc tag @method for method getBy\(\) parameter \#1 \$conds with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/model/Database/ORM/Composer/ComposerRepository.php
+
+		-
+			message: '#^PHPDoc tag @method for method App\\Model\\Database\\ORM\\Composer\\ComposerRepository\:\:findAll\(\) return type contains generic interface Nextras\\Orm\\Collection\\ICollection but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Database/ORM/Composer/ComposerRepository.php
+
+		-
+			message: '#^PHPDoc tag @method for method App\\Model\\Database\\ORM\\Composer\\ComposerRepository\:\:findBy\(\) return type contains generic interface Nextras\\Orm\\Collection\\ICollection but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Database/ORM/Composer/ComposerRepository.php
+
+		-
+			message: '#^Class App\\Model\\Database\\ORM\\ComposerStatistics\\ComposerStatisticsRepository has PHPDoc tag @method for method findBy\(\) parameter \#1 \$conds with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/model/Database/ORM/ComposerStatistics/ComposerStatisticsRepository.php
+
+		-
+			message: '#^Class App\\Model\\Database\\ORM\\ComposerStatistics\\ComposerStatisticsRepository has PHPDoc tag @method for method getBy\(\) parameter \#1 \$conds with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/model/Database/ORM/ComposerStatistics/ComposerStatisticsRepository.php
+
+		-
+			message: '#^PHPDoc tag @method for method App\\Model\\Database\\ORM\\ComposerStatistics\\ComposerStatisticsRepository\:\:findAll\(\) return type contains generic interface Nextras\\Orm\\Collection\\ICollection but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Database/ORM/ComposerStatistics/ComposerStatisticsRepository.php
+
+		-
+			message: '#^PHPDoc tag @method for method App\\Model\\Database\\ORM\\ComposerStatistics\\ComposerStatisticsRepository\:\:findBy\(\) return type contains generic interface Nextras\\Orm\\Collection\\ICollection but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Database/ORM/ComposerStatistics/ComposerStatisticsRepository.php
+
+		-
+			message: '#^PHPDoc tag @method for method App\\Model\\Database\\ORM\\EntityModel\:\:getRepositoryForEntity\(\) return type contains generic class App\\Model\\Database\\ORM\\AbstractRepository but does not specify its types\: TEntityClass$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Database/ORM/EntityModel.php
+
+		-
+			message: '#^Call to an undefined method iterable\<App\\Model\\Database\\ORM\\GithubComposer\\GithubComposer\>&Nextras\\Orm\\Relationships\\OneHasMany\:\:get\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/model/Database/ORM/Github/Github.php
+
+		-
+			message: '#^PHPDoc tag @property for property App\\Model\\Database\\ORM\\Github\\Github\:\:\$composers contains generic class Nextras\\Orm\\Relationships\\OneHasMany but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Database/ORM/Github/Github.php
+
+		-
+			message: '#^PHPDoc tag @property for property App\\Model\\Database\\ORM\\Github\\Github\:\:\$releases contains generic class Nextras\\Orm\\Relationships\\OneHasMany but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Database/ORM/Github/Github.php
+
+		-
+			message: '#^Class App\\Model\\Database\\ORM\\Github\\GithubRepository has PHPDoc tag @method for method findBy\(\) parameter \#1 \$conds with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/model/Database/ORM/Github/GithubRepository.php
+
+		-
+			message: '#^Class App\\Model\\Database\\ORM\\Github\\GithubRepository has PHPDoc tag @method for method getBy\(\) parameter \#1 \$conds with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/model/Database/ORM/Github/GithubRepository.php
+
+		-
+			message: '#^PHPDoc tag @method for method App\\Model\\Database\\ORM\\Github\\GithubRepository\:\:findAll\(\) return type contains generic interface Nextras\\Orm\\Collection\\ICollection but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Database/ORM/Github/GithubRepository.php
+
+		-
+			message: '#^PHPDoc tag @method for method App\\Model\\Database\\ORM\\Github\\GithubRepository\:\:findBy\(\) return type contains generic interface Nextras\\Orm\\Collection\\ICollection but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Database/ORM/Github/GithubRepository.php
+
+		-
+			message: '#^Class App\\Model\\Database\\ORM\\GithubComposer\\GithubComposerRepository has PHPDoc tag @method for method findBy\(\) parameter \#1 \$conds with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/model/Database/ORM/GithubComposer/GithubComposerRepository.php
+
+		-
+			message: '#^Class App\\Model\\Database\\ORM\\GithubComposer\\GithubComposerRepository has PHPDoc tag @method for method getBy\(\) parameter \#1 \$conds with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/model/Database/ORM/GithubComposer/GithubComposerRepository.php
+
+		-
+			message: '#^PHPDoc tag @method for method App\\Model\\Database\\ORM\\GithubComposer\\GithubComposerRepository\:\:findAll\(\) return type contains generic interface Nextras\\Orm\\Collection\\ICollection but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Database/ORM/GithubComposer/GithubComposerRepository.php
+
+		-
+			message: '#^PHPDoc tag @method for method App\\Model\\Database\\ORM\\GithubComposer\\GithubComposerRepository\:\:findBy\(\) return type contains generic interface Nextras\\Orm\\Collection\\ICollection but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Database/ORM/GithubComposer/GithubComposerRepository.php
+
+		-
+			message: '#^Class App\\Model\\Database\\ORM\\GithubRelease\\GithubReleaseRepository has PHPDoc tag @method for method findBy\(\) parameter \#1 \$conds with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/model/Database/ORM/GithubRelease/GithubReleaseRepository.php
+
+		-
+			message: '#^Class App\\Model\\Database\\ORM\\GithubRelease\\GithubReleaseRepository has PHPDoc tag @method for method getBy\(\) parameter \#1 \$conds with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/model/Database/ORM/GithubRelease/GithubReleaseRepository.php
+
+		-
+			message: '#^PHPDoc tag @method for method App\\Model\\Database\\ORM\\GithubRelease\\GithubReleaseRepository\:\:findAll\(\) return type contains generic interface Nextras\\Orm\\Collection\\ICollection but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Database/ORM/GithubRelease/GithubReleaseRepository.php
+
+		-
+			message: '#^PHPDoc tag @method for method App\\Model\\Database\\ORM\\GithubRelease\\GithubReleaseRepository\:\:findBy\(\) return type contains generic interface Nextras\\Orm\\Collection\\ICollection but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Database/ORM/GithubRelease/GithubReleaseRepository.php
+
+		-
+			message: '#^PHPDoc tag @property for property App\\Model\\Database\\ORM\\Tag\\Tag\:\:\$addons contains generic class Nextras\\Orm\\Relationships\\ManyHasMany but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Database/ORM/Tag/Tag.php
+
+		-
+			message: '#^Class App\\Model\\Database\\ORM\\Tag\\TagRepository has PHPDoc tag @method for method findBy\(\) parameter \#1 \$conds with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/model/Database/ORM/Tag/TagRepository.php
+
+		-
+			message: '#^Class App\\Model\\Database\\ORM\\Tag\\TagRepository has PHPDoc tag @method for method getBy\(\) parameter \#1 \$conds with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/model/Database/ORM/Tag/TagRepository.php
+
+		-
+			message: '#^PHPDoc tag @method for method App\\Model\\Database\\ORM\\Tag\\TagRepository\:\:findAll\(\) return type contains generic interface Nextras\\Orm\\Collection\\ICollection but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Database/ORM/Tag/TagRepository.php
+
+		-
+			message: '#^PHPDoc tag @method for method App\\Model\\Database\\ORM\\Tag\\TagRepository\:\:findBy\(\) return type contains generic interface Nextras\\Orm\\Collection\\ICollection but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Database/ORM/Tag/TagRepository.php
+
+		-
+			message: '#^Method App\\Model\\Database\\Query\\SearchAddonsQuery\:\:getAuthor\(\) never returns null so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: app/model/Database/Query/SearchAddonsQuery.php
+
+		-
+			message: '#^Method App\\Model\\Database\\Query\\SearchAddonsQuery\:\:getTag\(\) never returns null so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: app/model/Database/Query/SearchAddonsQuery.php
+
+		-
+			message: '#^Method App\\Model\\Facade\\AddonFacade\:\:getById\(\) should return App\\Model\\Database\\ORM\\Addon\\Addon\|null but returns Nextras\\Orm\\Entity\\IEntity\|null\.$#'
+			identifier: return.type
+			count: 1
+			path: app/model/Facade/AddonFacade.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
 			count: 1
 			path: app/model/Facade/Cli/Commands/AddonFacade.php
 
 		-
-			message: "#^Property App\\\\Model\\\\Routing\\\\RouterHelper\\:\\:\\$data \\(array\\<array\\<string\\>\\>\\) does not accept array\\.$#"
+			message: '#^Method App\\Model\\Facade\\Cli\\Commands\\AddonFacade\:\:find\(\) return type with generic interface Nextras\\Orm\\Collection\\ICollection does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Facade/Cli/Commands/AddonFacade.php
+
+		-
+			message: '#^PHPDoc tag @var for variable \$addons contains generic interface Nextras\\Orm\\Collection\\ICollection but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Facade/Cli/Commands/AddonFacade.php
+
+		-
+			message: '#^Method App\\Model\\Facade\\StatisticsFacade\:\:findMostPopular\(\) return type with generic interface Nextras\\Orm\\Collection\\ICollection does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Facade/StatisticsFacade.php
+
+		-
+			message: '#^Method App\\Model\\Facade\\StatisticsFacade\:\:findNewest\(\) return type with generic interface Nextras\\Orm\\Collection\\ICollection does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/model/Facade/StatisticsFacade.php
+
+		-
+			message: '#^Property App\\Model\\Routing\\RouterHelper\:\:\$data \(array\<array\<string\>\>\) does not accept array\<mixed, mixed\>\.$#'
+			identifier: assign.propertyType
 			count: 1
 			path: app/model/Routing/RouterHelper.php
 
 		-
-			message: "#^Property App\\\\Model\\\\Services\\\\Search\\\\Search\\:\\:\\$by \\(string\\) does not accept mixed\\.$#"
+			message: '#^Property App\\Model\\Services\\Search\\Search\:\:\$by \(string\) does not accept mixed\.$#'
+			identifier: assign.propertyType
 			count: 1
 			path: app/model/Services/Search/SearchFactory.php
 
 		-
-			message: "#^Property App\\\\Model\\\\Services\\\\Search\\\\Search\\:\\:\\$limit \\(int\\) does not accept mixed\\.$#"
+			message: '#^Property App\\Model\\Services\\Search\\Search\:\:\$limit \(int\) does not accept mixed\.$#'
+			identifier: assign.propertyType
 			count: 1
 			path: app/model/Services/Search/SearchFactory.php
 
 		-
-			message: "#^Property App\\\\Model\\\\Services\\\\Search\\\\Search\\:\\:\\$q \\(string\\) does not accept mixed\\.$#"
+			message: '#^Property App\\Model\\Services\\Search\\Search\:\:\$q \(string\) does not accept mixed\.$#'
+			identifier: assign.propertyType
 			count: 1
 			path: app/model/Services/Search/SearchFactory.php
 
 		-
-			message: "#^Method App\\\\Model\\\\Statistics\\:\\:getAddonsCount\\(\\) should return int but returns mixed\\.$#"
+			message: '#^Method App\\Model\\Statistics\:\:getAddonsCount\(\) should return int but returns mixed\.$#'
+			identifier: return.type
 			count: 1
 			path: app/model/Statistics.php
 
 		-
-			message: "#^Property App\\\\Model\\\\Statistics\\:\\:\\$cached \\(array\\) does not accept mixed\\.$#"
+			message: '#^Property App\\Model\\Statistics\:\:\$cached \(array\<mixed\>\) does not accept mixed\.$#'
+			identifier: assign.propertyType
 			count: 1
 			path: app/model/Statistics.php
 
 		-
-			message: "#^Parameter \\#1 \\$datetime of function strtotime expects string, mixed given\\.$#"
+			message: '#^Binary operation "\-" between int\<1, max\> and mixed results in an error\.$#'
+			identifier: binaryOp.invalid
 			count: 1
 			path: app/model/Templating/Filters/Filters.php
 
 		-
-			message: "#^Parameter \\#2 \\$timestamp of function date expects int\\|null, mixed given\\.$#"
+			message: '#^Parameter \#1 \$datetime of function strtotime expects string, mixed given\.$#'
+			identifier: argument.type
 			count: 1
 			path: app/model/Templating/Filters/Filters.php
 
 		-
-			message: "#^Parameter \\#3 \\$opts of method App\\\\Model\\\\WebServices\\\\Github\\\\GithubClient\\:\\:makeRequest\\(\\) expects array\\<string\\>, array given\\.$#"
+			message: '#^Parameter \#2 \$timestamp of function date expects int\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/model/Templating/Filters/Filters.php
+
+		-
+			message: '#^Deprecated in PHP 8\.4\: Parameter \#1 \$control \(Nette\\Application\\UI\\Control\) is implicitly nullable via default value null\.$#'
+			identifier: parameter.implicitlyNullable
+			count: 1
+			path: app/model/Templating/TemplateFactory.php
+
+		-
+			message: '#^Deprecated in PHP 8\.4\: Parameter \#2 \$class \(string\) is implicitly nullable via default value null\.$#'
+			identifier: parameter.implicitlyNullable
+			count: 1
+			path: app/model/Templating/TemplateFactory.php
+
+		-
+			message: '#^Negated boolean expression is always false\.$#'
+			identifier: booleanNot.alwaysFalse
 			count: 1
 			path: app/model/WebServices/Github/GithubService.php
 
 		-
-			message: "#^Cannot access offset 'core' on mixed\\.$#"
+			message: '#^Parameter \#3 \$opts of method App\\Model\\WebServices\\Github\\GithubClient\:\:makeRequest\(\) expects array\<string\>, array\<mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/model/WebServices/Github/GithubService.php
+
+		-
+			message: '#^Method App\\Modules\\Front\\Base\\Controls\\AddonList\\CategorizedAddonList\:\:getAddons\(\) return type with generic interface Nextras\\Orm\\Collection\\ICollection does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/modules/Front/Base/Controls/AddonList/CategorizedAddonList.php
+
+		-
+			message: '#^Call to an undefined method iterable\<App\\Model\\Database\\ORM\\GithubRelease\\GithubRelease\>&Nextras\\Orm\\Relationships\\OneHasMany\:\:get\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/modules/Front/Base/Controls/AddonList/Name/Control.php
+
+		-
+			message: '#^Caught class Nextras\\Dbal\\UniqueConstraintViolationException not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/modules/Front/Base/Controls/AddonModal/AddonModal.php
+
+		-
+			message: '#^Call to an undefined method App\\Model\\Database\\ORM\\AbstractRepository\:\:findById\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/modules/Front/Base/Controls/ReleaseList/ReleaseList.php
+
+		-
+			message: '#^Cannot access offset ''core'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 3
 			path: app/modules/Front/Base/Controls/Status/Status.php
 
 		-
-			message: "#^Cannot access offset 'limit' on mixed\\.$#"
+			message: '#^Cannot access offset ''limit'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 2
 			path: app/modules/Front/Base/Controls/Status/Status.php
 
 		-
-			message: "#^Cannot access offset 'remaining' on mixed\\.$#"
+			message: '#^Cannot access offset ''remaining'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 2
 			path: app/modules/Front/Base/Controls/Status/Status.php
 
 		-
-			message: "#^Cannot access offset 'reset' on mixed\\.$#"
+			message: '#^Cannot access offset ''reset'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 2
 			path: app/modules/Front/Base/Controls/Status/Status.php
 
 		-
-			message: "#^Cannot access offset 'resources' on mixed\\.$#"
+			message: '#^Cannot access offset ''resources'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 6
 			path: app/modules/Front/Base/Controls/Status/Status.php
 
 		-
-			message: "#^Cannot access offset 'search' on mixed\\.$#"
+			message: '#^Cannot access offset ''search'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 3
 			path: app/modules/Front/Base/Controls/Status/Status.php
 
 		-
-			message: "#^Parameter \\#1 \\$time of static method Nette\\\\Utils\\\\DateTime\\:\\:from\\(\\) expects DateTimeInterface\\|int\\|string, mixed given\\.$#"
+			message: '#^Parameter \#1 \$time of static method Nette\\Utils\\DateTime\:\:from\(\) expects DateTimeInterface\|int\|string\|null, mixed given\.$#'
+			identifier: argument.type
 			count: 2
 			path: app/modules/Front/Base/Controls/Status/Status.php
 
 		-
-			message: "#^Access to an undefined property Nextras\\\\Orm\\\\Entity\\\\IEntity\\:\\:\\$addons\\.$#"
+			message: '#^Access to an undefined property Nextras\\Orm\\Entity\\IEntity\:\:\$addons\.$#'
+			identifier: property.notFound
 			count: 2
 			path: app/modules/Front/Base/Controls/Tags/Tags.php
 
 		-
-			message: "#^Property App\\\\Modules\\\\Front\\\\Rss\\\\Controls\\\\RssFeed\\\\RssFeed\\:\\:\\$time \\(int\\|Nette\\\\Utils\\\\DateTime\\|string\\) does not accept mixed\\.$#"
+			message: '#^Method App\\Modules\\Front\\Generator\\Controls\\Sitemap\\Sitemap\:\:findAddons\(\) return type with generic interface Nextras\\Orm\\Collection\\ICollection does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/modules/Front/Generator/Controls/Sitemap/Sitemap.php
+
+		-
+			message: '#^Method App\\Modules\\Front\\Generator\\Controls\\Sitemap\\Sitemap\:\:findTags\(\) return type with generic interface Nextras\\Orm\\Collection\\ICollection does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/modules/Front/Generator/Controls/Sitemap/Sitemap.php
+
+		-
+			message: '#^Access to constant HYDRATION_ENTITY on an unknown class Contributte\\Nextras\\Orm\\QueryObject\\Queryable\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/modules/Front/OpenSearch/OpenSearchPresenter.php
+
+		-
+			message: '#^Method App\\Modules\\Front\\Rss\\Controls\\RssFeed\\IRssFeedFactory\:\:create\(\) has parameter \$addons with generic interface Nextras\\Orm\\Collection\\ICollection but does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/modules/Front/Rss/Controls/RssFeed/IRssFeedFactory.php
+
+		-
+			message: '#^Method App\\Modules\\Front\\Rss\\Controls\\RssFeed\\RssFeed\:\:__construct\(\) has parameter \$addons with generic interface Nextras\\Orm\\Collection\\ICollection but does not specify its types\: E$#'
+			identifier: missingType.generics
 			count: 1
 			path: app/modules/Front/Rss/Controls/RssFeed/RssFeed.php
 
 		-
-			message: "#^Parameter \\#1 \\$author of method App\\\\Modules\\\\Front\\\\Rss\\\\Controls\\\\RssFeed\\\\RssFeedFactory\\:\\:createByAuthor\\(\\) expects string, mixed given\\.$#"
+			message: '#^Property App\\Modules\\Front\\Rss\\Controls\\RssFeed\\RssFeed\:\:\$addons with generic interface Nextras\\Orm\\Collection\\ICollection does not specify its types\: E$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/modules/Front/Rss/Controls/RssFeed/RssFeed.php
+
+		-
+			message: '#^Property App\\Modules\\Front\\Rss\\Controls\\RssFeed\\RssFeed\:\:\$time \(int\|Nette\\Utils\\DateTime\|string\) does not accept mixed\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: app/modules/Front/Rss/Controls/RssFeed/RssFeed.php
+
+		-
+			message: '#^Parameter \#1 \$author of method App\\Modules\\Front\\Rss\\Controls\\RssFeed\\RssFeedFactory\:\:createByAuthor\(\) expects string, mixed given\.$#'
+			identifier: argument.type
 			count: 1
 			path: app/modules/Front/Rss/RssPresenter.php

@@ -14,5 +14,5 @@ services:
 			- addFilter('emojify', ['App\Model\Templating\Filters\Filters', 'emojify'])
 
 latte:
-	macros:
+	extensions:
 		- App\Model\Templating\Macros\Macros

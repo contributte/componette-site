@@ -1,34 +1,21 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Model\Templating\Macros;
 
 use App\Model\Templating\GithubAvatar;
-use Latte\Compiler;
-use Latte\MacroNode;
-use Latte\Macros\MacroSet;
-use Latte\PhpWriter;
+use Latte\Extension;
 
-final class Macros extends MacroSet
+final class Macros extends Extension
 {
 
-	/**
-	 * @param Compiler $compiler
-	 * @return void
-	 */
-	public static function install(Compiler $compiler)
-	{
-		$self = new self($compiler);
-		$self->addMacro('avatar', [$self, 'macroAvatar']);
-	}
-
-	/**
-	 * @param MacroNode $node
-	 * @param PhpWriter $writer
-	 * @return string
-	 */
-	public function macroAvatar(MacroNode $node, PhpWriter $writer): string
-	{
-		return $writer->write(sprintf('echo %s::generate(%%node.args)', GithubAvatar::class));
-	}
+    /**
+     * @return array<string, callable>
+     */
+    public function getFunctions(): array
+    {
+        return [
+        'avatar' => [GithubAvatar::class, 'generate'],
+        ];
+    }
 
 }

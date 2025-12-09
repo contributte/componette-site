@@ -8,22 +8,22 @@ use Nextras\Dbal\QueryBuilder\QueryBuilder;
 final class LatestActivityAddonsQuery extends QueryObject
 {
 
-	public const DEFAULT_LIMIT = 5;
+    public const DEFAULT_LIMIT = 5;
 
-	public function doQuery(QueryBuilder $builder): QueryBuilder
-	{
-		$qb = $builder->select('g.*, a.*')
-			->from('[addon]', 'a')
-			->joinRight('[github] AS [g]', '[g.addon_id] = [a.id]')
-			->andWhere('[a.state] = %s', Addon::STATE_ACTIVE)
-			->addOrderBy('[g.pushed_at] DESC')
-			->addOrderBy('[a.updated_at] DESC');
+    public function doQuery(QueryBuilder $builder): QueryBuilder
+    {
+        $qb = $builder->select('g.*, a.*')
+            ->from('[addon]', 'a')
+            ->joinRight('[github] AS [g]', '[g.addon_id] = [a.id]')
+            ->andWhere('[a.state] = %s', Addon::STATE_ACTIVE)
+            ->addOrderBy('[g.pushed_at] DESC')
+            ->addOrderBy('[a.updated_at] DESC');
 
-		if (!$this->limit) {
-			$qb->limitBy(self::DEFAULT_LIMIT);
-		}
+        if (!$this->limit) {
+            $qb->limitBy(self::DEFAULT_LIMIT);
+        }
 
-		return $qb;
-	}
+        return $qb;
+    }
 
 }

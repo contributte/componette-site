@@ -1,6 +1,6 @@
 parameters:
 	level: 9
-	phpVersion: 80000
+	phpVersion: 80500
 
 	paths:
 		- app
@@ -13,10 +13,6 @@ parameters:
 		- phpt
 
 	ignoreErrors:
-		# Nextras
-		- '#^Method App\\Model\\Database\\ORM\\[a-zA-Z]+\\[a-zA-Z]+::[a-zA-Z]+\(\) should return App\\Model\\Database\\ORM\\[a-zA-Z]+\\[a-zA-Z]+\|null but returns Nextras\\Orm\\Entity\\IEntity\|null\.$#'
-		- '#^Method App\\Model\\Facade\\[a-zA-Z]+::[a-zA-Z]+\(\) should return App\\Model\\Database\\ORM\\[a-zA-Z]+\\[a-zA-Z]+\|null but returns Nextras\\Orm\\Entity\\IEntity\|null\.$#'
-
 		# Nette Presenters
 		- '#Access to an undefined property Nette\\ComponentModel\\IComponent::\$controlPrototype.#'
 
@@ -25,4 +21,4 @@ includes:
 	# Extensions
 	- vendor/phpstan/phpstan-nette/extension.neon
 	- vendor/phpstan/phpstan-nette/rules.neon
-	#- vendor/nextras/orm-phpstan/extension.neon
+	- vendor/nextras/orm-phpstan/extension.neon

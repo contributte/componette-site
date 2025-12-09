@@ -2,8 +2,8 @@
 
 namespace App\Model\Database\ORM;
 
+use App\Model\Database\Query\Base\TRepositoryQueryable;
 use App\Model\Database\Query\QueryObject;
-use Contributte\Nextras\Orm\QueryObject\Repository\TRepositoryQueryable;
 use Nextras\Dbal\Result\Result;
 use Nextras\Orm\Collection\ICollection;
 use Nextras\Orm\Repository\Repository;
@@ -14,38 +14,42 @@ use Nextras\Orm\Repository\Repository;
 abstract class AbstractRepository extends Repository
 {
 
-	use TRepositoryQueryable;
+    use TRepositoryQueryable;
 
-	/**
-	 * @phpstan-return ICollection<TEntityClass>
-	 */
-	public function fetchEntities(QueryObject $query): ICollection
-	{
-		/** @var ICollection<TEntityClass> $collection */
-		$collection = $this->fetch($query, QueryObject::HYDRATION_ENTITY);
+    /**
+     * @phpstan-return ICollection<TEntityClass>
+     */
+    public function fetchEntities(QueryObject $query): ICollection
+    {
+        /**
+    * @var ICollection<TEntityClass> $collection 
+*/
+        $collection = $this->fetch($query, QueryObject::HYDRATION_ENTITY);
 
-		assert($collection instanceof ICollection);
+        assert($collection instanceof ICollection);
 
-		return $collection;
-	}
+        return $collection;
+    }
 
-	/**
-	 * @phpstan-return Result<TEntityClass>
-	 */
-	public function fetchResult(QueryObject $query): Result
-	{
-		/** @var Result<TEntityClass> $result */
-		$result = $this->fetch($query, QueryObject::HYDRATION_RESULTSET);
+    /**
+     * @phpstan-return Result<TEntityClass>
+     */
+    public function fetchResult(QueryObject $query): Result
+    {
+        /**
+    * @var Result<TEntityClass> $result 
+*/
+        $result = $this->fetch($query, QueryObject::HYDRATION_RESULTSET);
 
-		assert($result instanceof Result);
+        assert($result instanceof Result);
 
-		return $result;
-	}
+        return $result;
+    }
 
-	/**
-	 * @phpstan-return array<int, class-string<TEntityClass>>
-	 * @return string[]
-	 */
-	abstract public static function getEntityClassNames(): array;
+    /**
+     * @phpstan-return array<int, class-string<TEntityClass>>
+     * @return         string[]
+     */
+    abstract public static function getEntityClassNames(): array;
 
 }
