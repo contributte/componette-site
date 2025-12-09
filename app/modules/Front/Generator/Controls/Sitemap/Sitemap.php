@@ -3,20 +3,22 @@
 namespace App\Modules\Front\Generator\Controls\Sitemap;
 
 use App\Model\Database\ORM\Addon\Addon;
-use App\Model\Database\ORM\EntityModel;
+use App\Model\Database\ORM\Addon\AddonRepository;
 use App\Model\Database\ORM\Tag\Tag;
+use App\Model\Database\ORM\Tag\TagRepository;
 use App\Model\UI\BaseControl;
-use Nextras\Orm\Collection\ICollection;
 
 final class Sitemap extends BaseControl
 {
 
-	/** @var EntityModel */
-	private $em;
+	private AddonRepository $addonRepository;
 
-	public function __construct(EntityModel $em)
+	private TagRepository $tagRepository;
+
+	public function __construct(AddonRepository $addonRepository, TagRepository $tagRepository)
 	{
-		$this->em = $em;
+		$this->addonRepository = $addonRepository;
+		$this->tagRepository = $tagRepository;
 	}
 
 	/**
@@ -43,7 +45,7 @@ final class Sitemap extends BaseControl
 		$authors = $this->findAuthors();
 		foreach ($authors as $addon) {
 			$urls[] = [
-				'loc' => $this->presenter->link('//:Front:Index:author', ['slug' => $addon->author]),
+				'loc' => $this->presenter->link('//:Front:Index:author', ['slug' => $addon->getAuthor()]),
 				'priority' => 0.6,
 				'change' => 'weekly',
 			];
@@ -53,7 +55,7 @@ final class Sitemap extends BaseControl
 		$addons = $this->findAddons();
 		foreach ($addons as $addon) {
 			$urls[] = [
-				'loc' => $this->presenter->link('//:Front:Addon:detail', ['slug' => $addon->id]),
+				'loc' => $this->presenter->link('//:Front:Addon:detail', ['slug' => $addon->getId()]),
 				'priority' => 0.5,
 				'change' => 'weekly',
 			];
@@ -63,7 +65,7 @@ final class Sitemap extends BaseControl
 		$tags = $this->findTags();
 		foreach ($tags as $tag) {
 			$urls[] = [
-				'loc' => $this->presenter->link('//:Front:Index:tag', ['tag' => $tag->name]),
+				'loc' => $this->presenter->link('//:Front:Index:tag', ['tag' => $tag->getName()]),
 				'priority' => 0.3,
 				'change' => 'yearly',
 			];
@@ -81,36 +83,28 @@ final class Sitemap extends BaseControl
 	 */
 	private function findAuthors(): array
 	{
-		/** @var Addon[] $authors */
-		$authors = $this->em->getRepositoryForEntity(Addon::class)
-			->findBy(['state' => Addon::STATE_ACTIVE])
-			->orderBy(['id' => 'DESC'])
-			->fetchPairs('author');
+		$addons = $this->addonRepository->findBy(['state' => Addon::STATE_ACTIVE], ['id' => 'DESC']);
+		$authors = [];
+		foreach ($addons as $addon) {
+			$authors[$addon->getAuthor()] = $addon;
+		}
 		return $authors;
 	}
 
 	/**
-	 * @return Addon[]|ICollection
+	 * @return Addon[]
 	 */
-	private function findAddons(): ICollection
+	private function findAddons(): array
 	{
-		/** @var ICollection<Addon> $addons */
-		$addons = $this->em->getRepositoryForEntity(Addon::class)
-			->findBy(['state' => Addon::STATE_ACTIVE])
-			->orderBy(['id' => 'DESC']);
-		return $addons;
+		return $this->addonRepository->findBy(['state' => Addon::STATE_ACTIVE], ['id' => 'DESC']);
 	}
 
 	/**
-	 * @return Tag[]|ICollection
+	 * @return Tag[]
 	 */
-	private function findTags(): ICollection
+	private function findTags(): array
 	{
-		/** @var ICollection<Tag> $tags */
-		$tags = $this->em->getRepositoryForEntity(Tag::class)
-			->findAll()
-			->orderBy(['id' => 'DESC']);
-		return $tags;
+		return $this->tagRepository->findBy([], ['id' => 'DESC']);
 	}
 
 	/**

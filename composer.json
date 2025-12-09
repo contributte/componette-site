@@ -26,7 +26,6 @@
     "php": ">=8.5",
     "ext-curl": "*",
     "ext-mbstring": "*",
-    "ext-mysqli": "*",
     "ext-pdo": "*",
     "ext-simplexml": "*",
     "contributte/application": "^0.6.1",
@@ -43,16 +42,18 @@
     "contributte/webpack": "^2.3",
     "nette/caching": "^3.4",
     "nette/robot-loader": "^4.0",
-    "nextras/dbal": "^5.0",
-    "nextras/migrations": "^3.4",
-    "nextras/orm": "dev-main"
+    "nettrine/dbal": "dev-master",
+    "nettrine/orm": "dev-master",
+    "nettrine/cache": "dev-master",
+    "nettrine/migrations": "dev-master",
+    "nettrine/extra": "dev-master"
   },
   "require-dev": {
     "contributte/qa": "^0.4",
     "contributte/tester": "^0.4",
-    "nextras/orm-phpstan": "^2.0",
     "phpstan/phpstan": "^2.0",
-    "phpstan/phpstan-nette": "^2.0"
+    "phpstan/phpstan-nette": "^2.0",
+    "phpstan/phpstan-doctrine": "^2.0"
   },
   "autoload": {
     "psr-4": {

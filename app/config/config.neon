@@ -17,7 +17,7 @@ includes:
 
 	# EXTENSIONS ===
 	- ext/contributte.neon
-	- ext/nextras.neon
+	- ext/nettrine.neon
 	- ext/webpack.neon
 
 session:

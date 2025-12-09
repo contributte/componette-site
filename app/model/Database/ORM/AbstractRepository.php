@@ -2,54 +2,52 @@
 
 namespace App\Model\Database\ORM;
 
-use App\Model\Database\Query\Base\TRepositoryQueryable;
-use App\Model\Database\Query\QueryObject;
-use Nextras\Dbal\Result\Result;
-use Nextras\Orm\Collection\ICollection;
-use Nextras\Orm\Repository\Repository;
+use Doctrine\ORM\EntityNotFoundException;
+use Doctrine\ORM\EntityRepository;
 
 /**
- * @template TEntityClass
+ * @template TEntityClass of object
+ * @extends EntityRepository<TEntityClass>
  */
-abstract class AbstractRepository extends Repository
+abstract class AbstractRepository extends EntityRepository
 {
 
-    use TRepositoryQueryable;
+	/**
+	 * @return TEntityClass
+	 * @throws EntityNotFoundException
+	 */
+	public function fetch(int $id): object
+	{
+		$entity = $this->find($id);
 
-    /**
-     * @phpstan-return ICollection<TEntityClass>
-     */
-    public function fetchEntities(QueryObject $query): ICollection
-    {
-        /**
-    * @var ICollection<TEntityClass> $collection 
-*/
-        $collection = $this->fetch($query, QueryObject::HYDRATION_ENTITY);
+		if ($entity === null) {
+			throw EntityNotFoundException::fromClassNameAndIdentifier(
+				$this->getEntityName(),
+				[(string) $id]
+			);
+		}
 
-        assert($collection instanceof ICollection);
+		return $entity;
+	}
 
-        return $collection;
-    }
+	/**
+	 * @param array<string, mixed> $criteria
+	 * @param array<string, string>|null $orderBy
+	 * @return TEntityClass
+	 * @throws EntityNotFoundException
+	 */
+	public function fetchBy(array $criteria, ?array $orderBy = null): object
+	{
+		$entity = $this->findOneBy($criteria, $orderBy);
 
-    /**
-     * @phpstan-return Result<TEntityClass>
-     */
-    public function fetchResult(QueryObject $query): Result
-    {
-        /**
-    * @var Result<TEntityClass> $result 
-*/
-        $result = $this->fetch($query, QueryObject::HYDRATION_RESULTSET);
+		if ($entity === null) {
+			throw EntityNotFoundException::fromClassNameAndIdentifier(
+				$this->getEntityName(),
+				array_map(fn ($v) => (string) $v, array_values($criteria))
+			);
+		}
 
-        assert($result instanceof Result);
-
-        return $result;
-    }
-
-    /**
-     * @phpstan-return array<int, class-string<TEntityClass>>
-     * @return         string[]
-     */
-    abstract public static function getEntityClassNames(): array;
+		return $entity;
+	}
 
 }

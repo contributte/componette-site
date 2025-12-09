@@ -5,16 +5,13 @@ namespace App\Model\Facade;
 use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\Addon\AddonRepository;
 use App\Model\Database\ORM\Tag\TagRepository;
-use Nextras\Orm\Collection\ICollection;
 
 final class StatisticsFacade
 {
 
-	/** @var AddonRepository */
-	private $addonRepository;
+	private AddonRepository $addonRepository;
 
-	/** @var TagRepository */
-	private $tagRepository;
+	private TagRepository $tagRepository;
 
 	public function __construct(AddonRepository $addonRepository, TagRepository $tagRepository)
 	{
@@ -24,54 +21,46 @@ final class StatisticsFacade
 
 	public function countAddons(): int
 	{
-		return $this->addonRepository
-			->findAll()
-			->countStored();
+		return $this->addonRepository->count([]);
 	}
 
 	public function countQueued(): int
 	{
-		return $this->addonRepository
-			->findBy(['state' => Addon::STATE_QUEUED])
-			->countStored();
+		return $this->addonRepository->count(['state' => Addon::STATE_QUEUED]);
 	}
 
 	public function countOwners(): int
 	{
-		$collection = $this->addonRepository
-			->findAll()
-			->fetchPairs('author');
+		$qb = $this->addonRepository->createQueryBuilder('a')
+			->select('COUNT(DISTINCT a.author)')
+			->getQuery();
 
-		return count($collection);
+		return (int) $qb->getSingleScalarResult();
 	}
 
 	public function countTags(): int
 	{
-		return $this->tagRepository
-			->findAll()
-			->countStored();
+		return $this->tagRepository->count([]);
 	}
 
 	/**
-	 * @return ICollection|Addon[]
+	 * @return Addon[]
 	 */
-	public function findNewest()
+	public function findNewest(): array
 	{
-		return $this->addonRepository
-			->findAll()
-			->orderBy('createdAt', 'DESC')
-			->limitBy(5);
+		return $this->addonRepository->findBy([], ['createdAt' => 'DESC'], 5);
 	}
 
 	/**
-	 * @return ICollection|Addon[]
+	 * @return Addon[]
 	 */
-	public function findMostPopular()
+	public function findMostPopular(): array
 	{
-		return $this->addonRepository
-			->findAll()
-			->orderBy('popularity DESC')
-			->limitBy(5);
+		return $this->addonRepository->createQueryBuilder('a')
+			->orderBy('a.rating', 'DESC')
+			->setMaxResults(5)
+			->getQuery()
+			->getResult();
 	}
 
 }

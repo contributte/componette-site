@@ -3,24 +3,11 @@
 namespace App\Model\Database\ORM\GithubRelease;
 
 use App\Model\Database\ORM\AbstractRepository;
-use Nextras\Orm\Collection\ICollection;
 
 /**
- * @property-read GithubReleaseMapper $mapper
- * @method ICollection|GithubRelease[] findAll()
- * @method ICollection|GithubRelease[] findBy(array $conds)
- * @method GithubRelease|NULL getBy(array $conds)
  * @extends AbstractRepository<GithubRelease>
  */
-class GithubReleaseRepository extends AbstractRepository
+final class GithubReleaseRepository extends AbstractRepository
 {
-
-	/**
-	 * @return string[]
-	 */
-	public static function getEntityClassNames(): array
-	{
-		return [GithubRelease::class];
-	}
 
 }

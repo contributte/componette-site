@@ -21,4 +21,4 @@ includes:
 	# Extensions
 	- vendor/phpstan/phpstan-nette/extension.neon
 	- vendor/phpstan/phpstan-nette/rules.neon
-	- vendor/nextras/orm-phpstan/extension.neon
+	- vendor/phpstan/phpstan-doctrine/extension.neon

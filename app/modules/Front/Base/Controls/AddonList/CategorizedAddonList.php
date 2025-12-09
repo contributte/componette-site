@@ -3,8 +3,9 @@
 namespace App\Modules\Front\Base\Controls\AddonList;
 
 use App\Model\Database\ORM\Addon\Addon;
-use App\Model\Database\ORM\EntityModel;
+use App\Model\Database\ORM\Addon\AddonRepository;
 use App\Model\Database\ORM\Tag\Tag;
+use App\Model\Database\ORM\Tag\TagRepository;
 use App\Model\UI\BaseControl;
 use App\Modules\Front\Base\Controls\AddonList\Avatar\AvatarComponent;
 use App\Modules\Front\Base\Controls\AddonList\Description\DescriptionComponent;
@@ -13,7 +14,6 @@ use App\Modules\Front\Base\Controls\AddonList\Statistics\StatisticsComponent;
 use App\Modules\Front\Base\Controls\AddonMeta\AddonMeta;
 use App\Modules\Front\Base\Controls\Layout\Box\BoxComponent;
 use Nette\Utils\Html;
-use Nextras\Orm\Collection\ICollection;
 
 final class CategorizedAddonList extends BaseControl
 {
@@ -24,12 +24,14 @@ final class CategorizedAddonList extends BaseControl
 	use NameComponent;
 	use StatisticsComponent;
 
-	/** @var EntityModel */
-	private $em;
+	private TagRepository $tagRepository;
 
-	public function __construct(EntityModel $em)
+	private AddonRepository $addonRepository;
+
+	public function __construct(TagRepository $tagRepository, AddonRepository $addonRepository)
 	{
-		$this->em = $em;
+		$this->tagRepository = $tagRepository;
+		$this->addonRepository = $addonRepository;
 	}
 
 	/**
@@ -49,28 +51,27 @@ final class CategorizedAddonList extends BaseControl
 	 */
 
 	/**
-	 * @return Tag[]
+	 * @return array<int, Tag>
 	 */
 	protected function getTags(): array
 	{
-		/** @var Tag[] $tags */
-		$tags = $this->em->getRepositoryForEntity(Tag::class)
-			->findAll()
-			->orderBy(['name' => 'ASC'])
-			->fetchPairs('id');
-		return $tags;
+		$tags = $this->tagRepository->findBy([], ['name' => 'ASC']);
+		$result = [];
+		foreach ($tags as $tag) {
+			$result[$tag->getId()] = $tag;
+		}
+		return $result;
 	}
 
 	/**
-	 * @return ICollection|Addon[]
+	 * @return Addon[]
 	 */
-	protected function getAddons(): ICollection
+	protected function getAddons(): array
 	{
-		/** @var ICollection<Addon> $addons */
-		$addons = $this->em->getRepositoryForEntity(Addon::class)
-			->findBy(['state' => Addon::STATE_ACTIVE])
-			->orderBy(['author' => 'ASC', 'name' => 'ASC']);
-		return $addons;
+		return $this->addonRepository->findBy(
+			['state' => Addon::STATE_ACTIVE],
+			['author' => 'ASC', 'name' => 'ASC']
+		);
 	}
 
 	public function render(): void
@@ -86,13 +87,13 @@ final class CategorizedAddonList extends BaseControl
 		// Arrange addons
 		$tmplist = [];
 		foreach ($addons as $addon) {
-			if ($addon->tags->countStored() > 0) {
-				foreach ($addon->tags as $tag) {
-					if (!isset($tmplist[$tag->id])) {
-						$tmplist[$tag->id] = [];
+			if ($addon->getTags()->count() > 0) {
+				foreach ($addon->getTags() as $tag) {
+					if (!isset($tmplist[$tag->getId()])) {
+						$tmplist[$tag->getId()] = [];
 					}
 
-					$tmplist[$tag->id][] = $addon;
+					$tmplist[$tag->getId()][] = $addon;
 				}
 			} else {
 				if (!isset($tmplist[-1])) {
@@ -106,17 +107,15 @@ final class CategorizedAddonList extends BaseControl
 		// Sort addons by categories priority
 		$list = [];
 		foreach ($categories as $category) {
-			if (isset($tmplist[$category->id])) {
-				$list[$category->id] = $tmplist[$category->id];
+			if (isset($tmplist[$category->getId()])) {
+				$list[$category->getId()] = $tmplist[$category->getId()];
 			}
 		}
 
 		// Append no tags addons
 		if (isset($tmplist[-1])) {
 			$list[-1] = $tmplist[-1];
-			$other = new Tag();
-			$other->id = -1;
-			$other->name = 'other';
+			$other = new Tag('other');
 			$categories[-1] = $other;
 		}
 

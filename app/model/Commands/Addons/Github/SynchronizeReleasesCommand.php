@@ -3,12 +3,12 @@
 namespace App\Model\Commands\Addons\Github;
 
 use App\Model\Commands\BaseCommand;
-use App\Model\Database\ORM\Github\GithubRepository;
 use App\Model\Database\ORM\GithubRelease\GithubRelease;
 use App\Model\Database\ORM\GithubRelease\GithubReleaseRepository;
 use App\Model\Facade\Cli\Commands\AddonFacade;
 use App\Model\WebServices\Github\GithubService;
-use Nextras\Dbal\Utils\DateTimeImmutable;
+use DateTimeImmutable;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -19,30 +19,26 @@ final class SynchronizeReleasesCommand extends BaseCommand
 	/** @var string */
 	protected static $defaultName = 'addons:github:sync:releases';
 
-	/** @var AddonFacade */
-	private $addonFacade;
+	private AddonFacade $addonFacade;
 
-	/** @var GithubRepository */
-	private $githubRepository;
+	private GithubReleaseRepository $githubReleaseRepository;
 
-	/** @var GithubReleaseRepository */
-	private $githubReleaseRepository;
+	private GithubService $github;
 
-	/** @var GithubService */
-	private $github;
+	private EntityManagerInterface $em;
 
 	public function __construct(
 		AddonFacade $addonFacade,
-		GithubRepository $githubRepository,
 		GithubReleaseRepository $githubReleaseRepository,
-		GithubService $github
+		GithubService $github,
+		EntityManagerInterface $em
 	)
 	{
 		parent::__construct();
 		$this->addonFacade = $addonFacade;
-		$this->githubRepository = $githubRepository;
 		$this->githubReleaseRepository = $githubReleaseRepository;
 		$this->github = $github;
+		$this->em = $em;
 	}
 
 	/**
@@ -78,16 +74,18 @@ final class SynchronizeReleasesCommand extends BaseCommand
 		$counter = 0;
 		foreach ($addons as $addon) {
 			// Skip non-github reference
-			if (!$addon->github) {
+			if (!$addon->getGithub()) {
 				continue;
 			}
 
 			// Fetch all already saved github releases
-			/** @var GithubRelease[] $storedReleases */
-			$storedReleases = $addon->github->releases->get()->fetchPairs('gid');
+			$storedReleases = [];
+			foreach ($addon->getGithub()->getReleases() as $release) {
+				$storedReleases[$release->getGid()] = $release;
+			}
 
 			// Get all releases
-			$responses = $this->github->allReleases($addon->author, $addon->name, GithubService::MEDIATYPE_HTML);
+			$responses = $this->github->allReleases($addon->getAuthor(), $addon->getName(), GithubService::MEDIATYPE_HTML);
 			if ($responses) {
 				foreach ($responses as $response) {
 
@@ -105,43 +103,45 @@ final class SynchronizeReleasesCommand extends BaseCommand
 								$githubRelease = $storedReleases[$releaseId];
 							} else {
 								// Create new one
-								$githubRelease = new GithubRelease();
-								$githubRelease->gid = (int) $release['id'];
+								$githubRelease = new GithubRelease(
+									$addon->getGithub(),
+									(int) $release['id'],
+									(string) $release['name'],
+									(string) $release['tag_name']
+								);
+								$addon->getGithub()->addRelease($githubRelease);
 							}
 
-							$githubRelease->name = (string) $release['name'];
-							$githubRelease->tag = (string) $release['tag_name'];
-							$githubRelease->draft = (bool) $release['draft'];
-							$githubRelease->prerelease = (bool) $release['prerelease'];
-							$githubRelease->createdAt = new DateTimeImmutable((string) $release['created_at']);
-							$githubRelease->crawledAt = new DateTimeImmutable();
-							$githubRelease->publishedAt = new DateTimeImmutable((string) $release['published_at']);
-							$githubRelease->body = (string) $release['body_html'];
-
-							// If its new one
-							if (!$githubRelease->isPersisted()) {
-								$addon->github->releases->add($githubRelease);
-							}
+							$githubRelease->setName((string) $release['name']);
+							$githubRelease->setTag((string) $release['tag_name']);
+							$githubRelease->setDraft((bool) $release['draft']);
+							$githubRelease->setPrerelease((bool) $release['prerelease']);
+							$githubRelease->setCreatedAt(new DateTimeImmutable((string) $release['created_at']));
+							$githubRelease->setCrawledAt(new DateTimeImmutable());
+							$githubRelease->setPublishedAt(new DateTimeImmutable((string) $release['published_at']));
+							$githubRelease->setBody((string) $release['body_html']);
 
 							// Unset from array
 							unset($storedReleases[$releaseId]);
 						}
 					} else {
-						$output->writeln('Skip (no releases): ' . $addon->fullname);
+						$output->writeln('Skip (no releases): ' . $addon->getFullname());
 					}
 				}
 
 				// Save new or updated releases
-				$this->githubRepository->persistAndFlush($addon->github);
+				$this->em->persist($addon->getGithub());
+				$this->em->flush();
 
 				// If there are some left releases, remove them
 				if (count($storedReleases) > 0) {
 					foreach ($storedReleases as $release) {
-						$this->githubReleaseRepository->remove($release);
+						$this->em->remove($release);
 					}
+					$this->em->flush();
 				}
 			} else {
-				$output->writeln('Skip (no response): ' . $addon->fullname);
+				$output->writeln('Skip (no response): ' . $addon->getFullname());
 			}
 
 			$counter++;

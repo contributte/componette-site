@@ -7,8 +7,8 @@ use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\Addon\AddonRepository;
 use App\Model\Database\ORM\ComposerStatistics\ComposerStatistics;
 use App\Model\WebServices\Composer\ComposerService;
+use Doctrine\ORM\EntityManagerInterface;
 use Nette\InvalidStateException;
-use Nextras\Orm\Collection\ICollection;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Throwable;
@@ -20,17 +20,18 @@ final class CollectStatsCommand extends BaseCommand
 	/** @var string */
 	protected static $defaultName = 'addons:composer:collect';
 
-	/** @var AddonRepository */
-	private $addonRepository;
+	private AddonRepository $addonRepository;
 
-	/** @var ComposerService */
-	private $composer;
+	private ComposerService $composer;
 
-	public function __construct(AddonRepository $addonRepository, ComposerService $composer)
+	private EntityManagerInterface $em;
+
+	public function __construct(AddonRepository $addonRepository, ComposerService $composer, EntityManagerInterface $em)
 	{
 		parent::__construct();
 		$this->addonRepository = $addonRepository;
 		$this->composer = $composer;
+		$this->em = $em;
 	}
 
 	/**
@@ -45,7 +46,6 @@ final class CollectStatsCommand extends BaseCommand
 
 	protected function execute(InputInterface $input, OutputInterface $output): int
 	{
-		/** @var ICollection|Addon[] $addons */
 		$addons = $this->addonRepository->findBy(['state' => Addon::STATE_ACTIVE, 'type' => Addon::TYPE_COMPOSER]);
 
 		// DO YOUR JOB ===============================================
@@ -53,39 +53,38 @@ final class CollectStatsCommand extends BaseCommand
 		$counter = 0;
 		foreach ($addons as $addon) {
 			// Skip non-github reference
-			if (!$addon->github) {
+			if (!$addon->getGithub()) {
 				continue;
 			}
 
 			try {
 				// Skip addon without data
-				$composer = $addon->github->masterComposer;
-				if ($composer) {
-					if (!$composer->name) {
-						throw new InvalidStateException('No composer name at ' . $addon->fullname);
+				$githubComposer = $addon->getGithub()->getMasterComposer();
+				if ($githubComposer) {
+					$composerName = $githubComposer->getComposerName();
+					if (!$composerName) {
+						throw new InvalidStateException('No composer name at ' . $addon->getFullname());
 					}
 
-					[$vendor, $repo] = explode('/', $composer->name);
+					[$vendor, $repo] = explode('/', $composerName);
 
 					$response = $this->composer->stats($vendor, $repo);
 					if ($response->isOk()) {
-						$stats = new ComposerStatistics();
-						$stats->addon = $addon;
-						$stats->type = ComposerStatistics::TYPE_ALL;
-						$stats->custom = ComposerStatistics::CUSTOM_ALL;
-						$stats->json = $response->getJsonBody();
-						$addon->composerStatistics->add($stats);
+						$stats = new ComposerStatistics($addon, ComposerStatistics::TYPE_ALL, ComposerStatistics::CUSTOM_ALL);
+						$stats->setJson($response->getJsonBody());
+						$addon->addComposerStatistics($stats);
 					} else {
-						$output->writeln('Skip (composer stats) [no stats data]: ' . $addon->fullname);
+						$output->writeln('Skip (composer stats) [no stats data]: ' . $addon->getFullname());
 					}
 
 					// Persist
-					$this->addonRepository->persistAndFlush($addon);
+					$this->em->persist($addon);
+					$this->em->flush();
 
 					// Increase counting
 					$counter++;
 				} else {
-					$output->writeln('Skip (composer stats) [no composer data]: ' . $addon->fullname);
+					$output->writeln('Skip (composer stats) [no composer data]: ' . $addon->getFullname());
 				}
 			} catch (Throwable $e) {
 				Debugger::log($e, Debugger::EXCEPTION);

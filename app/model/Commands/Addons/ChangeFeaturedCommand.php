@@ -5,9 +5,8 @@ namespace App\Model\Commands\Addons;
 use App\Model\Commands\BaseCommand;
 use App\Model\Database\ORM\Addon\Addon;
 use App\Model\Database\ORM\Addon\AddonRepository;
-use App\Model\Database\ORM\EntityModel;
-use Nextras\Dbal\Utils\DateTimeImmutable;
-use Nextras\Orm\Collection\ICollection;
+use DateTimeImmutable;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -19,9 +18,9 @@ final class ChangeFeaturedCommand extends BaseCommand
 
 	private AddonRepository $repository;
 
-	private EntityModel $em;
+	private EntityManagerInterface $em;
 
-	public function __construct(AddonRepository $repository, EntityModel $em)
+	public function __construct(AddonRepository $repository, EntityManagerInterface $em)
 	{
 		parent::__construct();
 		$this->repository = $repository;
@@ -30,19 +29,25 @@ final class ChangeFeaturedCommand extends BaseCommand
 
 	protected function execute(InputInterface $input, OutputInterface $output): int
 	{
-		$next = $this->repository->getBy(['featuredAt' => null]);
+		$next = $this->repository->findOneBy(['featuredAt' => null]);
 		if (!$next) {
-			/** @var Addon $next */
+			/** @var Addon|null $next */
 			$next = $this->repository
-				->findBy([])
-				->limitBy(1)
-				->orderBy('featuredAt', ICollection::ASC)
-				->fetch();
+				->createQueryBuilder('a')
+				->orderBy('a.featuredAt', 'ASC')
+				->setMaxResults(1)
+				->getQuery()
+				->getOneOrNullResult();
 		}
 
-		$next->featuredAt = new DateTimeImmutable();
-		$this->em->persistAndFlush($next);
-		$output->writeln(sprintf('Addon ID %d is now featured.', $next->id));
+		if ($next === null) {
+			$output->writeln('No addon found to feature.');
+			return 1;
+		}
+
+		$next->setFeaturedAt(new DateTimeImmutable());
+		$this->em->flush();
+		$output->writeln(sprintf('Addon ID %d is now featured.', $next->getId()));
 		return 0;
 	}
 
