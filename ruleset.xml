@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ruleset name="Componette">
 	<!-- Extending ruleset -->
-	<rule ref="vendor/ninjify/coding-standard/contributte.xml">
+	<rule ref="vendor/contributte/qa/ruleset.xml">
 		<exclude name="Generic.Formatting.SpaceAfterCast.NoSpace"/>
 		<exclude name="Squiz.Commenting.FunctionComment.SpacingAfter"/>
 		<exclude name="Squiz.Commenting.VariableComment.Missing"/>
 		<exclude name="SlevomatCodingStandard.ControlStructures.EarlyExit"/>
 		<exclude name="SlevomatCodingStandard.ControlStructures.RequireTernaryOperator"/>
-		<exclude
-				name="SlevomatCodingStandard.ControlStructures.RequireMultiLineTernaryOperator.MultiLineTernaryOperatorNotUsed"/>
+		<exclude name="SlevomatCodingStandard.ControlStructures.RequireMultiLineTernaryOperator.MultiLineTernaryOperatorNotUsed"/>
 	</rule>
 
 	<!-- Project rules -->
 	<rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
 		<properties>
-			<property name="rootNamespaces" type="array" value="
-				app/model=>App\Model,
-				app/modules/Front=>App\Modules\Front,
-				tests=>Tests
-			"/>
+			<property name="rootNamespaces" type="array">
+				<element key="app/model" value="App\Model"/>
+				<element key="app/modules/Front" value="App\Modules\Front"/>
+				<element key="tests" value="Tests"/>
+			</property>
 		</properties>
 	</rule>
 

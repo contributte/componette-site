@@ -20,8 +20,8 @@ use Nextras\Orm\Model\Model as NextrasModel;
  * @property-read GithubComposerRepository $githubComposer
  * @property-read GithubReleaseRepository $githubRelease
  * @property-read TagRepository $tag
- * @method AbstractEntity persist(IEntity $entity, $withCascade = true)
- * @method AbstractRepository getRepositoryForEntity($entity)
+ * @method        AbstractEntity persist(IEntity $entity, $withCascade = true)
+ * @method        AbstractRepository getRepositoryForEntity($entity)
  */
 final class EntityModel extends NextrasModel
 {

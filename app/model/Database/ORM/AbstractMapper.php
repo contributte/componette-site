@@ -2,9 +2,9 @@
 
 namespace App\Model\Database\ORM;
 
-use Nextras\Orm\Mapper\Mapper;
+use Nextras\Orm\Mapper\Dbal\DbalMapper;
 
-abstract class AbstractMapper extends Mapper
+abstract class AbstractMapper extends DbalMapper
 {
 
 }

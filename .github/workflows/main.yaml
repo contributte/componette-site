@@ -24,7 +24,7 @@ jobs:
     strategy:
       matrix:
         node-versions: [ "18.1.0" ]
-        php-versions: [ "8.1" ]
+        php-versions: [ "8.5" ]
         operating-system: [ "ubuntu-latest" ]
       fail-fast: false
 
@@ -101,7 +101,7 @@ jobs:
 
     strategy:
       matrix:
-        php-versions: [ "8.1" ]
+        php-versions: [ "8.5" ]
         operating-system: [ "ubuntu-latest" ]
       fail-fast: false
 
@@ -176,7 +176,7 @@ jobs:
 
     strategy:
       matrix:
-        php-versions: [ "8.1" ]
+        php-versions: [ "8.5" ]
         operating-system: [ "ubuntu-latest" ]
       fail-fast: false
 

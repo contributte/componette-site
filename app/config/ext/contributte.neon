@@ -2,7 +2,7 @@ extensions:
 	console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
 	xcache: Contributte\Cache\DI\CacheFactoryExtension
 	curl: Contributte\Http\DI\CurlExtension
-	nextras.queryobject: Contributte\Nextras\Orm\QueryObject\DI\NextrasQueryObjectExtension
+	repositoryInject: App\Model\Database\DI\RepositoryInjectExtension
 
 console:
 	name: "Componette"

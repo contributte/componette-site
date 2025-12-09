@@ -8,13 +8,15 @@ use Contributte\Http\Curl\Response;
 abstract class WebServiceClientException extends RuntimeException
 {
 
-	/** @var Response */
-	protected $response;
+    /**
+     * @var Response 
+     */
+    protected $response;
 
-	public function __construct(Response $response)
-	{
-		parent::__construct();
-		$this->response = $response;
-	}
+    public function __construct(Response $response)
+    {
+        parent::__construct();
+        $this->response = $response;
+    }
 
 }

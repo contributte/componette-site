@@ -13,9 +13,9 @@ abstract class BaseRenderControl extends BaseControl
 
 	protected const DEFAULT_TEMPLATE = 'default';
 
-	protected function createTemplate(): Template
+	protected function createTemplate(?string $class = null): Template
 	{
-		$template = parent::createTemplate();
+		$template = parent::createTemplate($class);
 		$template->setFile($this->getTemplateFile());
 		return $template;
 	}
