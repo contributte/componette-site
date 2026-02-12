@@ -50,7 +50,7 @@
     "contributte/webpack": "^2.3",
     "nette/robot-loader": "^3.2.0",
     "nextras/dbal": "4.0.4",
-    "nextras/migrations": "3.2.0",
+    "nextras/migrations": "3.5.0",
     "nextras/orm": "4.0.6"
   },
   "require-dev": {
