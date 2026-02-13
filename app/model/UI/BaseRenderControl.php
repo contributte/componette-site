@@ -23,10 +23,10 @@ abstract class BaseRenderControl extends BaseControl
 	final protected function getTemplateFile(?string $template = null): string
 	{
 		if (!$template) {
-			$template = static::DEFAULT_TEMPLATE;
+			$template = self::DEFAULT_TEMPLATE;
 		}
 		$file = (string)$this->getReflection()->getFileName();
-		return dirname($file) . "/templates/$template.latte";
+		return sprintf('%s/templates/%s.latte', dirname($file), $template);
 	}
 
 }

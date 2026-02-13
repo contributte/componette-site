@@ -16,7 +16,7 @@ class Control extends BaseRenderControl
 		$this->template->setParameters(
 			[
 				'home' => $this->presenter->link(':Front:Home:'),
-				'menu' => $this->links()
+				'menu' => $this->links(),
 			]
 		)->render();
 	}
