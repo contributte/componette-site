@@ -3,12 +3,15 @@
 	<!-- Extending ruleset -->
 	<rule ref="vendor/ninjify/coding-standard/contributte.xml">
 		<exclude name="Generic.Formatting.SpaceAfterCast.NoSpace"/>
+		<exclude name="Generic.WhiteSpace.ScopeIndent"/>
 		<exclude name="Squiz.Commenting.FunctionComment.SpacingAfter"/>
 		<exclude name="Squiz.Commenting.VariableComment.Missing"/>
+		<exclude name="SlevomatCodingStandard.ControlStructures.BlockControlStructureSpacing"/>
 		<exclude name="SlevomatCodingStandard.ControlStructures.EarlyExit"/>
 		<exclude name="SlevomatCodingStandard.ControlStructures.RequireTernaryOperator"/>
 		<exclude
 				name="SlevomatCodingStandard.ControlStructures.RequireMultiLineTernaryOperator.MultiLineTernaryOperatorNotUsed"/>
+		<exclude name="SlevomatCodingStandard.TypeHints.DeclareStrictTypes"/>
 	</rule>
 
 	<!-- Project rules -->
