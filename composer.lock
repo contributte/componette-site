@@ -3339,24 +3339,24 @@
         },
         {
             "name": "nette/tester",
-            "version": "v2.5.2",
+            "version": "v2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tester.git",
-                "reference": "328d7b64579cdbc82e0e01d92ea9c58b9cf0a327"
+                "reference": "0d416a3715ee7547f5e286aa7e65180f35467624"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tester/zipball/328d7b64579cdbc82e0e01d92ea9c58b9cf0a327",
-                "reference": "328d7b64579cdbc82e0e01d92ea9c58b9cf0a327",
+                "url": "https://api.github.com/repos/nette/tester/zipball/0d416a3715ee7547f5e286aa7e65180f35467624",
+                "reference": "0d416a3715ee7547f5e286aa7e65180f35467624",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.0 <8.4"
+                "php": "8.0 - 8.5"
             },
             "require-dev": {
                 "ext-simplexml": "*",
-                "phpstan/phpstan": "^1.0"
+                "phpstan/phpstan": "^2.0@stable"
             },
             "bin": [
                 "src/tester"
@@ -3364,10 +3364,13 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.5-dev"
+                    "dev-master": "2.6-dev"
                 }
             },
             "autoload": {
+                "psr-4": {
+                    "Tester\\": "src"
+                },
                 "classmap": [
                     "src/"
                 ]
@@ -3408,9 +3411,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/tester/issues",
-                "source": "https://github.com/nette/tester/tree/v2.5.2"
+                "source": "https://github.com/nette/tester/tree/v2.6.0"
             },
-            "time": "2024-01-08T11:41:26+00:00"
+            "time": "2026-01-22T08:39:16+00:00"
         },
         {
             "name": "nextras/orm-phpstan",
@@ -3521,16 +3524,16 @@
         },
         {
             "name": "ninjify/nunjuck",
-            "version": "v0.4.0",
+            "version": "v0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ninjify/nunjuck.git",
-                "reference": "4768a7db2f76ab662061b977a05b5aebc2b7bb45"
+                "reference": "004828ee6d3084a1fe1cf3ac3513c24ef4828fe4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ninjify/nunjuck/zipball/4768a7db2f76ab662061b977a05b5aebc2b7bb45",
-                "reference": "4768a7db2f76ab662061b977a05b5aebc2b7bb45",
+                "url": "https://api.github.com/repos/ninjify/nunjuck/zipball/004828ee6d3084a1fe1cf3ac3513c24ef4828fe4",
+                "reference": "004828ee6d3084a1fe1cf3ac3513c24ef4828fe4",
                 "shasum": ""
             },
             "require": {
@@ -3560,7 +3563,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.4.x-dev"
+                    "dev-master": "0.5.x-dev"
                 }
             },
             "autoload": {
@@ -3590,9 +3593,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ninjify/nunjuck/issues",
-                "source": "https://github.com/ninjify/nunjuck/tree/v0.4.0"
+                "source": "https://github.com/ninjify/nunjuck/tree/v0.4.1"
             },
-            "time": "2023-03-14T13:58:17+00:00"
+            "time": "2025-03-17T12:09:19+00:00"
         },
         {
             "name": "ninjify/qa",
@@ -4032,7 +4035,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
@@ -4043,9 +4046,9 @@
         "ext-pdo": "*",
         "ext-simplexml": "*"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "platform-overrides": {
         "php": "8.1"
     },
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.6.0"
 }
