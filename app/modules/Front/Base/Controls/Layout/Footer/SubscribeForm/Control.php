@@ -20,7 +20,7 @@ class Control extends BaseRenderControl
 			->template
 			->setParameters(
 				[
-					'heading' =>'Subscribe to our newsletter',
+					'heading' => 'Subscribe to our newsletter',
 				]
 			)->render();
 	}

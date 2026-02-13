@@ -5,7 +5,6 @@ namespace App\Modules\Front\Base;
 use App\Model\Services\Search\Search;
 use App\Model\UI\AbstractPresenter;
 use App\Model\UI\Destination;
-use App\Model\Webpack\Entries;
 use App\Modules\Front\Base\Controls\FlashMessages\FlashMessagesComponent;
 use App\Modules\Front\Base\Controls\Layout\Footer\FooterComponent;
 use App\Modules\Front\Base\Controls\Layout\Header\HeaderComponent;
