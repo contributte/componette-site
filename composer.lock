@@ -370,16 +370,16 @@
         },
         {
             "name": "contributte/forms",
-            "version": "v0.5.1",
+            "version": "v0.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/contributte/forms.git",
-                "reference": "c7ac26b456ff2958ea207c43be6515ad1154dcea"
+                "reference": "8790c37e2efab65fa95d73a7156e034e9701e455"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contributte/forms/zipball/c7ac26b456ff2958ea207c43be6515ad1154dcea",
-                "reference": "c7ac26b456ff2958ea207c43be6515ad1154dcea",
+                "url": "https://api.github.com/repos/contributte/forms/zipball/8790c37e2efab65fa95d73a7156e034e9701e455",
+                "reference": "8790c37e2efab65fa95d73a7156e034e9701e455",
                 "shasum": ""
             },
             "require": {
@@ -436,7 +436,7 @@
             ],
             "support": {
                 "issues": "https://github.com/contributte/forms/issues",
-                "source": "https://github.com/contributte/forms/tree/v0.5.1"
+                "source": "https://github.com/contributte/forms/tree/v0.5.3"
             },
             "funding": [
                 {
@@ -448,7 +448,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-11-13T17:22:04+00:00"
+            "time": "2025-10-20T17:29:51+00:00"
         },
         {
             "name": "contributte/http",
@@ -4032,7 +4032,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
@@ -4043,9 +4043,9 @@
         "ext-pdo": "*",
         "ext-simplexml": "*"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "platform-overrides": {
         "php": "8.1"
     },
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.6.0"
 }
