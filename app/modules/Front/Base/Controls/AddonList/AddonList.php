@@ -92,7 +92,7 @@ class AddonList extends BaseRenderControl
 				->addHtml(Html::el('strong')->setText($tag));
 		}
 		return Html::el()
-			->addHtml(Html::el()->setText('Searched for $'))
+			->addHtml(Html::el()->setText('Searched for '))
 			->addHtml(Html::el('strong')->setText($query->getQuery()))
 			->addHtml(
 				Html::el('i')
