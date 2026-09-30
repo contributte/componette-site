@@ -100,4 +100,10 @@ class GithubComposer extends AbstractEntity
 		$this->setRawValue('data', json_encode(Arrays::ensure($this->json)));
 	}
 
+	public function onBeforeUpdate(): void
+	{
+		parent::onBeforeUpdate();
+		$this->setRawValue('data', json_encode(Arrays::ensure($this->json)));
+	}
+
 }
